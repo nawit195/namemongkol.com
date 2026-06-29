@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, ChevronDown, MessageCircle, Hand, Wand2 } from 'lucide-react';
+import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, MessageCircle, Hand, Wand2 } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
 import { LineOAButton } from './LineOAButton';
@@ -41,9 +41,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const pathname = usePathname();
     const router = useRouter();
     const { t } = useLanguage();
-
-    // State for collapsible menus (currently unused but kept for future submenus)
-    const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
     const fetchUserInfo = async (userId: string) => {
         const { data, error } = await supabase
@@ -129,7 +126,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         iconScale?: number;
         path: string;
         mobileOnly?: boolean;
-        subItems?: MenuItem[];
     };
 
     const baseMenuItems: MenuItem[] = [
@@ -157,10 +153,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             { key: 'admin-settings', nameKey: 'sidebar.adminSettings', icon: Settings, path: '/admin/settings' }
         );
     }
-
-    const toggleSubMenu = (menuName: string) => {
-        setExpandedMenu(expandedMenu === menuName ? null : menuName);
-    };
 
     // โทนสีมนต์ขลัง: ทอง/อำพัน, ม่วงจักรวาล, น้ำเงินลึก, ชมพูทองแดง, เขียวมรกตศักดิ์สิทธิ์
     const getIconThemeClasses = (itemKey: string) => {
@@ -302,87 +294,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
                     <nav className="space-y-2 flex-1 overflow-y-auto pr-1 custom-scrollbar">
                         {menuItems.map((item) => {
-                            const label = t(item.nameKey, item.nameKey);
-
-                            // Handle Items with Submenu
-                            if (item.subItems) {
-                                const isExpanded = expandedMenu === item.key;
-                                const hasActiveChild = item.subItems.some(sub => pathname === sub.path);
-                                const isParentActive = pathname === item.path;
-                                const isMenuExpandedOrActive = isExpanded || hasActiveChild;
-
-                                return (
-                                    <div key={item.key} className="space-y-1">
-                                        <div
-                                            className={`flex items-center justify-between w-full rounded-xl lg:rounded-2xl transition-all duration-200 group relative overflow-hidden ${isParentActive
-                                                ? 'border border-white/80 bg-white/70 text-slate-900 shadow-[0_14px_34px_rgba(15,23,42,0.12)]'
-                                                : 'text-slate-600 hover:bg-white/55 hover:text-slate-900 hover:shadow-[0_8px_24px_rgba(15,23,42,0.08)]'
-                                                }`}
-                                        >
-                                            {isParentActive && (
-                                                <div className="absolute left-0 top-0 w-1 h-full bg-amber-400 rounded-r-full shadow-[0_0_12px_rgba(245,158,11,0.32)]" />
-                                            )}
-
-                                            <Link
-                                                href={item.path}
-                                                onClick={() => onClose()}
-                                                className="flex-1 flex items-center gap-3 lg:gap-4 px-4 py-3 lg:px-5 lg:py-4"
-                                            >
-                                                <item.icon className="w-[22px] h-[22px]" />
-                                                <span className="font-medium text-[16px] tracking-wide">{label}</span>
-                                            </Link>
-
-                                            <button
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    e.stopPropagation();
-                                                    toggleSubMenu(item.key);
-                                                }}
-                                                className="p-3 lg:p-4 hover:bg-white/60 transition-colors"
-                                            >
-                                                <ChevronDown size={16} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-                                            </button>
-                                        </div>
-
-                                        {/* Submenu */}
-                                        <div
-                                            className={`overflow-hidden transition-all duration-300 ease-in-out ${isMenuExpandedOrActive ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                                                }`}
-                                        >
-                                            <div className="pt-1 pb-1 space-y-1">
-                                                {item.subItems.map(subItem => {
-                                                    const isSubActive = pathname === subItem.path;
-                                                    const subLabel = t(subItem.nameKey, subItem.nameKey);
-                                                    return (
-                                                        <Link
-                                                            key={subItem.path}
-                                                            href={subItem.path}
-                                                            onClick={(e) => {
-                                                                onClose();
-                                                                // Force reload to clean URL if clicking "Analyze Phone" while already on the page
-                                                                if (subItem.path === '/phone-analysis' && pathname === '/phone-analysis') {
-                                                                    e.preventDefault();
-                                                                    window.location.href = '/phone-analysis';
-                                                                }
-                                                            }}
-                                                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 border-l-2 ml-4 ${isSubActive
-                                                                ? 'border-amber-400 bg-white/70 text-slate-900 shadow-sm'
-                                                                : 'border-slate-200 text-slate-500 hover:text-slate-800 hover:border-slate-300 hover:bg-white/55'
-                                                                }`}
-                                                        >
-                                                            <subItem.icon size={18} className={isSubActive ? 'text-amber-500' : 'opacity-70'} />
-                                                            <span className="text-[14px]">
-                                                                {subLabel}
-                                                            </span>
-                                                        </Link>
-                                                    );
-                                                })}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            }
-
                             // Custom Design for Premium Analysis
                             if (item.path === '/premium-analysis') {
                                 const premiumLabel = t('sidebar.premiumAnalysis', 'Premium Name Design');

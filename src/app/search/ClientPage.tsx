@@ -7,7 +7,7 @@ import UserStatsBadge from '@/components/UserStatsBadge';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/utils/supabase';
-import { Sparkles, ChevronDown, ChevronUp, CheckCircle, XCircle, Filter, Lock, Unlock, Type, Plus, Minus } from 'lucide-react';
+import { Sparkles, ChevronDown, Filter, Lock, Type, Plus, Minus } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 import { calculateScore } from '@/utils/numerologyUtils';
@@ -164,8 +164,6 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
     );
 }
 
-const ITEMS_PER_PAGE = 60;
-
 // Thai consonants for letter filter
 const THAI_LETTERS = [
     'ก','ข','ฃ','ค','ฅ','ฆ','ง','จ','ฉ','ช','ซ','ฌ','ญ','ฎ','ฏ','ฐ','ฑ','ฒ','ณ',
@@ -204,7 +202,6 @@ export default function SearchPage() {
 
     // Freemium State
     const [visibleCount, setVisibleCount] = useState(10);
-    const [userCredits, setUserCredits] = useState<number | null>(null);
     const [isUnlocking, setIsUnlocking] = useState(false);
 
     const [names, setNames] = useState<{ name: string; gender: string; meaning?: string }[]>([]); // Update type
@@ -216,38 +213,6 @@ export default function SearchPage() {
         avgRating: 4.8,
         reviewCount: 512,
     });
-
-    // Fetch credits
-    useEffect(() => {
-        const fetchCredits = async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
-
-            const { data, error } = await supabase
-                .from('user_profiles')
-                .select('credits, welcome_credits, welcome_credits_granted_at')
-                .eq('id', user.id)
-                .maybeSingle();
-
-            if (error) {
-                console.error('Error fetching credits:', error);
-                return;
-            }
-
-            if (data) {
-                let total = data.credits ?? 0;
-                if (data.welcome_credits && data.welcome_credits > 0 && data.welcome_credits_granted_at) {
-                    const grantedAt = new Date(data.welcome_credits_granted_at).getTime();
-                    if (Date.now() < grantedAt + 30 * 24 * 60 * 60 * 1000) {
-                        total += data.welcome_credits;
-                    }
-                }
-                setUserCredits(total);
-            }
-        };
-
-        fetchCredits();
-    }, []);
 
     // Fetch names from cached API
     useEffect(() => {
@@ -408,7 +373,6 @@ export default function SearchPage() {
                             total += data.welcome_credits;
                         }
                     }
-                    setUserCredits(total);
                     return {
                         total,
                         tier: (data.tier || 'free').toLowerCase()
@@ -483,9 +447,7 @@ export default function SearchPage() {
                 return;
             }
 
-            const updatedCredits = latestCredits - UNLOCK_COST;
             const unlockedNames = filteredNames.slice(visibleCount, visibleCount + UNLOCK_AMOUNT);
-            setUserCredits(updatedCredits);
             setVisibleCount(prev => prev + UNLOCK_AMOUNT);
             window.dispatchEvent(new Event('force_credits_update'));
 
@@ -580,7 +542,7 @@ export default function SearchPage() {
                                         <div className="relative z-10">
                                             <h3 className="text-amber-800 font-semibold mb-1 text-sm">💡 {t('pages.search.tipTitle')}</h3>
                                             <p className="text-slate-700 text-sm leading-relaxed">
-                                                {t('pages.search.tipBody')} <Link href="/" className="text-amber-700 hover:underline decoration-amber-400/30 underline-offset-4">{t('pages.search.links.l1Title')}</Link>
+                                                {t('pages.search.tipBody')} <Link href="/name-check" className="text-amber-700 hover:underline decoration-amber-400/30 underline-offset-4">{t('pages.search.links.l1Title')}</Link>
                                                 <span className="mx-1 text-slate-400">·</span>
                                                 ถ้ายังไม่มีชื่อในใจ ลอง <Link href="/name-generator" className="font-bold text-pink-600 hover:underline decoration-pink-300/50 underline-offset-4">สร้างชื่อมงคลด้วย AI</Link>
                                             </p>
@@ -824,269 +786,6 @@ export default function SearchPage() {
                         {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length)} {t('pages.search.showingConnector')} {filteredNames.length}
                     </div>
                 )}
-
-                {/* FAQ Section */}
-                <div id="search-faq" className="mt-16 mb-12 max-w-3xl mx-auto">
-                    <h2 className="text-2xl font-bold text-center text-amber-700 mb-8">
-                        {t('pages.search.faqTitle')}
-                    </h2>
-                    <div className="space-y-4">
-                        <details className="group rounded-xl border border-slate-800 bg-slate-950/85 p-4 shadow-lg shadow-slate-950/10 cursor-pointer open:bg-slate-900 transition-colors">
-                            <summary className="font-semibold text-slate-200 list-none flex justify-between items-center">
-                                {t('pages.search.faq.q1')}
-                                <span className="transition-transform group-open:rotate-180">▼</span>
-                            </summary>
-                            <p className="mt-3 text-slate-300 text-sm pl-4 border-l-2 border-amber-500">
-                                {t('pages.search.faq.a1')}
-                            </p>
-                        </details>
-
-                        <details className="group rounded-xl border border-slate-800 bg-slate-950/85 p-4 shadow-lg shadow-slate-950/10 cursor-pointer open:bg-slate-900 transition-colors">
-                            <summary className="font-semibold text-slate-200 list-none flex justify-between items-center">
-                                {t('pages.search.faq.q2')}
-                                <span className="transition-transform group-open:rotate-180">▼</span>
-                            </summary>
-                            <p className="mt-3 text-slate-300 text-sm pl-4 border-l-2 border-amber-500">
-                                {t('pages.search.faq.a2')}
-                            </p>
-                        </details>
-
-                        <details className="group rounded-xl border border-slate-800 bg-slate-950/85 p-4 shadow-lg shadow-slate-950/10 cursor-pointer open:bg-slate-900 transition-colors">
-                            <summary className="font-semibold text-slate-200 list-none flex justify-between items-center">
-                                {t('pages.search.faq.q3')}
-                                <span className="transition-transform group-open:rotate-180">▼</span>
-                            </summary>
-                            <p className="mt-3 text-slate-300 text-sm pl-4 border-l-2 border-amber-500">
-                                {t('pages.search.faq.a3')}
-                            </p>
-                        </details>
-
-                        <details className="group rounded-xl border border-slate-800 bg-slate-950/85 p-4 shadow-lg shadow-slate-950/10 cursor-pointer open:bg-slate-900 transition-colors">
-                            <summary className="font-semibold text-slate-200 list-none flex justify-between items-center">
-                                {t('pages.search.faq.q4')}
-                                <span className="transition-transform group-open:rotate-180">▼</span>
-                            </summary>
-                            <p className="mt-3 text-slate-300 text-sm pl-4 border-l-2 border-amber-500">
-                                {t('pages.search.faq.a4')}
-                            </p>
-                        </details>
-
-                        <details className="group rounded-xl border border-slate-800 bg-slate-950/85 p-4 shadow-lg shadow-slate-950/10 cursor-pointer open:bg-slate-900 transition-colors">
-                            <summary className="font-semibold text-slate-200 list-none flex justify-between items-center">
-                                {t('pages.search.faq.q5')}
-                                <span className="transition-transform group-open:rotate-180">▼</span>
-                            </summary>
-                            <p className="mt-3 text-slate-300 text-sm pl-4 border-l-2 border-amber-500">
-                                {t('pages.search.faq.a5')}
-                            </p>
-                        </details>
-                    </div>
-                </div>
-
-                {/* ==================== SEO Content Sections ==================== */}
-
-                {/* Why NameMongkol */}
-                <section className="mt-16 mb-12 max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-center text-amber-700 mb-6">
-                        {t('pages.search.benefitsTitle')}
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <article className="rounded-xl border border-slate-800 bg-slate-950/85 p-6 text-center shadow-lg shadow-slate-950/10 transition-colors hover:border-amber-500/30">
-                            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-amber-500/20 to-purple-500/20 flex items-center justify-center">
-                                <Sparkles className="w-6 h-6 text-amber-400" />
-                            </div>
-                            <h3 className="font-semibold text-slate-200 mb-2">{t('pages.search.benefits.b1Title')}</h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.benefits.b1Desc')}
-                            </p>
-                        </article>
-                        <article className="rounded-xl border border-slate-800 bg-slate-950/85 p-6 text-center shadow-lg shadow-slate-950/10 transition-colors hover:border-amber-500/30">
-                            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center">
-                                <CheckCircle className="w-6 h-6 text-emerald-400" />
-                            </div>
-                            <h3 className="font-semibold text-slate-200 mb-2">{t('pages.search.benefits.b2Title')}</h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.benefits.b2Desc')}
-                            </p>
-                        </article>
-                        <article className="rounded-xl border border-slate-800 bg-slate-950/85 p-6 text-center shadow-lg shadow-slate-950/10 transition-colors hover:border-amber-500/30">
-                            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center">
-                                <Filter className="w-6 h-6 text-blue-400" />
-                            </div>
-                            <h3 className="font-semibold text-slate-200 mb-2">{t('pages.search.benefits.b3Title')}</h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.benefits.b3Desc')}
-                            </p>
-                        </article>
-                    </div>
-                </section>
-
-                {/* Free vs Pro Comparison Table */}
-                <section className="mt-16 mb-12 max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-center text-amber-700 mb-6">
-                        {t('pages.search.compareTitle')}
-                    </h2>
-                    <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950/90 shadow-2xl shadow-slate-950/15">
-                        <table className="w-full text-sm" aria-label="feature comparison">
-                            <thead>
-                                <tr className="bg-white/[0.05] border-b border-white/10">
-                                    <th className="px-4 py-3 text-left text-slate-300 font-semibold">{t('pages.search.compare.feature')}</th>
-                                    <th className="px-4 py-3 text-center text-slate-300 font-semibold">{t('pages.search.compare.free')}</th>
-                                    <th className="px-4 py-3 text-center text-amber-400 font-semibold">{t('pages.search.compare.pro')}</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-white/5">
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row1')}</td>
-                                    <td className="px-4 py-3 text-center text-slate-300">5,000+</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400 font-medium">5,000+</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row2')}</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row3')}</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row4')}</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row5')}</td>
-                                    <td className="px-4 py-3 text-center text-rose-400">✗</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400 font-medium">✓ จับคู่อัตโนมัติ</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row6')}</td>
-                                    <td className="px-4 py-3 text-center text-rose-400">✗</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row7')}</td>
-                                    <td className="px-4 py-3 text-center text-rose-400">✗</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400">✓</td>
-                                </tr>
-                                <tr className="hover:bg-white/[0.02] transition-colors">
-                                    <td className="px-4 py-3 text-slate-300">{t('pages.search.compare.row8')}</td>
-                                    <td className="px-4 py-3 text-center text-emerald-400 font-bold">{t('pages.search.compare.freePrice')}</td>
-                                    <td className="px-4 py-3 text-center text-amber-400 font-medium">{t('pages.search.compare.proPrice')}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="mt-6 text-center">
-                        <Link
-                            href="/premium-search"
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold hover:from-amber-400 hover:to-amber-500 transition-all shadow-lg shadow-amber-500/20"
-                        >
-                            <Sparkles className="w-5 h-5" />
-                            {t('pages.search.compare.tryPro')}
-                        </Link>
-                    </div>
-                </section>
-
-                {/* How to Use Steps */}
-                <section className="mt-16 mb-12 max-w-3xl mx-auto">
-                    <h2 className="text-2xl font-bold text-center text-amber-700 mb-8">
-                        {t('pages.search.stepsTitle')}
-                    </h2>
-                    <div className="space-y-6">
-                        <div className="flex gap-4 items-start">
-                            <div className="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white font-bold">
-                                1
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-[#1a1a3e] mb-1">{t('pages.search.steps.s1Title')}</h3>
-                                <p className="text-[#5a5a82] text-sm">
-                                    {t('pages.search.steps.s1Desc')}
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4 items-start">
-                            <div className="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white font-bold">
-                                2
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-[#1a1a3e] mb-1">{t('pages.search.steps.s2Title')}</h3>
-                                <p className="text-[#5a5a82] text-sm">
-                                    {t('pages.search.steps.s2Desc')}
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4 items-start">
-                            <div className="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-white font-bold">
-                                3
-                            </div>
-                            <div>
-                                <h3 className="font-semibold text-[#1a1a3e] mb-1">{t('pages.search.steps.s3Title')}</h3>
-                                <p className="text-[#5a5a82] text-sm">
-                                    {t('pages.search.steps.s3Desc')} <Link href="/" className="text-amber-700 hover:text-amber-800 hover:underline">{t('pages.search.links.l1Title')}</Link>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Internal Links */}
-                <section className="mt-16 mb-12 max-w-4xl mx-auto">
-                    <h2 className="text-2xl font-bold text-center text-amber-700 mb-6">
-                        {t('pages.search.linksTitle')}
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <Link
-                            href="/"
-                            className="group block rounded-xl border border-slate-800 bg-slate-950/85 p-6 shadow-lg shadow-slate-950/10 transition-all hover:border-amber-500/30 hover:bg-slate-900"
-                        >
-                            <h3 className="font-semibold text-slate-200 mb-2 group-hover:text-amber-400 transition-colors">
-                                🔮 {t('pages.search.links.l1Title')}
-                            </h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.links.l1Desc')}
-                            </p>
-                        </Link>
-                        <Link
-                            href="/premium-search"
-                            className="group block rounded-xl border border-slate-800 bg-slate-950/85 p-6 shadow-lg shadow-slate-950/10 transition-all hover:border-amber-500/30 hover:bg-slate-900"
-                        >
-                            <h3 className="font-semibold text-slate-200 mb-2 group-hover:text-amber-400 transition-colors">
-                                ⭐ {t('pages.search.links.l2Title')}
-                            </h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.links.l2Desc')}
-                            </p>
-                        </Link>
-                        <Link
-                            href="/premium-analysis"
-                            className="group block rounded-xl border border-slate-800 bg-slate-950/85 p-6 shadow-lg shadow-slate-950/10 transition-all hover:border-amber-500/30 hover:bg-slate-900"
-                        >
-                            <h3 className="font-semibold text-slate-200 mb-2 group-hover:text-amber-400 transition-colors">
-                                💎 {t('pages.search.links.l3Title')}
-                            </h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.links.l3Desc')}
-                            </p>
-                        </Link>
-                        <Link
-                            href="/phone-analysis"
-                            className="group block rounded-xl border border-slate-800 bg-slate-950/85 p-6 shadow-lg shadow-slate-950/10 transition-all hover:border-amber-500/30 hover:bg-slate-900"
-                        >
-                            <h3 className="font-semibold text-slate-200 mb-2 group-hover:text-amber-400 transition-colors">
-                                📱 {t('pages.search.links.l4Title')}
-                            </h3>
-                            <p className="text-slate-300 text-sm">
-                                {t('pages.search.links.l4Desc')}
-                            </p>
-                        </Link>
-                    </div>
-                </section>
-
-                {/* ==================== End SEO Content Sections ==================== */}
-
 
             </div>
         </SoftYellowGlowBackground>

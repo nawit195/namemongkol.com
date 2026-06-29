@@ -256,6 +256,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             title: 'เริ่มต้นตั้งชื่อลูก',
             description: 'เหมาะสำหรับพ่อแม่ที่ต้องการชื่อจริง ความหมายดี และไม่ชนอักษรกาลกิณี',
             links: [
+                { href: '/search', label: 'ค้นหาชื่อมงคล 5,000+ ชื่อ' },
                 { href: '/articles/naming-baby-year-of-horse-2569', label: 'ตั้งชื่อลูกปีมะเมีย 2569' },
                 { href: '/articles/100-auspicious-boy-names-2569', label: '100 ชื่อมงคลลูกชาย' },
                 { href: '/articles/100-auspicious-women-names-2026', label: '100 ชื่อมงคลลูกสาว' },

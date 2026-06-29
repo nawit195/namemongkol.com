@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { CheckCircle2, ChevronRight, Layers3, ShieldCheck, Sparkles } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { saveAnalysisResult } from '@/services/analysisService';
@@ -498,6 +499,31 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                     <DeferredSection minHeightClassName="min-h-[420px]" preloadDelayMs={1250} intrinsicSize="420px">
                         <ComparisonSection />
                     </DeferredSection>
+
+                    <section className="relative z-10 w-full px-4 py-16 sm:px-6 lg:px-12 xl:px-16 bg-white border-y border-slate-200/60 mt-8 mb-4">
+                        <div className="mx-auto max-w-4xl text-center">
+                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-500 mb-4">Naming Ideas</p>
+                            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#1a1a3e]">ค้นหาไอเดียตั้งชื่อลูก</h2>
+                            <p className="text-[#5a5a82] mb-8 max-w-2xl mx-auto text-sm sm:text-base">
+                                เรารวบรวมรายชื่อมงคลที่คัดสรรมาอย่างดี แยกตามเพศและหมวดหมู่ต่างๆ ไว้ให้แล้ว เพื่อเป็นจุดเริ่มต้นที่ดีที่สุดสำหรับลูกน้อยของคุณ
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-3">
+                                <Link href="/names/girls" className="px-5 py-2.5 rounded-full bg-pink-50 text-pink-700 font-medium hover:bg-pink-100 border border-pink-200 transition-colors shadow-sm">
+                                    ตั้งชื่อลูกสาว
+                                </Link>
+                                <Link href="/names/boys" className="px-5 py-2.5 rounded-full bg-sky-50 text-sky-700 font-medium hover:bg-sky-100 border border-sky-200 transition-colors shadow-sm">
+                                    ตั้งชื่อลูกชาย
+                                </Link>
+                                <Link href="/names/girls/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
+                                    ชื่อภาษาอังกฤษ ลูกสาว
+                                </Link>
+                                <Link href="/names/boys/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
+                                    ชื่อภาษาอังกฤษ ลูกชาย
+                                </Link>
+                            </div>
+                        </div>
+                    </section>
+
                     <HomeSeoContent />
                     <DeferredSection minHeightClassName="min-h-[520px]" preloadDelayMs={1750} intrinsicSize="520px">
                         <BirthdayThaksaSection />

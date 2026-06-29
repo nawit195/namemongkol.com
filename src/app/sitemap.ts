@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
 
     const routes = [
-        { path: '', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
+        { path: '', priority: 0.85, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-check', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/about', priority: 0.7, changeFreq: 'monthly' as const, lastModified: STATIC_LASTMOD },
         { path: '/articles', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
@@ -78,7 +78,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '/premium-search', priority: 0.8, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/privacy', priority: 0.2, changeFreq: 'yearly' as const, lastModified: LEGAL_LASTMOD },
         { path: '/reviews', priority: 0.8, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/search', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/search', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/girls', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/girls/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/girls/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/girls/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/boys', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/boys/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/boys/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/boys/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/terms', priority: 0.2, changeFreq: 'yearly' as const, lastModified: LEGAL_LASTMOD },
         { path: '/palm-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/wallpapers', priority: 0.8, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },

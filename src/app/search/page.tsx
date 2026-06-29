@@ -1,30 +1,64 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import ClientPage from './ClientPage';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
+const searchPageTitle = 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม | NameMongkol';
+const searchPageDescription = 'ค้นหาชื่อมงคล 5,000+ ชื่อสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมชื่อความหมายดี เลขศาสตร์ วันเกิดที่เหมาะสม และขั้นตอนวิเคราะห์ร่วมกับนามสกุล';
 
 export const metadata: Metadata = {
-    title: 'ค้นหาชื่อมงคล 5,000+ ชื่อ | เริ่มเลือกชื่อแล้วนำไปวิเคราะห์คู่เลข | NameMongkol',
+    title: { absolute: searchPageTitle },
     alternates: { canonical: `${baseUrl}/search` },
-    description: 'ค้นหาชื่อมงคลสำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อจากฐานชื่อ 5,000+ ชื่อ แล้วนำชื่อที่สนใจไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูผลรวมและคู่เลขแบบละเอียด',
-    keywords: ['ค้นหาชื่อมงคล', 'ตั้งชื่อลูก', 'ชื่อมงคลฟรี', 'ชื่อเสริมดวง', 'ชื่อเกรด A', 'ชื่อความหมายดี', 'ชื่อมงคลชาย', 'ชื่อมงคลหญิง', 'ถอดอักษรเป็นเลขศาสตร์', 'วิเคราะห์คู่เลขในชื่อ'],
+    description: searchPageDescription,
+    keywords: ['ชื่อมงคล', 'ค้นหาชื่อมงคล', 'ตั้งชื่อลูก', 'ตั้งชื่อลูก 2569', 'ตั้งชื่อลูกชาย', 'ตั้งชื่อลูกสาว', 'เปลี่ยนชื่อมงคล', 'ชื่อความหมายดี', 'ชื่อเสริมดวง', 'ชื่อมงคลชาย', 'ชื่อมงคลหญิง', 'ชื่อมงคลตามวันเกิด', 'เลขศาสตร์ชื่อ', 'ถอดอักษรเป็นเลขศาสตร์', 'วิเคราะห์คู่เลขในชื่อ'],
     openGraph: {
-        title: 'ค้นหาชื่อมงคล 5,000+ ชื่อ | NameMongkol',
-        description: 'ฐานชื่อเป็นจุดเริ่มต้น เลือกชื่อที่ถูกใจแล้วนำไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูคู่เลขและพลังรายคู่แบบละเอียด',
+        title: 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมายและเลขศาสตร์ | NameMongkol',
+        description: 'ฐานรายชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล เลือกชื่อความหมายดีแล้วนำไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูคู่เลขแบบละเอียด',
         url: `${baseUrl}/search`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
         type: 'website',
-        images: [`${baseUrl}/api/og?variant=default&title=ค้นหาชื่อมงคลฟรี&subtitle=เลือกชื่อแล้วนำไปวิเคราะห์คู่เลขแบบละเอียด&tag=Free%20Names`],
+        images: [`${baseUrl}/api/og?variant=default&title=ชื่อมงคล%205000%2B%20ชื่อ&subtitle=พร้อมความหมาย%20เลขศาสตร์%20และวันเกิดที่เหมาะสม&tag=Lucky%20Names`],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'ค้นหาชื่อมงคล 5,000+ ชื่อ | NameMongkol',
-        description: 'เลือกชื่อจากฐานข้อมูล แล้วนำไปเช็กผลรวมและคู่เลขในชื่อ-นามสกุลอย่างละเอียด',
-        images: [`${baseUrl}/api/og?variant=default&title=ค้นหาชื่อมงคลฟรี`],
+        title: 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมายและเลขศาสตร์ | NameMongkol',
+        description: 'ค้นหาชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม',
+        images: [`${baseUrl}/api/og?variant=default&title=ชื่อมงคล%205000%2B%20ชื่อ`],
     },
 };
+
+const pillarFaqs = [
+    {
+        question: 'ชื่อมงคลคืออะไร',
+        answer: 'ชื่อมงคลคือชื่อที่มีเสียงไพเราะ เป็นชื่อความหมายดี และผ่านการพิจารณาตามหลักที่เกี่ยวข้อง เช่น เลขศาสตร์ ทักษาปกรณ์ วันเกิด และอักษรกาลกิณี เพื่อให้ชื่อช่วยเสริมภาพลักษณ์ ความมั่นใจ และพลังที่ผู้ใช้ต้องการ',
+    },
+    {
+        question: 'ชื่อมงคลตามวันเกิดดูอย่างไร',
+        answer: 'การดูชื่อมงคลตามวันเกิดใช้หลักทักษาปกรณ์เป็นฐาน โดยตรวจว่าตัวอักษรในชื่อสัมพันธ์กับหมวดเดช ศรี มนตรี อายุ หรือหมวดอื่นที่ต้องการเสริม และหลีกเลี่ยงอักษรกาลกิณีประจำวันเกิด',
+    },
+    {
+        question: 'ชื่อมงคลชายและชื่อมงคลหญิงควรเลือกต่างกันไหม',
+        answer: 'ควรเลือกจากทั้งความหมาย เสียงเรียก บุคลิกที่ต้องการสื่อ และความเหมาะสมกับวันเกิด โดยการตั้งชื่อลูกชายมักเน้นพลัง ความมั่นคง ผู้นำ ส่วนการตั้งชื่อลูกสาวอาจเน้นเสน่ห์ ปัญญา ความสำเร็จ หรือความอ่อนโยนตามเป้าหมายของครอบครัว',
+    },
+    {
+        question: 'ตั้งชื่อลูก 2569 ควรเริ่มจากอะไร',
+        answer: 'การตั้งชื่อลูก 2569 ควรเริ่มจากรายชื่อที่อ่านง่าย ความหมายดี ไม่สะกดยาก แล้วค่อยคัดตามเพศ วันเกิด เลขศาสตร์ และความเข้ากันกับนามสกุล เพื่อให้ใช้ได้จริงทั้งในชีวิตประจำวันและเอกสารทางการ',
+    },
+    {
+        question: 'เลือกชื่อมงคลจากหน้านี้แล้วต้องทำอะไรต่อ',
+        answer: 'หลังเลือกชื่อที่ชอบ ควรนำชื่อไปวิเคราะห์ร่วมกับนามสกุลและวันเกิดในหน้าวิเคราะห์ชื่อ-นามสกุลฟรี เพื่อดูผลรวมเลขศาสตร์ คู่เลขในชื่อ-นามสกุล ทักษาปกรณ์ อายตนะ 6 และความสมพงศ์ก่อนใช้งานจริง',
+    },
+    {
+        question: 'ชื่อมงคลสำหรับตั้งชื่อลูกควรดูปีเกิดด้วยไหม',
+        answer: 'ดูได้เป็นส่วนเสริม โดยเฉพาะเมื่อต้องการชื่อที่เข้ากับบริบทปีเกิดหรือเทรนด์ชื่อในปีนั้น แต่ปัจจัยหลักยังควรเริ่มจากความหมาย วันเกิด เลขศาสตร์ และความเข้ากันกับนามสกุล',
+    },
+    {
+        question: 'ค้นหาชื่อมงคลที่ NameMongkol เสียเงินไหม',
+        answer: 'ค้นหารายชื่อมงคลพื้นฐานได้ฟรีจากฐานข้อมูล 5,000+ ชื่อ หากต้องการคัดชื่อแบบละเอียดขึ้น เช่น ใส่นามสกุล เลือกอักษรนำ หรือคัดเกรดเชิงลึกสำหรับเปลี่ยนชื่อมงคล สามารถต่อยอดไปใช้ฟีเจอร์ Pro หรือวิเคราะห์ชื่อขั้นสูงได้',
+    },
+] as const;
 
 export default function SearchPage() {
     const webPageJsonLd = {
@@ -32,13 +66,13 @@ export default function SearchPage() {
         '@type': 'WebPage',
         '@id': `${baseUrl}/search#webpage`,
         'url': `${baseUrl}/search`,
-        'name': 'ค้นหาชื่อมงคล 5,000+ ชื่อ | เริ่มเลือกชื่อแล้วนำไปวิเคราะห์คู่เลข | NameMongkol',
-        'description': 'หน้าเริ่มต้นสำหรับค้นหาชื่อมงคลจากฐานข้อมูล แล้วนำชื่อที่สนใจไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูผลรวมเลขศาสตร์และคู่เลขอย่างละเอียด',
+        'name': searchPageTitle,
+        'description': searchPageDescription,
         'inLanguage': 'th-TH',
         'isPartOf': { '@id': `${baseUrl}/#website` },
         'speakable': {
             '@type': 'SpeakableSpecification',
-            'cssSelector': ['h1', '#search-next-step', '#search-faq'],
+            'cssSelector': ['h1', '#auspicious-name-pillar', '#search-next-step', '#search-faq'],
         },
     };
 
@@ -46,9 +80,9 @@ export default function SearchPage() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        'name': 'ค้นหาชื่อมงคลฟรีสำหรับตั้งชื่อลูก - NameMongkol',
+        'name': 'ชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ - NameMongkol',
         'alternateName': 'NameMongkol Free Auspicious Name Search',
-        'description': 'ระบบค้นหาชื่อมงคลฟรีจากฐานข้อมูล 5,000+ ชื่อ ใช้เป็นจุดเริ่มต้นก่อนนำชื่อที่เลือกไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูผลรวมและคู่เลขในชื่อแบบละเอียด',
+        'description': 'ระบบค้นหารายชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ พร้อมชื่อความหมายดี เลขศาสตร์ เพศ วันเกิดที่เหมาะสม และลิงก์ต่อไปวิเคราะห์ชื่อ-นามสกุลแบบละเอียด',
         'url': `${baseUrl}/search`,
         'applicationCategory': 'LifestyleApplication',
         'operatingSystem': 'Web',
@@ -60,12 +94,12 @@ export default function SearchPage() {
         },
         'featureList': [
             'ฐานข้อมูลชื่อมงคลกว่า 5,000 ชื่อ',
-            'กรองตามวันเกิด',
-            'กรองตามเพศ ชาย/หญิง',
+            'กรองชื่อมงคลตามวันเกิด',
+            'กรองตามเพศสำหรับตั้งชื่อลูกชายและตั้งชื่อลูกสาว',
             'กรองตามผลรวมเลขศาสตร์',
             'แสดงวันที่ใช้ได้และห้ามใช้',
-            'แสดงความหมายของชื่อ',
-            'เป็นจุดเริ่มต้นก่อนนำชื่อไปวิเคราะห์คู่เลขกับนามสกุลในหน้า /name-check'
+            'แสดงชื่อความหมายดีและความหมายของชื่อ',
+            'เป็นจุดเริ่มต้นก่อนนำชื่อไปวิเคราะห์คู่เลขกับนามสกุลในหน้าวิเคราะห์ชื่อ-นามสกุลฟรี'
         ]
     };
 
@@ -73,40 +107,22 @@ export default function SearchPage() {
     const faqJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        'mainEntity': [
-            {
-                '@type': 'Question',
-                'name': 'เลือกชื่อจากหน้า Search แล้วต้องทำอะไรต่อ?',
-                'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'หน้า Search เป็นจุดเริ่มต้นสำหรับค้นหาชื่อที่ความหมายดีและมีผลรวมเลขศาสตร์น่าสนใจ เมื่อได้ชื่อที่ถูกใจแล้วควรนำไปวิเคราะห์ชื่อ-นามสกุลในหน้า /name-check เพื่อดูคู่เลขในชื่อ คู่เลขในนามสกุล และพลังรายคู่แบบละเอียด'
-                }
+        'mainEntity': pillarFaqs.map((faq) => ({
+            '@type': 'Question',
+            'name': faq.question,
+            'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': faq.answer,
             },
-            {
-                '@type': 'Question',
-                'name': 'ฐานชื่อมงคลต่างจากการวิเคราะห์ชื่อ-นามสกุลอย่างไร?',
-                'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'ฐานชื่อช่วยคัดตัวเลือกเบื้องต้นจากความหมาย วันเกิด เพศ และผลรวมเลขศาสตร์ แต่การวิเคราะห์ชื่อ-นามสกุลจะละเอียดกว่า เพราะถอดตัวอักษรเป็นค่าเลขศาสตร์และจับเลขที่ติดกันเป็นคู่เพื่ออ่านพลังส่งเสริม จุดที่ควรระวัง และความหมายเชิงลึกของชื่อ'
-                }
-            },
-            {
-                '@type': 'Question',
-                'name': 'ค้นหาชื่อมงคลที่ NameMongkol เสียเงินไหม?',
-                'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'ฟรี ไม่มีค่าใช้จ่าย คุณสามารถค้นหาและตรวจสอบความหมายของชื่อมงคลกว่า 5,000 ชื่อได้ทันที โดยไม่มีข้อผูกมัดใดๆ'
-                }
-            }
-        ]
+        })),
     };
 
     // ItemList Schema for better search visibility
     const itemListJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        'name': 'รายชื่อมงคลยอดนิยม',
-        'description': 'รวมชื่อมงคลยอดนิยมที่คัดสรรแล้วสำหรับตั้งชื่อลูกและเปลี่ยนชื่อใหม่',
+        'name': 'รายชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ',
+        'description': 'รวมรายชื่อมงคลพร้อมความหมาย เลขศาสตร์ เพศ และวันเกิดที่เหมาะสมสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล',
         'numberOfItems': 5000,
         'itemListOrder': 'https://schema.org/ItemListOrderAscending'
     };
@@ -124,7 +140,7 @@ export default function SearchPage() {
             {
                 '@type': 'ListItem',
                 'position': 2,
-                'name': 'ค้นหาชื่อมงคล ตั้งชื่อลูกชาย-หญิง',
+                'name': 'ชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ',
                 'item': `${baseUrl}/search`,
             },
         ],
@@ -153,6 +169,90 @@ export default function SearchPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
             <ClientPage />
+            <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
+                <div className="mx-auto max-w-5xl">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>
+                    <h2 className="mt-3 text-2xl font-bold leading-snug sm:text-3xl">ชื่อมงคลคืออะไร และควรเลือกจากอะไรบ้าง</h2>
+                    <p className="mt-4 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
+                        ชื่อมงคลคือชื่อที่รวมเสียงไพเราะ ชื่อความหมายดี เลขศาสตร์ และความเหมาะสมกับวันเกิดไว้ด้วยกัน หน้านี้จึงเป็นจุดเริ่มต้นสำหรับคนที่กำลังตั้งชื่อลูก 2569 ตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล ก่อนนำชื่อที่สนใจไปวิเคราะห์ร่วมกับนามสกุลอีกครั้ง
+                    </p>
+                    <div className="mt-7 grid gap-4 md:grid-cols-2">
+                        <article className="rounded-xl border border-amber-100 bg-white p-5 shadow-sm">
+                            <h3 className="font-bold text-amber-700">วิธีเลือกชื่อมงคลให้เหมาะกับวันเกิด</h3>
+                            <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
+                                เริ่มจากดูชื่อมงคลตามวันเกิดตามหลักทักษาปกรณ์ เลี่ยงอักษรกาลกิณี แล้วเลือกอักษรที่เสริมด้านเดช ศรี มนตรี อายุ หรือมูละตามเป้าหมายของเจ้าของชื่อ
+                            </p>
+                        </article>
+                        <article className="rounded-xl border border-sky-100 bg-white p-5 shadow-sm">
+                            <h3 className="font-bold text-sky-700">ชื่อมงคลชาย / ชื่อมงคลหญิง</h3>
+                            <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
+                                การตั้งชื่อลูกชายมักเน้นความมั่นคง ภาวะผู้นำ และความสำเร็จ ส่วนการตั้งชื่อลูกสาวอาจเน้นเสน่ห์ ปัญญา ความอ่อนโยน หรือโชคลาภ โดยยังควรตรวจเลขศาสตร์และวันเกิดประกอบ
+                            </p>
+                        </article>
+                        <article className="rounded-xl border border-emerald-100 bg-white p-5 shadow-sm">
+                            <h3 className="font-bold text-emerald-700">เลือกตามเลขศาสตร์และชื่อความหมายดี</h3>
+                            <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
+                                ชื่อที่น่าใช้ควรอ่านง่าย มีความหมายเป็นมงคล และมีผลรวมเลขศาสตร์ที่เข้ากับเป้าหมายชีวิต ไม่ควรดูเฉพาะผลรวมเลขอย่างเดียวโดยไม่ตรวจความหมายและเสียงเรียก
+                            </p>
+                        </article>
+                        <article className="rounded-xl border border-purple-100 bg-white p-5 shadow-sm">
+                            <h3 className="font-bold text-purple-700">หลังเลือกชื่อแล้วควรวิเคราะห์ร่วมกับนามสกุลอย่างไร</h3>
+                            <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
+                                เมื่อลิสต์ชื่อที่ชอบได้แล้ว ควรนำไปเช็กในหน้า <Link href="/name-check" className="font-semibold text-purple-700 hover:underline">วิเคราะห์ชื่อ-นามสกุลฟรี</Link> เพื่อดูผลรวม เลขคู่ และความสมพงศ์กับนามสกุลก่อนตัดสินใจ
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section className="w-full border-t border-slate-200 bg-white px-4 py-12 text-[#1a1a3e]">
+                <div className="mx-auto max-w-5xl">
+                    <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+                        <div>
+                            <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-amber-500">Naming Ideas</p>
+                            <h2 className="text-2xl font-bold">ดูไอเดียตั้งชื่อลูกตามหมวดหมู่</h2>
+                            <p className="mt-4 text-sm leading-7 text-slate-600">
+                                ลิงก์กลุ่มตั้งชื่อลูกถูกย้ายออกจาก Sidebar เพื่อให้เมนูหลักไม่รก แต่ยังเข้าถึงได้จากหน้านี้สำหรับคนที่ต้องการไอเดียตั้งชื่อลูกชาย ตั้งชื่อลูกสาว ชื่อภาษาอังกฤษ หรือชื่อเล่น
+                            </p>
+                        </div>
+                        <div className="grid gap-3 sm:grid-cols-2">
+                            <Link href="/names/girls" className="rounded-xl border border-pink-200 bg-pink-50 px-5 py-3 font-medium text-pink-700 shadow-sm transition-colors hover:bg-pink-100">
+                                ตั้งชื่อลูกสาว
+                            </Link>
+                            <Link href="/names/boys" className="rounded-xl border border-sky-200 bg-sky-50 px-5 py-3 font-medium text-sky-700 shadow-sm transition-colors hover:bg-sky-100">
+                                ตั้งชื่อลูกชาย
+                            </Link>
+                            <Link href="/names/girls/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                                ชื่อภาษาอังกฤษ ลูกสาว
+                            </Link>
+                            <Link href="/names/boys/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                                ชื่อภาษาอังกฤษ ลูกชาย
+                            </Link>
+                            <Link href="/names/girls/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                                ชื่อเล่นลูกสาว
+                            </Link>
+                            <Link href="/names/boys/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                                ชื่อเล่นลูกชาย
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="search-faq" className="w-full bg-[#f8f8fc] px-4 py-12 text-[#1a1a3e]">
+                <div className="mx-auto max-w-5xl">
+                    <h2 className="text-2xl font-bold">คำถามที่พบบ่อยเกี่ยวกับชื่อมงคล</h2>
+                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                        {pillarFaqs.map((faq) => (
+                            <div key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                                <h3 className="font-semibold text-[#1a1a3e]">{faq.question}</h3>
+                                <p className="mt-2 text-sm leading-6 text-[#5a5a82]">{faq.answer}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section id="search-next-step" className="w-full bg-[#f8f8fc] px-4 pb-20 pt-10 text-slate-900">
                 <div className="mx-auto max-w-4xl rounded-2xl border border-slate-800 bg-slate-950/90 p-6 text-slate-200 shadow-2xl shadow-slate-950/15 sm:p-8">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300/80">Next Step</p>
@@ -160,6 +260,9 @@ export default function SearchPage() {
                     <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
                         หน้า Search ช่วยให้เริ่มจากชื่อที่ความหมายดีและมีผลรวมเลขศาสตร์น่าสนใจ แต่ก่อนใช้จริงควรนำชื่อที่เลือกไปวิเคราะห์ร่วมกับนามสกุล เพราะ NameMongkol จะถอดตัวอักษรเป็นเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังและความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น
                     </p>
+                    <Link href="/name-check" className="mt-6 inline-flex rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300">
+                        วิเคราะห์ชื่อ-นามสกุลฟรี
+                    </Link>
                 </div>
             </section>
         </>

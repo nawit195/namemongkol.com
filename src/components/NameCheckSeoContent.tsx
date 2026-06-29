@@ -100,7 +100,7 @@ export function NameCheckSeoContent() {
 
                         <div className="mt-6 space-y-3 text-sm">
                             <Link href="/search" className="block rounded-2xl border border-amber-400/15 bg-amber-400/5 px-4 py-3 text-amber-200 transition-colors hover:bg-amber-400/10">
-                                ค้นหาชื่อมงคลใหม่ หากต้องการเริ่มจากรายชื่อแนะนำ
+                                ค้นหาชื่อมงคล 5,000+ ชื่อ หากต้องการเริ่มจากรายชื่อแนะนำ
                             </Link>
                             <Link href="/premium-analysis" className="block rounded-2xl border border-purple-400/15 bg-purple-400/5 px-4 py-3 text-purple-200 transition-colors hover:bg-purple-400/10">
                                 วิเคราะห์ชื่อมงคลขั้นสูง หากต้องการเจาะลึกตามวันและเวลาเกิด

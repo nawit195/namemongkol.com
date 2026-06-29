@@ -58,11 +58,11 @@ export const HomeSeoContent = () => {
                     className="rounded-2xl border border-sky-200 bg-sky-50 p-5 transition-colors hover:border-sky-300 hover:bg-sky-100 shadow-sm"
                 >
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">Intent 02</p>
-                    <h2 className="mt-2 text-xl font-bold text-[#1a1a3e]">หาชื่อมงคลให้ลูก หรือชื่อใหม่ของคุณ</h2>
+                    <h2 className="mt-2 text-xl font-bold text-[#1a1a3e]">ชื่อมงคล 5,000+ ชื่อ สำหรับลูกหรือชื่อใหม่ของคุณ</h2>
                     <p className="mt-3 text-sm leading-relaxed text-[#5a5a82]">
                         เหมาะสำหรับพ่อแม่และคนที่กำลังหาชื่อใหม่ โดยเริ่มจากรายชื่อมงคล แล้วค่อยนำชื่อที่ชอบไปวิเคราะห์ร่วมกับนามสกุลอีกครั้ง
                     </p>
-                    <p className="mt-4 text-sm font-medium text-sky-600">ไปค้นหาชื่อมงคลฟรี</p>
+                    <p className="mt-4 text-sm font-medium text-sky-600">ไปค้นหาชื่อมงคล</p>
                 </Link>
 
                 <Link
@@ -187,7 +187,7 @@ export const HomeSeoContent = () => {
                         ค้นหาชื่อมงคลฟรี
                     </p>
                     <p className="text-[#1a1a3e] font-bold leading-snug">
-                        ค้นหาชื่อมงคลฟรี 5,000+ ชื่อ
+                        ค้นหาชื่อมงคล 5,000+ ชื่อ
                     </p>
                     <p className="mt-2 text-sm text-[#5a5a82] leading-relaxed">
                         เหมาะสำหรับตั้งชื่อลูก เปลี่ยนชื่อใหม่ หรือหาไอเดียชื่อมงคลก่อน แล้วค่อยนำชื่อที่ชอบไปวิเคราะห์ร่วมกับนามสกุล
