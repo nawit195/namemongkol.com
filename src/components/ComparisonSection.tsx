@@ -29,7 +29,8 @@ export const ComparisonSection = () => {
                         width={880}
                         height={1200}
                         className="h-auto w-full object-contain"
-                        priority
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 880px"
                     />
                 </button>
                 <button
@@ -44,7 +45,8 @@ export const ComparisonSection = () => {
                         width={998}
                         height={484}
                         className="h-auto w-full object-cover"
-                        priority
+                        loading="lazy"
+                        sizes="(max-width: 1024px) 100vw, 998px"
                     />
                 </button>
                 <figcaption className="border-t border-[#ddddf0] bg-slate-50 px-4 py-3 text-sm text-[#5a5a82] md:px-6">

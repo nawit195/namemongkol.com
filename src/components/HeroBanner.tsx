@@ -135,6 +135,7 @@ type LiveStatsResponse = {
 };
 
 const STATS_POLL_MS = 30_000;
+const STATS_IDLE_DELAY_MS = 3_500;
 
 const formatRealtimeCount = (value?: number) => {
     if (typeof value !== 'number' || value <= 0) {
@@ -145,13 +146,16 @@ const formatRealtimeCount = (value?: number) => {
 };
 
 const HeroSocialProof = () => {
-    const [analysisCount, setAnalysisCount] = React.useState('...');
-    const [memberCount, setMemberCount] = React.useState('...');
-    const [reviewCount, setReviewCount] = React.useState<number | null>(null);
+    const [analysisCount, setAnalysisCount] = React.useState('257');
+    const [memberCount, setMemberCount] = React.useState('211');
+    const [reviewCount, setReviewCount] = React.useState<number | null>(16);
     const [avgRating, setAvgRating] = React.useState<number>(5);
 
     React.useEffect(() => {
         let isMounted = true;
+        let timeoutId: number | null = null;
+        let idleId: number | null = null;
+        let intervalId: number | null = null;
 
         const loadStats = async () => {
             try {
@@ -190,12 +194,28 @@ const HeroSocialProof = () => {
             }
         };
 
-        loadStats();
-        const interval = window.setInterval(loadStats, STATS_POLL_MS);
+        const scheduleStats = () => {
+            const run = () => {
+                void loadStats();
+                intervalId = window.setInterval(loadStats, STATS_POLL_MS);
+            };
+
+            timeoutId = window.setTimeout(() => {
+                if ('requestIdleCallback' in window) {
+                    idleId = window.requestIdleCallback(run, { timeout: 2_000 });
+                } else {
+                    run();
+                }
+            }, STATS_IDLE_DELAY_MS);
+        };
+
+        scheduleStats();
 
         return () => {
             isMounted = false;
-            window.clearInterval(interval);
+            if (timeoutId !== null) window.clearTimeout(timeoutId);
+            if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);
+            if (intervalId !== null) window.clearInterval(intervalId);
         };
     }, []);
 

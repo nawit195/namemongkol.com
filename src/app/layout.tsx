@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_Thai } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google';
-import { Analytics } from '@vercel/analytics/next';
 import { unstable_cache } from 'next/cache';
 import Script from 'next/script';
 import { createClient } from '@supabase/supabase-js';
 import "./globals.css";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
-import { ScrollToTop } from "@/components/ScrollToTop";
-import { FloatingContactFAB } from "@/components/FloatingContactFAB";
-import CookieConsentWrapper from '@/components/CookieConsentWrapper';
-import { AnalyticsProvider } from '@/components/AnalyticsProvider';
+import { DeferredRootClientFeatures } from '@/components/DeferredRootClientFeatures';
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { siteUrl } from '@/lib/seo';
@@ -216,7 +212,6 @@ export default async function RootLayout({
         >
           <LanguageProvider>
             {isProduction ? <GoogleTagManager gtmId={gtmId} /> : null}
-            <CookieConsentWrapper />
 
             {isProduction && facebookPixelId && (
               <Script id="facebook-pixel" strategy="lazyOnload">
@@ -253,11 +248,8 @@ export default async function RootLayout({
 
             <LayoutWrapper>
               {children}
-              <ScrollToTop />
-              {isProduction ? <Analytics /> : null}
-              <AnalyticsProvider />
+              <DeferredRootClientFeatures isProduction={isProduction} />
             </LayoutWrapper>
-            <FloatingContactFAB />
           </LanguageProvider>
         </ThemeProvider>
       </body>

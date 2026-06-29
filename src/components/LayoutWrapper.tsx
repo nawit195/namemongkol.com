@@ -1,39 +1,62 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { Sidebar } from './Sidebar';
 import { MobileSecondaryNav } from './MobileSecondaryNav';
 import { MobileHeader } from './MobileHeader';
-import { TopNav } from './TopNav';
-import { supabase } from '@/utils/supabase';
-import { User } from '@supabase/supabase-js';
 import { SacredCosmicBackground } from './SacredCosmicBackground';
 import { BottomNav } from './BottomNav';
-import { WelcomeCreditModal } from './WelcomeCreditModal';
+import type { User } from '@supabase/supabase-js';
 
+const Sidebar = dynamic(() => import('./Sidebar').then((mod) => mod.Sidebar), {
+    ssr: false,
+});
+const TopNav = dynamic(() => import('./TopNav').then((mod) => mod.TopNav), {
+    ssr: false,
+});
 
 export const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
-    const [user, setUser] = useState<User | null>(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
     const pathname = usePathname();
     const backgroundExcludedPaths = ['/phone-analysis', '/aura-analysis'];
     const shouldShowSacredBackground = !backgroundExcludedPaths.includes(pathname) && !pathname.startsWith('/wallpapers');
     const isAdminPage = pathname.startsWith('/admin');
 
     useEffect(() => {
-        const getUser = async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-            setUser(user);
-        };
-        getUser();
+        const mediaQuery = window.matchMedia('(min-width: 1024px)');
+        const updateDesktop = () => setIsDesktop(mediaQuery.matches);
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            setUser(session?.user ?? null);
-        });
+        updateDesktop();
+        mediaQuery.addEventListener('change', updateDesktop);
+        return () => mediaQuery.removeEventListener('change', updateDesktop);
+    }, []);
+
+    useEffect(() => {
+        let cancelled = false;
+        let timeoutId: number | null = null;
+        let unsubscribe: (() => void) | null = null;
+
+        timeoutId = window.setTimeout(() => {
+            void import('@/utils/supabase').then(async ({ supabase }) => {
+                if (cancelled) return;
+
+                const { data: { user: currentUser } } = await supabase.auth.getUser();
+                if (!cancelled) setUser(currentUser);
+
+                const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+                    setUser(session?.user ?? null);
+                });
+                unsubscribe = () => subscription.unsubscribe();
+            });
+        }, 1800);
 
         return () => {
-            subscription.unsubscribe();
+            cancelled = true;
+            if (timeoutId !== null) window.clearTimeout(timeoutId);
+            if (unsubscribe) unsubscribe();
         };
     }, []);
 
@@ -44,15 +67,16 @@ export const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className="cosmic-app-shell flex min-h-screen overflow-x-hidden">
-            {shouldShowSacredBackground ? <SacredCosmicBackground /> : null}
-            <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            {isDesktop && shouldShowSacredBackground ? <SacredCosmicBackground /> : null}
+            {(isDesktop || isSidebarOpen || pathname !== '/') ? (
+                <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            ) : null}
             <div className="relative z-10 flex-1 min-w-0 lg:pl-[360px] transition-all duration-300 bg-transparent">
                 <MobileHeader onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} user={user} />
-                <TopNav />
+                {isDesktop ? <TopNav /> : null}
                 <MobileSecondaryNav />
                 {children}
             </div>
-            <WelcomeCreditModal user={user} />
             <BottomNav />
         </div>
     );

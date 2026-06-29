@@ -20,9 +20,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   images: {
-    // Most site images are pre-compressed WebP/PNG assets or Supabase-hosted user uploads.
-    // Serving them directly avoids consuming Vercel Hobby Image Optimization Transformations.
-    unoptimized: true,
+    // Let Next/Vercel serve responsive image variants for mobile LCP and below-the-fold media.
+    // Components can still opt out per image when an external source should be served directly.
+    unoptimized: false,
     formats: ['image/avif', 'image/webp'],  // avif first for ~30% smaller payloads on mobile
     minimumCacheTTL: 2592000,          // Cache 30 days — prevents re-transformation on every request
     qualities: [50, 75, 85, 90],                   // Include standard variants used by ArticleImage

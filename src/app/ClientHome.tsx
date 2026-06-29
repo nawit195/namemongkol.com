@@ -74,57 +74,32 @@ type DeferredSectionProps = {
     children: React.ReactNode;
     minHeightClassName?: string;
     rootMargin?: string;
-    preloadDelayMs?: number;
     intrinsicSize?: string;
 };
 
 function DeferredSection({
     children,
     minHeightClassName = 'min-h-[280px]',
-    rootMargin = '1200px 0px',
-    preloadDelayMs = 0,
+    rootMargin = '420px 0px',
     intrinsicSize = '800px',
 }: DeferredSectionProps) {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        if (isVisible) return;
-
-        const windowWithIdle = window as WindowWithIdleCallback;
-        let timeoutId: number | null = null;
-        let idleId: number | null = null;
-
-        const reveal = () => {
-            setIsVisible(true);
-        };
-
-        timeoutId = window.setTimeout(() => {
-            if (windowWithIdle.requestIdleCallback) {
-                idleId = windowWithIdle.requestIdleCallback(reveal, { timeout: 900 });
-            } else {
-                reveal();
-            }
-        }, preloadDelayMs);
-
-        return () => {
-            if (timeoutId !== null) {
-                window.clearTimeout(timeoutId);
-            }
-            if (idleId !== null && windowWithIdle.cancelIdleCallback) {
-                windowWithIdle.cancelIdleCallback(idleId);
-            }
-        };
-    }, [isVisible, preloadDelayMs]);
-
-    useEffect(() => {
         const element = sectionRef.current;
         if (!element || isVisible) return;
+        const windowWithIdle = window as WindowWithIdleCallback;
+        let idleId: number | null = null;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsVisible(true);
+                    if (windowWithIdle.requestIdleCallback) {
+                        idleId = windowWithIdle.requestIdleCallback(() => setIsVisible(true), { timeout: 700 });
+                    } else {
+                        setIsVisible(true);
+                    }
                     observer.disconnect();
                 }
             },
@@ -132,7 +107,12 @@ function DeferredSection({
         );
 
         observer.observe(element);
-        return () => observer.disconnect();
+        return () => {
+            observer.disconnect();
+            if (idleId !== null && windowWithIdle.cancelIdleCallback) {
+                windowWithIdle.cancelIdleCallback(idleId);
+            }
+        };
     }, [isVisible, rootMargin]);
 
     return (
@@ -350,11 +330,13 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
             void fetchHomeSections();
         };
 
-        if (windowWithIdle.requestIdleCallback) {
-            idleId = windowWithIdle.requestIdleCallback(run, { timeout: 1200 });
-        } else {
-            timeoutId = window.setTimeout(run, 450);
-        }
+        timeoutId = window.setTimeout(() => {
+            if (windowWithIdle.requestIdleCallback) {
+                idleId = windowWithIdle.requestIdleCallback(run, { timeout: 1500 });
+            } else {
+                run();
+            }
+        }, 4000);
 
         return () => {
             if (idleId !== null && windowWithIdle.cancelIdleCallback) {
@@ -484,19 +466,19 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
             {!result && (
                 <>
                     <HomeResultPreview />
-                    <DeferredSection minHeightClassName="min-h-[640px]" preloadDelayMs={250} intrinsicSize="640px">
+                    <DeferredSection minHeightClassName="min-h-[640px]" intrinsicSize="640px">
                         <WallpaperShowcase stats={homeSectionsData.wallpapers} />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[360px]" preloadDelayMs={500} intrinsicSize="360px">
+                    <DeferredSection minHeightClassName="min-h-[360px]" intrinsicSize="360px">
                         <BulkAnalysisBanner />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[360px]" preloadDelayMs={750} intrinsicSize="360px">
+                    <DeferredSection minHeightClassName="min-h-[360px]" intrinsicSize="360px">
                         <UspSection />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[360px]" preloadDelayMs={1000} intrinsicSize="360px">
+                    <DeferredSection minHeightClassName="min-h-[360px]" intrinsicSize="360px">
                         <HowItWorksSection />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[420px]" preloadDelayMs={1250} intrinsicSize="420px">
+                    <DeferredSection minHeightClassName="min-h-[420px]" intrinsicSize="420px">
                         <ComparisonSection />
                     </DeferredSection>
 
@@ -525,17 +507,17 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                     </section>
 
                     <HomeSeoContent />
-                    <DeferredSection minHeightClassName="min-h-[520px]" preloadDelayMs={1750} intrinsicSize="520px">
+                    <DeferredSection minHeightClassName="min-h-[520px]" intrinsicSize="520px">
                         <BirthdayThaksaSection />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[520px]" preloadDelayMs={2000} intrinsicSize="520px">
+                    <DeferredSection minHeightClassName="min-h-[520px]" intrinsicSize="520px">
                         <KnowledgeSection />
                     </DeferredSection>
-                    <DeferredSection minHeightClassName="min-h-[360px]" preloadDelayMs={2250} intrinsicSize="360px">
+                    <DeferredSection minHeightClassName="min-h-[360px]" intrinsicSize="360px">
                         <TestimonialSection />
                     </DeferredSection>
                     <FAQSection />
-                    <DeferredSection minHeightClassName="min-h-[560px]" preloadDelayMs={2750} intrinsicSize="560px">
+                    <DeferredSection minHeightClassName="min-h-[560px]" intrinsicSize="560px">
                         <ArticleSection
                             articles={homeSectionsData.articles}
                             loading={homeSectionsLoading}
