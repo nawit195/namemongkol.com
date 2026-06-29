@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { LogIn, Info, User as UserIcon, LogOut, Sparkles, Zap, BookOpen, Crown } from 'lucide-react';
+import { LogIn, User as UserIcon, LogOut, Sparkles, Zap, Crown } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
 import { LanguageToggle } from './LanguageToggle';
@@ -160,7 +161,13 @@ export const TopNav = () => {
                     : 'border-[#1e293b] bg-[#0f172a] text-slate-300 hover:border-amber-500/30 hover:bg-[#1e293b] hover:text-amber-400'
                     }`}
             >
-                <BookOpen size={16} />
+                <Image
+                    src="/icon/บทความ.png"
+                    alt=""
+                    width={18}
+                    height={18}
+                    className={`h-[18px] w-[18px] shrink-0 object-contain transition-all duration-200 ${pathname === '/articles' ? 'drop-shadow-[0_0_4px_rgba(201,147,58,0.5)]' : 'opacity-90'}`}
+                />
                 <span>{t('nav.articles')}</span>
             </Link>
 
@@ -171,7 +178,13 @@ export const TopNav = () => {
                     : 'border-[#1e293b] bg-[#0f172a] text-slate-300 hover:border-amber-500/30 hover:bg-[#1e293b] hover:text-amber-400'
                     }`}
             >
-                <Info size={16} />
+                <Image
+                    src="/icon/เกี่ยวกับเรา.png"
+                    alt=""
+                    width={18}
+                    height={18}
+                    className={`h-[18px] w-[18px] shrink-0 object-contain transition-all duration-200 ${pathname === '/about' ? 'drop-shadow-[0_0_4px_rgba(201,147,58,0.5)]' : 'opacity-90'}`}
+                />
                 <span>{t('nav.about')}</span>
             </Link>
 

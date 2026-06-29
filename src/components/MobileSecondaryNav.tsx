@@ -11,7 +11,7 @@ export const MobileSecondaryNav = () => {
 
     const navItems = [
         { name: 'วิเคราะห์ชื่อ', shortName: 'วิเคราะห์', icon: Home, iconImage: '/icon/วิเคราะห์ชื่อ.png', path: '/' },
-        { name: 'บทความ', shortName: 'บทความ', icon: BookOpen, path: '/articles' },
+        { name: 'บทความ', shortName: 'บทความ', icon: BookOpen, iconImage: '/icon/บทความ.png', path: '/articles' },
         { name: 'ค้นหาชื่อมงคล', shortName: 'ค้นชื่อ', icon: Search, iconImage: '/icon/ค้นหาชื่อมงคล.png', path: '/search' },
         { name: 'คัดสรรชื่อมงคล', shortName: 'Pro', icon: Sparkles, iconImage: '/icon/คัดสรรชื่อมงคล.png', path: '/premium-search' },
         { name: 'ออกแบบชื่อมงคล', shortName: 'Premium', icon: Crown, iconImage: '/icon/ออกแบบชื่อมงคล.png', path: '/premium-analysis' },
