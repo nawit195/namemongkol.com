@@ -319,7 +319,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                                         alt={premiumLabel}
                                                         width={40}
                                                         height={40}
-                                                        className="h-full w-full object-contain drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+                                                        className="h-full w-full object-contain drop-shadow-[0_8px_10px_rgba(15,23,42,0.22)] [filter:drop-shadow(0_2px_2px_rgba(15,23,42,0.18))_drop-shadow(0_12px_18px_rgba(15,23,42,0.10))]"
                                                     />
                                                 </div>
                                             ) : (
@@ -385,7 +385,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                                 width={40}
                                                 height={40}
                                                 style={item.iconScale ? { transform: `scale(${item.iconScale})`, transformOrigin: 'center' } : undefined}
-                                                className={`h-full w-full object-contain transition-all duration-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)] ${isActive ? 'brightness-110 saturate-110' : 'brightness-100 group-hover:brightness-110 group-hover:saturate-110'}`}
+                                                className={`h-full w-full object-contain transition-all duration-300 [filter:drop-shadow(0_2px_2px_rgba(15,23,42,0.20))_drop-shadow(0_7px_9px_rgba(15,23,42,0.18))_drop-shadow(0_14px_18px_rgba(15,23,42,0.08))] ${isActive ? 'brightness-110 saturate-110 [filter:drop-shadow(0_3px_3px_rgba(15,23,42,0.22))_drop-shadow(0_9px_12px_rgba(15,23,42,0.20))_drop-shadow(0_18px_22px_rgba(15,23,42,0.10))]' : 'brightness-100 group-hover:brightness-110 group-hover:saturate-110 group-hover:[filter:drop-shadow(0_3px_3px_rgba(15,23,42,0.22))_drop-shadow(0_9px_12px_rgba(15,23,42,0.20))_drop-shadow(0_18px_22px_rgba(15,23,42,0.10))]'}`}
                                             />
                                         </div>
                                     ) : (

@@ -6,25 +6,96 @@ import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 
+const seoTitle = 'สร้างชื่อมงคล AI Grade A+ | ตั้งชื่อมงคลตามวันเกิด พร้อมเลขศาสตร์ | NameMongkol';
+const seoDescription = 'สร้างชื่อมงคลด้วย AI Grade A+ สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ ระบบคัดชื่อจากอักษรที่ต้องการ พร้อมพิจารณาผลรวมเลขศาสตร์และความเป็นมงคล ใช้งานง่ายบน NameMongkol';
+const ogImage = `${baseUrl}/api/og?variant=default&title=${encodeURIComponent('สร้างชื่อมงคลด้วย AI Grade A+')}&subtitle=${encodeURIComponent('ตั้งชื่อลูก เปลี่ยนชื่อ และชื่อแบรนด์ พร้อมเลขศาสตร์')}&tag=${encodeURIComponent('AI Name Generator')}`;
+
+const faqItems = [
+    {
+        question: 'สร้างชื่อมงคล AI คืออะไร?',
+        answer: 'สร้างชื่อมงคล AI คือระบบช่วยแนะนำชื่อใหม่โดยใช้ AI ประมวลผลจากอักษรที่ผู้ใช้เลือก พร้อมพิจารณาความเหมาะสมของชื่อ ความหมาย และผลรวมเลขศาสตร์ เพื่อให้ได้รายชื่อที่สามารถนำไปใช้พิจารณาได้ง่ายขึ้น',
+    },
+    {
+        question: 'ระบบนี้ใช้ตั้งชื่อลูกได้ไหม?',
+        answer: 'ใช้ได้ เหมาะสำหรับคุณพ่อคุณแม่ที่ต้องการไอเดียตั้งชื่อลูกให้มีความหมายดี อ่านไพเราะ และมีความเป็นมงคล โดยสามารถนำรายชื่อที่ได้ไปพิจารณาร่วมกับวันเกิดและนามสกุลเพิ่มเติม',
+    },
+    {
+        question: 'ใช้สำหรับเปลี่ยนชื่อได้หรือไม่?',
+        answer: 'ใช้ได้ ระบบเหมาะสำหรับผู้ที่ต้องการเปลี่ยนชื่อใหม่และอยากได้ตัวเลือกชื่อหลายแบบ โดยสามารถเลือกอักษรนำหน้าและดูผลรวมประกอบก่อนตัดสินใจ',
+    },
+    {
+        question: 'ชื่อที่ระบบสร้างเป็นชื่อ Grade A+ ทุกชื่อไหม?',
+        answer: 'ระบบจะพยายามคัดชื่อที่มีผลรวมและองค์ประกอบที่ดี แต่บางอักษรอาจสร้างชื่อ Grade A+ ได้น้อย หรืออาจไม่ได้ผลลัพธ์ตามจำนวนที่ต้องการ หากอักษรนั้นมีข้อจำกัดด้านผลรวมเลขศาสตร์หรือเงื่อนไขการตั้งชื่อ',
+    },
+    {
+        question: 'หลังจากได้ชื่อแล้วควรทำอะไรต่อ?',
+        answer: 'หลังจากได้ชื่อที่สนใจ ควรนำชื่อไปวิเคราะห์เพิ่มเติมร่วมกับนามสกุล วันเกิด และความหมาย เพื่อให้มั่นใจว่าชื่อนั้นเหมาะสมกับผู้ใช้จริงมากที่สุด',
+    },
+    {
+        question: 'ระบบนี้ใช้ตั้งชื่อร้านหรือชื่อแบรนด์ได้ไหม?',
+        answer: 'ใช้ได้ เหมาะสำหรับผู้ที่ต้องการไอเดียชื่อร้าน ชื่อแบรนด์ หรือชื่อธุรกิจที่อ่านง่าย จำง่าย และมีความเป็นมงคล โดยสามารถนำชื่อที่ได้ไปคัดเลือกต่อให้เหมาะกับภาพลักษณ์ของธุรกิจ',
+    },
+];
+
+const targetAudiences = [
+    'คุณพ่อคุณแม่ที่ต้องการตั้งชื่อลูกให้มีความหมายดี',
+    'ผู้ที่ต้องการเปลี่ยนชื่อเพื่อเสริมความมั่นใจ',
+    'เจ้าของกิจการที่ต้องการตั้งชื่อร้านหรือชื่อแบรนด์',
+    'ผู้ที่ต้องการชื่อที่อ่านง่าย จำง่าย และมีความเป็นมงคล',
+    'ผู้ที่ต้องการคัดชื่อโดยอิงผลรวมเลขศาสตร์',
+];
+
+const featureItems = [
+    'สร้างรายชื่อได้จำนวนมากภายในครั้งเดียว',
+    'เลือกอักษรนำหน้าที่ต้องการได้',
+    'เหมาะสำหรับตั้งชื่อลูก เปลี่ยนชื่อ และชื่อแบรนด์',
+    'มีผลรวมเลขศาสตร์ประกอบการพิจารณา',
+    'ช่วยลดเวลาค้นหาชื่อด้วยตัวเอง',
+    'ใช้งานง่าย เหมาะกับผู้ใช้ทั่วไป',
+    'มีระบบคัดชื่อ Grade A+ เพื่อช่วยให้เลือกชื่อได้มั่นใจขึ้น',
+];
+
+const internalLinks = [
+    { href: '/name-analysis', label: 'วิเคราะห์ชื่อมงคล' },
+    { href: '/premium-analysis', label: 'วิเคราะห์ชื่อแบบ Premium' },
+    { href: '/name-analysis', label: 'คัดกรองชื่อมงคล' },
+    { href: '/reviews', label: 'รีวิวจากผู้ใช้งานจริง' },
+    { href: '/articles', label: 'บทความตั้งชื่อมงคล' },
+];
+
 export const metadata: Metadata = {
-    title: 'สร้างชื่อมงคลด้วย AI เกรด A+ ตามวันเกิด | NameMongkol',
+    title: seoTitle,
     alternates: { canonical: `${baseUrl}/name-generator` },
-    description: 'สร้างชื่อมงคลด้วย AI สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ คัดชื่อเกรด A+ ตามหลักเลขศาสตร์ คู่เลขมงคล และอักษรนำที่เหมาะสม',
-    keywords: ['สร้างชื่อมงคลด้วย AI', 'AI ตั้งชื่อมงคล', 'สร้างชื่อเกรด A+', 'ตั้งชื่อลูกด้วย AI', 'เปลี่ยนชื่อด้วย AI', 'ชื่อมงคล AI', 'ชื่อเกรด A+', 'คู่เลขมงคล'],
+    description: seoDescription,
+    keywords: [
+        'สร้างชื่อมงคล AI',
+        'ตั้งชื่อมงคล',
+        'AI ตั้งชื่อมงคล',
+        'ตั้งชื่อมงคลตามวันเกิด',
+        'ชื่อมงคลตามวันเกิด',
+        'ตั้งชื่อลูกมงคล',
+        'เปลี่ยนชื่อมงคล',
+        'วิเคราะห์ชื่อมงคล',
+        'ชื่อมงคล Grade A+',
+        'เครื่องมือตั้งชื่อมงคล',
+        'ชื่อมงคลเลขศาสตร์',
+        'ตั้งชื่อร้านมงคล',
+        'ชื่อแบรนด์มงคล',
+    ],
     openGraph: {
-        title: 'สร้างชื่อมงคลด้วย AI เกรด A+ ตามวันเกิด | NameMongkol',
-        description: 'สร้างชื่อมงคลใหม่ด้วย AI คัดชื่อเกรด A+ ตามหลักเลขศาสตร์ คู่เลขมงคล และอักษรนำที่เหมาะสม',
+        title: seoTitle,
+        description: seoDescription,
         url: `${baseUrl}/name-generator`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
         type: 'website',
-        images: [`${baseUrl}/api/og?variant=default&title=สร้างชื่อมงคลด้วย%20AI&subtitle=คัดชื่อเกรด%20A%2B%20ตามหลักเลขศาสตร์&tag=AI%20Name%20Generator`],
+        images: [ogImage],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'สร้างชื่อมงคลด้วย AI เกรด A+ | NameMongkol',
-        description: 'สร้างชื่อมงคลใหม่ด้วย AI ตามหลักเลขศาสตร์และคู่เลขมงคล',
-        images: [`${baseUrl}/api/og?variant=default&title=สร้างชื่อมงคลด้วย%20AI`],
+        title: seoTitle,
+        description: seoDescription,
+        images: [ogImage],
     },
 };
 
@@ -35,108 +106,84 @@ export default function NameGeneratorPage() {
             {
                 '@type': 'WebPage',
                 '@id': `${baseUrl}/name-generator#webpage`,
-                'url': `${baseUrl}/name-generator`,
-                'name': 'สร้างชื่อมงคลด้วย AI เกรด A+ ตามวันเกิด | NameMongkol',
-                'description': 'เครื่องมือสร้างชื่อมงคลด้วย AI สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ โดยคัดชื่อเกรด A+ ตามหลักเลขศาสตร์และคู่เลขมงคล',
-                'inLanguage': 'th-TH',
-                'isPartOf': { '@id': `${baseUrl}/#website` },
-                'mainEntity': { '@id': `${baseUrl}/name-generator#software` },
+                url: `${baseUrl}/name-generator`,
+                name: seoTitle,
+                description: seoDescription,
+                inLanguage: 'th-TH',
+                isPartOf: { '@id': `${baseUrl}/#website` },
+                mainEntity: { '@id': `${baseUrl}/name-generator#software` },
             },
             {
                 '@type': 'SoftwareApplication',
                 '@id': `${baseUrl}/name-generator#software`,
-                'name': 'NameMongkol AI Name Generator',
-                'alternateName': 'สร้างชื่อมงคลด้วย AI',
-                'description': 'เครื่องมือสร้างชื่อมงคลด้วย AI สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ โดยคัดชื่อเกรด A+ ตามหลักเลขศาสตร์และคู่เลขมงคล',
-                'url': `${baseUrl}/name-generator`,
-                'applicationCategory': 'LifestyleApplication',
-                'operatingSystem': 'Web',
-                'offers': {
+                name: 'NameMongkol AI Name Generator',
+                alternateName: 'สร้างชื่อมงคลด้วย AI Grade A+',
+                description: seoDescription,
+                url: `${baseUrl}/name-generator`,
+                applicationCategory: 'LifestyleApplication',
+                operatingSystem: 'Web',
+                offers: {
                     '@type': 'Offer',
-                    'price': '0',
-                    'priceCurrency': 'THB',
+                    price: '0',
+                    priceCurrency: 'THB',
                 },
-                'featureList': [
-                    'สร้างชื่อมงคลใหม่ด้วย AI',
-                    'คัดชื่อเกรด A+ ตามหลักเลขศาสตร์',
-                    'ตรวจคู่เลขมงคลในชื่อ',
-                    'เลือกอักษรนำหน้าที่ต้องการ',
-                    'ดาวน์โหลดผลลัพธ์เป็น CSV',
-                ],
+                featureList: featureItems,
             },
             {
                 '@type': 'BreadcrumbList',
                 '@id': `${baseUrl}/name-generator#breadcrumb`,
-                'itemListElement': [
+                itemListElement: [
                     {
                         '@type': 'ListItem',
-                        'position': 1,
-                        'name': 'หน้าแรก',
-                        'item': baseUrl,
+                        position: 1,
+                        name: 'หน้าแรก',
+                        item: baseUrl,
                     },
                     {
                         '@type': 'ListItem',
-                        'position': 2,
-                        'name': 'สร้างชื่อมงคลด้วย AI',
-                        'item': `${baseUrl}/name-generator`,
+                        position: 2,
+                        name: 'สร้างชื่อมงคลด้วย AI',
+                        item: `${baseUrl}/name-generator`,
                     },
                 ],
             },
             {
                 '@type': 'HowTo',
                 '@id': `${baseUrl}/name-generator#howto`,
-                'name': 'วิธีสร้างชื่อมงคลด้วย AI',
-                'description': 'ขั้นตอนการใช้ NameMongkol AI Name Generator เพื่อสร้างชื่อมงคลเกรด A+',
-                'step': [
+                name: 'วิธีสร้างชื่อมงคลด้วย AI Grade A+',
+                description: 'ขั้นตอนการใช้ NameMongkol AI Name Generator เพื่อสร้างชื่อมงคลสำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์',
+                step: [
                     {
                         '@type': 'HowToStep',
-                        'position': 1,
-                        'name': 'เลือกอักษรนำ',
-                        'text': 'เลือกอักษรนำหน้าที่ต้องการให้ AI ใช้เป็นจุดเริ่มต้นในการสร้างชื่อ',
+                        position: 1,
+                        name: 'เลือกอักษรนำหน้า',
+                        text: 'เลือกอักษรนำหน้าที่ต้องการให้ AI ใช้เป็นจุดเริ่มต้นในการสร้างชื่อมงคล',
                     },
                     {
                         '@type': 'HowToStep',
-                        'position': 2,
-                        'name': 'กดสร้างชื่อ',
-                        'text': 'ระบบจะประกอบตัวอักษรและคัดเฉพาะชื่อที่มีผลรวมเลขศาสตร์และคู่เลขมงคล',
+                        position: 2,
+                        name: 'ให้ AI สร้างรายชื่อ',
+                        text: 'ระบบจะสร้างรายชื่อมงคลเป็นชุด พร้อมพิจารณาเสียงอ่าน ความหมาย และผลรวมเลขศาสตร์',
                     },
                     {
                         '@type': 'HowToStep',
-                        'position': 3,
-                        'name': 'นำชื่อไปวิเคราะห์ร่วมกับนามสกุล',
-                        'text': 'เลือกชื่อที่สนใจแล้วนำไปตรวจร่วมกับนามสกุลเพื่อดูผลรวมจริงก่อนใช้งาน',
+                        position: 3,
+                        name: 'นำชื่อไปวิเคราะห์ต่อ',
+                        text: 'เลือกชื่อที่สนใจแล้วนำไปตรวจร่วมกับนามสกุล วันเกิด และความหมาย เพื่อประเมินความเหมาะสมก่อนใช้งานจริง',
                     },
                 ],
             },
             {
                 '@type': 'FAQPage',
                 '@id': `${baseUrl}/name-generator#faq`,
-                'mainEntity': [
-                    {
-                        '@type': 'Question',
-                        'name': 'สร้างชื่อมงคลด้วย AI ต่างจากค้นหาชื่อมงคลอย่างไร?',
-                        'acceptedAnswer': {
-                            '@type': 'Answer',
-                            'text': 'หน้าสร้างชื่อมงคลด้วย AI ใช้ระบบประกอบชื่อใหม่จากตัวอักษรและคู่เลขมงคล ส่วนหน้าค้นหาชื่อมงคลเป็นฐานข้อมูลรายชื่อที่มีอยู่แล้ว เหมาะกับการเลือกชื่อจากรายการสำเร็จรูป',
-                        },
+                mainEntity: faqItems.map((item) => ({
+                    '@type': 'Question',
+                    name: item.question,
+                    acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: item.answer,
                     },
-                    {
-                        '@type': 'Question',
-                        'name': 'ชื่อที่ AI สร้างใช้ได้ทันทีไหม?',
-                        'acceptedAnswer': {
-                            '@type': 'Answer',
-                            'text': 'ควรนำชื่อที่สนใจไปวิเคราะห์ร่วมกับนามสกุลและวันเกิดอีกครั้ง เพราะผลรวมชื่อจริงต้องคิดจากชื่อและนามสกุลรวมกัน',
-                        },
-                    },
-                    {
-                        '@type': 'Question',
-                        'name': 'เครื่องมือนี้เหมาะกับใคร?',
-                        'acceptedAnswer': {
-                            '@type': 'Answer',
-                            'text': 'เหมาะกับผู้ที่ต้องการไอเดียชื่อใหม่สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ และต้องการเริ่มจากชื่อที่ผ่านเกณฑ์เลขศาสตร์พื้นฐานก่อน',
-                        },
-                    },
-                ],
+                })),
             },
         ],
     };
@@ -148,50 +195,186 @@ export default function NameGeneratorPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <ClientPage />
-            <section className="bg-[#fff9fd] px-4 pb-24 text-[#5a5a82]">
+            <section id="name-generator-tool">
+                <ClientPage />
+            </section>
+            <section className="bg-[#fff9fd] px-4 pb-24 text-[#555574]">
                 <div className="mx-auto max-w-5xl border-t border-pink-100 pt-12">
                     <p className="mb-3 text-xs font-extrabold uppercase tracking-normal text-pink-500">
-                        AI Naming Workflow
+                        AI Name Generator SEO Guide
                     </p>
                     <h2 className="text-balance text-2xl font-extrabold text-[#15163f] sm:text-3xl">
-                        สร้างชื่อมงคลด้วย AI แล้วควรตรวจอะไรต่อก่อนใช้จริง
+                        สร้างชื่อมงคล AI คืออะไร
                     </h2>
-                    <p className="mt-4 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
-                        เครื่องมือนี้ช่วยสร้างชื่อใหม่ที่ผ่านเกณฑ์ผลรวมเลขศาสตร์และคู่เลขมงคลในระดับเริ่มต้น เหมาะสำหรับหาไอเดียชื่อจำนวนมากอย่างรวดเร็ว
-                        แต่ก่อนนำไปใช้จริงควรตรวจร่วมกับนามสกุล วันเกิด และอักษรกาลกิณี เพื่อให้รู้ว่าชื่อนั้นส่งเสริมดวงของเจ้าของชื่อจริงหรือไม่
+                    <p className="mt-4 max-w-3xl text-sm leading-7 sm:text-base">
+                        ระบบช่วยสร้างชื่อมงคลด้วย AI สำหรับผู้ที่ต้องการตั้งชื่อลูก เปลี่ยนชื่อใหม่ หรือออกแบบชื่อแบรนด์ โดยคัดเลือกชื่อที่มีความหมายดี อ่านไพเราะ และพิจารณาผลรวมเลขศาสตร์เพื่อให้ได้ชื่อที่เหมาะสมมากยิ่งขึ้น
                     </p>
 
-                    <div className="mt-8 grid gap-4 md:grid-cols-3">
-                        <div className="rounded-2xl border border-amber-200 bg-[#fff8e8] p-5 shadow-sm">
-                            <h3 className="font-extrabold text-amber-700">1. สร้างรายชื่อ</h3>
-                            <p className="mt-2 text-sm leading-6 text-[#6b5b3d]">
-                                เลือกอักษรนำแล้วให้ AI สร้างชื่อเกรด A+ เป็นชุด เพื่อใช้เป็นตัวเลือกตั้งต้น
+                    <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+                        <article className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                ทำไมต้องใช้ระบบสร้างชื่อมงคล AI
+                            </h2>
+                            <h3 className="mt-3 text-base font-extrabold text-pink-600">
+                                สร้างชื่อใหม่ได้เร็วกว่า คัดชื่อได้ตรงใจกว่า
+                            </h3>
+                            <p className="mt-3 text-sm leading-7">
+                                การตั้งชื่อมงคลไม่ใช่แค่เลือกชื่อที่ฟังดูไพเราะเท่านั้น แต่ควรพิจารณาหลายปัจจัยร่วมกัน เช่น ความหมายของชื่อ อักษรนำหน้า ผลรวมเลขศาสตร์ ความเหมาะสมกับวันเกิด และความรู้สึกเมื่อนำไปใช้งานจริง
                             </p>
-                        </div>
-                        <div className="rounded-2xl border border-sky-200 bg-[#f0faff] p-5 shadow-sm">
-                            <h3 className="font-extrabold text-sky-700">2. วิเคราะห์กับนามสกุล</h3>
-                            <p className="mt-2 text-sm leading-6 text-[#465f73]">
-                                นำชื่อที่ชอบไปเช็กชื่อและนามสกุล เพื่อดูผลรวมจริงและความสมพงศ์ของชื่อเต็ม
+                            <p className="mt-3 text-sm leading-7">
+                                ระบบสร้างชื่อมงคล AI ของ NameMongkol ช่วยประมวลผลและแนะนำรายชื่อที่เหมาะสม โดยออกแบบมาเพื่อช่วยให้คุณมีตัวเลือกชื่อที่หลากหลายมากขึ้น เหมาะสำหรับคนที่กำลังมองหาชื่อใหม่แต่ยังไม่รู้ว่าจะเริ่มจากตรงไหน
                             </p>
-                        </div>
-                        <div className="rounded-2xl border border-emerald-200 bg-[#effdf7] p-5 shadow-sm">
-                            <h3 className="font-extrabold text-emerald-700">3. คัดชื่อเสริมดวง</h3>
-                            <p className="mt-2 text-sm leading-6 text-[#416458]">
-                                ถ้าต้องการชื่อที่คัดตามวันเกิด อักษรนำ และวรรคเดช/ศรี ให้ใช้ระบบ Pro ต่อ
+                        </article>
+
+                        <article className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                เครื่องมือตั้งชื่อมงคลนี้เหมาะกับใคร
+                            </h2>
+                            <p className="mt-3 text-sm leading-7">
+                                เครื่องมือนี้เหมาะสำหรับผู้ที่ต้องการตั้งชื่อมงคลตามวันเกิด ตั้งชื่อลูกมงคล เปลี่ยนชื่อมงคล หรือหาไอเดียชื่อแบรนด์มงคลที่อ่านง่ายและจำง่าย
                             </p>
-                        </div>
+                            <ul className="mt-4 space-y-3 text-sm leading-6">
+                                {targetAudiences.map((item) => (
+                                    <li key={item} className="flex gap-3">
+                                        <span className="mt-2 h-2 w-2 flex-none rounded-full bg-sky-400" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </article>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-3 text-sm">
-                        <Link href="/name-check" className="rounded-full border border-sky-200 bg-white px-4 py-2 font-bold text-sky-700 shadow-sm transition-colors hover:bg-sky-50">
-                            วิเคราะห์ชื่อกับนามสกุลฟรี
-                        </Link>
-                        <Link href="/search" className="rounded-full border border-amber-200 bg-white px-4 py-2 font-bold text-amber-700 shadow-sm transition-colors hover:bg-amber-50">
-                            ค้นหาชื่อมงคลจากฐานข้อมูล
-                        </Link>
-                        <Link href="/premium-search" className="rounded-full border border-emerald-200 bg-white px-4 py-2 font-bold text-emerald-700 shadow-sm transition-colors hover:bg-emerald-50">
-                            เปลี่ยนชื่อมงคล Pro
+                    <div className="mt-8 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+                        <article className="rounded-2xl border border-amber-100 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                ระบบสร้างชื่อมงคล AI ทำงานอย่างไร
+                            </h2>
+                            <h3 className="mt-3 text-base font-extrabold text-amber-600">
+                                เลือกอักษรนำหน้า แล้วให้ AI ช่วยสร้างชื่อที่เหมาะสม
+                            </h3>
+                            <p className="mt-3 text-sm leading-7">
+                                ผู้ใช้สามารถเลือกอักษรนำหน้าที่ต้องการ จากนั้นระบบจะช่วยสร้างรายชื่อมงคลออกมาเป็นชุด โดยคัดเลือกชื่อที่มีความเหมาะสมทั้งด้านเสียงอ่าน ความหมาย และผลรวมเลขศาสตร์ เพื่อให้ได้ชื่อที่สามารถนำไปพิจารณาต่อได้ง่ายขึ้น
+                            </p>
+                            <p className="mt-3 text-sm leading-7">
+                                ระบบนี้เหมาะสำหรับการค้นหาไอเดียชื่อใหม่ โดยเฉพาะผู้ที่ต้องการชื่อจำนวนมากเพื่อเปรียบเทียบก่อนตัดสินใจ
+                            </p>
+                        </article>
+
+                        <article className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                จุดเด่นของการสร้างชื่อมงคล Grade A+
+                            </h2>
+                            <p className="mt-3 text-sm leading-7">
+                                จุดเด่นของระบบสร้างชื่อมงคล AI Grade A+ คือช่วยให้เริ่มต้นคัดชื่อมงคลเลขศาสตร์ได้เร็วขึ้น โดยยังเปิดพื้นที่ให้ผู้ใช้เลือกชื่อที่ตรงกับความรู้สึกและบริบทการใช้งานจริง
+                            </p>
+                            <ul className="mt-4 grid gap-3 text-sm leading-6 sm:grid-cols-2">
+                                {featureItems.map((item) => (
+                                    <li key={item} className="flex gap-3">
+                                        <span className="mt-2 h-2 w-2 flex-none rounded-full bg-emerald-400" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </article>
+                    </div>
+
+                    <article className="mt-8 rounded-2xl border border-violet-100 bg-white p-6 shadow-sm">
+                        <h2 className="text-xl font-extrabold text-[#15163f]">
+                            ตั้งชื่อลูก เปลี่ยนชื่อ และชื่อแบรนด์ด้วย AI
+                        </h2>
+                        <div className="mt-4 grid gap-5 md:grid-cols-3">
+                            <div>
+                                <h3 className="font-extrabold text-violet-600">ตั้งชื่อลูกมงคล</h3>
+                                <p className="mt-2 text-sm leading-7">
+                                    ใช้เป็นจุดเริ่มต้นสำหรับคุณพ่อคุณแม่ที่ต้องการชื่อมงคลตามวันเกิด มีความหมายดี และออกเสียงไพเราะ
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="font-extrabold text-violet-600">เปลี่ยนชื่อมงคล</h3>
+                                <p className="mt-2 text-sm leading-7">
+                                    เหมาะกับผู้ที่ต้องการชื่อใหม่เพื่อเสริมความมั่นใจ พร้อมดูผลรวมเลขศาสตร์ประกอบก่อนตัดสินใจ
+                                </p>
+                            </div>
+                            <div>
+                                <h3 className="font-extrabold text-violet-600">ตั้งชื่อร้านมงคล</h3>
+                                <p className="mt-2 text-sm leading-7">
+                                    ใช้หาไอเดียชื่อร้านหรือชื่อแบรนด์มงคลที่อ่านง่าย จำง่าย และนำไปต่อยอดกับภาพลักษณ์ธุรกิจได้
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                ข้อควรพิจารณาก่อนเลือกชื่อ
+                            </h2>
+                            <h3 className="mt-3 text-base font-extrabold text-slate-700">
+                                ชื่อที่ดีควรดูมากกว่าแค่คะแนน
+                            </h3>
+                            <p className="mt-3 text-sm leading-7">
+                                แม้ระบบ AI จะช่วยสร้างชื่อที่มีความน่าสนใจและมีผลรวมที่ดี แต่การเลือกชื่อควรพิจารณาหลายปัจจัยร่วมกัน เช่น ความหมาย ความเหมาะสมกับนามสกุล ความไพเราะเมื่อออกเสียง ความรู้สึกของผู้ใช้ชื่อ และความเหมาะสมกับวันเกิด
+                            </p>
+                            <p className="mt-3 text-sm leading-7">
+                                สำหรับบางอักษรที่อยู่ในกลุ่มควรหลีกเลี่ยง ระบบอาจสร้างชื่อ Grade A+ ได้น้อยลง หรืออาจไม่พบชื่อที่เหมาะสมในบางกรณี เพราะการสร้างชื่อมงคลจำเป็นต้องคำนึงถึงผลรวมและหลักการประกอบชื่อร่วมกัน
+                            </p>
+                        </article>
+
+                        <article className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                            <h2 className="text-xl font-extrabold text-[#15163f]">
+                                ใช้คู่กับระบบวิเคราะห์ชื่อได้ดียิ่งขึ้น
+                            </h2>
+                            <p className="mt-3 text-sm leading-7">
+                                หลังจากได้รายชื่อที่สนใจแล้ว แนะนำให้นำชื่อไปตรวจสอบเพิ่มเติมผ่านระบบ{' '}
+                                <Link href="/name-analysis" className="font-extrabold text-pink-600 underline-offset-4 hover:underline">
+                                    วิเคราะห์ชื่อมงคล
+                                </Link>{' '}
+                                เพื่อดูรายละเอียดเชิงลึก เช่น ผลรวมชื่อ ความหมายโดยรวม ความเหมาะสมของชื่อและนามสกุล รวมถึงแนวทางการเลือกชื่อที่เหมาะกับตัวคุณมากที่สุด
+                            </p>
+                            <div className="mt-5 flex flex-wrap gap-3 text-sm">
+                                {internalLinks.map((link) => (
+                                    <Link
+                                        key={`${link.href}-${link.label}`}
+                                        href={link.href}
+                                        className="rounded-full border border-pink-100 bg-[#fff9fd] px-4 py-2 font-bold text-[#6f2d64] shadow-sm transition-colors hover:bg-pink-50"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </article>
+                    </div>
+
+                    <article className="mt-8 rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                        <h2 className="text-xl font-extrabold text-[#15163f]">
+                            คำถามที่พบบ่อยเกี่ยวกับการสร้างชื่อมงคล
+                        </h2>
+                        <div className="mt-5 divide-y divide-pink-100">
+                            {faqItems.map((item) => (
+                                <div key={item.question} className="py-5 first:pt-0 last:pb-0">
+                                    <h3 className="text-base font-extrabold text-[#15163f]">
+                                        {item.question}
+                                    </h3>
+                                    <p className="mt-2 text-sm leading-7">
+                                        {item.answer}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </article>
+
+                    <div className="mt-8 rounded-2xl border border-amber-200 bg-[#fff8e8] p-6 text-center shadow-sm">
+                        <h2 className="text-2xl font-extrabold text-[#15163f]">
+                            เริ่มสร้างชื่อมงคลของคุณวันนี้
+                        </h2>
+                        <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-[#6b5b3d] sm:text-base">
+                            เลือกอักษรนำหน้าที่ต้องการ แล้วให้ระบบ AI ช่วยสร้างรายชื่อมงคล Grade A+ เพื่อเป็นไอเดียสำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือออกแบบชื่อแบรนด์ของคุณ
+                        </p>
+                        <Link
+                            href="#name-generator-tool"
+                            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-[#15163f] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-slate-300/60 transition-colors hover:bg-[#25265a]"
+                        >
+                            เริ่มสร้าง 100 ชื่อ Grade A+
                         </Link>
                     </div>
                 </div>

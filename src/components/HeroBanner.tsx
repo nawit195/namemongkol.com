@@ -4,6 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, BadgeCheck, BarChart3, Languages, Star, Target, Zap, Sparkle } from 'lucide-react';
 import { useLanguage } from './LanguageProvider';
+import {
+    LIVE_STATS_FETCH_INIT,
+    STATS_IDLE_DELAY_MS,
+    STATS_POLL_MS,
+    formatRealtimeCount,
+} from './heroLiveStats';
 
 type HeroBannerProps = {
     headingLevel?: 'h1' | 'h2';
@@ -134,17 +140,6 @@ type LiveStatsResponse = {
     };
 };
 
-const STATS_POLL_MS = 30_000;
-const STATS_IDLE_DELAY_MS = 3_500;
-
-const formatRealtimeCount = (value?: number) => {
-    if (typeof value !== 'number' || value <= 0) {
-        return null;
-    }
-
-    return value.toLocaleString('th-TH');
-};
-
 const HeroSocialProof = () => {
     const [analysisCount, setAnalysisCount] = React.useState('257');
     const [memberCount, setMemberCount] = React.useState('211');
@@ -159,7 +154,7 @@ const HeroSocialProof = () => {
 
         const loadStats = async () => {
             try {
-                const response = await fetch('/api/live-stats');
+                const response = await fetch('/api/live-stats', LIVE_STATS_FETCH_INIT);
                 if (!response.ok) {
                     return;
                 }
