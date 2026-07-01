@@ -1,121 +1,133 @@
 import React from 'react';
-import { thaksaConfig, VOWELS } from '@/data/thaksaConfig';
-
-const mondayConfig = thaksaConfig['monday'];
-
-const categories = [
-    {
-        name: 'บริวาร',
-        nameEn: 'Borivan',
-        description: 'ผู้ติดตาม บริวาร ลูกน้อง ความนิยม',
-        letters: mondayConfig.borivan,
-        color: 'bg-blue-50 border-blue-200 text-blue-800',
-        badgeColor: 'bg-blue-100 text-blue-700',
-        icon: '👥',
-    },
-    {
-        name: 'อายุ',
-        nameEn: 'Ayu',
-        description: 'อายุยืน สุขภาพแข็งแรง ความยั่งยืน',
-        letters: mondayConfig.ayu,
-        color: 'bg-emerald-50 border-emerald-200 text-emerald-800',
-        badgeColor: 'bg-emerald-100 text-emerald-700',
-        icon: '🌿',
-    },
-    {
-        name: 'เดช',
-        nameEn: 'Dech',
-        description: 'อำนาจบารมี ความเป็นผู้นำ ความน่าเกรงขาม',
-        letters: mondayConfig.dech,
-        color: 'bg-amber-50 border-amber-200 text-amber-800',
-        badgeColor: 'bg-amber-100 text-amber-700',
-        icon: '⚡',
-    },
-    {
-        name: 'ศรี',
-        nameEn: 'Si',
-        description: 'เสน่ห์ สง่าราศี ความสวยงาม เมตตามหานิยม',
-        letters: mondayConfig.si,
-        color: 'bg-pink-50 border-pink-200 text-pink-800',
-        badgeColor: 'bg-pink-100 text-pink-700',
-        icon: '✨',
-    },
-    {
-        name: 'มูละ',
-        nameEn: 'Mula',
-        description: 'ทรัพย์สมบัติ มรดก ความมั่งคั่ง โชคลาภ',
-        letters: mondayConfig.mula,
-        color: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-        badgeColor: 'bg-yellow-100 text-yellow-700',
-        icon: '💎',
-    },
-    {
-        name: 'อุตสาหะ',
-        nameEn: 'Ussaha',
-        description: 'ความขยัน ความพยายาม ความมุ่งมั่น',
-        letters: mondayConfig.ussaha,
-        color: 'bg-orange-50 border-orange-200 text-orange-800',
-        badgeColor: 'bg-orange-100 text-orange-700',
-        icon: '💪',
-    },
-    {
-        name: 'มนตรี',
-        nameEn: 'Montri',
-        description: 'ที่ปรึกษา ผู้ช่วยเหลือ คนอุปถัมภ์ค้ำจุน',
-        letters: mondayConfig.montri,
-        color: 'bg-indigo-50 border-indigo-200 text-indigo-800',
-        badgeColor: 'bg-indigo-100 text-indigo-700',
-        icon: '🤝',
-    },
-    {
-        name: 'กาลกิณี',
-        nameEn: 'Kali',
-        description: 'อุปสรรค โชคร้าย ปัญหา — ต้องหลีกเลี่ยง!',
-        letters: null,
-        isVowel: true,
-        color: 'bg-red-50 border-red-300 text-red-800',
-        badgeColor: 'bg-red-100 text-red-700',
-        icon: '⛔',
-    },
-];
+import { thaksaConfig } from '@/data/thaksaConfig';
 
 export function MondayThaksaTable() {
+    const mondayConfig = thaksaConfig?.['monday'];
+
+    // ถ้าไม่มีข้อมูล ให้ return null เพื่อป้องกัน error
+    if (!mondayConfig) return null;
+
+    const categories = [
+        {
+            name: 'บริวาร',
+            nameEn: 'Borivan',
+            description: 'ผู้ติดตาม บริวาร ลูกน้อง ความนิยม',
+            letters: mondayConfig.borivan,
+            isVowel: false,
+            color: 'bg-emerald-50 border-emerald-200 text-emerald-800',
+            badgeColor: 'bg-emerald-100 text-emerald-800',
+            icon: '👥',
+        },
+        {
+            name: 'อายุ',
+            nameEn: 'Ayu',
+            description: 'สุขภาพแข็งแรง อายุยืนยาว',
+            letters: mondayConfig.ayu,
+            isVowel: false,
+            color: 'bg-blue-50 border-blue-200 text-blue-800',
+            badgeColor: 'bg-blue-100 text-blue-800',
+            icon: '❤️',
+        },
+        {
+            name: 'เดช',
+            nameEn: 'Dech',
+            description: 'อำนาจ บารมี ชื่อเสียง การยกย่อง',
+            letters: mondayConfig.dech,
+            isVowel: false,
+            color: 'bg-rose-50 border-rose-200 text-rose-800',
+            badgeColor: 'bg-rose-100 text-rose-800',
+            icon: '👑',
+        },
+        {
+            name: 'ศรี',
+            nameEn: 'Si',
+            description: 'โชคลาภ เงินทอง เสน่ห์ เมตตา',
+            letters: mondayConfig.si,
+            isVowel: false,
+            color: 'bg-amber-50 border-amber-200 text-amber-800',
+            badgeColor: 'bg-amber-100 text-amber-800',
+            icon: '✨',
+        },
+        {
+            name: 'มูละ',
+            nameEn: 'Mula',
+            description: 'ทรัพย์สิน มรดก ความมั่นคง ฐานะ',
+            letters: mondayConfig.mula,
+            isVowel: false,
+            color: 'bg-purple-50 border-purple-200 text-purple-800',
+            badgeColor: 'bg-purple-100 text-purple-800',
+            icon: '💰',
+        },
+        {
+            name: 'อุตสาหะ',
+            nameEn: 'Ussaha',
+            description: 'ความขยัน ความสำเร็จจากความพยายาม',
+            letters: mondayConfig.ussaha,
+            isVowel: false,
+            color: 'bg-orange-50 border-orange-200 text-orange-800',
+            badgeColor: 'bg-orange-100 text-orange-800',
+            icon: '💪',
+        },
+        {
+            name: 'มนตรี',
+            nameEn: 'Montri',
+            description: 'ผู้อุปถัมภ์ เจ้านาย ผู้ใหญ่เอ็นดู',
+            letters: mondayConfig.montri,
+            isVowel: false,
+            color: 'bg-cyan-50 border-cyan-200 text-cyan-800',
+            badgeColor: 'bg-cyan-100 text-cyan-800',
+            icon: '🤝',
+        },
+        {
+            name: 'กาลกิณี',
+            nameEn: 'Kali',
+            description: 'อุปสรรค โชคร้าย ปัญหา — ต้องหลีกเลี่ยง!',
+            letters: mondayConfig.kali || [],
+            isVowel: true,
+            color: 'bg-red-50 border-red-300 text-red-800',
+            badgeColor: 'bg-red-100 text-red-700',
+            icon: '⛔',
+        },
+    ];
+
     return (
-        <div className="space-y-3">
-            {/* Desktop Table */}
-            <div className="hidden md:block overflow-x-auto">
-                <table className="w-full text-sm border-collapse">
-                    <thead>
-                        <tr className="bg-slate-50">
-                            <th className="text-left px-4 py-3 font-bold text-slate-600 border-b border-slate-200 w-[140px]">หมวดทักษา</th>
-                            <th className="text-left px-4 py-3 font-bold text-slate-600 border-b border-slate-200 w-[260px]">พลังที่เสริม</th>
-                            <th className="text-left px-4 py-3 font-bold text-slate-600 border-b border-slate-200">อักษรในหมวด</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {categories.map((cat) => (
-                            <tr key={cat.name} className={`${cat.name === 'กาลกิณี' ? 'bg-red-50/50' : 'hover:bg-slate-50'} border-b border-slate-100 last:border-b-0`}>
-                                <td className="px-4 py-3">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-lg">{cat.icon}</span>
-                                        <div>
-                                            <p className="font-bold text-slate-800">{cat.name}</p>
-                                        </div>
+        <div className="overflow-x-auto mb-8">
+            <table className="w-full text-sm border-collapse rounded-xl overflow-hidden border border-slate-200">
+                <thead>
+                    <tr className="bg-slate-800 text-white">
+                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/4">ทักษา</th>
+                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/3">ความหมาย</th>
+                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700">กลุ่มตัวอักษร</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {categories.map((cat) => (
+                        <tr key={cat.name} className={`${cat.name === 'กาลกิณี' ? 'bg-red-50/50' : 'hover:bg-slate-50'} border-b border-slate-100 last:border-b-0`}>
+                            <td className="px-4 py-4 align-top">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-base">{cat.icon}</span>
+                                    <span className={`font-bold ${cat.name === 'กาลกิณี' ? 'text-red-700' : 'text-slate-800'}`}>
+                                        {cat.name}
+                                    </span>
+                                </div>
+                                <span className="text-xs font-medium text-slate-500">{cat.nameEn}</span>
+                            </td>
+                            <td className={`px-4 py-4 align-top ${cat.name === 'กาลกิณี' ? 'text-red-600 font-medium' : 'text-slate-600'}`}>
+                                {cat.description}
+                            </td>
+                            <td className="px-4 py-4 align-top">
+                                {cat.isVowel ? (
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-xs border border-red-200">
+                                        ⚠️ สระทั้งหมด + อ.อ่าง (ห้ามเป็นอักษรนำ)
+                                    </span>
+                                ) : (
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {(cat.letters || []).map((letter) => (
+                                            <span key={letter} className={`inline-flex items-center justify-center w-8 h-8 rounded-lg ${cat.badgeColor} font-bold text-sm border border-current/10`}>
+                                                {letter}
+                                            </span>
+                                        ))}
                                     </div>
-                                </td>
-                                <td className="px-4 py-3 text-slate-600">{cat.description}</td>
-                                <td className="px-4 py-3">
-                                    {cat.isVowel ? (
-                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-xs border border-red-200">
-                                            ⚠️ สระทั้งหมด + อ.อ่าง (ห้ามเป็นอักษรนำ)
-                                        </span>
-                                    ) : (
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {cat.letters!.map((letter) => (
-                                                <span key={letter} className={`inline-flex items-center justify-center w-8 h-8 rounded-lg ${cat.badgeColor} font-bold text-sm border border-current/10`}>
-                                                    {letter}
-                                                </span>
-                                            ))}
                                         </div>
                                     )}
                                 </td>
