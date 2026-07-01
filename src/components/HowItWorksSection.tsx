@@ -5,45 +5,40 @@ import { ClipboardList, Cpu, Eye } from 'lucide-react';
 
 const steps = [
     {
-        num: '①',
+        num: '01',
         icon: ClipboardList,
         title: 'ระบุชื่อและวันเกิด',
         desc: 'กรอกชื่อ นามสกุล และวันเกิด เพื่อส่งให้ระบบคำนวณพื้นดวงชะตา',
-        color: 'text-amber-400',
-        bg: 'bg-amber-500/10',
-        border: 'border-amber-500/20',
-        cardBg: 'bg-gradient-to-br from-amber-50/80 to-[#fff8ee]',
-        cardBorder: 'border-amber-300/40',
+        iconBg: 'bg-gradient-to-br from-amber-400 to-amber-600',
+        glow: 'bg-amber-400/20',
+        numColor: 'text-amber-100',
     },
     {
-        num: '②',
+        num: '02',
         icon: Cpu,
         title: 'ระบบคำนวณ 4 ศาสตร์',
         desc: 'วิเคราะห์ร่วมกันระหว่าง เลขศาสตร์ ทักษา อายตนะ 6 และนิรันดร์ศาสตร์',
-        color: 'text-emerald-400',
-        bg: 'bg-emerald-500/10',
-        border: 'border-emerald-500/20',
-        cardBg: 'bg-gradient-to-br from-emerald-50/80 to-[#f0fdf4]',
-        cardBorder: 'border-emerald-300/40',
+        iconBg: 'bg-gradient-to-br from-emerald-400 to-emerald-600',
+        glow: 'bg-emerald-400/20',
+        numColor: 'text-emerald-100',
     },
     {
-        num: '③',
+        num: '03',
         icon: Eye,
         title: 'ทราบผลทำนายทันที',
         desc: 'ภาพรวมคะแนน คู่เลข และเกรดฟรี พร้อมตัวเลือกต่อยอดทำนายเชิงลึก',
-        color: 'text-purple-400',
-        bg: 'bg-purple-500/10',
-        border: 'border-purple-500/20',
-        cardBg: 'bg-gradient-to-br from-purple-50/80 to-[#faf5ff]',
-        cardBorder: 'border-purple-300/40',
+        iconBg: 'bg-gradient-to-br from-purple-400 to-purple-600',
+        glow: 'bg-purple-400/20',
+        numColor: 'text-purple-100',
     },
 ];
 
 export const HowItWorksSection = () => {
     return (
         <section className="w-full max-w-5xl mx-auto px-4 py-8 sm:py-16 relative z-10">
-            <div className="text-center mb-6 sm:mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1a1a3e] mb-3">
+            <div className="text-center mb-8 sm:mb-14">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-500 mb-3">How It Works</p>
+                <h2 className="text-2xl sm:text-3xl md:text-[2.5rem] font-bold text-[#1a1a3e] mb-4 tracking-tight">
                     วิธีเช็คชื่อมงคลกับ NameMongkol
                 </h2>
                 <p className="text-[#5a5a82] max-w-xl mx-auto text-sm sm:text-base">
@@ -51,30 +46,29 @@ export const HowItWorksSection = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 relative">
+                {/* Connecting Line (Desktop) */}
+                <div className="hidden md:block absolute top-[4.5rem] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-amber-200 via-emerald-200 to-purple-200 opacity-60 z-0"></div>
+
                 {steps.map((step, i) => (
                     <div
                         key={i}
-                        className={`relative ${step.cardBg} shadow-sm border ${step.cardBorder} rounded-2xl p-4 sm:p-6 text-center hover:-translate-y-1 hover:shadow-md transition-all group`}
+                        className="relative bg-white border border-[#ddddf0] rounded-[1.75rem] p-6 sm:p-8 text-center hover:-translate-y-1.5 hover:shadow-[0_12px_40px_rgba(15,23,42,0.06)] transition-all duration-300 group z-10 overflow-hidden"
                     >
-                        {/* Step number */}
-                        <div className={`text-4xl font-bold ${step.color.replace('400', '200')} absolute top-3 right-4`}>
+                        {/* Big background number */}
+                        <div className={`absolute -right-2 -bottom-5 text-[7rem] font-black leading-none ${step.numColor} opacity-50 group-hover:scale-110 transition-transform duration-500 select-none`}>
                             {step.num}
                         </div>
 
-                        <div className={`w-14 h-14 ${step.bg.replace('500/10', '50')} rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform`}>
-                            <step.icon className={`w-7 h-7 ${step.color.replace('400', '600')}`} />
+                        {/* Top decorative glow */}
+                        <div className={`absolute -top-10 left-1/2 -translate-x-1/2 w-28 h-28 ${step.glow} rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                        <div className={`relative w-16 h-16 ${step.iconBg} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 border border-white/20`}>
+                            <step.icon className="w-8 h-8 text-white" />
                         </div>
 
-                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1.5 sm:mb-2">{step.title}</h3>
-                        <p className="text-[#5a5a82] text-sm leading-relaxed">{step.desc}</p>
-
-                        {/* Connector arrow (hidden on last + mobile) */}
-                        {i < steps.length - 1 && (
-                            <div className="hidden md:block absolute top-1/2 -right-3 -translate-y-1/2 text-[#ddddf0] text-xl">
-                                →
-                            </div>
-                        )}
+                        <h3 className="relative text-lg sm:text-[19px] font-bold text-[#1a1a3e] mb-3 tracking-tight">{step.title}</h3>
+                        <p className="relative text-[#5a5a82] text-[14px] sm:text-[15px] leading-relaxed">{step.desc}</p>
                     </div>
                 ))}
             </div>

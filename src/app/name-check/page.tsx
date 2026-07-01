@@ -153,17 +153,20 @@ export default function NameCheckPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
             />
 
-            <section className="relative z-10 mx-auto mt-10 w-full max-w-5xl px-4 text-center sm:mt-16 md:mt-20">
-                <div className="rounded-[1.75rem] border border-white/8 bg-slate-950/35 px-5 py-8 shadow-[0_18px_55px_rgba(5,8,20,0.24)] backdrop-blur-xl sm:px-8 md:px-12">
-                    <p className="mx-auto mb-4 inline-flex rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">
-                        เครื่องมือวิเคราะห์ชื่อฟรี
-                    </p>
-                    <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-                        วิเคราะห์ชื่อ-นามสกุลฟรี ถอดอักษรเป็นเลขศาสตร์และเช็กคู่เลขในชื่อ
-                    </h1>
-                    <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
-                        เช็กชื่อจริงและนามสกุลในหน้าเดียว ระบบจะถอดตัวอักษรเป็นค่าเลขศาสตร์ รวมคะแนนภาพรวม แล้วจับเลขที่อยู่ติดกันเป็นคู่เพื่ออ่านพลังและความหมายรายคู่ พร้อมตรวจทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์
-                    </p>
+            <section className="relative z-10 mx-auto pt-10 w-full max-w-5xl px-4 text-center sm:pt-16 md:pt-20 bg-[#f8f8fc]">
+                <div className="rounded-[1.75rem] border border-[#ddddf0] bg-white px-5 py-8 shadow-sm relative overflow-hidden sm:px-8 md:px-12">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(215,177,106,0.08),transparent_70%)]" />
+                    <div className="relative z-10">
+                        <p className="mx-auto mb-4 inline-flex rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-amber-700">
+                            เครื่องมือวิเคราะห์ชื่อฟรี
+                        </p>
+                        <h1 className="text-3xl font-bold tracking-tight text-[#1a1a3e] sm:text-4xl md:text-5xl">
+                            วิเคราะห์ชื่อ-นามสกุลฟรี ถอดอักษรเป็นเลขศาสตร์และเช็กคู่เลขในชื่อ
+                        </h1>
+                        <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
+                            เช็กชื่อจริงและนามสกุลในหน้าเดียว ระบบจะถอดตัวอักษรเป็นค่าเลขศาสตร์ รวมคะแนนภาพรวม แล้วจับเลขที่อยู่ติดกันเป็นคู่เพื่ออ่านพลังและความหมายรายคู่ พร้อมตรวจทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์
+                        </p>
+                    </div>
                 </div>
             </section>
 

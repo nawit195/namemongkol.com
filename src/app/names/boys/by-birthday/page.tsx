@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteUrl } from '@/lib/seo';
 import { thaksaConfig, VOWELS } from '@/data/thaksaConfig';
 import { boyNamesCurated } from '@/data/boyNamesCurated';
@@ -74,11 +75,19 @@ export default function BoysByBirthdayPage() {
                     <h1 className="text-3xl font-bold leading-snug sm:text-4xl text-slate-900 mb-6">
                         ตั้งชื่อลูกชายตามวันเกิด<br className="hidden sm:block" />เลือกชื่อที่เหมาะกับดวงชะตา
                     </h1>
-                    <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                    <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base mb-8">
                         การเลือกชื่อลูกชายตาม <strong>&ldquo;ทักษาปกรณ์&rdquo;</strong> 
                         เพื่อหาพยัญชนะที่เป็นมงคล เสริมสร้างความเป็นผู้นำ (เดช) บารมี และโชคลาภ (ศรี) 
                         โดยหลีกเลี่ยงพยัญชนะกาลกิณีของวันเกิดแต่ละวัน
                     </p>
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+                        <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100 relative aspect-[4/3]">
+                            <Image src="/images/boys-naming-calendar-1.jpg" alt="ไอเดียตั้งชื่อลูกชายตามวันเกิด" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100 relative aspect-[4/3]">
+                            <Image src="/images/boys-naming-calendar-2.jpg" alt="ตั้งชื่อลูกชายเสริมดวง" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                    </div>
                 </div>
             </section>
 

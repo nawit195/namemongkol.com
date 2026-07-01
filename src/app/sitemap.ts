@@ -81,6 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '/search', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/names/girls/by-birthday/monday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/boys', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },

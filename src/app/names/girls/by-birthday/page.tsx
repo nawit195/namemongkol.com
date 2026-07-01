@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { siteUrl } from '@/lib/seo';
 import { thaksaConfig, VOWELS } from '@/data/thaksaConfig';
 import { girlNamesCurated } from '@/data/girlNamesCurated';
@@ -74,11 +75,19 @@ export default function GirlsByBirthdayPage() {
                     <h1 className="text-3xl font-bold leading-snug sm:text-4xl text-slate-900 mb-6">
                         ตั้งชื่อลูกสาวตามวันเกิด<br className="hidden sm:block" />เลือกชื่อที่เหมาะกับดวงชะตา
                     </h1>
-                    <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                    <p className="mx-auto max-w-2xl text-sm leading-7 text-slate-600 sm:text-base mb-8">
                         พื้นฐานสำคัญของการตั้งชื่อมงคลแบบไทย คือการอิงตาม <strong>&ldquo;ทักษาปกรณ์&rdquo;</strong> 
                         โดยดูจากวันเกิดของลูกสาว เพื่อเลือกอักษรที่เป็นสิริมงคล (เดช ศรี มนตรี) 
                         และหลีกเลี่ยงอักษรต้องห้าม (กาลกิณี)
                     </p>
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+                        <div className="rounded-2xl overflow-hidden shadow-md border border-pink-100 relative aspect-[4/3]">
+                            <Image src="/images/girls-naming-calendar-1.jpg" alt="ไอเดียตั้งชื่อลูกสาวตามวันเกิด" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                        <div className="rounded-2xl overflow-hidden shadow-md border border-pink-100 relative aspect-[4/3]">
+                            <Image src="/images/girls-naming-calendar-2.jpg" alt="ตั้งชื่อลูกสาวเสริมดวง" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -136,9 +145,15 @@ export default function GirlsByBirthdayPage() {
                                                 ))}
                                             </div>
                                             <div className="mt-4 text-right">
-                                                <Link href={`/search`} className="text-sm font-medium text-amber-600 hover:underline flex items-center justify-end gap-1">
-                                                    ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
-                                                </Link>
+                                                {dayKey === 'monday' ? (
+                                                    <Link href={`/names/girls/by-birthday/monday`} className="text-sm font-bold text-pink-600 hover:underline flex items-center justify-end gap-1">
+                                                        ดูชื่อลูกสาวเกิดวันจันทร์ทั้งหมด (100+ ชื่อ) <span aria-hidden="true">→</span>
+                                                    </Link>
+                                                ) : (
+                                                    <Link href={`/search`} className="text-sm font-medium text-amber-600 hover:underline flex items-center justify-end gap-1">
+                                                        ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
+                                                    </Link>
+                                                )}
                                             </div>
                                         </div>
 

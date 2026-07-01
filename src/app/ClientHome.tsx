@@ -137,43 +137,55 @@ function HomeResultPreview() {
             icon: CheckCircle2,
             title: 'คะแนนชื่อและนามสกุล',
             description: 'เห็นภาพรวมพลังชื่อ พร้อมเกรดและคำอธิบายที่อ่านง่าย',
+            color: 'from-emerald-400 to-emerald-500',
         },
         {
             icon: Layers3,
             title: 'ถอดรหัส 4 ศาสตร์หลัก',
             description: 'เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์ใน flow เดียว',
+            color: 'from-amber-400 to-amber-500',
         },
         {
             icon: ShieldCheck,
             title: 'เริ่มฟรีก่อนสมัคร',
             description: 'ลองวิเคราะห์ได้ทันที แล้วค่อยบันทึกหรือปลดล็อกผลเชิงลึกเมื่อพร้อม',
+            color: 'from-sky-400 to-sky-500',
         },
     ];
 
     return (
-        <section className="relative z-10 w-full px-4 pb-6 sm:px-6 lg:px-12 xl:px-16">
-            <div className="mx-auto grid w-full max-w-[1180px] gap-4 rounded-[1.75rem] border border-amber-200/50 bg-gradient-to-br from-[#fffdf8] to-white p-3 shadow-sm sm:p-5 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:p-8">
-                <div>
-                    <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 shadow-sm">
-                        <Sparkles className="h-3.5 w-3.5" />
+        <section className="relative z-10 w-full px-4 pb-12 pt-6 sm:px-6 lg:px-12 xl:px-16 mt-4 sm:mt-8">
+            <div className="mx-auto grid w-full max-w-[1180px] gap-6 rounded-[2rem] border border-[#ddddf0] bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center relative overflow-hidden">
+                {/* Decorative background elements */}
+                <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-amber-400/5 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-sky-400/5 blur-3xl" />
+                
+                <div className="relative z-10 pr-4">
+                    <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200/60 bg-amber-50/50 px-3.5 py-1.5 text-xs font-semibold text-amber-700">
+                        <Sparkles className="h-4 w-4 text-amber-500" />
                         หลังกรอกชื่อแล้วได้อะไร
                     </p>
-                    <h2 className="text-2xl font-bold leading-tight text-[#1a1a3e] sm:text-3xl">
-                        ผลลัพธ์แรกต้องตอบได้ทันทีว่า ชื่อนี้ควรไปต่อไหม
+                    <h2 className="text-2xl font-bold leading-[1.3] text-[#1a1a3e] sm:text-3xl lg:text-4xl">
+                        ผลลัพธ์แรกต้องตอบได้ทันทีว่า <br className="hidden sm:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-amber-700">ชื่อนี้ควรไปต่อไหม</span>
                     </h2>
+                    <p className="mt-4 text-sm leading-7 text-[#5a5a82] max-w-[320px] hidden lg:block">
+                        เราออกแบบการแสดงผลให้คุณตัดสินใจได้ง่ายที่สุด ด้วยข้อมูลที่ครบถ้วนแต่อ่านง่าย ไม่ซับซ้อน
+                    </p>
                 </div>
-                <div className="grid gap-2 sm:grid-cols-3">
-                    {previewItems.map((item) => (
+                
+                <div className="grid gap-3 sm:grid-cols-3 relative z-10">
+                    {previewItems.map((item, index) => (
                         <article
                             key={item.title}
-                            className="flex gap-3 rounded-2xl border border-amber-200/60 bg-gradient-to-br from-amber-50/70 to-[#fdf8ef] px-2.5 py-2.5 shadow-[0_1px_2px_rgba(15,23,42,0.05)] sm:block sm:p-4"
+                            className="group relative flex gap-4 rounded-[1.25rem] border border-[#ddddf0] bg-[#f8f8fc]/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-[0_12px_35px_rgba(15,23,42,0.06)] hover:-translate-y-1 sm:block sm:p-5"
                         >
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-700 sm:mb-3">
-                                <item.icon className="h-4.5 w-4.5" />
-                            </span>
+                            <div className={`mb-0 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl sm:mb-5 bg-gradient-to-br ${item.color} shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3`}>
+                                <item.icon className="h-5 w-5 text-white" />
+                            </div>
                             <div className="min-w-0">
-                                <h3 className="text-[13px] font-bold leading-5 text-[#1a1a3e] sm:text-sm">{item.title}</h3>
-                                <p className="mt-1 text-[11px] leading-5 text-[#4f5778] sm:mt-2 sm:text-xs sm:leading-6">{item.description}</p>
+                                <h3 className="text-[13.5px] font-bold leading-5 text-[#1a1a3e] sm:text-[15px]">{item.title}</h3>
+                                <p className="mt-1.5 text-[12px] leading-5 text-[#5a5a82] sm:mt-2.5 sm:text-[13px] sm:leading-relaxed">{item.description}</p>
                             </div>
                         </article>
                     ))}
