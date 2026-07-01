@@ -91,43 +91,44 @@ export function MondayThaksaTable() {
     ];
 
     return (
-        <div className="overflow-x-auto mb-8">
-            <table className="w-full text-sm border-collapse rounded-xl overflow-hidden border border-slate-200">
-                <thead>
-                    <tr className="bg-slate-800 text-white">
-                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/4">ทักษา</th>
-                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/3">ความหมาย</th>
-                        <th className="text-left px-4 py-3 font-bold border-b border-slate-700">กลุ่มตัวอักษร</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {categories.map((cat) => (
-                        <tr key={cat.name} className={`${cat.name === 'กาลกิณี' ? 'bg-red-50/50' : 'hover:bg-slate-50'} border-b border-slate-100 last:border-b-0`}>
-                            <td className="px-4 py-4 align-top">
-                                <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-base">{cat.icon}</span>
-                                    <span className={`font-bold ${cat.name === 'กาลกิณี' ? 'text-red-700' : 'text-slate-800'}`}>
-                                        {cat.name}
-                                    </span>
-                                </div>
-                                <span className="text-xs font-medium text-slate-500">{cat.nameEn}</span>
-                            </td>
-                            <td className={`px-4 py-4 align-top ${cat.name === 'กาลกิณี' ? 'text-red-600 font-medium' : 'text-slate-600'}`}>
-                                {cat.description}
-                            </td>
-                            <td className="px-4 py-4 align-top">
-                                {cat.isVowel ? (
-                                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-xs border border-red-200">
-                                        ⚠️ สระทั้งหมด + อ.อ่าง (ห้ามเป็นอักษรนำ)
-                                    </span>
-                                ) : (
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {(cat.letters || []).map((letter) => (
-                                            <span key={letter} className={`inline-flex items-center justify-center w-8 h-8 rounded-lg ${cat.badgeColor} font-bold text-sm border border-current/10`}>
-                                                {letter}
-                                            </span>
-                                        ))}
+        <div className="mb-8 space-y-8">
+            {/* Desktop Table */}
+            <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-sm border-collapse rounded-xl overflow-hidden border border-slate-200">
+                    <thead>
+                        <tr className="bg-slate-800 text-white">
+                            <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/4">ทักษา</th>
+                            <th className="text-left px-4 py-3 font-bold border-b border-slate-700 w-1/3">ความหมาย</th>
+                            <th className="text-left px-4 py-3 font-bold border-b border-slate-700">กลุ่มตัวอักษร</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {categories.map((cat) => (
+                            <tr key={cat.name} className={`${cat.name === 'กาลกิณี' ? 'bg-red-50/50' : 'hover:bg-slate-50'} border-b border-slate-100 last:border-b-0`}>
+                                <td className="px-4 py-4 align-top">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-base">{cat.icon}</span>
+                                        <span className={`font-bold ${cat.name === 'กาลกิณี' ? 'text-red-700' : 'text-slate-800'}`}>
+                                            {cat.name}
+                                        </span>
                                     </div>
+                                    <span className="text-xs font-medium text-slate-500">{cat.nameEn}</span>
+                                </td>
+                                <td className={`px-4 py-4 align-top ${cat.name === 'กาลกิณี' ? 'text-red-600 font-medium' : 'text-slate-600'}`}>
+                                    {cat.description}
+                                </td>
+                                <td className="px-4 py-4 align-top">
+                                    {cat.isVowel ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-xs border border-red-200">
+                                            ⚠️ สระทั้งหมด + อ.อ่าง (ห้ามเป็นอักษรนำ)
+                                        </span>
+                                    ) : (
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {(cat.letters || []).map((letter) => (
+                                                <span key={letter} className={`inline-flex items-center justify-center w-8 h-8 rounded-lg ${cat.badgeColor} font-bold text-sm border border-current/10`}>
+                                                    {letter}
+                                                </span>
+                                            ))}
                                         </div>
                                     )}
                                 </td>
@@ -152,7 +153,7 @@ export function MondayThaksaTable() {
                             </p>
                         ) : (
                             <div className="flex flex-wrap gap-1.5">
-                                {cat.letters!.map((letter) => (
+                                {(cat.letters || []).map((letter) => (
                                     <span key={letter} className={`inline-flex items-center justify-center w-7 h-7 rounded-lg ${cat.badgeColor} font-bold text-xs`}>
                                         {letter}
                                     </span>
