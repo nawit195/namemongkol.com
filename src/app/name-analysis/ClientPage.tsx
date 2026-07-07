@@ -11,6 +11,8 @@ import { NameAnalysisDetailCard } from '@/components/NameAnalysisDetailCard';
 import { supabase } from '@/utils/supabase';
 import { trackEvent } from '@/lib/analytics';
 
+const NAME_GENERATOR_PREFILL_KEY = 'namemongkol:name-analysis-prefill';
+
 // Define Result Interface to clear 'any' types if needed, but inferring is fine for now based on usage
 interface AnalysisResultItem {
     id: number;
@@ -58,6 +60,25 @@ export default function NameAnalysisPage() {
             }
         };
         fetchCredits();
+    }, []);
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const storedNames = window.sessionStorage.getItem(NAME_GENERATOR_PREFILL_KEY);
+        const namesParam = params.get('names');
+        const incomingNames = storedNames || namesParam;
+        if (!incomingNames) return;
+
+        const normalizedNames = incomingNames
+            .split(/\r?\n|,/)
+            .map((name) => name.trim())
+            .filter(Boolean)
+            .join('\n');
+
+        if (normalizedNames) {
+            setInputText((current) => current.trim() ? current : normalizedNames);
+            window.sessionStorage.removeItem(NAME_GENERATOR_PREFILL_KEY);
+        }
     }, []);
 
     const countNames = (text: string) => {

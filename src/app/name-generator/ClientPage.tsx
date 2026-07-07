@@ -1,6 +1,7 @@
 'use client';
-import React, { useState } from 'react';
-import { AlertTriangle, BriefcaseBusiness, ChevronDown, Crown, Download, Heart, Lock, Play, RefreshCw, ShieldCheck, Sparkles, Wand2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { AlertTriangle, BriefcaseBusiness, CheckCircle2, ChevronDown, ClipboardCopy, Crown, Download, Heart, Lock, Play, RefreshCw, ShieldCheck, Sparkles, Wand2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { pairDefinitions } from '@/data/numerology';
 import { pairDefinitions as detailedPairDefinitions } from '@/data/pairDefinitions';
@@ -11,6 +12,9 @@ import { getEffectiveCredits } from '@/utils/credits';
 
 // ── Algorithm Engine ──
 const NAME_GENERATOR_UNLOCK_COST = 50;
+const FREE_PREVIEW_COUNT = 5;
+const SHORTLIST_STORAGE_KEY = 'namemongkol:name-generator-shortlist';
+const SHORTLIST_TRANSFER_KEY = 'namemongkol:name-analysis-prefill';
 const SAFE_GROUPS = [1, 4, 5, 6, 9];
 const ALL_CONSONANTS = 'กขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮ'.split('');
 const FRAGMENTS = [
@@ -96,6 +100,21 @@ const resultCardThemes = [
 
 const fallbackResultTags = ['มงคล', 'ดีเยี่ยม'];
 
+type GeneratedName = { name: string, sum: number };
+type GoalId = 'baby' | 'rename' | 'brand' | 'kindness' | 'wealth' | 'authority' | 'simple';
+
+const goalOptions: { id: GoalId; label: string; description: string }[] = [
+    { id: 'baby', label: 'ตั้งชื่อลูก', description: 'เน้นความหมายดี อ่านไพเราะ ใช้ได้ระยะยาว' },
+    { id: 'rename', label: 'เปลี่ยนชื่อ', description: 'เน้นความมั่นใจและพลังชื่อใหม่' },
+    { id: 'brand', label: 'ชื่อร้าน/แบรนด์', description: 'เน้นจำง่าย ดูจริงจัง และต่อยอดธุรกิจได้' },
+    { id: 'kindness', label: 'เน้นเมตตา', description: 'เหมาะกับงานบริการ ความรัก และมนุษยสัมพันธ์' },
+    { id: 'wealth', label: 'เน้นการเงิน', description: 'คัดโทนชื่อที่สื่อถึงโอกาส รายได้ และค้าขาย' },
+    { id: 'authority', label: 'เน้นอำนาจ', description: 'เหมาะกับงานบริหาร ภาวะผู้นำ และบารมี' },
+    { id: 'simple', label: 'อ่านง่ายจำง่าย', description: 'เหมาะกับชื่อที่ต้องใช้บ่อยและบอกต่อได้ง่าย' },
+];
+
+const getSelectedGoal = (goalId: GoalId) => goalOptions.find((goal) => goal.id === goalId) ?? goalOptions[0];
+
 const getResultTags = (sum: number) => {
     const pairKey = String(sum).padStart(2, '0');
     const tags = detailedPairDefinitions[pairKey]?.tags ?? [];
@@ -126,6 +145,78 @@ const getResultTagTheme = (tag: string) => {
     return { icon: ShieldCheck, className: 'text-sky-700 bg-sky-50 border-sky-100' };
 };
 
+const getNameSequence = (name: string) =>
+    Array.from(name).map(c => getCharValue(c)).filter((v): v is number => v !== undefined);
+
+const getGreenPairCount = (name: string) => Math.max(getNameSequence(name).length - 1, 0);
+
+const getResultReason = (result: GeneratedName, goalId: GoalId) => {
+    const tags = getResultTags(result.sum);
+    const goal = getSelectedGoal(goalId);
+    const pairCount = getGreenPairCount(result.name);
+    const tagText = tags.length > 0 ? tags.join(' / ') : 'มงคล';
+
+    return `เหมาะกับ${goal.label} เพราะผลรวม ${result.sum} อยู่ในกลุ่มมงคล มีคู่เลขเขียว ${pairCount} คู่ และเด่นด้าน${tagText}`;
+};
+
+const getTopCounts = (items: string[], limit = 3) => {
+    const counts = new Map<string, number>();
+    items.forEach((item) => counts.set(item, (counts.get(item) ?? 0) + 1));
+
+    return Array.from(counts.entries())
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, limit);
+};
+
+const getResultSummary = (results: GeneratedName[]) => {
+    const topSums = getTopCounts(results.map((result) => String(result.sum)), 3);
+    const topTags = getTopCounts(results.flatMap((result) => getResultTags(result.sum)), 4);
+
+    return { topSums, topTags };
+};
+
+const goalPatterns: Record<GoalId, RegExp[]> = {
+    baby: [/เมตตา|ความรัก|ครอบครัว|อ่อนหวาน|โชค|มงคล/],
+    rename: [/สำเร็จ|โชค|บารมี|ผู้ใหญ่|ชื่อเสียง|มงคล|ดีเยี่ยม/],
+    brand: [/การเงิน|ค้าขาย|ขายดี|ชื่อเสียง|สำเร็จ|ผู้นำ|มั่งคั่ง/],
+    kindness: [/เมตตา|ความรัก|เสน่ห์|อ่อนหวาน|ครอบครัว/],
+    wealth: [/การเงิน|ร่ำรวย|ทรัพย์|เงิน|มั่งคั่ง|ขายดี|ค้าขาย|เศรษฐี/],
+    authority: [/ผู้นำ|อำนาจ|บารมี|ชื่อเสียง|ตำแหน่ง|ผู้ใหญ่|หนุน/],
+    simple: [/มงคล|ดีเยี่ยม/],
+};
+
+const getGoalMatchScore = (result: GeneratedName, goalId: GoalId) => {
+    const tagText = getResultTags(result.sum).join(' ');
+    const keywordScore = goalPatterns[goalId].reduce((score, pattern) => score + (pattern.test(tagText) ? 14 : 0), 0);
+    const simpleNameScore = goalId === 'simple'
+        ? Math.max(0, 18 - Math.max(result.name.length - 4, 0) * 4)
+        : result.name.length <= 6 ? 4 : 0;
+    const pairScore = Math.min(getGreenPairCount(result.name), 7);
+    const sumScore = AUSPICIOUS_SUMS.includes(result.sum) ? 8 : 0;
+
+    return keywordScore + simpleNameScore + pairScore + sumScore;
+};
+
+const sortResultsForGoal = (results: GeneratedName[], goalId: GoalId) => {
+    return [...results].sort((a, b) => {
+        const scoreDiff = getGoalMatchScore(b, goalId) - getGoalMatchScore(a, goalId);
+        if (scoreDiff !== 0) return scoreDiff;
+        return a.name.length - b.name.length;
+    });
+};
+
+const getFitScore = (result: GeneratedName, goalId: GoalId) => {
+    const score = 90 + Math.min(getGoalMatchScore(result, goalId), 9);
+    return Math.min(score, 99);
+};
+
+const getGoalFitLabel = (result: GeneratedName, goalId: GoalId) => {
+    const score = getGoalMatchScore(result, goalId);
+    if (score >= 24) return 'ตรงเป้าหมายมาก';
+    if (score >= 16) return 'เหมาะกับเป้าหมาย';
+    return 'ผ่านเกณฑ์ A+';
+};
+
 export default function ClientPage() {
     const router = useRouter();
     const [startChar, setStartChar] = useState('ก');
@@ -133,13 +224,47 @@ export default function ClientPage() {
     const [isUnlocking, setIsUnlocking] = useState(false);
     const [isResultsUnlocked, setIsResultsUnlocked] = useState(false);
     const [userCredits, setUserCredits] = useState<number | null>(null);
-    const [results, setResults] = useState<{name: string, sum: number}[]>([]);
+    const [results, setResults] = useState<GeneratedName[]>([]);
+    const [selectedGoal, setSelectedGoal] = useState<GoalId>('baby');
+    const [shortlistedNames, setShortlistedNames] = useState<string[]>([]);
+    const [hasLoadedShortlist, setHasLoadedShortlist] = useState(false);
+    const [hasCopiedShortlist, setHasCopiedShortlist] = useState(false);
     const selectedCharIsSafe = SAFE_GROUPS.includes(getCharValue(startChar) || 0);
+    const selectedGoalOption = getSelectedGoal(selectedGoal);
+    const displayedResults = sortResultsForGoal(results, selectedGoal);
+    const resultSummary = getResultSummary(displayedResults);
+    const previewCount = Math.min(FREE_PREVIEW_COUNT, displayedResults.length);
+    const hiddenCount = Math.max(displayedResults.length - previewCount, 0);
+    const analysisHref = shortlistedNames.length > 0
+        ? '/name-analysis?source=name-generator'
+        : '/name-analysis';
+
+    useEffect(() => {
+        try {
+            const storedShortlist = window.localStorage.getItem(SHORTLIST_STORAGE_KEY);
+            if (storedShortlist) {
+                const parsed = JSON.parse(storedShortlist);
+                if (Array.isArray(parsed)) {
+                    setShortlistedNames(parsed.filter((item): item is string => typeof item === 'string' && item.trim().length > 0));
+                }
+            }
+        } catch {
+            window.localStorage.removeItem(SHORTLIST_STORAGE_KEY);
+        } finally {
+            setHasLoadedShortlist(true);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!hasLoadedShortlist) return;
+        window.localStorage.setItem(SHORTLIST_STORAGE_KEY, JSON.stringify(shortlistedNames));
+    }, [hasLoadedShortlist, shortlistedNames]);
     
     // We will use a fast fragment combiner to generate names
     const generateNames = () => {
         setIsGenerating(true);
         setIsResultsUnlocked(false);
+        setShortlistedNames([]);
         setResults([]);
         
         // This runs asynchronously so it doesn't freeze the browser completely
@@ -152,7 +277,7 @@ export default function ClientPage() {
             if (prefixes.length === 0) prefixes.push(startChar);
 
             const generated = new Set<string>();
-            const output: {name: string, sum: number}[] = [];
+            const output: GeneratedName[] = [];
             
             // Loop to combine 2-3 fragments
             for (let i = 0; i < 5000; i++) {
@@ -218,8 +343,8 @@ export default function ClientPage() {
             }
 
             const confirm = await Swal.fire({
-                title: 'ปลดล็อกชื่อทั้งหมด?',
-                text: `ใช้ ${NAME_GENERATOR_UNLOCK_COST} เครดิตเพื่อแสดงรายชื่อจริงทั้งหมด ${results.length} รายชื่อ`,
+                title: 'ปลดล็อกชุดชื่อ A+?',
+                text: `ใช้ ${NAME_GENERATOR_UNLOCK_COST} เครดิตเพื่อแสดงชื่อจริงทั้งหมด ${results.length} รายชื่อ พร้อมผลรวม จุดเด่น และไฟล์ดาวน์โหลด`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: `ยืนยัน ใช้ ${NAME_GENERATOR_UNLOCK_COST} เครดิต`,
@@ -279,10 +404,11 @@ export default function ClientPage() {
         
         // Add BOM for correct UTF-8 rendering in Excel
         const BOM = "\uFEFF";
-        let csvContent = BOM + "Name,Sum,Grade\n";
+        let csvContent = BOM + "Name,Sum,Grade,Tags,Reason\n";
         
-        results.forEach(row => {
-            csvContent += `${row.name},${row.sum},A+\n`;
+        displayedResults.forEach(row => {
+            const tags = getResultTags(row.sum).join('|');
+            csvContent += `"${row.name}",${row.sum},A+,"${tags}","${getResultReason(row, selectedGoal)}"\n`;
         });
         
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -293,6 +419,31 @@ export default function ClientPage() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    };
+
+    const toggleShortlist = (name: string) => {
+        setShortlistedNames((current) =>
+            current.includes(name)
+                ? current.filter((item) => item !== name)
+                : [...current, name]
+        );
+    };
+
+    const copyShortlist = async () => {
+        if (shortlistedNames.length === 0) return;
+
+        try {
+            await navigator.clipboard.writeText(shortlistedNames.join('\n'));
+            setHasCopiedShortlist(true);
+            window.setTimeout(() => setHasCopiedShortlist(false), 1600);
+        } catch {
+            setHasCopiedShortlist(false);
+        }
+    };
+
+    const prepareShortlistForAnalysis = () => {
+        if (shortlistedNames.length === 0) return;
+        window.sessionStorage.setItem(SHORTLIST_TRANSFER_KEY, shortlistedNames.join('\n'));
     };
 
     return (
@@ -373,6 +524,36 @@ export default function ClientPage() {
                         </button>
                     </div>
 
+                    <div className="mt-5 rounded-2xl border border-violet-100 bg-white/70 p-4">
+                        <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                            <div>
+                                <p className="text-sm font-extrabold text-[#15163f]">ต้องการชื่อสำหรับอะไร?</p>
+                                <p className="text-xs leading-5 text-[#5a5a82]">ใช้ช่วยจัดคำอธิบายและจุดเด่นของชื่อให้ตรงเป้าหมายมากขึ้น</p>
+                            </div>
+                            <span className="text-xs font-bold text-violet-600">{selectedGoalOption.description}</span>
+                        </div>
+                        <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
+                            {goalOptions.map((goal) => {
+                                const isSelected = selectedGoal === goal.id;
+
+                                return (
+                                    <button
+                                        key={goal.id}
+                                        type="button"
+                                        onClick={() => setSelectedGoal(goal.id)}
+                                        className={`shrink-0 rounded-full border px-4 py-2 text-sm font-extrabold transition-colors ${
+                                            isSelected
+                                                ? 'border-[#15163f] bg-[#15163f] text-white shadow-sm'
+                                                : 'border-violet-100 bg-white text-[#5a5a82] hover:border-violet-200 hover:bg-violet-50'
+                                        }`}
+                                    >
+                                        {goal.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
                     <div className="mt-5 overflow-hidden rounded-2xl border border-amber-200 bg-[#fff9ed]/90 text-sm text-[#6b4d1f]">
                         <div className="flex items-start gap-3 border-b border-amber-200/70 px-4 py-3">
                             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-orange-500" />
@@ -394,6 +575,9 @@ export default function ClientPage() {
                                     <ShieldCheck className="h-4 w-4" />
                                     Verified A+
                                 </span>
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1.5 text-xs font-extrabold text-violet-700">
+                                    เรียงตาม: {selectedGoalOption.label}
+                                </span>
                                 {isResultsUnlocked && (
                                     <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-extrabold text-pink-700">
                                         <Lock className="h-3.5 w-3.5" />
@@ -410,6 +594,70 @@ export default function ClientPage() {
                                 ดาวน์โหลด CSV
                             </button>
                         </div>
+                        <div className="mb-5 grid gap-3 md:grid-cols-4">
+                            <div className="rounded-2xl border border-emerald-100 bg-white/85 p-4 shadow-sm">
+                                <p className="text-xs font-bold text-[#5a5a82]">Preview ฟรี</p>
+                                <p className="mt-1 text-2xl font-extrabold text-emerald-600">{previewCount} ชื่อ</p>
+                                <p className="mt-1 text-xs text-[#5a5a82]">พร้อมเหตุผลย่อก่อนปลดล็อก</p>
+                            </div>
+                            <div className="rounded-2xl border border-pink-100 bg-white/85 p-4 shadow-sm">
+                                <p className="text-xs font-bold text-[#5a5a82]">ชุดที่ล็อกไว้</p>
+                                <p className="mt-1 text-2xl font-extrabold text-pink-600">{hiddenCount} ชื่อ</p>
+                                <p className="mt-1 text-xs text-[#5a5a82]">ปลดล็อกครั้งเดียวดูได้ครบ</p>
+                            </div>
+                            <div className="rounded-2xl border border-amber-100 bg-white/85 p-4 shadow-sm">
+                                <p className="text-xs font-bold text-[#5a5a82]">ผลรวมเด่น</p>
+                                <p className="mt-1 text-sm font-extrabold text-amber-700">
+                                    {resultSummary.topSums.length > 0
+                                        ? resultSummary.topSums.map(([sum, count]) => `${sum} (${count})`).join(', ')
+                                        : '-'}
+                                </p>
+                                <p className="mt-1 text-xs text-[#5a5a82]">คัดเฉพาะผลรวมมงคล</p>
+                            </div>
+                            <div className="rounded-2xl border border-violet-100 bg-white/85 p-4 shadow-sm">
+                                <p className="text-xs font-bold text-[#5a5a82]">หมวดจุดเด่น</p>
+                                <p className="mt-1 text-sm font-extrabold text-violet-700">
+                                    {resultSummary.topTags.length > 0
+                                        ? resultSummary.topTags.map(([tag]) => tag).join(' / ')
+                                        : '-'}
+                                </p>
+                                <p className="mt-1 text-xs text-[#5a5a82]">อิงจากความหมายเลขศาสตร์</p>
+                            </div>
+                        </div>
+                        <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <p className="text-sm font-extrabold text-[#15163f]">Shortlist ชื่อที่สนใจ: {shortlistedNames.length} ชื่อ</p>
+                                <p className="mt-1 text-xs leading-5 text-[#5a5a82]">
+                                    {shortlistedNames.length > 0
+                                        ? shortlistedNames.slice(0, 6).join(', ')
+                                        : 'กดหัวใจบนชื่อที่ชอบ แล้วนำไปวิเคราะห์ต่อร่วมกับนามสกุล'}
+                                </p>
+                                {shortlistedNames.length > 0 && (
+                                    <p className="mt-1 text-[11px] font-bold text-emerald-700">
+                                        ระบบจะส่งรายชื่อนี้ไปเติมในหน้า Bulk Analysis ให้อัตโนมัติ
+                                    </p>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-2 sm:flex-row">
+                                <button
+                                    type="button"
+                                    onClick={copyShortlist}
+                                    disabled={shortlistedNames.length === 0}
+                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-extrabold text-[#5a5a82] transition-colors hover:border-violet-200 hover:bg-violet-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                    {hasCopiedShortlist ? <CheckCircle2 className="h-4 w-4 text-emerald-600" /> : <ClipboardCopy className="h-4 w-4" />}
+                                    {hasCopiedShortlist ? 'คัดลอกแล้ว' : 'คัดลอกชื่อ'}
+                                </button>
+                                <Link
+                                    href={analysisHref}
+                                    onClick={prepareShortlistForAnalysis}
+                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#15163f] bg-[#15163f] px-4 text-sm font-extrabold text-white transition-colors hover:bg-[#25265a]"
+                                >
+                                    วิเคราะห์ชื่อที่เลือกต่อ
+                                    <ChevronDown className="h-4 w-4 -rotate-90" />
+                                </Link>
+                            </div>
+                        </div>
                         {!isResultsUnlocked && (
                             <div className="mb-6 overflow-hidden rounded-3xl border border-pink-200 bg-white/85 p-4 shadow-[0_20px_60px_rgba(236,72,153,0.12)] backdrop-blur-xl sm:p-5">
                                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -418,10 +666,18 @@ export default function ClientPage() {
                                             <Lock className="h-5 w-5" />
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-extrabold text-[#15163f]">ปลดล็อกชื่อทั้งหมด {results.length} รายชื่อ</h3>
+                                            <h3 className="text-lg font-extrabold text-[#15163f]">ปลดล็อกชุดชื่อ A+ พร้อมเหตุผล {results.length} รายชื่อ</h3>
                                             <p className="mt-1 text-sm leading-6 text-[#5a5a82]">
-                                                ตอนนี้ระบบแสดงผลรวมและคุณสมบัติของชื่อไว้ก่อน ชื่อจริงจะถูก blur จนกว่าจะปลดล็อกด้วยเครดิต
+                                                แสดงชื่อจริงทั้งหมด พร้อมผลรวม จุดเด่น เหตุผลประกอบ และไฟล์ CSV สำหรับนำไปคัดเลือกต่อ
                                             </p>
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {['คัดคู่เลขเขียว', 'ผลรวมมงคล', 'ใช้เครดิตครั้งเดียวต่อชุด', 'นำไปวิเคราะห์ต่อได้'].map((item) => (
+                                                    <span key={item} className="inline-flex items-center gap-1 rounded-full border border-emerald-100 bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">
+                                                        <CheckCircle2 className="h-3.5 w-3.5" />
+                                                        {item}
+                                                    </span>
+                                                ))}
+                                            </div>
                                             {userCredits !== null && (
                                                 <p className="mt-1 text-xs font-bold text-emerald-700">เครดิตคงเหลือ: {userCredits}</p>
                                             )}
@@ -433,49 +689,82 @@ export default function ClientPage() {
                                         className="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#ffb15e_0%,#ff6f91_52%,#ec4899_100%)] px-6 text-sm font-extrabold text-white shadow-[0_14px_28px_rgba(236,72,153,0.22)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(236,72,153,0.28)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
                                     >
                                         {isUnlocking ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-                                        ใช้ {NAME_GENERATOR_UNLOCK_COST} เครดิตเพื่อแสดงชื่อ
+                                        ปลดล็อกชุดนี้ {NAME_GENERATOR_UNLOCK_COST} เครดิต
                                     </button>
                                 </div>
                             </div>
                         )}
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                            {results.map((r, i) => {
+                            {displayedResults.map((r, i) => {
                                 const theme = resultCardThemes[i % resultCardThemes.length];
                                 const tags = getResultTags(r.sum);
+                                const isNameVisible = isResultsUnlocked || i < FREE_PREVIEW_COUNT;
+                                const isShortlisted = shortlistedNames.includes(r.name);
+                                const pairCount = getGreenPairCount(r.name);
+                                const fitScore = getFitScore(r, selectedGoal);
+                                const fitLabel = getGoalFitLabel(r, selectedGoal);
+                                const reason = isNameVisible
+                                    ? getResultReason(r, selectedGoal)
+                                    : `ปลดล็อกเพื่อดูชื่อจริง พร้อมเหตุผลสำหรับ${selectedGoalOption.label} และจุดเด่นเลขศาสตร์`;
 
                                 return (
-                                    <div key={i} className={`group relative min-h-[174px] overflow-hidden rounded-2xl border p-4 shadow-lg transition-all hover:-translate-y-1 ${theme.card}`}>
+                                    <div key={i} className={`group relative min-h-[252px] overflow-hidden rounded-2xl border p-4 shadow-lg transition-all hover:-translate-y-1 ${theme.card}`}>
                                         <div className={`absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full text-sm font-extrabold ring-4 ${theme.rank}`}>
                                             {i + 1}
                                         </div>
-                                        <Heart className={`absolute right-4 top-4 h-5 w-5 ${theme.sparkle}`} />
+                                        <button
+                                            type="button"
+                                            onClick={() => isNameVisible && toggleShortlist(r.name)}
+                                            disabled={!isNameVisible}
+                                            aria-label={isShortlisted ? `นำ ${r.name} ออกจาก Shortlist` : isNameVisible ? `เก็บ ${r.name} เข้า Shortlist` : 'ปลดล็อกก่อนเก็บชื่อ'}
+                                            className={`absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border bg-white/85 shadow-sm transition-all ${
+                                                isShortlisted
+                                                    ? 'border-pink-200 text-pink-600'
+                                                    : isNameVisible
+                                                        ? 'border-white/80 text-[#8e8eaa] hover:border-pink-200 hover:text-pink-600'
+                                                        : 'cursor-not-allowed border-white/70 text-[#c6c6d8] opacity-70'
+                                            }`}
+                                        >
+                                            <Heart className={`h-4 w-4 ${isShortlisted ? 'fill-current' : ''}`} />
+                                        </button>
                                         <Sparkles className={`absolute bottom-4 right-5 h-4 w-4 ${theme.sparkle}`} />
 
                                         <div className="relative z-10 flex h-full flex-col justify-between gap-4 pt-6">
                                             <div className="text-center">
                                                 <div className={`mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-xl font-extrabold ring-4 ring-white/80 ${theme.icon}`}>
-                                                    {isResultsUnlocked ? r.name.slice(0, 1) : <Lock className="h-5 w-5" />}
+                                                    {isNameVisible ? r.name.slice(0, 1) : <Lock className="h-5 w-5" />}
                                                 </div>
                                                 <div className="relative mx-auto w-fit max-w-full">
                                                     <p
                                                         className={`break-words text-2xl font-extrabold leading-snug transition-all ${theme.name} ${
-                                                            isResultsUnlocked ? '' : 'select-none blur-[7px]'
+                                                            isNameVisible ? '' : 'select-none blur-[7px]'
                                                         }`}
-                                                        aria-label={isResultsUnlocked ? r.name : 'ชื่อถูกล็อก'}
+                                                        aria-label={isNameVisible ? r.name : 'ชื่อถูกล็อก'}
                                                     >
-                                                        {r.name}
+                                                        {isNameVisible ? r.name : 'ชื่อมงคล A+'}
                                                     </p>
-                                                    {!isResultsUnlocked && (
+                                                    {!isNameVisible && (
                                                         <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border border-white/80 bg-white/85 px-2.5 py-1 text-[10px] font-extrabold text-pink-600 shadow-sm">
                                                             <Lock className="h-3 w-3" />
                                                             ล็อกอยู่
                                                         </span>
                                                     )}
+                                                    {!isResultsUnlocked && isNameVisible && (
+                                                        <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-emerald-100 bg-white/90 px-2.5 py-1 text-[10px] font-extrabold text-emerald-700 shadow-sm">
+                                                            <ShieldCheck className="h-3 w-3" />
+                                                            Preview ฟรี
+                                                        </span>
+                                                    )}
                                                 </div>
                                                 <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-sm">
                                                     <span className={`font-bold ${theme.sum}`}>ผลรวม {r.sum}</span>
-                                                    <span className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${theme.excellent}`}>ดีเยี่ยม</span>
+                                                    <span className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${theme.excellent}`}>Grade A+</span>
+                                                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-xs font-extrabold text-emerald-700">คู่เลขเขียว {pairCount} คู่</span>
+                                                    <span className="rounded-full bg-[#15163f] px-2.5 py-1 text-xs font-extrabold text-white">{fitScore}% {fitLabel}</span>
                                                 </div>
+                                                <p className="mx-auto mt-3 max-w-[19rem] text-left text-xs leading-6 text-[#5a5a82]">
+                                                    {reason}
+                                                </p>
                                             </div>
 
                                             <div className="grid grid-cols-2 gap-2">
