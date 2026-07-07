@@ -260,6 +260,48 @@ body {
   animation: bounceSlow 2s infinite;
 }
 
+.article-rich-content .article-media {
+  width: min(100%, 1040px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article-rich-content .article-media img,
+.article-rich-content figure.not-prose img {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .article-rich-content .article-media,
+  .article-rich-content figure.not-prose:has(img) {
+    width: calc(100vw - 12px);
+    max-width: calc(100vw - 12px) !important;
+    margin-left: 50% !important;
+    margin-right: 0 !important;
+    transform: translateX(-50%);
+    border-radius: 12px;
+  }
+
+  .article-rich-content .article-media,
+  .article-rich-content figure.not-prose:has(img) {
+    padding: 4px !important;
+  }
+
+  .article-rich-content .article-media img,
+  .article-rich-content figure.not-prose img {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .article-rich-content .article-media figcaption {
+    padding-top: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
 .animate-cosmic-drift {
   animation: cosmicDrift 14s ease-in-out infinite;
 }

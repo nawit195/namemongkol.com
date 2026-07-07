@@ -1029,7 +1029,7 @@ export default async function ArticlePage({ params }: Props) {
 
                     {/* Content */}
                     {/* Content */}
-                    <article className={`${isWideMediaArticle ? "prose-headings:max-w-3xl prose-headings:mx-auto prose-p:max-w-3xl prose-p:mx-auto prose-ul:max-w-3xl prose-ul:mx-auto prose-ol:max-w-3xl prose-ol:mx-auto prose-blockquote:max-w-3xl prose-blockquote:mx-auto" : ""} prose prose-lg max-w-none text-[#5a5a82] prose-headings:text-[#1a1a3e] prose-a:text-amber-600 prose-strong:text-[#1a1a3e] prose-blockquote:border-amber-400 prose-blockquote:bg-amber-50 prose-blockquote:not-italic prose-blockquote:py-1 prose-blockquote:text-[#1a1a3e]`}>
+                    <article className={`${isWideMediaArticle ? "prose-headings:max-w-3xl prose-headings:mx-auto prose-p:max-w-3xl prose-p:mx-auto prose-ul:max-w-3xl prose-ul:mx-auto prose-ol:max-w-3xl prose-ol:mx-auto prose-blockquote:max-w-3xl prose-blockquote:mx-auto" : ""} article-rich-content prose prose-lg max-w-none text-[#5a5a82] prose-headings:text-[#1a1a3e] prose-a:text-amber-600 prose-strong:text-[#1a1a3e] prose-blockquote:border-amber-400 prose-blockquote:bg-amber-50 prose-blockquote:not-italic prose-blockquote:py-1 prose-blockquote:text-[#1a1a3e]`}>
                         <p className="lead rounded-2xl border border-amber-500/30 bg-amber-50 p-5 text-xl font-medium text-[#1a1a3e] shadow-sm leading-relaxed">
                             {article.excerpt}
                         </p>
