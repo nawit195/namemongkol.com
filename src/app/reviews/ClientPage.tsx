@@ -98,64 +98,64 @@ const SERVICE_FILTER_LABELS_TH: Record<'all' | ReviewServiceType, string> = {
 
 const REVIEW_CARD_TONES: ReviewCardTone[] = [
     {
-        card: 'border-orange-200 bg-[linear-gradient(135deg,#fff7ed_0%,#fffdf8_58%,#ffedd5_100%)] shadow-[0_14px_34px_rgba(251,146,60,0.16)]',
-        avatar: 'border-orange-200 bg-orange-100 text-orange-700',
-        quote: 'text-orange-300/70',
-        service: 'text-orange-700 hover:text-orange-800',
-        tag: 'border-orange-200 bg-orange-50 text-orange-700 hover:border-orange-300',
-        helpful: 'border-orange-300 bg-white/70 text-orange-700 hover:bg-orange-50',
-        helpfulActive: 'border-orange-400 bg-orange-100 text-orange-800',
-        share: 'border-orange-200 bg-white/70 text-orange-700 hover:border-orange-300 hover:bg-orange-50',
-        decoration: 'text-orange-300/45',
-        accent: 'bg-orange-300/20',
+        card: 'border-[#ead7aa] bg-[#fffefd] shadow-[0_8px_8px_rgba(15,23,42,0.08)]',
+        avatar: 'border-[#ead7aa] bg-[#f8f1e3] text-[#8a5a12]',
+        quote: 'text-[#f3c56b]/55',
+        service: 'text-[#0f1b34] hover:text-[#9a650d]',
+        tag: 'border-[#ead7aa] bg-[#fff7e7] text-[#8a5a12] hover:border-[#d8b56d]',
+        helpful: 'border-[#d8b56d] bg-white text-[#8a5a12] hover:bg-[#fff7e7]',
+        helpfulActive: 'border-[#d8b56d] bg-[#fff0c9] text-[#5f3b05]',
+        share: 'border-[#d9e0ea] bg-white text-[#0f1b34] hover:border-[#d8b56d] hover:bg-[#fff7e7]',
+        decoration: 'text-[#d8b56d]',
+        accent: 'bg-[#0f1b34]',
     },
     {
-        card: 'border-teal-200 bg-[linear-gradient(135deg,#ecfdf5_0%,#ffffff_56%,#ccfbf1_100%)] shadow-[0_14px_34px_rgba(20,184,166,0.15)]',
-        avatar: 'border-teal-200 bg-teal-100 text-teal-700',
-        quote: 'text-teal-300/70',
-        service: 'text-teal-700 hover:text-teal-800',
-        tag: 'border-teal-200 bg-teal-50 text-teal-700 hover:border-teal-300',
-        helpful: 'border-teal-300 bg-white/70 text-teal-700 hover:bg-teal-50',
-        helpfulActive: 'border-teal-400 bg-teal-100 text-teal-800',
-        share: 'border-teal-200 bg-white/70 text-teal-700 hover:border-teal-300 hover:bg-teal-50',
-        decoration: 'text-teal-300/45',
-        accent: 'bg-teal-300/20',
+        card: 'border-[#ead7aa] bg-[#fffefd] shadow-[0_8px_8px_rgba(15,23,42,0.08)]',
+        avatar: 'border-[#b9ddd6] bg-[#eefaf7] text-[#137466]',
+        quote: 'text-[#f3c56b]/55',
+        service: 'text-[#0f1b34] hover:text-[#137466]',
+        tag: 'border-[#b9ddd6] bg-[#effaf8] text-[#137466] hover:border-[#7cc6b8]',
+        helpful: 'border-[#b9ddd6] bg-white text-[#137466] hover:bg-[#effaf8]',
+        helpfulActive: 'border-[#7cc6b8] bg-[#dff7f2] text-[#0f5f54]',
+        share: 'border-[#d9e0ea] bg-white text-[#0f1b34] hover:border-[#7cc6b8] hover:bg-[#effaf8]',
+        decoration: 'text-[#d8b56d]',
+        accent: 'bg-[#0f1b34]',
     },
     {
-        card: 'border-pink-200 bg-[linear-gradient(135deg,#fff1f7_0%,#ffffff_54%,#fce7f3_100%)] shadow-[0_14px_34px_rgba(244,114,182,0.15)]',
-        avatar: 'border-pink-200 bg-pink-100 text-pink-700',
-        quote: 'text-pink-300/70',
-        service: 'text-pink-700 hover:text-pink-800',
-        tag: 'border-pink-200 bg-pink-50 text-pink-700 hover:border-pink-300',
-        helpful: 'border-pink-300 bg-white/70 text-pink-700 hover:bg-pink-50',
-        helpfulActive: 'border-pink-400 bg-pink-100 text-pink-800',
-        share: 'border-pink-200 bg-white/70 text-pink-700 hover:border-pink-300 hover:bg-pink-50',
-        decoration: 'text-pink-300/45',
-        accent: 'bg-pink-300/20',
+        card: 'border-[#ead7aa] bg-[#fffefd] shadow-[0_8px_8px_rgba(15,23,42,0.08)]',
+        avatar: 'border-[#f0c7d9] bg-[#fff1f6] text-[#bd3c73]',
+        quote: 'text-[#f3c56b]/55',
+        service: 'text-[#0f1b34] hover:text-[#bd3c73]',
+        tag: 'border-[#f0c7d9] bg-[#fff4f8] text-[#bd3c73] hover:border-[#e89cbc]',
+        helpful: 'border-[#f0c7d9] bg-white text-[#bd3c73] hover:bg-[#fff4f8]',
+        helpfulActive: 'border-[#e89cbc] bg-[#ffe4ef] text-[#9f285d]',
+        share: 'border-[#d9e0ea] bg-white text-[#0f1b34] hover:border-[#e89cbc] hover:bg-[#fff4f8]',
+        decoration: 'text-[#d8b56d]',
+        accent: 'bg-[#0f1b34]',
     },
     {
-        card: 'border-violet-200 bg-[linear-gradient(135deg,#f5f3ff_0%,#ffffff_56%,#ede9fe_100%)] shadow-[0_14px_34px_rgba(168,85,247,0.13)]',
-        avatar: 'border-violet-200 bg-violet-100 text-violet-700',
-        quote: 'text-violet-300/70',
-        service: 'text-violet-700 hover:text-violet-800',
-        tag: 'border-violet-200 bg-violet-50 text-violet-700 hover:border-violet-300',
-        helpful: 'border-violet-300 bg-white/70 text-violet-700 hover:bg-violet-50',
-        helpfulActive: 'border-violet-400 bg-violet-100 text-violet-800',
-        share: 'border-violet-200 bg-white/70 text-violet-700 hover:border-violet-300 hover:bg-violet-50',
-        decoration: 'text-violet-300/45',
-        accent: 'bg-violet-300/20',
+        card: 'border-[#ead7aa] bg-[#fffefd] shadow-[0_8px_8px_rgba(15,23,42,0.08)]',
+        avatar: 'border-[#d3c7f6] bg-[#f5f2ff] text-[#6a4fd1]',
+        quote: 'text-[#f3c56b]/55',
+        service: 'text-[#0f1b34] hover:text-[#6a4fd1]',
+        tag: 'border-[#d3c7f6] bg-[#f6f3ff] text-[#6a4fd1] hover:border-[#b8a7ef]',
+        helpful: 'border-[#d3c7f6] bg-white text-[#6a4fd1] hover:bg-[#f6f3ff]',
+        helpfulActive: 'border-[#b8a7ef] bg-[#ece6ff] text-[#5238b5]',
+        share: 'border-[#d9e0ea] bg-white text-[#0f1b34] hover:border-[#b8a7ef] hover:bg-[#f6f3ff]',
+        decoration: 'text-[#d8b56d]',
+        accent: 'bg-[#0f1b34]',
     },
     {
-        card: 'border-sky-200 bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_55%,#e0f2fe_100%)] shadow-[0_14px_34px_rgba(56,189,248,0.13)]',
-        avatar: 'border-sky-200 bg-sky-100 text-sky-700',
-        quote: 'text-sky-300/70',
-        service: 'text-sky-700 hover:text-sky-800',
-        tag: 'border-sky-200 bg-sky-50 text-sky-700 hover:border-sky-300',
-        helpful: 'border-sky-300 bg-white/70 text-sky-700 hover:bg-sky-50',
-        helpfulActive: 'border-sky-400 bg-sky-100 text-sky-800',
-        share: 'border-sky-200 bg-white/70 text-sky-700 hover:border-sky-300 hover:bg-sky-50',
-        decoration: 'text-sky-300/45',
-        accent: 'bg-sky-300/20',
+        card: 'border-[#ead7aa] bg-[#fffefd] shadow-[0_8px_8px_rgba(15,23,42,0.08)]',
+        avatar: 'border-[#bfd8ef] bg-[#eff7ff] text-[#246899]',
+        quote: 'text-[#f3c56b]/55',
+        service: 'text-[#0f1b34] hover:text-[#246899]',
+        tag: 'border-[#bfd8ef] bg-[#f0f8ff] text-[#246899] hover:border-[#91bee5]',
+        helpful: 'border-[#bfd8ef] bg-white text-[#246899] hover:bg-[#f0f8ff]',
+        helpfulActive: 'border-[#91bee5] bg-[#e4f2ff] text-[#1c557f]',
+        share: 'border-[#d9e0ea] bg-white text-[#0f1b34] hover:border-[#91bee5] hover:bg-[#f0f8ff]',
+        decoration: 'text-[#d8b56d]',
+        accent: 'bg-[#0f1b34]',
     },
 ];
 
@@ -306,7 +306,7 @@ const StarRating = ({ rating, size = 16 }: { rating: number; size?: number }) =>
             <Star
                 key={index}
                 size={size}
-                className={index < rating ? 'fill-amber-400 text-amber-400' : 'fill-slate-600 text-slate-600'}
+                className={index < rating ? 'fill-[#f59e0b] text-[#f59e0b]' : 'fill-slate-200 text-slate-200'}
             />
         ))}
     </span>
@@ -534,8 +534,8 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
         if (!review.is_verified) return null;
 
         return (
-            <span className={`inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 ${compact ? 'px-2 py-1 text-[11px]' : 'px-3 py-1.5 text-xs'} font-bold`}>
-                <BadgeCheck className="h-3.5 w-3.5 fill-emerald-100 text-emerald-600" />
+            <span className={`inline-flex items-center gap-1.5 rounded-full border border-[#d8b56d]/70 bg-[#0f1b34] text-white shadow-[0_4px_6px_rgba(15,23,42,0.14)] ${compact ? 'px-2.5 py-1 text-[11px]' : 'px-3 py-1.5 text-xs'} font-bold`}>
+                <BadgeCheck className="h-3.5 w-3.5 fill-[#f59e0b]/20 text-[#f8c56a]" />
                 {tr('pages.reviews.verifiedBadge', REVIEW_COPY_TH.verifiedBadge)}
             </span>
         );
@@ -572,7 +572,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                 {review.images.slice(0, 2).map((image, index) => (
                     <div
                         key={image}
-                        className={`relative overflow-hidden rounded-2xl border border-white/70 bg-white/60 shadow-sm ${review.images!.length === 1 ? 'aspect-video' : 'aspect-video sm:aspect-[4/3]'}`}
+                        className={`relative overflow-hidden rounded-xl border border-[#ead7aa] bg-[#fffefd] shadow-sm ${review.images!.length === 1 ? 'aspect-video' : 'aspect-video sm:aspect-[4/3]'}`}
                     >
                         <Image
                             src={image}
@@ -603,20 +603,18 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 12 }}
                 transition={{ duration: 0.25 }}
-                className={`break-inside-avoid overflow-hidden rounded-[1.35rem] border p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg max-sm:-mx-1 sm:p-5 lg:p-6 ${tone.card} ${isHighSignal ? 'ring-1 ring-white/70' : ''}`}
+                className={`break-inside-avoid overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_10px_rgba(15,23,42,0.10)] max-sm:-mx-1 ${tone.card} ${isHighSignal ? 'ring-1 ring-[#f3c56b]/45' : ''}`}
                 itemScope
                 itemType="https://schema.org/Review"
             >
                 <meta itemProp="itemReviewed" content={serviceInfo.name} />
-                <div className="relative">
+                <div className={`h-2.5 ${tone.accent}`} />
+                <div className="relative p-5 sm:p-5 lg:p-6">
                     {renderReviewActions(review)}
-                    <Quote className={`absolute right-0 top-0 h-10 w-10 sm:h-12 sm:w-12 ${tone.quote}`} />
-                    <Sparkles className={`pointer-events-none absolute right-12 top-7 h-4 w-4 ${tone.decoration}`} />
-                    <Star className={`pointer-events-none absolute bottom-24 right-4 h-5 w-5 fill-current ${tone.decoration}`} />
-                    <div className={`pointer-events-none absolute -bottom-12 -right-10 h-28 w-32 rounded-tl-[4rem] ${tone.accent}`} />
+                    <Quote className={`pointer-events-none absolute right-5 top-5 h-10 w-10 sm:h-12 sm:w-12 ${tone.quote}`} />
 
-                    <div className="mb-4 flex items-start gap-3 pr-10 sm:pr-14">
-                        <div className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border text-sm font-bold sm:h-11 sm:w-11 sm:text-base ${tone.avatar}`}>
+                    <div className="mb-4 flex items-start gap-3 pr-10 sm:pr-12">
+                        <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 text-sm font-extrabold shadow-sm sm:h-14 sm:w-14 sm:text-base ${tone.avatar}`}>
                             {review.avatar ? (
                                 <Image
                                     src={review.avatar}
@@ -632,41 +630,34 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         </div>
                         <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-bold text-[#1a1a3e]" itemProp="author" itemScope itemType="https://schema.org/Person">
+                                <span className="font-extrabold text-[#0f1b34]" itemProp="author" itemScope itemType="https://schema.org/Person">
                                     <span itemProp="name">{review.nickname}</span>
                                 </span>
                                 {renderVerifiedBadge(review, true)}
                             </div>
-                            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-medium text-[#5a5a82]">
+                            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#667085]">
                                 {review.role ? <span>{review.role}</span> : null}
-                                {review.role ? <span className="h-1 w-1 rounded-full bg-[#ddddf0]" /> : null}
+                                {review.role ? <span className="h-1 w-1 rounded-full bg-[#d8b56d]" /> : null}
                                 <Link href={serviceInfo.url} className={`${tone.service} hover:underline`}>
                                     {serviceInfo.shortName}
                                 </Link>
-                                {formattedDate ? (
-                                    <>
-                                        <span className="h-1 w-1 rounded-full bg-[#ddddf0]" />
-                                        <time dateTime={formattedDate.isoDate} itemProp="datePublished">
-                                            {formattedDate.thaiDate}
-                                        </time>
-                                    </>
-                                ) : null}
                             </div>
                         </div>
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 flex flex-wrap items-center gap-2">
                         <StarRating rating={review.rating} />
+                        <span className="text-xs font-semibold tabular-nums text-[#667085]">{formatAvgRating(review.rating)}</span>
                     </div>
 
-                    <p className="mb-4 line-clamp-7 text-[0.95rem] leading-7 text-[#3a3a5e] sm:mb-5 sm:line-clamp-6 sm:text-[0.95rem] sm:leading-7" itemProp="reviewBody">
+                    <p className="mb-4 line-clamp-7 text-[0.96rem] font-semibold leading-7 text-[#18233f] sm:mb-5 sm:line-clamp-6 sm:leading-7" itemProp="reviewBody">
                         &quot;{review.content}&quot;
                     </p>
 
                     {renderReviewMedia(review)}
 
                     {review.tags.length > 0 ? (
-                        <div className="flex flex-wrap gap-2 border-t border-[#eeeef6] pt-4">
+                        <div className="flex flex-wrap gap-2 border-t border-[#efe3c9] pt-4">
                             {review.tags.map(tag => (
                                 <Link
                                     key={`${review.id}-${tag}`}
@@ -679,28 +670,41 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         </div>
                     ) : null}
 
-                    <div className="mt-4 flex items-center justify-between gap-2 border-t border-[#eeeef6] pt-4 max-[380px]:flex-col max-[380px]:items-stretch">
-                        <button
-                            onClick={(event) => { event.stopPropagation(); handleHelpfulVote(review.id); }}
-                            disabled={userVotedReviews.has(review.id)}
-                            className={`inline-flex items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold transition-all ${userVotedReviews.has(review.id)
-                                ? tone.helpfulActive
-                                : tone.helpful
-                                }`}
-                        >
-                            <ThumbsUp size={14} className={userVotedReviews.has(review.id) ? 'fill-amber-500 text-amber-500' : ''} />
-                            <span>{t('pages.reviews.helpful')}</span>
-                            {(helpfulVotes[review.id] || 0) > 0 ? (
-                                <span className="tabular-nums">{helpfulVotes[review.id]}</span>
+                    <div className="mt-4 border-t border-[#efe3c9] pt-4">
+                        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-[#667085]">
+                            <span className="inline-flex items-center gap-1.5">
+                                <CheckCircle2 className="h-4 w-4 fill-emerald-50 text-emerald-600" />
+                                รีวิวจริง
+                            </span>
+                            {formattedDate ? (
+                                <time dateTime={formattedDate.isoDate} itemProp="datePublished">
+                                    {formattedDate.thaiDate}
+                                </time>
                             ) : null}
-                        </button>
-                        <button
-                            onClick={(event) => { event.stopPropagation(); handleShareReview(review); }}
-                            className={`inline-flex items-center justify-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${tone.share}`}
-                        >
-                            <Share2 size={14} />
-                            <span>{t('pages.reviews.share')}</span>
-                        </button>
+                        </div>
+                        <div className="flex items-center justify-between gap-2 max-[380px]:flex-col max-[380px]:items-stretch">
+                            <button
+                                onClick={(event) => { event.stopPropagation(); handleHelpfulVote(review.id); }}
+                                disabled={userVotedReviews.has(review.id)}
+                                className={`inline-flex items-center justify-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold transition-all ${userVotedReviews.has(review.id)
+                                    ? tone.helpfulActive
+                                    : tone.helpful
+                                    }`}
+                            >
+                                <ThumbsUp size={14} className={userVotedReviews.has(review.id) ? 'fill-amber-500 text-amber-500' : ''} />
+                                <span>{t('pages.reviews.helpful')}</span>
+                                {(helpfulVotes[review.id] || 0) > 0 ? (
+                                    <span className="tabular-nums">{helpfulVotes[review.id]}</span>
+                                ) : null}
+                            </button>
+                            <button
+                                onClick={(event) => { event.stopPropagation(); handleShareReview(review); }}
+                                className={`inline-flex items-center justify-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${tone.share}`}
+                            >
+                                <Share2 size={14} />
+                                <span>{t('pages.reviews.share')}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </motion.article>
@@ -782,7 +786,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.15 }}
-                                className="rounded-[1.35rem] border border-[#1e293b] bg-[#0f172a] p-3.5 text-white shadow-[0_14px_48px_rgba(15,23,42,0.15)] min-[390px]:p-4 sm:p-5"
+                                className="rounded-2xl border border-[#d8b56d]/60 bg-[#0f172a] p-3.5 text-white shadow-[0_8px_8px_rgba(15,23,42,0.12)] min-[390px]:p-4 sm:p-5"
                             >
                                 <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
                                     <div>
@@ -808,7 +812,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                         { icon: Sparkles, value: formatReviewCount(stats.serviceCount), label: tr('pages.reviews.serviceTypesLabel', REVIEW_COPY_TH.serviceTypesLabel) },
                                         { icon: Users, value: '100%', label: tr('pages.reviews.approvedLabel', REVIEW_COPY_TH.approvedLabel) },
                                     ].map(item => (
-                                        <div key={item.label} className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
+                                        <div key={item.label} className="min-w-0 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
                                             <item.icon className="mb-2 h-4 w-4 text-amber-300" />
                                             <div className="text-lg font-extrabold tabular-nums text-white sm:text-xl">{item.value}</div>
                                             <div className="mt-1 break-words text-[11px] font-medium leading-4 text-slate-300 sm:text-xs sm:leading-5">{item.label}</div>
@@ -844,7 +848,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                 </Link>
                             </div>
 
-                            <div className="grid gap-4 sm:gap-5 lg:grid-cols-[1.08fr_0.92fr]">
+                            <div className="-mx-3 flex snap-x gap-3 overflow-x-auto px-3 pb-2 sm:-mx-6 sm:gap-4 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-[1.08fr_0.92fr] lg:overflow-visible lg:px-0 lg:pb-0">
                                 {featuredReviews.map((review, index) => {
                                     const serviceInfo = SERVICE_INFO[review.service_type || 'general'] || SERVICE_INFO.general;
                                     const formattedDate = formatDateForSEO(review.date);
@@ -854,36 +858,45 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                     return (
                                         <article
                                             key={`featured-${review.id}`}
-                                            className={`relative overflow-hidden rounded-[1.35rem] border p-5 shadow-[0_16px_52px_rgba(15,23,42,0.10)] max-sm:-mx-1 sm:rounded-3xl sm:p-8 ${tone.card}`}
+                                            className={`relative w-[84vw] max-w-[84vw] shrink-0 snap-start overflow-hidden rounded-2xl border transition-all sm:w-[58vw] sm:max-w-[58vw] lg:w-auto lg:max-w-none lg:shrink ${tone.card}`}
                                         >
-                                            <Quote className={`absolute right-5 top-5 h-12 w-12 sm:right-6 sm:top-6 sm:h-16 sm:w-16 ${tone.quote}`} />
-                                            <Sparkles className={`pointer-events-none absolute right-24 top-10 h-5 w-5 ${tone.decoration}`} />
-                                            <Star className={`pointer-events-none absolute bottom-20 right-7 h-7 w-7 fill-current ${tone.decoration}`} />
-                                            <div className={`pointer-events-none absolute -bottom-12 -right-8 h-32 w-40 rounded-tl-[5rem] ${tone.accent}`} />
-                                            <div className="relative z-10">
-                                                <div className="mb-4 flex flex-wrap items-center gap-2 sm:mb-5">
+                                            <div className={`h-2.5 ${tone.accent}`} />
+                                            <Quote className={`pointer-events-none absolute right-4 top-7 h-10 w-10 sm:right-5 sm:top-8 sm:h-12 sm:w-12 lg:right-6 lg:top-9 lg:h-16 lg:w-16 ${tone.quote}`} />
+                                            <div className="relative z-10 p-4 sm:p-5 lg:p-8">
+                                                <div className="mb-3 flex flex-wrap items-center gap-1.5 sm:mb-4 sm:gap-2 lg:mb-5">
+                                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#fff7e7] px-2.5 py-1.5 text-[11px] font-extrabold text-[#9a650d] ring-1 ring-[#ead7aa] sm:px-3 sm:text-xs">
+                                                        <Star className="h-3.5 w-3.5 fill-[#f59e0b] text-[#f59e0b]" />
+                                                        {index === 0 ? 'รีวิวแนะนำ' : tr('pages.reviews.featuredEyebrow', REVIEW_COPY_TH.featuredEyebrow)}
+                                                    </span>
                                                     {renderVerifiedBadge(review)}
-                                                    <span className={`rounded-full border px-3 py-1.5 text-xs font-bold ${tone.tag}`}>
+                                                    <span className={`rounded-full border px-2.5 py-1.5 text-[11px] font-bold sm:px-3 sm:text-xs ${tone.tag}`}>
                                                         {serviceInfo.shortName}
                                                     </span>
                                                 </div>
-                                                <StarRating rating={review.rating} size={18} />
-                                                <p className={`mt-4 font-bold leading-7 sm:mt-5 sm:leading-9 ${isPrimary
-                                                    ? 'line-clamp-5 text-lg text-[#1a1a3e] sm:line-clamp-6 sm:text-2xl'
-                                                    : 'line-clamp-4 text-base text-[#1a1a3e] sm:line-clamp-5 sm:text-xl'
+                                                <div className="flex flex-wrap items-center gap-2">
+                                                    <StarRating rating={review.rating} size={18} />
+                                                    <span className="text-sm font-semibold tabular-nums text-[#667085]">{formatAvgRating(review.rating)}</span>
+                                                </div>
+                                                <p className={`mt-3 font-extrabold leading-7 sm:mt-4 lg:mt-5 lg:leading-9 ${isPrimary
+                                                    ? 'line-clamp-4 text-base text-[#1a1a3e] sm:line-clamp-5 sm:text-lg lg:line-clamp-6 lg:text-2xl'
+                                                    : 'line-clamp-4 text-base text-[#1a1a3e] sm:text-lg lg:line-clamp-5 lg:text-xl'
                                                     }`}>
                                                     &quot;{review.content}&quot;
                                                 </p>
-                                                <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-[#5a5a82]">
+                                                <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-[#efe3c9] pt-3 text-xs text-[#667085] sm:gap-3 sm:text-sm lg:mt-6 lg:pt-4">
                                                     <span className="font-bold text-[#1a1a3e]">{review.nickname}</span>
                                                     {review.role ? <span>{review.role}</span> : null}
+                                                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold">
+                                                        <CheckCircle2 className="h-4 w-4 fill-emerald-50 text-emerald-600" />
+                                                        รีวิวจริง
+                                                    </span>
                                                     {formattedDate ? <time dateTime={formattedDate.isoDate}>{formattedDate.thaiDate}</time> : null}
                                                 </div>
                                                 <Link
                                                     href={serviceInfo.url}
-                                                    className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-bold transition-colors sm:mt-7 sm:w-auto ${tone.helpful}`}
+                                                    className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#d8b56d] bg-[#0f1b34] px-3.5 py-2 text-xs font-extrabold text-white shadow-[0_5px_6px_rgba(15,23,42,0.14)] transition-colors hover:bg-[#172744] sm:mt-5 sm:w-auto sm:px-4 sm:py-2.5 sm:text-sm lg:mt-7"
                                                 >
-                                                    <Sparkles size={16} />
+                                                    <Sparkles size={16} className="text-[#f8c56a]" />
                                                     {tr('pages.reviews.featuredCta', REVIEW_COPY_TH.featuredCta)}
                                                 </Link>
                                             </div>
@@ -929,14 +942,14 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                             </p>
                         </div>
 
-                        <div className="-mx-3 mb-6 flex snap-x gap-2 overflow-x-auto px-3 pb-2 sm:mx-0 sm:mb-8 sm:flex-wrap sm:overflow-visible sm:px-0">
+                        <div className="-mx-3 mb-5 flex snap-x gap-1.5 overflow-x-auto px-3 pb-2 sm:mx-0 sm:mb-8 sm:flex-wrap sm:gap-2 sm:overflow-visible sm:px-0">
                             {SERVICE_FILTERS.map(filter => (
                                 <button
                                     key={filter.id}
                                     onClick={() => setSelectedService(filter.id)}
-                                    className={`min-h-10 shrink-0 snap-start whitespace-nowrap rounded-full border px-4 py-2 text-sm font-bold transition-all ${selectedService === filter.id
-                                        ? 'border-orange-300 bg-[linear-gradient(135deg,#fbbf24_0%,#fb7185_100%)] text-white shadow-[0_10px_24px_rgba(251,113,133,0.24)]'
-                                        : 'border-[#ddddf0] bg-white/90 text-[#1a1a3e] shadow-sm hover:border-pink-200 hover:bg-pink-50/70 hover:text-pink-700'
+                                    className={`min-h-8 shrink-0 snap-start whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-bold leading-5 transition-all sm:min-h-10 sm:px-4 sm:py-2 sm:text-sm ${selectedService === filter.id
+                                        ? 'border-[#d8b56d] bg-[#0f1b34] text-white shadow-[0_5px_6px_rgba(15,23,42,0.14)]'
+                                        : 'border-[#d9e0ea] bg-white text-[#1a1a3e] shadow-sm hover:border-[#d8b56d] hover:bg-[#fff7e7] hover:text-[#8a5a12]'
                                         }`}
                                 >
                                     {language === 'th' ? SERVICE_FILTER_LABELS_TH[filter.id] : t(filter.labelKey, filter.fallbackLabel)}
