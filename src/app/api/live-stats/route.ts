@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
+import { unstable_cache } from 'next/cache';
 import { createClient } from '@supabase/supabase-js';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 600;
 
 const emptyCounts = {
     analysis: 0,
@@ -14,7 +15,7 @@ const emptyCounts = {
 
 function cacheHeaders() {
     return {
-        'Cache-Control': 'no-store, max-age=0',
+        'Cache-Control': 'public, max-age=60, s-maxage=600, stale-while-revalidate=1800',
     };
 }
 
@@ -134,10 +135,19 @@ async function fetchLiveStats() {
     };
 }
 
+const getCachedLiveStats = unstable_cache(
+    fetchLiveStats,
+    ['public-live-stats'],
+    {
+        revalidate: 600,
+        tags: ['public-live-stats'],
+    },
+);
+
 export async function GET() {
     try {
         return NextResponse.json(
-            await fetchLiveStats(),
+            await getCachedLiveStats(),
             { headers: cacheHeaders() },
         );
     } catch (err) {

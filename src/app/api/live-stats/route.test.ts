@@ -5,7 +5,7 @@ vi.mock('@supabase/supabase-js', () => ({
 }));
 
 describe('/api/live-stats', () => {
-    test('returns no-store cache headers for near realtime stats', async () => {
+    test('returns cacheable headers for budget-friendly public stats', async () => {
         vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', '');
         vi.stubEnv('SUPABASE_SERVICE_ROLE_KEY', '');
         vi.stubEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY', '');
@@ -13,6 +13,7 @@ describe('/api/live-stats', () => {
         const { GET } = await import('./route');
         const response = await GET();
 
-        expect(response.headers.get('Cache-Control')).toBe('no-store, max-age=0');
+        expect(response.headers.get('Cache-Control')).toContain('s-maxage=600');
+        expect(response.headers.get('Cache-Control')).toContain('stale-while-revalidate=1800');
     });
 });

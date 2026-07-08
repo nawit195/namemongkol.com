@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],  // avif first for ~30% smaller payloads on mobile
     minimumCacheTTL: 2592000,          // Cache 30 days — prevents re-transformation on every request
-    qualities: [50, 75, 85, 90],                   // Include standard variants used by ArticleImage
+    qualities: [50, 75],                   // Keep variants tight to reduce image transformation/cache usage
     deviceSizes: [640, 750, 1080, 1920],  // Reduced set — covers mobile to desktop efficiently
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     remotePatterns,

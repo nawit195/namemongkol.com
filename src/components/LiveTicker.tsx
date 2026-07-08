@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Sparkles, Users, TrendingUp, Star, Heart, Phone, Hand, X, Download, Crown } from 'lucide-react';
 import { auspiciousNames } from '@/data/auspiciousNames';
+import { LIVE_STATS_FETCH_INIT, STATS_POLL_MS } from './heroLiveStats';
 
 type MessageType = 'analysis' | 'grade' | 'online' | 'review' | 'phone' | 'palm' | 'wallpaper' | 'premium';
 
@@ -254,11 +255,13 @@ export const LiveTicker: React.FC = () => {
         liveStatsRef.current = liveStats;
     }, [liveStats]);
 
-    // Fetch live stats on mount and every 60 seconds
+    // Fetch live stats only while the ticker is active; the endpoint is CDN-cached in budget mode.
     useEffect(() => {
+        if (isDismissed) return;
+
         const fetchStats = async () => {
             try {
-                const res = await fetch('/api/live-stats');
+                const res = await fetch('/api/live-stats', LIVE_STATS_FETCH_INIT);
                 if (res.ok) {
                     const data: LiveStats = await res.json();
                     setLiveStats(data);
@@ -268,9 +271,9 @@ export const LiveTicker: React.FC = () => {
             }
         };
         fetchStats();
-        const interval = setInterval(fetchStats, 300_000); // 5 minutes
+        const interval = setInterval(fetchStats, STATS_POLL_MS);
         return () => clearInterval(interval);
-    }, []);
+    }, [isDismissed]);
 
     const dismiss = useCallback(() => {
         setIsDismissed(true);
@@ -372,4 +375,3 @@ export const LiveTicker: React.FC = () => {
 };
 
 export default LiveTicker;
-

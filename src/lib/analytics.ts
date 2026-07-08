@@ -11,8 +11,11 @@
 
 import { supabase } from '@/utils/supabase';
 
-const CLICK_SAMPLE_RATE = 0.35;
+const CLICK_SAMPLE_RATE = 0.15;
 const DEDUPE_WINDOW_MS = 2000;
+const BATCH_FLUSH_MS = 10_000;
+const CRITICAL_FLUSH_MS = 1_000;
+const MAX_BATCH_SIZE = 10;
 const ALWAYS_TRACK_KEYWORDS = [
     'analyze',
     'submit',
@@ -30,6 +33,21 @@ const ALWAYS_TRACK_KEYWORDS = [
 // ---------------------------------------------------------------------------
 let _sessionId: string | null = null;
 const _recentEvents = new Map<string, number>();
+const _eventQueue: AnalyticsEventPayload[] = [];
+let _flushTimer: ReturnType<typeof setTimeout> | null = null;
+let _lifecycleListenersAttached = false;
+let _cachedUserId: string | null = null;
+let _userLookupStarted = false;
+
+interface AnalyticsEventPayload {
+    event_name: 'click';
+    button_key: string;
+    page_path: string;
+    user_id: string | null;
+    session_id: string;
+    referrer: string;
+    metadata: Record<string, unknown>;
+}
 
 function getSessionId(): string {
     if (_sessionId) return _sessionId;
@@ -48,6 +66,99 @@ function getSessionId(): string {
         return id;
     }
     return 'unknown';
+}
+
+async function getUserId(): Promise<string | null> {
+    if (_userLookupStarted) return _cachedUserId;
+    _userLookupStarted = true;
+
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        _cachedUserId = session?.user?.id ?? null;
+    } catch {
+        _cachedUserId = null;
+    }
+
+    return _cachedUserId;
+}
+
+function postAnalyticsBatch(batch: AnalyticsEventPayload[]): void {
+    if (batch.length === 0) return;
+
+    fetch('/api/analytics/ingest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ events: batch }),
+        keepalive: true,
+    }).catch(() => {
+        // Silently fail — analytics should never block UX
+    });
+}
+
+async function flushEvents(): Promise<void> {
+    if (_flushTimer) {
+        clearTimeout(_flushTimer);
+        _flushTimer = null;
+    }
+
+    if (_eventQueue.length === 0) return;
+
+    const batch = _eventQueue.splice(0, MAX_BATCH_SIZE);
+    const userId = await getUserId();
+    postAnalyticsBatch(batch.map(event => ({ ...event, user_id: event.user_id ?? userId })));
+
+    if (_eventQueue.length > 0) {
+        scheduleFlush();
+    }
+}
+
+function flushEventsBestEffort(): void {
+    if (_flushTimer) {
+        clearTimeout(_flushTimer);
+        _flushTimer = null;
+    }
+
+    if (_eventQueue.length === 0) return;
+
+    const batch = _eventQueue.splice(0, MAX_BATCH_SIZE);
+    const body = JSON.stringify({ events: batch.map(event => ({ ...event, user_id: event.user_id ?? _cachedUserId })) });
+
+    if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+        const sent = navigator.sendBeacon(
+            '/api/analytics/ingest',
+            new Blob([body], { type: 'application/json' }),
+        );
+
+        if (sent) return;
+    }
+
+    fetch('/api/analytics/ingest', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        keepalive: true,
+    }).catch(() => {
+        // Silently fail
+    });
+}
+
+function scheduleFlush(delay = BATCH_FLUSH_MS): void {
+    if (_flushTimer || typeof window === 'undefined') return;
+    _flushTimer = setTimeout(() => {
+        void flushEvents();
+    }, delay);
+}
+
+function ensureLifecycleFlush(): void {
+    if (typeof window === 'undefined' || _lifecycleListenersAttached) return;
+    _lifecycleListenersAttached = true;
+
+    window.addEventListener('pagehide', flushEventsBestEffort);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+            flushEventsBestEffort();
+        }
+    });
 }
 
 // ---------------------------------------------------------------------------
@@ -90,34 +201,25 @@ export async function trackEvent(
 
         _recentEvents.set(dedupeKey, now);
 
-        // Get user_id if logged in
-        let userId: string | null = null;
-        try {
-            const { data: { session } } = await supabase.auth.getSession();
-            userId = session?.user?.id ?? null;
-        } catch {
-            // not logged in — fine
-        }
-
         const payload = {
             event_name: 'click',
             button_key: buttonKey,
             page_path: pagePath,
-            user_id: userId,
+            user_id: _cachedUserId,
             session_id: getSessionId(),
             referrer: referrer.slice(0, 500),
             metadata: options.metadata ?? {},
-        };
+        } satisfies AnalyticsEventPayload;
 
-        // Fire-and-forget POST to ingest endpoint
-        fetch('/api/analytics/ingest', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            keepalive: true, // survive page navigations
-        }).catch(() => {
-            // Silently fail — analytics should never block UX
-        });
+        ensureLifecycleFlush();
+        _eventQueue.push(payload);
+
+        if (_eventQueue.length >= MAX_BATCH_SIZE) {
+            void flushEvents();
+            return;
+        }
+
+        scheduleFlush(shouldAlwaysTrack ? CRITICAL_FLUSH_MS : BATCH_FLUSH_MS);
     } catch {
         // Silently fail
     }

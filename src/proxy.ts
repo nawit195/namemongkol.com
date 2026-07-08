@@ -83,15 +83,15 @@ export async function proxy(request: NextRequest) {
         // Add rate limit headers
         const response = NextResponse.next();
         response.headers.set('X-RateLimit-Remaining', remaining.toString());
-        // Continue to next proxy/handler with headers
+        return response;
     }
 
-    // Skip Supabase auth for public paths (faster response)
-    const publicPaths = ['/', '/articles', '/search', '/about', '/terms', '/privacy', '/phone-analysis', '/name-analysis', '/premium-search', '/wallpapers', '/reviews', '/meaning', '/login', '/register', '/auth/update-password'];
-    const isPublicPath = publicPaths.some(p => pathname === p || (p !== '/' && pathname.startsWith(p + '/')));
-    const needsAuth = pathname.startsWith('/admin') || pathname.startsWith('/api/admin') || ['/topup', '/history', '/profile'].some(p => pathname.startsWith(p));
-    if (isPublicPath && !needsAuth) {
-        return NextResponse.next({ request: { headers: request.headers } });
+    if (pathname.startsWith('/api/auth')) {
+        return NextResponse.next({
+            request: {
+                headers: request.headers,
+            },
+        });
     }
 
     let response = NextResponse.next({
@@ -176,6 +176,11 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
     matcher: [
-        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+        '/admin/:path*',
+        '/api/admin/:path*',
+        '/topup/:path*',
+        '/history/:path*',
+        '/profile/:path*',
+        '/api/auth/:path*',
     ],
 };

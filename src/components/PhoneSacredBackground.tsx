@@ -60,7 +60,7 @@ export const PhoneSacredBackground = () => {
                         fill
                         priority
                         sizes="100vw"
-                        quality={90}
+                        quality={75}
                         className="object-cover object-center opacity-92"
                         style={{ objectPosition: '54% 50%' }}
                     />

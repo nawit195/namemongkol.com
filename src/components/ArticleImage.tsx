@@ -51,7 +51,7 @@ export const ArticleImage: React.FC<ArticleImageProps> = ({
         detail: '(max-width: 768px) 92vw, 768px',
         wide: '(max-width: 768px) 96vw, (max-width: 1200px) 92vw, 1040px',
     }[variant];
-    const quality = variant === 'detail' || variant === 'wide' ? 85 : 75;
+    const quality = 75;
 
     return (
         <Image

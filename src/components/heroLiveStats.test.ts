@@ -8,11 +8,11 @@ import {
 } from './heroLiveStats';
 
 describe('hero live stats helpers', () => {
-    test('requests uncached live stats at a near realtime cadence', () => {
-        expect(LIVE_STATS_FETCH_INIT).toEqual({ cache: 'no-store' });
-        expect(STATS_POLL_MS).toBeGreaterThanOrEqual(10_000);
-        expect(STATS_POLL_MS).toBeLessThanOrEqual(15_000);
-        expect(STATS_IDLE_DELAY_MS).toBeLessThanOrEqual(1_500);
+    test('requests cached stats at a Vercel budget-friendly cadence', () => {
+        expect(LIVE_STATS_FETCH_INIT).toEqual({ cache: 'force-cache' });
+        expect(STATS_POLL_MS).toBeGreaterThanOrEqual(5 * 60 * 1000);
+        expect(STATS_POLL_MS).toBeLessThanOrEqual(15 * 60 * 1000);
+        expect(STATS_IDLE_DELAY_MS).toBeGreaterThanOrEqual(2_000);
     });
 
     test('formats only positive numbers for social proof counts', () => {

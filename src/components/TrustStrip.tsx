@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Users, BarChart3, Star } from 'lucide-react';
+import { LIVE_STATS_FETCH_INIT } from './heroLiveStats';
 
 interface PublicStats {
     totalAnalyses: number;
@@ -27,7 +28,7 @@ export const TrustStrip = () => {
 
         const loadStats = async () => {
             try {
-                const res = await fetch('/api/live-stats');
+                const res = await fetch('/api/live-stats', LIVE_STATS_FETCH_INIT);
                 if (!res.ok) return;
 
                 const data = await res.json() as LiveStatsResponse;
@@ -45,11 +46,9 @@ export const TrustStrip = () => {
         };
 
         loadStats();
-        const interval = window.setInterval(loadStats, 60_000);
 
         return () => {
             isMounted = false;
-            window.clearInterval(interval);
         };
     }, []);
 

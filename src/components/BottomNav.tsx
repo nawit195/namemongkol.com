@@ -89,6 +89,7 @@ export const BottomNav = () => {
                                         alt=""
                                         width={20}
                                         height={20}
+                                        unoptimized
                                         className={`h-5 w-5 object-contain transition-all duration-200 ${
                                             isActive
                                                 ? 'drop-shadow-[0_0_3px_rgba(201,147,58,0.40)]'
