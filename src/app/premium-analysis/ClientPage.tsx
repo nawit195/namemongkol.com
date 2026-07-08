@@ -36,9 +36,24 @@ const MINUTES = Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0
 // Years range: B.E. 2450 - 2590 (A.D. 1907 - 2047)
 const START_BE = 2450;
 const END_BE = 2590;
-const VVIP_PRICE = 599;
+const DEFAULT_VVIP_PRICE = 599;
 const PREMIUM_ANALYSIS_COST = 30;
 type MemberTier = 'free' | 'pro' | 'vvip';
+
+type PricingTier = {
+    id: string;
+    credits: number;
+    price: number;
+    name: string;
+};
+
+const findVvipTier = (tiers: PricingTier[]) => tiers.find((tier) =>
+    tier.price === DEFAULT_VVIP_PRICE ||
+    tier.id.toLowerCase().includes('vvip') ||
+    tier.name.toLowerCase().includes('vvip') ||
+    tier.name.toLowerCase().includes('fortune') ||
+    tier.name.toLowerCase().includes('whale')
+);
 
 function normalizeTier(tier?: string | null): MemberTier {
     const normalized = (tier || '').toLowerCase();
@@ -66,6 +81,8 @@ export default function PremiumAnalysisPage() {
     const [hasAnalyzed, setHasAnalyzed] = useState(false);
     const [userTier, setUserTier] = useState<MemberTier>('free');
     const [userCredits, setUserCredits] = useState<number | null>(null);
+    const [vvipPrice, setVvipPrice] = useState<number | null>(null);
+    const [pricingFailed, setPricingFailed] = useState(false);
 
     // New state for extended date details
     const [dateDetails, setDateDetails] = useState<ThaiDateResult | null>(null);
@@ -139,11 +156,45 @@ export default function PremiumAnalysisPage() {
         };
     }, []);
 
+    useEffect(() => {
+        let isMounted = true;
+
+        const loadPricing = async () => {
+            try {
+                const res = await fetch('/api/pricing');
+                const data = await res.json();
+                const tiers = Array.isArray(data?.tiers) ? data.tiers as PricingTier[] : [];
+                const vvipTier = findVvipTier(tiers);
+
+                if (!isMounted) return;
+
+                if (vvipTier && typeof vvipTier.price === 'number') {
+                    setVvipPrice(vvipTier.price);
+                    setPricingFailed(false);
+                } else {
+                    setPricingFailed(true);
+                }
+            } catch {
+                if (isMounted) {
+                    setPricingFailed(true);
+                }
+            }
+        };
+
+        loadPricing();
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
 
     // State สำหรับเก็บวันเกิดตามโหราศาสตร์
     const [astrologicalDay, setAstrologicalDay] = useState<string>('sunday');
 
     const [shownNames, setShownNames] = useState<string[]>([]);
+    const displayVvipPrice = vvipPrice ?? (pricingFailed ? DEFAULT_VVIP_PRICE : null);
+    const VVIP_PRICE = displayVvipPrice ?? DEFAULT_VVIP_PRICE;
 
     // Sync birthDate state back to dropdowns if set externally (optional, but good for robust sync)
     // For now, simpler to just let dropdowns drive the state.

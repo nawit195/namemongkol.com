@@ -206,13 +206,7 @@ export default function SearchPage() {
 
     const [names, setNames] = useState<{ name: string; gender: string; meaning?: string }[]>([]); // Update type
     const [loading, setLoading] = useState(true);
-    const [publicStats, setPublicStats] = useState<PublicStats>({
-        totalAnalyses: 12000,
-        weeklyAnalyses: 12000,
-        totalUsers: 0,
-        avgRating: 4.8,
-        reviewCount: 512,
-    });
+    const [publicStats, setPublicStats] = useState<PublicStats | null>(null);
 
     // Fetch names from cached API
     useEffect(() => {
@@ -249,13 +243,13 @@ export default function SearchPage() {
 
                 const stats = json.stats as Partial<PublicStats>;
 
-                setPublicStats((prev) => ({
-                    totalAnalyses: typeof stats.totalAnalyses === 'number' ? stats.totalAnalyses : prev.totalAnalyses,
-                    weeklyAnalyses: typeof stats.weeklyAnalyses === 'number' ? stats.weeklyAnalyses : prev.weeklyAnalyses,
-                    totalUsers: typeof stats.totalUsers === 'number' ? stats.totalUsers : prev.totalUsers,
-                    avgRating: typeof stats.avgRating === 'number' ? stats.avgRating : prev.avgRating,
-                    reviewCount: typeof stats.reviewCount === 'number' ? stats.reviewCount : prev.reviewCount,
-                }));
+                setPublicStats({
+                    totalAnalyses: typeof stats.totalAnalyses === 'number' ? stats.totalAnalyses : 0,
+                    weeklyAnalyses: typeof stats.weeklyAnalyses === 'number' ? stats.weeklyAnalyses : 0,
+                    totalUsers: typeof stats.totalUsers === 'number' ? stats.totalUsers : 0,
+                    avgRating: typeof stats.avgRating === 'number' ? stats.avgRating : 0,
+                    reviewCount: typeof stats.reviewCount === 'number' ? stats.reviewCount : 0,
+                });
             } catch (err) {
                 console.error('Error fetching public stats:', err);
             }
@@ -518,8 +512,8 @@ export default function SearchPage() {
                                 {/* Social Proof & Engagement Section */}
                                 <div className="mb-4 flex flex-col items-center gap-2 md:mb-8 md:gap-3">
                                     <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
-                                        <ReviewBadge rating={publicStats.avgRating} count={publicStats.reviewCount} />
-                                        <UserStatsBadge users={publicStats.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
+                                        <ReviewBadge rating={publicStats?.avgRating} count={publicStats?.reviewCount} />
+                                        <UserStatsBadge users={publicStats?.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
                                     </div>
                                 </div>
                                 <div className="mb-5 text-center md:mb-12">

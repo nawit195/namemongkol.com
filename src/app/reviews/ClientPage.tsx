@@ -12,6 +12,7 @@ import {
     CreditCard,
     Edit,
     Filter,
+    ImageOff,
     MessageCircle,
     Plus,
     Quote,
@@ -235,6 +236,9 @@ const normalizeReview = (review: Review): Review => {
         : review.category
             ? [review.category]
             : [];
+    const images = Array.isArray(review.images)
+        ? review.images.filter((image): image is string => typeof image === 'string' && image.trim().length > 0)
+        : [];
 
     return {
         ...review,
@@ -243,7 +247,7 @@ const normalizeReview = (review: Review): Review => {
         service_type: review.service_type || inferServiceType(tags),
         is_verified: review.is_verified ?? Boolean(review.user_id),
         helpful_count: review.helpful_count || 0,
-        images: review.images || [],
+        images,
     };
 };
 
@@ -280,6 +284,11 @@ const formatReviewCount = (value: number) => value.toLocaleString('th-TH');
 const formatAvgRating = (value: number) => {
     if (!Number.isFinite(value) || value <= 0) return '0.0';
     return value.toFixed(1);
+};
+
+const isHeicReviewImage = (url: string) => {
+    const pathname = url.split('?')[0]?.toLowerCase() ?? '';
+    return pathname.endsWith('.heic') || pathname.endsWith('.heif');
 };
 
 const formatDateForSEO = (dateString?: string) => {
@@ -574,14 +583,23 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         key={image}
                         className={`relative overflow-hidden rounded-xl border border-[#ead7aa] bg-[#fffefd] shadow-sm ${review.images!.length === 1 ? 'aspect-video' : 'aspect-video sm:aspect-[4/3]'}`}
                     >
-                        <Image
-                            src={image}
-                            alt={`ภาพรีวิวจาก ${review.nickname} รูปที่ ${index + 1}`}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            className="object-cover"
-                            loading="lazy"
-                        />
+                        {isHeicReviewImage(image) ? (
+                            <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#fff8ea] px-4 text-center text-xs font-semibold text-[#8a641d]">
+                                <ImageOff className="h-6 w-6 text-[#c9933a]" />
+                                <span>ไฟล์ HEIC จาก iPhone ไม่รองรับบน Chrome</span>
+                                <span className="text-[11px] font-medium text-[#a38445]">กรุณาอัปโหลดเป็น JPG, PNG หรือ WebP</span>
+                            </div>
+                        ) : (
+                            <Image
+                                src={image}
+                                alt={`ภาพรีวิวจาก ${review.nickname} รูปที่ ${index + 1}`}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                                className="object-cover"
+                                loading="lazy"
+                                unoptimized
+                            />
+                        )}
                     </div>
                 ))}
             </div>

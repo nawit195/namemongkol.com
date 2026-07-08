@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { siteUrl } from '@/lib/seo';
 
 const aboutUrl = `${siteUrl}/about`;
+const founderImageUrl = `${siteUrl}/images/about/teacher-nut-namemongkol.webp`;
 
 export const metadata: Metadata = {
     title: {
@@ -37,6 +38,12 @@ export const metadata: Metadata = {
                 height: 630,
                 alt: 'เกี่ยวกับ NameMongkol แพลตฟอร์มวิเคราะห์ชื่อมงคล',
             },
+            {
+                url: founderImageUrl,
+                width: 1124,
+                height: 1354,
+                alt: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+            },
         ],
     },
     twitter: {
@@ -61,6 +68,13 @@ const jsonLd = {
                 url: `${siteUrl}/icon-512.png`,
                 width: 512,
                 height: 512,
+            },
+            image: {
+                '@type': 'ImageObject',
+                url: founderImageUrl,
+                width: 1124,
+                height: 1354,
+                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
             },
             description: 'แพลตฟอร์มวิเคราะห์ชื่อมงคล เบอร์โทร ลายมือ ออร่า วอลเปเปอร์ และบทความความรู้ด้านชื่อมงคล',
             foundingDate: '2024',
@@ -90,6 +104,30 @@ const jsonLd = {
             },
         },
         {
+            '@type': 'Person',
+            '@id': `${siteUrl}/about#teacher-nut`,
+            name: 'อาจารย์ณัฐ (NameMongkol)',
+            alternateName: 'NameMongkol',
+            image: {
+                '@type': 'ImageObject',
+                url: founderImageUrl,
+                width: 1124,
+                height: 1354,
+                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+            },
+            description: 'ผู้พัฒนาแนวคิดและระบบวิเคราะห์ชื่อมงคล ที่ผสานหลักศาสตร์ชื่อ ความหมาย ผลรวมเลขศาสตร์ และเทคโนโลยี AI เพื่อช่วยให้ผู้ใช้มีตัวเลือกชื่อที่เหมาะสมและมั่นใจมากขึ้น',
+            worksFor: {
+                '@id': `${siteUrl}/#organization`,
+            },
+            knowsAbout: [
+                'ศาสตร์ตัวอักษร',
+                'เลขศาสตร์ประยุกต์',
+                'การตั้งชื่อมงคล',
+                'การวิเคราะห์ชื่อ',
+                'AI ช่วยวิเคราะห์ชื่อ',
+            ],
+        },
+        {
             '@type': 'AboutPage',
             '@id': aboutUrl,
             url: aboutUrl,
@@ -108,6 +146,13 @@ const jsonLd = {
             mainEntity: {
                 '@id': `${siteUrl}/#organization`,
             },
+            primaryImageOfPage: {
+                '@type': 'ImageObject',
+                url: founderImageUrl,
+                width: 1124,
+                height: 1354,
+                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+            },
             breadcrumb: {
                 '@type': 'BreadcrumbList',
                 itemListElement: [
@@ -125,7 +170,7 @@ const jsonLd = {
                     },
                 ],
             },
-            dateModified: '2026-06-02',
+            dateModified: '2026-07-08',
             publisher: {
                 '@id': `${siteUrl}/#organization`,
             },

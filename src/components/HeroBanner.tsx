@@ -141,10 +141,10 @@ type LiveStatsResponse = {
 };
 
 const HeroSocialProof = () => {
-    const [analysisCount, setAnalysisCount] = React.useState('257');
-    const [memberCount, setMemberCount] = React.useState('211');
-    const [reviewCount, setReviewCount] = React.useState<number | null>(16);
-    const [avgRating, setAvgRating] = React.useState<number>(5);
+    const [analysisCount, setAnalysisCount] = React.useState<string | null>(null);
+    const [memberCount, setMemberCount] = React.useState<string | null>(null);
+    const [reviewCount, setReviewCount] = React.useState<number | null>(null);
+    const [avgRating, setAvgRating] = React.useState<number | null>(null);
 
     React.useEffect(() => {
         let isMounted = true;
@@ -181,11 +181,16 @@ const HeroSocialProof = () => {
                     setReviewCount(data.stats.reviewCount);
                 }
 
-                if (typeof data.stats?.avgRating === 'number' && data.stats.avgRating > 0) {
+                if (
+                    typeof data.stats?.avgRating === 'number' &&
+                    data.stats.avgRating > 0 &&
+                    typeof data.stats?.reviewCount === 'number' &&
+                    data.stats.reviewCount > 0
+                ) {
                     setAvgRating(data.stats.avgRating);
                 }
             } catch {
-                // Keep the public proof readable even if stats are unavailable.
+                // Keep placeholders visible if public stats are unavailable.
             }
         };
 
@@ -214,13 +219,17 @@ const HeroSocialProof = () => {
         };
     }, []);
 
-    // Derive star display from avgRating (rounded to nearest 0.5)
-    const starCount = Math.round(avgRating * 2) / 2;
+    const safeAvgRating = avgRating ?? 0;
+    const safeReviewCount = reviewCount ?? 0;
+    const hasReviewStats = safeAvgRating > 0 && safeReviewCount > 0;
+    const starCount = Math.round(safeAvgRating * 2) / 2;
     const fullStars = Math.floor(starCount);
     const hasHalf = starCount % 1 !== 0;
-    const ratingLabel = avgRating === Math.floor(avgRating)
-        ? `${avgRating}/5`
-        : `${avgRating.toFixed(1)}/5`;
+    const ratingLabel = hasReviewStats
+        ? safeAvgRating === Math.floor(safeAvgRating)
+            ? `${safeAvgRating}/5`
+            : `${safeAvgRating.toFixed(1)}/5`
+        : '...';
 
     return (
         <div className="mt-3 flex flex-col gap-2.5 rounded-2xl border border-amber-200/40 bg-gradient-to-r from-[#fffdf8] to-white px-4 py-3 shadow-sm sm:mt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-4 sm:py-3 lg:max-w-xl">
@@ -233,7 +242,7 @@ const HeroSocialProof = () => {
                 </div>
                 <div className="flex flex-col">
                     <p className="text-xs font-semibold leading-snug text-[#3a3a5c] sm:text-sm">
-                        สมาชิก <span className="font-bold text-amber-600">{memberCount}</span> คน
+                        สมาชิก <span className="font-bold text-amber-600">{memberCount ?? '...'}</span> คน
                     </p>
                     <p className="text-xs font-semibold leading-snug text-[#5a5a82] sm:text-sm">
                         เชื่อมั่นในผลลัพธ์
@@ -246,7 +255,7 @@ const HeroSocialProof = () => {
                 <span className="hidden h-4 w-px bg-[#ddddf0] sm:block" />
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5a5a82] sm:text-sm">
                     <BarChart3 className="h-3.5 w-3.5 text-amber-500" />
-                    <span className="font-bold text-amber-500">{analysisCount}</span>
+                    <span className="font-bold text-amber-500">{analysisCount ?? '...'}</span>
                     ครั้งที่วิเคราะห์แล้ว
                 </span>
 
@@ -254,13 +263,15 @@ const HeroSocialProof = () => {
 
                 <Link
                     href="/reviews"
-                    aria-label={`ดูรีวิวจากผู้ใช้งานทั้งหมด ${reviewCount ? reviewCount.toLocaleString('th-TH') : ''} รีวิว`}
+                    aria-label={hasReviewStats
+                        ? `ดูรีวิวจากผู้ใช้งานทั้งหมด ${safeReviewCount.toLocaleString('th-TH')} รีวิว`
+                        : 'ดูรีวิวจากผู้ใช้งาน'}
                     className="inline-flex items-center gap-1.5 rounded-full px-1.5 py-1 text-xs text-[#5a5a82] transition-all hover:bg-amber-50 hover:text-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 sm:text-sm"
                 >
                     <span className="font-bold text-amber-500">({ratingLabel})</span>
                     <span
                         className="flex items-center gap-0.5 text-amber-400"
-                        aria-label={`${ratingLabel} จาก ${reviewCount ?? '—'} รีวิว`}
+                        aria-label={hasReviewStats ? `${ratingLabel} จาก ${safeReviewCount} รีวิว` : 'คะแนนรีวิวกำลังอัปเดต'}
                     >
                         {Array.from({ length: 5 }).map((_, index) => (
                             <Star
@@ -276,7 +287,7 @@ const HeroSocialProof = () => {
                         ))}
                     </span>
                     <span className="text-[10px] sm:text-xs font-medium text-[#8e8eaa] ml-0.5 whitespace-nowrap">
-                        ({reviewCount ? reviewCount.toLocaleString('th-TH') : '...'} รีวิว)
+                        ({hasReviewStats ? safeReviewCount.toLocaleString('th-TH') : '...'} รีวิว)
                     </span>
                 </Link>
             </div>

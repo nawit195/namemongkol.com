@@ -97,7 +97,7 @@ const gradeMessages = (stats: LiveStats | null): TickerMessage => {
 };
 
 const onlineMessages = (stats: LiveStats | null): TickerMessage => {
-    const count = stats ? stats.onlineNow : Math.floor(Math.random() * 30) + 8;
+    const count = stats?.onlineNow ?? 0;
     const isReal = stats !== null;
     const templates = [
         () => `${count} คนกำลังใช้งานตอนนี้`,
@@ -219,12 +219,14 @@ const messageGenerators: Generator[] = [
 
 const generateMessage = (stats: LiveStats | null): TickerMessage => {
     // Boost weight of generators that have real activity data
-    const generators = messageGenerators.map((g) => ({
-        ...g,
-        weight: g.countKey && stats && (stats.counts[g.countKey] ?? 0) > 0
-            ? g.weight + 10
-            : g.weight,
-    }));
+    const generators = messageGenerators
+        .filter((g) => g.fn !== onlineMessages || (stats?.onlineNow ?? 0) > 0)
+        .map((g) => ({
+            ...g,
+            weight: g.countKey && stats && (stats.counts[g.countKey] ?? 0) > 0
+                ? g.weight + 10
+                : g.weight,
+        }));
     const total = generators.reduce((sum, g) => sum + g.weight, 0);
     let r = Math.random() * total;
     for (const g of generators) {

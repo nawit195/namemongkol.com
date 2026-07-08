@@ -43,6 +43,15 @@ const SERVICE_TYPES: { id: ReviewServiceType; label: string }[] = [
     { id: 'general', label: '📝 ทั่วไป' }
 ];
 
+const ACCEPTED_REVIEW_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+const ACCEPTED_REVIEW_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+
+const isAcceptedReviewImage = (file: File) => {
+    const fileName = file.name.toLowerCase();
+    return ACCEPTED_REVIEW_IMAGE_TYPES.includes(file.type)
+        || ACCEPTED_REVIEW_IMAGE_EXTENSIONS.some(extension => fileName.endsWith(extension));
+};
+
 export const ReviewFormModal: React.FC<ReviewFormModalProps> = ({ isOpen, onClose, initialData, onSuccess }) => {
     const [step, setStep] = useState<'form' | 'success'>('form');
     const [rating, setRating] = useState(initialData?.rating || 5);
@@ -119,6 +128,10 @@ export const ReviewFormModal: React.FC<ReviewFormModalProps> = ({ isOpen, onClos
             }
             if (!file.type.startsWith('image/')) {
                 alert(`ไฟล์ ${file.name} ไม่ใช่รูปภาพ`);
+                return false;
+            }
+            if (!isAcceptedReviewImage(file)) {
+                alert(`ไฟล์ ${file.name} ไม่รองรับบนเว็บ กรุณาอัปโหลดเป็น JPG, PNG หรือ WebP`);
                 return false;
             }
             return true;
@@ -517,7 +530,7 @@ export const ReviewFormModal: React.FC<ReviewFormModalProps> = ({ isOpen, onClos
                                         ref={fileInputRef}
                                         onChange={handleFileSelect}
                                         className="hidden"
-                                        accept="image/*"
+                                        accept="image/jpeg,image/png,image/webp"
                                         multiple
                                     />
 
@@ -557,7 +570,7 @@ export const ReviewFormModal: React.FC<ReviewFormModalProps> = ({ isOpen, onClos
                                                 <UploadCloud size={20} className="text-slate-400" />
                                             </div>
                                             <p className="text-sm text-slate-300 font-medium">คลิกเพื่ออัปโหลด หรือลากไฟล์มาวาง</p>
-                                            <p className="text-[10px] text-slate-500 mt-1">ไฟล์ JPG, PNG ขนาดไม่เกิน 5MB</p>
+                                            <p className="text-[10px] text-slate-500 mt-1">ไฟล์ JPG, PNG, WebP ขนาดไม่เกิน 5MB</p>
                                             <button
                                                 type="button"
                                                 onClick={() => fileInputRef.current?.click()}
