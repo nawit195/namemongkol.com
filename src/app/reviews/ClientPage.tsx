@@ -621,18 +621,18 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                 className={`break-inside-avoid overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_10px_rgba(15,23,42,0.10)] max-sm:-mx-1 ${tone.card} ${isHighSignal ? 'ring-1 ring-[#f3c56b]/45' : ''}`}
             >
                 <div className={`h-2.5 ${tone.accent}`} />
-                <div className="relative p-5 sm:p-5 lg:p-6">
+                <div className="relative p-4 sm:p-5 lg:p-6">
                     {renderReviewActions(review)}
-                    <Quote className={`pointer-events-none absolute right-5 top-5 h-10 w-10 sm:h-12 sm:w-12 ${tone.quote}`} />
+                    <Quote className={`pointer-events-none absolute right-4 top-4 h-10 w-10 sm:right-5 sm:top-5 sm:h-12 sm:w-12 ${tone.quote}`} />
 
-                    <div className="mb-4 flex items-start gap-3 pr-10 sm:pr-12">
-                        <div className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 text-sm font-extrabold shadow-sm sm:h-14 sm:w-14 sm:text-base ${tone.avatar}`}>
+                    <div className="mb-3 flex items-start gap-3 pr-10 sm:pr-12 sm:mb-4">
+                        <div className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 text-sm font-extrabold shadow-sm sm:h-14 sm:w-14 sm:text-base ${tone.avatar}`}>
                             {review.avatar ? (
                                 <Image
                                     src={review.avatar}
                                     alt={`รูปโปรไฟล์ของ ${review.nickname}`}
                                     fill
-                                    sizes="44px"
+                                    sizes="40px"
                                     className="object-cover"
                                     unoptimized
                                 />
@@ -657,12 +657,12 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         </div>
                     </div>
 
-                    <div className="mb-4 flex flex-wrap items-center gap-2">
+                    <div className="mb-3 flex flex-wrap items-center gap-2 sm:mb-4">
                         <StarRating rating={review.rating} />
-                        <span className="text-xs font-semibold tabular-nums text-[#667085]">{formatAvgRating(review.rating)}</span>
+                        <span className="tabular-nums text-xs font-semibold text-[#667085]">{formatAvgRating(review.rating)}</span>
                     </div>
 
-                    <p className="mb-4 line-clamp-7 text-[0.96rem] font-semibold leading-7 text-[#18233f] sm:mb-5 sm:line-clamp-6 sm:leading-7">
+                    <p className="mb-3 line-clamp-6 text-[0.92rem] font-semibold leading-relaxed text-[#18233f] sm:mb-5 sm:line-clamp-6 sm:text-[0.96rem] sm:leading-7">
                         &quot;{review.content}&quot;
                     </p>
 
@@ -726,7 +726,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
     return (
         <SoftYellowGlowBackground className="pb-20 text-[#5a5a82] sm:pb-28">
             <main className="relative z-10">
-                <section className="px-4 pb-8 pt-8 sm:px-6 sm:pb-10 sm:pt-12 lg:px-8 lg:pt-20 xl:pt-24">
+                <section className="px-3 pb-6 pt-4 sm:px-6 sm:pb-10 sm:pt-12 lg:px-8 lg:pt-20 xl:pt-24">
                     <div className="mx-auto max-w-7xl">
                         <div className="grid items-center gap-7 sm:gap-9 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.78fr)]">
                             <div>
@@ -743,7 +743,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                     initial={{ opacity: 0, y: 18 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.05 }}
-                                    className="max-w-4xl text-[2.15rem] font-extrabold leading-[1.1] tracking-normal text-[#1a1a3e] min-[390px]:text-[2.35rem] sm:text-5xl lg:text-6xl"
+                                    className="max-w-4xl text-[1.85rem] font-extrabold leading-[1.15] tracking-normal text-[#1a1a3e] min-[390px]:text-[2rem] sm:text-5xl sm:leading-[1.1] lg:text-6xl"
                                 >
                                     {t('pages.reviews.title')}
                                 </motion.h1>
@@ -752,43 +752,46 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                     initial={{ opacity: 0, y: 18 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 }}
-                                    className="mt-4 max-w-2xl text-sm leading-7 text-[#5a5a82] sm:mt-5 sm:text-lg sm:leading-8"
+                                    className="mt-3 max-w-2xl text-sm leading-6 text-[#5a5a82] sm:mt-5 sm:text-lg sm:leading-8"
                                 >
                                     {t('pages.reviews.description')}
                                 </motion.p>
 
-                                <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+                                <div className="mt-5 flex flex-col gap-2 sm:mt-7 sm:flex-row sm:gap-3">
                                     <button
                                         onClick={handleWriteStory}
-                                        className="group relative inline-flex w-full items-center justify-center gap-3 overflow-visible rounded-2xl border border-amber-400/80 bg-[#0f172a] px-5 py-4 text-left text-white shadow-[0_16px_36px_rgba(245,158,11,0.30)] transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:bg-[#111c31] focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 sm:w-auto sm:min-w-[330px] sm:justify-start sm:px-6 sm:py-4"
+                                        className="group relative inline-flex w-full items-center justify-center gap-2.5 overflow-visible rounded-xl border border-amber-400/80 bg-[#0f172a] px-4 py-3 text-left text-white shadow-[0_16px_36px_rgba(245,158,11,0.30)] transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:bg-[#111c31] focus:outline-none focus:ring-2 focus:ring-amber-300 focus:ring-offset-2 sm:w-auto sm:min-w-[330px] sm:justify-start sm:gap-3 sm:rounded-2xl sm:px-6 sm:py-4"
                                     >
-                                        <span className="absolute -top-3 right-4 rounded-full bg-[linear-gradient(135deg,#ff4fb2_0%,#ff2e7e_58%,#ff8a00_100%)] px-3 py-1 text-[11px] font-extrabold text-white shadow-[0_8px_18px_rgba(236,72,153,0.32)] ring-2 ring-white/80 sm:-top-4 sm:right-5 sm:rotate-6">
+                                        <span className="absolute -top-2 right-2 rounded-full bg-[linear-gradient(135deg,#ff4fb2_0%,#ff2e7e_58%,#ff8a00_100%)] px-2.5 py-0.5 text-[10px] font-extrabold text-white shadow-[0_8px_18px_rgba(236,72,153,0.32)] ring-1 ring-white/80 sm:-top-4 sm:right-5 sm:rotate-6 sm:px-3 sm:py-1 sm:text-[11px] sm:ring-2">
                                             รับ 30 เครดิตฟรี!
                                         </span>
-                                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-amber-300/40 bg-amber-400/10 text-amber-300 shadow-sm transition-transform group-hover:scale-105">
-                                            <MessageCircle size={22} />
+                                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-amber-300/40 bg-amber-400/10 text-amber-300 shadow-sm transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
+                                            <MessageCircle size={20} className="text-amber-300 sm:hidden" />
+                                            <MessageCircle size={22} className="hidden text-amber-300 sm:block" />
                                         </span>
-                                        <span className="min-w-0 pt-1">
-                                            <span className="block text-base font-extrabold leading-tight text-amber-300 sm:text-lg">
+                                        <span className="min-w-0 pt-0.5 sm:pt-1">
+                                            <span className="block text-sm font-extrabold leading-tight text-amber-300 sm:text-lg">
                                                 เขียนเรื่องราวของคุณ
                                             </span>
-                                            <span className="mt-1 block text-xs font-semibold leading-5 text-amber-400/90 sm:text-sm">
+                                            <span className="mt-0.5 block text-[11px] font-semibold leading-relaxed text-amber-400/90 sm:mt-1 sm:text-sm sm:leading-5">
                                                 แบ่งปันประสบการณ์เพื่อเป็นวิทยาทาน
                                             </span>
                                         </span>
                                     </button>
                                     <Link
                                         href="/name-analysis"
-                                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#ddddf0] bg-white px-5 py-3.5 text-sm font-bold text-[#1a1a3e] shadow-sm transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 sm:w-auto sm:text-base"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#ddddf0] bg-white px-4 py-2.5 text-xs font-bold text-[#1a1a3e] shadow-sm transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 sm:w-auto sm:rounded-xl sm:px-5 sm:py-3.5 sm:text-base"
                                     >
-                                        <Search size={18} className="text-amber-500" />
+                                        <Search size={16} className="text-amber-500 sm:hidden" />
+                                        <Search size={18} className="hidden text-amber-500 sm:block" />
                                         {t('pages.reviews.ctaAnalyze')}
                                     </Link>
                                     <Link
                                         href="/name-generator"
-                                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-pink-200 bg-pink-50 px-5 py-3.5 text-sm font-bold text-pink-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-pink-300 hover:bg-pink-100 sm:w-auto sm:text-base"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-pink-200 bg-pink-50 px-4 py-2.5 text-xs font-bold text-pink-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-pink-300 hover:bg-pink-100 sm:w-auto sm:rounded-xl sm:px-5 sm:py-3.5 sm:text-base"
                                     >
-                                        <WandSparkles size={18} className="text-pink-500" />
+                                        <WandSparkles size={16} className="text-pink-500 sm:hidden" />
+                                        <WandSparkles size={18} className="hidden text-pink-500 sm:block" />
                                         {tr('pages.reviews.generatorCta', REVIEW_COPY_TH.generatorCta)}
                                     </Link>
                                 </div>
@@ -798,26 +801,26 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.15 }}
-                                className="rounded-2xl border border-[#d8b56d]/60 bg-[#0f172a] p-3.5 text-white shadow-[0_8px_8px_rgba(15,23,42,0.12)] min-[390px]:p-4 sm:p-5"
+                                className="rounded-2xl border border-[#d8b56d]/60 bg-[#0f172a] p-3.5 text-white shadow-[0_8px_8px_rgba(15,23,42,0.12)] sm:p-5"
                             >
-                                <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+                                <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-3 sm:pb-4">
                                     <div>
-                                        <p className="text-xs font-bold uppercase tracking-wider text-amber-300">
+                                        <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-300">
                                             {tr('pages.reviews.statsTitle', REVIEW_COPY_TH.statsTitle)}
                                         </p>
-                                        <div className="mt-2 flex items-end gap-2">
-                                            <span className="text-3xl font-extrabold tabular-nums text-white min-[390px]:text-4xl">
+                                        <div className="mt-1 sm:mt-2 flex items-end gap-1.5 sm:gap-2">
+                                            <span className="text-3xl font-extrabold tabular-nums text-white sm:text-4xl">
                                                 {formatAvgRating(stats.averageRating)}
                                             </span>
-                                            <span className="pb-2 text-sm font-bold text-slate-300">/ 5</span>
+                                            <span className="pb-1.5 sm:pb-2 text-xs sm:text-sm font-bold text-slate-300">/ 5</span>
                                         </div>
                                     </div>
-                                    <div className="rounded-2xl border border-amber-400/30 bg-amber-400/10 p-2.5">
-                                        <Star className="h-6 w-6 fill-amber-400 text-amber-400 sm:h-7 sm:w-7" />
+                                    <div className="rounded-xl sm:rounded-2xl border border-amber-400/30 bg-amber-400/10 p-2 sm:p-2.5">
+                                        <Star className="h-5 w-5 sm:h-7 sm:w-7 fill-amber-400 text-amber-400" />
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-2.5 pt-4">
+                                <div className="grid grid-cols-2 gap-2 pt-3 sm:gap-2.5 sm:pt-4">
                                     {[
                                         { icon: MessageCircle, value: formatReviewCount(stats.reviewCount), label: tr('pages.reviews.totalReviewsLabel', REVIEW_COPY_TH.totalReviewsLabel) },
                                         { icon: ShieldCheck, value: formatReviewCount(stats.verifiedCount), label: tr('pages.reviews.verifiedReviewsLabel', REVIEW_COPY_TH.verifiedReviewsLabel) },
@@ -825,9 +828,9 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                         { icon: Users, value: '100%', label: tr('pages.reviews.approvedLabel', REVIEW_COPY_TH.approvedLabel) },
                                     ].map(item => (
                                         <div key={item.label} className="min-w-0 rounded-xl border border-white/10 bg-white/[0.04] p-2.5 sm:p-3">
-                                            <item.icon className="mb-2 h-4 w-4 text-amber-300" />
-                                            <div className="text-lg font-extrabold tabular-nums text-white sm:text-xl">{item.value}</div>
-                                            <div className="mt-1 break-words text-[11px] font-medium leading-4 text-slate-300 sm:text-xs sm:leading-5">{item.label}</div>
+                                            <item.icon className="mb-1.5 h-3.5 w-3.5 sm:mb-2 sm:h-4 sm:w-4 text-amber-300" />
+                                            <div className="text-[1.05rem] sm:text-xl font-extrabold tabular-nums text-white">{item.value}</div>
+                                            <div className="mt-1 break-words text-[10px] sm:text-[11px] font-medium leading-[14px] text-slate-300 sm:leading-5">{item.label}</div>
                                         </div>
                                     ))}
                                 </div>
