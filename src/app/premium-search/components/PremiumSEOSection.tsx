@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 interface PremiumSEOSectionProps {
     allNamesLength: number;
+    freeNamesCount?: number;
 }
 
 const featureCards = [
@@ -32,8 +33,9 @@ const featureCards = [
     },
 ];
 
-export default function PremiumSEOSection({ allNamesLength }: PremiumSEOSectionProps) {
+export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }: PremiumSEOSectionProps) {
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+    const freeNamesLabel = freeNamesCount > 0 ? freeNamesCount.toLocaleString('th-TH') : 'อัปเดตจากฐานข้อมูล';
 
     const faqs = [
         {
@@ -54,7 +56,7 @@ export default function PremiumSEOSection({ allNamesLength }: PremiumSEOSectionP
         { feature: 'คัดกรองอักษรกาลกิณี', free: true, pro: true },
         { feature: 'เลือกอักษรนำ (วรรคเดช/ศรี)', free: false, pro: true },
         { feature: 'เกรดของผลรวมเลขศาสตร์', free: 'คละเกรด', pro: 'เกรด A+ เท่านั้น', highlightPro: true },
-        { feature: 'จำนวนชื่อในฐานข้อมูล', free: '5,000+', pro: `${allNamesLength.toLocaleString()} (คัดพิเศษ)`, highlightPro: true },
+        { feature: 'จำนวนชื่อในฐานข้อมูล', free: freeNamesLabel, pro: `${allNamesLength.toLocaleString('th-TH')} (คัดพิเศษ)`, highlightPro: true },
         { feature: 'กรองตามเพศ', free: false, pro: true },
         { feature: 'คุณภาพความหมาย', free: 'ปานกลาง', pro: 'คัดสรรพิเศษ', highlightPro: true },
     ];

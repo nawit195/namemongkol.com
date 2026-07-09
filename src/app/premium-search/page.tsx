@@ -2,9 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import ClientPage from './ClientPage';
+import { premiumNamesRaw } from '@/data/premiumNamesRaw';
+import { countRawNameLines } from '@/lib/nameCounts';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
+const premiumNamesCount = countRawNameLines(premiumNamesRaw);
+const premiumNamesCountLabel = premiumNamesCount.toLocaleString('th-TH');
 
 export const metadata: Metadata = {
     title: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม | NameMongkol',
@@ -61,7 +65,7 @@ const jsonLd = {
                 'description': '15 เครดิตต่อการค้นหา 1 ครั้ง'
             },
             'featureList': [
-                'ฐานข้อมูลชื่อมงคล 1,172 ชื่อที่คัดสรรแล้ว',
+                `ฐานข้อมูลชื่อมงคล ${premiumNamesCountLabel} ชื่อที่คัดสรรแล้ว`,
                 'ระบบคัดกรองอักษรกาลกิณี 100%',
                 'เลือกอักษรนำตามทักษา (วรรคเดช/วรรคศรี)',
                 'กรองตามผลรวมเลขศาสตร์ เกรด A+ เท่านั้น',

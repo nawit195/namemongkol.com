@@ -307,10 +307,7 @@ const formatDateForSEO = (dateString?: string) => {
 };
 
 const StarRating = ({ rating, size = 16 }: { rating: number; size?: number }) => (
-    <span className="inline-flex items-center gap-1" itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
-        <meta itemProp="ratingValue" content={String(rating)} />
-        <meta itemProp="bestRating" content="5" />
-        <meta itemProp="worstRating" content="1" />
+    <span className="inline-flex items-center gap-1">
         {Array.from({ length: 5 }).map((_, index) => (
             <Star
                 key={index}
@@ -622,10 +619,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                 exit={{ opacity: 0, y: 12 }}
                 transition={{ duration: 0.25 }}
                 className={`break-inside-avoid overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_10px_rgba(15,23,42,0.10)] max-sm:-mx-1 ${tone.card} ${isHighSignal ? 'ring-1 ring-[#f3c56b]/45' : ''}`}
-                itemScope
-                itemType="https://schema.org/Review"
             >
-                <meta itemProp="itemReviewed" content={serviceInfo.name} />
                 <div className={`h-2.5 ${tone.accent}`} />
                 <div className="relative p-5 sm:p-5 lg:p-6">
                     {renderReviewActions(review)}
@@ -648,8 +642,8 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         </div>
                         <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-extrabold text-[#0f1b34]" itemProp="author" itemScope itemType="https://schema.org/Person">
-                                    <span itemProp="name">{review.nickname}</span>
+                                <span className="font-extrabold text-[#0f1b34]">
+                                    <span>{review.nickname}</span>
                                 </span>
                                 {renderVerifiedBadge(review, true)}
                             </div>
@@ -668,7 +662,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                         <span className="text-xs font-semibold tabular-nums text-[#667085]">{formatAvgRating(review.rating)}</span>
                     </div>
 
-                    <p className="mb-4 line-clamp-7 text-[0.96rem] font-semibold leading-7 text-[#18233f] sm:mb-5 sm:line-clamp-6 sm:leading-7" itemProp="reviewBody">
+                    <p className="mb-4 line-clamp-7 text-[0.96rem] font-semibold leading-7 text-[#18233f] sm:mb-5 sm:line-clamp-6 sm:leading-7">
                         &quot;{review.content}&quot;
                     </p>
 
@@ -695,7 +689,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                 รีวิวจริง
                             </span>
                             {formattedDate ? (
-                                <time dateTime={formattedDate.isoDate} itemProp="datePublished">
+                                <time dateTime={formattedDate.isoDate}>
                                     {formattedDate.thaiDate}
                                 </time>
                             ) : null}

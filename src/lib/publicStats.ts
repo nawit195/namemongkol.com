@@ -1,4 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
+import { premiumNamesRaw } from '@/data/premiumNamesRaw';
+import { countRawNameLines } from '@/lib/nameCounts';
 
 export const PUBLIC_STATS_REVALIDATE_SECONDS = 600;
 
@@ -162,6 +164,7 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
     const totalAnalyses = countValue(analysisTotalRes);
     const weeklyAnalyses = countValue(weeklyAnalysisRes);
     const totalNames = countValue(namesTotalRes);
+    const totalPremiumNames = countRawNameLines(premiumNamesRaw);
     const reviews = reviewsRes.error ? [] : reviewsRes.data ?? [];
     const reviewCount = reviews.length;
     const avgRating = reviewCount > 0
@@ -175,7 +178,7 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
             members: totalUsers,
             analyses: totalAnalyses,
             names: totalNames,
-            premiumNames: 0,
+            premiumNames: totalPremiumNames,
             reviews: reviewCount,
         },
         stats: {
@@ -186,7 +189,7 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
             reviewCount,
             totalApprovedReviews: reviewCount,
             totalNames,
-            totalPremiumNames: 0,
+            totalPremiumNames,
         },
         counts,
         ts: now.toISOString(),

@@ -132,6 +132,7 @@ export default function ClientPage() {
     const [unlockedCounts, setUnlockedCounts] = useState<Record<string, number>>({});
     const [isLoading, setIsLoading] = useState(false);
     const [userCredits, setUserCredits] = useState<number | null>(null);
+    const [freeNamesCount, setFreeNamesCount] = useState(0);
 
     const dayOptions = useMemo(() => ([
         { value: 'All', label: t('pages.premiumSearch.filters.dayAll') },
@@ -197,6 +198,23 @@ export default function ClientPage() {
         const handleForceCreditsUpdate = () => fetchCredits();
         window.addEventListener('force_credits_update', handleForceCreditsUpdate);
         return () => window.removeEventListener('force_credits_update', handleForceCreditsUpdate);
+    }, []);
+
+    useEffect(() => {
+        const fetchPublicStats = async () => {
+            try {
+                const res = await fetch('/api/public/stats');
+                const json = await res.json();
+                const totalNames = json?.stats?.totalNames;
+                if (typeof totalNames === 'number') {
+                    setFreeNamesCount(totalNames);
+                }
+            } catch (err) {
+                console.error('Error fetching public stats for premium search:', err);
+            }
+        };
+
+        fetchPublicStats();
     }, []);
 
     const performUnlock = async (letter: string, amount: number) => {
@@ -516,7 +534,7 @@ export default function ClientPage() {
                         </div>
                     )}
 
-                    <PremiumSEOSection allNamesLength={allNames.length} />
+                    <PremiumSEOSection allNamesLength={allNames.length} freeNamesCount={freeNamesCount} />
 
                 </div>
             </main>

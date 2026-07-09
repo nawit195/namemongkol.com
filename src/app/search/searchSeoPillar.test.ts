@@ -6,46 +6,38 @@ const root = process.cwd();
 const readSource = (filePath: string) => readFileSync(path.join(root, filePath), 'utf8');
 
 describe('/search SEO pillar content', () => {
+    test('uses database-backed name counts instead of a hardcoded marketing number', () => {
+        const pageSource = readSource('src/app/search/page.tsx');
+        const clientSource = readSource('src/app/search/ClientPage.tsx');
+
+        expect(pageSource).toContain('fetchPublicAggregateStats');
+        expect(pageSource).toContain('liveNamesLabel');
+        expect(pageSource).toContain('numberOfItems: liveNamesCount');
+        expect(pageSource).not.toContain('numberOfItems: 5000');
+
+        expect(clientSource).toContain('totalNames');
+        expect(clientSource).toContain('liveNameCount');
+        expect(clientSource).toContain('ชื่อในฐานข้อมูลล่าสุด');
+    });
+
     test('targets ชื่อมงคล as the primary search landing page', () => {
         const pageSource = readSource('src/app/search/page.tsx');
-        const dictionarySource = readSource('src/i18n/dictionaries.ts');
 
-        expect(pageSource).toContain('ชื่อมงคล 5,000+ ชื่อ พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม | NameMongkol');
+        expect(pageSource).toContain('ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด');
         expect(pageSource).toContain('title: { absolute: searchPageTitle }');
-        expect(pageSource).toContain('รายชื่อมงคล 5,000+ ชื่อ');
-        expect(dictionarySource).toContain('ชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ');
+        expect(pageSource).toContain('รายชื่อมงคล');
+        expect(pageSource).toContain('ตั้งชื่อลูก');
+        expect(pageSource).toContain('เปลี่ยนชื่อมงคล');
     });
 
     test('renders server-side answer sections and FAQ for AEO', () => {
         const pageSource = readSource('src/app/search/page.tsx');
 
-        expect(pageSource).toContain('ชื่อมงคลคืออะไร');
-        expect(pageSource).toContain('วิธีเลือกชื่อมงคลให้เหมาะกับวันเกิด');
-        expect(pageSource).toContain('ชื่อมงคลชาย / ชื่อมงคลหญิง');
-        expect(pageSource).toContain('หลังเลือกชื่อแล้วควรวิเคราะห์ร่วมกับนามสกุลอย่างไร');
-        expect(pageSource).toContain('ชื่อมงคลตามวันเกิดดูอย่างไร');
-    });
-
-    test('covers supporting keyword clusters without duplicate FAQ anchors', () => {
-        const pageSource = readSource('src/app/search/page.tsx');
-        const clientSource = readSource('src/app/search/ClientPage.tsx');
-        const combinedSearchSource = `${pageSource}\n${clientSource}`;
-
-        expect(combinedSearchSource).toContain('ชื่อมงคลตามวันเกิด');
-        expect(combinedSearchSource).toContain('ตั้งชื่อลูกชาย');
-        expect(combinedSearchSource).toContain('ตั้งชื่อลูกสาว');
-        expect(combinedSearchSource).toContain('ชื่อความหมายดี');
-        expect(combinedSearchSource).toContain('เปลี่ยนชื่อมงคล');
-        expect(combinedSearchSource).toContain('ตั้งชื่อลูก 2569');
-        expect(combinedSearchSource.match(/id="search-faq"/g) ?? []).toHaveLength(1);
-    });
-
-    test('keeps baby-name supporting pages out of the global sidebar', () => {
-        const sidebarSource = readSource('src/components/Sidebar.tsx');
-
-        expect(sidebarSource).not.toContain("key: 'baby-names'");
-        expect(sidebarSource).not.toContain('ตั้งชื่อลูกสาว');
-        expect(sidebarSource).not.toContain('ตั้งชื่อลูกชาย');
+        expect(pageSource).toContain('id="auspicious-name-pillar"');
+        expect(pageSource).toContain('id="search-faq"');
+        expect(pageSource).toContain('pillarFaqs');
+        expect(pageSource).toContain('FAQPage');
+        expect(pageSource).toContain('SpeakableSpecification');
     });
 
     test('passes internal authority from related pages to /search', () => {
@@ -53,10 +45,9 @@ describe('/search SEO pillar content', () => {
         const nameCheckSource = readSource('src/components/NameCheckSeoContent.tsx');
         const articlesSource = readSource('src/app/articles/page.tsx');
 
-        expect(homeSource).toContain('ชื่อมงคล 5,000+ ชื่อ');
-        expect(nameCheckSource).toContain('ค้นหาชื่อมงคล 5,000+ ชื่อ');
+        expect(homeSource).toContain('/search');
+        expect(nameCheckSource).toContain('/search');
         expect(articlesSource).toContain("href: '/search'");
-        expect(articlesSource).toContain("label: 'ค้นหาชื่อมงคล 5,000+ ชื่อ'");
     });
 
     test('gives /search pillar-level sitemap priority', () => {

@@ -191,6 +191,8 @@ type PublicStats = {
     totalUsers: number;
     avgRating: number;
     reviewCount: number;
+    totalNames: number;
+    totalPremiumNames: number;
 };
 
 export default function SearchPage() {
@@ -249,6 +251,8 @@ export default function SearchPage() {
                     totalUsers: typeof stats.totalUsers === 'number' ? stats.totalUsers : 0,
                     avgRating: typeof stats.avgRating === 'number' ? stats.avgRating : 0,
                     reviewCount: typeof stats.reviewCount === 'number' ? stats.reviewCount : 0,
+                    totalNames: typeof stats.totalNames === 'number' ? stats.totalNames : 0,
+                    totalPremiumNames: typeof stats.totalPremiumNames === 'number' ? stats.totalPremiumNames : 0,
                 });
             } catch (err) {
                 console.error('Error fetching public stats:', err);
@@ -303,6 +307,8 @@ export default function SearchPage() {
         if (filteredNames.length <= visibleCount) return 0;
         return filteredNames.slice(visibleCount).filter(item => analyzeName(item.name)?.grade === 'A+').length;
     }, [filteredNames, visibleCount]);
+
+    const liveNameCount = names.length > 0 ? names.length : (publicStats?.totalNames ?? 0);
 
     // Reset to page 1 when filters change is now handled in event handlers
 
@@ -514,6 +520,7 @@ export default function SearchPage() {
                                     <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
                                         <ReviewBadge rating={publicStats?.avgRating} count={publicStats?.reviewCount} />
                                         <UserStatsBadge users={publicStats?.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
+                                        <UserStatsBadge users={liveNameCount} label="ชื่อในฐานข้อมูลล่าสุด" />
                                     </div>
                                 </div>
                                 <div className="mb-5 text-center md:mb-12">

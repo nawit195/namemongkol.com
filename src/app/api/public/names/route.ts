@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const NAMES_REVALIDATE_SECONDS = 604800;
+const NAMES_REVALIDATE_SECONDS = 600;
 
-// Cache the data for 7 days to reduce repeated database reads.
-export const revalidate = 604800;
+// Keep public search close to the database while still caching enough for Vercel Free.
+export const revalidate = 600;
 
 const getSupabase = () => createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://dummy.supabase.co',
@@ -41,8 +41,7 @@ export async function GET() {
             }
         }
 
-        // Return the massive list as JSON
-        // Cache heavily at Edge/CDN layer
+        // Return the full list as JSON and refresh it every 10 minutes.
         return NextResponse.json({
             success: true,
             data: allData

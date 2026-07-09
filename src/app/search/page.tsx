@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import ClientPage from './ClientPage';
+import { fetchPublicAggregateStats } from '@/lib/publicStats';
+import { getLiveNameCountLabel } from '@/lib/nameCounts';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
-const searchPageTitle = 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม | NameMongkol';
-const searchPageDescription = 'ค้นหาชื่อมงคล 5,000+ ชื่อสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมชื่อความหมายดี เลขศาสตร์ วันเกิดที่เหมาะสม และขั้นตอนวิเคราะห์ร่วมกับนามสกุล';
+const searchPageTitle = 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม | NameMongkol';
+const searchPageDescription = 'ค้นหาชื่อมงคลจากฐานข้อมูลที่อัปเดตต่อเนื่อง สำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมความหมาย เลขศาสตร์ วันเกิดที่เหมาะสม และขั้นตอนวิเคราะห์ร่วมกับนามสกุล';
+
+export const revalidate = 600;
 
 export const metadata: Metadata = {
     title: { absolute: searchPageTitle },
@@ -13,19 +17,19 @@ export const metadata: Metadata = {
     description: searchPageDescription,
     keywords: ['ชื่อมงคล', 'ค้นหาชื่อมงคล', 'ตั้งชื่อลูก', 'ตั้งชื่อลูก 2569', 'ตั้งชื่อลูกชาย', 'ตั้งชื่อลูกสาว', 'เปลี่ยนชื่อมงคล', 'ชื่อความหมายดี', 'ชื่อเสริมดวง', 'ชื่อมงคลชาย', 'ชื่อมงคลหญิง', 'ชื่อมงคลตามวันเกิด', 'เลขศาสตร์ชื่อ', 'ถอดอักษรเป็นเลขศาสตร์', 'วิเคราะห์คู่เลขในชื่อ'],
     openGraph: {
-        title: 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมายและเลขศาสตร์ | NameMongkol',
+        title: 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมายและเลขศาสตร์ | NameMongkol',
         description: 'ฐานรายชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล เลือกชื่อความหมายดีแล้วนำไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูคู่เลขแบบละเอียด',
         url: `${baseUrl}/search`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
         type: 'website',
-        images: [`${baseUrl}/api/og?variant=default&title=ชื่อมงคล%205000%2B%20ชื่อ&subtitle=พร้อมความหมาย%20เลขศาสตร์%20และวันเกิดที่เหมาะสม&tag=Lucky%20Names`],
+        images: [`${baseUrl}/api/og?variant=default&title=ค้นหาชื่อมงคล&subtitle=ฐานข้อมูลอัปเดตต่อเนื่อง%20พร้อมความหมายและเลขศาสตร์&tag=Lucky%20Names`],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'ชื่อมงคล 5,000+ ชื่อ พร้อมความหมายและเลขศาสตร์ | NameMongkol',
+        title: 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมายและเลขศาสตร์ | NameMongkol',
         description: 'ค้นหาชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม',
-        images: [`${baseUrl}/api/og?variant=default&title=ชื่อมงคล%205000%2B%20ชื่อ`],
+        images: [`${baseUrl}/api/og?variant=default&title=ค้นหาชื่อมงคล`],
     },
 };
 
@@ -56,11 +60,15 @@ const pillarFaqs = [
     },
     {
         question: 'ค้นหาชื่อมงคลที่ NameMongkol เสียเงินไหม',
-        answer: 'ค้นหารายชื่อมงคลพื้นฐานได้ฟรีจากฐานข้อมูล 5,000+ ชื่อ หากต้องการคัดชื่อแบบละเอียดขึ้น เช่น ใส่นามสกุล เลือกอักษรนำ หรือคัดเกรดเชิงลึกสำหรับเปลี่ยนชื่อมงคล สามารถต่อยอดไปใช้ฟีเจอร์ Pro หรือวิเคราะห์ชื่อขั้นสูงได้',
+        answer: 'ค้นหารายชื่อมงคลพื้นฐานได้ฟรีจากฐานข้อมูลที่อัปเดตต่อเนื่อง หากต้องการคัดชื่อแบบละเอียดขึ้น เช่น ใส่นามสกุล เลือกอักษรนำ หรือคัดเกรดเชิงลึกสำหรับเปลี่ยนชื่อมงคล สามารถต่อยอดไปใช้ฟีเจอร์ Pro หรือวิเคราะห์ชื่อขั้นสูงได้',
     },
 ] as const;
 
-export default function SearchPage() {
+export default async function SearchPage() {
+    const aggregate = await fetchPublicAggregateStats();
+    const liveNamesCount = aggregate.stats.totalNames;
+    const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
+
     const webPageJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
@@ -80,9 +88,9 @@ export default function SearchPage() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
-        'name': 'ชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ - NameMongkol',
+        'name': `ค้นหาชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ - NameMongkol`,
         'alternateName': 'NameMongkol Free Auspicious Name Search',
-        'description': 'ระบบค้นหารายชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ พร้อมชื่อความหมายดี เลขศาสตร์ เพศ วันเกิดที่เหมาะสม และลิงก์ต่อไปวิเคราะห์ชื่อ-นามสกุลแบบละเอียด',
+        'description': `ระบบค้นหารายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ พร้อมชื่อความหมายดี เลขศาสตร์ เพศ วันเกิดที่เหมาะสม และลิงก์ต่อไปวิเคราะห์ชื่อ-นามสกุลแบบละเอียด`,
         'url': `${baseUrl}/search`,
         'applicationCategory': 'LifestyleApplication',
         'operatingSystem': 'Web',
@@ -93,7 +101,7 @@ export default function SearchPage() {
             'description': 'ค้นหาชื่อมงคลฟรี ไม่มีค่าใช้จ่าย'
         },
         'featureList': [
-            'ฐานข้อมูลชื่อมงคลกว่า 5,000 ชื่อ',
+            `ฐานข้อมูลชื่อมงคล ${liveNamesLabel}`,
             'กรองชื่อมงคลตามวันเกิด',
             'กรองตามเพศสำหรับตั้งชื่อลูกชายและตั้งชื่อลูกสาว',
             'กรองตามผลรวมเลขศาสตร์',
@@ -104,10 +112,15 @@ export default function SearchPage() {
     };
 
     // FAQ Schema
+    const faqs = pillarFaqs.map((faq) => ({
+        question: faq.question,
+        answer: faq.answer.replace('ฐานข้อมูลที่อัปเดตต่อเนื่อง', `ฐานข้อมูล ${liveNamesLabel}`),
+    }));
+
     const faqJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        'mainEntity': pillarFaqs.map((faq) => ({
+        'mainEntity': faqs.map((faq) => ({
             '@type': 'Question',
             'name': faq.question,
             'acceptedAnswer': {
@@ -121,9 +134,9 @@ export default function SearchPage() {
     const itemListJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
-        'name': 'รายชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ',
+        'name': `รายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
         'description': 'รวมรายชื่อมงคลพร้อมความหมาย เลขศาสตร์ เพศ และวันเกิดที่เหมาะสมสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล',
-        'numberOfItems': 5000,
+        ...(liveNamesCount > 0 ? { numberOfItems: liveNamesCount } : {}),
         'itemListOrder': 'https://schema.org/ItemListOrderAscending'
     };
 
@@ -140,7 +153,7 @@ export default function SearchPage() {
             {
                 '@type': 'ListItem',
                 'position': 2,
-                'name': 'ชื่อมงคล 5,000+ ชื่อ สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ',
+                'name': `ชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
                 'item': `${baseUrl}/search`,
             },
         ],
@@ -243,7 +256,7 @@ export default function SearchPage() {
                 <div className="mx-auto max-w-5xl">
                     <h2 className="text-2xl font-bold">คำถามที่พบบ่อยเกี่ยวกับชื่อมงคล</h2>
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
-                        {pillarFaqs.map((faq) => (
+                        {faqs.map((faq) => (
                             <div key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                                 <h3 className="font-semibold text-[#1a1a3e]">{faq.question}</h3>
                                 <p className="mt-2 text-sm leading-6 text-[#5a5a82]">{faq.answer}</p>

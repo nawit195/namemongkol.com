@@ -23,12 +23,13 @@ const toneClasses: Record<StatTone, string> = {
 
 export default function PremiumHeader({ totalNames, filteredCount, availableLettersCount, credits }: PremiumHeaderProps) {
     const { t } = useLanguage();
+    const totalNamesLabel = totalNames.toLocaleString('th-TH');
 
     const stats: Array<{ label: string; value: string; icon: React.ElementType; tone: StatTone }> = [
-        { label: 'ชื่อคัดพิเศษ', value: totalNames.toLocaleString(), icon: BadgeCheck, tone: 'mint' },
-        { label: 'ตรงเงื่อนไข', value: filteredCount.toLocaleString(), icon: Search, tone: 'gold' },
-        { label: 'หมวดอักษร', value: availableLettersCount.toLocaleString(), icon: Type, tone: 'lavender' },
-        { label: 'เครดิตคงเหลือ', value: credits !== null ? credits.toLocaleString() : '—', icon: Coins, tone: 'sky' },
+        { label: 'ชื่อคัดพิเศษ', value: totalNamesLabel, icon: BadgeCheck, tone: 'mint' },
+        { label: 'ตรงเงื่อนไข', value: filteredCount.toLocaleString('th-TH'), icon: Search, tone: 'gold' },
+        { label: 'หมวดอักษร', value: availableLettersCount.toLocaleString('th-TH'), icon: Type, tone: 'lavender' },
+        { label: 'เครดิตคงเหลือ', value: credits !== null ? credits.toLocaleString('th-TH') : '—', icon: Coins, tone: 'sky' },
     ];
 
     return (
@@ -41,7 +42,7 @@ export default function PremiumHeader({ totalNames, filteredCount, availableLett
 
             <div className="mx-auto max-w-[70ch] space-y-3 xl:col-start-1 xl:row-start-3 xl:mx-0">
                 <p className="text-sm leading-relaxed text-[#5a5a82] sm:text-base lg:text-lg">
-                    {t('pages.premiumSearch.headerDesc').replace('{count}', totalNames.toLocaleString())}
+                    {t('pages.premiumSearch.headerDesc').replace('{count}', totalNamesLabel)}
                 </p>
                 <p className="text-sm font-semibold tracking-wide text-emerald-700 sm:text-base lg:text-lg">
                     {t('pages.premiumSearch.headerSub')}
