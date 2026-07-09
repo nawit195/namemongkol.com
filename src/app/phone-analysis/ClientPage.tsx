@@ -7,6 +7,7 @@ import { analyzePhone, PhoneAnalysisResult as IPhoneAnalysisResult } from '@/uti
 import { PhoneAnalysisResult } from '@/components/PhoneAnalysisResult';
 import { PhoneSacredBackground } from '@/components/PhoneSacredBackground';
 import { useLanguage } from '@/components/LanguageProvider';
+import { useLiveStats } from '@/hooks/useLiveStats';
 import { supabase } from '@/utils/supabase';
 import { getEffectiveCredits } from '@/utils/credits';
 import { PHONE_AI_COST } from '@/lib/phoneAiPromptDefaults';
@@ -41,14 +42,25 @@ const PhoneHeader = () => {
 
 const SocialProof = () => {
     const { t } = useLanguage();
+    const stats = useLiveStats();
+
+    const ratingLabel = stats && stats.avgRating > 0
+        ? (stats.avgRating === Math.floor(stats.avgRating)
+            ? `${stats.avgRating}/5`
+            : `${stats.avgRating.toFixed(1)}/5`)
+        : '4.9/5';
+
+    const analyzedLabel = stats && stats.totalAnalyses > 0
+        ? `วิเคราะห์แล้วกว่า ${stats.totalAnalyses.toLocaleString('th-TH')}+ ครั้ง`
+        : t('pages.phoneAnalysis.socialAnalyzed');
 
     return (
         <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm text-[#5a5a82]">
             <span className="flex items-center gap-1.5">
-                <span className="text-amber-500">★</span> 4.9/5 {t('pages.phoneAnalysis.socialRating')}
+                <span className="text-amber-500">★</span> {ratingLabel} {t('pages.phoneAnalysis.socialRating')}
             </span>
             <span className="w-1 h-1 rounded-full bg-slate-300" />
-            <span>{t('pages.phoneAnalysis.socialAnalyzed')}</span>
+            <span>{analyzedLabel}</span>
         </div>
     );
 };

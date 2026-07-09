@@ -1,8 +1,23 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { Eye, Heart, Palette, Briefcase, Shield, Star, Users, Brain, Award } from 'lucide-react';
+import { useLiveStats } from '@/hooks/useLiveStats';
 
 export const AuraSeoContent = () => {
+    const stats = useLiveStats();
+
+    const analysesLabel = stats && stats.totalAnalyses > 0
+        ? stats.totalAnalyses.toLocaleString('th-TH') + '+'
+        : '50,000+';
+
+    const ratingLabel = stats && stats.avgRating > 0
+        ? (stats.avgRating === Math.floor(stats.avgRating)
+            ? `${stats.avgRating}/5`
+            : `${stats.avgRating.toFixed(1)}/5`)
+        : '4.9/5';
+
     return (
         <section className="w-full max-w-5xl mx-auto mt-20 md:mt-24 mb-12 md:mb-16 px-4 relative z-10">
 
@@ -359,12 +374,12 @@ export const AuraSeoContent = () => {
                 <div className="inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-300">
                     <div className="flex items-center gap-2">
                         <Award className="w-5 h-5 text-purple-400 shrink-0" />
-                        <span>วิเคราะห์แล้วกว่า <strong className="text-white">50,000+</strong> ชื่อ</span>
+                        <span>วิเคราะห์แล้วกว่า <strong className="text-white">{analysesLabel}</strong> ชื่อ</span>
                     </div>
                     <div className="w-1 h-1 rounded-full bg-slate-600 hidden sm:block" />
                     <div className="flex items-center gap-2">
                         <Star className="w-5 h-5 text-amber-400 shrink-0" />
-                        <span>คะแนนความพึงพอใจ <strong className="text-white">4.9/5</strong></span>
+                        <span>คะแนนความพึงพอใจ <strong className="text-white">{ratingLabel}</strong></span>
                     </div>
                     <div className="w-1 h-1 rounded-full bg-slate-600 hidden sm:block" />
                     <div className="flex items-center gap-2">
