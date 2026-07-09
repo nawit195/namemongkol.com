@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Star, Shield, TrendingUp } from 'lucide-react';
+import { Star, Shield, TrendingUp, Sparkles, Infinity as InfinityIcon } from 'lucide-react';
 import { useLanguage } from './LanguageProvider';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -117,32 +117,118 @@ export const HomeSeoContent = () => {
                     </p>
                 </div>
 
-                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 px-1 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
-                    <div className="w-[86%] sm:w-[68%] md:w-auto shrink-0 md:shrink snap-start md:snap-none p-6 sm:p-8 rounded-2xl bg-white border border-[#ddddf0] hover:border-amber-400 transition-all hover:-translate-y-1 group shadow-sm">
-                        <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-amber-500 font-bold mb-5 group-hover:scale-110 transition-transform">1</div>
-                        <h3 className="font-bold text-lg sm:text-xl text-[#1a1a3e] mb-3 tracking-tight group-hover:text-amber-500 transition-colors">{t('sections.knowledge.tabs.numerology')}</h3>
-                        <p className="text-sm text-[#5a5a82] leading-relaxed">
-                            แปลงค่าอักษรเป็นตัวเลข เพื่อดูอิทธิพลดาวเคราะห์ที่ส่งผลต่อเจ้าชะตา (ผลรวมที่ดี เช่น 14, 15, 24, 45, 59)
+                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-6 px-1 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
+                    {/* Card 1: Numerology */}
+                    <div className="relative w-[85%] sm:w-[68%] md:w-auto overflow-hidden shrink-0 md:shrink snap-start md:snap-none p-5 sm:p-7 rounded-[28px] bg-gradient-to-b from-[#FFFDF5] to-white border-[1.5px] border-amber-100 hover:border-amber-300 hover:shadow-xl hover:shadow-amber-500/10 transition-all group">
+                        <div className="relative h-36 w-full flex-shrink-0 mb-6 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-amber-400/10 blur-[30px] rounded-full scale-125" />
+                            <div className="absolute inset-1.5 border-[1.5px] border-dashed border-amber-200/60 rounded-full animate-[spin_60s_linear_infinite]" />
+                            <div className="absolute inset-5 border-[1.5px] border-amber-200/80 rounded-full" />
+                            
+                            <div className="relative w-[86px] h-[86px] bg-gradient-to-br from-white to-amber-50 rounded-full border-2 border-white shadow-[0_0_20px_rgba(251,191,36,0.25)] flex flex-col items-center justify-center gap-[4px] z-10 transition-transform duration-500 group-hover:scale-105">
+                                <div className="flex gap-[6px] text-amber-500 font-bold text-[10px]"><span className="opacity-80">14</span><span>15</span><span className="opacity-80">24</span></div>
+                                <div className="flex gap-[6px] text-amber-600 font-extrabold text-[#11px]"><span className="opacity-95">45</span><span>59</span><span className="opacity-95">16</span></div>
+                                <div className="flex gap-[8px] text-amber-500 font-bold text-[10px]"><span className="opacity-80">1</span><span>9</span><span className="opacity-80">36</span></div>
+                            </div>
+                            <Sparkles className="absolute top-2 right-4 w-4 h-4 text-amber-300" />
+                            <Star className="absolute bottom-6 left-2 w-3 h-3 text-amber-300 fill-amber-300" />
+                        </div>
+                        <h3 className="font-bold text-lg sm:text-[19px] text-[#1a1a3e] mb-3 text-center flex items-center justify-center gap-2 tracking-tight group-hover:text-amber-600 transition-colors">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                            1. เลขศาสตร์
+                            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                        </h3>
+                        <p className="text-[13.5px] sm:text-[14px] text-[#5a5a82] leading-relaxed text-center px-1">
+                            แปลงค่าตัวอักษรเป็นตัวเลข เพื่อดูอิทธิพลดาวเคราะห์ที่ส่งผลต่อเจ้าชะตา (ผลรวมที่ดี เช่น 14, 15, 24, 45, 59)
                         </p>
                     </div>
-                    <div className="w-[86%] sm:w-[68%] md:w-auto shrink-0 md:shrink snap-start md:snap-none p-6 sm:p-8 rounded-2xl bg-white border border-[#ddddf0] hover:border-emerald-400 transition-all hover:-translate-y-1 group shadow-sm">
-                        <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 font-bold mb-5 group-hover:scale-110 transition-transform">2</div>
-                        <h3 className="font-bold text-lg sm:text-xl text-[#1a1a3e] mb-3 tracking-tight group-hover:text-emerald-500 transition-colors">{t('sections.knowledge.tabs.thaksa')}</h3>
-                        <p className="text-sm text-[#5a5a82] leading-relaxed">
-                            ภูมิพยากรณ์ประจำวันเกิด หาอักษรที่เป็น &quot;เดช&quot; &quot;ศรี&quot; &quot;มนตรี&quot; และหลีกเลี่ยง &quot;กาลกิณี&quot; อย่างเด็ดขาด
+
+                    {/* Card 2: Thaksa */}
+                    <div className="relative w-[85%] sm:w-[68%] md:w-auto overflow-hidden shrink-0 md:shrink snap-start md:snap-none p-5 sm:p-7 rounded-[28px] bg-gradient-to-b from-[#F2FCF5] to-white border-[1.5px] border-emerald-100 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-500/10 transition-all group">
+                        <div className="relative h-36 w-full flex-shrink-0 mb-6 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-emerald-400/10 blur-[30px] rounded-full scale-125" />
+                            <div className="absolute inset-1 border-[1.5px] border-emerald-200/50 rounded-full flex items-center justify-center">
+                                {[0,45,90,135,180,225,270,315].map(deg => (
+                                    <div key={deg} className={`absolute w-1.5 h-1.5 bg-emerald-300/80 rounded-full`} style={{ transform: `rotate(${deg}deg) translateY(-66px)` }} />
+                                ))}
+                            </div>
+                            <div className="absolute inset-5 border-[2px] border-emerald-200/80 rounded-full" />
+                            
+                            <div className="relative w-[80px] h-[80px] bg-gradient-to-br from-white to-emerald-50 rounded-full border-[2.5px] border-white shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center justify-center z-10 transition-transform duration-500 group-hover:scale-105">
+                                <span className="text-4xl font-extrabold text-emerald-600 font-prompt leading-none pt-1 shadow-emerald-100 drop-shadow-sm">ศ</span>
+                                <div className="absolute -top-[18px] left-1/2 -translate-x-1/2 text-emerald-600/90 text-[10px] font-bold tracking-[0.2em] whitespace-nowrap">ข ค ฆ</div>
+                                <div className="absolute -bottom-[18px] left-1/2 -translate-x-1/2 text-emerald-600/90 text-[10px] font-bold tracking-[0.2em] whitespace-nowrap">น ป พ</div>
+                                <div className="absolute top-1/2 -left-[16px] -translate-y-1/2 text-emerald-600/90 text-[9px] font-bold flex flex-col leading-[1.3]"><span>ก</span><span>ช</span><span>ท</span></div>
+                                <div className="absolute top-1/2 -right-[16px] -translate-y-1/2 text-emerald-600/90 text-[9px] font-bold flex flex-col leading-[1.3]"><span>ศ</span><span>ร</span><span>ฝ</span></div>
+                            </div>
+                            <Sparkles className="absolute top-3 left-3 w-4 h-4 text-emerald-300" />
+                        </div>
+                        <h3 className="font-bold text-lg sm:text-[19px] text-[#1a1a3e] mb-3 text-center flex items-center justify-center gap-2 tracking-tight group-hover:text-emerald-600 transition-colors">
+                            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                            2. ทักษาปกรณ์
+                            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+                        </h3>
+                        <p className="text-[13.5px] sm:text-[14px] text-[#5a5a82] leading-relaxed text-center px-1">
+                            ภูมิพยากรณ์ประจำวันเกิด หาตัวอักษรที่เป็น &quot;เดช&quot; &quot;ศรี&quot; &quot;มนตรี&quot; และหลีกเลี่ยง &quot;กาลกิณี&quot; อย่างเด็ดขาด
                         </p>
                     </div>
-                    <div className="w-[86%] sm:w-[68%] md:w-auto shrink-0 md:shrink snap-start md:snap-none p-6 sm:p-8 rounded-2xl bg-white border border-[#ddddf0] hover:border-rose-400 transition-all hover:-translate-y-1 group shadow-sm">
-                        <div className="w-12 h-12 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 font-bold mb-5 group-hover:scale-110 transition-transform">3</div>
-                        <h3 className="font-bold text-lg sm:text-xl text-[#1a1a3e] mb-3 tracking-tight group-hover:text-rose-500 transition-colors">{t('sections.knowledge.tabs.ayatana')}</h3>
-                        <p className="text-sm text-[#5a5a82] leading-relaxed">
+
+                    {/* Card 3: Ayatana */}
+                    <div className="relative w-[85%] sm:w-[68%] md:w-auto overflow-hidden shrink-0 md:shrink snap-start md:snap-none p-5 sm:p-7 rounded-[28px] bg-gradient-to-b from-[#FFF5F7] to-white border-[1.5px] border-rose-100 hover:border-rose-300 hover:shadow-xl hover:shadow-rose-500/10 transition-all group">
+                        <div className="relative h-36 w-full flex-shrink-0 mb-6 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-rose-400/10 blur-[30px] rounded-full scale-125" />
+                            <div className="absolute inset-2 border-[1.5px] border-rose-200/50 rounded-[40px] rotate-45 transition-transform group-hover:rotate-90 duration-700" />
+                            <div className="absolute inset-2 border-[1.5px] border-rose-200/50 rounded-[40px] -rotate-45 transition-transform group-hover:rotate-0 duration-700" />
+                            
+                            <div className="relative w-[86px] h-[86px] bg-gradient-to-br from-white to-rose-50 rounded-full border-2 border-white shadow-[0_0_20px_rgba(251,113,133,0.3)] flex items-center justify-center z-10 transition-transform duration-500 group-hover:scale-105">
+                                <div className="text-[42px] leading-none mb-1 shadow-rose-200 drop-shadow-md">🪷</div>
+                            </div>
+                            {[0, 60, 120, 180, 240, 300].map(deg => (
+                                <div key={deg} className={`absolute w-[22px] h-[22px] bg-white border border-rose-100 rounded-full shadow-sm flex items-center justify-center`} style={{ transform: `rotate(${deg}deg) translateY(-60px) rotate(-${deg}deg)` }}>
+                                    <div className="w-1.5 h-1.5 rounded-full bg-rose-300" />
+                                </div>
+                            ))}
+                        </div>
+                        <h3 className="font-bold text-lg sm:text-[19px] text-[#1a1a3e] mb-3 text-center flex items-center justify-center gap-2 tracking-tight group-hover:text-rose-600 transition-colors">
+                            <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+                            3. อายตนะ 6
+                            <Sparkles className="w-3.5 h-3.5 text-rose-400" />
+                        </h3>
+                        <p className="text-[13.5px] sm:text-[14px] text-[#5a5a82] leading-relaxed text-center px-1">
                             ศาสตร์แห่งการยอมรับทางสังคม สะท้อนว่าคนรอบข้างมองเราอย่างไร (เปรียบเทียบกับคน 9 ประเภท เช่น ราชินี, เศรษฐี)
                         </p>
                     </div>
-                    <div className="w-[86%] sm:w-[68%] md:w-auto shrink-0 md:shrink snap-start md:snap-none p-6 sm:p-8 rounded-2xl bg-white border border-[#ddddf0] hover:border-blue-400 transition-all hover:-translate-y-1 group shadow-sm">
-                        <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 font-bold mb-5 group-hover:scale-110 transition-transform">4</div>
-                        <h3 className="font-bold text-lg sm:text-xl text-[#1a1a3e] mb-3 tracking-tight group-hover:text-blue-500 transition-colors">{t('sections.knowledge.tabs.nirun')}</h3>
-                        <p className="text-sm text-[#5a5a82]">
+
+                    {/* Card 4: Nirun */}
+                    <div className="relative w-[85%] sm:w-[68%] md:w-auto overflow-hidden shrink-0 md:shrink snap-start md:snap-none p-5 sm:p-7 rounded-[28px] bg-gradient-to-b from-[#F5F8FF] to-white border-[1.5px] border-blue-100 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/10 transition-all group">
+                        <div className="relative h-36 w-full flex-shrink-0 mb-6 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-blue-400/10 blur-[30px] rounded-full scale-125" />
+                            <div className="absolute inset-1 overflow-hidden rounded-full border-[1.5px] border-blue-200/50">
+                                <div className="absolute w-[200%] h-px bg-blue-200/50 top-1/2 -translate-y-1/2 -left-1/2 rotate-[20deg]" />
+                                <div className="absolute w-[200%] h-px bg-blue-200/50 top-1/2 -translate-y-1/2 -left-1/2 -rotate-[20deg]" />
+                            </div>
+                            
+                            <div className="flex items-center justify-center gap-[2px] z-10 w-full px-2 relative transition-transform duration-500 group-hover:scale-105">
+                                <div className="flex-1 h-[68px] bg-white/90 backdrop-blur-sm rounded-[14px] border-[1.5px] border-white shadow-[0_5px_15px_rgba(96,165,250,0.18)] flex flex-col items-center justify-center -rotate-6 translate-y-1 transition-transform group-hover:-rotate-3">
+                                    <span className="text-[11px] font-bold text-blue-600/80 mb-1">ชื่อ</span>
+                                    <div className="w-5 h-[1.5px] bg-blue-300" />
+                                </div>
+                                <div className="relative z-20 -mx-3 bg-gradient-to-br from-white to-blue-50 rounded-full p-2 shadow-[0_0_15px_rgba(96,165,250,0.35)] border-[1.5px] border-white">
+                                   <InfinityIcon className="w-[30px] h-[30px] text-blue-500" strokeWidth={2.5} />
+                                </div>
+                                <div className="flex-1 h-[68px] bg-white/90 backdrop-blur-sm rounded-[14px] border-[1.5px] border-white shadow-[0_5px_15px_rgba(96,165,250,0.18)] flex flex-col items-center justify-center rotate-6 translate-y-1 transition-transform group-hover:rotate-3">
+                                    <span className="text-[11px] font-bold text-blue-600/80 mb-1">นามสกุล</span>
+                                    <div className="w-8 h-[1.5px] bg-blue-300" />
+                                </div>
+                            </div>
+                            <Sparkles className="absolute top-2 right-4 w-4 h-4 text-blue-300" />
+                        </div>
+                        <h3 className="font-bold text-lg sm:text-[19px] text-[#1a1a3e] mb-3 text-center flex items-center justify-center gap-2 tracking-tight group-hover:text-blue-700 transition-colors">
+                            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                            4. นิรันดร์ศาสตร์
+                            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                        </h3>
+                        <p className="text-[13.5px] sm:text-[14px] text-[#5a5a82] leading-relaxed text-center px-1">
                             หัวใจสำคัญ! ตรวจสอบความสมพงศ์ระหว่าง &quot;ชื่อต้น&quot; และ &quot;นามสกุล&quot; ให้อยู่ร่วมกันแล้วส่งเสริมกัน ไม่ขัดแย้ง
                         </p>
                     </div>

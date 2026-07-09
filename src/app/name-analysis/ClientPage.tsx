@@ -687,19 +687,19 @@ export default function NameAnalysisPage() {
                     {/* Why Bulk Analysis */}
                     <section className="mt-24 mb-16 max-w-4xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-black text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 mb-6 tracking-tight leading-tight">
-                            ทำไมต้องใช้ Bulk Analysis วิเคราะห์ชื่อแบบกลุ่ม?
+                            ทำไมต้องเช็คชื่อมงคล และวิเคราะห์หลายชื่อพร้อมกัน?
                         </h2>
                         <p className="text-center text-lg md:text-xl text-[#5a5a82] mb-12 max-w-2xl mx-auto leading-relaxed">
-                            เครื่องมือที่ช่วยให้คุณตรวจสอบและเปรียบเทียบชื่อหลายชื่อได้ในคลิกเดียว ประหยัดเวลา และตัดสินใจได้แม่นยำขึ้น
+                            เครื่องมือ<strong>เช็คชื่อมงคลออนไลน์</strong>ที่ช่วยให้คุณตรวจสอบและเปรียบเทียบชื่อหลายชื่อได้ในคลิกเดียว ประหยัดเวลา และตัดสินใจได้แม่นยำขึ้น
                         </p>
                         <div className="grid md:grid-cols-4 gap-6">
                             <article className="bg-white border border-[#ddddf0] rounded-2xl p-6 text-center hover:shadow-md hover:border-amber-200 transition-all group shadow-sm">
                                 <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-indigo-50 flex items-center justify-center group-hover:scale-110 transition-transform">
                                     <Zap className="w-7 h-7 text-indigo-500" />
                                 </div>
-                                <h3 className="font-bold text-lg text-[#1a1a3e] mb-3">รวดเร็วทันใจ</h3>
+                                <h3 className="font-bold text-lg text-[#1a1a3e] mb-3">เช็คชื่อได้รวดเร็ว</h3>
                                 <p className="text-[#5a5a82] text-sm leading-relaxed">
-                                    วิเคราะห์ได้สูงสุด 1,000 ชื่อพร้อมกันในไม่กี่วินาที ไม่ต้องพิมพ์ทีละชื่อ
+                                    วิเคราะห์ชื่อหลายชื่อพร้อมกันสูงสุด 1,000 ชื่อในไม่กี่วินาที ไม่ต้องพิมพ์ทีละชื่อ
                                 </p>
                             </article>
                             <article className="bg-white border border-[#ddddf0] rounded-2xl p-6 text-center hover:shadow-md hover:border-amber-200 transition-all group shadow-sm">
