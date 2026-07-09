@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { premiumNamesRaw } from '@/data/premiumNamesRaw';
 import { countRawNameLines } from '@/lib/nameCounts';
 
-export const PUBLIC_STATS_REVALIDATE_SECONDS = 600;
+export const PUBLIC_STATS_REVALIDATE_SECONDS = 120;
 
 export const emptyActivityCounts = {
     analysis: 0,
@@ -41,7 +41,7 @@ export type PublicAggregateStats = {
 
 export function getPublicStatsCacheHeaders() {
     return {
-        'Cache-Control': `public, s-maxage=${PUBLIC_STATS_REVALIDATE_SECONDS}, stale-while-revalidate=1800`,
+        'Cache-Control': `public, s-maxage=${PUBLIC_STATS_REVALIDATE_SECONDS}, stale-while-revalidate=300`,
     };
 }
 

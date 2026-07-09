@@ -13,7 +13,7 @@ describe('/api/live-stats', () => {
         const { GET } = await import('./route');
         const response = await GET();
 
-        expect(response.headers.get('Cache-Control')).toContain('s-maxage=600');
-        expect(response.headers.get('Cache-Control')).toContain('stale-while-revalidate=1800');
+        expect(response.headers.get('Cache-Control')).toContain('s-maxage=120');
+        expect(response.headers.get('Cache-Control')).toContain('stale-while-revalidate=300');
     });
 });

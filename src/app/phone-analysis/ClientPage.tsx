@@ -352,8 +352,8 @@ function ClientPageContent() {
     };
 
     return (
-        <div className="min-h-screen bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-[#f8c24b] selection:text-[#1d1203]">
-            <main className="relative flex min-h-screen w-full max-w-[1400px] flex-col items-center px-4 pb-44 pt-7 transition-all duration-300 md:pb-28 md:pt-28">
+        <div className="bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-[#f8c24b] selection:text-[#1d1203]">
+            <main className="relative flex w-full max-w-[1400px] flex-col items-center px-4 pb-12 pt-6 transition-all duration-300 md:pb-20 md:pt-24 mx-auto">
                 <PhoneSacredBackground />
 
                 {/* Header Section */}
@@ -374,16 +374,16 @@ function ClientPageContent() {
                                     }}
                                     onKeyDown={handleKeyDown}
                                     placeholder={t('pages.phoneAnalysis.placeholder')}
-                                    className="phone-analysis-input bg-slate-50 border border-slate-200 flex-1 px-5 py-4 rounded-2xl outline-none transition-all text-lg font-medium text-center sm:text-left tracking-wider text-[#1a1a3e]"
+                                    className="wtp-input flex-1 px-5 py-4 rounded-2xl text-lg font-medium text-center sm:text-left tracking-wider"
                                 />
                                 <button
                                     onClick={handleAnalyze}
                                     disabled={loading || phoneNumber.length !== 10}
                                     data-track="phone.hero.analyze"
                                     className={`
-                                        px-6 sm:px-8 py-4 rounded-2xl font-bold text-white transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 min-w-full sm:min-w-[160px]
+                                        px-6 sm:px-8 py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 min-w-full sm:min-w-[160px]
                                         ${phoneNumber.length === 10
-                                            ? 'bg-amber-500 hover:bg-amber-400 shadow-md text-white'
+                                            ? 'wtp-button-primary shadow-md hover:-translate-y-0.5'
                                             : 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed'}
                                     `}
                                 >

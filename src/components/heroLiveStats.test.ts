@@ -9,7 +9,7 @@ import {
 
 describe('hero live stats helpers', () => {
     test('requests cached stats at a Vercel budget-friendly cadence', () => {
-        expect(LIVE_STATS_FETCH_INIT).toEqual({ cache: 'force-cache' });
+        expect(LIVE_STATS_FETCH_INIT).toEqual({ cache: 'no-store' });
         expect(STATS_POLL_MS).toBeGreaterThanOrEqual(5 * 60 * 1000);
         expect(STATS_POLL_MS).toBeLessThanOrEqual(15 * 60 * 1000);
         expect(STATS_IDLE_DELAY_MS).toBeGreaterThanOrEqual(2_000);

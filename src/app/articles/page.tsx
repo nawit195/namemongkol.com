@@ -475,7 +475,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
             />
             <SoftYellowGlowBackground className="font-sans overflow-x-hidden pb-28">
-                <main className="w-full max-w-[1400px] mx-auto px-3 sm:px-4 pb-8 relative z-10 pt-24 md:pt-32">
+                <main className="w-full max-w-[1400px] mx-auto px-3 sm:px-4 pb-8 relative z-10 pt-6 md:pt-24">
                     {/* Breadcrumb */}
                     <nav className="hidden sm:block max-w-4xl mx-auto mb-6 text-sm" style={{ color: '#8e8eaa' }} aria-label="Breadcrumb">
                         <ol className="flex items-center gap-2">

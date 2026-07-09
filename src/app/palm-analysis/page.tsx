@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import PalmAnalysisClient from './PalmAnalysisClient';
 import { PalmSeoContent } from '@/components/PalmSeoContent';
 import PalmHeroBanner from '@/components/palm-analysis/PalmHeroBanner';
+import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { siteUrl } from '@/lib/seo';
 const canonicalUrl = `${siteUrl.replace(/\/$/, '')}/palm-analysis`;
 
@@ -220,19 +221,13 @@ export default function PalmAnalysisPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="relative min-h-screen overflow-hidden bg-[#f8f8fc] px-3 pb-40 pt-7 sm:px-6 md:pb-12 md:pt-20 lg:px-8 lg:pt-24">
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* Background decorations for White Tech Premium */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-indigo-50/50 to-purple-50/30 rounded-full blur-3xl opacity-50 transform translate-x-1/3 -translate-y-1/4"></div>
-          <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-amber-50/40 to-orange-50/20 rounded-full blur-3xl opacity-50"></div>
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-7xl space-y-2.5 sm:space-y-8">
+      <SoftYellowGlowBackground>
+        <main className="relative z-10 mx-auto max-w-7xl space-y-2.5 sm:space-y-8 px-3 pb-40 pt-7 sm:px-6 md:pb-12 md:pt-20 lg:px-8 lg:pt-24 overflow-hidden">
           <PalmHeroBanner />
           <PalmAnalysisClient />
           <PalmSeoContent />
-        </div>
-      </main>
+        </main>
+      </SoftYellowGlowBackground>
     </>
   );
 }

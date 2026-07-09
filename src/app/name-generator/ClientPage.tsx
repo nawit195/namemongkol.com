@@ -470,7 +470,7 @@ export default function ClientPage() {
                 <Sparkles className="h-6 w-6" />
             </div>
 
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-24 sm:px-6 lg:px-8">
+            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-6 md:pt-24 sm:px-6 lg:px-8">
                 <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10">
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/85 px-4 py-2 text-sm font-bold text-[#5a5a82] shadow-sm">
                         <Wand2 className="h-4 w-4 text-pink-500" />

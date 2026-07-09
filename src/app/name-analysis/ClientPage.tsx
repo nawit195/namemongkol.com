@@ -10,6 +10,7 @@ import { NameAnalysisDetailCard } from '@/components/NameAnalysisDetailCard';
 // import jsPDF from 'jspdf';
 import { supabase } from '@/utils/supabase';
 import { trackEvent } from '@/lib/analytics';
+import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 
 const NAME_GENERATOR_PREFILL_KEY = 'namemongkol:name-analysis-prefill';
 
@@ -373,15 +374,10 @@ export default function NameAnalysisPage() {
     const cost = calculateCost(currentCount);
 
     return (
-        <div className="min-h-screen bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-indigo-500/30">
-            <main className="w-full max-w-[1400px] transition-all duration-300 min-h-screen px-3 sm:px-4 pt-16 md:pt-32 pb-32 relative overflow-hidden">
-                {/* Background Decor */}
-                <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-                    <div className="absolute top-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-indigo-500/5 blur-[120px]" />
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-fuchsia-500/5 blur-[120px]" />
-                </div>
+        <SoftYellowGlowBackground className="font-sans text-[#5a5a82] selection:bg-indigo-500/30">
+            <main className="mx-auto w-full max-w-[1400px] transition-all duration-300 min-h-screen px-3 sm:px-4 pt-6 md:pt-24 pb-32 relative overflow-hidden">
 
-                <div className="relative z-10 max-w-7xl space-y-5 sm:space-y-8 pt-3 sm:pt-8">
+                <div className="relative z-10 max-w-7xl space-y-5 sm:space-y-8">
                     {/* Header Section */}
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
                         <div className="flex items-start sm:items-center gap-3 sm:gap-6">
@@ -1135,6 +1131,6 @@ export default function NameAnalysisPage() {
                     </div>
                 </div>
             )}
-        </div>
+        </SoftYellowGlowBackground>
     );
 };
