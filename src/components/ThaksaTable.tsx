@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, AlertCircle, CheckCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle, LayoutGrid } from 'lucide-react';
 import { thaksaMeanings } from '@/data/thaksaMeanings';
 import { thaksaConfig } from '@/data/thaksaConfig';
 import { ThaksaAnalysisResult } from '@/types';
@@ -9,131 +9,168 @@ interface ThaksaTableProps {
     day: string;
 }
 
+type ThaksaTone = {
+    label: string;
+    row: string;
+    nameBadge: string;
+    surnameBadge: string;
+};
+
+const thaksaRowTones: Record<string, ThaksaTone> = {
+    borivan: {
+        label: 'text-slate-700',
+        row: 'bg-white hover:bg-slate-50/80',
+        nameBadge: 'border-slate-200 bg-slate-100 text-slate-800 shadow-slate-200/70',
+        surnameBadge: 'border-slate-200 bg-white text-slate-700 shadow-slate-200/60',
+    },
+    ayu: {
+        label: 'text-sky-700',
+        row: 'bg-sky-50/35 hover:bg-sky-50/70',
+        nameBadge: 'border-sky-200 bg-sky-100 text-sky-800 shadow-sky-200/70',
+        surnameBadge: 'border-sky-200 bg-white text-sky-700 shadow-sky-200/60',
+    },
+    dech: {
+        label: 'text-amber-700',
+        row: 'bg-amber-50/35 hover:bg-amber-50/70',
+        nameBadge: 'border-amber-200 bg-amber-100 text-amber-900 shadow-amber-200/70',
+        surnameBadge: 'border-amber-200 bg-white text-amber-800 shadow-amber-200/60',
+    },
+    si: {
+        label: 'text-emerald-700',
+        row: 'bg-emerald-50/40 hover:bg-emerald-50/75',
+        nameBadge: 'border-emerald-600 bg-emerald-600 text-white shadow-emerald-200/80',
+        surnameBadge: 'border-emerald-200 bg-white text-emerald-700 shadow-emerald-200/60',
+    },
+    mula: {
+        label: 'text-indigo-700',
+        row: 'bg-indigo-50/35 hover:bg-indigo-50/70',
+        nameBadge: 'border-indigo-200 bg-indigo-100 text-indigo-800 shadow-indigo-200/70',
+        surnameBadge: 'border-indigo-200 bg-white text-indigo-700 shadow-indigo-200/60',
+    },
+    ussaha: {
+        label: 'text-violet-700',
+        row: 'bg-violet-50/35 hover:bg-violet-50/70',
+        nameBadge: 'border-violet-200 bg-violet-100 text-violet-800 shadow-violet-200/70',
+        surnameBadge: 'border-violet-200 bg-white text-violet-700 shadow-violet-200/60',
+    },
+    montri: {
+        label: 'text-cyan-700',
+        row: 'bg-cyan-50/35 hover:bg-cyan-50/70',
+        nameBadge: 'border-cyan-200 bg-cyan-100 text-cyan-800 shadow-cyan-200/70',
+        surnameBadge: 'border-cyan-200 bg-white text-cyan-700 shadow-cyan-200/60',
+    },
+    kali: {
+        label: 'text-rose-700',
+        row: 'bg-rose-50/55 hover:bg-rose-50',
+        nameBadge: 'border-rose-500 bg-rose-500 text-white shadow-rose-200/90',
+        surnameBadge: 'border-rose-200 bg-white text-rose-700 shadow-rose-200/60',
+    },
+};
+
 export const ThaksaTable: React.FC<ThaksaTableProps> = ({ thaksa, day }) => {
-    // Safety check if day is invalid
     if (!thaksaConfig[day]) return null;
 
     return (
-        <div className="bg-white border border-[#ddddf0] shadow-sm rounded-2xl p-4 sm:p-6">
-            <h4 className="flex items-center gap-2 text-emerald-600 font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
-                <LayoutGrid className="w-5 h-5" /> ผังทักษา ({thaksaConfig[day].name})
-            </h4>
-
-            <div className="overflow-hidden rounded-xl border border-[#ddddf0]">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="bg-[#f8f8fc] text-[#5a5a82] text-xs sm:text-sm uppercase">
-                            <th className="p-3 sm:p-4 font-semibold border-b border-[#ddddf0] w-[15%]">ภูมิ</th>
-                            <th className="p-3 sm:p-4 font-semibold border-b border-[#ddddf0] w-[45%]">ความหมาย</th>
-                            <th className="p-3 sm:p-4 font-semibold border-b border-[#ddddf0] w-[20%] text-center">ในชื่อ</th>
-                            <th className="p-3 sm:p-4 font-semibold border-b border-[#ddddf0] w-[20%] text-center">ในนามสกุล</th>
-                        </tr>
-                    </thead>
-                    <tbody className="text-xs sm:text-sm">
-                        {Object.entries(thaksaMeanings).map(([key, info]) => {
-                            const matchedName = thaksa.analysis[key];
-                            const matchedSurname = thaksa.surnameAnalysis ? thaksa.surnameAnalysis[key] : [];
-
-                            const hasName = matchedName && matchedName.length > 0;
-                            const hasSurname = matchedSurname && matchedSurname.length > 0;
-
-                            const isKali = key === 'kali';
-                            const isSi = key === 'si';
-
-                            // Row styling
-                            let rowBg = 'bg-white hover:bg-[#f8f8fc]';
-                            if (isKali) rowBg = 'bg-rose-50/30 hover:bg-rose-50';
-                            if (isSi) rowBg = 'bg-emerald-50/30 hover:bg-emerald-50';
-
-                            return (
-                                <tr key={key} className={`thaksa-row transition-colors border-b border-[#ddddf0] ${rowBg}`}>
-                                    <td className="p-3 sm:p-4">
-                                        <span className={`font-semibold ${info.color.replace('400', '600').replace('300', '600').replace('slate', 'gray')}`}>
-                                            {info.label}
-                                        </span>
-                                    </td>
-                                    <td className="p-3 sm:p-4 text-[#5a5a82] leading-relaxed">
-                                        {info.desc}
-                                    </td>
-                                    {/* Name Column */}
-                                    <td className="p-3 sm:p-4 text-center border-l border-[#ddddf0]">
-                                        {hasName ? (
-                                            <div className="flex justify-center gap-1 flex-wrap">
-                                                {matchedName.map((c, i) => (
-                                                    <span key={i} className={`
-                                                    inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold shadow-sm
-                                                    ${isKali ? 'bg-rose-500 text-white' :
-                                                            isSi ? 'bg-emerald-500 text-white' :
-                                                                'bg-[#e2e2ec] text-[#1a1a3e]'}
-                                                `}>
-                                                        {c}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <span className="text-[#8e8eaa]">-</span>
-                                        )}
-                                    </td>
-                                    {/* Surname Column */}
-                                    <td className="p-4 text-center border-l border-[#ddddf0]">
-                                        {hasSurname ? (
-                                            <div className="flex justify-center gap-1 flex-wrap">
-                                                {matchedSurname.map((c, i) => (
-                                                    <span key={i} className={`
-                                                    inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold shadow-sm opacity-90
-                                                    ${isKali ? 'bg-rose-400 text-white' :
-                                                            isSi ? 'bg-emerald-400 text-white' :
-                                                                'bg-[#e2e2ec]/80 text-[#5a5a82]'}
-                                                `}>
-                                                        {c}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <span className="text-[#8e8eaa]">-</span>
-                                        )}
-                                    </td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+        <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_16px_45px_rgba(15,23,42,0.09)]">
+            <div className="flex items-center gap-3 border-b border-slate-200 bg-slate-50 px-4 py-4 sm:px-6 sm:py-5">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700 shadow-sm">
+                    <LayoutGrid className="h-5 w-5" />
+                </span>
+                <div>
+                    <h4 className="text-sm font-bold text-slate-900 sm:text-base">ผังทักษา ({thaksaConfig[day].name})</h4>
+                    <p className="mt-0.5 text-xs font-medium text-slate-500">ตรวจอักษรในชื่อและนามสกุลตามภูมิทักษา</p>
+                </div>
             </div>
 
-            <div className="mt-5 sm:mt-6 flex items-start gap-4 bg-[#f8f8fc] p-4 rounded-xl border border-[#ddddf0]">
-                {thaksa.hasKali ? (
-                    <>
-                        <div className="p-2 rounded-full bg-rose-50 text-rose-500 shrink-0">
-                            <AlertCircle className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h5 className="font-semibold text-rose-700 mb-1 text-sm sm:text-base">ข้อควรระวัง</h5>
-                            <p className="text-sm text-[#5a5a82] leading-relaxed">
-                                พบอักษร <span className="font-bold text-rose-600 underline">กาลกิณี</span> ในชื่อ {thaksa.kaliChars.length} ตัว ({thaksa.kaliChars.join(', ')})
-                                {thaksa.surnameHasKali && (
-                                    <> และในนามสกุล {thaksa.surnameKaliChars?.length} ตัว ({thaksa.surnameKaliChars?.join(', ')})</>
-                                )}
-                                <br />
-                                <span className="text-[#8e8eaa] text-xs mt-1 block">ถ้าเลี่ยงได้จะดีขึ้นตามความเชื่อส่วนบุคคล</span>
-                            </p>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <div className="p-2 rounded-full bg-emerald-50 text-emerald-500 shrink-0">
-                            <CheckCircle className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h5 className="font-semibold text-emerald-700 mb-1 text-sm sm:text-base">มงคลดีเยี่ยม</h5>
-                            <p className="text-sm text-[#5a5a82] leading-relaxed">
-                                ชื่อนี้ <span className="font-bold text-emerald-600">ไม่พบอักษรกาลกิณี</span> เลย ถือเป็นนิมิตหมายที่ดี
-                                <br />
-                                <span className="text-[#8e8eaa] text-xs mt-1 block">เป็นสัญญาณดีสำหรับการใช้งานชื่อปัจจุบัน</span>
-                            </p>
-                        </div>
-                    </>
-                )}
+            <div className="p-4 sm:p-6">
+                <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+                    <table className="w-full border-collapse text-left">
+                        <thead>
+                            <tr className="bg-[#172554] text-xs font-semibold text-white sm:text-sm">
+                                <th className="w-[15%] border-b border-slate-700 px-3 py-3.5 sm:px-4">ภูมิ</th>
+                                <th className="w-[45%] border-b border-slate-700 px-3 py-3.5 sm:px-4">ความหมาย</th>
+                                <th className="w-[20%] border-b border-l border-slate-700 px-3 py-3.5 text-center sm:px-4">ในชื่อ</th>
+                                <th className="w-[20%] border-b border-l border-slate-700 px-3 py-3.5 text-center sm:px-4">ในนามสกุล</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-xs sm:text-sm">
+                            {Object.entries(thaksaMeanings).map(([key, info]) => {
+                                const matchedName = thaksa.analysis[key] ?? [];
+                                const matchedSurname = thaksa.surnameAnalysis?.[key] ?? [];
+                                const tone = thaksaRowTones[key] ?? thaksaRowTones.borivan;
+
+                                return (
+                                    <tr key={key} className={`border-b border-slate-200 last:border-b-0 transition-colors ${tone.row}`}>
+                                        <td className="px-3 py-3.5 sm:px-4 sm:py-4">
+                                            <span className={`font-bold ${tone.label}`}>{info.label}</span>
+                                        </td>
+                                        <td className="px-3 py-3.5 leading-relaxed text-slate-600 sm:px-4 sm:py-4">{info.desc}</td>
+                                        <td className="border-l border-slate-200 px-3 py-3.5 text-center sm:px-4 sm:py-4">
+                                            {matchedName.length > 0 ? (
+                                                <div className="flex flex-wrap justify-center gap-1">
+                                                    {matchedName.map((character, index) => (
+                                                        <span key={`${character}-${index}`} className={`inline-flex h-8 w-8 items-center justify-center rounded-full border text-sm font-bold shadow-sm ${tone.nameBadge}`}>
+                                                            {character}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <span className="font-medium text-slate-400">-</span>
+                                            )}
+                                        </td>
+                                        <td className="border-l border-slate-200 px-3 py-3.5 text-center sm:px-4 sm:py-4">
+                                            {matchedSurname.length > 0 ? (
+                                                <div className="flex flex-wrap justify-center gap-1">
+                                                    {matchedSurname.map((character, index) => (
+                                                        <span key={`${character}-${index}`} className={`inline-flex h-8 w-8 items-center justify-center rounded-full border text-sm font-bold shadow-sm ${tone.surnameBadge}`}>
+                                                            {character}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <span className="font-medium text-slate-400">-</span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="mt-5 flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:mt-6 sm:gap-4">
+                    {thaksa.hasKali ? (
+                        <>
+                            <div className="shrink-0 rounded-full border border-rose-200 bg-rose-50 p-2 text-rose-600">
+                                <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </div>
+                            <div>
+                                <h5 className="mb-1 text-sm font-bold text-rose-800 sm:text-base">ข้อควรระวัง</h5>
+                                <p className="text-sm leading-relaxed text-slate-600">
+                                    พบอักษร <span className="font-bold text-rose-600 underline">กาลกิณี</span> ในชื่อ {thaksa.kaliChars.length} ตัว ({thaksa.kaliChars.join(', ')})
+                                    {thaksa.surnameHasKali && (
+                                        <> และในนามสกุล {thaksa.surnameKaliChars?.length} ตัว ({thaksa.surnameKaliChars?.join(', ')})</>
+                                    )}
+                                    <span className="mt-1 block text-xs text-slate-500">ถ้าเลี่ยงได้จะดีขึ้นตามความเชื่อส่วนบุคคล</span>
+                                </p>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="shrink-0 rounded-full border border-emerald-200 bg-emerald-50 p-2 text-emerald-600">
+                                <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </div>
+                            <div>
+                                <h5 className="mb-1 text-sm font-bold text-emerald-800 sm:text-base">มงคลดีเยี่ยม</h5>
+                                <p className="text-sm leading-relaxed text-slate-600">
+                                    ชื่อนี้ <span className="font-bold text-emerald-700">ไม่พบอักษรกาลกิณี</span> เลย ถือเป็นนิมิตหมายที่ดี
+                                    <span className="mt-1 block text-xs text-slate-500">เป็นสัญญาณดีสำหรับการใช้งานชื่อปัจจุบัน</span>
+                                </p>
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
+        </section>
     );
 };

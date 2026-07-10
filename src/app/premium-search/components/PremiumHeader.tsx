@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BadgeCheck, Search, Type, Coins } from 'lucide-react';
+import { BadgeCheck, Coins, Search, ShieldCheck, Type } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 
@@ -12,68 +12,67 @@ interface PremiumHeaderProps {
     credits: number | null;
 }
 
-type StatTone = 'mint' | 'gold' | 'lavender' | 'sky';
-
-const toneClasses: Record<StatTone, string> = {
-    mint: 'border-emerald-200/80 bg-gradient-to-br from-emerald-50 via-teal-50/70 to-white text-emerald-700',
-    gold: 'border-amber-200/80 bg-gradient-to-br from-amber-50 via-yellow-50/70 to-white text-amber-700',
-    lavender: 'border-violet-200/80 bg-gradient-to-br from-violet-50 via-purple-50/70 to-white text-violet-700',
-    sky: 'border-sky-200/80 bg-gradient-to-br from-sky-50 via-cyan-50/70 to-white text-sky-700',
-};
-
 export default function PremiumHeader({ totalNames, filteredCount, availableLettersCount, credits }: PremiumHeaderProps) {
     const { t } = useLanguage();
     const totalNamesLabel = totalNames.toLocaleString('th-TH');
+    const filteredNamesLabel = filteredCount.toLocaleString('th-TH');
+    const availableLettersLabel = availableLettersCount.toLocaleString('th-TH');
 
-    const stats: Array<{ label: string; value: string; icon: React.ElementType; tone: StatTone }> = [
-        { label: 'ชื่อคัดพิเศษ', value: totalNamesLabel, icon: BadgeCheck, tone: 'mint' },
-        { label: 'ตรงเงื่อนไข', value: filteredCount.toLocaleString('th-TH'), icon: Search, tone: 'gold' },
-        { label: 'หมวดอักษร', value: availableLettersCount.toLocaleString('th-TH'), icon: Type, tone: 'lavender' },
-        { label: 'เครดิตคงเหลือ', value: credits !== null ? credits.toLocaleString('th-TH') : '—', icon: Coins, tone: 'sky' },
+    const quickStats = [
+        { label: 'ชื่อที่ผ่านการคัด', value: totalNamesLabel, icon: BadgeCheck },
+        { label: 'ตรงเงื่อนไขขณะนี้', value: filteredNamesLabel, icon: Search },
+        { label: 'หมวดอักษรที่เลือกได้', value: availableLettersLabel, icon: Type },
     ];
 
     return (
-        <header className="relative z-10 space-y-4 text-center xl:grid xl:grid-cols-[1.2fr_1fr] xl:items-end xl:gap-8 xl:space-y-0 xl:text-left">
-            <div className="xl:col-start-1 xl:row-start-2">
-                <h1 className="text-[2rem] font-black leading-tight tracking-tight text-[#1a1a3e] sm:text-4xl md:text-5xl lg:text-6xl">
-                    {t('pages.premiumSearch.headerTitle')}
-                </h1>
-            </div>
-
-            <div className="mx-auto max-w-[70ch] space-y-3 xl:col-start-1 xl:row-start-3 xl:mx-0">
-                <p className="text-sm leading-relaxed text-[#5a5a82] sm:text-base lg:text-lg">
-                    {t('pages.premiumSearch.headerDesc').replace('{count}', totalNamesLabel)}
-                </p>
-                <p className="text-sm font-semibold tracking-wide text-emerald-700 sm:text-base lg:text-lg">
-                    {t('pages.premiumSearch.headerSub')}
-                </p>
-
-                <div className="mx-auto mt-3 w-fit rounded-xl border border-emerald-200/80 bg-white/85 px-3 py-2 shadow-[0_14px_34px_rgba(16,185,129,0.08)] md:rounded-2xl md:px-6 md:py-4 xl:mx-0">
-                    <p className="text-xs font-medium text-[#5a5a82] sm:text-sm">
-                        {t('pages.premiumSearch.headerHint')}{' '}
-                        <Link href="/" className="font-bold text-emerald-700 underline decoration-emerald-300/70 transition-all hover:text-emerald-600 hover:decoration-emerald-500">
-                            {t('sidebar.analyzeName')}
-                        </Link>
+        <header className="border-b border-[#ddddf0] pb-6 sm:pb-8">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start lg:gap-10">
+                <div className="min-w-0">
+                    <p className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">
+                        <ShieldCheck className="h-3.5 w-3.5" />
+                        NAME MONGKOL PRO
+                    </p>
+                    <h1 className="mt-4 text-3xl font-black leading-tight text-[#1a1a3e] sm:text-4xl lg:text-5xl">
+                        {t('pages.premiumSearch.headerTitle')}
+                    </h1>
+                    <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
+                        {t('pages.premiumSearch.headerDesc').replace('{count}', totalNamesLabel)}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#40506f]">
+                        <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">คัดตามวันเกิด</span>
+                        <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">ผลรวม Grade A+</span>
+                        <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">อักษรเดชและศรี</span>
+                    </div>
+                    <p className="mt-4 text-sm font-semibold text-emerald-700">
+                        {t('pages.premiumSearch.headerSub')}
                     </p>
                 </div>
+
+                <aside className="rounded-2xl border border-slate-700 bg-[#172033] p-4 text-slate-100 shadow-[0_10px_26px_rgba(15,23,42,0.16)]">
+                    <div className="flex items-center justify-between gap-3 border-b border-slate-700 pb-3">
+                        <span className="text-xs font-semibold text-slate-300">เครดิตพร้อมใช้งาน</span>
+                        <Coins className="h-4 w-4 text-amber-300" />
+                    </div>
+                    <div className="mt-3 flex items-end justify-between gap-3">
+                        <span className="font-mono text-3xl font-black text-amber-200">{credits !== null ? credits.toLocaleString('th-TH') : '—'}</span>
+                        <Link href="/topup" className="rounded-lg border border-amber-400/50 px-3 py-1.5 text-xs font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-[#172033]">
+                            เติมเครดิต
+                        </Link>
+                    </div>
+                    <p className="mt-3 text-xs leading-5 text-slate-400">
+                        ปลดล็อกชื่อที่คัดตรงเงื่อนไขครั้งละ 20 ชื่อ ใช้ 15 เครดิต
+                    </p>
+                </aside>
             </div>
 
-            <div className="mx-auto grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3 xl:col-start-2 xl:row-span-3 xl:row-start-1 xl:w-full xl:grid-cols-2">
-                {stats.map(({ label, value, icon: Icon, tone }) => (
-                    <div
-                        key={label}
-                        className={`group relative overflow-hidden rounded-2xl border p-2.5 text-center shadow-[0_18px_42px_rgba(15,23,42,0.06)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(16,185,129,0.12)] sm:p-5 xl:text-left ${toneClasses[tone]}`}
-                    >
-                        <div className="absolute inset-0 bg-white/35 opacity-0 transition-opacity group-hover:opacity-100" />
-                        <div className="relative z-10 flex flex-col items-center gap-1 sm:gap-2 xl:flex-row xl:items-start xl:gap-4">
-                            <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-current/20 bg-white/70 sm:h-10 sm:w-10">
-                                <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" />
-                            </div>
-                            <div>
-                                <div className="mb-0.5 text-[9px] font-semibold uppercase tracking-widest text-[#5a5a82] sm:mb-1 sm:text-xs">{label}</div>
-                                <div className="text-base font-black text-[#1a1a3e] sm:text-xl lg:text-2xl">{value}</div>
-                            </div>
+            <div className="mt-6 grid grid-cols-3 divide-x divide-[#ddddf0] rounded-xl border border-[#ddddf0] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.05)]">
+                {quickStats.map(({ label, value, icon: Icon }) => (
+                    <div key={label} className="min-w-0 px-3 py-3 text-center sm:px-5 sm:text-left">
+                        <div className="flex items-center justify-center gap-1.5 text-[10px] font-semibold text-[#6d6d8f] sm:justify-start sm:text-xs">
+                            <Icon className="h-3.5 w-3.5 shrink-0 text-amber-600" />
+                            <span className="truncate">{label}</span>
                         </div>
+                        <div className="mt-1 font-mono text-lg font-black text-[#1a1a3e] sm:text-xl">{value}</div>
                     </div>
                 ))}
             </div>

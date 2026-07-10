@@ -1,23 +1,48 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabaseServer';
-import fs from 'fs';
-import path from 'path';
 
 export const dynamic = 'force-dynamic';
 
-const FILE_PATH = path.join(process.cwd(), 'src/data/premiumNamesRaw.ts');
+const PAGE_SIZE = 1000;
+const INSERT_BATCH_SIZE = 500;
 
-function extractPremiumNamesBlock(fileContent: string): string {
-    const match = fileContent.match(/export\s+const\s+premiumNamesRaw\s*=\s*`([\s\S]*?)`;/);
-    if (!match) {
-        throw new Error('Could not parse premiumNamesRaw.ts string block');
+async function fetchAllPremiumNames() {
+    const supabase = await createClient();
+    const names: string[] = [];
+    let from = 0;
+
+    while (true) {
+        const { data, error } = await supabase
+            .from('premium_names')
+            .select('name')
+            .order('name', { ascending: true })
+            .range(from, from + PAGE_SIZE - 1);
+
+        if (error) {
+            // If table doesn't exist yet, we can gracefully return empty
+            // array or log the error.
+            if (error.code === '42P01') {
+                console.warn('premium_names table does not exist yet. Please run migration.');
+                return [];
+            }
+            throw error;
+        }
+
+        const batch = data?.map((row: { name: string }) => row.name) ?? [];
+        names.push(...batch);
+
+        if (batch.length < PAGE_SIZE) {
+            break;
+        }
+
+        from += PAGE_SIZE;
     }
-    return match[1];
+
+    return names;
 }
 
-async function requireAdmin() {
-    const supabase = await createClient();
+async function requireAdmin(supabase: any) {
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError || !user) {
         return { error: NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 }) };
@@ -36,34 +61,37 @@ async function requireAdmin() {
     return { user };
 }
 
-function readPremiumNames(): string[] {
-    const fileContent = fs.readFileSync(FILE_PATH, 'utf-8');
-    const lines = extractPremiumNamesBlock(fileContent)
-        .split('\n')
-        .map(line => line.trim())
-        .filter(line => line.length > 0 && !line.startsWith('//'));
-    return [...new Set(lines)];
-}
+/** Trim + dedupe names from raw input, return unique list and stats */
+function sanitizeNames(raw: string[]): { unique: string[]; received: number; duplicatesInPayload: number; invalid: number } {
+    const received = raw.length;
+    let invalid = 0;
+    const seen = new Set<string>();
+    const unique: string[] = [];
 
-function writePremiumNames(names: string[]) {
-    const sorted = [...names].sort((a, b) => a.localeCompare(b, 'th'));
-    const content = `// IMPORTANT: This is a sample of the data. 
-// Please replace the content inside the backticks with the full dataset provided in your request.
-// Copy the lines starting from "กมลวัทน์..." to the end.
+    for (const r of raw) {
+        const trimmed = typeof r === 'string' ? r.trim() : '';
+        if (trimmed.length === 0) {
+            invalid++;
+            continue;
+        }
+        if (seen.has(trimmed)) {
+            continue;
+        }
+        seen.add(trimmed);
+        unique.push(trimmed);
+    }
 
-export const premiumNamesRaw = \`
-${sorted.join('\n')}
-\`;
-`;
-    fs.writeFileSync(FILE_PATH, content, 'utf-8');
+    const duplicatesInPayload = received - invalid - unique.length;
+    return { unique, received, duplicatesInPayload, invalid };
 }
 
 export async function GET() {
     try {
-        const auth = await requireAdmin();
+        const supabase = await createClient();
+        const auth = await requireAdmin(supabase);
         if ('error' in auth && auth.error) return auth.error;
 
-        const names = readPremiumNames();
+        const names = await fetchAllPremiumNames();
         return NextResponse.json({ success: true, count: names.length, names });
     } catch (error: any) {
         console.error('Premium names GET error:', error);
@@ -73,7 +101,8 @@ export async function GET() {
 
 export async function POST(req: Request) {
     try {
-        const auth = await requireAdmin();
+        const supabase = await createClient();
+        const auth = await requireAdmin(supabase);
         if ('error' in auth && auth.error) return auth.error;
 
         const body = await req.json();
@@ -83,49 +112,62 @@ export async function POST(req: Request) {
             return NextResponse.json({ success: false, error: 'Invalid data format' }, { status: 400 });
         }
 
-        // Sanitize input
-        const incoming = names
-            .map((n: any) => (typeof n === 'string' ? n.trim() : ''))
-            .filter((n: string) => n.length > 0);
+        // Sanitize: trim + dedupe within payload
+        const { unique, received, duplicatesInPayload, invalid } = sanitizeNames(names);
 
-        const uniqueIncoming = [...new Set(incoming)];
-        const duplicatesInPayload = incoming.length - uniqueIncoming.length;
+        console.log(`[Premium Names] POST received=${received} unique=${unique.length} dupsInPayload=${duplicatesInPayload} invalid=${invalid}`);
 
-        // Read existing
-        const existing = readPremiumNames();
-        const existingSet = new Set(existing);
-
-        // Find truly new names
-        const newNames: string[] = [];
-        let skippedDuplicate = 0;
-        for (const name of uniqueIncoming) {
-            if (existingSet.has(name)) {
-                skippedDuplicate++;
-            } else {
-                newNames.push(name);
-                existingSet.add(name);
-            }
+        if (unique.length === 0) {
+            return NextResponse.json({
+                success: true,
+                message: 'No valid names to insert',
+                stats: { received, uniqueInPayload: 0, inserted: 0, skippedDuplicate: 0, duplicatesInPayload, invalid, totalAfter: 0 }
+            });
         }
 
-        // Write merged result
-        const merged = Array.from(existingSet);
-        writePremiumNames(merged);
+        let inserted = 0;
+        let skippedDuplicate = 0;
 
-        console.log(`[Premium Names] POST received=${incoming.length} new=${newNames.length} skipped=${skippedDuplicate}`);
+        const insertData = unique.map((name) => ({ name }));
+
+        for (let i = 0; i < insertData.length; i += INSERT_BATCH_SIZE) {
+            const chunk = insertData.slice(i, i + INSERT_BATCH_SIZE);
+
+            // Use upsert with ignoreDuplicates to skip existing names (UNIQUE constraint on `name`)
+            const { data: upsertData, error: upsertError } = await supabase
+                .from('premium_names')
+                .upsert(chunk, { onConflict: 'name', ignoreDuplicates: true })
+                .select('name');
+
+            if (upsertError) {
+                console.error('Upsert error:', upsertError);
+                throw upsertError;
+            }
+
+            const insertedCount = upsertData?.length ?? 0;
+            inserted += insertedCount;
+            skippedDuplicate += chunk.length - insertedCount;
+        }
+
+        // Just get the new total count
+        const { count } = await supabase.from('premium_names').select('*', { count: 'exact', head: true });
+
+        console.log(`[Premium Names] Append done: inserted=${inserted} skipped=${skippedDuplicate}`);
 
         return NextResponse.json({
             success: true,
-            message: `Added ${newNames.length} new names`,
-            stats: {
-                received: incoming.length,
-                uniqueInPayload: uniqueIncoming.length,
-                inserted: newNames.length,
-                skippedDuplicate,
-                duplicatesInPayload,
-                invalid: names.length - incoming.length,
-                totalAfter: merged.length,
-            },
+            message: `Append complete: inserted ${inserted}, skipped ${skippedDuplicate} duplicates`,
+            stats: { 
+                received, 
+                uniqueInPayload: unique.length, 
+                inserted, 
+                skippedDuplicate, 
+                duplicatesInPayload, 
+                invalid,
+                totalAfter: count ?? 0
+            }
         });
+
     } catch (error: any) {
         console.error('Premium names POST error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });

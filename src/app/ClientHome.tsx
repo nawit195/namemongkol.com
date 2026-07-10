@@ -175,7 +175,7 @@ function HomeResultPreview() {
                 </div>
                 
                 <div className="grid gap-3 sm:grid-cols-3 relative z-10">
-                    {previewItems.map((item, index) => (
+                    {previewItems.map((item) => (
                         <article
                             key={item.title}
                             className="group relative flex gap-4 rounded-[1.25rem] border border-[#ddddf0] bg-[#f8f8fc]/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-[0_12px_35px_rgba(15,23,42,0.06)] hover:-translate-y-1 sm:block sm:p-5"
@@ -436,6 +436,8 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                             totalScore={result.totalScore}
                         />
 
+                        {result.thaksa && <ThaksaTable thaksa={result.thaksa} day={day} />}
+
                         <SaveResultCTA />
 
                         {/* Upsell: วิเคราะห์หลายชื่อ */}
@@ -453,9 +455,6 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                                 <PredictionCard prediction={result.prediction} />
                             </div>
                         </PremiumBlurOverlay>
-
-                        {/* Details */}
-                        {result.thaksa && <ThaksaTable thaksa={result.thaksa} day={day} />}
 
                         {/* Before & After Comparison - Value Proposition */}
                         <BeforeAfterComparison

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Award, Calendar } from 'lucide-react';
-import { PremiumNameData } from '@/utils/premiumDataParser';
+import { Award, CalendarDays, LockKeyhole } from 'lucide-react';
+import type { PremiumNameData } from '@/utils/premiumDataParser';
 import { useLanguage } from '@/components/LanguageProvider';
 
 interface NameCardProps {
@@ -12,14 +12,13 @@ interface NameCardProps {
 
 const THAI_LEADING_VOWELS = new Set(['\u0E40', '\u0E41', '\u0E42', '\u0E43', '\u0E44']);
 
-const getFirstConsonant = (name: string): string => {
+function getFirstConsonant(name: string): string {
     if (!name) return '';
     return THAI_LEADING_VOWELS.has(name.charAt(0)) ? name.charAt(1) : name.charAt(0);
-};
+}
 
 export default function PremiumNameCard({ item, isUnlocked }: NameCardProps) {
     const { t } = useLanguage();
-
     const dayOptions = [
         { value: 'All', label: t('pages.premiumSearch.filters.dayAll') },
         { value: 'อาทิตย์', label: t('pages.premiumSearch.days.sunday') },
@@ -31,61 +30,35 @@ export default function PremiumNameCard({ item, isUnlocked }: NameCardProps) {
         { value: 'ศุกร์', label: t('pages.premiumSearch.days.friday') },
         { value: 'เสาร์', label: t('pages.premiumSearch.days.saturday') },
     ];
-
-    const getDayLabel = (value: string) => dayOptions.find(opt => opt.value === value)?.label || value;
+    const getDayLabel = (value: string) => dayOptions.find((option) => option.value === value)?.label || value;
     const firstConsonant = getFirstConsonant(item.name) || item.name.charAt(0);
 
     return (
-        <div className="group relative overflow-hidden rounded-2xl border border-emerald-100 bg-white/90 p-3.5 shadow-[0_18px_42px_rgba(16,185,129,0.07)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-[0_22px_52px_rgba(16,185,129,0.13)] sm:p-6">
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-200 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/80 via-transparent to-amber-50/70 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <article className="relative overflow-hidden rounded-xl border border-amber-200 bg-[#fdfdff] p-4 shadow-[0_8px_20px_rgba(15,23,42,0.08)] transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-[0_12px_26px_rgba(15,23,42,0.12)] sm:p-5">
+            <div className="absolute inset-x-0 top-0 h-1 bg-[#172033]" />
+            <div className="pointer-events-none absolute -right-1 -top-3 font-serif text-7xl font-black leading-none text-[#172033]/[0.04]">{firstConsonant}</div>
+            {!isUnlocked ? <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#172033]/25 backdrop-blur-[5px]"><span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-[#172033] px-3 py-1.5 text-xs font-bold text-amber-200"><LockKeyhole className="h-3.5 w-3.5" />ปลดล็อกเพื่อดูชื่อ</span></div> : null}
 
-            <div className="pointer-events-none absolute -right-4 -top-6 text-8xl font-black leading-none text-emerald-900/[0.04] transition-all duration-500 group-hover:scale-110 group-hover:text-amber-500/[0.08] sm:text-9xl">
-                {firstConsonant}
-            </div>
-
-            {!isUnlocked && (
-                <div className="absolute inset-0 z-10 bg-white/45 backdrop-blur-[6px] transition-all" />
-            )}
-
-            <div className="relative z-20 flex flex-col gap-3 sm:gap-4">
+            <div className="relative">
                 <div className="flex items-start justify-between gap-3">
-                    <h3
-                        className="text-lg font-black tracking-tight text-[#1a1a3e] transition-colors group-hover:text-emerald-800 sm:text-2xl"
-                        style={!isUnlocked ? { filter: 'blur(10px)', userSelect: 'none' } : {}}
-                    >
-                        {item.name}
-                    </h3>
-                    <div className="flex items-center gap-1.5 rounded-full border border-amber-300/70 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700 shadow-inner sm:px-2.5 sm:py-1 sm:text-xs">
-                        <Award size={12} className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                        <span>{item.totalScore}</span>
+                    <h3 className={`text-xl font-black text-[#172033] sm:text-2xl ${isUnlocked ? '' : 'select-none blur-md'}`}>{item.name}</h3>
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-md border border-amber-300 bg-amber-50 px-2 py-1 font-mono text-xs font-bold text-amber-800"><Award className="h-3.5 w-3.5" />{item.totalScore}</span>
+                </div>
+
+                <div className="mt-4 border-t border-[#eeeef6] pt-3">
+                    <p className="flex items-center gap-1.5 text-xs font-semibold text-[#5a5a82]"><CalendarDays className="h-3.5 w-3.5 text-emerald-600" />เหมาะกับวันเกิด</p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                        {item.suitableDays.map((day, index) => <span key={`${day}-${index}`} className="rounded-md border border-emerald-100 bg-emerald-50 px-2 py-1 text-[11px] font-medium text-[#40506f]">{getDayLabel(day)}</span>)}
                     </div>
                 </div>
 
-                <div className="space-y-2.5 sm:space-y-3">
-                    <div className="flex items-start gap-1.5 rounded-xl border border-emerald-100 bg-emerald-50/60 p-2 sm:gap-2 sm:p-2.5">
-                        <Calendar size={14} className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 sm:h-4 sm:w-4" />
-                        <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                            {item.suitableDays.map((day: string, i: number) => (
-                                <span key={i} className="rounded border border-emerald-100 bg-white/80 px-1.5 py-0.5 text-[9px] font-medium text-[#5a5a82] sm:px-2 sm:text-[11px]">
-                                    {getDayLabel(day)}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="border-t border-emerald-100 pt-2">
-                        <p className="mb-1.5 text-[9px] font-bold uppercase tracking-widest text-[#5a5a82] sm:mb-2 sm:text-[10px]">พลังเลขคู่</p>
-                        <div className="flex flex-wrap gap-1 sm:gap-1.5">
-                            {item.scoreBreakdown.map((score: string, i: number) => (
-                                <span key={i} className="rounded-md border border-amber-200 bg-amber-50 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-amber-800 transition-colors group-hover:border-amber-300 group-hover:bg-amber-100/80 sm:px-2 sm:py-1 sm:text-[11px]">
-                                    {score}
-                                </span>
-                            ))}
-                        </div>
+                <div className="mt-3 border-t border-[#eeeef6] pt-3">
+                    <p className="text-xs font-semibold text-[#5a5a82]">พลังเลขคู่</p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                        {item.scoreBreakdown.map((score, index) => <span key={`${score}-${index}`} className="rounded-md border border-[#ddddf0] bg-white px-2 py-1 font-mono text-[11px] font-semibold text-[#1a1a3e]">{score}</span>)}
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     );
 }
