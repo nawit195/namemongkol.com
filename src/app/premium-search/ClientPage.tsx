@@ -151,21 +151,35 @@ export default function ClientPage() {
     useEffect(() => {
         const fetchPremiumNamesFromDB = async () => {
             try {
-                // Fetch paginated or up to a large number of names
-                const { data, error } = await supabase
-                    .from('premium_names')
-                    .select('name')
-                    .limit(10000); // Assuming Max ~10,000 names 
+                let allFetchedNames: string[] = [];
+                let from = 0;
+                const PAGE_SIZE = 1000;
 
-                if (error) {
-                    if (error.code !== '42P01') {
-                        console.error('Error fetching premium names from DB:', error);
+                while (true) {
+                    const { data, error } = await supabase
+                        .from('premium_names')
+                        .select('name')
+                        .order('name', { ascending: true })
+                        .range(from, from + PAGE_SIZE - 1);
+
+                    if (error) {
+                        if (error.code !== '42P01') {
+                            console.error('Error fetching premium names from DB:', error);
+                        }
+                        return; // fallback remains
                     }
-                    return;
+
+                    if (!data || data.length === 0) break;
+
+                    allFetchedNames = allFetchedNames.concat(data.map(row => row.name));
+                    
+                    if (data.length < PAGE_SIZE) break;
+
+                    from += PAGE_SIZE;
                 }
 
-                if (data && data.length > 0) {
-                    const rawString = data.map(row => row.name).join('\n');
+                if (allFetchedNames.length > 0) {
+                    const rawString = allFetchedNames.join('\n');
                     setAllNames(parsePremiumNames(rawString));
                 }
             } catch (err) {
