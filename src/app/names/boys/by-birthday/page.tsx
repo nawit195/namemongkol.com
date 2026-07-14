@@ -145,7 +145,7 @@ export default function BoysByBirthdayPage() {
                                                 ))}
                                             </div>
                                             <div className="mt-4 text-right">
-                                                <Link href={`/search`} className="text-sm font-medium text-sky-600 hover:underline flex items-center justify-end gap-1">
+                                                <Link href={`/names/boys/by-birthday/${dayKey}`} className="text-sm font-medium text-sky-600 hover:underline flex items-center justify-end gap-1">
                                                     ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
                                                 </Link>
                                             </div>

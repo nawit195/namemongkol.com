@@ -13,7 +13,7 @@ const featureCards = [
     {
         icon: Shield,
         title: 'ชั้นที่ 1: คัดตามหลักทักษา',
-        desc: 'อักษรนำดี กาลกิณีไม่มี 100% ทุกชื่อผ่านการตรวจสอบว่าไม่มีอักษรต้องห้ามตามวันเกิด',
+        desc: 'ตรวจอักษรนำและคัดชื่อที่ไม่มีอักษรกาลกิณีตามวันเกิดและเงื่อนไขที่เลือก',
         card: 'border-emerald-200 bg-gradient-to-br from-emerald-50 via-teal-50/70 to-white',
         iconBox: 'border-emerald-200 bg-white text-emerald-600',
     },

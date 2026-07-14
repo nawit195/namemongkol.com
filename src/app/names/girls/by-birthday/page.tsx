@@ -145,15 +145,9 @@ export default function GirlsByBirthdayPage() {
                                                 ))}
                                             </div>
                                             <div className="mt-4 text-right">
-                                                {dayKey === 'monday' ? (
-                                                    <Link href={`/names/girls/by-birthday/monday`} className="text-sm font-bold text-pink-600 hover:underline flex items-center justify-end gap-1">
-                                                        ดูชื่อลูกสาวเกิดวันจันทร์ทั้งหมด (100+ ชื่อ) <span aria-hidden="true">→</span>
-                                                    </Link>
-                                                ) : (
-                                                    <Link href={`/search`} className="text-sm font-medium text-amber-600 hover:underline flex items-center justify-end gap-1">
-                                                        ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
-                                                    </Link>
-                                                )}
+                                                <Link href={`/names/girls/by-birthday/${dayKey}`} className="text-sm font-medium text-amber-600 hover:underline flex items-center justify-end gap-1">
+                                                    ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
+                                                </Link>
                                             </div>
                                         </div>
 

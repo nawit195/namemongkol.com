@@ -16,6 +16,7 @@ import { analyzeName } from '@/utils/nameAnalysis';
 import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
+import { trackEvent } from '@/lib/analytics';
 
 const getDayBadgeProps = (d: string) => {
     if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-500/15 text-rose-300 border border-rose-500/20' };
@@ -47,7 +48,10 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
         <>
             <tr
                 className={`group cursor-pointer border-b border-white/5 last:border-0 transition-all duration-300 ${isExpanded ? 'bg-white/[0.04]' : 'hover:bg-white/[0.02]'}`}
-                onClick={() => setIsExpanded(!isExpanded)}
+                onClick={() => {
+                    if (!isExpanded) void trackEvent('funnel.search.name_select');
+                    setIsExpanded(!isExpanded);
+                }}
             >
                 {/* Column 1: Name (Mobile + Desktop) */}
                 <td className="px-4 py-4 w-1/3 md:w-auto">
@@ -156,6 +160,15 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
                                 </div>
                             </div>
 
+                            <Link
+                                href={`/name-check?name=${encodeURIComponent(name)}`}
+                                data-track="funnel.search.name_analyze"
+                                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition-colors hover:bg-amber-300"
+                                onClick={(event) => event.stopPropagation()}
+                            >
+                                วิเคราะห์ชื่อนี้ฟรี
+                            </Link>
+
                         </div>
                     </td>
                 </tr>
@@ -173,8 +186,6 @@ const THAI_LETTERS = [
 
 const UNLOCK_COST = 10;
 const UNLOCK_AMOUNT = 20;
-
-const stripInvisible = (s: string) => s.replace(/[\s\u200B\u200C\u200D\uFEFF]+/g, '');
 
 // Thai leading vowels that appear before the consonant in written form
 const THAI_LEADING_VOWELS = new Set(['\u0E40', '\u0E41', '\u0E42', '\u0E43', '\u0E44']); // เ แ โ ใ ไ
@@ -195,7 +206,20 @@ type PublicStats = {
     totalPremiumNames: number;
 };
 
-export default function SearchPage() {
+type SearchName = {
+    name: string;
+    gender: 'male' | 'female' | 'neutral';
+    meaning?: string;
+    numerology: number;
+    suitableDays: DayKey[];
+};
+
+type SearchPageProps = {
+    initialNames: SearchName[];
+    initialTotal: number;
+};
+
+export default function SearchPage({ initialNames, initialTotal }: SearchPageProps) {
     const router = useRouter();
     const { t } = useLanguage();
     const [selectedDay, setSelectedDay] = useState<DayKey | 'all'>('all');
@@ -206,34 +230,66 @@ export default function SearchPage() {
     const [visibleCount, setVisibleCount] = useState(10);
     const [isUnlocking, setIsUnlocking] = useState(false);
 
-    const [names, setNames] = useState<{ name: string; gender: string; meaning?: string }[]>([]); // Update type
-    const [loading, setLoading] = useState(true);
+    const [names, setNames] = useState<SearchName[]>(initialNames);
+    const [resultTotal, setResultTotal] = useState(initialTotal);
+    const [loading, setLoading] = useState(false);
     const [publicStats, setPublicStats] = useState<PublicStats | null>(null);
 
-    // Fetch names from cached API
+    // URL fragments preserve useful filter state without creating crawlable faceted URLs.
     useEffect(() => {
+        const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        const day = params.get('day');
+        const gender = params.get('gender');
+        const initial = params.get('initial');
+
+        if (day && (day === 'all' || day in thaksaConfig)) setSelectedDay(day as DayKey | 'all');
+        if (gender && ['all', 'male', 'female', 'neutral'].includes(gender)) {
+            setSelectedGender(gender as 'all' | 'male' | 'female' | 'neutral');
+        }
+        if (initial) setSelectedLetter(initial);
+    }, []);
+
+    // Fetch only the current result window instead of downloading the full database.
+    useEffect(() => {
+        if (selectedDay === 'all' && selectedGender === 'all' && selectedLetter === 'all') {
+            setNames(initialNames);
+            setResultTotal(initialTotal);
+            setLoading(false);
+            return;
+        }
+
+        const controller = new AbortController();
         const fetchNames = async () => {
             setLoading(true);
             try {
-                const res = await fetch('/api/public/names');
+                const params = new URLSearchParams({
+                    day: selectedDay,
+                    gender: selectedGender,
+                    initial: selectedLetter,
+                    page: '1',
+                    limit: '50',
+                });
+                const res = await fetch(`/api/public/names?${params.toString()}`, {
+                    signal: controller.signal,
+                });
                 const json = await res.json();
-                
-                if (json.success && json.data) {
-                    const allData = json.data as { name: string; gender: string | null; meaning: string | null }[];
-                    setNames(allData.map(d => ({ 
-                        name: stripInvisible(d.name), 
-                        gender: d.gender || 'neutral',
-                        meaning: d.meaning || undefined
-                    })).filter(d => d.name));
+
+                if (json.success && Array.isArray(json.data)) {
+                    setNames(json.data as SearchName[]);
+                    setResultTotal(typeof json.total === 'number' ? json.total : json.data.length);
                 }
             } catch (err) {
-                console.error('Error fetching names API:', err);
+                if (!(err instanceof DOMException && err.name === 'AbortError')) {
+                    console.error('Error fetching names API:', err);
+                }
             } finally {
-                setLoading(false);
+                if (!controller.signal.aborted) setLoading(false);
             }
         };
-        fetchNames();
-    }, []);
+
+        void fetchNames();
+        return () => controller.abort();
+    }, [initialNames, initialTotal, selectedDay, selectedGender, selectedLetter]);
 
     useEffect(() => {
         const fetchPublicStats = async () => {
@@ -308,7 +364,7 @@ export default function SearchPage() {
         return filteredNames.slice(visibleCount).filter(item => analyzeName(item.name)?.grade === 'A+').length;
     }, [filteredNames, visibleCount]);
 
-    const liveNameCount = names.length > 0 ? names.length : (publicStats?.totalNames ?? 0);
+    const liveNameCount = publicStats?.totalNames || initialTotal;
 
     // Reset to page 1 when filters change is now handled in event handlers
 
@@ -784,7 +840,7 @@ export default function SearchPage() {
 
                 {filteredNames.length > 0 && (
                     <div className="mt-4 text-center text-slate-500 text-sm">
-                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length)} {t('pages.search.showingConnector')} {filteredNames.length}
+                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length)} {t('pages.search.showingConnector')} {resultTotal}
                     </div>
                 )}
 

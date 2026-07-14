@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ClientPage from './ClientPage';
 import { fetchPublicAggregateStats } from '@/lib/publicStats';
 import { getLiveNameCountLabel } from '@/lib/nameCounts';
+import { queryPublicNames } from '@/lib/publicNames';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
@@ -65,7 +66,10 @@ const pillarFaqs = [
 ] as const;
 
 export default async function SearchPage() {
-    const aggregate = await fetchPublicAggregateStats();
+    const [aggregate, initialNames] = await Promise.all([
+        fetchPublicAggregateStats(),
+        queryPublicNames({ page: 1, limit: 30 }),
+    ]);
     const liveNamesCount = aggregate.stats.totalNames;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
 
@@ -136,8 +140,15 @@ export default async function SearchPage() {
         '@type': 'ItemList',
         'name': `รายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
         'description': 'รวมรายชื่อมงคลพร้อมความหมาย เลขศาสตร์ เพศ และวันเกิดที่เหมาะสมสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล',
-        ...(liveNamesCount > 0 ? { numberOfItems: liveNamesCount } : {}),
-        'itemListOrder': 'https://schema.org/ItemListOrderAscending'
+        numberOfItems: initialNames.total,
+        'itemListOrder': 'https://schema.org/ItemListOrderAscending',
+        'itemListElement': initialNames.data.slice(0, 20).map((item, index) => ({
+            '@type': 'ListItem',
+            'position': index + 1,
+            'name': item.name,
+            'description': item.meaning,
+            'url': `${baseUrl}/name-check?name=${encodeURIComponent(item.name)}`,
+        })),
     };
 
     const breadcrumbJsonLd = {
@@ -181,7 +192,7 @@ export default async function SearchPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
-            <ClientPage />
+            <ClientPage initialNames={initialNames.data} initialTotal={initialNames.total} />
             <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>
@@ -252,6 +263,51 @@ export default async function SearchPage() {
                 </div>
             </section>
 
+            <section className="w-full bg-slate-950 px-4 py-14 text-slate-100" aria-labelledby="search-plans-title">
+                <div className="mx-auto max-w-5xl">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">เลือกขั้นตอนที่เหมาะกับคุณ</p>
+                    <h2 id="search-plans-title" className="mt-3 text-2xl font-bold sm:text-3xl">เริ่มฟรี แล้วค่อยเพิ่มความละเอียดเมื่อมีชื่อในใจ</h2>
+                    <p className="mt-3 max-w-[70ch] text-sm leading-7 text-slate-300 sm:text-base">
+                        การค้นหาชื่อช่วยสร้างรายชื่อเบื้องต้น ส่วนการวิเคราะห์ร่วมกับนามสกุลและการคัดแบบ Premium ช่วยลดเวลาตรวจทีละชื่อก่อนตัดสินใจใช้งานจริง
+                    </p>
+                    <div className="mt-8 overflow-hidden rounded-2xl border border-slate-700">
+                        <div className="grid grid-cols-[1.25fr_1fr_1fr] bg-slate-900 text-sm">
+                            <div className="p-4 font-semibold text-slate-300">ความสามารถ</div>
+                            <div className="p-4 font-bold text-sky-300">ฟรี</div>
+                            <div className="p-4 font-bold text-amber-300">Premium</div>
+                        </div>
+                        {[
+                            ['ค้นหารายชื่อและความหมาย', 'มี', 'มี'],
+                            ['กรองตามวันเกิดและอักษรนำ', 'พื้นฐาน', 'ละเอียด'],
+                            ['คัดร่วมกับนามสกุลและเป้าหมายชีวิต', 'ตรวจทีละชื่อ', 'คัดให้เป็นชุด'],
+                            ['ดูเฉพาะชื่อเกรดสูง', 'บางส่วน', 'ครบกว่า'],
+                        ].map(([feature, free, premium]) => (
+                            <div key={feature} className="grid grid-cols-[1.25fr_1fr_1fr] border-t border-slate-800 text-sm">
+                                <div className="p-4 text-slate-200">{feature}</div>
+                                <div className="p-4 text-slate-400">{free}</div>
+                                <div className="p-4 font-medium text-slate-100">{premium}</div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                        <Link
+                            href="/name-check"
+                            data-track="seo.search.compare.free_analysis"
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 text-sm font-bold text-slate-100 transition-colors hover:border-slate-400 hover:bg-slate-900"
+                        >
+                            วิเคราะห์ชื่อฟรี
+                        </Link>
+                        <Link
+                            href="/premium-search"
+                            data-track="seo.search.compare.premium"
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300"
+                        >
+                            คัดชื่อมงคลแบบ Premium
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <section id="search-faq" className="w-full bg-[#f8f8fc] px-4 py-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <h2 className="text-2xl font-bold">คำถามที่พบบ่อยเกี่ยวกับชื่อมงคล</h2>
@@ -273,7 +329,7 @@ export default async function SearchPage() {
                     <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
                         หน้า Search ช่วยให้เริ่มจากชื่อที่ความหมายดีและมีผลรวมเลขศาสตร์น่าสนใจ แต่ก่อนใช้จริงควรนำชื่อที่เลือกไปวิเคราะห์ร่วมกับนามสกุล เพราะ NameMongkol จะถอดตัวอักษรเป็นเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังและความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น
                     </p>
-                    <Link href="/name-check" className="mt-6 inline-flex rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300">
+                    <Link href="/name-check" data-track="seo.search.next_step.name_check" className="mt-6 inline-flex rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300">
                         วิเคราะห์ชื่อ-นามสกุลฟรี
                     </Link>
                 </div>

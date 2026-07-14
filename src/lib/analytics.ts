@@ -23,6 +23,8 @@ const ALWAYS_TRACK_KEYWORDS = [
     'signup',
     'topup',
     'payment',
+    'organic',
+    'funnel',
     'unlock',
     'deduct',
     'download',

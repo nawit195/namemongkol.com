@@ -1111,13 +1111,15 @@ export default async function ArticlePage({ params }: Props) {
                                 <Award size={16} className="text-amber-600" />
                             </h3>
                             <p className="text-[#5a5a82] text-sm leading-relaxed mb-5 max-w-2xl">
-                                นักวิเคราะห์ชื่อมงคลและเลขศาสตร์ ผู้เชี่ยวชาญด้านทักษาปกรณ์ เลขศาสตร์ไทย และโหราศาสตร์
-                                ประสบการณ์วิเคราะห์ชื่อมากกว่า 150,000 ชื่อผ่านระบบ NameMongkol
-                                อ้างอิงตำราทักษาปกรณ์ฉบับราชบัณฑิต และหลักเลขศาสตร์สากล
+                                ผู้จัดทำเนื้อหาเกี่ยวกับชื่อมงคล ทักษาปกรณ์ เลขศาสตร์ไทย และโหราศาสตร์
+                                โดยอธิบายหลักการคำนวณ แหล่งข้อมูล และข้อจำกัดของผลวิเคราะห์อย่างโปร่งใส
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 <Link href="/about" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <BookOpen size={12} className="text-amber-600" /> เกี่ยวกับผู้เขียน
+                                </Link>
+                                <Link href="/methodology" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                    <BookOpen size={12} className="text-amber-600" /> วิธีคำนวณและข้อจำกัด
                                 </Link>
                                 <Link href="/name-check" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <ExternalLink size={12} className="text-amber-600" /> วิเคราะห์ชื่อฟรี

@@ -1,50 +1,34 @@
-import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from 'next/server';
+import { thaksaConfig, type DayKey } from '@/data/thaksa';
+import { queryPublicNames, type PublicNameGender } from '@/lib/publicNames';
 
 const NAMES_REVALIDATE_SECONDS = 600;
 
 // Keep public search close to the database while still caching enough for Vercel Free.
 export const revalidate = 600;
 
-const getSupabase = () => createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://dummy.supabase.co',
-    process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'dummy_anon_key',
-);
-
-export async function GET() {
-    const supabase = getSupabase();
-    
+export async function GET(request: NextRequest) {
     try {
-        let allData: { name: string; gender: string | null; meaning: string | null }[] = [];
-        let from = 0;
-        const pageSize = 1000;
-        let hasMore = true;
+        const params = request.nextUrl.searchParams;
+        const rawDay = params.get('day') ?? 'all';
+        const rawGender = params.get('gender') ?? 'all';
+        const day = rawDay === 'all' || rawDay in thaksaConfig ? rawDay as DayKey | 'all' : 'all';
+        const gender = ['all', 'male', 'female', 'neutral'].includes(rawGender)
+            ? rawGender as PublicNameGender | 'all'
+            : 'all';
+        const page = Number.parseInt(params.get('page') ?? '1', 10);
+        const limit = Number.parseInt(params.get('limit') ?? '30', 10);
+        const result = await queryPublicNames({
+            day,
+            gender,
+            initial: params.get('initial') ?? 'all',
+            page: Number.isFinite(page) ? page : 1,
+            limit: Number.isFinite(limit) ? limit : 30,
+        });
 
-        while (hasMore) {
-            const { data, error } = await supabase
-                .from('auspicious_names')
-                .select('name, gender, meaning')
-                .order('name', { ascending: true })
-                .range(from, from + pageSize - 1);
-
-            if (error) {
-                console.error('API /names fetch error:', error);
-                throw error;
-            }
-
-            if (data && data.length > 0) {
-                allData = allData.concat(data);
-                from += pageSize;
-                hasMore = data.length === pageSize;
-            } else {
-                hasMore = false;
-            }
-        }
-
-        // Return the full list as JSON and refresh it every 10 minutes.
         return NextResponse.json({
             success: true,
-            data: allData
+            ...result,
         }, {
             headers: {
                 'Cache-Control': `public, s-maxage=${NAMES_REVALIDATE_SECONDS}, stale-while-revalidate=2592000`,
@@ -54,7 +38,7 @@ export async function GET() {
     } catch (err) {
         console.error('Failed to fetch /names:', err);
         return NextResponse.json(
-            { success: false, data: [] },
+            { success: false, data: [], total: 0, page: 1, pageSize: 30, totalPages: 1 },
             { status: 500 }
         );
     }

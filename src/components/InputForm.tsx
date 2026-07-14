@@ -32,7 +32,7 @@ const formTrustItems = [
     },
     {
         title: 'ไม่ต้องล็อกอิน',
-        detail: 'ปลอดภัย 100%',
+        detail: 'ไม่แสดงข้อมูลสู่สาธารณะ',
         icon: LockKeyhole,
     },
     {
@@ -223,8 +223,8 @@ export const InputForm: React.FC<InputFormProps> = ({
                         <div className="flex items-start justify-center gap-2 px-1 text-center text-[10px] leading-relaxed text-slate-400 sm:px-2 sm:text-xs">
                             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
                             <p>
-                                ใช้งานฟรีได้ทันที ไม่มีค่าใช้จ่าย ข้อมูลของคุณจะถูกเก็บเป็นความลับและปลอดภัย 100%
-                                ไม่เปิดเผยต่อบุคคลที่สาม
+                                ใช้งานฟรีได้ทันที ไม่มีค่าใช้จ่าย และไม่แสดงข้อมูลที่กรอกบนหน้าสาธารณะ
+                                โปรดอ่านนโยบายความเป็นส่วนตัวสำหรับรายละเอียดการจัดเก็บข้อมูล
                             </p>
                         </div>
                     </div>

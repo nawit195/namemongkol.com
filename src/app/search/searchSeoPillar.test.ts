@@ -12,7 +12,9 @@ describe('/search SEO pillar content', () => {
 
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
-        expect(pageSource).toContain('numberOfItems: liveNamesCount');
+        expect(pageSource).toContain('numberOfItems: initialNames.total');
+        expect(pageSource).toContain("'itemListElement': initialNames.data");
+        expect(pageSource).toContain('<ClientPage initialNames={initialNames.data} initialTotal={initialNames.total} />');
         expect(pageSource).not.toContain('numberOfItems: 5000');
 
         expect(clientSource).toContain('totalNames');

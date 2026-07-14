@@ -69,6 +69,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '', priority: 0.85, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-check', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/about', priority: 0.7, changeFreq: 'monthly' as const, lastModified: STATIC_LASTMOD },
+        { path: '/methodology', priority: 0.75, changeFreq: 'monthly' as const, lastModified: '2026-07-14' },
         { path: '/articles', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-generator', priority: 0.85, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
@@ -130,6 +131,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: `${baseUrl}/wallpapers/intent/work`, lastModified: new Date(CONTENT_LASTMOD), changeFrequency: 'weekly' as const, priority: 0.75 },
     ];
 
+    const namingDayUrls: MetadataRoute.Sitemap = [
+        ...['boys', 'girls'].flatMap((gender) => wallpaperDays.map((day) => ({
+            url: `${baseUrl}/names/${gender}/by-birthday/${day}`,
+            lastModified: new Date('2026-07-14'),
+            changeFrequency: 'weekly' as const,
+            priority: 0.85,
+        }))),
+    ];
+
     let articleUrls: MetadataRoute.Sitemap = [];
     try {
         if (supabase) {
@@ -167,5 +177,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const localArticleUrlsSet = new Set(localArticleUrls.map((article) => article.url));
     const dbOnlyArticles = articleUrls.filter((article) => !localArticleUrlsSet.has(article.url));
 
-    return [...staticUrls, ...meaningUrls, ...wallpaperCategoryUrls, ...localArticleUrls, ...dbOnlyArticles];
+    return [...staticUrls, ...meaningUrls, ...wallpaperCategoryUrls, ...namingDayUrls, ...localArticleUrls, ...dbOnlyArticles];
 }

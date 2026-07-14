@@ -27,6 +27,7 @@ import PremiumNameCard from './components/PremiumNameCard';
 import PremiumAlphabetBar from './components/PremiumAlphabetBar';
 import PremiumSEOSection from './components/PremiumSEOSection';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
+import { trackEvent } from '@/lib/analytics';
 
 interface ScoreDropdownProps {
     value: string;
@@ -120,6 +121,9 @@ function ScoreDropdown({ value, onChange, scores, disabled }: ScoreDropdownProps
 }
 
 export default function ClientPage() {
+    useEffect(() => {
+        void trackEvent('funnel.premium.open');
+    }, []);
     const router = useRouter();
     const { t } = useLanguage();
     
@@ -295,7 +299,10 @@ export default function ClientPage() {
                 iconColor: '#f59e0b',
                 customClass: { popup: 'border border-white/10 rounded-2xl' }
             });
-            if (result.isConfirmed) router.push('/topup');
+            if (result.isConfirmed) {
+                void trackEvent('funnel.premium.topup_open');
+                router.push('/topup');
+            }
             return;
         }
 
@@ -316,6 +323,10 @@ export default function ClientPage() {
 
         if (!confirmResult.isConfirmed) return;
 
+        void trackEvent('funnel.premium.unlock_confirm', {
+            metadata: { amount },
+        });
+
         setIsLoading(true);
         try {
             await deductCredits(amount);
@@ -334,6 +345,9 @@ export default function ClientPage() {
                 leadingCharType,
                 selectedLetter,
                 unlockedNames,
+            });
+            void trackEvent('funnel.premium.unlock_success', {
+                metadata: { amount },
             });
         } catch (err) {
             console.error('Search Error:', err);

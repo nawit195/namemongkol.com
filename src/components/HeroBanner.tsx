@@ -362,7 +362,7 @@ export const HeroBanner = ({ headingLevel = 'h1' }: HeroBannerProps) => {
                         <div className="flex items-center gap-2 rounded-xl border border-[#ddddf0] bg-white px-3 py-2 shadow-sm">
                             <Target className="h-4 w-4 shrink-0 text-emerald-500" />
                             <span>
-                                <strong className="text-[#1a1a3e]">99%</strong> {t('home.hero.statAccuracy')}
+                                <strong className="text-emerald-600">✓</strong> {t('home.hero.statAccuracy')}
                             </span>
                         </div>
                         <div className="flex items-center gap-2 rounded-xl border border-[#ddddf0] bg-white px-3 py-2 shadow-sm">

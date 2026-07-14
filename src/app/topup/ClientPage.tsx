@@ -6,6 +6,7 @@ import { Package, Bitcoin, Zap, ShieldCheck, CheckCircle2, Upload } from 'lucide
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createPromptPayCheckoutSession, verifyPromptPayTransaction } from '@/app/actions/stripe';
 import ManualPaymentModal from '@/components/ManualPaymentModal';
+import { trackEvent } from '@/lib/analytics';
 
 
 interface PricingTier {
@@ -74,6 +75,9 @@ export default function TopUpPage({ gateway, promptpayNumber }: TopUpPageProps) 
                         const result = await verifyPromptPayTransaction(sessionId);
 
                         if (result.success) {
+                            void trackEvent('funnel.payment.success', {
+                                metadata: { credits: result.credits, gateway: 'stripe' },
+                            });
                             Swal.fire({
                                 title: 'เติมเครดิตสำเร็จ!',
                                 text: `คุณได้รับ ${result.credits} เครดิตเรียบร้อยแล้ว`,

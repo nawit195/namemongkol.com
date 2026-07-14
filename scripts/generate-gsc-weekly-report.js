@@ -155,6 +155,36 @@ const PRESETS = {
             { key: 'boy-names-free-100', label: '/articles/100-auspicious-boy-names-2569', match: (u) => /\/articles\/100-auspicious-boy-names-2569$/.test(u) },
         ],
     },
+    'name-seo': {
+        title: 'Weekly GSC Report (Name SEO & Premium Funnel)',
+        cohortMatchers: [
+            { key: 'search', label: '/search', match: (u) => /\/search$/.test(u) },
+            { key: 'name-check', label: '/name-check', match: (u) => /\/name-check$/.test(u) },
+            { key: 'name-generator', label: '/name-generator', match: (u) => /\/name-generator$/.test(u) },
+            { key: 'premium-search', label: '/premium-search', match: (u) => /\/premium-search$/.test(u) },
+            { key: 'boys', label: '/names/boys', match: (u) => /\/names\/boys$/.test(u) },
+            { key: 'girls', label: '/names/girls', match: (u) => /\/names\/girls$/.test(u) },
+            { key: 'birthday-pages', label: '/names/*/by-birthday/*', match: (u) => /\/names\/(boys|girls)\/by-birthday\//.test(u) },
+        ],
+        queryMatchers: [
+            { key: 'search-names', pattern: /(ค้นหาชื่อมงคล|ชื่อมงคล|ชื่อความหมายดี)/i },
+            { key: 'analyze-name', pattern: /(วิเคราะห์ชื่อ|วิเคราะห์ชื่อ.*นามสกุล|เช็คชื่อ)/i },
+            { key: 'boy-names', pattern: /(ตั้งชื่อลูกชาย|ชื่อลูกชาย)/i },
+            { key: 'girl-names', pattern: /(ตั้งชื่อลูกสาว|ชื่อลูกสาว)/i },
+            { key: 'birthday-names', pattern: /(ชื่อ|ตั้งชื่อ).*วัน(อาทิตย์|จันทร์|อังคาร|พุธ|พฤหัสบดี|ศุกร์|เสาร์)/i },
+            { key: 'change-name', pattern: /(เปลี่ยนชื่อมงคล|ชื่อเสริมดวงเฉพาะบุคคล)/i },
+            { key: 'ai-name', pattern: /(ตั้งชื่อด้วย ai|สร้างชื่อ.*ai)/i },
+        ],
+        cannibalizationPages: [
+            { key: 'search', label: '/search', match: (u) => /\/search$/.test(u) },
+            { key: 'name-check', label: '/name-check', match: (u) => /\/name-check$/.test(u) },
+            { key: 'name-generator', label: '/name-generator', match: (u) => /\/name-generator$/.test(u) },
+            { key: 'premium-search', label: '/premium-search', match: (u) => /\/premium-search$/.test(u) },
+            { key: 'boys', label: '/names/boys', match: (u) => /\/names\/boys$/.test(u) },
+            { key: 'girls', label: '/names/girls', match: (u) => /\/names\/girls$/.test(u) },
+            { key: 'birthday-pages', label: '/names/*/by-birthday/*', match: (u) => /\/names\/(boys|girls)\/by-birthday\//.test(u) },
+        ],
+    },
 };
 
 function buildCannibalizationSummary(rows, trackedPages) {
@@ -415,7 +445,7 @@ function main() {
     }
 
     if (!input) {
-        console.error('Usage: node scripts/generate-gsc-weekly-report.js --input <gsc.csv> [--compare <previous-gsc.csv>] [--preset wallpapers|boy-names] [--output <out.md>] [--period "YYYY-MM-DD to YYYY-MM-DD"]');
+        console.error('Usage: node scripts/generate-gsc-weekly-report.js --input <gsc.csv> [--compare <previous-gsc.csv>] [--preset wallpapers|boy-names|name-seo] [--output <out.md>] [--period "YYYY-MM-DD to YYYY-MM-DD"]');
         process.exit(1);
     }
 

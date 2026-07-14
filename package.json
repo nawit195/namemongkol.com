@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gsc:weekly": "node scripts/generate-gsc-weekly-report.js",
-    "gsc:weekly:boy-names": "node scripts/generate-gsc-weekly-report.js --preset boy-names"
+    "gsc:weekly:boy-names": "node scripts/generate-gsc-weekly-report.js --preset boy-names",
+    "gsc:weekly:name-seo": "node scripts/generate-gsc-weekly-report.js --preset name-seo"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

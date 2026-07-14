@@ -1063,7 +1063,7 @@ export default function PremiumAnalysisPage() {
                                             <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                                                 <td className="py-4 px-4 text-slate-300">วิเคราะห์ร่วมกับเวลาเกิด (ลัคนาราศี)</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
-                                                <td className="text-center py-4 px-4 text-amber-400 font-semibold">✅ แม่นยำ 100%</td>
+                                                <td className="text-center py-4 px-4 text-amber-400 font-semibold">✓ ใช้เวลาเกิดประกอบ</td>
                                             </tr>
                                             <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
                                                 <td className="py-4 px-4 text-slate-300">เจาะลึกเฉพาะด้าน (การเงิน/งาน/รัก)</td>
