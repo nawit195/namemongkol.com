@@ -42,7 +42,7 @@ export const metadata: Metadata = {
                 url: founderImageUrl,
                 width: 1124,
                 height: 1354,
-                alt: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+                alt: 'อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล',
             },
         ],
     },
@@ -74,7 +74,7 @@ const jsonLd = {
                 url: founderImageUrl,
                 width: 1124,
                 height: 1354,
-                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+                caption: 'อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล',
             },
             description: 'แพลตฟอร์มวิเคราะห์ชื่อมงคล เบอร์โทร ลายมือ ออร่า วอลเปเปอร์ และบทความความรู้ด้านชื่อมงคล',
             foundingDate: '2024',
@@ -113,7 +113,7 @@ const jsonLd = {
                 url: founderImageUrl,
                 width: 1124,
                 height: 1354,
-                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+                caption: 'อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล',
             },
             description: 'ผู้พัฒนาแนวคิดและระบบวิเคราะห์ชื่อมงคล ที่ผสานหลักศาสตร์ชื่อ ความหมาย ผลรวมเลขศาสตร์ และเทคโนโลยี AI เพื่อช่วยให้ผู้ใช้มีตัวเลือกชื่อที่เหมาะสมและมั่นใจมากขึ้น',
             worksFor: {
@@ -151,7 +151,7 @@ const jsonLd = {
                 url: founderImageUrl,
                 width: 1124,
                 height: 1354,
-                caption: 'อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์',
+                caption: 'อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล',
             },
             breadcrumb: {
                 '@type': 'BreadcrumbList',
@@ -180,7 +180,7 @@ const jsonLd = {
 
 export default function AboutPage() {
     return (
-        <main className="bg-[#f8f8fc] min-h-screen pb-28">
+        <main className="site-grid-surface min-h-screen pb-28">
             <Script
                 id="about-json-ld"
                 type="application/ld+json"

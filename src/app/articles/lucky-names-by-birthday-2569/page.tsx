@@ -53,6 +53,34 @@ export const metadata: Metadata = {
     },
 };
 
+function getHtmlAttribute(attrs: string, name: string) {
+    const match = attrs.match(new RegExp(`\\s${name}=["']([^"']*)["']`, 'i'));
+    return match?.[1] ?? '';
+}
+
+function escapeHtmlAttribute(value: string) {
+    return value
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function normalizeArticleContentHtml(content: string) {
+    let imgCounter = 0;
+    return content.replace(/<img\b([^>]*)>/gi, (match, attrs) => {
+        imgCounter++;
+        const src = getHtmlAttribute(attrs, 'src');
+        if (!src) return match;
+
+        const alt = getHtmlAttribute(attrs, 'alt') || article.coverImageAlt || `ภาพประกอบบทความ ${article.title} (${imgCounter})`;
+        const safeSrc = escapeHtmlAttribute(src);
+        const safeAlt = escapeHtmlAttribute(alt);
+
+        return `<figure class="article-media not-prose my-8 overflow-hidden rounded-2xl border border-slate-200 bg-[#f5f5fb] p-2 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"><a href="${safeSrc}" target="_blank" rel="noopener noreferrer" class="block"><img src="${safeSrc}" alt="${safeAlt}" loading="lazy" class="h-auto w-full rounded-xl object-contain" /></a><figcaption class="px-2 pb-1 pt-3 text-center text-xs text-[#6a6a92]">คลิกเพื่อดูภาพขนาดเต็ม</figcaption></figure>`;
+    });
+}
+
 export default function ArticleLuckyNamesByBirthday2569() {
     const canonicalUrl = `${baseUrl}/articles/${article.slug}`;
 
@@ -94,12 +122,48 @@ export default function ArticleLuckyNamesByBirthday2569() {
     } : null;
 
     return (
-        <div className="min-h-screen bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-amber-500 selection:text-[#050711] relative overflow-hidden pb-28">
+        <div className="site-grid-surface min-h-screen text-[#5a5a82] font-sans selection:bg-amber-500 selection:text-[#050711] relative overflow-hidden pb-28">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none">
                 <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#c9933a]/5 rounded-full blur-[120px]"></div>
                 <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-amber-600/5 rounded-full blur-[120px]"></div>
             </div>
+
+            {/* WebPage Schema */}
+            <Script
+                id="article-webpage-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebPage",
+                        "@id": `${canonicalUrl}#webpage`,
+                        "url": canonicalUrl,
+                        "name": article.metaTitle || article.title,
+                        "description": article.metaDescription || article.excerpt,
+                        "inLanguage": "th-TH",
+                        "isPartOf": {
+                            "@type": "WebSite",
+                            "@id": `${baseUrl}/#website`,
+                            "url": baseUrl,
+                            "name": "NameMongkol",
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "@id": `${baseUrl}/#organization`,
+                            "name": "NameMongkol",
+                            "url": baseUrl,
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": `${baseUrl}/icon.png`,
+                            },
+                        },
+                        "mainEntity": {
+                            "@id": `${canonicalUrl}#article`,
+                        }
+                    })
+                }}
+            />
 
             {/* Article Schema */}
             <Script
@@ -109,6 +173,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Article",
+                        "@id": `${canonicalUrl}#article`,
                         "headline": article.metaTitle || article.title,
                         "description": article.metaDescription || article.excerpt,
                         "image": article.coverImage?.startsWith('http') ? article.coverImage : `${baseUrl}${article.coverImage}`,
@@ -205,7 +270,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                         </span>
                         <div className="flex items-center gap-2">
                             <Calendar size={14} />
-                            <span>{article.date}</span>
+                            <time dateTime={(() => { try { return new Date(article.date).toISOString(); } catch { return article.date; } })()}>{article.date}</time>
                         </div>
                         <div className="flex items-center gap-2">
                             <User size={14} />
@@ -218,7 +283,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                         {article.dateModified && article.dateModified !== article.date && (
                             <div className="flex items-center gap-2 text-emerald-600">
                                 <RefreshCw size={14} />
-                                <span>อัปเดต: {article.dateModified}</span>
+                                <time dateTime={(() => { try { return new Date(article.dateModified!).toISOString(); } catch { return article.dateModified!; } })()}>อัปเดต: {article.dateModified}</time>
                             </div>
                         )}
                     </div>
@@ -235,6 +300,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             alt={article.coverImageAlt || `ภาพหน้าปกบทความ ${article.title}`}
                             priority
                             objectFit="contain"
+                            variant="detail"
                             className="group-hover:scale-100"
                         />
                     </div>
@@ -308,7 +374,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                         <p className="lead rounded-2xl border border-amber-500/30 bg-amber-50 p-5 text-xl font-medium text-[#1a1a3e] shadow-sm leading-relaxed">
                             {article.excerpt}
                         </p>
-                        <div dangerouslySetInnerHTML={{ __html: article.content }} />
+                        <div dangerouslySetInnerHTML={{ __html: normalizeArticleContentHtml(article.content) }} />
                     </article>
 
                     {/* Aura Vibe Widget — Mid-Article */}
@@ -397,8 +463,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             <h3 className="text-lg font-bold text-[#1a1a3e] mb-1">{article.author}</h3>
                             <p className="text-amber-600 text-sm mb-3">นักวิเคราะห์ชื่อมงคลและเลขศาสตร์</p>
                             <p className="text-[#5a5a82] text-sm leading-relaxed">
-                                ผู้เชี่ยวชาญด้านเลขศาสตร์ ทักษาปกรณ์ และอายตนะ 6 ผู้พัฒนาระบบ AI วิเคราะห์ชื่อมงคลที่ครบถ้วนที่สุดในประเทศไทย
-                                บทความนี้เขียนขึ้นจากประสบการณ์ตรงและข้อมูลวิจัยเชิงลึก เพื่อให้ผู้อ่านได้รับข้อมูลที่ถูกต้องและครบถ้วนที่สุด
+                                ผู้จัดทำเนื้อหาเกี่ยวกับเลขศาสตร์ ทักษาปกรณ์ และอายตนะ 6 พร้อมอธิบายวิธีคำนวณและข้อจำกัดของผลวิเคราะห์
                             </p>
                             <Link href="/about" className="inline-flex items-center gap-1.5 text-amber-600 hover:text-amber-700 text-sm mt-2 transition-colors">
                                 เรียนรู้เพิ่มเติมเกี่ยวกับผู้เขียน →
@@ -435,7 +500,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                     <section className="mt-12 pt-8 border-t border-slate-200 bg-white rounded-2xl p-6 shadow-sm">
                         <h3 className="text-lg font-bold text-[#1a1a3e] mb-4">เกี่ยวกับ NameMongkol</h3>
                         <p className="text-[#5a5a82] text-sm leading-relaxed mb-4">
-                            <strong className="text-[#1a1a3e]">เว็บไซต์NameMongkol</strong> คือเว็บไซต์วิเคราะห์ชื่อมงคลอันดับ 1 ของไทย
+                            <strong className="text-[#1a1a3e]">NameMongkol</strong> คือแพลตฟอร์มค้นหาและวิเคราะห์ชื่อมงคล
                             ใช้ระบบ AI ผสานศาสตร์โบราณ ครอบคลุม <strong className="text-[#1a1a3e]">เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6</strong>
                             และ <strong className="text-[#1a1a3e]">อักษรกาลกิณี</strong>
                             ให้บริการทั้งวิเคราะห์ชื่อฟรีและค้นหาชื่อมงคล Premium พร้อมวอลเปเปอร์มงคลเสริมดวง

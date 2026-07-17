@@ -12,18 +12,8 @@ type BackgroundComponentsProps = {
  */
 export const Component = ({ children, className = '' }: BackgroundComponentsProps) => {
     return (
-        <div
-            className={`min-h-screen w-full relative ${className}`}
-        >
-            <div className="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
-                <div className="absolute inset-0 bg-[#f8f8fc]" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(201,147,58,0.08),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f8f8fc_38%,#f3f3f9_100%)]" />
-                <div className="absolute inset-0 opacity-[0.045] [background-image:linear-gradient(#1a1a3e_1px,transparent_1px),linear-gradient(90deg,#1a1a3e_1px,transparent_1px)] [background-size:44px_44px]" />
-            </div>
-
-            <div className="relative z-10">
-                {children}
-            </div>
+        <div className={`site-grid-surface min-h-screen w-full relative ${className}`}>
+            <div className="relative z-10">{children}</div>
         </div>
     );
 };

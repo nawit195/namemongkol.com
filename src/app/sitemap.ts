@@ -8,6 +8,13 @@ export const revalidate = 86400;
 const STATIC_LASTMOD = '2026-06-02';
 const CONTENT_LASTMOD = '2026-05-30';
 const LEGAL_LASTMOD = '2026-06-02';
+const REDIRECTED_ARTICLE_SLUGS = new Set([
+    '100-auspicious-boy-names-2569',
+    'auspicious-boy-names-2569',
+    'check-kalakini-letters-7-days',
+    'lucky-names-by-birthday-2569',
+    '700-auspicious-names-by-birthday-2569',
+]);
 
 const popularNames = [
     'ภูมิพัฒน์',
@@ -69,7 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '', priority: 0.85, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-check', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/about', priority: 0.7, changeFreq: 'monthly' as const, lastModified: STATIC_LASTMOD },
-        { path: '/methodology', priority: 0.75, changeFreq: 'monthly' as const, lastModified: '2026-07-14' },
+        { path: '/methodology', priority: 0.75, changeFreq: 'monthly' as const, lastModified: '2026-07-15' },
         { path: '/articles', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-generator', priority: 0.85, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
@@ -82,7 +89,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '/search', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/girls/by-birthday/monday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/girls/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/names/boys', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
@@ -132,7 +138,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     const namingDayUrls: MetadataRoute.Sitemap = [
-        ...['boys', 'girls'].flatMap((gender) => wallpaperDays.map((day) => ({
+        ...['boys', 'girls'].flatMap((gender) => wallpaperDays
+            .filter((day) => !(gender === 'girls' && day === 'monday'))
+            .map((day) => ({
             url: `${baseUrl}/names/${gender}/by-birthday/${day}`,
             lastModified: new Date('2026-07-14'),
             changeFrequency: 'weekly' as const,
@@ -149,7 +157,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 .eq('is_published', true);
 
             if (articles) {
-                articleUrls = articles.map((article) => ({
+                articleUrls = articles
+                    .filter((article) => !REDIRECTED_ARTICLE_SLUGS.has(article.slug))
+                    .map((article) => ({
                     url: `${baseUrl}/articles/${article.slug}`,
                     lastModified: toDate(article.date_modified || article.date),
                     changeFrequency: 'weekly' as const,
@@ -163,11 +173,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const localArticlePriority: Record<string, number> = {
         'boy-names-2569-50-auspicious': 0.95,
-        'auspicious-boy-names-2569': 0.85,
-        '100-auspicious-boy-names-2569': 0.8,
+        'naming-tips-2026-year-of-horse': 0.9,
+        'auspicious-names-by-birthday-2026': 0.9,
     };
 
-    const localArticleUrls: MetadataRoute.Sitemap = localArticles.map((article) => ({
+    const localArticleUrls: MetadataRoute.Sitemap = localArticles
+        .filter((article) => !REDIRECTED_ARTICLE_SLUGS.has(article.slug))
+        .map((article) => ({
         url: `${baseUrl}/articles/${article.slug}`,
         lastModified: toDate(article.dateModified || article.date),
         changeFrequency: 'weekly' as const,

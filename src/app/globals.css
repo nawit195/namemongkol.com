@@ -59,6 +59,13 @@
   --wtp-border: #ddddf0;
   --wtp-border-subtle: #eeeef6;
 
+  /* Calm Grid: shared public-page atmosphere */
+  --site-grid-base: oklch(0.985 0.006 78);
+  --site-grid-line: oklch(0.54 0.018 275 / 0.105);
+  --site-grid-warm-glow: oklch(0.9 0.04 78 / 0.2);
+  --site-grid-cool-glow: oklch(0.92 0.025 285 / 0.14);
+  --site-grid-size: 44px;
+
   --mobile-header-height: 68px;
   --mobile-secondary-nav-height: 32px;
   --mobile-bottom-nav-height: 58px;
@@ -69,11 +76,46 @@
 /* The .dark selector is intentionally left empty */
 body {
   color: var(--wtp-navy);
-  background:
-    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(155,142,196,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 85% 100%, rgba(201,147,58,0.06) 0%, transparent 55%),
-    linear-gradient(160deg, #f9f9fd 0%, #f5f5fb 40%, #f3f3f9 100%);
+  background-color: var(--site-grid-base);
+  background-image:
+    radial-gradient(ellipse 72% 44% at 15% 0%, var(--site-grid-warm-glow), transparent 72%),
+    radial-gradient(ellipse 60% 42% at 92% 100%, var(--site-grid-cool-glow), transparent 72%),
+    linear-gradient(var(--site-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-grid-line) 1px, transparent 1px);
+  background-size: auto, auto, var(--site-grid-size) var(--site-grid-size), var(--site-grid-size) var(--site-grid-size);
   min-height: 100vh;
+}
+
+.site-grid-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--site-grid-base);
+  background-image:
+    radial-gradient(ellipse 72% 44% at 15% 0%, var(--site-grid-warm-glow), transparent 72%),
+    radial-gradient(ellipse 60% 42% at 92% 100%, var(--site-grid-cool-glow), transparent 72%),
+    linear-gradient(var(--site-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-grid-line) 1px, transparent 1px);
+  background-size: auto, auto, var(--site-grid-size) var(--site-grid-size), var(--site-grid-size) var(--site-grid-size);
+}
+
+.site-grid-surface {
+  background-color: transparent;
+  background-image: none;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --site-grid-size: 40px;
+    --site-grid-line: oklch(0.54 0.018 275 / 0.08);
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --site-grid-line: oklch(0.42 0.02 275 / 0.13);
+  }
 }
 
 /* Custom scrollbar (WebKit + Firefox) — light mode */
@@ -865,6 +907,74 @@ body {
   isolation: isolate;
 }
 
+.aura-grid-backdrop {
+  background-color: var(--site-grid-base);
+  background-image:
+    radial-gradient(ellipse 72% 44% at 15% 0%, var(--site-grid-warm-glow), transparent 72%),
+    radial-gradient(ellipse 60% 42% at 92% 100%, var(--site-grid-cool-glow), transparent 72%),
+    linear-gradient(var(--site-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--site-grid-line) 1px, transparent 1px);
+  background-size: auto, auto, var(--site-grid-size) var(--site-grid-size), var(--site-grid-size) var(--site-grid-size);
+}
+
+.aura-seo-content {
+  color: var(--wtp-navy);
+}
+
+.aura-seo-content [class*="text-white"],
+.aura-seo-content [class*="text-slate-100"],
+.aura-seo-content [class*="text-slate-200"] {
+  color: var(--wtp-navy) !important;
+}
+
+.aura-seo-content [class*="text-slate-300"],
+.aura-seo-content [class*="text-slate-400"] {
+  color: var(--wtp-navy-soft) !important;
+}
+
+.aura-seo-content [class*="bg-slate-900"],
+.aura-seo-content [class*="bg-slate-800"] {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(221, 221, 240, 0.92) !important;
+  box-shadow: 0 10px 32px rgba(26, 26, 62, 0.08);
+}
+
+.aura-seo-content [class*="border-white"],
+.aura-seo-content [class*="border-slate"] {
+  border-color: rgba(221, 221, 240, 0.92) !important;
+}
+
+.aura-seo-content [class*="divide-slate"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(221, 221, 240, 0.82) !important;
+}
+
+.aura-seo-content table {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.aura-seo-content thead tr {
+  background: rgba(238, 235, 248, 0.86) !important;
+}
+
+.aura-seo-content tbody tr:hover {
+  background: rgba(238, 235, 248, 0.58) !important;
+}
+
+.aura-seo-content strong:not([class*="text-"]) {
+  color: var(--wtp-navy);
+}
+
+.aura-seo-content a[class*="bg-slate"] {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: var(--wtp-navy-soft) !important;
+}
+
+.aura-seo-content a[class*="bg-slate"]:hover {
+  color: var(--wtp-navy) !important;
+  border-color: rgba(201, 147, 58, 0.36) !important;
+  background: rgba(255, 251, 235, 0.96) !important;
+}
+
 .aura-space-base {
   background:
     radial-gradient(110% 90% at 8% 18%, rgba(90, 72, 160, 0.28) 0%, rgba(16, 24, 50, 0) 52%),
@@ -1119,8 +1229,8 @@ body {
 }
 
 .aura-form-label {
-  color: rgba(241, 230, 208, 0.92);
-  text-shadow: 0 1px 10px rgba(3, 7, 18, 0.26);
+  color: var(--wtp-navy);
+  text-shadow: none;
 }
 
 .aura-input {
@@ -1184,7 +1294,7 @@ body {
 }
 
 .aura-pricing-row {
-  color: rgba(183, 193, 210, 0.82);
+  color: var(--wtp-navy-soft);
 }
 
 .aura-submit-button {

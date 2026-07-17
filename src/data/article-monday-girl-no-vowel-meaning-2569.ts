@@ -153,7 +153,7 @@ export const articleMondayGirlNoVowelMeaning2569: Article = {
     metaDescription: 'รวม 180 ชื่อมงคลผู้หญิงวันจันทร์ 2569 ไม่มีสระ ไม่มี อ พร้อมคำอ่าน ความหมาย และแนวทางเสริมดวงตามหลักทักษา เหมาะสำหรับตั้งชื่อลูกสาวปี 2569',
     relatedSlugs: [
         'monday-girl-names-2569-no-sara',
-        '700-auspicious-names-by-birthday-2569',
+        'auspicious-names-by-birthday-2026',
         'girl-names-2569-auspicious-modern',
         'forbidden-letters-kalakini',
         'auspicious-names-by-birthday-2026',

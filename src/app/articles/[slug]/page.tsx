@@ -390,11 +390,13 @@ function normalizeArticleContentHtml(content: string, article: Article, shouldWr
         return normalizedContent;
     }
 
+    let imgCounter = 0;
     return normalizedContent.replace(/<img\b([^>]*)>/gi, (match, attrs) => {
+        imgCounter++;
         const src = getHtmlAttribute(attrs, 'src');
         if (!src) return match;
 
-        const alt = getHtmlAttribute(attrs, 'alt') || article.coverImageAlt || `ภาพประกอบบทความ ${article.title}`;
+        const alt = getHtmlAttribute(attrs, 'alt') || article.coverImageAlt || `ภาพประกอบบทความ ${article.title} (${imgCounter})`;
         const safeSrc = escapeHtmlAttribute(src);
         const safeAlt = escapeHtmlAttribute(alt);
 
@@ -646,6 +648,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: article.metaDescription || article.excerpt,
             images: [imageUrl],
         },
+        robots: {
+            index: true,
+            follow: true,
+            'max-snippet': -1,
+            'max-image-preview': 'large',
+            'max-video-preview': -1,
+        },
     };
 }
 
@@ -850,10 +859,17 @@ export default async function ArticlePage({ params }: Props) {
                         "keywords": article.keywords?.join(', '),
                         "wordCount": wordCount,
                         "isAccessibleForFree": true,
-                        "about": articleEntityTopics.map((name) => ({
-                            "@type": "Thing",
-                            "name": name,
-                        })),
+                        "about": [
+                            ...articleEntityTopics.map((name) => ({
+                                "@type": "Thing",
+                                "name": name,
+                            })),
+                            ...(isPalmistryArticle ? [{
+                                "@type": "Thing",
+                                "name": "หัตถศาสตร์ (Palmistry)",
+                                "sameAs": "https://en.wikipedia.org/wiki/Palmistry"
+                            }] : [])
+                        ],
                         "mentions": [
                             {
                                 "@type": "SoftwareApplication",
@@ -901,14 +917,7 @@ export default async function ArticlePage({ params }: Props) {
                             "@type": "WebPage",
                             "@id": webPageSchemaId
                         },
-                        "inLanguage": "th",
-                        ...(isPalmistryArticle && {
-                            "about": {
-                                "@type": "Thing",
-                                "name": "หัตถศาสตร์ (Palmistry)",
-                                "sameAs": "https://en.wikipedia.org/wiki/Palmistry"
-                            }
-                        })
+                        "inLanguage": "th"
                     })
                 }}
             />
@@ -1033,14 +1042,7 @@ export default async function ArticlePage({ params }: Props) {
                         <p className="lead rounded-2xl border border-amber-500/30 bg-amber-50 p-5 text-xl font-medium text-[#1a1a3e] shadow-sm leading-relaxed">
                             {article.excerpt}
                         </p>
-                        <div dangerouslySetInnerHTML={{
-                            __html: false
-                                ? enhancedArticleContent.content.replace(
-                                    /<img\b[^>]*?>/gi,
-                                    `<div class="w-full aspect-video bg-slate-900 rounded-2xl my-8 overflow-hidden relative border border-white/5 shadow-2xl shadow-purple-900/10 not-prose flex items-center justify-center"><img src="${article.coverImage}" alt="${(article.coverImageAlt ?? `ภาพหน้าปกบทความ ${article.title}`).replace(/"/g, '&quot;')}" class="object-contain w-full h-full" /></div>`
-                                )
-                                : articleContentHtml
-                        }} />
+                        <div dangerouslySetInnerHTML={{ __html: articleContentHtml }} />
                     </article>
 
                     {/* Aura Vibe Widget — Mid-Article (คั่นระหว่างเนื้อหากับ FAQ) */}
@@ -1130,23 +1132,6 @@ export default async function ArticlePage({ params }: Props) {
                             </div>
                         </div>
                     </section>
-
-                    {/* Mandatory CTA — ตาม Checklist */}
-                    <div className="hidden">
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#c9933a]/10 via-transparent to-transparent pointer-events-none"></div>
-                        <p className="text-2xl md:text-3xl font-bold text-[#1a1a3e] mb-4 relative z-10 tracking-tight">
-                            อยากรู้ว่าชื่อของคุณดีแค่ไหน?
-                        </p>
-                        <p className="text-[#5a5a82] mb-8 max-w-lg mx-auto relative z-10">
-                            วิเคราะห์ครบ 4 ศาสตร์: เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และกาลกิณี
-                        </p>
-                        <Link
-                            href="/name-check"
-                            className="inline-block bg-[#c9933a] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#d4a54e] transition-all shadow-[0_0_24px_rgba(245,158,11,0.22)] hover:shadow-[0_0_32px_rgba(245,158,11,0.30)] hover:-translate-y-0.5 text-lg relative z-10"
-                        >
-                            วิเคราะห์ชื่อฟรีที่นี่
-                        </Link>
-                    </div>
 
                     {/* CTA Section */}
                     <div className="mt-8 pt-8 border-t border-slate-200">

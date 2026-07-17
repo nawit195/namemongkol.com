@@ -12,9 +12,9 @@ const deferredSectionStyle = {
 } as React.CSSProperties;
 
 export const metadata: Metadata = {
-    title: 'วอลเปเปอร์มงคล เสริมดวง งาน เงิน รัก บารมี | NameMongkol',
+    title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol',
     alternates: { canonical: `${siteUrl}/wallpapers` },
-    description: 'ดาวน์โหลดวอลเปเปอร์มงคลเสริมดวงชะตา ออกแบบตามหลักฮวงจุ้ย โหราศาสตร์ไทย สีมงคลตามวันเกิด พร้อมสัญลักษณ์ศักดิ์สิทธิ์ ท้าวเวสสุวรรณ และเลขมงคล 4289',
+    description: 'รวมวอลเปเปอร์สายมูตามวันเกิดฟรี ปี 2569 เลือกตามเป้าหมายด้านการเงิน การงาน ความรัก และกำลังใจ พร้อมคำอธิบายสีและสัญลักษณ์ที่ใช้ในแต่ละภาพ',
     keywords: [
         'วอลเปเปอร์มงคล', 'วอลเปเปอร์เสริมดวง', 'วอลเปเปอร์สายมู',
         'พื้นหลังมงคล', 'ฮวงจุ้ย', 'ดาวน์โหลดวอลเปเปอร์มงคล',
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
         'NameMongkol',
     ],
     openGraph: {
-        title: 'วอลเปเปอร์มงคล เสริมดวง งาน เงิน รัก บารมี',
-        description: 'แจกฟรี! วอลเปเปอร์มงคลเสริมดวงรอบด้าน การเงิน ความรัก การงาน ออกแบบตามศาสตร์มงคลแท้',
+        title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก',
+        description: 'เลือกวอลเปเปอร์ฟรีตามวันเกิดหรือเป้าหมาย พร้อมคำอธิบายสีและสัญลักษณ์ในภาพ',
         url: `${siteUrl}/wallpapers`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'วอลเปเปอร์มงคล | NameMongkol',
-        description: 'แจกฟรี! วอลเปเปอร์สายมู เสริมดวงรอบด้าน ออกแบบตามหลักฮวงจุ้ยและโหราศาสตร์',
+        title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | NameMongkol',
+        description: 'วอลเปเปอร์ฟรีสำหรับการเงิน งาน ความรัก และกำลังใจ เลือกได้ตามวันเกิด',
         images: [`${siteUrl}/api/og?variant=default&title=วอลเปเปอร์มงคล`],
     },
 };
@@ -45,8 +45,8 @@ const webPageJsonLd = {
     '@type': 'WebPage',
     '@id': `${siteUrl}/wallpapers`,
     'url': `${siteUrl}/wallpapers`,
-    'name': 'วอลเปเปอร์มงคล เสริมดวง งาน เงิน รัก บารมี | NameMongkol',
-    'description': 'ดาวน์โหลดวอลเปเปอร์มงคลเสริมดวงชะตา ออกแบบตามหลักฮวงจุ้ย โหราศาสตร์ไทย สีมงคลตามวันเกิด ท้าวเวสสุวรรณ และเลขมงคล 4289',
+    'name': 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก',
+    'description': 'เลือกวอลเปเปอร์ฟรีตามวันเกิดหรือเป้าหมายด้านการเงิน การงาน ความรัก และกำลังใจ พร้อมคำอธิบายสีและสัญลักษณ์ในภาพ',
     'inLanguage': 'th-TH',
     'isPartOf': {
         '@type': 'WebSite',
@@ -58,14 +58,21 @@ const webPageJsonLd = {
 const collectionJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': 'วอลเปเปอร์มงคล เสริมดวงชะตา',
-    'description': 'คอลเลกชันวอลเปเปอร์มงคลเสริมดวงชะตาตามหลักฮวงจุ้ย โหราศาสตร์ไทย และสีมงคลตามวันเกิด ดาวน์โหลดฟรี',
+    'name': 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569',
+    'description': 'คอลเลกชันวอลเปเปอร์ที่ใช้สีและสัญลักษณ์ตามความเชื่อเรื่องวันเกิด เพื่อเป็นเครื่องเตือนใจด้านการเงิน งาน และความรัก ดาวน์โหลดฟรี',
     'url': `${siteUrl}/wallpapers`,
     'inLanguage': 'th-TH',
     'isPartOf': {
         '@type': 'WebSite',
         'name': 'NameMongkol',
         'url': siteUrl,
+    },
+    'primaryImageOfPage': {
+        '@type': 'ImageObject',
+        'contentUrl': `${siteUrl}/api/og?variant=default&title=วอลเปเปอร์สายมูตามวันเกิด%20ฟรี%202569`,
+        'caption': 'คอลเลกชันวอลเปเปอร์สายมูตามวันเกิดฟรี ปี 2569',
+        'creditText': 'NameMongkol',
+        'creator': { '@type': 'Organization', 'name': 'NameMongkol', 'url': siteUrl },
     },
 };
 
@@ -78,7 +85,7 @@ const faqJsonLd = {
             'name': 'วอลเปเปอร์มงคลช่วยเรื่องอะไร?',
             'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'วอลเปเปอร์มงคลช่วยเสริมกำลังใจ สร้างโฟกัส และดึงดูดพลังงานบวกผ่านการเห็นสัญลักษณ์มงคลบ่อยๆ ในแต่ละวัน ตามหลักจิตวิทยาสี (Color Psychology) การเห็นสีและภาพมงคลอย่างสม่ำเสมอสามารถส่งผลเชิงบวกต่อจิตใจและการตัดสินใจ',
+                'text': 'วอลเปเปอร์มงคลใช้สีและสัญลักษณ์ตามความเชื่อเพื่อเป็นเครื่องเตือนใจและช่วยสร้างโฟกัส แต่ไม่ใช่หลักฐานว่าภาพจะเปลี่ยนเหตุการณ์หรือรับประกันผลด้านการเงิน งาน หรือความรัก',
             },
         },
         {
@@ -94,7 +101,7 @@ const faqJsonLd = {
             'name': 'มีวอลเปเปอร์สำหรับแก้ชงไหม?',
             'acceptedAnswer': {
                 '@type': 'Answer',
-                'text': 'มีครับ เรามีคอลเลกชันพิเศษสำหรับเสริมดวงตามปีนักษัตรเพื่อบรรเทาเคราะห์และเสริมโชค รวมถึงวอลเปเปอร์ท้าวเวสสุวรรณที่ช่วยเรื่องปลดหนี้และป้องกันภัย',
+                'text': 'มีคอลเลกชันที่ใช้สัญลักษณ์ตามความเชื่อเรื่องปีนักษัตรและท้าวเวสสุวรรณ โดยควรใช้เพื่อความสบายใจและกำลังใจ ไม่ใช่แทนคำแนะนำทางการเงินหรือความปลอดภัย',
             },
         },
     ],
@@ -115,7 +122,7 @@ const dayCollections = [
     { day: 'วันจันทร์', name: 'เทพพระจันทร์ประทานพร เลข 246', color: 'from-yellow-400 to-amber-400', textColor: 'text-yellow-700', borderColor: 'border-yellow-500/30', bgColor: 'bg-yellow-500/10', icon: Moon, desc: 'เทพองค์ทรงเครื่องประทับนั่งสมาธิบนดอกบัว พระหัตถ์ถือดอกบัวขาว พร้อมพระจันทร์เต็มดวง สิงห์คู่ผู้พิทักษ์ และเหรียญทองนำโชค เลขมงคล 246 เสริมเสน่ห์ เมตตามหานิยม สีมงคลขาว-เงิน เหมาะสำหรับนักประชาสัมพันธ์และผู้ที่ทำงานเกี่ยวข้องกับผู้คน' },
     { day: 'วันอังคาร', name: 'พระปางไสยาสน์ มณฑลยันต์ เลข 356', color: 'from-pink-500 to-rose-500', textColor: 'text-pink-600', borderColor: 'border-pink-500/30', bgColor: 'bg-pink-500/10', icon: Flame, desc: 'พระปางไสยาสน์ทองคำประทับบนดอกบัวชมพูภายในมณฑลยันต์ (Mandala) ทรงศักดิ์สิทธิ์ ล้อมด้วยสิงห์คู่ทองคำ ยันต์มงคล 3 ดวง เลขมงคล 356 เสริมความกล้าหาญ ก้าวหน้าในการงาน สีมงคลชมพู-ทอง เหมาะสำหรับนักแข่งขัน ทหาร ตำรวจ และนักกีฬา' },
     { day: 'วันพุธ(กลางวัน)', name: 'พระแม่ลักษมี เรียกทรัพย์ เลข 456', color: 'from-emerald-500 to-green-500', textColor: 'text-emerald-700', borderColor: 'border-emerald-500/30', bgColor: 'bg-emerald-500/10', icon: MessageCircle, desc: 'พระแม่ลักษมีเทพีแห่งความมั่งคั่งทรงฉลองพระองค์สีเขียว-ทอง พระหัตถ์ถือดอกบัว ยืนบนดอกบัวชมพูท่ามกลางเหรียญทองร่วงจากสวรรค์ ช้างมงคลโปรยน้ำ เลขมงคล 456 เสริมวาจาเรียกทรัพย์ ค้าขายร่ำรวย สีมงคลเขียว เหมาะสำหรับนักธุรกิจ นักขาย และพ่อค้าแม่ค้า' },
-    { day: 'วันพุธ(กลางคืน)', name: 'พระราหูอมจันทร์ ยันต์คุ้มครอง เลข 789', color: 'from-slate-500 to-gray-700', textColor: 'text-slate-700', borderColor: 'border-slate-500/30', bgColor: 'bg-slate-500/10', icon: Moon, desc: 'พระราหูอมจันทร์ทรงมหิทธิฤทธิ์ ประทับบนดอกบัวเขียวมรกต สวมมงกุฎทองวิจิตร วงยันต์มงคลทองเรืองรองท่ามกลางท้องฟ้ายามค่ำคืน พร้อมมณีเขียวมรกตล้อมรอบ เลขมงคล 789 เสริมพลังป้องกันภัย แคล้วคลาด สีมงคลดำ-เขียว เหมาะสำหรับผู้ที่ทำงานกะดึก เดินทางกลางคืน' },
+    { day: 'วันพุธ(กลางคืน)', name: 'พระราหูอมจันทร์ ยันต์คุ้มครอง เลข 789', color: 'from-slate-500 to-gray-700', textColor: 'text-slate-700', borderColor: 'border-slate-500/30', bgColor: 'bg-slate-500/10', icon: Moon, desc: 'ภาพพระราหูอมจันทร์บนดอกบัวเขียวมรกต วงยันต์และเลข 789 ใช้สีดำ-เขียวตามความเชื่อของผู้เกิดวันพุธกลางคืน เหมาะกับผู้ที่ต้องการภาพเตือนใจเรื่องความระมัดระวังและการเดินทาง' },
     { day: 'วันพฤหัสบดี', name: 'พระพุทธรูปทองคำ ปัญญาบารมี เลข 659', color: 'from-orange-500 to-amber-500', textColor: 'text-orange-700', borderColor: 'border-orange-500/30', bgColor: 'bg-orange-500/10', icon: BookOpen, desc: 'พระพุทธรูปทองคำปางสมาธิทรงรัศมีส่องสว่าง วงยันต์อักขระขอมศักดิ์สิทธิ์ คัมภีร์ทองประดับอัญมณี หนูคู่มงคลสื่อถึงความขยัน เลขมงคล 659 เสริมสติปัญญา ผู้ใหญ่อุปถัมภ์ สีมงคลส้ม-ทอง เหมาะสำหรับนักเรียน นักวิจัย ครู อาจารย์ และผู้ที่ต้องการก้าวหน้าทางวิชาการ' },
     { day: 'วันศุกร์', name: 'พระพุทธรูปเรืองแสง ดอกบัวทิพย์ เลข 624', color: 'from-cyan-500 to-blue-500', textColor: 'text-cyan-700', borderColor: 'border-cyan-500/30', bgColor: 'bg-cyan-500/10', icon: Heart, desc: 'พระพุทธรูปปางห้ามญาติทรงรัศมีฟ้าครามเรืองรอง ประทับบนดอกบัวชมพูทิพย์ มณฑลยันต์ฟ้า พระแม่ลักษมี เหรียญทอง อัญมณี และเมฆมงคลจีน เลขมงคล 624 เสริมโชคลาภ ทรัพย์สินพูนทวี ความรัก สีมงคลฟ้า-เขียว เหมาะสำหรับศิลปิน นักออกแบบ และผู้หญิงทำงาน' },
     { day: 'วันเสาร์', name: 'พระนาคปรก เสือคู่นำโชค 招財 เลข 156', color: 'from-purple-500 to-violet-500', textColor: 'text-purple-700', borderColor: 'border-purple-500/30', bgColor: 'bg-purple-500/10', icon: Shield, desc: 'พระพุทธรูปปางนาคปรกทองคำบนพญานาค 7 เศียรสีม่วง วงยันต์โหราศาสตร์ อักษรจีน招財(เรียกทรัพย์) เสือคู่ทองคำผู้พิทักษ์ ช้างมงคล เหรียญทอง เลขมงคล 156 เสริมอำนาจวาสนา ปกป้องคุ้มครอง สีมงคลม่วง-ทอง เหมาะสำหรับผู้พิพากษา ทนายความ และข้าราชการ' },
@@ -123,10 +130,10 @@ const dayCollections = [
 
 // --- Deity Data ---
 const deityCollections = [
-    { name: 'ท้าวเวสสุวรรณ ปลดหนี้', desc: 'เสริมโชคลาภ ป้องกันภัย และช่วยเรื่องการเงินที่ติดขัด ปลดหนี้สิน ป้องกันอันตรายทุกรูปแบบ พระคาถาท้าวเวสสุวรรณเป็นที่นิยมมากที่สุดในหมู่คนไทยสายมู', emoji: '🛡️' },
+    { name: 'ท้าวเวสสุวรรณ ด้านการเงิน', desc: 'ใช้สัญลักษณ์ท้าวเวสสุวรรณตามความเชื่อ เพื่อเตือนใจเรื่องวินัยการเงิน ความรอบคอบ และความปลอดภัย โดยไม่ใช่คำรับประกันว่าจะปลดหนี้หรือป้องกันอันตรายได้', emoji: '🛡️' },
     { name: 'เทพเจ้าไฉ่ซิงเอี้ย', desc: 'เทพแห่งโชคลาภในความเชื่อจีน ช่วยเรียกทรัพย์และเปิดทางรับเงินทอง เหมาะกับนักธุรกิจ พ่อค้าแม่ค้า และผู้ที่ต้องการดวงโชคลาภ', emoji: '💰' },
     { name: 'พญานกฟีนิกซ์', desc: 'สัญลักษณ์ของการเกิดใหม่ ความสำเร็จ และชัยชนะเหนือปัญหา เหมาะสำหรับผู้ที่ต้องการเริ่มต้นชีวิตใหม่หรือเอาชนะอุปสรรค', emoji: '🔥' },
-    { name: 'เลขมงคล 4289 / 6395', desc: 'พลังตัวเลขเรียกทรัพย์ที่ผสานเข้ากับภาพพื้นหลังอย่างลงตัว 4289 หมายถึง "สี่ร่ำรวย สองมั่งมี แปดมาก เก้าก้าวหน้า" เสริมดวงการเงินอย่างทรงพลัง', emoji: '🔢' },
+    { name: 'เลขมงคล 4289 / 6395', desc: 'ตัวเลขที่นิยมใช้ในงานออกแบบสายมู พร้อมคำอธิบายตามแนวทางเลขศาสตร์ เพื่อใช้เป็นสัญลักษณ์และเครื่องเตือนใจด้านเป้าหมายการเงิน', emoji: '🔢' },
 ];
 
 export default function WallpapersPage() {
@@ -150,12 +157,9 @@ export default function WallpapersPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
 
-            {/* SSR H1 for Googlebot — hidden visually, H1 in ClientPage is visible */}
-            <h1 className="sr-only">วอลเปเปอร์มงคล เสริมดวง งาน เงิน รัก บารมี</h1>
-
             {/* ===== Interactive Client Gallery ===== */}
             <Suspense fallback={
-                <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-28 min-h-screen bg-[#f8f8fc] text-[#5a5a82]">
+                <div className="site-grid-surface w-full max-w-[1400px] mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-28 min-h-screen text-[#5a5a82]">
                     <div className="max-w-7xl mx-auto space-y-5 md:space-y-8">
                         <div className="flex flex-col gap-3 md:gap-4">
                             <div className="h-9 md:h-12 w-4/5 md:w-3/4 bg-slate-200 rounded-xl animate-pulse" />
@@ -184,13 +188,13 @@ export default function WallpapersPage() {
                                 <span className="text-xs font-bold text-amber-600 uppercase tracking-widest">Auspicious Wallpapers</span>
                             </div>
                             <h2 className="text-2xl md:text-4xl font-bold text-[#1a1a3e] mb-5 leading-tight">
-                                เปลี่ยนหน้าจอมือถือให้เป็น<span className="text-amber-500">ขุมทรัพย์แห่งความโชคดี</span>
+                                วิธีเลือกวอลเปเปอร์สายมูตามวันเกิดและเป้าหมาย
                             </h2>
                             <p className="text-[#5a5a82] leading-relaxed text-base md:text-lg mb-5 max-w-[70ch]">
-                                ยกระดับพลังบวกให้กับชีวิตทุกครั้งที่เปิดหน้าจอมือถือ! <strong className="text-[#1a1a3e]">NameMongkol</strong> ขอนำเสนอคอลเลกชัน <strong className="text-amber-500">วอลเปเปอร์มงคล (Auspicious Wallpapers)</strong> ที่ออกแบบอย่างประณีตโดยผสานศาสตร์แห่งสัญลักษณ์มงคล สีมงคลตามวันเกิด และพลังเลขศาสตร์เข้าด้วยกัน เพื่อเป็นเครื่องยึดเหนี่ยวจิตใจและดึงดูดพลังงานดีๆ เข้ามาสู่ตัวคุณในทุกวัน
+                                เริ่มจากเลือกวันเกิดหรือเป้าหมายที่ต้องการเตือนใจ เช่น การเงิน การงาน หรือความรัก แล้วดูคำอธิบายสีและสัญลักษณ์ก่อนดาวน์โหลด วอลเปเปอร์ในหน้านี้จัดทำเพื่อเป็นเครื่องเตือนใจและสร้างกำลังใจตามความเชื่อ ไม่ใช่หลักฐานว่าภาพจะเปลี่ยนเหตุการณ์หรือรับประกันผลลัพธ์ในชีวิต
                             </p>
                             <p className="text-[#5a5a82] leading-relaxed text-sm md:text-base max-w-[70ch]">
-                                เช่นเดียวกับที่เราใส่ใจในการ<Link href="/" className="text-amber-500 hover:text-amber-600 underline underline-offset-2 transition-colors">วิเคราะห์ชื่อมงคลเกรด A+</Link> วอลเปเปอร์ทุกชิ้นถูกสร้างสรรค์ด้วยความละเอียดสูง ผสานพลังจากสีมงคลตามจิตวิทยาสี (Color Psychology) สัญลักษณ์ศักดิ์สิทธิ์ตามตำรา และพลังเลขศาสตร์ เพื่อส่งผลดีที่สุดต่อผู้ใช้งาน
+                                หากต้องการใช้ศาสตร์ชื่อร่วมด้วย สามารถ<Link href="/name-check" data-track="seo.wallpapers.name_check" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิเคราะห์ชื่อและนามสกุลฟรี</Link> หรืออ่าน<Link href="/methodology" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิธีคำนวณและข้อจำกัด</Link>ก่อนตัดสินใจ
                             </p>
                         </div>
                     </section>
@@ -202,7 +206,7 @@ export default function WallpapersPage() {
                                 เลือก<span className="text-amber-500">วอลเปเปอร์มงคลเสริมดวง</span>ตามวันเกิด
                             </h2>
                             <p className="text-[#5a5a82] max-w-[70ch] leading-relaxed">
-                                แต่ละวันเกิดมีสีมงคลและพลังประจำวันที่แตกต่างกัน เลือกวอลเปเปอร์ที่ตรงกับวันเกิดของคุณเพื่อเสริมดวงชะตาอย่างตรงจุด
+                                แต่ละวันเกิดมีชุดสีและสัญลักษณ์ที่ต่างกันตามความเชื่อ เลือกจากวันเกิดหรือเป้าหมายที่ต้องการใช้เป็นเครื่องเตือนใจ
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
@@ -266,7 +270,7 @@ export default function WallpapersPage() {
                                 วอลเปเปอร์<span className="text-purple-500">องค์เทพยอดนิยม</span> เสริมดวงเฉพาะจุด
                             </h2>
                             <p className="text-[#5a5a82] max-w-[70ch] leading-relaxed">
-                                นอกจากวอลเปเปอร์ตามวันเกิดแล้ว เรายังมีคอลเลกชันพิเศษจากองค์เทพและสัญลักษณ์ศักดิ์สิทธิ์ เพื่อเสริมดวงชะตาเฉพาะด้าน
+                                นอกจากวอลเปเปอร์ตามวันเกิดแล้ว ยังมีคอลเลกชันองค์เทพและสัญลักษณ์ตามความเชื่อ แยกตามเป้าหมายที่ผู้ใช้ต้องการเตือนใจ
                             </p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
@@ -308,9 +312,9 @@ export default function WallpapersPage() {
                                 <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
                                     <Star className="w-5 h-5 text-amber-500" />
                                 </div>
-                                <h3 className="text-[#1a1a3e] font-bold text-lg">ศาสตร์มงคลที่ถูกต้อง</h3>
+                                <h3 className="text-[#1a1a3e] font-bold text-lg">อธิบายแนวคิดที่ใช้</h3>
                                 <p className="text-[#5a5a82] text-sm leading-relaxed">
-                                    ผสานพลังจากสีมงคล (Color Psychology) และสัญลักษณ์ศักดิ์สิทธิ์ตามตำรา ไม่ว่าจะเป็นหลักฮวงจุ้ย โหราศาสตร์ไทย หรือศาสตร์เลขมงคลจีน ทุกรายละเอียดถูกตรวจสอบ
+                                    ระบุสี สัญลักษณ์ และแนวคิดตามความเชื่อที่ใช้ในภาพ เพื่อให้ผู้ดาวน์โหลดเลือกจากความหมายที่ตรงกับตนเอง
                                 </p>
                             </div>
                             <div className="space-y-3">
@@ -319,7 +323,7 @@ export default function WallpapersPage() {
                                 </div>
                                 <h3 className="text-[#1a1a3e] font-bold text-lg">พลังเลขศาสตร์หนุนดวง</h3>
                                 <p className="text-[#5a5a82] text-sm leading-relaxed">
-                                    เช่นเดียวกับที่เราวิเคราะห์ <Link href="/search" className="text-amber-500 hover:text-amber-600 underline underline-offset-2 transition-colors">ชื่อมงคลเกรด A+</Link> เราใส่ใจในทุกรายละเอียดของภาพเพื่อให้ส่งผลดีที่สุดต่อผู้ใช้งาน ผ่านพลังตัวเลขมงคล
+                                    ตัวเลขในภาพมีคำอธิบายตามแนวทางเลขศาสตร์เพื่อใช้ประกอบความเชื่อ โดยไม่อ้างว่าเป็นผลลัพธ์ที่รับประกันได้
                                 </p>
                             </div>
                         </div>
@@ -340,7 +344,7 @@ export default function WallpapersPage() {
                                     <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform" />
                                 </summary>
                                 <div className="pb-5 text-[#5a5a82] text-sm leading-relaxed">
-                                    ช่วยเสริมกำลังใจ สร้างโฟกัส และดึงดูดพลังงานบวกผ่านการเห็นสัญลักษณ์มงคลบ่อยๆ ในแต่ละวัน ตามหลักจิตวิทยาสี (Color Psychology) การเห็นสีและภาพมงคลอย่างสม่ำเสมอสามารถส่งผลเชิงบวกต่อจิตใจและการตัดสินใจ เป็นการเสริมดวงชะตาในเชิงจิตวิทยาที่มีประสิทธิภาพ
+                                    ใช้สีและสัญลักษณ์ตามความเชื่อเป็นเครื่องเตือนใจหรือช่วยสร้างโฟกัสได้ แต่ไม่ใช่หลักฐานว่าภาพจะเปลี่ยนเหตุการณ์หรือรับประกันผลลัพธ์ในชีวิต
                                 </div>
                             </details>
                             <details className="group border-b border-slate-200 overflow-hidden">
@@ -358,7 +362,7 @@ export default function WallpapersPage() {
                                     <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform" />
                                 </summary>
                                 <div className="pb-5 text-[#5a5a82] text-sm leading-relaxed">
-                                    มีครับ เรามีคอลเลกชันพิเศษสำหรับเสริมดวงตามปีนักษัตรเพื่อบรรเทาเคราะห์และเสริมโชค โดยเฉพาะวอลเปเปอร์ท้าวเวสสุวรรณที่ช่วยเรื่องปลดหนี้ ป้องกันภัย และกันสิ่งชั่วร้าย เหมาะสำหรับทุกคนที่ต้องการเสริมความมั่นคงในชีวิต
+                                    มีคอลเลกชันที่ใช้สัญลักษณ์ตามความเชื่อเรื่องปีนักษัตรและท้าวเวสสุวรรณ ควรใช้เพื่อความสบายใจและกำลังใจ ไม่ใช้แทนคำแนะนำด้านการเงินหรือความปลอดภัย
                                 </div>
                             </details>
                             <details className="group border-b border-slate-200 overflow-hidden">
@@ -367,7 +371,7 @@ export default function WallpapersPage() {
                                     <ChevronRight className="w-5 h-5 text-slate-400 group-open:rotate-90 transition-transform" />
                                 </summary>
                                 <div className="pb-5 text-[#5a5a82] text-sm leading-relaxed">
-                                    วอลเปเปอร์มงคลจาก NameMongkol ถูกออกแบบโดยคำนึงถึงหลักศาสตร์มงคลหลายแขนง ทั้งสีมงคลตามวันเกิด สัญลักษณ์ศักดิ์สิทธิ์ตามหลักฮวงจุ้ย และพลังตัวเลขเลขศาสตร์ ไม่ใช่ภาพสวยอย่างเดียว แต่ทุกองค์ประกอบมีความหมายและเจตนาในการเสริมดวงชะตาอย่างแท้จริง
+                                    วอลเปเปอร์จาก NameMongkol ออกแบบโดยอ้างอิงสีตามวันเกิด สัญลักษณ์ทางวัฒนธรรม และคำอธิบายตัวเลขตามความเชื่อ แต่ละภาพระบุแนวคิดที่ใช้เพื่อให้ผู้ใช้เลือกอย่างเข้าใจ และไม่ถือเป็นหลักฐานหรือคำรับประกันผลลัพธ์
                                 </div>
                             </details>
                         </div>

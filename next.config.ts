@@ -52,6 +52,46 @@ const nextConfig: NextConfig = {
       permanent: true,
     }));
     return [
+      {
+        source: '/names/girls/by-birthday/monday',
+        destination: '/articles/monday-girl-names-2569-no-sara',
+        permanent: true,
+      },
+      {
+        source: '/articles/100-auspicious-boy-names-2569',
+        destination: '/articles/naming-tips-2026-year-of-horse',
+        permanent: true,
+      },
+      {
+        source: '/articles/auspicious-boy-names-2569',
+        destination: '/articles/naming-tips-2026-year-of-horse',
+        permanent: true,
+      },
+      {
+        source: '/articles/check-kalakini-letters-7-days',
+        destination: '/articles/forbidden-letters-kalakini',
+        permanent: true,
+      },
+      {
+        source: '/articles/lucky-names-by-birthday-2569',
+        destination: '/articles/auspicious-names-by-birthday-2026',
+        permanent: true,
+      },
+      {
+        source: '/articles/700-auspicious-names-by-birthday-2569',
+        destination: '/articles/auspicious-names-by-birthday-2026',
+        permanent: true,
+      },
+      {
+        source: '/articles/lucky-colors-by-day',
+        destination: '/articles/auspicious-colors-2569-guide',
+        permanent: true,
+      },
+      {
+        source: '/articles/numerology-guide',
+        destination: '/articles/numerology-0-9-power-guide',
+        permanent: true,
+      },
       ...dayRedirects,
       ...zodiacRedirects,
       {

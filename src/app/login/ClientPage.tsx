@@ -163,17 +163,11 @@ export default function LoginClientPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-slate-100 font-sans selection:bg-amber-500 selection:text-white relative overflow-hidden flex items-center justify-center px-4 pt-24 pb-28 md:py-4">
-            {/* Background Decor */}
-            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[120px]"></div>
-            </div>
-
+        <div className="site-grid-surface min-h-screen font-sans text-[#1a1a3e] selection:bg-amber-500 selection:text-white relative overflow-hidden flex items-center justify-center px-4 pt-24 pb-28 md:py-8">
             <div className="relative z-10 w-full max-w-md">
-                <div className="bg-white/[0.03] border border-white/10 rounded-2xl backdrop-blur-xl p-8 shadow-2xl">
+                <div className="rounded-2xl border border-[#d7b16a]/25 bg-[#0f172a] p-8 shadow-[0_24px_70px_rgba(15,23,42,0.20)]">
                     <div className="text-center mb-8">
-                        <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-white to-amber-200 mb-2">
+                        <h1 className="text-3xl font-bold text-slate-50 mb-2">
                             เข้าสู่ระบบ
                         </h1>
                         <p className="text-slate-400 text-sm">

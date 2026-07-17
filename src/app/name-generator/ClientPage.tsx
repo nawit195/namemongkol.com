@@ -43,57 +43,57 @@ const VALID_FRAGMENTS = FRAGMENTS.filter(f => {
 
 const resultCardThemes = [
     {
-        card: 'border-pink-200 bg-[linear-gradient(135deg,#fff7fb_0%,#ffeaf4_50%,#fff9ed_100%)] shadow-pink-100/70',
-        icon: 'bg-pink-100 text-pink-500',
-        rank: 'bg-pink-500 text-white ring-pink-200',
+        card: 'border-[#ddddf0] bg-[#fefeff] shadow-[0_8px_24px_rgba(26,26,62,0.07)]',
+        icon: 'bg-[#eeebf8] text-[#7869a8]',
+        rank: 'bg-[#c9933a] text-[#fefeff] ring-[#f5ead2]',
         name: 'text-[#1a1a3e]',
-        sum: 'text-pink-700',
-        sparkle: 'text-pink-300',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#c9933a]/45',
         excellent: 'bg-emerald-100 text-emerald-700',
     },
     {
-        card: 'border-emerald-200 bg-[linear-gradient(135deg,#f2fffb_0%,#e8fff5_52%,#f8fffd_100%)] shadow-emerald-100/70',
-        icon: 'bg-emerald-100 text-emerald-600',
-        rank: 'bg-emerald-500 text-white ring-emerald-200',
-        name: 'text-[#12383a]',
-        sum: 'text-emerald-700',
-        sparkle: 'text-emerald-300',
+        card: 'border-[#ddddf0] bg-[#fafafd] shadow-[0_8px_24px_rgba(26,26,62,0.07)]',
+        icon: 'bg-[#f5ead2] text-[#a67828]',
+        rank: 'bg-[#1a1a3e] text-[#f8f8fc] ring-[#e6e6f2]',
+        name: 'text-[#1a1a3e]',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#9b8ec4]/50',
         excellent: 'bg-teal-100 text-teal-700',
     },
     {
-        card: 'border-amber-200 bg-[linear-gradient(135deg,#fffaf0_0%,#fff2cf_52%,#fffdf7_100%)] shadow-amber-100/70',
-        icon: 'bg-amber-100 text-amber-600',
-        rank: 'bg-amber-500 text-white ring-amber-200',
-        name: 'text-[#36240c]',
-        sum: 'text-amber-700',
-        sparkle: 'text-amber-300',
+        card: 'border-[#e8c87e]/70 bg-[#fffaf0] shadow-[0_8px_24px_rgba(201,147,58,0.08)]',
+        icon: 'bg-[#f5ead2] text-[#a67828]',
+        rank: 'bg-[#c9933a] text-[#fefeff] ring-[#f5ead2]',
+        name: 'text-[#1a1a3e]',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#c9933a]/45',
         excellent: 'bg-emerald-100 text-emerald-700',
     },
     {
-        card: 'border-sky-200 bg-[linear-gradient(135deg,#f4fbff_0%,#e8f6ff_52%,#f9fdff_100%)] shadow-sky-100/70',
-        icon: 'bg-sky-100 text-sky-600',
-        rank: 'bg-sky-500 text-white ring-sky-200',
-        name: 'text-[#14304a]',
-        sum: 'text-sky-700',
-        sparkle: 'text-sky-300',
+        card: 'border-[#ddddf0] bg-[#f3f3f9] shadow-[0_8px_24px_rgba(26,26,62,0.07)]',
+        icon: 'bg-[#eeebf8] text-[#7869a8]',
+        rank: 'bg-[#1a1a3e] text-[#f8f8fc] ring-[#e6e6f2]',
+        name: 'text-[#1a1a3e]',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#9b8ec4]/50',
         excellent: 'bg-emerald-100 text-emerald-700',
     },
     {
-        card: 'border-violet-200 bg-[linear-gradient(135deg,#fbf8ff_0%,#f0e8ff_52%,#fffaff_100%)] shadow-violet-100/70',
-        icon: 'bg-violet-100 text-violet-600',
-        rank: 'bg-violet-500 text-white ring-violet-200',
-        name: 'text-[#2b1f5c]',
-        sum: 'text-violet-700',
-        sparkle: 'text-violet-300',
+        card: 'border-[#ddddf0] bg-[#fefeff] shadow-[0_8px_24px_rgba(26,26,62,0.07)]',
+        icon: 'bg-[#eeebf8] text-[#7869a8]',
+        rank: 'bg-[#c9933a] text-[#fefeff] ring-[#f5ead2]',
+        name: 'text-[#1a1a3e]',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#c9933a]/45',
         excellent: 'bg-emerald-100 text-emerald-700',
     },
     {
-        card: 'border-orange-200 bg-[linear-gradient(135deg,#fff8f2_0%,#ffe9dc_52%,#fffafa_100%)] shadow-orange-100/70',
-        icon: 'bg-orange-100 text-orange-600',
-        rank: 'bg-orange-500 text-white ring-orange-200',
-        name: 'text-[#3f2115]',
-        sum: 'text-orange-700',
-        sparkle: 'text-orange-300',
+        card: 'border-[#e8c87e]/70 bg-[#fffaf0] shadow-[0_8px_24px_rgba(201,147,58,0.08)]',
+        icon: 'bg-[#f5ead2] text-[#a67828]',
+        rank: 'bg-[#1a1a3e] text-[#f8f8fc] ring-[#e6e6f2]',
+        name: 'text-[#1a1a3e]',
+        sum: 'text-[#a67828]',
+        sparkle: 'text-[#9b8ec4]/50',
         excellent: 'bg-emerald-100 text-emerald-700',
     },
 ];
@@ -127,7 +127,7 @@ const getResultTags = (sum: number) => {
 
 const getResultTagTheme = (tag: string) => {
     if (/เมตตา|ความรัก|เสน่ห์|อ่อนหวาน|ครอบครัว/.test(tag)) {
-        return { icon: Heart, className: 'text-pink-700 bg-pink-50 border-pink-100' };
+        return { icon: Heart, className: 'text-[#66578f] bg-[#eeebf8] border-[#ddddf0]' };
     }
 
     if (/การเงิน|ร่ำรวย|ทรัพย์|เงิน|มั่งคั่ง|ขายดี|ค้าขาย|เศรษฐี/.test(tag)) {
@@ -135,7 +135,7 @@ const getResultTagTheme = (tag: string) => {
     }
 
     if (/ผู้นำ|อำนาจ|บารมี|ชื่อเสียง|ตำแหน่ง|ผู้ใหญ่|หนุน/.test(tag)) {
-        return { icon: Crown, className: 'text-violet-700 bg-violet-50 border-violet-100' };
+        return { icon: Crown, className: 'text-[#66578f] bg-[#eeebf8] border-[#ddddf0]' };
     }
 
     if (/โชค|สำเร็จ|ศักดิ์สิทธิ์|ปาฏิหาริย์|คุ้มครอง|แคล้วคลาด/.test(tag)) {
@@ -335,7 +335,7 @@ export default function ClientPage() {
                     cancelButtonColor: '#94a3b8',
                     background: '#fff9fd',
                     color: '#1a1a3e',
-                    customClass: { popup: 'rounded-2xl border border-pink-100' },
+                    customClass: { popup: 'rounded-2xl border border-[#ddddf0]' },
                 });
 
                 if (result.isConfirmed) router.push('/topup');
@@ -353,7 +353,7 @@ export default function ClientPage() {
                 cancelButtonColor: '#94a3b8',
                 background: '#fff9fd',
                 color: '#1a1a3e',
-                customClass: { popup: 'rounded-2xl border border-pink-100' },
+                customClass: { popup: 'rounded-2xl border border-[#ddddf0]' },
             });
 
             if (!confirm.isConfirmed) return;
@@ -373,7 +373,7 @@ export default function ClientPage() {
                     cancelButtonColor: '#94a3b8',
                     background: '#fff9fd',
                     color: '#1a1a3e',
-                    customClass: { popup: 'rounded-2xl border border-pink-100' },
+                    customClass: { popup: 'rounded-2xl border border-[#ddddf0]' },
                 });
 
                 if (looksLikeInsufficient && result.isConfirmed) router.push('/topup');
@@ -392,7 +392,7 @@ export default function ClientPage() {
                 showConfirmButton: false,
                 background: '#fff9fd',
                 color: '#1a1a3e',
-                customClass: { popup: 'rounded-2xl border border-pink-100' },
+                customClass: { popup: 'rounded-2xl border border-[#ddddf0]' },
             });
         } finally {
             setIsUnlocking(false);
@@ -447,44 +447,32 @@ export default function ClientPage() {
     };
 
     return (
-        <div className="relative min-h-screen overflow-hidden bg-[#fff9fd] text-[#1a1a3e] font-sans selection:bg-pink-400 selection:text-white">
-            <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    backgroundImage: `
-                        radial-gradient(circle at 14% 10%, rgba(125, 211, 252, 0.22), transparent 28%),
-                        radial-gradient(circle at 88% 8%, rgba(244, 114, 182, 0.20), transparent 24%),
-                        radial-gradient(circle at 78% 86%, rgba(134, 239, 172, 0.18), transparent 24%),
-                        linear-gradient(135deg, #fffaf7 0%, #fff4fb 38%, #f3fbff 76%, #fffef7 100%)
-                    `,
-                }}
-            />
-            <div aria-hidden="true" className="pointer-events-none absolute left-[8%] top-24 text-amber-300/80">
+        <div className="site-grid-surface min-h-screen overflow-hidden font-sans text-[#1a1a3e] selection:bg-[#e8c87e] selection:text-[#1a1a3e]">
+            <div aria-hidden="true" className="hidden">
                 <Sparkles className="h-7 w-7" />
             </div>
-            <div aria-hidden="true" className="pointer-events-none absolute right-[10%] top-32 text-pink-300/80">
+            <div aria-hidden="true" className="hidden">
                 <Sparkles className="h-8 w-8" />
             </div>
-            <div aria-hidden="true" className="pointer-events-none absolute right-[20%] bottom-24 text-sky-300/70">
+            <div aria-hidden="true" className="hidden">
                 <Sparkles className="h-6 w-6" />
             </div>
 
-            <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-6 md:pt-24 sm:px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-6xl px-4 pb-24 pt-8 sm:px-6 md:pt-20 lg:px-8">
                 <div className="mx-auto mb-8 max-w-4xl text-center sm:mb-10">
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/85 px-4 py-2 text-sm font-bold text-[#5a5a82] shadow-sm">
-                        <Wand2 className="h-4 w-4 text-pink-500" />
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#e8c87e]/70 bg-[#fefeff] px-4 py-2 text-sm font-bold text-[#5a5a82] shadow-[0_1px_2px_rgba(15,23,42,0.06)]">
+                        <Wand2 className="h-4 w-4 text-[#c9933a]" />
                         <span>สร้างชื่อมงคลด้วย AI</span>
                     </div>
-                    <h1 className="text-balance text-4xl font-extrabold leading-tight tracking-normal text-[#15163f] sm:text-5xl lg:text-6xl">
-                        สร้างชื่อมงคลด้วย <span className="text-pink-500">AI</span> <span className="text-orange-500">Grade A+</span>
+                    <h1 className="text-balance text-3xl font-extrabold leading-tight tracking-[-0.02em] text-[#1a1a3e] sm:text-5xl lg:text-6xl">
+                        สร้างชื่อมงคลด้วย <span className="text-[#7869a8]">AI</span> <span className="text-[#a67828]">Grade A+</span>
                     </h1>
                     <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-8 text-[#5a5a82] sm:text-lg">
                         ระบบจะประกอบตัวอักษรเป็นชื่อใหม่สำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือชื่อแบรนด์ โดยคัดเฉพาะผลรวมมงคลและคู่เลขสีเขียวล้วน
                     </p>
                 </div>
 
-                <div className="mb-8 rounded-3xl border border-pink-100 bg-white/78 p-4 shadow-[0_24px_80px_rgba(244,114,182,0.16)] backdrop-blur-xl sm:p-6 lg:p-8">
+                <div className="mb-8 rounded-[1.5rem] border border-[#ddddf0] bg-[#fefeff] p-4 shadow-[0_18px_50px_rgba(26,26,62,0.08)] sm:p-6 lg:p-8">
                     <div className="grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
                         <div className="min-w-0">
                             <label className="mb-2 block text-sm font-bold text-[#5a5a82]">อักษรนำหน้าที่ต้องการ</label>
@@ -492,9 +480,9 @@ export default function ClientPage() {
                                 <select
                                     value={startChar}
                                     onChange={(e) => setStartChar(e.target.value)}
-                                    className={`h-14 w-full appearance-none rounded-2xl border bg-white px-5 pr-12 text-2xl font-extrabold shadow-inner outline-none transition-all focus:border-pink-300 focus:ring-4 focus:ring-pink-100 ${
+                                    className={`h-14 w-full appearance-none rounded-xl border bg-[#fafafd] px-5 pr-12 text-2xl font-extrabold outline-none transition-colors focus:border-[#c9933a] focus:ring-4 focus:ring-[#e8c87e]/25 ${
                                         selectedCharIsSafe
-                                            ? 'border-pink-100 text-[#1a1a3e]'
+                                            ? 'border-[#ddddf0] text-[#1a1a3e]'
                                             : 'border-rose-200 text-rose-600'
                                     }`}
                                 >
@@ -504,33 +492,33 @@ export default function ClientPage() {
                                             <option
                                                 key={char}
                                                 value={char}
-                                                className={isSafe ? 'bg-white text-[#1a1a3e]' : 'bg-rose-50 text-rose-600'}
+                                                className={isSafe ? 'bg-[#fefeff] text-[#1a1a3e]' : 'bg-rose-50 text-rose-600'}
                                             >
                                                 {char} {isSafe ? '' : '(หลีกเลี่ยง)'}
                                             </option>
                                         );
                                     })}
                                 </select>
-                                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-violet-500" />
+                                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#7869a8]" />
                             </div>
                         </div>
                         <button
                             onClick={generateNames}
                             disabled={!startChar || isGenerating}
-                            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#ffb15e_0%,#ff6f91_52%,#ec4899_100%)] px-8 text-base font-extrabold text-white shadow-[0_14px_28px_rgba(236,72,153,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(236,72,153,0.30)] disabled:cursor-not-allowed disabled:opacity-60 lg:w-auto"
+                            className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#c9933a] px-8 text-base font-extrabold text-[#fefeff] shadow-[0_10px_24px_rgba(201,147,58,0.22)] transition-colors hover:bg-[#a67828] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#e8c87e]/40 disabled:cursor-not-allowed disabled:opacity-60 lg:w-auto"
                         >
                             {isGenerating ? <RefreshCw className="h-5 w-5 animate-spin" /> : <Play className="h-5 w-5" />}
                             สร้าง 100 ชื่อ (Grade A+)
                         </button>
                     </div>
 
-                    <div className="mt-5 rounded-2xl border border-violet-100 bg-white/70 p-4">
+                    <div className="mt-5 rounded-2xl border border-[#ddddf0] bg-[#f8f8fc] p-4">
                         <div className="mb-3 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
                             <div>
                                 <p className="text-sm font-extrabold text-[#15163f]">ต้องการชื่อสำหรับอะไร?</p>
                                 <p className="text-xs leading-5 text-[#5a5a82]">ใช้ช่วยจัดคำอธิบายและจุดเด่นของชื่อให้ตรงเป้าหมายมากขึ้น</p>
                             </div>
-                            <span className="text-xs font-bold text-violet-600">{selectedGoalOption.description}</span>
+                            <span className="text-xs font-bold text-[#7869a8]">{selectedGoalOption.description}</span>
                         </div>
                         <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
                             {goalOptions.map((goal) => {
@@ -543,8 +531,8 @@ export default function ClientPage() {
                                         onClick={() => setSelectedGoal(goal.id)}
                                         className={`shrink-0 rounded-full border px-4 py-2 text-sm font-extrabold transition-colors ${
                                             isSelected
-                                                ? 'border-[#15163f] bg-[#15163f] text-white shadow-sm'
-                                                : 'border-violet-100 bg-white text-[#5a5a82] hover:border-violet-200 hover:bg-violet-50'
+                                                ? 'border-[#1a1a3e] bg-[#1a1a3e] text-[#f8f8fc] shadow-sm'
+                                                : 'border-[#ddddf0] bg-[#fefeff] text-[#5a5a82] hover:border-[#9b8ec4] hover:bg-[#eeebf8]'
                                         }`}
                                     >
                                         {goal.label}
@@ -554,14 +542,14 @@ export default function ClientPage() {
                         </div>
                     </div>
 
-                    <div className="mt-5 overflow-hidden rounded-2xl border border-amber-200 bg-[#fff9ed]/90 text-sm text-[#6b4d1f]">
+                    <div className="mt-5 overflow-hidden rounded-2xl border border-[#e8c87e]/70 bg-[#fffaf0] text-sm text-[#6b4d1f]">
                         <div className="flex items-start gap-3 border-b border-amber-200/70 px-4 py-3">
-                            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-orange-500" />
+                            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-[#a67828]" />
                             <p className="leading-7">รายชื่อที่ได้อาจมีลักษณะคล้ายชื่อเกาหลี ญี่ปุ่น หรือชื่อนวัตกรรมยุคใหม่ เนื่องจากเป็นการใช้ AI ต่อจิ๊กซอว์ตัวอักษรเพื่อหลบเลี่ยงคู่เลขเสียทั้งหมด</p>
                         </div>
                         <div className="flex items-start gap-3 px-4 py-3">
-                            <div className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-pink-500" />
-                            <p className="leading-7">หากคุณเลือกอักษรที่มี <span className="font-bold text-pink-600">สีแดง (กลุ่มห้ามใช้)</span> ระบบอาจสร้างชื่อ A+ ได้ยากมาก หรือได้ผลลัพธ์ 0 ชื่อ เพราะอักษรนั้นมักจะสร้างคู่เลขกาลกิณีเสมอ</p>
+                            <div className="mt-2 h-2.5 w-2.5 shrink-0 rounded-full bg-rose-500" />
+                            <p className="leading-7">หากคุณเลือกอักษรที่มี <span className="font-bold text-rose-700">สีแดง (กลุ่มห้ามใช้)</span> ระบบอาจสร้างชื่อ A+ ได้ยากมาก หรือได้ผลลัพธ์ 0 ชื่อ เพราะอักษรนั้นมักจะสร้างคู่เลขกาลกิณีเสมอ</p>
                         </div>
                     </div>
                 </div>
@@ -575,11 +563,11 @@ export default function ClientPage() {
                                     <ShieldCheck className="h-4 w-4" />
                                     Verified A+
                                 </span>
-                                <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-violet-50 px-3 py-1.5 text-xs font-extrabold text-violet-700">
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ddddf0] bg-[#eeebf8] px-3 py-1.5 text-xs font-extrabold text-[#66578f]">
                                     เรียงตาม: {selectedGoalOption.label}
                                 </span>
                                 {isResultsUnlocked && (
-                                    <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-200 bg-pink-50 px-3 py-1.5 text-xs font-extrabold text-pink-700">
+                                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e8c87e]/70 bg-[#fffaf0] px-3 py-1.5 text-xs font-extrabold text-[#a67828]">
                                         <Lock className="h-3.5 w-3.5" />
                                         ปลดล็อกแล้ว
                                     </span>
@@ -588,24 +576,24 @@ export default function ClientPage() {
                             <button
                                 onClick={downloadCSV}
                                 disabled={!isResultsUnlocked}
-                                className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-violet-200 bg-white px-4 text-sm font-extrabold text-violet-600 shadow-sm transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:bg-violet-50 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 sm:w-auto"
+                                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-[#ddddf0] bg-[#fefeff] px-4 text-sm font-extrabold text-[#5a5a82] shadow-sm transition-colors hover:border-[#9b8ec4] hover:bg-[#eeebf8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#9b8ec4]/20 disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto"
                             >
                                 <Download className="h-4 w-4" />
                                 ดาวน์โหลด CSV
                             </button>
                         </div>
                         <div className="mb-5 grid gap-3 md:grid-cols-4">
-                            <div className="rounded-2xl border border-emerald-100 bg-white/85 p-4 shadow-sm">
+                            <div className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-4 shadow-sm">
                                 <p className="text-xs font-bold text-[#5a5a82]">Preview ฟรี</p>
                                 <p className="mt-1 text-2xl font-extrabold text-emerald-600">{previewCount} ชื่อ</p>
                                 <p className="mt-1 text-xs text-[#5a5a82]">พร้อมเหตุผลย่อก่อนปลดล็อก</p>
                             </div>
-                            <div className="rounded-2xl border border-pink-100 bg-white/85 p-4 shadow-sm">
+                            <div className="rounded-2xl border border-[#ddddf0] bg-[#fafafd] p-4 shadow-sm">
                                 <p className="text-xs font-bold text-[#5a5a82]">ชุดที่ล็อกไว้</p>
-                                <p className="mt-1 text-2xl font-extrabold text-pink-600">{hiddenCount} ชื่อ</p>
+                                <p className="mt-1 text-2xl font-extrabold text-[#7869a8]">{hiddenCount} ชื่อ</p>
                                 <p className="mt-1 text-xs text-[#5a5a82]">ปลดล็อกครั้งเดียวดูได้ครบ</p>
                             </div>
-                            <div className="rounded-2xl border border-amber-100 bg-white/85 p-4 shadow-sm">
+                            <div className="rounded-2xl border border-[#e8c87e]/70 bg-[#fffaf0] p-4 shadow-sm">
                                 <p className="text-xs font-bold text-[#5a5a82]">ผลรวมเด่น</p>
                                 <p className="mt-1 text-sm font-extrabold text-amber-700">
                                     {resultSummary.topSums.length > 0
@@ -614,9 +602,9 @@ export default function ClientPage() {
                                 </p>
                                 <p className="mt-1 text-xs text-[#5a5a82]">คัดเฉพาะผลรวมมงคล</p>
                             </div>
-                            <div className="rounded-2xl border border-violet-100 bg-white/85 p-4 shadow-sm">
+                            <div className="rounded-2xl border border-[#ddddf0] bg-[#f3f3f9] p-4 shadow-sm">
                                 <p className="text-xs font-bold text-[#5a5a82]">หมวดจุดเด่น</p>
-                                <p className="mt-1 text-sm font-extrabold text-violet-700">
+                                <p className="mt-1 text-sm font-extrabold text-[#66578f]">
                                     {resultSummary.topTags.length > 0
                                         ? resultSummary.topTags.map(([tag]) => tag).join(' / ')
                                         : '-'}
@@ -624,7 +612,7 @@ export default function ClientPage() {
                                 <p className="mt-1 text-xs text-[#5a5a82]">อิงจากความหมายเลขศาสตร์</p>
                             </div>
                         </div>
-                        <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+                        <div className="mb-5 flex flex-col gap-3 rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
                             <div>
                                 <p className="text-sm font-extrabold text-[#15163f]">Shortlist ชื่อที่สนใจ: {shortlistedNames.length} ชื่อ</p>
                                 <p className="mt-1 text-xs leading-5 text-[#5a5a82]">
@@ -643,7 +631,7 @@ export default function ClientPage() {
                                     type="button"
                                     onClick={copyShortlist}
                                     disabled={shortlistedNames.length === 0}
-                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 text-sm font-extrabold text-[#5a5a82] transition-colors hover:border-violet-200 hover:bg-violet-50 disabled:cursor-not-allowed disabled:opacity-50"
+                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#ddddf0] bg-[#fefeff] px-4 text-sm font-extrabold text-[#5a5a82] transition-colors hover:border-[#9b8ec4] hover:bg-[#eeebf8] disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     {hasCopiedShortlist ? <CheckCircle2 className="h-4 w-4 text-emerald-600" /> : <ClipboardCopy className="h-4 w-4" />}
                                     {hasCopiedShortlist ? 'คัดลอกแล้ว' : 'คัดลอกชื่อ'}
@@ -651,7 +639,7 @@ export default function ClientPage() {
                                 <Link
                                     href={analysisHref}
                                     onClick={prepareShortlistForAnalysis}
-                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#15163f] bg-[#15163f] px-4 text-sm font-extrabold text-white transition-colors hover:bg-[#25265a]"
+                                    className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-[#1a1a3e] bg-[#1a1a3e] px-4 text-sm font-extrabold text-[#f8f8fc] transition-colors hover:bg-[#292955]"
                                 >
                                     วิเคราะห์ชื่อที่เลือกต่อ
                                     <ChevronDown className="h-4 w-4 -rotate-90" />
@@ -659,10 +647,10 @@ export default function ClientPage() {
                             </div>
                         </div>
                         {!isResultsUnlocked && (
-                            <div className="mb-6 overflow-hidden rounded-3xl border border-pink-200 bg-white/85 p-4 shadow-[0_20px_60px_rgba(236,72,153,0.12)] backdrop-blur-xl sm:p-5">
+                            <div className="mb-6 overflow-hidden rounded-[1.5rem] border border-[#e8c87e]/70 bg-[#fffaf0] p-4 shadow-[0_12px_36px_rgba(201,147,58,0.10)] sm:p-5">
                                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                                     <div className="flex items-start gap-3">
-                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-pink-100 text-pink-600 ring-4 ring-pink-50">
+                                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f5ead2] text-[#a67828] ring-4 ring-[#fefeff]">
                                             <Lock className="h-5 w-5" />
                                         </div>
                                         <div>
@@ -686,7 +674,7 @@ export default function ClientPage() {
                                     <button
                                         onClick={unlockResults}
                                         disabled={isUnlocking}
-                                        className="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#ffb15e_0%,#ff6f91_52%,#ec4899_100%)] px-6 text-sm font-extrabold text-white shadow-[0_14px_28px_rgba(236,72,153,0.22)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(236,72,153,0.28)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+                                        className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#c9933a] px-6 text-sm font-extrabold text-[#fefeff] shadow-[0_10px_24px_rgba(201,147,58,0.22)] transition-colors hover:bg-[#a67828] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#e8c87e]/40 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
                                     >
                                         {isUnlocking ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
                                         ปลดล็อกชุดนี้ {NAME_GENERATOR_UNLOCK_COST} เครดิต
@@ -717,12 +705,12 @@ export default function ClientPage() {
                                             onClick={() => isNameVisible && toggleShortlist(r.name)}
                                             disabled={!isNameVisible}
                                             aria-label={isShortlisted ? `นำ ${r.name} ออกจาก Shortlist` : isNameVisible ? `เก็บ ${r.name} เข้า Shortlist` : 'ปลดล็อกก่อนเก็บชื่อ'}
-                                            className={`absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border bg-white/85 shadow-sm transition-all ${
+                                            className={`absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border bg-[#fefeff] shadow-sm transition-colors ${
                                                 isShortlisted
-                                                    ? 'border-pink-200 text-pink-600'
+                                                    ? 'border-[#e8c87e] text-[#a67828]'
                                                     : isNameVisible
-                                                        ? 'border-white/80 text-[#8e8eaa] hover:border-pink-200 hover:text-pink-600'
-                                                        : 'cursor-not-allowed border-white/70 text-[#c6c6d8] opacity-70'
+                                                        ? 'border-[#ddddf0] text-[#8e8eaa] hover:border-[#e8c87e] hover:text-[#a67828]'
+                                                        : 'cursor-not-allowed border-[#ddddf0] text-[#c6c6d8] opacity-70'
                                             }`}
                                         >
                                             <Heart className={`h-4 w-4 ${isShortlisted ? 'fill-current' : ''}`} />
@@ -731,7 +719,7 @@ export default function ClientPage() {
 
                                         <div className="relative z-10 flex h-full flex-col justify-between gap-4 pt-6">
                                             <div className="text-center">
-                                                <div className={`mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-xl font-extrabold ring-4 ring-white/80 ${theme.icon}`}>
+                                                <div className={`mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full text-xl font-extrabold ring-4 ring-[#fefeff] ${theme.icon}`}>
                                                     {isNameVisible ? r.name.slice(0, 1) : <Lock className="h-5 w-5" />}
                                                 </div>
                                                 <div className="relative mx-auto w-fit max-w-full">
@@ -744,13 +732,13 @@ export default function ClientPage() {
                                                         {isNameVisible ? r.name : 'ชื่อมงคล A+'}
                                                     </p>
                                                     {!isNameVisible && (
-                                                        <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border border-white/80 bg-white/85 px-2.5 py-1 text-[10px] font-extrabold text-pink-600 shadow-sm">
+                                                        <span className="pointer-events-none absolute left-1/2 top-1/2 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1 rounded-full border border-[#e8c87e]/70 bg-[#fffaf0] px-2.5 py-1 text-[10px] font-extrabold text-[#a67828] shadow-sm">
                                                             <Lock className="h-3 w-3" />
                                                             ล็อกอยู่
                                                         </span>
                                                     )}
                                                     {!isResultsUnlocked && isNameVisible && (
-                                                        <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-emerald-100 bg-white/90 px-2.5 py-1 text-[10px] font-extrabold text-emerald-700 shadow-sm">
+                                                        <span className="mt-2 inline-flex items-center gap-1 rounded-full border border-emerald-100 bg-[#fefeff] px-2.5 py-1 text-[10px] font-extrabold text-emerald-700 shadow-sm">
                                                             <ShieldCheck className="h-3 w-3" />
                                                             Preview ฟรี
                                                         </span>
@@ -759,8 +747,8 @@ export default function ClientPage() {
                                                 <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-sm">
                                                     <span className={`font-bold ${theme.sum}`}>ผลรวม {r.sum}</span>
                                                     <span className={`rounded-full px-2.5 py-1 text-xs font-extrabold ${theme.excellent}`}>Grade A+</span>
-                                                    <span className="rounded-full bg-white/80 px-2.5 py-1 text-xs font-extrabold text-emerald-700">คู่เลขเขียว {pairCount} คู่</span>
-                                                    <span className="rounded-full bg-[#15163f] px-2.5 py-1 text-xs font-extrabold text-white">{fitScore}% {fitLabel}</span>
+                                                    <span className="rounded-full bg-[#fefeff] px-2.5 py-1 text-xs font-extrabold text-emerald-700">คู่เลขเขียว {pairCount} คู่</span>
+                                                    <span className="rounded-full bg-[#1a1a3e] px-2.5 py-1 text-xs font-extrabold text-[#f8f8fc]">{fitScore}% {fitLabel}</span>
                                                 </div>
                                                 <p className="mx-auto mt-3 max-w-[19rem] text-left text-xs leading-6 text-[#5a5a82]">
                                                     {reason}

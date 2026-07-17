@@ -46,10 +46,12 @@ describe('/search SEO pillar content', () => {
         const homeSource = readSource('src/components/HomeSeoContent.tsx');
         const nameCheckSource = readSource('src/components/NameCheckSeoContent.tsx');
         const articlesSource = readSource('src/app/articles/page.tsx');
+        const topicClustersSource = readSource('src/app/articles/topicClusters.ts');
 
         expect(homeSource).toContain('/search');
         expect(nameCheckSource).toContain('/search');
-        expect(articlesSource).toContain("href: '/search'");
+        expect(articlesSource).toContain("import { topicClusters }");
+        expect(topicClustersSource).toContain("href: '/search'");
     });
 
     test('gives /search pillar-level sitemap priority', () => {

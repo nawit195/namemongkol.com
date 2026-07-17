@@ -256,7 +256,7 @@ export const articleWhatIsNameAnalysis = {
                 </a>
             </li>
             <li>
-                <a href="/articles/numerology-guide" class="text-amber-400 hover:underline">
+                <a href="/articles/numerology-0-9-power-guide" class="text-amber-400 hover:underline">
                     → คู่มือเลขศาสตร์ชื่อมงคล
                 </a>
             </li>

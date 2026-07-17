@@ -300,7 +300,7 @@ export const HeroBanner = ({ headingLevel = 'h1' }: HeroBannerProps) => {
     const HeadingTag = headingLevel;
 
     return (
-        <section className="relative w-full">
+        <section id="home-seo-answer" className="relative w-full">
             <div className="pointer-events-none absolute -left-10 top-6 hidden h-72 w-72 rounded-full border border-amber-200/10 lg:block" />
             <div className="pointer-events-none absolute -left-2 top-16 hidden h-52 w-52 rounded-full border border-amber-200/10 lg:block" />
             <div className="pointer-events-none absolute left-24 top-40 hidden h-px w-56 rotate-[-16deg] bg-gradient-to-r from-transparent via-amber-200/20 to-transparent lg:block" />

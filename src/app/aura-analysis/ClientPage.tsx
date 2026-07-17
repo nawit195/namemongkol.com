@@ -378,27 +378,24 @@ export default function ClientPage() {
     // =======================================================================
 
     return (
-        <div className="min-h-screen relative aura-page-shell">
+        <div className="site-grid-surface min-h-screen relative aura-page-shell">
             <AuraCosmicBackground />
 
             <div className="mx-auto max-w-4xl px-4 pb-36 pt-7 sm:pb-12 sm:pt-28">
                 {/* Page Header */}
                 <div className="relative mb-6 text-center sm:mb-14 md:mb-16">
-                    {/* Decorative glowing orb behind the text for a premium feel */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] sm:w-[80%] h-[150%] bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-amber-500/10 blur-[60px] md:blur-[80px] -z-10 rounded-full pointer-events-none" />
-                    
-                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-5 hover:border-amber-500/30 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.1)]">
+                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-[#ddddf0] mb-5 hover:border-amber-500/30 transition-all duration-300 shadow-[0_8px_28px_rgba(26,26,62,0.08)]">
                         <Sparkles size={16} className="text-amber-400 animate-pulse" />
-                        <span className="text-xs md:text-sm font-semibold text-amber-100 tracking-wider uppercase">AI Personality Analysis</span>
+                        <span className="text-xs md:text-sm font-semibold text-[#1a1a3e] tracking-wider uppercase">AI Personality Analysis</span>
                     </div>
                     
-                    <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-white drop-shadow-2xl sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
-                        ค้นหาตัวตนด้วย <span className="text-amber-300 drop-shadow-[0_0_30px_rgba(201,147,58,0.3)]">ออร่า</span>
+                    <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-[#1a1a3e] sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
+                        ค้นหาตัวตนด้วย <span className="text-[#c9933a]">ออร่า</span>
                         <br className="hidden sm:block" /> และพลังงานจากชื่อ
                     </h1>
                     
-                    <p className="mx-auto max-w-[65ch] text-sm leading-relaxed text-slate-300 sm:text-base">
-                        ถอดรหัสความหมายที่ซ่อนอยู่ในตัวอักษร ด้วยระบบ AI ขั้นสูง <br className="hidden md:block"/> ค้นพบ <span className="font-medium text-amber-300">12 Archetype</span> พลังงานสีมงคล และศาสตร์แห่งตัวตนที่แท้จริงของคุณ 
+                    <p className="mx-auto max-w-[65ch] text-sm leading-relaxed text-[#5a5a82] sm:text-base">
+                        ถอดรหัสความหมายที่ซ่อนอยู่ในตัวอักษร ด้วยระบบ AI ขั้นสูง <br className="hidden md:block"/> ค้นพบ <span className="font-semibold text-[#c9933a]">12 Archetype</span> พลังงานสีมงคล และศาสตร์แห่งตัวตนที่แท้จริงของคุณ
                     </p>
                 </div>
 
@@ -407,8 +404,8 @@ export default function ClientPage() {
                 {/* ============================================================= */}
                 {step === 'input' && (
                     <div className="mx-auto mt-2 max-w-lg animate-fade-in-up sm:mt-3">
-                        <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 p-4 shadow-2xl backdrop-blur-xl sm:p-8">
-                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
+                        <div className="relative overflow-hidden rounded-2xl border border-[#ddddf0] bg-white/90 p-4 shadow-[0_22px_60px_rgba(26,26,62,0.12)] sm:p-8">
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,147,58,0.08),transparent_62%)] pointer-events-none"></div>
                             <div className="relative z-10">
                             {/* Name Input */}
                             <label className="aura-form-label block mb-1.5 text-sm font-medium">

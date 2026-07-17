@@ -24,7 +24,7 @@ export const articleBoyNames2569: Article = {
     ],
     metaTitle: '400 ไอเดียชื่อมงคลผู้ชาย 2569: คลังชื่อก่อนคัดตัวจริง | NameMongkol',
     metaDescription: 'รวม 400 ไอเดียชื่อมงคลผู้ชาย 2569 สำหรับค้นหาสไตล์ชื่อที่ใช่ก่อนคัดชื่อเกรด A+ แบ่งครบสายผู้นำ ปัญญา มั่งคั่ง และอินเตอร์ พร้อมแนวทางคำนวณพลังตัวเลข',
-    relatedSlugs: ['boy-names-wednesday-night-2569', 'auspicious-names-by-birthday-2026', 'naming-baby-year-of-horse-2569', 'change-name-destiny-tuning-2569', 'boy-names-2569-50-auspicious', '100-auspicious-boy-names-2569'],
+    relatedSlugs: ['boy-names-wednesday-night-2569', 'auspicious-names-by-birthday-2026', 'naming-baby-year-of-horse-2569', 'change-name-destiny-tuning-2569', 'boy-names-2569-50-auspicious', 'naming-tips-2026-year-of-horse'],
     dateModified: '2026-04-20',
     toc: [
         { title: '1. หมวดชื่อผู้ชายสายผู้นำ: เน้นบารมี อำนาจ และความกล้าหาญ', id: 'leader-names', level: 2 },
@@ -63,7 +63,7 @@ export const articleBoyNames2569: Article = {
         </p>
         <p class="text-slate-300 leading-relaxed mb-8">
             ถ้าต้องการรายชื่อปริมาณมากแบบใช้งานฟรี สามารถดู
-            <a href="/articles/100-auspicious-boy-names-2569" class="text-amber-400 hover:text-amber-300 underline">100 ชื่อลูกชายมงคล</a>
+            <a href="/articles/naming-tips-2026-year-of-horse" class="text-amber-400 hover:text-amber-300 underline">100 ชื่อลูกชายมงคลปีมะเมีย</a>
             เพิ่มเติม แล้วค่อยเทียบกับรายชื่อชุด A+ อีกครั้ง
         </p>
     </div>

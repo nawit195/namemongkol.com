@@ -6,7 +6,7 @@ export function RelatedPagesNav({ currentPath }: { currentPath: string }) {
         { path: '/names/girls', label: 'ตั้งชื่อลูกสาว' },
         { path: '/names/boys', label: 'ตั้งชื่อลูกชาย' },
         { path: '/names/girls/by-birthday', label: 'ชื่อลูกสาวตามวันเกิด' },
-        { path: '/names/girls/by-birthday/monday', label: 'ลูกสาวเกิดวันจันทร์' },
+        { path: '/articles/monday-girl-names-2569-no-sara', label: 'ชื่อผู้หญิงเกิดวันจันทร์ 2569' },
         { path: '/names/boys/by-birthday', label: 'ชื่อลูกชายตามวันเกิด' },
         { path: '/names/girls/english-names', label: 'ชื่อลูกสาว ภาษาอังกฤษ' },
         { path: '/names/boys/english-names', label: 'ชื่อลูกชาย ภาษาอังกฤษ' },

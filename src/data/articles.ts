@@ -31,6 +31,19 @@ export interface ArticleImageMeta {
     credit?: string;
 }
 
+export interface ArticleSource {
+    title: string;
+    url?: string;
+    note?: string;
+    kind?: 'primary' | 'reference' | 'methodology';
+}
+
+export interface ArticleReviewer {
+    name: string;
+    profileUrl: string;
+    role?: string;
+}
+
 export interface Article {
     id: string;
     slug: string;
@@ -50,6 +63,9 @@ export interface Article {
     toc?: { title: string; id: string; level: number }[]; // For AEO structure
     faqItems?: FaqItem[]; // For FAQPage JSON-LD schema
     dateModified?: string; // For Article schema dateModified
+    sources?: ArticleSource[]; // Verifiable references shown on the article page
+    reviewedAt?: string; // Date the factual tables/copy were last checked
+    reviewer?: ArticleReviewer; // Only populate for a real reviewer with a public profile
 }
 
 export const articles: Article[] = [
@@ -105,7 +121,7 @@ export const articles: Article[] = [
         faqItems: [
             {
                 question: 'วันกาลกิณีคืออะไร ทำไมถึงห้ามเปลี่ยนชื่อในวันนั้น?',
-                answer: 'วันกาลกิณีคือวันที่มีพลังงานดาวเคราะห์ขัดแย้งกับวันเกิดของคุณโดยตรง หากไปทำพิธีมงคลในวันนี้ พลังงานที่เป็นโทษจะเข้าแทรกแซงทำลายความมงคลของชื่อใหม่ทันที ต่อให้ปฏิทินบอกว่าเป็นวันธงชัย แต่ถ้าตรงกับวันกาลกิณีของคุณ ให้ข้ามไปใช้วันอื่นทันที'
+                answer: 'ตามความเชื่อทางโหราศาสตร์ วันกาลกิณีคือวันที่ผู้ยึดแนวทางนี้มักหลีกเลี่ยงเมื่อทำพิธีมงคล ควรใช้เป็นข้อมูลประกอบร่วมกับความสะดวก ข้อกำหนดทางราชการ และการตัดสินใจส่วนบุคคล ไม่ใช่คำรับประกันผลลัพธ์'
             },
             {
                 question: 'ฤกษ์ไหนดีที่สุดสำหรับการเปลี่ยนชื่อ?',
@@ -134,7 +150,7 @@ export const articles: Article[] = [
     <!-- บทนำ -->
     <div id="intro-destiny-tuning">
         <p class="text-xl text-slate-300 leading-relaxed mb-6">
-            คุณเคยสงสัยหรือไม่ว่า ทำไมบางคนเปลี่ยนชื่อแล้ว<strong class="text-amber-400">ชีวิตพลิกฟื้นราวกับเกิดใหม่</strong> ในขณะที่บางคนเปลี่ยนแล้วกลับเงียบเหงาหรือแย่ลงกว่าเดิม?
+            หลายคนเลือกเปลี่ยนชื่อเพื่อสร้างความมั่นใจหรือเริ่มต้นบทใหม่ แต่ผลลัพธ์ในชีวิตยังขึ้นอยู่กับการตัดสินใจ สภาพแวดล้อม และการกระทำของแต่ละคน
         </p>
         <p class="text-slate-300 leading-relaxed mb-6">
             คำตอบคือ <strong class="text-white">"ชื่อ"</strong> ไม่ใช่เพียงป้ายระบุตัวตนบนบัตรประชาชน แต่ในทางโหราศาสตร์ไทย ชื่อคือ <strong class="text-emerald-400">"รหัสพลังงาน"</strong> ที่เชื่อมโยงกับดวงดาวและจักรวาล การเปลี่ยนชื่อจึงเปรียบเสมือนการ <strong class="text-amber-300">Destiny Tuning</strong> หรือการปรับจูนคลื่นพลังงานชีวิตให้สอดรับกับสิริมงคล เพื่อแก้ไขจุดบกพร่องและเปิดรับโอกาสใหม่ๆ
@@ -164,7 +180,7 @@ export const articles: Article[] = [
         <div class="bg-red-900/10 border border-red-500/20 rounded-xl p-6 mb-8">
             <h4 class="text-red-400 font-bold mb-3">⚠️ พลาดข้อนี้ ฤกษ์ดีแค่ไหนก็พัง!</h4>
             <p class="text-slate-300 text-sm leading-relaxed">
-                ปัจจัยที่สำคัญที่สุดก่อนดูฤกษ์ยาม คือการหลีกเลี่ยง <strong class="text-red-300">"วันกาลกิณี"</strong> (ห้ามเด็ดขาด) และ <strong class="text-orange-300">"วันคู่ศัตรู"</strong> (ควรหลีกเลี่ยง) ประจำวันเกิดของคุณ เพราะหากไปทำพิธีมงคลในวันอริ พลังงานที่เป็นโทษจะเข้าแทรกแซงทำลายความมงคลของชื่อใหม่ทันที
+                หากยึดหลักฤกษ์ยาม สามารถใช้ <strong class="text-red-300">"วันกาลกิณี"</strong> และ <strong class="text-orange-300">"วันคู่ศัตรู"</strong> เป็นข้อมูลประกอบได้ โดยควรพิจารณาความสะดวกและข้อกำหนดทางราชการร่วมกัน
             </p>
         </div>
 
@@ -421,7 +437,7 @@ export const articles: Article[] = [
         <div class="space-y-4">
             <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-700/50">
                 <h4 class="font-bold text-white mb-2">วันกาลกิณีคืออะไร ทำไมถึงห้ามเปลี่ยนชื่อในวันนั้น?</h4>
-                <p class="text-slate-300 text-sm leading-relaxed">วันกาลกิณีคือวันที่มีพลังงานดาวเคราะห์ขัดแย้งกับวันเกิดของคุณโดยตรง หากไปทำพิธีมงคลในวันนี้ พลังงานที่เป็นโทษจะเข้าแทรกแซงทำลายความมงคลของชื่อใหม่ทันที</p>
+                <p class="text-slate-300 text-sm leading-relaxed">ตามความเชื่อทางโหราศาสตร์ วันกาลกิณีเป็นวันที่บางคนเลือกหลีกเลี่ยงเมื่อทำพิธีมงคล ไม่ใช่หลักฐานว่าวันดังกล่าวจะกำหนดผลลัพธ์ของการเปลี่ยนชื่อ</p>
             </div>
             <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-700/50">
                 <h4 class="font-bold text-white mb-2">ฤกษ์ไหนดีที่สุดสำหรับการเปลี่ยนชื่อ?</h4>
@@ -465,8 +481,8 @@ export const articles: Article[] = [
     {
     id: '31',
     slug: 'auspicious-names-by-birthday-2026',
-    title: 'ตั้งชื่อมงคลตามวันเกิด 2569: คู่มือครบจบ ตำราทักษาปกรณ์ ปีม้าไฟ พร้อมชื่อแนะนำทั้ง 7 วัน',
-    excerpt: 'คู่มือตั้งชื่อมงคลตามวันเกิดฉบับสมบูรณ์ อ้างอิงตำราทักษาปกรณ์ เจาะลึกอักษรมงคล-กาลกิณีทั้ง 8 วรรค พร้อมชื่อแนะนำสำหรับเด็กเกิดปี 2569 ปีม้าไฟ แบ่งตามวันเกิดและวัตถุประสงค์',
+    title: 'ชื่อมงคลตามวันเกิด 2569: หลักทักษาและทางไปหน้ารายวัน',
+    excerpt: 'ศูนย์รวมหลักเลือกชื่อมงคลตามวันเกิด 2569 อธิบายอักษรตามความเชื่อทักษาปกรณ์ และเชื่อมไปยังรายชื่อผู้ชาย-ผู้หญิงแยกตามวันเกิดโดยไม่แสดงรายการซ้ำ',
     coverImage: '/images/articles/baby-naming-2026.webp',
     coverImageAlt: 'ตั้งชื่อมงคลตามวันเกิด 2569 ตำราทักษาปกรณ์ ปีม้าไฟ',
     date: '2026-02-17',
@@ -478,8 +494,9 @@ export const articles: Article[] = [
         'ชื่อมงคลปีม้าไฟ', 'ตั้งชื่อลูกตามวันเกิด', 'ชื่อเสริมดวง',
         'ตั้งชื่อมงคล', 'ชื่อมงคลผู้ชาย', 'ชื่อมงคลผู้หญิง', 'เปลี่ยนชื่อมงคล'
     ],
-    metaTitle: 'ตั้งชื่อมงคลตามวันเกิด 2569 คู่มือทักษา ปีม้าไฟ | NameMongkol',
-    metaDescription: 'คู่มือตั้งชื่อมงคลตามวันเกิดฉบับสมบูรณ์ 2569 อ้างอิงตำราทักษาปกรณ์ เจาะลึกอักษรมงคล-กาลกิณี 8 วรรค พร้อมชื่อแนะนำปีม้าไฟ แบ่งตามวัน',
+    metaTitle: 'ชื่อมงคลตามวันเกิด 2569 หลักทักษาและหน้ารายวัน | NameMongkol',
+    metaDescription: 'อธิบายหลักเลือกชื่อมงคลตามวันเกิด 2569 ตามความเชื่อทักษาปกรณ์ พร้อมลิงก์ไปยังรายชื่อผู้ชายและผู้หญิงแยกตามวันเกิด',
+    dateModified: '2026-07-15',
     relatedSlugs: ['100-auspicious-women-names-2026', 'lucky-names-for-2026-grade-a-plus', 'forbidden-letters-kalakini', 'naming-baby-year-of-horse-2569'],
     toc: [
         { title: 'รู้จักตำราทักษาปกรณ์: ศาสตร์แห่งการตั้งชื่อ', id: 'intro-taksapakorn', level: 2 },
@@ -497,7 +514,7 @@ export const articles: Article[] = [
     <!-- บทนำ -->
     <div>
         <p class="text-xl text-slate-300 leading-relaxed mb-6">
-            การ<strong class="text-amber-400">ตั้งชื่อมงคลตามวันเกิด</strong>ไม่ใช่แค่ความเชื่อ แต่คือ <strong>ศาสตร์โบราณที่สืบทอดมากว่า 700 ปี</strong> ผ่านตำรา<strong class="text-emerald-400">ทักษาปกรณ์</strong> ซึ่งจัดระบบความสัมพันธ์ระหว่างตัวอักษรกับวันเกิดอย่างเป็นวิทยาศาสตร์ บทความนี้จะพาคุณเจาะลึกตั้งแต่หลักการ ไปจนถึงรายชื่อที่คัดมาแล้วว่าเหมาะกับเด็กเกิดปี 2569 (ปีม้าไฟ)
+            การ<strong class="text-amber-400">ตั้งชื่อมงคลตามวันเกิด</strong>เป็นแนวทางตามความเชื่อที่ใช้ตำรา<strong class="text-emerald-400">ทักษาปกรณ์</strong>จัดหมวดตัวอักษรตามวันเกิด บทความนี้อธิบายหลักการและรายชื่อสำหรับเด็กเกิดปี 2569 โดยแยกข้อเท็จจริงทางภาษาออกจากคำอธิบายตามความเชื่ออย่างชัดเจน
         </p>
         <p class="text-slate-300 mb-6 leading-relaxed">
             สำหรับคุณพ่อคุณแม่ที่อยากได้ตัวอย่างชื่อแบบลงลึกเฉพาะปีมะเมีย อ่านต่อได้ที่ <a href="/articles/naming-baby-year-of-horse-2569" class="text-amber-400 hover:underline">ตั้งชื่อลูกปีมะเมีย 2569</a> และถ้าต้องการดูภาพรวมการเปลี่ยนชื่อทั้งระบบฤกษ์-พิธี-เอกสาร แนะนำ <a href="/articles/change-name-destiny-tuning-2569" class="text-amber-400 hover:underline">คู่มือเปลี่ยนชื่อ Destiny Tuning 2569</a>
@@ -555,7 +572,7 @@ export const articles: Article[] = [
             </div>
             <div class="bg-red-900/20 p-5 rounded-xl border border-red-500/20">
                 <h4 class="font-bold text-red-400 mb-2">8. กาลกิณี ⛔</h4>
-                <p class="text-slate-300 text-sm">อักษรต้องห้าม! ห้ามมีในชื่อเด็ดขาด จะนำโชคร้ายมาสู่</p>
+                <p class="text-slate-300 text-sm">อักษรที่ผู้ยึดหลักทักษาปกรณ์มักหลีกเลี่ยงเมื่อตั้งชื่อ</p>
             </div>
         </div>
 
@@ -612,7 +629,7 @@ export const articles: Article[] = [
             <span class="text-4xl">📊</span> ตารางอักษรมงคล-กาลกิณี ทั้ง 7 วัน
         </h2>
         <p class="text-slate-300 mb-6 leading-relaxed">
-            ตารางสำคัญที่ต้องตรวจสอบก่อนตั้งชื่อทุกครั้ง อักษรในวรรค <strong class="text-red-400">กาลกิณี</strong> ห้ามมีในชื่อเด็ดขาด ส่วนอักษรในวรรค <strong class="text-emerald-400">ศรี/เดช/มูละ</strong> ถือเป็นมงคลสูงสุด
+            ตารางนี้ใช้คัดกรองเบื้องต้นตามหลักทักษาปกรณ์ โดยผู้ที่ยึดแนวทางนี้มักหลีกเลี่ยงวรรค <strong class="text-red-400">กาลกิณี</strong> และเลือกหมวด <strong class="text-emerald-400">ศรี/เดช/มูละ</strong> ให้สอดคล้องกับเป้าหมายของชื่อ
         </p>
 
         <div class="overflow-x-auto rounded-xl border border-slate-700 shadow-xl bg-slate-900/60 mb-10">
@@ -895,8 +912,8 @@ export const articles: Article[] = [
     {
         id: '30',
         slug: '100-auspicious-women-names-2026',
-        title: '100 ชื่อมงคลผู้หญิง 2569: ทันสมัย ความหมายดี เสริมดวงและบุคลิกให้ดูอินเตอร์',
-        excerpt: 'คัดสรร 100 ชื่อมงคลผู้หญิงที่ทั้งทันสมัย ออกเสียงเป็นสากลได้ง่าย ความหมายดี เสริมดวงชะตาตามหลักเลขศาสตร์และทักษา พร้อมจัดกลุ่มตามบุคลิกและดวงชะตา',
+        title: '100 ชื่อมงคลผู้หญิง 2569: ทันสมัย พร้อมความหมาย',
+        excerpt: 'รวม 100 ชื่อมงคลผู้หญิง 2569 ที่ออกเสียงง่ายและมีความหมายดี จัดหมวดตามความหมาย พร้อมแนวทางตรวจวันเกิดและนามสกุลต่อก่อนเลือกใช้จริง',
         coverImage: '/images/articles/100-auspicious-women-names-2026.webp',
         coverImageAlt: '100 ชื่อมงคลผู้หญิง 2569 ชื่อทันสมัย ความหมายดี เสริมดวง',
         date: '2026-02-16',
@@ -908,8 +925,9 @@ export const articles: Article[] = [
             'ตั้งชื่อมงคล', 'ชื่อลูกสาวเสริมดวง', 'เปลี่ยนชื่อมงคล', 'ชื่อเพราะๆ ผู้หญิง',
             'ชื่อมงคลตามวันเกิด', 'เลขศาสตร์ชื่อ', 'ทักษาชื่อ'
         ],
-        metaTitle: '100 ชื่อมงคลผู้หญิง 2569 ทันสมัย เสริมดวง | NameMongkol',
-        metaDescription: 'รวม 100 ชื่อมงคลผู้หญิง 2569 คัดสรรมาแล้วว่าทันสมัย ออกเสียงง่าย ความหมายดี เสริมดวงชะตา แบ่งตามบุคลิกและดวง พร้อมเคล็ดลับทักษาและเลขศาสตร์',
+        metaTitle: '100 ชื่อมงคลผู้หญิง 2569 ทันสมัย พร้อมความหมาย | NameMongkol',
+        metaDescription: 'รวม 100 ชื่อมงคลผู้หญิง 2569 ที่ทันสมัย ออกเสียงง่าย พร้อมความหมายและหมวดแนวคิด รวมถึงขั้นตอนตรวจวันเกิดและนามสกุลก่อนใช้จริง',
+        dateModified: '2026-07-15',
         relatedSlugs: ['lucky-names-for-2026-grade-a-plus', 'micro-analysis-lucky-number-pairs', 'case-study-khemanit-name-analysis'],
         toc: [
             { title: 'ทำไมต้องตั้งชื่อมงคลให้ "ทันสมัย"?', id: 'why-modern', level: 2 },
@@ -2470,7 +2488,7 @@ export const articles: Article[] = [
         metaTitle: 'ชื่อมงคล 2569 เกรด A+ 20 ชื่อพร้อมวิเคราะห์เลขศาสตร์ | NameMongkol',
         metaDescription: 'รวม 20 ชื่อมงคลปี 2569 เกรด A+ พร้อมเหตุผลการคัดเลือก ผลรวมเลขศาสตร์ คู่เลข และแนวทางเลือกชื่อให้เหมาะกับวันเกิดและนามสกุล',
         dateModified: '2026-06-02',
-        relatedSlugs: ['auspicious-names-by-birthday-2026', 'micro-analysis-lucky-number-pairs', '100-auspicious-boy-names-2569', 'what-is-name-analysis'],
+        relatedSlugs: ['auspicious-names-by-birthday-2026', 'micro-analysis-lucky-number-pairs', 'naming-tips-2026-year-of-horse', 'what-is-name-analysis'],
         content: `
             <div class="space-y-8">
                 <div id="intro">
@@ -6023,21 +6041,21 @@ export const articles: Article[] = [
     {
         id: '2',
         slug: 'naming-tips-2026-year-of-horse',
-        title: 'รวม 100 ชื่อมงคลลูกชายปีมะเมีย 2569 ตั้งแล้วรวย เสริมบารมี พร้อมความหมาย (อัปเดตล่าสุด)',
-        excerpt: 'คู่มือตั้งชื่อลูกชายปีมะเมีย 2569 แบบครบจบในหน้าเดียว รวมแนวชื่อมงคลตามวันเกิดทั้ง 7 วัน ตารางอักษรกาลกิณีต้องห้าม ชื่อยอดนิยมความหมายดี และทางลัดเช็กชื่อเฉพาะตัวให้เหมาะกับดวงจริง',
+        title: '100 ชื่อมงคลลูกชายปีมะเมีย 2569 พร้อมความหมายและหลักเลือกชื่อ',
+        excerpt: 'รวมแนวทางตั้งชื่อลูกชายปีมะเมีย 2569 รายชื่อตามวันเกิด ความหมาย และอักษรที่นิยมหลีกเลี่ยงตามความเชื่อทักษาปกรณ์ พร้อมขั้นตอนตรวจชื่อร่วมกับนามสกุล',
         relatedSlugs: ['naming-baby-year-of-horse-2569', 'auspicious-names-by-birthday-2026', '4-pillars-of-naming', 'thai-chinese-naming-bazi-five-elements'],
         content: `
-            <p class="lead text-lg text-slate-300 mb-6">ปี 2569 (2026) ที่จะถึงนี้ ตรงกับ <strong>"ปีมะเมีย" (ปีม้า)</strong> ซึ่งถือเป็นปีแห่งพลังอำนาจ ความว่องไว และความเป็นผู้นำ โดยเฉพาะลูกชายที่เกิดในปีนี้ มักจะมีบุคลิกโดดเด่น กระตือรือร้น และมีความคิดสร้างสรรค์</p>
+            <p class="lead text-lg text-slate-300 mb-6">ปี 2569 (2026) ตรงกับ <strong>"ปีมะเมีย" (ปีม้า)</strong> ในคติจีน บทความนี้รวบรวมชื่อและแนวทางตามความเชื่อเรื่องทักษาปกรณ์เพื่อใช้เป็นข้อมูลประกอบ ไม่ได้ทำนายบุคลิกหรือรับประกันผลลัพธ์ในชีวิตของเด็ก</p>
             
-            <p>แต่รู้หรือไม่? แม้ "ม้า" จะแข็งแกร่งเพียงใด ก็ยังต้องการ "ชื่อ" ที่ดีคอยกำกับทิศทาง การตั้งชื่อให้ถูกโฉลกกับปีเกิดและวันเกิด จึงเป็นเหมือนการ <strong>"ติดปีก"</strong> ให้ลูกน้อยก้าวสู่ความสำเร็จได้ง่ายขึ้น</p>
+            <p>นอกจากความหมายและการออกเสียง ผู้ปกครองบางครอบครัวยังใช้ปีเกิดและวันเกิดเป็นข้อมูลประกอบตามความเชื่อ ควรตรวจการสะกด ความหมาย ชื่อ-นามสกุล และความเหมาะสมในชีวิตประจำวันร่วมกันก่อนตัดสินใจ</p>
 
             <div class="my-8 p-6 bg-amber-900/20 border-l-4 border-amber-500 rounded-r-xl">
                 <h3 class="text-xl font-bold text-amber-400 mb-2">🔥 ไฮไลท์บทความนี้</h3>
                 <ul class="list-disc list-inside space-y-2 text-slate-300">
                     <li>เจาะลึกชื่อมงคลลูกชาย ครบทั้ง 7 วันเกิด</li>
-                    <li>ตารางอักษรกาลกิณีปี 2569 (ห้ามใช้เด็ดขาด!)</li>
+                    <li>ตารางอักษรที่นิยมหลีกเลี่ยงตามความเชื่อทักษาปกรณ์</li>
                     <li>รวม 100 ชื่อยอดฮิต ความหมายดี ทันสมัย</li>
-                    <li>เทคนิคตั้งชื่อเสริมดวงเศรษฐี</li>
+                    <li>ขั้นตอนตรวจความหมาย การออกเสียง วันเกิด และนามสกุล</li>
                 </ul>
             </div>
 
@@ -6282,7 +6300,7 @@ export const articles: Article[] = [
                     <a href="/search" class="px-8 py-3 bg-white text-amber-900 font-bold rounded-lg shadow-lg hover:bg-slate-100 transition-colors">
                         ค้นหาชื่อมงคล
                     </a>
-                    <a href="/premium-analysis" class="px-8 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-lg shadow-lg transition-colors">
+                    <a href="/premium-search" data-track="article_premium_search" class="px-8 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-lg shadow-lg transition-colors">
                         วิเคราะห์ละเอียด (Premium)
                     </a>
                 </div>
@@ -6305,17 +6323,18 @@ export const articles: Article[] = [
         author: 'NameMongkol Editorial',
         category: 'แม่และเด็ก',
         keywords: ['ตั้งชื่อลูกชาย 2569', 'ชื่อมงคลปีมะเมีย', 'ตั้งชื่อลูกปีม้า', 'ชื่อลูกชายวันเสาร์', 'ชื่อลูกชายวันอาทิตย์', 'ชื่อลูกชายวันจันทร์', 'อักษรกาลกิณี 2569', 'namemongkol'],
-        metaTitle: '100 ชื่อมงคลลูกชายปีมะเมีย 2569 ตั้งแล้วรวย | NameMongkol',
-        metaDescription: 'คู่มือตั้งชื่อลูกชายปีมะเมีย 2569 รวมชื่อมงคลตามวันเกิด ตารางอักษรกาลกิณีต้องห้าม เทคนิคเลือกชื่อให้ความหมายดี และทางลัดเช็กชื่อเฉพาะดวงที่ NameMongkol'
+        metaTitle: '100 ชื่อมงคลลูกชายปีมะเมีย 2569 พร้อมความหมาย | NameMongkol',
+        metaDescription: 'รวมชื่อมงคลลูกชายปีมะเมีย 2569 พร้อมความหมาย แนวเลือกชื่อตามวันเกิด อักษรที่นิยมหลีกเลี่ยง และขั้นตอนตรวจชื่อร่วมกับนามสกุล',
+        dateModified: '2026-07-15'
     },
     {
         id: '3',
         slug: 'forbidden-letters-kalakini',
-        title: 'อักษรกาลกิณี: สิ่งต้องห้ามที่ควรรู้ก่อนตั้งชื่อ',
-        excerpt: 'เจาะลึกเรื่องอักษรต้องห้ามตามวันเกิด (กาลกิณี) หากมีในชื่อจะส่งผลเสียอย่างไร และวิธีแก้เคล็ดสำหรับคนที่ไม่ต้องการเปลี่ยนชื่อ',
-        relatedSlugs: ['check-kalakini-letters-7-days', '4-pillars-of-naming', 'auspicious-names-by-birthday-2026', 'naming-baby-year-of-horse-2569'],
+        title: 'อักษรกาลกิณีคืออะไร? ตาราง 7 วันและวิธีตรวจชื่อ',
+        excerpt: 'อธิบายอักษรกาลกิณีตามความเชื่อทักษาปกรณ์ ตารางแยกตามวันเกิด วิธีตรวจชื่อ และข้อควรรู้ก่อนนำหลักนี้ไปใช้ประกอบการตั้งชื่อ',
+        relatedSlugs: ['4-pillars-of-naming', 'auspicious-names-by-birthday-2026', 'naming-baby-year-of-horse-2569'],
         content: `
-            <p>ในหลักทักษาปกรณ์ <strong>"กาลกิณี"</strong> คือกลุ่มอักษรที่ให้โทษแก่เจ้าชะตา ถือเป็นอุปสรรค ขวากหนาม และความยุ่งยากในชีวิต การมีอักษรกาลกิณีในชื่อมักถูกเชื่อว่าจะทำให้ชีวิตเหนื่อยยาก มีปัญหาสุขภาพเรื้อรัง หรือเก็บเงินไม่อยู่ แม้หามาได้มากก็มีเหตุให้ต้องจ่ายออกไป</p>
+            <p>ในความเชื่อตามหลักทักษาปกรณ์ <strong>"กาลกิณี"</strong> คือกลุ่มอักษรที่ผู้ยึดหลักนี้นิยมหลีกเลี่ยงตามวันเกิด ข้อมูลดังกล่าวเป็นความเชื่อทางวัฒนธรรม ไม่ใช่ข้อพิสูจน์ว่าอักษรใดจะก่อให้เกิดปัญหาสุขภาพ การเงิน หรือเหตุการณ์ในชีวิต</p>
             
             <h2>เช็คด่วน! อักษรกาลกิณีตามวันเกิด</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
@@ -6381,8 +6400,9 @@ export const articles: Article[] = [
         author: 'อ.วิเคราะห์ชื่อ',
         category: 'เกร็ดความรู้',
         keywords: ['อักษรกาลกิณี', 'ห้ามใช้อักษร', 'ตั้งชื่อตามวันเกิด', 'ความหมายชื่อ', 'ทักษาปกรณ์'],
-        metaTitle: 'อักษรกาลกิณี: สิ่งต้องห้ามที่ควรรู้ก่อนตั้งชื่อ - NAMEMONGKOL',
-        metaDescription: 'เช็คด่วน! อักษรกาลกิณีตามวันเกิด สิ่งที่ต้องหลีกเลี่ยงในการตั้งชื่อ เพื่อชีวิตที่ราบรื่นไร้อุปสรรค'
+        metaTitle: 'อักษรกาลกิณีคืออะไร? ตารางตามวันเกิด 7 วัน | NameMongkol',
+        metaDescription: 'ตารางอักษรกาลกิณีตามวันเกิด 7 วัน อธิบายที่มา วิธีตรวจชื่อ และข้อจำกัดของความเชื่อทักษาปกรณ์ก่อนใช้ประกอบการตั้งชื่อ',
+        dateModified: '2026-07-15'
     },
     {
         id: '4',
@@ -6892,7 +6912,7 @@ export const articles: Article[] = [
         slug: '4-pillars-of-naming',
         title: '4 ศาสตร์การตั้งชื่อมงคลที่คุณต้องรู้: เปลี่ยนชื่อทั้งที ต้องดีให้ครบทุกมิติ!',
         excerpt: 'เจาะลึก 4 ศาสตร์หลักในการตั้งชื่อมงคล: ทักษาปกรณ์, เลขศาสตร์, อายตนะ 6 และศาสตร์นิรันดร์ เพื่อชื่อที่ดีรอบด้านและเสริมดวงอย่างแท้จริง',
-        relatedSlugs: ['forbidden-letters-kalakini', 'numerology-0-9-power-guide', 'what-is-shadow-power', 'what-is-ayatana-6', 'check-kalakini-letters-7-days'],
+        relatedSlugs: ['forbidden-letters-kalakini', 'numerology-0-9-power-guide', 'what-is-shadow-power', 'what-is-ayatana-6'],
         content: `
             <p>การตั้งชื่อไม่ใช่แค่การเลือกคำที่ไพเราะหรือมีความหมายดีเท่านั้น แต่ในทางโหราศาสตร์ไทย <strong>"ชื่อ"</strong> คือรหัสลับที่ส่งผลต่อดวงชะตาและพลังงานรอบตัว การจะตั้งชื่อให้เป็น <strong>"มงคลสูงสุด"</strong> จึงต้องอาศัยการผสมผสานหลายศาสตร์เข้าด้วยกัน</p>
             <p>วันนี้ NameMongkol จะพาทุกท่านไปทำความรู้จักกับ 4 ศาสตร์หลักที่นิยมใช้ในการตั้งชื่อ เพื่อให้คุณได้ชื่อที่เสริมดวงและเป็นสิริมงคลอย่างแท้จริงครับ</p>
@@ -7331,7 +7351,7 @@ export const articles: Article[] = [
             <p>ในยุค 2026 ที่เทคโนโลยีและศาสตร์ตัวเลขผสานกัน การวิเคราะห์เบอร์มงคลที่ "แม่นยำที่สุด" ต้องไม่ใช่แค่การบวกเลข 10 ตัวแล้วดูผลรวม แต่คือการเจาะลึกถึง <strong>"โครงสร้างพลังงาน"</strong> รายคู่และการซ้อนทับของดวงดาว</p>
 
             <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 mt-10 mb-6">1. วิธีอ่านเบอร์มงคลแบบ 4 มิติ (4D Analysis)</h2>
-            <p class="mb-4">ที่ NameMongkol เราใช้อัลกอริทึมเฉพาะที่เรียกว่า <strong>"4D Deep Align"</strong> ซึ่งวิเคราะห์ลึกลงไป 4 ชั้น เพื่อความแม่นยำสูงสุด:</p>
+            <p class="mb-4">NameMongkol แยกผลวิเคราะห์ออกเป็น 4 มิติ เพื่อให้ผู้ใช้เห็นที่มาของคะแนนและตรวจสอบแต่ละส่วนได้:</p>
             
             <div class="space-y-6 my-8">
                 <div class="flex gap-4 items-start">
@@ -8113,7 +8133,7 @@ export const articles: Article[] = [
                     <a href="/wallpapers" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition-colors">
                         🖼️ วอลเปเปอร์มงคลทั้งหมด
                     </a>
-                    <a href="/articles/lucky-colors-by-day" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition-colors">
+                    <a href="/articles/auspicious-colors-2569-guide" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition-colors">
                         🎨 สีมงคลตามวันเกิด
                     </a>
                     <a href="/premium-analysis" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-sm transition-colors">
@@ -8428,12 +8448,12 @@ export const articles: Article[] = [
     {
         id: '35',
         slug: 'naming-baby-year-of-horse-2569',
-        title: 'ตั้งชื่อลูกปีมะเมีย 2569 รวมไอเดียชื่อมงคล ความหมายดี เสริมชะตาลูกรักให้รุ่งโรจน์ (อัปเดตล่าสุด)',
-        excerpt: 'คัมภีร์ตั้งชื่อลูกปีมะเมีย 2569 ครบทุกวันเกิด ทั้งลูกชายและลูกสาว อ้างอิงหลักทักษาปกรณ์ พร้อมไอเดียชื่อมงคลแยกตามหมวด เสริมดวงตรงจุด ให้ลูกน้อยเติบโตสง่างามดั่งม้าแสนรู้',
+        title: 'ตั้งชื่อลูกปีมะเมีย 2569: คู่มือเลือกชื่อชาย-หญิงตามวันเกิด',
+        excerpt: 'คู่มือตั้งชื่อลูกปีมะเมีย 2569 สำหรับลูกชายและลูกสาว พร้อมแนวคิดตามวันเกิด ความหมาย อักษรตามหลักทักษาปกรณ์ และขั้นตอนตรวจชื่อร่วมกับนามสกุล',
         coverImage: '/images/articles/ตั้งชื่อลูกปีมะเมีย 2569 ชื่อมงคล.webp',
         coverImageAlt: 'ตั้งชื่อลูกปีมะเมีย 2569 ชื่อมงคลตามหลักทักษาปกรณ์',
         date: '2026-03-24',
-        dateModified: '2026-03-24',
+        dateModified: '2026-07-15',
         author: 'อาจารย์ณัฐ (NameMongkol)',
         category: 'ชื่อมงคล',
         keywords: [
@@ -8444,13 +8464,12 @@ export const articles: Article[] = [
             'ชื่อมงคลเสริมความมั่งคั่ง', 'ชื่อมงคลเสริมปัญญา', 'ชื่อมงคลเสริมเสน่ห์',
             'nameMongkol', 'NameMongkol'
         ],
-        metaTitle: 'ตั้งชื่อลูกปีมะเมีย 2569 รวมชื่อมงคล ลูกชาย-สาว | NameMongkol',
-        metaDescription: 'รวมไอเดียตั้งชื่อลูกปีมะเมีย (ปีม้า) 2569 ทั้งลูกชายและลูกสาว แยกตามวันเกิดทั้ง 7 วัน พร้อมหลักทักษาปกรณ์ อักษรกาลกิณี และหมวดชื่อเสริมดวงเฉพาะด้าน โดย NameMongkol',
+        metaTitle: 'ตั้งชื่อลูกปีมะเมีย 2569 ชาย-หญิงตามวันเกิด | NameMongkol',
+        metaDescription: 'คู่มือตั้งชื่อลูกปีมะเมีย 2569 ทั้งลูกชายและลูกสาว แยกแนวคิดตามวันเกิด ความหมาย อักษรตามทักษาปกรณ์ และวิธีตรวจชื่อกับนามสกุล',
         relatedSlugs: [
             'auspicious-names-by-birthday-2026',
             'naming-tips-2026-year-of-horse',
-            'change-name-destiny-tuning-2569',
-            '100-auspicious-boy-names-2569'
+            'change-name-destiny-tuning-2569'
         ],
         toc: [
             { title: 'คัมภีร์ตั้งชื่อลูกปีมะเมีย 2569: หลักทักษาปกรณ์ที่พ่อแม่ควรรู้', id: 'taksa-rules', level: 2 },
@@ -8895,7 +8914,7 @@ export const articles: Article[] = [
                     <li><a href="/articles/auspicious-names-by-birthday-2026" class="text-amber-400 hover:underline">ตั้งชื่อมงคลตามวันเกิด 2569: คู่มือครบจบ ตำราทักษาปกรณ์</a></li>
                     <li><a href="/articles/naming-tips-2026-year-of-horse" class="text-amber-400 hover:underline">รวม 100 ชื่อมงคลลูกชายปีมะเมีย 2569</a></li>
                     <li><a href="/articles/change-name-destiny-tuning-2569" class="text-amber-400 hover:underline">เปลี่ยนชื่อเปลี่ยนชีวิต: คู่มือ Destiny Tuning ฉบับสมบูรณ์ 2569</a></li>
-                    <li><a href="/articles/100-auspicious-boy-names-2569" class="text-amber-400 hover:underline">100 ชื่อมงคลลูกชาย ปีมะเมีย 2569 ตั้งแล้วรวย</a></li>
+                    <li><a href="/articles/naming-tips-2026-year-of-horse" class="text-amber-400 hover:underline">รวมรายชื่อมงคลลูกชายปีมะเมีย 2569 พร้อมความหมาย</a></li>
                 </ul>
             </div>
         </div>

@@ -309,8 +309,8 @@ export const articleWednesdayNightBoyNames2569: Article = {
     metaTitle: 'ตั้งชื่อลูกชายเกิดวันพุธกลางคืน 2569: 50 ชื่อมงคล พร้อมอักษรห้าม | NameMongkol',
     metaDescription: 'รวมชื่อลูกชายเกิดวันพุธกลางคืน 2569 พร้อมวิธีนับเวลาเกิด อักษรกาลกิณี บ ป ผ ฝ พ ฟ ภ ม ตารางทักษา และตัวอย่างชื่อที่ผ่านการวิเคราะห์คะแนน',
     relatedSlugs: [
-        '700-auspicious-names-by-birthday-2569',
-        'auspicious-boy-names-2569',
+        'auspicious-names-by-birthday-2026',
+        'naming-tips-2026-year-of-horse',
         'boy-names-2569-50-auspicious',
         'baby-naming-guide-2569',
         'forbidden-letters-kalakini',

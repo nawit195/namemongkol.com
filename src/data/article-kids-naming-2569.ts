@@ -24,7 +24,7 @@ export const articleKidsNaming2569: Article = {
         'boy-names-2569-50-auspicious',
         'girl-names-2569-50-auspicious',
         'thaksa-pakorn-naming-guide',
-        'lucky-names-by-birthday-2569'
+        'auspicious-names-by-birthday-2026'
     ],
     dateModified: '2026-04-28',
     toc: [

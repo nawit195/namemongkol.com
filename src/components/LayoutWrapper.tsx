@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { MobileSecondaryNav } from './MobileSecondaryNav';
 import { MobileHeader } from './MobileHeader';
-import { SacredCosmicBackground } from './SacredCosmicBackground';
 import { BottomNav } from './BottomNav';
 import type { User } from '@supabase/supabase-js';
 
@@ -21,8 +20,6 @@ export const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
     const [isDesktop, setIsDesktop] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     const pathname = usePathname();
-    const backgroundExcludedPaths = ['/phone-analysis', '/aura-analysis'];
-    const shouldShowSacredBackground = !backgroundExcludedPaths.includes(pathname) && !pathname.startsWith('/wallpapers');
     const isAdminPage = pathname.startsWith('/admin');
 
     useEffect(() => {
@@ -67,7 +64,7 @@ export const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className="cosmic-app-shell flex min-h-screen overflow-x-hidden">
-            {isDesktop && shouldShowSacredBackground ? <SacredCosmicBackground /> : null}
+            <div className="site-grid-backdrop" aria-hidden="true" />
             {(isDesktop || isSidebarOpen || pathname !== '/') ? (
                 <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
             ) : null}
@@ -75,7 +72,7 @@ export const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
                 <MobileHeader onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} user={user} />
                 {isDesktop ? <TopNav /> : null}
                 <MobileSecondaryNav />
-                {children}
+                <div className="site-theme-content min-h-screen">{children}</div>
             </div>
             <BottomNav />
         </div>

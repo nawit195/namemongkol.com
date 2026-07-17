@@ -198,9 +198,9 @@ export default function NameGeneratorPage() {
             <section id="name-generator-tool">
                 <ClientPage />
             </section>
-            <section className="bg-[#fff9fd] px-4 pb-24 text-[#555574]">
-                <div className="mx-auto max-w-5xl border-t border-pink-100 pt-12">
-                    <p className="mb-3 text-xs font-extrabold uppercase tracking-normal text-pink-500">
+            <section className="site-grid-surface px-4 pb-24 text-[#5a5a82]">
+                <div className="mx-auto max-w-5xl border-t border-[#ddddf0] pt-12">
+                    <p className="mb-3 text-xs font-extrabold uppercase tracking-[0.08em] text-[#a67828]">
                         AI Name Generator SEO Guide
                     </p>
                     <h2 className="text-balance text-2xl font-extrabold text-[#15163f] sm:text-3xl">
@@ -211,11 +211,11 @@ export default function NameGeneratorPage() {
                     </p>
 
                     <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-                        <article className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 ทำไมต้องใช้ระบบสร้างชื่อมงคล AI
                             </h2>
-                            <h3 className="mt-3 text-base font-extrabold text-pink-600">
+                            <h3 className="mt-3 text-base font-extrabold text-[#7869a8]">
                                 สร้างชื่อใหม่ได้เร็วกว่า คัดชื่อได้ตรงใจกว่า
                             </h3>
                             <p className="mt-3 text-sm leading-7">
@@ -226,7 +226,7 @@ export default function NameGeneratorPage() {
                             </p>
                         </article>
 
-                        <article className="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#ddddf0] bg-[#fafafd] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 เครื่องมือตั้งชื่อมงคลนี้เหมาะกับใคร
                             </h2>
@@ -236,7 +236,7 @@ export default function NameGeneratorPage() {
                             <ul className="mt-4 space-y-3 text-sm leading-6">
                                 {targetAudiences.map((item) => (
                                     <li key={item} className="flex gap-3">
-                                        <span className="mt-2 h-2 w-2 flex-none rounded-full bg-sky-400" />
+                                        <span className="mt-2 h-2 w-2 flex-none rounded-full bg-[#9b8ec4]" />
                                         <span>{item}</span>
                                     </li>
                                 ))}
@@ -245,11 +245,11 @@ export default function NameGeneratorPage() {
                     </div>
 
                     <div className="mt-8 grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
-                        <article className="rounded-2xl border border-amber-100 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#e8c87e]/70 bg-[#fffaf0] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 ระบบสร้างชื่อมงคล AI ทำงานอย่างไร
                             </h2>
-                            <h3 className="mt-3 text-base font-extrabold text-amber-600">
+                            <h3 className="mt-3 text-base font-extrabold text-[#a67828]">
                                 เลือกอักษรนำหน้า แล้วให้ AI ช่วยสร้างชื่อที่เหมาะสม
                             </h3>
                             <p className="mt-3 text-sm leading-7">
@@ -260,7 +260,7 @@ export default function NameGeneratorPage() {
                             </p>
                         </article>
 
-                        <article className="rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 จุดเด่นของการสร้างชื่อมงคล Grade A+
                             </h2>
@@ -278,25 +278,25 @@ export default function NameGeneratorPage() {
                         </article>
                     </div>
 
-                    <article className="mt-8 rounded-2xl border border-violet-100 bg-white p-6 shadow-sm">
+                    <article className="mt-8 rounded-2xl border border-[#ddddf0] bg-[#f3f3f9] p-6 shadow-sm">
                         <h2 className="text-xl font-extrabold text-[#15163f]">
                             ตั้งชื่อลูก เปลี่ยนชื่อ และชื่อแบรนด์ด้วย AI
                         </h2>
                         <div className="mt-4 grid gap-5 md:grid-cols-3">
                             <div>
-                                <h3 className="font-extrabold text-violet-600">ตั้งชื่อลูกมงคล</h3>
+                                <h3 className="font-extrabold text-[#7869a8]">ตั้งชื่อลูกมงคล</h3>
                                 <p className="mt-2 text-sm leading-7">
                                     ใช้เป็นจุดเริ่มต้นสำหรับคุณพ่อคุณแม่ที่ต้องการชื่อมงคลตามวันเกิด มีความหมายดี และออกเสียงไพเราะ
                                 </p>
                             </div>
                             <div>
-                                <h3 className="font-extrabold text-violet-600">เปลี่ยนชื่อมงคล</h3>
+                                <h3 className="font-extrabold text-[#7869a8]">เปลี่ยนชื่อมงคล</h3>
                                 <p className="mt-2 text-sm leading-7">
                                     เหมาะกับผู้ที่ต้องการชื่อใหม่เพื่อเสริมความมั่นใจ พร้อมดูผลรวมเลขศาสตร์ประกอบก่อนตัดสินใจ
                                 </p>
                             </div>
                             <div>
-                                <h3 className="font-extrabold text-violet-600">ตั้งชื่อร้านมงคล</h3>
+                                <h3 className="font-extrabold text-[#7869a8]">ตั้งชื่อร้านมงคล</h3>
                                 <p className="mt-2 text-sm leading-7">
                                     ใช้หาไอเดียชื่อร้านหรือชื่อแบรนด์มงคลที่อ่านง่าย จำง่าย และนำไปต่อยอดกับภาพลักษณ์ธุรกิจได้
                                 </p>
@@ -305,7 +305,7 @@ export default function NameGeneratorPage() {
                     </article>
 
                     <div className="mt-8 grid gap-5 lg:grid-cols-2">
-                        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#ddddf0] bg-[#fafafd] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 ข้อควรพิจารณาก่อนเลือกชื่อ
                             </h2>
@@ -320,13 +320,13 @@ export default function NameGeneratorPage() {
                             </p>
                         </article>
 
-                        <article className="rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                        <article className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                             <h2 className="text-xl font-extrabold text-[#15163f]">
                                 ใช้คู่กับระบบวิเคราะห์ชื่อได้ดียิ่งขึ้น
                             </h2>
                             <p className="mt-3 text-sm leading-7">
                                 หลังจากได้รายชื่อที่สนใจแล้ว แนะนำให้นำชื่อไปตรวจสอบเพิ่มเติมผ่านระบบ{' '}
-                                <Link href="/name-analysis" className="font-extrabold text-pink-600 underline-offset-4 hover:underline">
+                                <Link href="/name-analysis" className="font-extrabold text-[#a67828] underline-offset-4 hover:underline">
                                     วิเคราะห์ชื่อมงคล
                                 </Link>{' '}
                                 เพื่อดูรายละเอียดเชิงลึก เช่น ผลรวมชื่อ ความหมายโดยรวม ความเหมาะสมของชื่อและนามสกุล รวมถึงแนวทางการเลือกชื่อที่เหมาะกับตัวคุณมากที่สุด
@@ -336,7 +336,7 @@ export default function NameGeneratorPage() {
                                     <Link
                                         key={`${link.href}-${link.label}`}
                                         href={link.href}
-                                        className="rounded-full border border-pink-100 bg-[#fff9fd] px-4 py-2 font-bold text-[#6f2d64] shadow-sm transition-colors hover:bg-pink-50"
+                                        className="rounded-full border border-[#ddddf0] bg-[#f8f8fc] px-4 py-2 font-bold text-[#5a5a82] shadow-sm transition-colors hover:border-[#9b8ec4] hover:bg-[#eeebf8]"
                                     >
                                         {link.label}
                                     </Link>
@@ -345,11 +345,11 @@ export default function NameGeneratorPage() {
                         </article>
                     </div>
 
-                    <article className="mt-8 rounded-2xl border border-pink-100 bg-white p-6 shadow-sm">
+                    <article className="mt-8 rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                         <h2 className="text-xl font-extrabold text-[#15163f]">
                             คำถามที่พบบ่อยเกี่ยวกับการสร้างชื่อมงคล
                         </h2>
-                        <div className="mt-5 divide-y divide-pink-100">
+                        <div className="mt-5 divide-y divide-[#ddddf0]">
                             {faqItems.map((item) => (
                                 <div key={item.question} className="py-5 first:pt-0 last:pb-0">
                                     <h3 className="text-base font-extrabold text-[#15163f]">
@@ -363,7 +363,7 @@ export default function NameGeneratorPage() {
                         </div>
                     </article>
 
-                    <div className="mt-8 rounded-2xl border border-amber-200 bg-[#fff8e8] p-6 text-center shadow-sm">
+                    <div className="mt-8 rounded-2xl border border-[#e8c87e]/70 bg-[#fffaf0] p-6 text-center shadow-[0_12px_36px_rgba(201,147,58,0.10)]">
                         <h2 className="text-2xl font-extrabold text-[#15163f]">
                             เริ่มสร้างชื่อมงคลของคุณวันนี้
                         </h2>
@@ -372,7 +372,7 @@ export default function NameGeneratorPage() {
                         </p>
                         <Link
                             href="#name-generator-tool"
-                            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-[#15163f] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-slate-300/60 transition-colors hover:bg-[#25265a]"
+                            className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-[#1a1a3e] px-6 py-3 text-sm font-extrabold text-[#f8f8fc] shadow-[0_8px_20px_rgba(26,26,62,0.16)] transition-colors hover:bg-[#292955] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#9b8ec4]/25"
                         >
                             เริ่มสร้าง 100 ชื่อ Grade A+
                         </Link>

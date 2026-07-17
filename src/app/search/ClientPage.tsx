@@ -19,18 +19,18 @@ import { SoftYellowGlowBackground } from '@/components/ui/background-components'
 import { trackEvent } from '@/lib/analytics';
 
 const getDayBadgeProps = (d: string) => {
-    if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-500/15 text-rose-300 border border-rose-500/20' };
-    if (d.includes('จันทร์')) return { label: 'จัน.', className: 'bg-amber-400/15 text-amber-300 border border-amber-400/20' };
-    if (d.includes('อังคาร')) return { label: 'อัง.', className: 'bg-pink-500/15 text-pink-300 border border-pink-500/20' };
-    if (d.includes('พุธ (กลางวัน)')) return { label: 'พุธวัน.', className: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20' };
-    if (d.includes('พุธ (กลางคืน')) return { label: 'พุธคืน.', className: 'bg-teal-500/15 text-teal-300 border border-teal-500/20' };
-    if (d.includes('พฤหัส')) return { label: 'พฤ.', className: 'bg-orange-500/15 text-orange-300 border border-orange-500/20' };
-    if (d.includes('ศุกร์')) return { label: 'ศุก.', className: 'bg-sky-500/15 text-sky-300 border border-sky-500/20' };
-    if (d.includes('เสาร์')) return { label: 'เสา.', className: 'bg-purple-500/15 text-purple-300 border border-purple-500/20' };
-    return { label: d, className: 'bg-slate-500/15 text-slate-300 border border-slate-500/20' };
+    if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-100 text-rose-800 border border-rose-200' };
+    if (d.includes('จันทร์')) return { label: 'จัน.', className: 'bg-amber-100 text-amber-800 border border-amber-200' };
+    if (d.includes('อังคาร')) return { label: 'อัง.', className: 'bg-pink-100 text-pink-800 border border-pink-200' };
+    if (d.includes('พุธ (กลางวัน)')) return { label: 'พุธวัน.', className: 'bg-emerald-100 text-emerald-800 border border-emerald-200' };
+    if (d.includes('พุธ (กลางคืน')) return { label: 'พุธคืน.', className: 'bg-teal-100 text-teal-800 border border-teal-200' };
+    if (d.includes('พฤหัส')) return { label: 'พฤ.', className: 'bg-orange-100 text-orange-800 border border-orange-200' };
+    if (d.includes('ศุกร์')) return { label: 'ศุก.', className: 'bg-sky-100 text-sky-800 border border-sky-200' };
+    if (d.includes('เสาร์')) return { label: 'เสา.', className: 'bg-purple-100 text-purple-800 border border-purple-200' };
+    return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, meaning }: { name: string; meaning?: string }) {
+function NameRow({ name, meaning, rowIndex }: { name: string; meaning?: string; rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const score = calculateScore(name);
     // Always calculate to know if it's usable on multiple days
@@ -47,30 +47,30 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
     return (
         <>
             <tr
-                className={`group cursor-pointer border-b border-white/5 last:border-0 transition-all duration-300 ${isExpanded ? 'bg-white/[0.04]' : 'hover:bg-white/[0.02]'}`}
+                className={`group cursor-pointer border-b border-[#eeeef6] last:border-0 transition-colors duration-200 ${isExpanded ? 'bg-[#eeebf8]' : rowIndex % 2 === 0 ? 'bg-[#fafafd] hover:bg-[#eeebf8]' : 'bg-[#f3f5f9] hover:bg-[#eeebf8]'}`}
                 onClick={() => {
                     if (!isExpanded) void trackEvent('funnel.search.name_select');
                     setIsExpanded(!isExpanded);
                 }}
             >
                 {/* Column 1: Name (Mobile + Desktop) */}
-                <td className="px-4 py-4 w-1/3 md:w-auto">
-                    <span className="text-base md:text-lg font-bold text-sky-400 group-hover:text-sky-300 transition-colors whitespace-nowrap">
+                <td className="w-1/3 px-4 py-[18px] md:w-auto">
+                    <span className="whitespace-nowrap text-base font-bold text-[#1a1a3e] transition-colors group-hover:text-sky-900 md:text-lg">
                         {name}
                     </span>
                 </td>
 
                 {/* Column 2: Meaning (Mobile + Desktop) */}
-                <td className="px-2 py-4">
-                    <div className="text-xs md:text-sm text-slate-300 group-hover:text-slate-200 transition-colors line-clamp-1 lg:line-clamp-2 max-w-[140px] xs:max-w-[180px] sm:max-w-none">
+                <td className="px-2 py-[18px]">
+                    <div className={`line-clamp-1 max-w-[140px] text-sm transition-colors xs:max-w-[180px] sm:max-w-none lg:line-clamp-2 ${displayMeaning ? 'text-slate-700 group-hover:text-slate-950' : 'italic text-slate-500'}`}>
                         {displayMeaning || '- รออัปเดต -'}
                     </div>
                 </td>
 
                 {/* Column 3: Day Badges (Desktop Only) */}
-                <td className="hidden md:table-cell px-4 py-4 text-xs md:text-base text-slate-400 group-hover:text-slate-300 transition-colors">
+                <td className="hidden px-4 py-[18px] text-sm text-slate-700 transition-colors group-hover:text-slate-950 md:table-cell">
                     {suitability.suitable.length === 8 ? (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-400 text-xs font-semibold border border-emerald-500/30">
+                        <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800">
                             ใช้ได้ทุกวัน
                         </span>
                     ) : suitability.suitable.length > 0 ? (
@@ -78,75 +78,77 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
                             {suitability.suitable.map((d, i) => {
                                 const { label, className } = getDayBadgeProps(d);
                                 return (
-                                    <span key={i} className={`inline-block px-2 py-0.5 rounded-md text-[11px] md:text-xs font-bold shadow-sm ${className}`}>
+                                    <span key={i} className={`inline-block rounded-full px-2.5 py-1 text-[11px] font-bold md:text-xs ${className}`}>
                                         {label}
                                     </span>
                                 );
                             })}
                         </div>
                     ) : (
-                        <span className="text-slate-500">-</span>
+                        <span className="text-slate-600">-</span>
                     )}
                 </td>
 
                 {/* Column 4: Score (Desktop Only) */}
-                <td className="hidden md:table-cell px-4 py-4 text-center">
-                    <span className="inline-flex items-center justify-center w-8 h-8 md:w-10 md:h-10 text-sm md:text-base rounded-lg md:rounded-xl bg-gradient-to-br from-amber-500/10 to-purple-500/10 text-amber-300 font-bold border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.05)] group-hover:border-amber-500/40 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] group-hover:text-amber-200 group-hover:scale-110 transition-all duration-300">
+                <td className="hidden px-4 py-[18px] text-center md:table-cell">
+                    <span className="inline-flex h-9 min-w-11 items-center justify-center rounded-full border border-[#e8c87e] bg-[#fff8e7] px-3 text-sm font-bold tabular-nums text-amber-800 shadow-sm transition-colors duration-200 group-hover:border-[#c9933a] group-hover:text-amber-950 md:text-base">
                         {score}
                     </span>
                 </td>
 
                 {/* Column 5: Expand Icon (Mobile + Desktop) */}
-                <td className="px-4 py-4 w-[10%] text-right align-middle">
-                    <div className="flex justify-end items-center">
-                        {isExpanded ? (
-                            <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center border border-rose-500/30 shadow-sm">
-                                <Minus className="w-3 h-3 md:w-4 md:h-4" strokeWidth={3} />
-                            </div>
-                        ) : (
-                            <div className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30 group-hover:scale-110 transition-transform shadow-sm">
-                                <Plus className="w-3 h-3 md:w-4 md:h-4" strokeWidth={3} />
-                            </div>
-                        )}
-                    </div>
+                <td className="w-[10%] px-3 py-[18px] text-right align-middle md:px-4">
+                    <button
+                        type="button"
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? `ปิดรายละเอียดชื่อ ${name}` : `ดูรายละเอียดชื่อ ${name}`}
+                        className={`ml-auto flex h-9 w-9 items-center justify-center rounded-full border shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 ${isExpanded ? 'border-rose-200 bg-rose-100 text-rose-700 hover:bg-rose-200' : 'border-emerald-200 bg-emerald-100 text-emerald-700 hover:bg-emerald-200'}`}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            if (!isExpanded) void trackEvent('funnel.search.name_select');
+                            setIsExpanded(!isExpanded);
+                        }}
+                    >
+                        {isExpanded ? <Minus className="h-4 w-4" strokeWidth={2.5} /> : <Plus className="h-4 w-4" strokeWidth={2.5} />}
+                    </button>
                 </td>
             </tr>
 
             {/* Expanded Details Row */}
             {isExpanded && (
-                <tr className="bg-[#1e293b]/50 animate-fade-in border-b border-white/5">
+                <tr className="animate-fade-in border-b border-[#ddd8ee] bg-[#eeebf8]">
                     <td colSpan={5} className="p-0">
-                        <div className="px-6 py-5 space-y-3 shadow-inner bg-black/10 text-sm">
+                        <div className="grid gap-4 bg-[#fafafd] px-5 py-5 text-sm md:px-6">
                             
                             {/* Full Meaning */}
-                            <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4 border-b border-white/5 pb-3">
-                                <span className="font-semibold text-slate-400 w-24 flex-shrink-0">ความหมาย</span>
-                                <span className="text-slate-200">{meaning || '-'}</span>
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                <span className="font-semibold text-slate-700 w-24 flex-shrink-0">ความหมาย</span>
+                                <span className="text-slate-950">{meaning || '-'}</span>
                             </div>
 
                             {/* Birth Days */}
-                            <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4 border-b border-white/5 pb-3">
-                                <span className="font-semibold text-slate-400 w-24 flex-shrink-0 sm:mt-1">วันเกิด (มงคล)</span>
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                <span className="font-semibold text-slate-700 w-24 flex-shrink-0 sm:mt-1">วันเกิด (มงคล)</span>
                                 <div className="flex flex-wrap gap-1.5 items-center">
                                     {suitability.suitable.length > 0 ? (
                                         suitability.suitable.map((d, i) => {
                                             const { label, className } = getDayBadgeProps(d);
-                                            return <span key={i} className={`px-2 py-0.5 rounded text-xs font-bold ${className}`}>{label}</span>;
+                                            return <span key={i} className={`rounded-full px-2.5 py-1 text-xs font-bold ${className}`}>{label}</span>;
                                         })
                                     ) : (
-                                        <span className="text-slate-500 italic">- ไม่มี -</span>
+                                        <span className="text-slate-600 italic">- ไม่มี -</span>
                                     )}
                                 </div>
                             </div>
 
                             {/* Unsuitable Days */}
                             {suitability.unsuitable.length > 0 && (
-                                <div className="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4 border-b border-white/5 pb-3">
-                                    <span className="font-semibold text-rose-400/80 w-24 flex-shrink-0 sm:mt-1">วันกาลกิณี</span>
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                    <span className="font-semibold text-rose-800 w-24 flex-shrink-0 sm:mt-1">วันกาลกิณี</span>
                                     <div className="flex flex-wrap gap-1.5 items-center">
                                         {suitability.unsuitable.map((d, i) => {
                                             const { label, className } = getDayBadgeProps(d);
-                                            return <span key={i} className={`px-2 py-0.5 rounded text-xs font-bold opacity-70 ${className}`}>{label}</span>;
+                                            return <span key={i} className={`rounded-full px-2.5 py-1 text-xs font-bold opacity-80 ${className}`}>{label}</span>;
                                         })}
                                     </div>
                                 </div>
@@ -154,8 +156,8 @@ function NameRow({ name, meaning }: { name: string; meaning?: string }) {
 
                             {/* Numerology Score */}
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                                <span className="font-semibold text-slate-400 w-24 flex-shrink-0">เลขศาสตร์</span>
-                                <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-amber-400 font-bold text-sm shadow-sm w-fit">
+                                <span className="font-semibold text-slate-700 w-24 flex-shrink-0">เลขศาสตร์</span>
+                                <div className="w-fit rounded-full border border-[#e8c87e] bg-[#fff8e7] px-3 py-1 text-sm font-bold text-amber-800 shadow-sm">
                                     {score}
                                 </div>
                             </div>
@@ -758,10 +760,10 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                 </div>
 
                 {/* Results Table */}
-                <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/90 mb-8 shadow-2xl shadow-slate-950/20">
+                <div className="mb-8 overflow-hidden rounded-2xl border border-[#ddddf0] bg-[#fafafd] shadow-[0_12px_30px_rgba(15,23,42,0.07)]">
                     <table className="w-full text-left">
                         <thead>
-                            <tr className="bg-white/5 border-b border-white/10 text-amber-300 backdrop-blur-md">
+                            <tr className="border-b-2 border-amber-300/70 bg-[linear-gradient(90deg,#f8f8fc_0%,#f3f3f9_52%,#e8ecf2_100%)] text-[#1a1a3e]">
                                 <th className="px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.name')}</th>
                                 <th className="px-2 py-4 font-semibold text-sm tracking-wide uppercase text-left">ความหมาย</th>
                                 <th className="hidden md:table-cell px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.day')}</th>
@@ -769,23 +771,23 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                 <th className="px-4 py-4"></th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-white/5">
+                        <tbody className="divide-y divide-[#eeeef6] bg-[#fafafd]">
                             {filteredNames.length > 0 ? (
                                 <>
                                     {filteredNames.slice(0, visibleCount).map((item, index) => (
-                                        <NameRow key={index} name={item.name} meaning={item.meaning} />
+                                        <NameRow key={`${item.name}-${index}`} name={item.name} meaning={item.meaning} rowIndex={index} />
                                     ))}
 
                                     {/* Teaser row: show count of hidden A+ names to drive upgrade */}
                                     {hiddenAplusCount > 0 && (
-                                        <tr className="bg-amber-500/5 border-t border-amber-500/10">
-                                            <td colSpan={5} className="px-4 py-3 text-center">
+                                        <tr className="border-t border-amber-200/90 bg-[linear-gradient(90deg,#fff8e7_0%,#f6f3fb_52%,#eeebf8_100%)]">
+                                            <td colSpan={5} className="px-4 py-3.5 text-center">
                                                 <Link
                                                     href="/premium-search"
-                                                    className="inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-300 transition-colors font-medium"
+                                                    className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
                                                 >
                                                     ✨ มีชื่อเกรด A+ อีก <strong>{hiddenAplusCount}</strong> ชื่อที่ตรงเงื่อนไขของคุณใน Premium Search
-                                                    <span className="text-amber-500">→</span>
+                                                    <span className="text-amber-600">→</span>
                                                 </Link>
                                             </td>
                                         </tr>
@@ -793,29 +795,29 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
                                     {/* Locked State / Load More Button */}
                                     {visibleCount < filteredNames.length && (
-                                        <tr>
-                                            <td colSpan={5} className="p-0 relative h-32 overflow-hidden">
+                                        <tr className="bg-[linear-gradient(145deg,#fafafd_0%,#f3f3f9_58%,#eeebf8_100%)]">
+                                            <td colSpan={5} className="relative h-28 overflow-hidden p-0">
                                                 {/* Blurred content (fake rows) */}
-                                                <div className="absolute inset-0 w-full h-full blur-md opacity-30 select-none pointer-events-none flex flex-col gap-4 p-4">
-                                                    <div className="h-10 bg-white/10 rounded-xl w-full"></div>
-                                                    <div className="h-10 bg-white/10 rounded-xl w-3/4"></div>
+                                                <div className="pointer-events-none absolute inset-0 flex h-full w-full select-none flex-col gap-3 p-4 opacity-35 blur-sm">
+                                                    <div className="h-9 w-full rounded-xl bg-white/80"></div>
+                                                    <div className="h-9 w-3/4 rounded-xl bg-white/80"></div>
                                                 </div>
 
                                                 {/* Unlock Button Overlay */}
-                                                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[#0f172a] via-[#0f172a]/80 to-transparent">
+                                                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-[#eeebf8] via-[#f3f3f9]/92 to-transparent">
                                                     <button
                                                         onClick={handleUnlock}
                                                         disabled={isUnlocking}
-                                                        className={`group relative flex items-center gap-2 md:gap-3 px-5 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl shadow-lg shadow-amber-500/20 transition-all ${isUnlocking
-                                                            ? 'bg-amber-500/60 text-black cursor-not-allowed'
-                                                            : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black hover:scale-105 active:scale-95'
+                                                        className={`group relative flex items-center gap-2 rounded-xl px-5 py-3 shadow-[0_8px_18px_rgba(201,147,58,0.18)] transition-all duration-200 md:gap-3 md:px-7 ${isUnlocking
+                                                            ? 'cursor-not-allowed bg-[#e8c87e]/70 text-slate-600'
+                                                            : 'bg-gradient-to-r from-[#e8c87e] to-[#c9933a] text-slate-950 hover:-translate-y-0.5 hover:from-[#f0d997] hover:to-[#d4a54e] active:translate-y-0'
                                                             }`}
                                                     >
-                                                        <div className="p-1 md:p-1.5 bg-black/20 rounded-md md:rounded-lg">
+                                                        <div className="rounded-md bg-[#1a1a3e]/10 p-1 md:rounded-lg md:p-1.5">
                                                             <Lock className="w-4 h-4 md:w-5 md:h-5" />
                                                         </div>
-                                                        <span className="text-base md:text-lg">{t('pages.search.unlock.button')}</span>
-                                                        <div className="bg-black/80 text-amber-500 text-[10px] md:text-xs px-1.5 md:px-2 py-0.5 md:py-1 rounded-md font-bold flex items-center gap-1">
+                                                        <span className="text-base font-bold">{t('pages.search.unlock.button')}</span>
+                                                        <div className="flex items-center gap-1 rounded-full bg-[#1a1a3e]/10 px-2 py-1 text-[10px] font-bold text-[#1a1a3e] md:text-xs">
                                                             {t('pages.search.unlock.cost')}
                                                         </div>
                                                     </button>

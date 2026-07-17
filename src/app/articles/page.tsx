@@ -8,6 +8,7 @@ import { articles as localArticles } from '@/data/articles';
 import { ArticleImage } from '@/components/ArticleImage';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { siteUrl } from '@/lib/seo';
+import { topicClusters } from './topicClusters';
 
 type ArticleRow = {
     id?: string;
@@ -33,7 +34,7 @@ function getArticleCoverAlt(article: ArticleRow | (typeof localArticles)[number]
     const coverImageAlt = (article as { coverImageAlt?: unknown }).coverImageAlt;
     return typeof coverImageAlt === 'string' && coverImageAlt.trim()
         ? coverImageAlt
-        : `บทความ: ${article.title} - เคล็ดลับตั้งชื่อมงคล`;
+        : `ภาพปกบทความ ${article.title}`;
 }
 
 // ISR: cache 24 hours, invalidate on demand via revalidateTag('articles') when admin updates
@@ -107,6 +108,13 @@ const SLUG_REDIRECTS: Record<string, string> = {
 };
 
 const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569']);
+const CONSOLIDATED_ARTICLE_SLUGS = new Set([
+    '100-auspicious-boy-names-2569',
+    'auspicious-boy-names-2569',
+    'check-kalakini-letters-7-days',
+    'lucky-names-by-birthday-2569',
+    '700-auspicious-names-by-birthday-2569',
+]);
 
 async function getArticles() {
     const dbArticles = await getCachedDbArticles();
@@ -160,7 +168,7 @@ async function getArticles() {
     // do not crash React with duplicate keys.
     const uniqueBySlug = Array.from(
         new Map(allArticles.map(article => [article.slug, article])).values()
-    );
+    ).filter((article) => !CONSOLIDATED_ARTICLE_SLUGS.has(article.slug));
 
     // Sort by date descending
     const sorted = uniqueBySlug.sort((a, b) => parseThaiDate(b.date) - parseThaiDate(a.date));
@@ -251,46 +259,6 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
         const queryString = nextParams.toString();
         return queryString ? `/articles?${queryString}` : '/articles';
     };
-    const topicClusters = [
-        {
-            title: 'เริ่มต้นตั้งชื่อลูก',
-            description: 'เหมาะสำหรับพ่อแม่ที่ต้องการชื่อจริง ความหมายดี และไม่ชนอักษรกาลกิณี',
-            links: [
-                { href: '/search', label: 'ค้นหาชื่อมงคล 5,000+ ชื่อ' },
-                { href: '/articles/naming-baby-year-of-horse-2569', label: 'ตั้งชื่อลูกปีมะเมีย 2569' },
-                { href: '/articles/100-auspicious-boy-names-2569', label: '100 ชื่อมงคลลูกชาย' },
-                { href: '/articles/100-auspicious-women-names-2026', label: '100 ชื่อมงคลลูกสาว' },
-            ],
-        },
-        {
-            title: 'เข้าใจศาสตร์ชื่อมงคล',
-            description: 'อ่านพื้นฐานเลขศาสตร์ ทักษา อายตนะ และพลังเงาก่อนเลือกชื่อจริง',
-            links: [
-                { href: '/articles/4-pillars-of-naming', label: '4 ศาสตร์การตั้งชื่อมงคล' },
-                { href: '/articles/numerology-0-9-power-guide', label: 'เลขศาสตร์ 0-9' },
-                { href: '/articles/shadow-power-ayatana-6-meaning', label: 'พลังเงาและอายตนะ 6' },
-            ],
-        },
-        {
-            title: 'เช็กข้อห้ามก่อนใช้ชื่อ',
-            description: 'ลดความเสี่ยงจากอักษรกาลกิณี คู่เลขเสีย และจังหวะที่ไม่เหมาะกับวันเกิด',
-            links: [
-                { href: '/articles/forbidden-letters-kalakini', label: 'อักษรกาลกิณีที่ควรเลี่ยง' },
-                { href: '/articles/check-kalakini-letters-7-days', label: 'เช็กกาลกิณี 7 วันเกิด' },
-                { href: '/articles/micro-analysis-lucky-number-pairs', label: 'คู่เลขมงคลและคู่เลขเสีย' },
-            ],
-        },
-        {
-            title: 'ต่อยอดเสริมดวงรายวัน',
-            description: 'รวมบทความสำหรับเบอร์มือถือ สีมงคล และวอลเปเปอร์เสริมเป้าหมายชีวิต',
-            links: [
-                { href: '/articles/auspicious-phone-number-guide-2026', label: 'คู่มือเบอร์มงคล 2026' },
-                { href: '/articles/auspicious-colors-2569-guide', label: 'สีมงคลตามวันเกิด 2569' },
-                { href: '/articles/caishen-wallpaper-free-download', label: 'วอลเปเปอร์ไฉ่ซิงเอี้ย' },
-            ],
-        },
-    ];
-
     // Organization Schema (EEAT signal – author/publisher identity)
     const organizationJsonLd = {
         '@context': 'https://schema.org',
@@ -307,7 +275,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
         'sameAs': [
             'https://www.facebook.com/namemongkol',
         ],
-        'description': 'ผู้ให้บริการวิเคราะห์ชื่อมงคล ตั้งชื่อลูก เปลี่ยนชื่อเสริมดวง ด้วยระบบ AI ผสาน 4 ศาสตร์ที่ครบถ้วนที่สุดในประเทศไทย',
+        'description': 'คลังบทความและเครื่องมือวิเคราะห์ชื่อมงคล ตั้งชื่อลูก และเปลี่ยนชื่อ โดยอธิบายหลักที่ใช้และข้อจำกัดของผลลัพธ์อย่างโปร่งใส',
     };
 
     // WebSite Schema (enables Google Sitelinks Searchbox)
@@ -666,12 +634,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                         </div>
 
                                         {/* Title */}
-                                        <h2
+                                        <h3
                                             className="text-sm font-bold mb-2 leading-snug line-clamp-3 sm:line-clamp-2 transition-colors duration-200 text-slate-100"
                                             itemProp="headline"
                                         >
                                             <span className="group-hover:text-amber-400 transition-colors duration-200">{article.title}</span>
-                                        </h2>
+                                        </h3>
 
                                         {/* Excerpt */}
                                         <p

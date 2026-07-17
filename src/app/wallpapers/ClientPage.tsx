@@ -542,17 +542,17 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     };
 
     return (
-        <div className="min-h-screen w-full max-w-[1400px] mx-auto bg-[#f8f8fc] px-3 pb-36 pt-7 text-slate-800 sm:px-4 md:pb-28 md:pt-32">
+        <div className="site-grid-surface min-h-screen w-full max-w-[1400px] mx-auto px-3 pb-36 pt-7 text-slate-800 sm:px-4 md:pb-28 md:pt-32">
             <div className="mx-auto max-w-7xl space-y-4 md:space-y-8">
 
                 {/* Header */}
                 <div className="flex flex-col gap-2.5 md:gap-4">
                     <div>
                         <h1 className="mb-1.5 text-[1.65rem] font-bold leading-tight text-[#1a1a3e] sm:text-3xl md:mb-2 md:text-5xl">
-                            วอลเปเปอร์มงคล เสริมดวงชะตา บารมี และโชคลาภ
+                            วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569: การเงิน งาน ความรัก
                         </h1>
                         <p className="max-w-[70ch] text-sm leading-relaxed text-[#5a5a82] md:text-base">
-                            ยกระดับพลังบวกให้กับชีวิตทุกครั้งที่เปิดหน้าจอมือถือ ด้วยพลังแห่งภาพมงคลและสีมงคลตามวันเกิด
+                            เลือกภาพตามวันเกิดหรือเป้าหมายที่อยากเตือนใจ พร้อมคำอธิบายสีและสัญลักษณ์ก่อนดาวน์โหลด
                         </p>
                     </div>
 

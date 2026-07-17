@@ -182,7 +182,7 @@ export default function TopUpPage({ gateway, promptpayNumber }: TopUpPageProps) 
     };
 
     return (
-        <div className="min-h-screen bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-amber-500/30">
+        <div className="site-grid-surface min-h-screen text-[#5a5a82] font-sans selection:bg-amber-500/30">
             <main className="w-full max-w-[1400px] mx-auto min-h-screen relative overflow-hidden px-3 sm:px-4 pt-16 md:pt-32 pb-32 md:pb-28">
                 {/* Background Decor */}
                 <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">

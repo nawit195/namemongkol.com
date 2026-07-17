@@ -263,18 +263,18 @@ export default async function SearchPage() {
                 </div>
             </section>
 
-            <section className="w-full bg-slate-950 px-4 py-14 text-slate-100" aria-labelledby="search-plans-title">
+            <section className="w-full bg-[linear-gradient(135deg,#f8f8fc_0%,#eef1f5_48%,#e8ecf2_100%)] px-4 py-14 text-[#1a1a3e]" aria-labelledby="search-plans-title">
                 <div className="mx-auto max-w-5xl">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">เลือกขั้นตอนที่เหมาะกับคุณ</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-700">เลือกขั้นตอนที่เหมาะกับคุณ</p>
                     <h2 id="search-plans-title" className="mt-3 text-2xl font-bold sm:text-3xl">เริ่มฟรี แล้วค่อยเพิ่มความละเอียดเมื่อมีชื่อในใจ</h2>
-                    <p className="mt-3 max-w-[70ch] text-sm leading-7 text-slate-300 sm:text-base">
+                    <p className="mt-3 max-w-[70ch] text-sm leading-7 text-slate-700 sm:text-base">
                         การค้นหาชื่อช่วยสร้างรายชื่อเบื้องต้น ส่วนการวิเคราะห์ร่วมกับนามสกุลและการคัดแบบ Premium ช่วยลดเวลาตรวจทีละชื่อก่อนตัดสินใจใช้งานจริง
                     </p>
-                    <div className="mt-8 overflow-hidden rounded-2xl border border-slate-700">
-                        <div className="grid grid-cols-[1.25fr_1fr_1fr] bg-slate-900 text-sm">
-                            <div className="p-4 font-semibold text-slate-300">ความสามารถ</div>
-                            <div className="p-4 font-bold text-sky-300">ฟรี</div>
-                            <div className="p-4 font-bold text-amber-300">Premium</div>
+                    <div className="mt-8 overflow-hidden rounded-2xl border border-[#d9dee7] bg-white/80 shadow-[0_14px_32px_rgba(15,23,42,0.07)]">
+                        <div className="grid grid-cols-[1.25fr_1fr_1fr] bg-[linear-gradient(90deg,#f6f7f9_0%,#eef1f5_52%,#e8ecf2_100%)] text-sm">
+                            <div className="p-4 font-semibold text-slate-700">ความสามารถ</div>
+                            <div className="p-4 font-bold text-sky-700">ฟรี</div>
+                            <div className="p-4 font-bold text-amber-800">Premium</div>
                         </div>
                         {[
                             ['ค้นหารายชื่อและความหมาย', 'มี', 'มี'],
@@ -282,10 +282,10 @@ export default async function SearchPage() {
                             ['คัดร่วมกับนามสกุลและเป้าหมายชีวิต', 'ตรวจทีละชื่อ', 'คัดให้เป็นชุด'],
                             ['ดูเฉพาะชื่อเกรดสูง', 'บางส่วน', 'ครบกว่า'],
                         ].map(([feature, free, premium]) => (
-                            <div key={feature} className="grid grid-cols-[1.25fr_1fr_1fr] border-t border-slate-800 text-sm">
-                                <div className="p-4 text-slate-200">{feature}</div>
-                                <div className="p-4 text-slate-400">{free}</div>
-                                <div className="p-4 font-medium text-slate-100">{premium}</div>
+                            <div key={feature} className="grid grid-cols-[1.25fr_1fr_1fr] border-t border-[#d9dee7] text-sm">
+                                <div className="p-4 text-slate-800">{feature}</div>
+                                <div className="p-4 text-sky-800">{free}</div>
+                                <div className="p-4 font-medium text-amber-900">{premium}</div>
                             </div>
                         ))}
                     </div>
@@ -293,14 +293,14 @@ export default async function SearchPage() {
                         <Link
                             href="/name-check"
                             data-track="seo.search.compare.free_analysis"
-                            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 text-sm font-bold text-slate-100 transition-colors hover:border-slate-400 hover:bg-slate-900"
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-sky-200 bg-white/80 px-5 py-3 text-sm font-bold text-sky-800 transition-colors hover:border-sky-300 hover:bg-sky-50"
                         >
                             วิเคราะห์ชื่อฟรี
                         </Link>
                         <Link
                             href="/premium-search"
                             data-track="seo.search.compare.premium"
-                            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300"
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#e8c87e] to-[#c9933a] px-5 py-3 text-sm font-bold text-slate-950 shadow-[0_8px_18px_rgba(201,147,58,0.2)] transition-colors hover:from-[#f0d997] hover:to-[#d4a54e]"
                         >
                             คัดชื่อมงคลแบบ Premium
                         </Link>

@@ -69,7 +69,7 @@ const ClientPageFallback = () => {
     const { t } = useLanguage();
 
     return (
-        <div className="min-h-screen bg-[#f8f8fc] text-[#5a5a82] font-sans selection:bg-[#f8c24b] selection:text-[#1d1203]">
+        <div className="site-grid-surface min-h-screen text-[#5a5a82] font-sans selection:bg-[#f8c24b] selection:text-[#1d1203]">
             <main className="relative flex min-h-screen w-full max-w-[1400px] flex-col items-center px-4 pb-10 pt-7 transition-all duration-300 md:pt-28">
                 <PhoneSacredBackground />
 

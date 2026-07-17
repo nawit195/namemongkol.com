@@ -5,13 +5,13 @@ import { siteUrl } from '@/lib/seo';
 
 
 export const metadata: Metadata = {
-    title: 'เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกัน ตรวจเลขศาสตร์ ทักษา กาลกิณี | NameMongkol',
+    title: 'เปรียบเทียบชื่อหลายชื่อ จัดเกรดและส่งออกผล | NameMongkol',
     alternates: { canonical: `${siteUrl.replace(/\/$/, '')}/name-analysis` },
-    description: 'เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกันสูงสุด 1,000 ชื่อ ตรวจผลรวมเลขศาสตร์ คู่เลขในชื่อ ทักษา อักษรกาลกิณี จัดเกรด A+ เปรียบเทียบชื่อเด็ด Export CSV/PDF ได้ทันที',
-    keywords: 'เช็คชื่อมงคล, วิเคราะห์ชื่อหลายชื่อพร้อมกัน, ตรวจชื่อมงคล, วิเคราะห์ชื่อ เลขศาสตร์, เช็คชื่อ ออนไลน์, วิเคราะห์ชื่อหลายชื่อ, เปรียบเทียบชื่อมงคล, คัดชื่อมงคล, ถอดอักษรเป็นเลขศาสตร์, วิเคราะห์คู่เลขในชื่อ, ตรวจชื่อ ทักษา กาลกิณี, จัดเกรดชื่อมงคล, ตั้งชื่อลูก เช็คชื่อ, Export CSV วิเคราะห์ชื่อ',
+    description: 'เปรียบเทียบรายชื่อพร้อมกันสูงสุด 1,000 ชื่อ จัดเกรดจากเลขศาสตร์ คู่เลข ทักษา และอักษรกาลกิณี แล้วส่งออกผลเป็น CSV/PDF ก่อนตรวจชื่อที่เลือกกับนามสกุล',
+    keywords: 'เปรียบเทียบชื่อหลายชื่อ, วิเคราะห์รายชื่อจำนวนมาก, จัดเกรดชื่อมงคล, คัดรายชื่อมงคล, Export CSV วิเคราะห์ชื่อ, Export PDF รายชื่อ, Bulk name analysis',
     openGraph: {
-        title: 'เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกัน ตรวจเลขศาสตร์ จัดเกรด A+ | NameMongkol',
-        description: 'เช็คชื่อมงคลออนไลน์ วิเคราะห์หลายชื่อพร้อมกันสูงสุด 1,000 ชื่อ ตรวจผลรวมเลขศาสตร์ คู่เลข ทักษา กาลกิณี จัดเกรด Export CSV/PDF',
+        title: 'เปรียบเทียบชื่อหลายชื่อ จัดเกรดและส่งออกผล | NameMongkol',
+        description: 'วิเคราะห์รายชื่อพร้อมกันสูงสุด 1,000 ชื่อ จัดเกรด เปรียบเทียบ และ Export CSV/PDF',
         url: `${siteUrl}/name-analysis`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกัน | NameMongkol',
-        description: 'เช็คชื่อมงคลออนไลน์ วิเคราะห์หลายชื่อพร้อมกัน ตรวจเลขศาสตร์ คู่เลข ทักษา กาลกิณี จัดเกรด A+',
+        title: 'เปรียบเทียบชื่อหลายชื่อและจัดเกรด | NameMongkol',
+        description: 'เครื่องมือสำหรับคัดและเปรียบเทียบรายชื่อจำนวนมาก ไม่ใช่หน้าตรวจชื่อกับนามสกุลแบบรายบุคคล',
     },
 };
 
@@ -31,8 +31,8 @@ const webPageSchema = {
     '@type': 'WebPage',
     '@id': `${siteUrl}/name-analysis`,
     'url': `${siteUrl}/name-analysis`,
-    'name': 'เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกัน ตรวจเลขศาสตร์ ทักษา กาลกิณี | NameMongkol',
-    'description': 'เช็คชื่อมงคลออนไลน์ วิเคราะห์หลายชื่อพร้อมกันสูงสุด 1,000 ชื่อ ถอดอักษรเป็นเลขศาสตร์ ตรวจผลรวม คู่เลข ทักษา กาลกิณี จัดเกรด A+ เปรียบเทียบชื่อหลายตัวเลือก Export CSV/PDF',
+    'name': 'เปรียบเทียบชื่อหลายชื่อ จัดเกรดและส่งออกผล | NameMongkol',
+    'description': 'เครื่องมือเปรียบเทียบรายชื่อพร้อมกันสูงสุด 1,000 ชื่อ ตรวจผลรวม คู่เลข ทักษา และกาลกิณีเพื่อจัดเกรดและส่งออกผล',
     'inLanguage': 'th-TH',
     'isPartOf': {
         '@type': 'WebSite',
@@ -157,7 +157,7 @@ export default function NameAnalysisPage() {
     return (
         <>
             {/* SSR H1 for Googlebot — keep visually hidden to avoid duplicate visible H1 in client UI */}
-            <h1 className="sr-only">เช็คชื่อมงคล วิเคราะห์หลายชื่อพร้อมกัน ตรวจเลขศาสตร์ ทักษา กาลกิณี จัดเกรด A+ สูงสุด 1,000 ชื่อ Export CSV/PDF</h1>
+            <h1 className="sr-only">เปรียบเทียบชื่อหลายชื่อ จัดเกรดและส่งออกผล CSV หรือ PDF</h1>
 
             <script
                 id="name-analysis-webpage-schema"
@@ -188,8 +188,8 @@ export default function NameAnalysisPage() {
 
             <section id="bulk-pair-analysis-seo" className="w-full bg-[#f8f8fc] px-4 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-4xl rounded-2xl border border-[#ddddf0] bg-white p-6 sm:p-8 shadow-sm">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">เช็คชื่อมงคล วิเคราะห์หลายชื่อ</p>
-                    <h2 className="mt-3 text-2xl font-bold text-[#1a1a3e]">เช็คชื่อมงคล หลายชื่อพร้อมกัน ด้วยเลขศาสตร์และคู่เลข</h2>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Bulk Name Comparison</p>
+                    <h2 className="mt-3 text-2xl font-bold text-[#1a1a3e]">เปรียบเทียบรายชื่อจำนวนมากก่อนตรวจชื่อกับนามสกุล</h2>
                     <p className="mt-4 text-sm leading-7 text-[#5a5a82] sm:text-base">
                         จุดเด่นของ NameMongkol คือการ<strong>เช็คชื่อมงคล</strong>แบบละเอียด โดยถอดตัวอักษรแต่ละตัวเป็นค่าเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังส่งเสริม จุดที่ควรระวัง และความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น ระบบ<strong>วิเคราะห์หลายชื่อพร้อมกัน</strong>นี้ช่วยให้คุณเปรียบเทียบชื่อได้เร็วขึ้น เห็นทั้งผลรวมเลขศาสตร์ คู่เลขในชื่อ ทักษา อักษรกาลกิณี และเกรดความมงคล ก่อนนำชื่อที่สนใจไปตรวจร่วมกับนามสกุลในหน้า <a href="/name-check" className="text-indigo-600 hover:underline font-semibold">วิเคราะห์ชื่อ-นามสกุลฟรี</a>
                     </p>

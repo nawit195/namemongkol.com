@@ -62,7 +62,7 @@ export const articleFreeNameAnalysisNumerologyGuide: Article = {
     relatedSlugs: [
         'what-is-name-analysis',
         'namemongkol-number-pairs',
-        '700-auspicious-names-by-birthday-2569',
+        'auspicious-names-by-birthday-2026',
         'thaksa-pakorn-naming-guide',
         'change-name-destiny-tuning-2569',
     ],

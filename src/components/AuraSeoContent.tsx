@@ -19,7 +19,7 @@ export const AuraSeoContent = () => {
         : '4.9/5';
 
     return (
-        <section className="w-full max-w-5xl mx-auto mt-20 md:mt-24 mb-12 md:mb-16 px-4 relative z-10">
+        <section className="aura-seo-content w-full max-w-5xl mx-auto mt-20 md:mt-24 mb-12 md:mb-16 px-4 relative z-10">
 
             {/* ── Hero Block ── */}
             <div className="text-center mb-12 md:mb-16">

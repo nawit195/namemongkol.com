@@ -207,46 +207,41 @@ export default function PremiumAnalysisPage() {
         { key: 'PATRON', title: 'อุปถัมภ์', subtitle: 'ผู้ใหญ่เมตตา', icon: <HelpingHand size={20} /> },
     ];
 
-    const focusStyles: Record<FocusTopic, { card: string; active: string; icon: string; iconActive: string; titleActive: string; glow: string }> = {
+    const focusStyles: Record<FocusTopic, { card: string; active: string; icon: string; iconActive: string; titleActive: string }> = {
         WEALTH: {
-            card: 'border-amber-200/80 bg-gradient-to-br from-amber-50 via-yellow-50 to-white shadow-[0_16px_36px_rgba(245,158,11,0.12)]',
-            active: 'border-amber-300 bg-gradient-to-br from-amber-100 via-yellow-50 to-white shadow-[0_20px_42px_rgba(245,158,11,0.22)] ring-1 ring-amber-300',
-            icon: 'bg-amber-100 text-amber-700 shadow-[0_10px_24px_rgba(245,158,11,0.18)]',
-            iconActive: 'bg-gradient-to-br from-amber-200 to-yellow-300 text-[#2f230b] shadow-[0_12px_28px_rgba(245,158,11,0.26)]',
-            titleActive: 'text-[#2f230b]',
-            glow: 'bg-amber-200/40',
+            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
+            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            icon: 'bg-[#eeebf8] text-[#6f6299]',
+            iconActive: 'bg-[#e8c87e] text-[#51370d]',
+            titleActive: 'text-[#1a1a3e]',
         },
         JOB: {
-            card: 'border-pink-200/80 bg-gradient-to-br from-pink-50 via-rose-50 to-white shadow-[0_16px_36px_rgba(236,72,153,0.10)]',
-            active: 'border-pink-300 bg-gradient-to-br from-pink-100 via-rose-50 to-white shadow-[0_20px_42px_rgba(236,72,153,0.18)] ring-1 ring-pink-300',
-            icon: 'bg-pink-100 text-pink-600 shadow-[0_10px_24px_rgba(236,72,153,0.14)]',
-            iconActive: 'bg-gradient-to-br from-pink-200 to-rose-300 text-pink-900 shadow-[0_12px_28px_rgba(236,72,153,0.22)]',
-            titleActive: 'text-pink-900',
-            glow: 'bg-pink-200/40',
+            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
+            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            icon: 'bg-[#eeebf8] text-[#6f6299]',
+            iconActive: 'bg-[#e8c87e] text-[#51370d]',
+            titleActive: 'text-[#1a1a3e]',
         },
         HEALTH: {
-            card: 'border-emerald-200/80 bg-gradient-to-br from-emerald-50 via-teal-50 to-white shadow-[0_16px_36px_rgba(16,185,129,0.10)]',
-            active: 'border-emerald-300 bg-gradient-to-br from-emerald-100 via-teal-50 to-white shadow-[0_20px_42px_rgba(16,185,129,0.18)] ring-1 ring-emerald-300',
-            icon: 'bg-emerald-100 text-emerald-700 shadow-[0_10px_24px_rgba(16,185,129,0.14)]',
-            iconActive: 'bg-gradient-to-br from-emerald-200 to-teal-300 text-emerald-950 shadow-[0_12px_28px_rgba(16,185,129,0.22)]',
-            titleActive: 'text-emerald-950',
-            glow: 'bg-emerald-200/40',
+            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
+            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            icon: 'bg-[#eeebf8] text-[#6f6299]',
+            iconActive: 'bg-[#e8c87e] text-[#51370d]',
+            titleActive: 'text-[#1a1a3e]',
         },
         LOVE: {
-            card: 'border-violet-200/80 bg-gradient-to-br from-violet-50 via-purple-50 to-white shadow-[0_16px_36px_rgba(139,92,246,0.10)]',
-            active: 'border-violet-300 bg-gradient-to-br from-violet-100 via-purple-50 to-white shadow-[0_20px_42px_rgba(139,92,246,0.18)] ring-1 ring-violet-300',
-            icon: 'bg-violet-100 text-violet-600 shadow-[0_10px_24px_rgba(139,92,246,0.14)]',
-            iconActive: 'bg-gradient-to-br from-violet-200 to-purple-300 text-violet-950 shadow-[0_12px_28px_rgba(139,92,246,0.22)]',
-            titleActive: 'text-violet-950',
-            glow: 'bg-violet-200/40',
+            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
+            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            icon: 'bg-[#eeebf8] text-[#6f6299]',
+            iconActive: 'bg-[#e8c87e] text-[#51370d]',
+            titleActive: 'text-[#1a1a3e]',
         },
         PATRON: {
-            card: 'border-sky-200/80 bg-gradient-to-br from-sky-50 via-blue-50 to-white shadow-[0_16px_36px_rgba(59,130,246,0.10)]',
-            active: 'border-sky-300 bg-gradient-to-br from-sky-100 via-blue-50 to-white shadow-[0_20px_42px_rgba(59,130,246,0.18)] ring-1 ring-sky-300',
-            icon: 'bg-sky-100 text-sky-600 shadow-[0_10px_24px_rgba(59,130,246,0.14)]',
-            iconActive: 'bg-gradient-to-br from-sky-200 to-blue-300 text-sky-950 shadow-[0_12px_28px_rgba(59,130,246,0.22)]',
-            titleActive: 'text-sky-950',
-            glow: 'bg-sky-200/40',
+            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
+            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            icon: 'bg-[#eeebf8] text-[#6f6299]',
+            iconActive: 'bg-[#e8c87e] text-[#51370d]',
+            titleActive: 'text-[#1a1a3e]',
         },
     };
 
@@ -626,29 +621,30 @@ export default function PremiumAnalysisPage() {
     const formContent = (
         <div className="relative mx-auto max-w-6xl overflow-visible px-0 animate-fade-in-up sm:px-2 md:px-4">
 
-            <div className="relative z-10 grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
 
                 {/* Left Column: Personal Inputs (User Data) */}
                 <div className="lg:col-span-5 space-y-5 md:space-y-6">
 
-                    <div className="mb-2 flex items-center gap-3 text-pink-500">
-                        <div className="h-7 w-1.5 rounded-full bg-gradient-to-b from-pink-400 to-rose-400 shadow-[0_8px_20px_rgba(244,114,182,0.28)]"></div>
-                        <h3 className="text-base font-extrabold tracking-[0.08em] md:text-xl">ข้อมูลส่วนตัว</h3>
+                    <div className="mb-3 flex items-center gap-3 text-[#1a1a3e]">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1a1a3e] text-sm font-black text-[#f8f8fc]">1</span>
+                        <h3 className="text-lg font-extrabold md:text-xl">ข้อมูลส่วนตัว</h3>
                     </div>
 
                     {/* Surname */}
                     <div className="space-y-2 md:space-y-3">
-                        <label className="ml-1 text-sm font-bold text-[#2f2f4f]">นามสกุล <span className="text-red-400">*</span></label>
+                        <label htmlFor="premium-surname" className="ml-1 text-sm font-bold text-[#2f2f4f]">นามสกุล <span className="text-red-500">*</span></label>
                         <div className="relative group">
-                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-pink-400 transition-colors group-focus-within:text-pink-500">
+                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9b8ec4] transition-colors group-focus-within:text-[#a67828]">
                                 <User size={20} className="w-5 h-5 md:w-5 md:h-5" />
                             </div>
                             <input
+                                id="premium-surname"
                                 type="text"
                                 value={surname}
                                 onChange={(e) => setSurname(e.target.value)}
                                 placeholder="กรอกนามสกุลของท่าน"
-                                className="w-full rounded-xl border border-pink-100/90 bg-white/80 py-3 pl-11 pr-4 text-base text-[#1a1a3e] shadow-[0_10px_24px_rgba(201,147,58,0.05)] transition-all placeholder:text-slate-400 focus:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-200/50 md:rounded-2xl md:py-4 md:pl-12 md:pr-5 md:text-lg"
+                                className="w-full rounded-xl border border-[#ddddf0] bg-[#fafafd] py-3 pl-11 pr-4 text-base text-[#1a1a3e] shadow-sm transition-colors placeholder:text-[#8e8eaa] focus:border-[#c9933a] focus:outline-none focus:ring-2 focus:ring-[#e8c87e]/35 md:py-4 md:pl-12 md:pr-5"
                             />
                         </div>
                     </div>
@@ -704,7 +700,7 @@ export default function PremiumAnalysisPage() {
                                     เวลาเกิด
                                     {/* Tooltip for birth time */}
                                     <div className="relative group/tooltip">
-                                        <Info size={14} className="cursor-help text-pink-300 transition-colors hover:text-pink-500" />
+                                        <Info size={14} className="cursor-help text-[#9b8ec4] transition-colors hover:text-[#a67828]" />
                                         <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 p-3 bg-slate-900/90 backdrop-blur-xl border border-amber-500/20 rounded-xl text-xs text-slate-300 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-50 shadow-2xl">
                                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-slate-900 border-r border-b border-amber-500/20 rotate-45"></div>
                                             <p className="leading-relaxed">
@@ -722,9 +718,9 @@ export default function PremiumAnalysisPage() {
                                             setIsUnknownTime(e.target.checked);
                                             if (e.target.checked) setBirthTime('');
                                         }}
-                                        className="rounded border-pink-200 bg-white text-pink-500 focus:ring-pink-300"
+                                        className="rounded border-[#ddddf0] bg-[#fafafd] text-[#c9933a] focus:ring-[#e8c87e]"
                                     />
-                                    <label htmlFor="unknownTime" className="cursor-pointer text-xs text-slate-500 transition-colors hover:text-pink-500">ไม่ทราบเวลา</label>
+                                    <label htmlFor="unknownTime" className="cursor-pointer text-xs text-[#5a5a82] transition-colors hover:text-[#a67828]">ไม่ทราบเวลา</label>
                                 </div>
                             </label>
                             <div className={`grid grid-cols-2 gap-3 md:gap-4 ${isUnknownTime ? 'opacity-50 pointer-events-none' : ''}`}>
@@ -762,20 +758,24 @@ export default function PremiumAnalysisPage() {
                         <label className="ml-1 text-sm font-bold text-[#2f2f4f]">เพศ</label>
                         <div className="grid grid-cols-2 gap-3 p-0 md:p-1">
                             <button
+                                type="button"
                                 onClick={() => setGender('male')}
-                                className={`min-h-12 py-3 md:py-4 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 border shadow-[0_8px_22px_rgba(236,72,153,0.04)] ${gender === 'male'
-                                    ? 'border-pink-300 bg-gradient-to-br from-pink-50 to-rose-50 text-pink-600 ring-1 ring-pink-200'
-                                    : 'border-pink-100/80 bg-white/80 text-slate-500 hover:border-pink-200 hover:text-pink-500'
+                                aria-pressed={gender === 'male'}
+                                className={`min-h-12 py-3 md:py-4 rounded-xl text-sm font-bold transition-colors duration-200 flex items-center justify-center gap-2 border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 ${gender === 'male'
+                                    ? 'border-[#c9933a] bg-[#fff9eb] text-[#1a1a3e] ring-2 ring-[#e8c87e]/35'
+                                    : 'border-[#ddddf0] bg-[#fafafd] text-[#5a5a82] hover:border-[#9b8ec4] hover:text-[#1a1a3e]'
                                     }`}
                             >
                                 <Mars className="h-4 w-4" />
                                 <span>ชาย</span>
                             </button>
                             <button
+                                type="button"
                                 onClick={() => setGender('female')}
-                                className={`min-h-12 py-3 md:py-4 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 border shadow-[0_8px_22px_rgba(236,72,153,0.04)] ${gender === 'female'
-                                    ? 'border-pink-300 bg-gradient-to-br from-pink-50 to-rose-50 text-pink-600 ring-1 ring-pink-200'
-                                    : 'border-pink-100/80 bg-white/80 text-slate-500 hover:border-pink-200 hover:text-pink-500'
+                                aria-pressed={gender === 'female'}
+                                className={`min-h-12 py-3 md:py-4 rounded-xl text-sm font-bold transition-colors duration-200 flex items-center justify-center gap-2 border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 ${gender === 'female'
+                                    ? 'border-[#c9933a] bg-[#fff9eb] text-[#1a1a3e] ring-2 ring-[#e8c87e]/35'
+                                    : 'border-[#ddddf0] bg-[#fafafd] text-[#5a5a82] hover:border-[#9b8ec4] hover:text-[#1a1a3e]'
                                     }`}
                             >
                                 <Venus className="h-4 w-4" />
@@ -787,9 +787,12 @@ export default function PremiumAnalysisPage() {
 
                 {/* Right Column: Focus Selection (Grid Cards) */}
                 <div className="lg:col-span-7 flex flex-col h-full mt-2 md:mt-0">
-                    <div className="mb-4 flex items-center gap-3 text-pink-500 md:mb-8">
-                        <div className="h-7 w-1.5 rounded-full bg-gradient-to-b from-pink-400 to-rose-400 shadow-[0_8px_20px_rgba(244,114,182,0.28)]"></div>
-                        <h3 className="text-base font-extrabold tracking-[0.08em] md:text-xl">เลือกสิ่งที่คุณต้องการเน้น (FOCUS)</h3>
+                    <div className="mb-5 flex items-center gap-3 text-[#1a1a3e] md:mb-6">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1a1a3e] text-sm font-black text-[#f8f8fc]">2</span>
+                        <div>
+                            <h3 className="text-lg font-extrabold md:text-xl">เลือกเป้าหมายที่ต้องการเน้น</h3>
+                            <p className="mt-0.5 text-sm text-[#5a5a82]">เลือกได้หนึ่งด้าน ระบบจะใช้เป็นน้ำหนักหลักในการคัดชื่อ</p>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5">
@@ -798,9 +801,11 @@ export default function PremiumAnalysisPage() {
                             const styles = focusStyles[option.key];
                             return (
                                 <button
+                                    type="button"
                                     key={option.key}
                                     onClick={() => setFocus(option.key)}
-                                    className={`group relative min-h-24 overflow-hidden rounded-2xl border p-4 transition-all duration-300 flex items-center gap-3 md:gap-4 hover:-translate-y-0.5
+                                    aria-pressed={isActive}
+                                    className={`group relative min-h-24 overflow-hidden rounded-2xl border p-4 transition-colors duration-200 flex items-center gap-3 md:gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2
                                         ${isActive
                                             ? styles.active
                                             : styles.card
@@ -827,15 +832,10 @@ export default function PremiumAnalysisPage() {
                                                 </div>
                                             )}
                                         </div>
-                                        <p className={`text-xs mt-0.5 md:mt-1 ${isActive ? 'text-slate-700' : 'text-slate-500 group-hover:text-slate-600'}`}>
+                                        <p className={`mt-1 text-sm leading-relaxed ${isActive ? 'text-[#5a5a82]' : 'text-[#5a5a82]'}`}>
                                             {option.subtitle}
                                         </p>
                                     </div>
-
-                                    {/* Lustrous effect for active state */}
-                                    {isActive && (
-                                        <div className={`absolute -right-8 -top-8 h-28 w-28 rounded-full blur-2xl md:h-32 md:w-32 ${styles.glow} pointer-events-none`}></div>
-                                    )}
                                 </button>
                             );
                         })}
@@ -844,17 +844,18 @@ export default function PremiumAnalysisPage() {
             </div>
 
             {/* Bottom Action Area */}
-            <div className="relative z-10 mt-8 border-t border-pink-100 pt-5 md:mt-10 md:pt-7">
+            <div className="relative z-10 mt-8 border-t border-[#eeeef6] pt-6 md:mt-10 md:pt-8">
                 <div className="flex flex-col items-center justify-center space-y-4">
                     <button
+                        type="button"
                         onClick={() => handleAnalyze(false)}
                         disabled={isLoading}
                         data-track="premiumAnalysis.form.analyze"
-                        className="group relative mx-auto w-full overflow-hidden rounded-2xl border border-amber-300/80 bg-gradient-to-r from-amber-50 via-yellow-50 to-white shadow-[0_18px_44px_rgba(245,158,11,0.18)] transition-all hover:-translate-y-1 hover:shadow-[0_22px_52px_rgba(245,158,11,0.24)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 disabled:grayscale md:max-w-3xl"
+                        className="group relative mx-auto w-full overflow-hidden rounded-2xl border border-[#c9933a] bg-[#fff9eb] shadow-[0_8px_24px_rgba(201,147,58,0.14)] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(201,147,58,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 md:max-w-3xl motion-reduce:transform-none"
                     >
                         <div className="relative flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-5 md:px-8 md:py-5">
                             <div className="flex min-w-0 items-center gap-3.5 sm:gap-5">
-                                <div className="shrink-0 rounded-lg bg-gradient-to-br from-amber-100 to-yellow-200 p-2.5 text-[#7a4b00] shadow-[0_12px_28px_rgba(245,158,11,0.22)] md:rounded-xl md:p-3">
+                                <div className="shrink-0 rounded-lg bg-[#e8c87e] p-2.5 text-[#51370d] md:rounded-xl md:p-3">
                                     {isLoading ? <span className="animate-spin block"><RefreshCw className="w-5 h-5 md:w-7 md:h-7" /></span> : <Sparkles className="animate-pulse w-5 h-5 md:w-7 md:h-7" />}
                                 </div>
                                 <div className="min-w-0 text-left leading-tight">
@@ -862,24 +863,24 @@ export default function PremiumAnalysisPage() {
                                     <p className="mt-1 text-xs md:text-sm text-[#2a1f14] font-semibold leading-tight">ใช้ศาสตร์ชั้นสูง + พลังตัวเลข</p>
                                 </div>
                             </div>
-                            <div className="inline-flex w-full shrink-0 items-center justify-center gap-1.5 self-start rounded-xl border border-amber-300/50 bg-gradient-to-r from-amber-300 to-yellow-300 px-3 py-2 shadow-[0_10px_22px_rgba(245,158,11,0.20)] sm:w-auto sm:self-auto sm:px-4 md:gap-2 md:px-5 md:py-3">
-                                <span className="text-[11px] sm:text-sm md:text-base font-bold text-[#140f0a] leading-tight text-center">
+                            <div className="inline-flex w-full shrink-0 items-center justify-center gap-1.5 self-start rounded-xl bg-[#1a1a3e] px-3 py-2 text-[#f8f8fc] sm:w-auto sm:self-auto sm:px-4 md:gap-2 md:px-5 md:py-3">
+                                <span className="text-center text-[11px] font-bold leading-tight text-[#f8f8fc] sm:text-sm md:text-base">
                                     {userTier === 'vvip'
                                         ? `ใช้ ${PREMIUM_ANALYSIS_COST} เครดิต`
                                         : `สมัครสมาชิก VVIP ${VVIP_PRICE} บาท`}
                                 </span>
-                                <Coins className="w-3.5 h-3.5 md:w-5 md:h-5 text-[#140f0a] shrink-0" />
+                                <Coins className="w-3.5 h-3.5 md:w-5 md:h-5 text-[#e8c87e] shrink-0" />
                             </div>
                         </div>
                         {/* Shimmer Effect */}
-                        {!isLoading && <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none"></div>}
+                        {!isLoading && <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent z-20 pointer-events-none motion-reduce:hidden"></div>}
                     </button>
 
                     <p className="flex items-center gap-1.5 text-xs font-medium text-slate-500 opacity-90 transition-opacity hover:opacity-100 md:gap-2 md:text-sm">
-                        <Lock size={14} className="h-3.5 w-3.5 text-pink-400 md:h-4 md:w-4" />
+                        <Lock size={14} className="h-3.5 w-3.5 text-[#9b8ec4] md:h-4 md:w-4" />
                         ปลอดภัยสูงสุด • ข้อมูลของท่านจะถูกเก็บเป็นความลับ
                         {userTier === 'vvip' && userCredits !== null && (
-                            <span className="text-pink-500">• เครดิตคงเหลือ {userCredits}</span>
+                            <span className="text-[#a67828]">• เครดิตคงเหลือ {userCredits}</span>
                         )}
                     </p>
                 </div>
@@ -894,8 +895,8 @@ export default function PremiumAnalysisPage() {
                 <div className="relative z-10 mx-auto max-w-7xl px-0 sm:px-6 lg:px-8 space-y-6 md:space-y-8">
 
                     {/* Header Section */}
-                    <header className="space-y-3 pb-4 pt-7 text-center md:space-y-6 md:pb-8 md:pt-32">
-                        <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/5 border border-amber-500/20 text-amber-400/90 text-[11px] md:text-xs font-bold tracking-wide md:tracking-wider uppercase shadow-lg shadow-amber-900/10 backdrop-blur-sm mb-1 md:mb-4">
+                    <header className="space-y-4 pb-5 pt-7 text-center md:pb-7 md:pt-20">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-[#e8c87e] bg-[#fff9eb] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#a67828] md:px-4 md:text-xs">
                             <Crown size={14} />
                             <span>Professional Naming Analysis</span>
                         </div>
@@ -904,10 +905,10 @@ export default function PremiumAnalysisPage() {
                             <h1 className="text-[2rem] font-black leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-6xl">
                                 วิเคราะห์ชื่อมงคลขั้นสูง
                             </h1>
-                            <div className="h-1 w-24 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto rounded-full opacity-50"></div>
+                            <div className="mx-auto h-0.5 w-16 rounded-full bg-[#c9933a]"></div>
                         </div>
 
-                        <p className="text-slate-700 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-loose">
+                        <p className="mx-auto max-w-[68ch] text-base leading-8 text-[#5a5a82] md:text-lg md:leading-9">
                             เจาะลึกชะตาชีวิตด้วย <strong className="text-amber-700 font-bold">ทักษาปกรณ์</strong> และ <strong className="text-amber-700 font-bold">เลขศาสตร์ชั้นสูง</strong>
                             <br className="hidden md:block" />
                             พร้อมคำนวณ <strong className="text-amber-700 font-bold">ลัคนาราศี</strong> จาก <strong className="text-amber-700 font-bold">เวลาตกฟาก</strong> เพื่อค้นหาชื่อที่ส่งเสริมดวงชะตาของท่านอย่างแท้จริง
@@ -915,119 +916,117 @@ export default function PremiumAnalysisPage() {
                     </header>
 
                     {/* Main Content Area */}
-                    <div className="relative overflow-hidden rounded-[2rem] border border-pink-100/70 bg-gradient-to-br from-white via-pink-50/35 to-amber-50/45 px-4 py-6 text-[#1a1a3e] shadow-[0_30px_90px_rgba(201,147,58,0.12)] sm:px-6 md:rounded-[2.5rem] md:px-10 md:py-10">
-                        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-pink-200 to-transparent"></div>
-                        <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-pink-100/40 blur-3xl"></div>
-                        <div className="pointer-events-none absolute -bottom-28 left-1/3 h-72 w-72 rounded-full bg-amber-100/50 blur-3xl"></div>
+                    <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[#ddddf0] bg-[#fefeff] px-4 py-6 text-[#1a1a3e] shadow-[0_12px_36px_rgba(26,26,62,0.08)] sm:px-6 md:rounded-[2rem] md:px-10 md:py-10">
+                        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[#e8c87e]"></div>
                         {!hasAnalyzed ? formContent : resultsContent}
                     </div>
 
                     {/* ==================== SEO CONTENT SECTION (Below the Fold) ==================== */}
                     {!hasAnalyzed && (
-                        <section className="mt-8 space-y-16 rounded-[2rem] border border-slate-800 bg-slate-950/90 p-5 pb-20 pt-10 text-slate-200 shadow-2xl shadow-slate-950/15 sm:p-8 md:p-12">
+                        <section className="mt-10 space-y-10 pb-12 text-[#1a1a3e] md:space-y-14 md:pb-20">
 
                             {/* Section A: ความแตกต่างของการ "วิเคราะห์ขั้นสูง" */}
-                            <div className="max-w-3xl mx-auto">
-                                <h2 className="text-3xl md:text-5xl font-black text-center text-white mb-10 tracking-tight leading-tight">
-                                    ความแตกต่างของ <span className="text-amber-400">&quot;วิเคราะห์ชื่อมงคลขั้นสูง&quot;</span>
+                            <div className="mx-auto max-w-6xl rounded-[1.5rem] border border-[#ddddf0] bg-[#fefeff] px-5 py-10 shadow-sm sm:px-8 md:rounded-[2rem] md:px-12 md:py-14">
+                                <h2 className="mx-auto mb-6 max-w-3xl text-center text-2xl font-black leading-tight tracking-tight text-[#1a1a3e] md:text-4xl">
+                                    ความแตกต่างของ <span className="text-[#a67828]">&quot;วิเคราะห์ชื่อมงคลขั้นสูง&quot;</span>
                                 </h2>
-                                <div className="bg-amber-500/5 rounded-3xl p-8 md:p-12 mb-16 text-center">
-                                    <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-                                        การวิเคราะห์ชื่อทั่วไปดูเพียงแค่ <span className="text-slate-200">ผลรวมเลขศาสตร์</span> แต่ <strong className="text-amber-400 font-extrabold">การวิเคราะห์ชื่อมงคลขั้นสูง</strong> ของเรานำ <strong className="text-white font-extrabold">&quot;เวลาตกฟาก&quot;</strong> มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร
+                                <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
+                                    <p className="text-base leading-8 text-[#5a5a82] md:text-lg">
+                                        การวิเคราะห์ชื่อทั่วไปดูเพียงแค่ <span className="font-semibold text-[#1a1a3e]">ผลรวมเลขศาสตร์</span> แต่ <strong className="font-extrabold text-[#a67828]">การวิเคราะห์ชื่อมงคลขั้นสูง</strong> ของเรานำ <strong className="font-extrabold text-[#1a1a3e]">&quot;เวลาตกฟาก&quot;</strong> มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร
                                     </p>
                                 </div>
                                 
-                                <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto">
-                                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5">
-                                            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center mb-3">
-                                                <Clock className="w-5 h-5 text-amber-400" />
+                                <div className="mx-auto grid max-w-5xl divide-y divide-[#ddddf0] border-y border-[#ddddf0] md:grid-cols-3 md:divide-x md:divide-y-0">
+                                        <div className="p-5 md:px-7 md:py-6">
+                                            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#eeebf8]">
+                                                <Clock className="h-5 w-5 text-[#6f6299]" />
                                             </div>
-                                            <h3 className="font-bold text-white mb-2">เวลาตกฟาก</h3>
-                                            <p className="text-sm text-slate-300">คำนวณลัคนาราศีจริง ไม่ใช่แค่ราศีตามวันเกิด</p>
+                                            <h3 className="mb-2 text-lg font-bold text-[#1a1a3e]">เวลาตกฟาก</h3>
+                                            <p className="text-sm leading-7 text-[#5a5a82]">คำนวณลัคนาราศีจริง ไม่ใช่แค่ราศีตามวันเกิด</p>
                                         </div>
-                                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5">
-                                            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center mb-3">
-                                                <Target className="w-5 h-5 text-amber-400" />
+                                        <div className="p-5 md:px-7 md:py-6">
+                                            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#eeebf8]">
+                                                <Target className="h-5 w-5 text-[#6f6299]" />
                                             </div>
-                                            <h3 className="font-bold text-white mb-2">เจาะลึกเฉพาะด้าน</h3>
-                                            <p className="text-sm text-slate-300">เลือก Focus ได้ว่าต้องการเสริมดวงด้านไหน</p>
+                                            <h3 className="mb-2 text-lg font-bold text-[#1a1a3e]">เจาะลึกเฉพาะด้าน</h3>
+                                            <p className="text-sm leading-7 text-[#5a5a82]">เลือก Focus ได้ว่าต้องการเสริมดวงด้านไหน</p>
                                         </div>
-                                        <div className="bg-white/5 rounded-2xl p-5 border border-white/5">
-                                            <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center mb-3">
-                                                <TrendingUp className="w-5 h-5 text-amber-400" />
+                                        <div className="p-5 md:px-7 md:py-6">
+                                            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#eeebf8]">
+                                                <TrendingUp className="h-5 w-5 text-[#6f6299]" />
                                             </div>
-                                            <h3 className="font-bold text-white mb-2">Personalization</h3>
-                                            <p className="text-sm text-slate-300">ผลลัพธ์เฉพาะบุคคล ไม่ใช่สูตรสำเร็จรูป</p>
+                                            <h3 className="mb-2 text-lg font-bold text-[#1a1a3e]">Personalization</h3>
+                                            <p className="text-sm leading-7 text-[#5a5a82]">ผลลัพธ์เฉพาะบุคคล ไม่ใช่สูตรสำเร็จรูป</p>
                                         </div>
                                     </div>
                                 </div>
 
                             {/* Section B: เจาะลึก 5 ด้านที่เลือกเน้นได้ */}
-                            <div className="max-w-5xl mx-auto pt-16">
-                                <h2 className="text-3xl md:text-4xl font-black text-center text-white mb-6 tracking-tight">
-                                    เจาะลึก <span className="text-amber-400">5 ด้าน</span> ที่คุณเลือกเน้นได้
+                            <div className="mx-auto max-w-6xl rounded-[1.5rem] border border-[#dcd7ed] bg-[#eeebf8] px-5 py-10 sm:px-8 md:rounded-[2rem] md:px-12 md:py-14">
+                                <h2 className="mb-4 text-center text-2xl font-black tracking-tight text-[#1a1a3e] md:text-4xl">
+                                    เจาะลึก <span className="text-[#a67828]">5 ด้าน</span> ที่คุณเลือกเน้นได้
                                 </h2>
-                                <p className="text-center text-lg text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+                                <p className="mx-auto mb-10 max-w-2xl text-center text-base leading-8 text-[#5a5a82] md:text-lg">
                                     เลือก Focus ที่ต้องการ ระบบจะคำนวณหาชื่อที่เสริมดวงด้านนั้นโดยเฉพาะ
                                 </p>
 
-                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                    <div className="bg-gradient-to-br from-yellow-500/10 to-amber-500/5 border border-yellow-500/20 rounded-2xl p-5 hover:border-yellow-500/40 transition-colors">
+                                <div className="grid gap-x-10 gap-y-0 md:grid-cols-2">
+                                    <div className="border-b border-[#d5cfe7] py-6">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center">
-                                                <Coins className="w-5 h-5 text-yellow-400" />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fefeff] text-[#a67828]">
+                                                <Coins className="h-5 w-5" />
                                             </div>
-                                            <h3 className="font-bold text-white">💰 การเงิน</h3>
+                                            <h3 className="text-lg font-bold text-[#1a1a3e]">การเงิน</h3>
                                         </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                        <p className="text-sm leading-7 text-[#5a5a82]">
                                             วิเคราะห์หาเลขที่ดึงดูดทรัพย์และสภาพคล่อง ตัดตัวเลขที่ทำให้เก็บเงินไม่อยู่
                                         </p>
                                     </div>
 
-                                    <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/5 border border-blue-500/20 rounded-2xl p-5 hover:border-blue-500/40 transition-colors">
+                                    <div className="border-b border-[#d5cfe7] py-6">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                                                <Briefcase className="w-5 h-5 text-blue-400" />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fefeff] text-[#6f6299]">
+                                                <Briefcase className="h-5 w-5" />
                                             </div>
-                                            <h3 className="font-bold text-white">💼 การงาน</h3>
+                                            <h3 className="text-lg font-bold text-[#1a1a3e]">การงาน</h3>
                                         </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                        <p className="text-sm leading-7 text-[#5a5a82]">
                                             เน้นเลขกลุ่มอำนาจบารมี (วรรคเดช) เพื่อการเลื่อนขั้นและเป็นเจ้าคนนายคน
                                         </p>
                                     </div>
 
-                                    <div className="bg-gradient-to-br from-pink-500/10 to-rose-500/5 border border-pink-500/20 rounded-2xl p-5 hover:border-pink-500/40 transition-colors">
+                                    <div className="border-b border-[#d5cfe7] py-6">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
-                                                <Heart className="w-5 h-5 text-pink-400" />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fefeff] text-[#6f6299]">
+                                                <Heart className="h-5 w-5" />
                                             </div>
-                                            <h3 className="font-bold text-white">❤️ ความรัก</h3>
+                                            <h3 className="text-lg font-bold text-[#1a1a3e]">ความรัก</h3>
                                         </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                        <p className="text-sm leading-7 text-[#5a5a82]">
                                             ตรวจสอบเลขเสน่ห์และคู่ครอง แก้ดวงอาภัพรักจากชื่อเดิม
                                         </p>
                                     </div>
 
-                                    <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/20 rounded-2xl p-5 hover:border-green-500/40 transition-colors">
+                                    <div className="border-b border-[#d5cfe7] py-6">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center">
-                                                <Activity className="w-5 h-5 text-green-400" />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fefeff] text-[#6f6299]">
+                                                <Activity className="h-5 w-5" />
                                             </div>
-                                            <h3 className="font-bold text-white">🏥 สุขภาพ</h3>
+                                            <h3 className="text-lg font-bold text-[#1a1a3e]">สุขภาพ</h3>
                                         </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                        <p className="text-sm leading-7 text-[#5a5a82]">
                                             หาเลขที่ส่งเสริมความแข็งแรง หลีกเลี่ยงเลขที่ทำให้อ่อนไหวด้านสุขภาพ
                                         </p>
                                     </div>
 
-                                    <div className="bg-gradient-to-br from-purple-500/10 to-violet-500/5 border border-purple-500/20 rounded-2xl p-5 hover:border-purple-500/40 transition-colors">
+                                    <div className="py-6 md:col-span-2 md:max-w-[calc(50%-1.25rem)]">
                                         <div className="flex items-center gap-3 mb-3">
-                                            <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                                                <HelpingHand className="w-5 h-5 text-purple-400" />
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#fefeff] text-[#6f6299]">
+                                                <HelpingHand className="h-5 w-5" />
                                             </div>
-                                            <h3 className="font-bold text-white">🤝 อุปถัมภ์</h3>
+                                            <h3 className="text-lg font-bold text-[#1a1a3e]">อุปถัมภ์</h3>
                                         </div>
-                                        <p className="text-sm text-slate-300 leading-relaxed">
+                                        <p className="text-sm leading-7 text-[#5a5a82]">
                                             เสริมดวงผู้ใหญ่เมตตา มีคนคอยช่วยเหลือ ได้รับการสนับสนุน
                                         </p>
                                     </div>
@@ -1035,48 +1034,48 @@ export default function PremiumAnalysisPage() {
                             </div>
 
                             {/* Section C: ตารางเปรียบเทียบ Free vs Premium */}
-                            <div className="max-w-4xl mx-auto">
-                                <h2 className="text-3xl font-bold text-center text-white mb-8">
-                                    เปรียบเทียบ <span className="text-slate-300">วิเคราะห์เบื้องต้น</span> vs <span className="text-amber-400">วิเคราะห์ชื่อมงคลขั้นสูง</span>
+                            <div className="mx-auto max-w-6xl rounded-[1.5rem] border border-[#ddddf0] bg-[#fefeff] px-4 py-10 shadow-sm sm:px-8 md:rounded-[2rem] md:px-12 md:py-14">
+                                <h2 className="mb-8 text-center text-2xl font-bold text-[#1a1a3e] md:text-3xl">
+                                    เปรียบเทียบ <span className="text-[#5a5a82]">วิเคราะห์เบื้องต้น</span> กับ <span className="text-[#a67828]">วิเคราะห์ชื่อมงคลขั้นสูง</span>
                                 </h2>
 
-                                <div className="overflow-x-auto">
-                                    <table className="w-full border-collapse">
-                                        <thead>
-                                            <tr className="border-b border-white/10">
-                                                <th className="text-left py-4 px-4 text-slate-300 font-medium">หัวข้อการวิเคราะห์</th>
-                                                <th className="text-center py-4 px-4 text-slate-300 font-medium">วิเคราะห์เบื้องต้น</th>
-                                                <th className="text-center py-4 px-4 text-amber-400 font-medium">วิเคราะห์ขั้นสูง</th>
+                                <div className="overflow-hidden rounded-2xl border border-[#ddddf0]">
+                                    <table className="w-full border-collapse text-sm md:text-base">
+                                        <thead className="hidden bg-[#1a1a3e] md:table-header-group">
+                                            <tr>
+                                                <th className="px-5 py-4 text-left font-semibold text-[#f8f8fc]">หัวข้อการวิเคราะห์</th>
+                                                <th className="px-5 py-4 text-center font-semibold text-[#d7d4e6]">วิเคราะห์เบื้องต้น</th>
+                                                <th className="px-5 py-4 text-center font-semibold text-[#e8c87e]">วิเคราะห์ขั้นสูง</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">ดูผลรวมเลขศาสตร์</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">ดูผลรวมเลขศาสตร์</td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                             </tr>
-                                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">ดูอักษรกาลกิณี</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] bg-[#fafafd] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">ดูอักษรกาลกิณี</td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                             </tr>
-                                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">วิเคราะห์ร่วมกับเวลาเกิด (ลัคนาราศี)</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">วิเคราะห์ร่วมกับเวลาเกิด (ลัคนาราศี)</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
-                                                <td className="text-center py-4 px-4 text-amber-400 font-semibold">✓ ใช้เวลาเกิดประกอบ</td>
+                                                <td className="text-center text-sm font-semibold text-[#a67828] md:px-5 md:py-4">ใช้เวลาเกิดประกอบ</td>
                                             </tr>
-                                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">เจาะลึกเฉพาะด้าน (การเงิน/งาน/รัก)</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] bg-[#fafafd] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">เจาะลึกเฉพาะด้าน (การเงิน/งาน/รัก)</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
-                                                <td className="text-center py-4 px-4 text-amber-400 font-semibold">✅ Customizable</td>
+                                                <td className="text-center text-sm font-semibold text-[#a67828] md:px-5 md:py-4">เลือกได้ตามเป้าหมาย</td>
                                             </tr>
-                                            <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">แนะนำชื่อมงคลใหม่พร้อมความหมาย</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">แนะนำชื่อมงคลใหม่พร้อมความหมาย</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                             </tr>
-                                            <tr className="hover:bg-white/5 transition-colors">
-                                                <td className="py-4 px-4 text-slate-300">คะแนนและเกรดรายชื่อ</td>
+                                            <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 bg-[#fafafd] px-4 py-4 md:table-row md:px-0 md:py-0">
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">คะแนนและเกรดรายชื่อ</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                             </tr>
@@ -1086,50 +1085,50 @@ export default function PremiumAnalysisPage() {
                             </div>
 
                             {/* Section D: Testimonial */}
-                            <div className="max-w-4xl mx-auto">
-                                <h2 className="text-3xl font-bold text-center text-white mb-8 flex items-center justify-center gap-3">
-                                    <MessageSquareQuote className="w-8 h-8 text-amber-400" />
+                            <div className="mx-auto max-w-6xl px-1 py-6 sm:px-4 md:py-10">
+                                <h2 className="mb-8 flex items-center justify-center gap-3 text-center text-2xl font-bold text-[#1a1a3e] md:text-3xl">
+                                    <MessageSquareQuote className="h-7 w-7 text-[#a67828]" />
                                     รีวิวจากผู้ใช้จริง
                                 </h2>
 
                                 <div className="grid md:grid-cols-2 gap-6">
-                                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                                    <figure className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                                         <div className="flex items-center gap-1 mb-3">
-                                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-amber-400 text-amber-400" />)}
+                                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-[#c9933a] text-[#c9933a]" />)}
                                         </div>
-                                        <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                                        <blockquote className="mb-5 text-base leading-8 text-[#5a5a82]">
                                             &quot;วิเคราะห์ละเอียดมาก เห็นภาพชัดว่าชื่อเดิมมีปัญหาตรงไหน ระบบแนะนำชื่อใหม่มาพร้อมคำอธิบายครบถ้วน ตัดสินใจเปลี่ยนชื่อได้ง่ายขึ้นเยอะเลยค่ะ&quot;
-                                        </p>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white font-bold text-sm">ส</div>
+                                        </blockquote>
+                                        <figcaption className="flex items-center gap-3">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eeebf8] text-sm font-bold text-[#1a1a3e]">ส</div>
                                             <div>
-                                                <div className="text-white font-medium text-sm">คุณสมใจ</div>
-                                                <div className="text-slate-500 text-xs">ใช้บริการ: วิเคราะห์ขั้นสูง</div>
+                                                <div className="text-sm font-semibold text-[#1a1a3e]">คุณสมใจ</div>
+                                                <div className="text-xs text-[#8e8eaa]">ใช้บริการ: วิเคราะห์ขั้นสูง</div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </figcaption>
+                                    </figure>
 
-                                    <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                                    <figure className="rounded-2xl border border-[#ddddf0] bg-[#fefeff] p-6 shadow-sm">
                                         <div className="flex items-center gap-1 mb-3">
-                                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-amber-400 text-amber-400" />)}
+                                            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-[#c9933a] text-[#c9933a]" />)}
                                         </div>
-                                        <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                                        <blockquote className="mb-5 text-base leading-8 text-[#5a5a82]">
                                             &quot;ชอบที่เลือก Focus ได้ ผมเน้นเรื่องการงานเพราะอยากเลื่อนตำแหน่ง ระบบเลือกชื่อที่มีอักษรวรรคเดชนำมาให้หมดเลย สะดวกมากครับ&quot;
-                                        </p>
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">ก</div>
+                                        </blockquote>
+                                        <figcaption className="flex items-center gap-3">
+                                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#eeebf8] text-sm font-bold text-[#1a1a3e]">ก</div>
                                             <div>
-                                                <div className="text-white font-medium text-sm">คุณกิตติ</div>
-                                                <div className="text-slate-500 text-xs">ใช้บริการ: วิเคราะห์ขั้นสูง</div>
+                                                <div className="text-sm font-semibold text-[#1a1a3e]">คุณกิตติ</div>
+                                                <div className="text-xs text-[#8e8eaa]">ใช้บริการ: วิเคราะห์ขั้นสูง</div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </figcaption>
+                                    </figure>
                                 </div>
 
                                 <div className="mt-8 text-center">
                                     <Link
                                         href="/reviews"
-                                        className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors text-sm"
+                                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#a67828] transition-colors hover:text-[#7d571f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2"
                                     >
                                         ดูรีวิวทั้งหมด
                                         <ChevronRight size={16} />
@@ -1138,52 +1137,53 @@ export default function PremiumAnalysisPage() {
                             </div>
 
                             {/* FAQ Section */}
-                            <div className="max-w-3xl mx-auto">
-                                <h2 className="text-3xl font-bold text-center text-white mb-8">
+                            <div className="mx-auto max-w-4xl rounded-[1.5rem] border border-[#ddddf0] bg-[#f8f8fc] px-5 py-10 sm:px-8 md:rounded-[2rem] md:px-12 md:py-14">
+                                <h2 className="mb-8 text-center text-2xl font-bold text-[#1a1a3e] md:text-3xl">
                                     คำถามที่พบบ่อย
                                 </h2>
 
-                                <div className="space-y-4">
-                                    <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-                                        <h3 className="text-lg font-bold text-amber-400 mb-2">
+                                <div className="space-y-3">
+                                    <details className="group rounded-xl border border-[#ddddf0] bg-[#fefeff] px-5 py-4 open:shadow-sm">
+                                        <summary className="relative cursor-pointer list-none pr-8 text-base font-bold leading-7 text-[#1a1a3e] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-xl after:text-[#a67828] after:content-['+'] group-open:after:content-['−'] marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 md:text-lg">
                                             Q: การวิเคราะห์ชื่อมงคลขั้นสูงต่างจากการวิเคราะห์ทั่วไปอย่างไร?
-                                        </h3>
-                                        <p className="text-slate-300 leading-relaxed">
-                                            A: การ<strong className="text-white">วิเคราะห์ชื่อมงคลขั้นสูง</strong>นำ &quot;เวลาตกฟาก&quot; มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร นอกจากนี้ยังสามารถเลือกเน้นเจาะลึกเฉพาะด้านที่ต้องการได้ เช่น <Link href="/name-analysis" className="text-amber-400 hover:text-amber-300 underline">การเงิน การงาน หรือความรัก</Link>
+                                        </summary>
+                                        <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
+                                            A: การ<strong className="text-[#1a1a3e]">วิเคราะห์ชื่อมงคลขั้นสูง</strong>นำ &quot;เวลาตกฟาก&quot; มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร นอกจากนี้ยังสามารถเลือกเน้นเจาะลึกเฉพาะด้านที่ต้องการได้ เช่น <Link href="/name-analysis" className="font-semibold text-[#a67828] underline underline-offset-4">การเงิน การงาน หรือความรัก</Link>
                                         </p>
-                                    </div>
+                                    </details>
 
-                                    <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-                                        <h3 className="text-lg font-bold text-amber-400 mb-2">
+                                    <details className="group rounded-xl border border-[#ddddf0] bg-[#fefeff] px-5 py-4 open:shadow-sm">
+                                        <summary className="relative cursor-pointer list-none pr-8 text-base font-bold leading-7 text-[#1a1a3e] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-xl after:text-[#a67828] after:content-['+'] group-open:after:content-['−'] marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 md:text-lg">
                                             Q: ทำไมต้องระบุเวลาเกิด?
-                                        </h3>
-                                        <p className="text-slate-300 leading-relaxed">
+                                        </summary>
+                                        <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
                                             A: การระบุเวลาเกิดจะช่วยให้คำนวณลัคนาราศีได้แม่นยำขึ้น ซึ่งมีผลต่อการวิเคราะห์ว่าอักษรและตัวเลขในชื่อจะส่งผลอย่างไรกับดวงชะตาเฉพาะบุคคลของคุณ หากไม่ทราบเวลาเกิดสามารถเลือก &quot;ไม่ทราบเวลา&quot; ได้
                                         </p>
-                                    </div>
+                                    </details>
 
-                                    <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-                                        <h3 className="text-lg font-bold text-amber-400 mb-2">
+                                    <details className="group rounded-xl border border-[#ddddf0] bg-[#fefeff] px-5 py-4 open:shadow-sm">
+                                        <summary className="relative cursor-pointer list-none pr-8 text-base font-bold leading-7 text-[#1a1a3e] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:text-xl after:text-[#a67828] after:content-['+'] group-open:after:content-['−'] marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 md:text-lg">
                                             Q: วิเคราะห์ชื่อมงคลขั้นสูงใช้กี่เครดิต?
-                                        </h3>
-                                        <p className="text-slate-300 leading-relaxed">
-                                            A: การวิเคราะห์ชื่อมงคลขั้นสูงสำหรับสมาชิก VVIP และเมื่อกดวิเคราะห์ ระบบจะหัก <strong className="text-white">30 เครดิตต่อครั้ง</strong> โดยจะแสดงรายชื่อมงคล 20 ชื่อ พร้อมคำอธิบายละเอียดและคะแนน หากยังไม่เป็นสมาชิก สามารถไปที่หน้า <Link href="/topup?plan=vvip" className="text-amber-400 hover:text-amber-300 underline">สมัครสมาชิก VVIP</Link> ได้ทันที
+                                        </summary>
+                                        <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
+                                            A: การวิเคราะห์ชื่อมงคลขั้นสูงสำหรับสมาชิก VVIP และเมื่อกดวิเคราะห์ ระบบจะหัก <strong className="text-[#1a1a3e]">30 เครดิตต่อครั้ง</strong> โดยจะแสดงรายชื่อมงคล 20 ชื่อ พร้อมคำอธิบายละเอียดและคะแนน หากยังไม่เป็นสมาชิก สามารถไปที่หน้า <Link href="/topup?plan=vvip" className="font-semibold text-[#a67828] underline underline-offset-4">สมัครสมาชิก VVIP</Link> ได้ทันที
                                         </p>
-                                    </div>
+                                    </details>
                                 </div>
                             </div>
 
                             {/* CTA */}
-                            <div className="max-w-2xl mx-auto text-center bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 rounded-3xl p-8">
-                                <h3 className="text-2xl font-bold text-white mb-4">
+                            <div className="mx-auto max-w-3xl rounded-[1.5rem] border border-[#e8c87e] bg-[#fff9eb] p-7 text-center shadow-[0_8px_24px_rgba(201,147,58,0.10)] md:p-10">
+                                <h3 className="mb-3 text-2xl font-bold text-[#1a1a3e]">
                                     พร้อมค้นหาชื่อมงคลที่ใช่สำหรับคุณ?
                                 </h3>
-                                <p className="text-slate-300 mb-6">
+                                <p className="mx-auto mb-6 max-w-2xl text-base leading-8 text-[#5a5a82]">
                                     เริ่มต้นวิเคราะห์ชื่อมงคลขั้นสูงด้วยศาสตร์ทักษาปกรณ์และเลขศาสตร์ชั้นสูง
                                 </p>
                                 <button
+                                    type="button"
                                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-slate-900 font-bold rounded-xl hover:from-amber-400 hover:to-orange-400 transition-colors shadow-lg shadow-amber-500/20"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-[#c9933a] px-8 py-4 font-bold text-[#17130c] shadow-[0_6px_18px_rgba(201,147,58,0.18)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-[#d4a54e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a67828] focus-visible:ring-offset-2 motion-reduce:transform-none"
                                 >
                                     <Sparkles size={20} />
                                     เริ่มวิเคราะห์เลย

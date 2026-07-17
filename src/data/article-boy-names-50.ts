@@ -18,7 +18,7 @@ export const articleBoyNames50: Article = {
     ],
     metaTitle: 'ชื่อผู้ชายมงคล 2569: 50 ชื่อลูกชายเกรด A+ คัดสรร 4 ศาสตร์ | NameMongkol',
     metaDescription: 'รวม 50 ชื่อผู้ชายมงคลเกรด A+ ปี 2569 ที่ผ่าน 4 ศาสตร์ครบ: เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์ พร้อมคำอ่าน ความหมาย และวิธีเลือกให้ตรงวันเกิด',
-    relatedSlugs: ['baby-naming-guide-2569', 'girl-names-2569-50-auspicious', 'thaksa-pakorn-naming-guide', 'auspicious-boy-names-2569', '100-auspicious-boy-names-2569'],
+    relatedSlugs: ['baby-naming-guide-2569', 'girl-names-2569-50-auspicious', 'thaksa-pakorn-naming-guide', 'naming-tips-2026-year-of-horse'],
     dateModified: '2026-04-28',
     toc: [
         { title: 'ชื่อลูกชายเกรด A+ คืออะไร?', id: 'what-is-grade-a', level: 2 },
@@ -68,9 +68,9 @@ export const articleBoyNames50: Article = {
         </p>
         <p class="text-slate-300 leading-relaxed mb-6">
             หากต้องการดูไอเดียแบบกว้างก่อน สามารถเริ่มจาก
-            <a href="/articles/auspicious-boy-names-2569" class="text-amber-400 hover:text-amber-300 underline">400 ไอเดียชื่อมงคลผู้ชาย</a>
+            <a href="/articles/naming-tips-2026-year-of-horse" class="text-amber-400 hover:text-amber-300 underline">รวมรายชื่อมงคลลูกชายปีมะเมีย 2569</a>
             หรือถ้าต้องการลิสต์แบบปริมาณมาก สามารถดู
-            <a href="/articles/100-auspicious-boy-names-2569" class="text-amber-400 hover:text-amber-300 underline">100 ชื่อลูกชายมงคล</a>
+            <a href="/articles/naming-tips-2026-year-of-horse" class="text-amber-400 hover:text-amber-300 underline">คู่มือตั้งชื่อลูกชายปีมะเมีย</a>
             แล้วค่อยกลับมาคัดชื่อที่ใช่ด้วยเกณฑ์ A+ หน้านี้
         </p>
     </section>

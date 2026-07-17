@@ -85,6 +85,7 @@ const principles = [
 ];
 
 const trustLinks = [
+    { label: 'วิธีคำนวณและข้อจำกัด', href: '/methodology', icon: ShieldCheck },
     { label: 'อ่านบทความความรู้', href: '/articles', icon: BookOpen },
     { label: 'ดูรีวิวจากผู้ใช้', href: '/reviews', icon: MessageCircle },
     { label: 'นโยบายความเป็นส่วนตัว', href: '/privacy', icon: Lock },
@@ -132,7 +133,7 @@ const storyTimeline = [
 
 export default function AboutSection() {
     return (
-        <section className="relative w-full min-h-screen overflow-hidden bg-[#f8f8fc] pt-24 pb-20 font-sans text-[#5a5a82] md:pt-32">
+        <section className="site-grid-surface relative w-full min-h-screen overflow-hidden pt-24 pb-20 font-sans text-[#5a5a82] md:pt-32">
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(201,147,58,0.08),transparent_28%),linear-gradient(180deg,#ffffff_0%,#f8f8fc_38%,#f3f3f9_100%)]" />
             <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:linear-gradient(#1a1a3e_1px,transparent_1px),linear-gradient(90deg,#1a1a3e_1px,transparent_1px)] [background-size:44px_44px]" />
 
@@ -200,7 +201,7 @@ export default function AboutSection() {
                         <figure className="relative overflow-hidden rounded-[1.75rem] border border-[#e8c87e] bg-white shadow-[0_24px_70px_rgba(15,23,42,0.14)]">
                             <Image
                                 src={founderImage}
-                                alt="อาจารย์ณัฐ NameMongkol ผู้เชี่ยวชาญด้านศาสตร์ตัวอักษรและเลขศาสตร์ประยุกต์"
+                                alt="อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล"
                                 width={1124}
                                 height={1354}
                                 priority

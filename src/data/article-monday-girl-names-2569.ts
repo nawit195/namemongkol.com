@@ -36,7 +36,7 @@ export const articleMondayGirlNames2569: Article = {
     faqItems: [
         {
             question: 'ทำไมคนเกิดวันจันทร์ถึงต้องระวังเรื่องสระในชื่อ?',
-            answer: 'ตามหลักทักษาปกรณ์ สำหรับคนเกิดวันจันทร์ กลุ่มอักษร "อ" รวมถึงสระทั้งหมด จัดอยู่ในตำแหน่งกาลกิณี หากมีสระปรากฏในชื่อจะส่งผลลบต่อดวงชะตา ดังนั้นการเลือกชื่อที่เป็นตัวสะกดล้วน (ไม่มีสระ) จึงเป็นทางเลือกที่ดีที่สุด',
+            answer: 'ตามหลักทักษาปกรณ์ กลุ่มอักษร "อ" รวมถึงรูปสระถูกจัดไว้ในตำแหน่งกาลกิณีของคนเกิดวันจันทร์ ผู้ที่ยึดแนวทางนี้จึงมักหลีกเลี่ยงรูปสระในชื่อ โดยยังควรพิจารณาความหมาย เสียงอ่าน และนามสกุลร่วมกัน',
         },
         {
             question: 'ชื่อไม่มีสระเลยอ่านได้จริงหรือ?',
@@ -87,7 +87,7 @@ export const articleMondayGirlNames2569: Article = {
     <div class="bg-red-900/10 border border-red-500/20 rounded-xl p-6 mb-8">
       <h4 class="text-red-400 font-bold mb-3">⚠️ สำคัญ: กฎทองของคนเกิดวันจันทร์</h4>
       <ul class="text-slate-300 text-sm space-y-2">
-        <li>❌ <strong class="text-red-300">กาลกิณี:</strong> อ + สระทั้งหมด → ห้ามมีในชื่อเด็ดขาด</li>
+        <li>⚠️ <strong class="text-red-300">กาลกิณีตามความเชื่อ:</strong> อ + รูปสระ → ผู้ยึดหลักทักษาปกรณ์มักหลีกเลี่ยง</li>
         <li>✅ <strong class="text-emerald-300">วรรคศรี (มงคลสูงสุด):</strong> ด ต ถ ท ธ น</li>
         <li>✅ <strong class="text-purple-300">วรรคเดช (อำนาจ):</strong> จ ฉ ช ซ ฌ ญ</li>
         <li>✅ <strong class="text-amber-300">วรรคมูละ (ทรัพย์สิน):</strong> บ ป ผ ฝ พ ฟ ภ ม</li>
@@ -118,7 +118,7 @@ export const articleMondayGirlNames2569: Article = {
           <tr class="hover:bg-slate-800/50"><td class="px-4 py-3 font-bold text-cyan-300">วรรคบริวาร</td><td class="px-4 py-3">ก ข ค ฆ ง</td><td class="px-4 py-3">เสริมบริวาร ผู้ใหญ่อุปถัมภ์</td><td class="px-4 py-3 text-cyan-400">ใช้ได้</td></tr>
           <tr class="hover:bg-slate-800/50"><td class="px-4 py-3 font-bold text-orange-300">วรรคอุตสาหะ</td><td class="px-4 py-3">ย ร ล ว</td><td class="px-4 py-3">เสริมความขยัน การงาน</td><td class="px-4 py-3 text-orange-400">ใช้ได้</td></tr>
           <tr class="hover:bg-slate-800/50"><td class="px-4 py-3 font-bold text-indigo-300">วรรคมนตรี</td><td class="px-4 py-3">ศ ษ ส ห ฬ ฮ</td><td class="px-4 py-3">เสริมเมตตา ผู้อุปถัมภ์</td><td class="px-4 py-3 text-indigo-400">ใช้ได้</td></tr>
-          <tr class="bg-red-900/20"><td class="px-4 py-3 font-bold text-red-400">⚠️ กาลกิณี</td><td class="px-4 py-3 text-red-300">อ + สระทั้งหมด</td><td class="px-4 py-3 text-red-300">ห้ามมีในชื่อเด็ดขาด</td><td class="px-4 py-3 text-red-400">ห้ามใช้!</td></tr>
+          <tr class="bg-red-900/20"><td class="px-4 py-3 font-bold text-red-400">⚠️ กาลกิณี</td><td class="px-4 py-3 text-red-300">อ + รูปสระ</td><td class="px-4 py-3 text-red-300">ผู้ยึดหลักทักษาปกรณ์มักหลีกเลี่ยง</td><td class="px-4 py-3 text-red-400">ควรตรวจเพิ่ม</td></tr>
         </tbody>
       </table>
     </div>
@@ -633,7 +633,7 @@ export const articleMondayGirlNames2569: Article = {
     <div class="space-y-4">
       <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-700/50">
         <h4 class="font-bold text-white mb-2">ทำไมคนเกิดวันจันทร์ถึงต้องระวังเรื่องสระในชื่อ?</h4>
-        <p class="text-slate-300 text-sm leading-relaxed">ตามหลักทักษาปกรณ์ สำหรับคนเกิดวันจันทร์ กลุ่มอักษร "อ" รวมถึงสระทั้งหมดจัดอยู่ในตำแหน่งกาลกิณี หากมีสระปรากฏในชื่อจะส่งผลลบต่อดวงชะตา ดังนั้นการเลือกชื่อที่ไม่มีสระจึงเป็นทางเลือกที่ดีที่สุด</p>
+        <p class="text-slate-300 text-sm leading-relaxed">ตามหลักทักษาปกรณ์ กลุ่มอักษร "อ" รวมถึงรูปสระถูกจัดไว้ในตำแหน่งกาลกิณีของคนเกิดวันจันทร์ ผู้ที่ยึดแนวทางนี้จึงมักใช้ชื่อที่ไม่มีรูปสระเป็นตัวเลือกเบื้องต้น แล้วตรวจความหมาย เสียงอ่าน และนามสกุลร่วมกัน</p>
       </div>
       <div class="bg-slate-800/40 p-5 rounded-xl border border-slate-700/50">
         <h4 class="font-bold text-white mb-2">ชื่อไม่มีสระเลยอ่านได้จริงหรือ?</h4>

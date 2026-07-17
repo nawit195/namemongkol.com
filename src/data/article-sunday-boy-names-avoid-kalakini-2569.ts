@@ -165,8 +165,8 @@ export const articleSundayBoyNamesAvoidKalakini2569: Article = {
     metaTitle: '180 ชื่อมงคลผู้ชายวันอาทิตย์ 2569 หลีกเลี่ยงอักษรกาลกิณี | NameMongkol',
     metaDescription: 'รวม 180 ชื่อมงคลผู้ชายวันอาทิตย์ 2569 เลี่ยงอักษรกาลกิณี ศ ษ ส ห ฬ ฮ พร้อมคำอ่าน ความหมาย และวิธีเลือกชื่อให้เข้ากับนามสกุล',
     relatedSlugs: [
-        '700-auspicious-names-by-birthday-2569',
-        'auspicious-boy-names-2569',
+        'auspicious-names-by-birthday-2026',
+        'naming-tips-2026-year-of-horse',
         'boy-names-2569-50-auspicious',
         'forbidden-letters-kalakini',
         'thaksa-pakorn-naming-guide',
@@ -244,7 +244,7 @@ ${renderTable('ชื่อผู้ชายวันอาทิตย์ ก�
     </div>
     <div class="flex flex-wrap gap-3 pt-2">
       <a href="/name-check" class="inline-flex items-center rounded-lg bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">เช็กชื่อพร้อมนามสกุล</a>
-      <a href="/articles/700-auspicious-names-by-birthday-2569" class="inline-flex items-center rounded-lg border border-slate-600 px-5 py-3 font-bold text-white hover:bg-slate-800">ดูชื่อมงคลตามวันเกิด</a>
+      <a href="/articles/auspicious-names-by-birthday-2026" class="inline-flex items-center rounded-lg border border-slate-600 px-5 py-3 font-bold text-white hover:bg-slate-800">ดูคู่มือตั้งชื่อมงคลตามวันเกิด</a>
       <a href="/articles/forbidden-letters-kalakini" class="inline-flex items-center rounded-lg border border-slate-600 px-5 py-3 font-bold text-white hover:bg-slate-800">ดูอักษรกาลกิณี 7 วัน</a>
     </div>
   </section>
