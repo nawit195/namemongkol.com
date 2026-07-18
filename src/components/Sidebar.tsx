@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, MessageCircle, Hand, Wand2 } from 'lucide-react';
+import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, MessageCircle, Hand, Wand2, PawPrint } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
 import { LineOAButton } from './LineOAButton';
@@ -135,6 +135,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         { key: 'premium-analysis', nameKey: 'sidebar.premiumAnalysis', icon: Crown, iconImage: '/icon/ออกแบบชื่อมงคล.png', path: '/premium-analysis' },
         { key: 'name-analysis', nameKey: 'sidebar.bulkNameFilter', icon: ClipboardList, iconImage: '/icon/ระบบคัดกรองชื่อ.png', iconPadding: 'p-2.5', path: '/name-analysis' },
         { key: 'name-generator', nameKey: 'สร้างชื่อมงคล AI', icon: Wand2, iconImage: '/icon/สร้างชื่อมงคล_AI.png', iconPadding: 'p-2.5', path: '/name-generator' },
+        { key: 'pet-names', nameKey: 'sidebar.petNames', icon: PawPrint, iconImage: '/icon/pet-paw.png', iconPadding: 'p-2.5', iconScale: 1.18, path: '/pet-name' },
         { key: 'aura-analysis', nameKey: 'sidebar.auraAnalysis', icon: Sparkles, iconImage: '/icon/วิเคราะห์ออร่า.png', iconPadding: 'p-2.5', path: '/aura-analysis' },
         { key: 'phone', nameKey: 'sidebar.phoneAnalysis', icon: Smartphone, iconImage: '/icon/วิเคราะห์เบอร์โทร.png', iconPadding: 'p-2', path: '/phone-analysis' },
         { key: 'palm-analysis', nameKey: 'sidebar.palmAnalysis', icon: Hand, iconImage: '/icon/วิเคราะห์ลายมือ.png', iconPadding: 'p-2.5', path: '/palm-analysis' },
@@ -150,7 +151,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         menuItems.push(
             { key: 'admin-articles', nameKey: 'sidebar.adminArticles', icon: BookOpen, path: '/admin/articles' },
             { key: 'admin-users', nameKey: 'sidebar.adminUsers', icon: UserIcon, path: '/admin/users' },
-            { key: 'admin-settings', nameKey: 'sidebar.adminSettings', icon: Settings, path: '/admin/settings' }
+            { key: 'admin-settings', nameKey: 'sidebar.adminSettings', icon: Settings, path: '/admin/settings' },
+            { key: 'admin-pet-names', nameKey: 'sidebar.adminPetNames', icon: PawPrint, path: '/admin/pet-names' }
         );
     }
 
@@ -252,6 +254,12 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 icon: 'text-amber-400 group-hover:text-amber-300 drop-shadow-[0_0_4px_rgba(251,191,36,0.3)]',
                 activeWrapper: 'bg-amber-500/16 border-amber-400/30 shadow-amber-500/18',
                 activeIcon: 'text-amber-300 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]'
+            },
+            'pet-names': {
+                wrapper: 'bg-rose-500/10 border-rose-400/20 shadow-rose-500/8 group-hover:bg-rose-500/16 group-hover:border-rose-400/35',
+                icon: 'text-rose-500 group-hover:text-rose-400 drop-shadow-[0_0_4px_rgba(244,63,94,0.3)]',
+                activeWrapper: 'bg-rose-500/16 border-rose-400/30 shadow-rose-500/18',
+                activeIcon: 'text-rose-400 drop-shadow-[0_0_6px_rgba(244,63,94,0.45)]'
             }
         };
 
@@ -437,6 +445,13 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                                     {premiumBadge}
                                                 </span>
                                             </div>
+                                        ) : item.path === '/pet-name' ? (
+                                            <span className="flex items-center gap-2">
+                                                {defaultLabel}
+                                                <span className="rounded bg-rose-500 px-1.5 py-0.5 text-[9px] font-black text-white shadow-sm">
+                                                    {newBadge}
+                                                </span>
+                                            </span>
                                         ) : (
                                             defaultLabel
                                         )}

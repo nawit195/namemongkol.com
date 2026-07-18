@@ -144,7 +144,10 @@ export default function GirlsByBirthdayPage() {
                                                     </div>
                                                 ))}
                                             </div>
-                                            <div className="mt-4 text-right">
+                                            <div className="mt-4 flex flex-wrap justify-end gap-3 text-right">
+                                                <Link href={`/names/by-birthday/${dayKey}`} className="text-sm font-medium text-slate-600 hover:text-amber-700 hover:underline">
+                                                    ชื่อมงคลคนเกิด{config.name} ทุกเพศ
+                                                </Link>
                                                 <Link href={`/names/girls/by-birthday/${dayKey}`} className="text-sm font-medium text-amber-600 hover:underline flex items-center justify-end gap-1">
                                                     ค้นหาชื่อ{config.name}เพิ่มเติม <span aria-hidden="true">→</span>
                                                 </Link>

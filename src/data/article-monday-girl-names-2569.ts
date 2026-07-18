@@ -22,7 +22,7 @@ export const articleMondayGirlNames2569: Article = {
     metaTitle: 'ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง 2569 รวม 400 ชื่อทันสมัย | NameMongkol',
     metaDescription: 'รวม 400 ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง ปี 2569 ชื่อเด็กหญิงวันจันทร์ ถูกหลักทักษา ความหมายดี ทันสมัย ปลอดอักษรกาลกิณี คัดแยกหมวดเสน่ห์ ทรัพย์ ปัญญา และสไตล์โมเดิร์น',
     relatedSlugs: ['auspicious-names-by-birthday-2026', 'girl-names-2569-auspicious-modern', 'forbidden-letters-kalakini', 'naming-baby-year-of-horse-2569'],
-    dateModified: '2026-07-09',
+    dateModified: '2026-07-18',
     toc: [
         { title: 'ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง ต้องดูอะไรบ้าง?', id: 'intro', level: 2 },
         { title: 'สรุปหลักทักษา คนเกิดวันจันทร์ ฉบับเข้าใจง่าย', id: 'thaksa-summary', level: 2 },
@@ -71,6 +71,10 @@ export const articleMondayGirlNames2569: Article = {
 <div class="space-y-10">
 
   <div id="intro">
+    <p class="mb-5 text-sm leading-relaxed text-slate-400">
+      หากต้องการดูรายชื่อแบบไม่จำกัดเพศ พร้อมเปรียบเทียบรายชื่อชายและหญิงในหน้าเดียว ดูได้ที่
+      <a href="/names/by-birthday/monday" class="font-semibold text-amber-400 hover:underline">ชื่อมงคลคนเกิดวันจันทร์</a>
+    </p>
     <h2 class="sr-only">ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง 2569 ต้องดูอะไรบ้าง?</h2>
     <p class="text-xl text-slate-300 leading-relaxed mb-6">
       กำลังมองหา<strong class="text-amber-400">ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง</strong>อยู่ใช่ไหม? บทความนี้รวบรวม 400 ชื่อเด็กหญิงวันจันทร์ที่ถูกหลักทักษาปกรณ์ ความหมายดี ทันสมัย อัปเดตปี 2569 — สิ่งสำคัญที่สุดคือ <strong class="text-red-400">สระทั้งหมด</strong> และ <strong class="text-red-400">อักษร อ</strong> ล้วนตกอยู่ในตำแหน่ง<strong class="text-red-300">กาลกิณี</strong>ของคนเกิดวันจันทร์ ดังนั้นชื่อที่ดีที่สุดคือ <strong class="text-emerald-400">ชื่อที่ไม่มีสระปรากฏ</strong>เลย!

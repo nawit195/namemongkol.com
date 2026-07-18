@@ -5,6 +5,7 @@ import { notFound, redirect } from 'next/navigation';
 import { ArrowLeft, Calendar, User, Tag, RefreshCw, BookOpen, Award, ExternalLink, Star, CheckCircle2, Compass, Link2 } from 'lucide-react';
 import { Metadata } from 'next';
 import { ArticleImage } from '@/components/ArticleImage';
+import { ArticleViewTracker } from '@/components/ArticleViewStats';
 import dynamic from 'next/dynamic';
 import { unstable_cache } from 'next/cache';
 
@@ -979,6 +980,7 @@ export default async function ArticlePage({ params }: Props) {
                             <span>•</span>
                             <span>อ่าน ~{readingTimeMinutes} นาที</span>
                         </div>
+                        <ArticleViewTracker slug={article.slug} />
                     </div>
 
                     {/* Title */}

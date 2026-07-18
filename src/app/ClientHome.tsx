@@ -25,6 +25,7 @@ import { calculateAyatana } from '@/utils/ayatana';
 import { calculateGrade } from '@/utils/gradeResult';
 import { AnalysisResult } from '@/types';
 import { HeroBanner } from '@/components/HeroBanner';
+import { PetNamePromo } from '@/components/PetNamePromo';
 
 import { NumerologyDecodeTable } from '@/components/NumerologyDecodeTable';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -476,6 +477,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
 
             {!result && (
                 <>
+                    <PetNamePromo />
                     <HomeResultPreview />
                     <DeferredSection minHeightClassName="min-h-[640px]" intrinsicSize="640px">
                         <WallpaperShowcase stats={homeSectionsData.wallpapers} />

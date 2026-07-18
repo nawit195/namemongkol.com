@@ -14,7 +14,8 @@
     "audit:links": "node scripts/audit-public-links.mjs",
     "gsc:weekly": "node scripts/generate-gsc-weekly-report.js",
     "gsc:weekly:boy-names": "node scripts/generate-gsc-weekly-report.js --preset boy-names",
-    "gsc:weekly:name-seo": "node scripts/generate-gsc-weekly-report.js --preset name-seo"
+    "gsc:weekly:name-seo": "node scripts/generate-gsc-weekly-report.js --preset name-seo",
+    "gsc:weekly:pet-names": "node scripts/generate-gsc-weekly-report.js --preset pet-names"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

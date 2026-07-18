@@ -125,6 +125,13 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                     <p className="mt-5 max-w-[70ch] text-base leading-8 text-[#5a5a82] sm:text-lg">{description}</p>
                     <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                         <Link
+                            href={`/names/by-birthday/${day}`}
+                            data-track={`seo.birthday.${gender}.${day}.overview`}
+                            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition-colors hover:bg-slate-800"
+                        >
+                            ชื่อมงคลคนเกิด{dayLabel} ทั้งผู้ชายและผู้หญิง
+                        </Link>
+                        <Link
                             href={`/search${filterHash}`}
                             data-track={`seo.birthday.${gender}.${day}.search`}
                             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800 transition-colors hover:border-amber-400 hover:bg-amber-50"

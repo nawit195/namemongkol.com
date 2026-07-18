@@ -65,6 +65,17 @@ const pillarFaqs = [
     },
 ] as const;
 
+const birthdayDayLinks = [
+    ['sunday', 'วันอาทิตย์'],
+    ['monday', 'วันจันทร์'],
+    ['tuesday', 'วันอังคาร'],
+    ['wednesday', 'วันพุธกลางวัน'],
+    ['wednesday_night', 'วันพุธกลางคืน'],
+    ['thursday', 'วันพฤหัสบดี'],
+    ['friday', 'วันศุกร์'],
+    ['saturday', 'วันเสาร์'],
+] as const;
+
 export default async function SearchPage() {
     const [aggregate, initialNames] = await Promise.all([
         fetchPublicAggregateStats(),
@@ -304,6 +315,20 @@ export default async function SearchPage() {
                         >
                             คัดชื่อมงคลแบบ Premium
                         </Link>
+                    </div>
+                </div>
+            </section>
+
+            <section className="w-full border-y border-[#ddddf0] bg-white px-4 py-10 text-[#1a1a3e]" aria-labelledby="birthday-name-links">
+                <div className="mx-auto max-w-5xl">
+                    <h2 id="birthday-name-links" className="text-2xl font-bold">ค้นชื่อมงคลตามวันเกิด</h2>
+                    <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5a82]">เลือกวันเกิดเพื่อดูอักษรมงคล อักษรกาลกิณี และรายชื่อผู้ชายกับผู้หญิงจากฐานข้อมูลจริง</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                        {birthdayDayLinks.map(([day, label]) => (
+                            <Link key={day} href={`/names/by-birthday/${day}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-amber-400 hover:bg-amber-50">
+                                ชื่อมงคลคนเกิด{label}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

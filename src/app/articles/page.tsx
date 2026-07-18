@@ -6,6 +6,7 @@ import { supabase } from '@/utils/supabase';
 import { Calendar, ArrowLeft, Search, BookOpen } from 'lucide-react';
 import { articles as localArticles } from '@/data/articles';
 import { ArticleImage } from '@/components/ArticleImage';
+import { ArticleViewCounter, ArticleViewStatsProvider } from '@/components/ArticleViewStats';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { siteUrl } from '@/lib/seo';
 import { topicClusters } from './topicClusters';
@@ -587,6 +588,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                         </div>
                     </section>
 
+                    <ArticleViewStatsProvider slugs={visibleArticles.map((article) => article.slug)}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-[1400px] mx-auto">
                         {visibleArticles.map((article, index) => (
                             <Link
@@ -617,6 +619,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                         <div className="absolute top-2.5 right-2.5 max-w-[calc(100%-1rem)] truncate px-2.5 py-1 rounded-full text-[9px] sm:text-[10px] font-semibold z-10 tracking-wide bg-black/60 backdrop-blur-md border border-white/10 text-white shadow-lg">
                                             {article.category}
                                         </div>
+                                        <ArticleViewCounter slug={article.slug} className="absolute bottom-2.5 left-2.5 z-10" />
                                     </div>
 
                                     {/* Card body */}
@@ -652,17 +655,18 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                         <meta itemProp="author" content={article.author || 'NameMongkol'} />
 
                                         {/* Footer row */}
-                                        <div className="flex mt-auto pt-3 items-center justify-between border-t border-slate-700/50">
+                                        <div className="flex mt-auto pt-3 items-center justify-between gap-3 border-t border-slate-700/50">
                                             <span className="text-xs font-semibold tracking-wide transition-colors duration-200 text-amber-400 group-hover:text-amber-300">
                                                 อ่านเพิ่มเติม →
                                             </span>
-                                            <span className="text-[10px] text-slate-500" itemProp="author">{article.author}</span>
+                                            <span className="text-[10px] text-slate-500 truncate" itemProp="author">{article.author}</span>
                                         </div>
                                     </div>
                                 </article>
                             </Link>
                         ))}
                     </div>
+                    </ArticleViewStatsProvider>
 
                     {visibleArticles.length === 0 && (
                         <div className="mx-auto max-w-xl rounded-2xl px-6 py-12 text-center border" style={{ background: '#ffffff', borderColor: '#ddddf0', color: '#8e8eaa' }}>

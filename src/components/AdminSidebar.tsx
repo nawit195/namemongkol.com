@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Users, FileText, Receipt, Menu, X, LogOut, ArrowLeft, CreditCard, Image, BookOpen, Smartphone, MessageCircle, BarChart3 } from 'lucide-react';
+import { LayoutDashboard, Users, FileText, Receipt, Menu, X, LogOut, ArrowLeft, CreditCard, Image, BookOpen, Smartphone, MessageCircle, BarChart3, PawPrint } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 
 export const AdminSidebar = () => {
@@ -21,6 +21,7 @@ export const AdminSidebar = () => {
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
         { name: 'จัดการรายชื่อ', icon: FileText, path: '/admin/names' },
+        { name: 'ชื่อสัตว์เลี้ยง', icon: PawPrint, path: '/admin/pet-names' },
         { name: 'จัดการผู้ใช้งาน', icon: Users, path: '/admin/users' },
         { name: 'จัดการแพ็กเกจ', icon: CreditCard, path: '/admin/pricing' },
         { name: 'จัดการวอลเปเปอร์', icon: Image, path: '/admin/wallpapers' },

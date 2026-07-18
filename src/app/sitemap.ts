@@ -80,6 +80,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { path: '/articles', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/name-generator', priority: 0.85, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
+        { path: '/pet-name', priority: 0.9, changeFreq: 'weekly' as const, lastModified: '2026-07-17' },
+        { path: '/pet-name/dog', priority: 0.85, changeFreq: 'weekly' as const, lastModified: '2026-07-18' },
+        { path: '/pet-name/cat', priority: 0.85, changeFreq: 'weekly' as const, lastModified: '2026-07-18' },
         { path: '/phone-analysis', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
         { path: '/premium-analysis', priority: 0.9, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
         { path: '/aura-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
@@ -148,6 +151,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))),
     ];
 
+    const namingOverviewUrls: MetadataRoute.Sitemap = wallpaperDays.map((day) => ({
+        url: `${baseUrl}/names/by-birthday/${day}`,
+        lastModified: new Date('2026-07-18'),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+    }));
+
     let articleUrls: MetadataRoute.Sitemap = [];
     try {
         if (supabase) {
@@ -189,5 +199,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const localArticleUrlsSet = new Set(localArticleUrls.map((article) => article.url));
     const dbOnlyArticles = articleUrls.filter((article) => !localArticleUrlsSet.has(article.url));
 
-    return [...staticUrls, ...meaningUrls, ...wallpaperCategoryUrls, ...namingDayUrls, ...localArticleUrls, ...dbOnlyArticles];
+    return [...staticUrls, ...meaningUrls, ...wallpaperCategoryUrls, ...namingOverviewUrls, ...namingDayUrls, ...localArticleUrls, ...dbOnlyArticles];
 }
