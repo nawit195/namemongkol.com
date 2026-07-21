@@ -1,6 +1,31 @@
 import { MetadataRoute } from 'next'
 import { siteUrl } from '@/lib/seo'
 
+export const PRIVATE_CRAWL_PATHS = [
+    '/admin',
+    '/profile',
+    '/history',
+    '/api',
+    '/slip-verification',
+    '/dev-pricing-demo',
+] as const;
+
+export const RETRIEVAL_CRAWLERS = [
+    'Bingbot',
+    'OAI-SearchBot',
+    'ChatGPT-User',
+    'PerplexityBot',
+    'Claude-SearchBot',
+    'Claude-User',
+] as const;
+
+export const TRAINING_CRAWLERS = [
+    'GPTBot',
+    'Google-Extended',
+    'ClaudeBot',
+    'Anthropic-AI',
+] as const;
+
 export default function robots(): MetadataRoute.Robots {
     const baseUrl = siteUrl;
 
@@ -8,43 +33,17 @@ export default function robots(): MetadataRoute.Robots {
         rules: [
             {
                 userAgent: '*',
-                allow: ['/', '/api/og/*'],
-                disallow: ['/admin/', '/profile/', '/history/', '/api/', '/slip-verification/'],
-            },
-            // Allow AI crawlers for GEO (Generative Engine Optimization)
-            {
-                userAgent: 'OAI-SearchBot',
-                allow: '/',
-                disallow: ['/admin/', '/profile/', '/api/'],
+                allow: ['/', '/api/og/'],
+                disallow: [...PRIVATE_CRAWL_PATHS],
             },
             {
-                userAgent: 'GPTBot',
-                allow: '/',
-                disallow: ['/admin/', '/profile/', '/api/'],
+                userAgent: [...RETRIEVAL_CRAWLERS],
+                allow: ['/', '/api/og/'],
+                disallow: [...PRIVATE_CRAWL_PATHS],
             },
             {
-                userAgent: 'ChatGPT-User',
-                allow: '/',
-            },
-            {
-                userAgent: 'Google-Extended',
-                allow: '/',
-            },
-            {
-                userAgent: 'Anthropic-AI',
-                allow: '/',
-            },
-            {
-                userAgent: 'ClaudeBot',
-                allow: '/',
-            },
-            {
-                userAgent: 'Bingbot',
-                allow: '/',
-            },
-            {
-                userAgent: 'PerplexityBot',
-                allow: '/',
+                userAgent: [...TRAINING_CRAWLERS],
+                disallow: '/',
             },
         ],
         sitemap: [

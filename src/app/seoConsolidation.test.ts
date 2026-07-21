@@ -16,27 +16,31 @@ const consolidatedSlugs = [
 describe('SEO consolidation and answer-ready content', () => {
     test('permanently redirects every approved duplicate to its canonical winner', () => {
         const config = readSource('next.config.ts');
+        const redirectRegistry = readSource('src/lib/articleRedirects.ts');
 
         for (const slug of consolidatedSlugs) {
-            expect(config).toContain(`source: '/articles/${slug}'`);
+            expect(redirectRegistry).toContain(`sourceSlug: '${slug}'`);
         }
+        expect(config).toContain('ARTICLE_REDIRECTS.map');
         expect(config).toContain("source: '/names/girls/by-birthday/monday'");
         expect(config).toContain("destination: '/articles/monday-girl-names-2569-no-sara'");
-        expect(config.match(/permanent: true/g)?.length).toBeGreaterThanOrEqual(6);
+        expect(config).toContain('permanent: true');
     });
 
     test('removes redirected articles and the Monday duplicate from discovery surfaces', () => {
         const sitemap = readSource('src/app/sitemap.ts');
         const articleIndex = readSource('src/app/articles/page.tsx');
         const articleRoute = readSource('src/app/articles/[slug]/page.tsx');
+        const redirectRegistry = readSource('src/lib/articleRedirects.ts');
 
         for (const slug of consolidatedSlugs) {
-            expect(sitemap).toContain(`'${slug}'`);
-            expect(articleIndex).toContain(`'${slug}'`);
-            expect(articleRoute).toContain(`'${slug}'`);
+            expect(redirectRegistry).toContain(`sourceSlug: '${slug}'`);
         }
+        expect(sitemap).toContain('isRedirectedArticleSlug');
+        expect(articleIndex).toContain('isRedirectedArticleSlug');
+        expect(articleRoute).toContain('ARTICLE_REDIRECT_MAP');
         expect(sitemap).toContain("!(gender === 'girls' && day === 'monday')");
-        expect(articleRoute).toContain('.filter((slug) => !SLUG_REDIRECTS[slug])');
+        expect(articleRoute).toContain('.filter((slug) => !isRedirectedArticleSlug(slug))');
     });
 
     test('renders direct answers, summary tables, sources and tracked CTAs for priority articles', () => {
@@ -52,11 +56,11 @@ describe('SEO consolidation and answer-ready content', () => {
         ]) {
             expect(profiles).toContain(`'${slug}'`);
         }
-        expect(articleRoute).toContain('answerProfile?.directAnswer');
-        expect(articleRoute).toContain('<table');
-        expect(articleRoute).toContain('article.sources');
-        expect(articleRoute).toContain('reviewedBy');
-        expect(articleRoute).toContain("link.href === '/premium-search' ? 'premium'");
+        expect(articleRoute).toContain('ArticleEnhancementBlock');
+        expect(articleRoute).toContain('article-direct-answer');
+        expect(articleRoute).toContain('effectiveFaqItems');
+        expect(articleRoute).toContain('getArticleIntentLinks');
+        expect(articleRoute).toContain("href: '/premium-search'");
     });
 
     test('keeps page intent ownership distinct and adds verifiable trust content', () => {

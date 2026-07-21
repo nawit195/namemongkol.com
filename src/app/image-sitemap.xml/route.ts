@@ -1,16 +1,15 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { articles, type Article } from '@/data/articles';
-import { buildWallpaperAlt, INITIAL_WALLPAPERS, ZODIAC_WALLPAPERS } from '@/data/wallpapers';
+import { INITIAL_WALLPAPERS, ZODIAC_WALLPAPERS } from '@/data/wallpapers';
 import { absoluteSiteUrl, getArticleImages } from '@/lib/articleImageMeta';
 import { siteUrl } from '@/lib/seo';
+import { isRedirectedArticleSlug } from '@/lib/articleRedirects';
 
 export const revalidate = 86400;
 
 type SitemapImage = {
     loc: string;
-    title: string;
-    caption: string;
 };
 
 type SitemapEntry = {
@@ -44,17 +43,10 @@ function escapeXml(value: string) {
         .replace(/'/g, '&apos;');
 }
 
-function truncate(value: string, maxLength = 240) {
-    const cleanValue = value.replace(/\s+/g, ' ').trim();
-    return cleanValue.length > maxLength ? `${cleanValue.slice(0, maxLength - 3)}...` : cleanValue;
-}
-
 function imageToXml(image: SitemapImage) {
     return [
         '    <image:image>',
         `      <image:loc>${escapeXml(image.loc)}</image:loc>`,
-        `      <image:title>${escapeXml(truncate(image.title))}</image:title>`,
-        `      <image:caption>${escapeXml(truncate(image.caption))}</image:caption>`,
         '    </image:image>',
     ].join('\n');
 }
@@ -80,16 +72,16 @@ function resolveArticleCoverImage(dbImage?: string | null, localImage?: string) 
 }
 
 function toArticleImageEntry(article: Article): SitemapEntry | null {
-    const images = getArticleImages(article).map((image) => ({
-        loc: image.src,
-        title: image.title || image.alt || article.title,
-        caption: image.caption || image.alt || article.excerpt,
-    }));
+    if (isRedirectedArticleSlug(article.slug)) return null;
+
+    const images = Array.from(
+        new Map(getArticleImages(article).map((image) => [image.src, { loc: image.src }])).values()
+    );
 
     if (images.length === 0) return null;
 
     return {
-        pageUrl: `${siteUrl}/articles/${article.slug}`,
+        pageUrl: `${siteUrl}/articles/${encodeURIComponent(article.slug)}`,
         images,
     };
 }
@@ -115,6 +107,7 @@ async function getDbArticleImageEntries(): Promise<SitemapEntry[]> {
         if (error || !data) return [];
 
         return (data as DbArticleImageRow[])
+            .filter((row) => !isRedirectedArticleSlug(row.slug))
             .map((row) => {
                 const localMatch = articles.find((article) => article.slug === row.slug)
                     || articles.find((article) => article.title === row.title);
@@ -164,8 +157,6 @@ function getWallpaperImageEntry(): SitemapEntry | null {
         pageUrl: `${siteUrl}/wallpapers`,
         images: wallpapers.map((wallpaper) => ({
             loc: absoluteSiteUrl(wallpaper.image),
-            title: buildWallpaperAlt(wallpaper),
-            caption: wallpaper.description || buildWallpaperAlt(wallpaper),
         })),
     };
 }

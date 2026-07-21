@@ -2,19 +2,9 @@ import { MetadataRoute } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import { articles as localArticles } from '@/data/articles';
 import { siteUrl } from '@/lib/seo';
+import { isRedirectedArticleSlug } from '@/lib/articleRedirects';
 
 export const revalidate = 86400;
-
-const STATIC_LASTMOD = '2026-06-02';
-const CONTENT_LASTMOD = '2026-05-30';
-const LEGAL_LASTMOD = '2026-06-02';
-const REDIRECTED_ARTICLE_SLUGS = new Set([
-    '100-auspicious-boy-names-2569',
-    'auspicious-boy-names-2569',
-    'check-kalakini-letters-7-days',
-    'lucky-names-by-birthday-2569',
-    '700-auspicious-names-by-birthday-2569',
-]);
 
 const popularNames = [
     'ภูมิพัฒน์',
@@ -60,11 +50,15 @@ const popularNames = [
     'นันท์นภัส',
 ];
 
-const toDate = (value: string | Date | null | undefined, fallback = CONTENT_LASTMOD) => {
-    if (!value) return new Date(fallback);
+const toDate = (value: string | Date | null | undefined) => {
+    if (!value) return undefined;
     const parsed = new Date(value);
-    return Number.isNaN(parsed.getTime()) ? new Date(fallback) : parsed;
+    return Number.isNaN(parsed.getTime()) ? undefined : parsed;
 };
+
+export function dedupeSitemapEntries(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+    return Array.from(new Map(entries.map((entry) => [entry.url, entry])).values());
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = siteUrl;
@@ -73,49 +67,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
 
     const routes = [
-        { path: '', priority: 0.85, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/name-check', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/about', priority: 0.7, changeFreq: 'monthly' as const, lastModified: STATIC_LASTMOD },
-        { path: '/methodology', priority: 0.75, changeFreq: 'monthly' as const, lastModified: '2026-07-15' },
-        { path: '/articles', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/name-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/name-generator', priority: 0.85, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/pet-name', priority: 0.9, changeFreq: 'weekly' as const, lastModified: '2026-07-17' },
-        { path: '/pet-name/dog', priority: 0.85, changeFreq: 'weekly' as const, lastModified: '2026-07-18' },
-        { path: '/pet-name/cat', priority: 0.85, changeFreq: 'weekly' as const, lastModified: '2026-07-18' },
-        { path: '/phone-analysis', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/premium-analysis', priority: 0.9, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/aura-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/premium-search', priority: 0.8, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/privacy', priority: 0.2, changeFreq: 'yearly' as const, lastModified: LEGAL_LASTMOD },
-        { path: '/reviews', priority: 0.8, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/search', priority: 1.0, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/girls', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/girls/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/girls/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/girls/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/boys', priority: 0.95, changeFreq: 'weekly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/boys/by-birthday', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/boys/english-names', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/names/boys/nicknames', priority: 0.9, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/terms', priority: 0.2, changeFreq: 'yearly' as const, lastModified: LEGAL_LASTMOD },
-        { path: '/palm-analysis', priority: 0.9, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/wallpapers', priority: 0.8, changeFreq: 'daily' as const, lastModified: CONTENT_LASTMOD },
-        { path: '/wallpapers/custom', priority: 0.65, changeFreq: 'monthly' as const, lastModified: CONTENT_LASTMOD },
+        '',
+        '/name-check',
+        '/about',
+        '/methodology',
+        '/articles',
+        '/name-analysis',
+        '/name-generator',
+        '/pet-name',
+        '/pet-name/dog',
+        '/pet-name/cat',
+        '/phone-analysis',
+        '/premium-analysis',
+        '/aura-analysis',
+        '/premium-search',
+        '/privacy',
+        '/reviews',
+        '/search',
+        '/names/girls',
+        '/names/girls/by-birthday',
+        '/names/girls/english-names',
+        '/names/girls/nicknames',
+        '/names/boys',
+        '/names/boys/by-birthday',
+        '/names/boys/english-names',
+        '/names/boys/nicknames',
+        '/terms',
+        '/palm-analysis',
+        '/wallpapers',
+        '/wallpapers/custom',
     ];
 
-    const staticUrls: MetadataRoute.Sitemap = routes.map((route) => ({
-        url: `${baseUrl}${route.path}`,
-        lastModified: new Date(route.lastModified),
-        changeFrequency: route.changeFreq,
-        priority: route.priority,
+    const staticUrls: MetadataRoute.Sitemap = routes.map((path) => ({
+        url: `${baseUrl}${path}`,
     }));
 
     const meaningUrls: MetadataRoute.Sitemap = popularNames.map((name) => ({
         url: `${baseUrl}/meaning/${encodeURIComponent(name)}`,
-        lastModified: new Date(CONTENT_LASTMOD),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
     }));
 
     const wallpaperDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'wednesday_night', 'thursday', 'friday', 'saturday'];
@@ -124,20 +112,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const wallpaperCategoryUrls: MetadataRoute.Sitemap = [
         ...wallpaperDays.map((day) => ({
             url: `${baseUrl}/wallpapers/day/${day}`,
-            lastModified: new Date(CONTENT_LASTMOD),
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
         })),
-        { url: `${baseUrl}/wallpapers/zodiac`, lastModified: new Date(CONTENT_LASTMOD), changeFrequency: 'weekly' as const, priority: 0.7 },
+        { url: `${baseUrl}/wallpapers/zodiac` },
         ...wallpaperZodiac.map((sign) => ({
             url: `${baseUrl}/wallpapers/zodiac/${sign}`,
-            lastModified: new Date(CONTENT_LASTMOD),
-            changeFrequency: 'weekly' as const,
-            priority: 0.7,
         })),
-        { url: `${baseUrl}/wallpapers/intent/finance`, lastModified: new Date(CONTENT_LASTMOD), changeFrequency: 'weekly' as const, priority: 0.75 },
-        { url: `${baseUrl}/wallpapers/intent/love`, lastModified: new Date(CONTENT_LASTMOD), changeFrequency: 'weekly' as const, priority: 0.75 },
-        { url: `${baseUrl}/wallpapers/intent/work`, lastModified: new Date(CONTENT_LASTMOD), changeFrequency: 'weekly' as const, priority: 0.75 },
+        { url: `${baseUrl}/wallpapers/intent/finance` },
+        { url: `${baseUrl}/wallpapers/intent/love` },
+        { url: `${baseUrl}/wallpapers/intent/work` },
     ];
 
     const namingDayUrls: MetadataRoute.Sitemap = [
@@ -145,17 +127,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             .filter((day) => !(gender === 'girls' && day === 'monday'))
             .map((day) => ({
             url: `${baseUrl}/names/${gender}/by-birthday/${day}`,
-            lastModified: new Date('2026-07-14'),
-            changeFrequency: 'weekly' as const,
-            priority: 0.85,
         }))),
     ];
 
     const namingOverviewUrls: MetadataRoute.Sitemap = wallpaperDays.map((day) => ({
         url: `${baseUrl}/names/by-birthday/${day}`,
-        lastModified: new Date('2026-07-18'),
-        changeFrequency: 'weekly' as const,
-        priority: 0.9,
     }));
 
     let articleUrls: MetadataRoute.Sitemap = [];
@@ -168,12 +144,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
             if (articles) {
                 articleUrls = articles
-                    .filter((article) => !REDIRECTED_ARTICLE_SLUGS.has(article.slug))
+                    .filter((article) => !isRedirectedArticleSlug(article.slug))
                     .map((article) => ({
-                    url: `${baseUrl}/articles/${article.slug}`,
+                    url: `${baseUrl}/articles/${encodeURIComponent(article.slug)}`,
                     lastModified: toDate(article.date_modified || article.date),
-                    changeFrequency: 'weekly' as const,
-                    priority: 0.8,
                 }));
             }
         }
@@ -181,23 +155,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         console.error('Sitemap generation error (articles):', error);
     }
 
-    const localArticlePriority: Record<string, number> = {
-        'boy-names-2569-50-auspicious': 0.95,
-        'naming-tips-2026-year-of-horse': 0.9,
-        'auspicious-names-by-birthday-2026': 0.9,
-    };
-
     const localArticleUrls: MetadataRoute.Sitemap = localArticles
-        .filter((article) => !REDIRECTED_ARTICLE_SLUGS.has(article.slug))
+        .filter((article) => !isRedirectedArticleSlug(article.slug))
         .map((article) => ({
-        url: `${baseUrl}/articles/${article.slug}`,
+        url: `${baseUrl}/articles/${encodeURIComponent(article.slug)}`,
         lastModified: toDate(article.dateModified || article.date),
-        changeFrequency: 'weekly' as const,
-        priority: localArticlePriority[article.slug] ?? 0.9,
     }));
 
     const localArticleUrlsSet = new Set(localArticleUrls.map((article) => article.url));
     const dbOnlyArticles = articleUrls.filter((article) => !localArticleUrlsSet.has(article.url));
 
-    return [...staticUrls, ...meaningUrls, ...wallpaperCategoryUrls, ...namingOverviewUrls, ...namingDayUrls, ...localArticleUrls, ...dbOnlyArticles];
+    return dedupeSitemapEntries([
+        ...staticUrls,
+        ...meaningUrls,
+        ...wallpaperCategoryUrls,
+        ...namingOverviewUrls,
+        ...namingDayUrls,
+        ...localArticleUrls,
+        ...dbOnlyArticles,
+    ]);
 }

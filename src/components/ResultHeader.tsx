@@ -4,6 +4,8 @@ import { AnalysisResult } from '@/types';
 
 interface ResultHeaderProps {
     result: AnalysisResult;
+    changeNameHref?: string;
+    changeNameLabel?: string;
 }
 
 const GradeBadge = ({ grade }: { grade: 'A+' | 'A' | 'B' | 'C' }) => (
@@ -18,7 +20,7 @@ const GradeBadge = ({ grade }: { grade: 'A+' | 'A' | 'B' | 'C' }) => (
     </div>
 );
 
-export const ResultHeader: React.FC<ResultHeaderProps> = ({ result }) => {
+export const ResultHeader: React.FC<ResultHeaderProps> = ({ result, changeNameHref = "/premium-search", changeNameLabel = "ดูชื่อใหม่" }) => {
     return (
         <>
             <div className="flex flex-col items-center mb-6 sm:mb-8 animate-fade-in-up">
@@ -58,13 +60,13 @@ export const ResultHeader: React.FC<ResultHeaderProps> = ({ result }) => {
                             result.namePrediction.color.includes('red') ||
                             result.namePrediction.color.includes('orange') ||
                             result.namePrediction.color.includes('amber')) && (
-                                <Link href="/premium-search" className="block mt-1">
+                                <Link href={changeNameHref} className="block mt-1">
                                     <button className="w-full py-2 px-3 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 hover:from-emerald-500/20 hover:to-teal-500/20 border border-emerald-500/20 hover:border-emerald-500/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn hover:scale-[1.03] hover:shadow-lg hover:shadow-emerald-500/10 active:scale-95">
                                         <div className="relative">
                                             <Sparkles className="w-3.5 h-3.5 text-emerald-400 group-hover/btn:text-emerald-300 animate-pulse" />
                                             <div className="absolute inset-0 bg-emerald-400/20 blur-sm rounded-full animate-ping opacity-0 group-hover/btn:opacity-100"></div>
                                         </div>
-                                        <span className="text-[10px] font-bold text-emerald-300 group-hover/btn:text-emerald-200 tracking-wide">ดูชื่อใหม่</span>
+                                        <span className="text-[10px] font-bold text-emerald-300 group-hover/btn:text-emerald-200 tracking-wide">{changeNameLabel}</span>
                                     </button>
                                 </Link>
                             )}

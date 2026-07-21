@@ -32,8 +32,8 @@ describe('keyword broadening architecture', () => {
         expect(category).toContain("'@type': 'FAQPage'");
         expect(dog).toContain("canonical: `${siteUrl}/pet-name/dog`");
         expect(cat).toContain("canonical: `${siteUrl}/pet-name/cat`");
-        expect(sitemap).toContain("path: '/pet-name/dog'");
-        expect(sitemap).toContain("path: '/pet-name/cat'");
+        expect(sitemap).toContain("'/pet-name/dog'");
+        expect(sitemap).toContain("'/pet-name/cat'");
         expect(sitemap).toContain('/names/by-birthday/${day}');
     });
 

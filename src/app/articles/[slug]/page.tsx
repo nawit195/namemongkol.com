@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import Script from 'next/script';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { ArrowLeft, Calendar, User, Tag, RefreshCw, BookOpen, Award, ExternalLink, Star, CheckCircle2, Compass, Link2 } from 'lucide-react';
 import { Metadata } from 'next';
 import { ArticleImage } from '@/components/ArticleImage';
@@ -21,6 +21,7 @@ const AuraVibeWidget = dynamic(() => import('@/components/AuraVibeWidget'), {
     loading: () => <div className="h-48 bg-slate-200/50 rounded-2xl animate-pulse my-10 max-w-xl mx-auto" />
 });
 import { articles as localArticles, Article } from '@/data/articles';
+import { ARTICLE_REDIRECT_MAP, isRedirectedArticleSlug } from '@/lib/articleRedirects';
 import {
     PALMISTRY_SLUG,
     palmistryToc,
@@ -28,15 +29,6 @@ import {
     palmistryRelatedSlugs,
     palmistryMetaOverrides,
 } from '@/data/palmistry-seo-config';
-
-// Old Thai slug → New English slug redirect map
-const SLUG_REDIRECTS: Record<string, string> = {
-    'ตั้งชื่อลูก-2569-คู่มือสมบูรณ์': 'baby-naming-guide-2569',
-    'ทักษา-ปกรณ์-ตั้งชื่อลูกให้ตรงจุด': 'thaksa-pakorn-naming-guide',
-    'เบอร์มงคล-วิธีเลือก-คู่เลขเสริมดวง': 'lucky-phone-numbers-guide-2569',
-    'ชื่อลูกสาว-2569-50-ชื่อมงคล': 'girl-names-2569-50-auspicious',
-    'ชื่อลูกชาย-2569-50-ชื่อมงคล': 'boy-names-2569-50-auspicious',
-};
 
 const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569']);
 
@@ -188,7 +180,8 @@ async function getRelatedArticlePool(): Promise<Article[]> {
     const existingSlugs = new Set(uniqueDbArticles.map((article) => article.slug));
     const existingTitles = new Set(uniqueDbArticles.map((article) => article.title));
     const localFallback = localArticles.filter((article) => !existingSlugs.has(article.slug) && !existingTitles.has(article.title));
-    return [...uniqueDbArticles, ...localFallback];
+    return [...uniqueDbArticles, ...localFallback]
+        .filter((article) => !isRedirectedArticleSlug(article.slug));
 }
 
 // Pre-render all known article pages at build time
@@ -199,10 +192,14 @@ export async function generateStaticParams() {
             ...dbArticles.map(a => a.slug),
             ...localArticles.map(a => a.slug),
         ]);
-        return Array.from(allSlugs).map(slug => ({ slug }));
+        return Array.from(allSlugs)
+            .filter((slug) => !isRedirectedArticleSlug(slug))
+            .map((slug) => ({ slug }));
     } catch {
         // Fallback to local articles only if DB is unavailable during build
-        return localArticles.map(a => ({ slug: a.slug }));
+        return localArticles
+            .filter((article) => !isRedirectedArticleSlug(article.slug))
+            .map((article) => ({ slug: article.slug }));
     }
 }
 
@@ -585,8 +582,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const slug = decodeURIComponent(rawSlug);
 
     // Redirect old Thai slugs to new English slugs
-    if (SLUG_REDIRECTS[slug]) {
-        redirect(`/articles/${SLUG_REDIRECTS[slug]}`);
+    if (ARTICLE_REDIRECT_MAP[slug]) {
+        permanentRedirect(`/articles/${ARTICLE_REDIRECT_MAP[slug]}`);
     }
 
     const article = (await getArticle(slug)) as Article | null;
@@ -664,8 +661,8 @@ export default async function ArticlePage({ params }: Props) {
     const slug = decodeURIComponent(rawSlug);
     
     // Check redirect again here just in case generateMetadata isn't invoked (e.g. client navigation)
-    if (SLUG_REDIRECTS[slug]) {
-        redirect(`/articles/${SLUG_REDIRECTS[slug]}`);
+    if (ARTICLE_REDIRECT_MAP[slug]) {
+        permanentRedirect(`/articles/${ARTICLE_REDIRECT_MAP[slug]}`);
     }
 
     const article = (await getArticle(slug)) as Article;

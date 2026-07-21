@@ -9341,6 +9341,5 @@ export const articles: Article[] = [
     </div>
 </div>
         `
-    },
-    articleMondayGirlNames2569
+    }
 ];

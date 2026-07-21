@@ -29,6 +29,16 @@ import type {
     PetNameVisibleResult,
 } from '@/lib/petNameAccess';
 import type { PetNameFilters, PetNameLanguage } from '@/types/petName';
+import { ResultHeader } from '@/components/ResultHeader';
+import { PairAnalysisCard } from '@/components/PairAnalysisCard';
+import { NumerologyDecodeTable } from '@/components/NumerologyDecodeTable';
+import { calculateScore } from '@/utils/calculateScore';
+import { analyzePairs } from '@/utils/analyzePairs';
+import { getPrediction } from '@/utils/getPrediction';
+import { calculateGrade } from '@/utils/gradeResult';
+import { calculateCompatibility } from '@/utils/petCompatibility';
+import { PetCompatibilityResult } from '@/components/PetCompatibilityResult';
+import type { AnalysisResult, DayKey } from '@/types';
 
 const FAVORITES_KEY = 'namemongkol:pet-name:favorites:v2';
 const LEGACY_FAVORITES_KEY = 'namemongkol:pet-name:favorites:v1';
@@ -83,6 +93,32 @@ function toFavorite(result: PetNameVisibleResult): FavoriteSnapshot {
         nameTh: result.nameTh,
         nameEn: result.nameEn,
         pronunciation: result.pronunciation,
+    };
+}
+
+function buildPetAnalysisResult(result: PetNameVisibleResult): AnalysisResult {
+    const nameStr = result.nameTh;
+    const nameScore = calculateScore(nameStr);
+    const namePairs = analyzePairs(nameStr);
+    const namePrediction = getPrediction(nameScore);
+    const grade = calculateGrade(nameScore, namePairs);
+    return {
+        name: nameStr,
+        surname: '',
+        nameScore,
+        surnameScore: 0,
+        totalScore: nameScore,
+        namePairs,
+        surnamePairs: [],
+        namePrediction,
+        surnamePrediction: getPrediction(0),
+        prediction: namePrediction,
+        thaksa: null,
+        ayatana: { title: '', desc: '', score: 0 },
+        nameGrade: grade,
+        surnameGrade: 'C',
+        grade,
+        isNirun: false,
     };
 }
 
@@ -186,7 +222,10 @@ export default function ClientPage({ nameCount }: { nameCount: number }) {
     const [activeTab, setActiveTab] = useState<'search' | 'analysis'>('search');
     const [step, setStep] = useState(1);
     const [filters, setFilters] = useState<PetNameFilters>(DEFAULT_PET_NAME_FILTERS);
+    const [analysisMode, setAnalysisMode] = useState<'standalone' | 'compatibility'>('standalone');
     const [analysisName, setAnalysisName] = useState('');
+    const [ownerName, setOwnerName] = useState('');
+    const [ownerBirthDay, setOwnerBirthDay] = useState<DayKey | ''>('');
     const [queryResult, setQueryResult] = useState<PetNameQueryResponse | null>(null);
     const [lastInput, setLastInput] = useState<PetNameQueryInput | null>(null);
     const [favorites, setFavorites] = useState<FavoriteSnapshot[]>([]);
@@ -282,6 +321,7 @@ export default function ClientPage({ nameCount }: { nameCount: number }) {
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
+        if (params.get('mode') === 'analysis') setActiveTab('analysis');
         if (params.get('resume') !== 'unlock') return;
         try {
             const stored = window.sessionStorage.getItem(PENDING_UNLOCK_KEY);
@@ -410,14 +450,146 @@ export default function ClientPage({ nameCount }: { nameCount: number }) {
                         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#e8e3d9] bg-[#fbf9f4] px-5 py-4 sm:px-6"><button type="button" onClick={() => step === 1 ? resetFilters() : setStep((current) => current - 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#d9d5e3] bg-white px-4 text-sm font-bold text-[#55556f]"><ArrowLeft className="h-4 w-4" />{step === 1 ? 'เริ่มใหม่' : 'ย้อนกลับ'}</button><div className="flex justify-end gap-2">{step < 4 ? <button type="button" onClick={searchNames} className="min-h-11 rounded-lg px-3 text-sm font-bold text-[#76531a]">ดู 3 ชื่อฟรี</button> : null}{step < 4 ? <button type="button" onClick={() => setStep((current) => current + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#c9933a] px-5 text-sm font-extrabold text-[#111827]">ถัดไป <ArrowRight className="h-4 w-4" /></button> : <button type="button" disabled={isLoading} onClick={searchNames} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#0f172a] px-5 text-sm font-extrabold text-white disabled:opacity-60"><Search className="h-4 w-4" />{isLoading ? 'กำลังคัดชื่อ...' : 'ดู 3 ชื่อฟรี'}</button>}</div></div>
                     </section>
                     <section id="pet-search-results" className="scroll-mt-24" aria-labelledby="pet-preview-title"><div className="mb-4"><p className="text-xs font-bold text-[#a66c12]">ทดลองก่อนตัดสินใจ</p><h2 id="pet-preview-title" className="mt-1 text-2xl font-extrabold text-[#1a1a3e]">ชื่อที่น่าจะเข้ากับน้อง</h2>{queryResult?.mode === 'search' ? <p className="mt-1 text-xs font-semibold text-[#73738d]">พบ {queryResult.totalMatches.toLocaleString('th-TH')} ชื่อที่ตรงเงื่อนไข</p> : null}</div>{isLoading ? <LoadingPreview /> : queryResult?.mode === 'search' ? queryResult.results.length ? <>{queryResult.isUnlocked && fullSearchResults.length ? <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-6"><Check className="h-6 w-6 text-emerald-600" /><h3 className="mt-3 text-lg font-extrabold text-[#1a1a3e]">ชุดชื่อนี้พร้อมดูครบแล้ว</h3><p className="mt-2 text-sm text-[#55556f]">เลื่อนลงเพื่อเปรียบเทียบความหมายและคะแนนละเอียดทั้ง {fullSearchResults.length} ชื่อ</p></div> : <div className="grid gap-3 sm:grid-cols-2">{queryResult.results.map((result) => <SummaryCard key={result.slug} result={result} {...renderResultActions(result)} />)}</div>}{lockedPanel}</> : <div className="rounded-lg border border-[#e6cc8b] bg-[#fff9e9] px-5 py-10 text-center"><p className="font-bold text-[#1a1a3e]">ยังไม่พบชื่อที่ตรงทุกเงื่อนไข</p><button type="button" onClick={resetFilters} className="mt-4 min-h-11 rounded-lg bg-[#0f172a] px-5 text-sm font-bold text-white">ล้างตัวกรอง</button></div> : <EmptyPreview />}</section>
-                </div> : <section className="mt-6 overflow-hidden rounded-xl border border-[#ded8cc] bg-[#fffefa] shadow-[0_14px_38px_rgba(15,23,42,0.09)]"><div className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[1fr_auto] lg:items-end"><div><p className="text-xs font-bold text-[#a66c12]">ดูคะแนนสรุปฟรี</p><h2 className="mt-1 text-2xl font-extrabold text-[#1a1a3e]">ชื่อที่เรียกอยู่ เหมาะกับน้องแค่ไหน</h2><p className="mt-2 text-sm text-[#666680]">ชื่อที่มีในฐานสามารถปลดล็อกความหมายและคะแนนละเอียดได้ในราคา 15 เครดิต</p><label className="mt-5 block text-sm font-bold text-[#1a1a3e]">ชื่อสัตว์เลี้ยง<input value={analysisName} onChange={(event) => setAnalysisName(event.target.value)} onKeyDown={(event) => event.key === 'Enter' && analyzeName()} placeholder="เช่น โมจิ, Lucky หรือ มีตังค์" className="mt-2 min-h-12 w-full rounded-lg border border-[#d9d5e3] bg-white px-4 text-base text-[#1a1a3e]" /></label></div><button type="button" disabled={!analysisName.trim() || isLoading} onClick={analyzeName} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#0f172a] px-6 text-sm font-extrabold text-white disabled:opacity-45"><Search className="h-4 w-4" />{isLoading ? 'กำลังวิเคราะห์...' : 'ดูคะแนนสรุปฟรี'}</button></div><p className="flex gap-2 border-t border-[#e8e3d9] bg-[#fbf9f4] px-5 py-4 text-xs leading-6 text-[#73738d] sm:px-7"><Info className="mt-0.5 h-4 w-4 shrink-0" />ถ้าชื่อนี้ยังไม่มีในฐาน ระบบจะแสดงคะแนนที่คำนวณได้ฟรี และจะไม่สร้างความหมายหรือหักเครดิต</p></section>}
+                </div> : <section className="mt-6 overflow-hidden rounded-xl border border-[#ded8cc] bg-[#fffefa] shadow-[0_14px_38px_rgba(15,23,42,0.09)]">
+                    <div className="p-5 sm:p-7">
+                        <div className="mb-6 border-b border-[#e8e3d9] pb-5">
+                            <p className="text-xs font-bold text-[#a66c12]">ดูคะแนนสรุปฟรี</p>
+                            <h2 className="mt-1 text-2xl font-extrabold text-[#1a1a3e]">วิเคราะห์ชื่อสัตว์เลี้ยงและความเข้ากันกับเจ้าของ</h2>
+                            <p className="mt-2 text-sm text-[#666680]">ตรวจความหมาย การออกเสียง อักษรกาลกิณีตามวันเกิด และความเหมาะสมระหว่างชื่อเจ้าของกับชื่อสัตว์เลี้ยง</p>
+                        </div>
+
+                        <div className="mb-6">
+                            <p className="mb-3 text-sm font-bold text-[#1a1a3e]">วิเคราะห์แบบใด?</p>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${analysisMode === 'standalone' ? 'border-[#c9933a] bg-[#fffaf0]' : 'border-[#d9d5e3] bg-white hover:border-[#c9b47d]'}`}>
+                                    <input type="radio" name="analysis_mode" className="w-4 h-4 text-[#c9933a] focus:ring-[#c9933a]" checked={analysisMode === 'standalone'} onChange={() => setAnalysisMode('standalone')} />
+                                    <span className={`font-semibold ${analysisMode === 'standalone' ? 'text-[#7a5315]' : 'text-[#1a1a3e]'}`}>วิเคราะห์ชื่อสัตว์เลี้ยง</span>
+                                </label>
+                                <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${analysisMode === 'compatibility' ? 'border-[#c9933a] bg-[#fffaf0]' : 'border-[#d9d5e3] bg-white hover:border-[#c9b47d]'}`}>
+                                    <input type="radio" name="analysis_mode" className="w-4 h-4 text-[#c9933a] focus:ring-[#c9933a]" checked={analysisMode === 'compatibility'} onChange={() => setAnalysisMode('compatibility')} />
+                                    <span className={`font-semibold ${analysisMode === 'compatibility' ? 'text-[#7a5315]' : 'text-[#1a1a3e]'}`}>เช็กชื่อเข้ากับเจ้าของ</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="grid gap-5">
+                            {analysisMode === 'compatibility' ? (
+                                <div className="grid gap-5 sm:grid-cols-2 rounded-xl bg-[#fbf9f4] p-5 border border-[#e8e3d9]">
+                                    <label className="block text-sm font-bold text-[#1a1a3e]">
+                                        ชื่อเจ้าของ (ตั้งใจเรียกน้อง)
+                                        <input value={ownerName} onChange={(event) => setOwnerName(event.target.value)} placeholder="ไม่ต้องใส่นามสกุล" className="mt-2 min-h-11 w-full rounded-lg border border-[#d9d5e3] bg-white px-3 text-base text-[#1a1a3e]" />
+                                    </label>
+                                    <label className="block text-sm font-bold text-[#1a1a3e]">
+                                        วันเกิดเจ้าของ
+                                        <select value={ownerBirthDay} onChange={(event) => setOwnerBirthDay(event.target.value as DayKey)} className="mt-2 min-h-11 w-full rounded-lg border border-[#d9d5e3] bg-white px-3 text-[#1a1a3e]">
+                                            <option value="" disabled>เลือกวันเกิด</option>
+                                            <option value="sunday">วันอาทิตย์</option>
+                                            <option value="monday">วันจันทร์</option>
+                                            <option value="tuesday">วันอังคาร</option>
+                                            <option value="wednesday">วันพุธ (กลางวัน)</option>
+                                            <option value="wednesday_night">วันพุธ (กลางคืน)</option>
+                                            <option value="thursday">วันพฤหัสบดี</option>
+                                            <option value="friday">วันศุกร์</option>
+                                            <option value="saturday">วันเสาร์</option>
+                                        </select>
+                                        <span className="block mt-1 text-xs font-normal text-[#8e8eaa]">ใช้ตรวจอักษรกาลกิณีและความเหมาะสม</span>
+                                    </label>
+                                </div>
+                            ) : null}
+
+                            <div className="grid gap-5 sm:grid-cols-2 items-end">
+                                <label className="block text-sm font-bold text-[#1a1a3e]">
+                                    ชื่อสัตว์เลี้ยง
+                                    <input value={analysisName} onChange={(event) => setAnalysisName(event.target.value)} onKeyDown={(event) => event.key === 'Enter' && analyzeName()} placeholder="เช่น โมจิ, Lucky" className="mt-2 min-h-12 w-full rounded-lg border border-[#d9d5e3] bg-white px-4 text-base text-[#1a1a3e]" />
+                                </label>
+                                <button
+                                    type="button"
+                                    disabled={!analysisName.trim() || isLoading || (analysisMode === 'compatibility' && (!ownerName.trim() || !ownerBirthDay))}
+                                    onClick={analyzeName}
+                                    className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#0f172a] px-6 text-sm font-extrabold text-white disabled:opacity-45 h-12"
+                                >
+                                    <Search className="h-4 w-4" />{isLoading ? 'กำลังวิเคราะห์...' : analysisMode === 'compatibility' ? 'ตรวจความเข้ากันฟรี' : 'วิเคราะห์ชื่อน้องฟรี'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <p className="flex gap-2 border-t border-[#e8e3d9] bg-[#fbf9f4] px-5 py-4 text-xs leading-6 text-[#73738d] sm:px-7"><Info className="mt-0.5 h-4 w-4 shrink-0" />ถ้าชื่อนี้ยังไม่มีในฐาน ระบบจะแสดงคะแนนที่คำนวณได้ฟรี และจะไม่สร้างความหมายหรือหักเครดิต</p>
+                </section>}
 
                 {notice ? <div role="status" className="mt-5 rounded-lg border border-[#e8c87e] bg-[#fff8e8] px-4 py-3 text-sm font-bold text-[#6f4d16]">{notice}</div> : null}
                 {error && !queryResult?.canUnlock ? <div role="alert" className="mt-5 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">{error}</div> : null}
 
                 {fullSearchResults.length ? <section className="scroll-mt-24 pt-10" aria-labelledby="pet-full-results-title"><div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-sm font-bold text-[#a67828]">ชุดชื่อที่ปลดล็อกแล้ว</p><h2 id="pet-full-results-title" className="mt-1 text-2xl font-extrabold text-[#1a1a3e]">เปรียบเทียบครบทั้ง {fullSearchResults.length} ชื่อ</h2></div><button type="button" onClick={resetFilters} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#d9d5e3] bg-[#fffefa] px-4 text-sm font-bold text-[#1a1a3e]"><RotateCcw className="h-4 w-4" />ปรับตัวเลือกใหม่</button></div><div className="mt-6 grid gap-4 md:grid-cols-2">{fullSearchResults.map((result, index) => <DetailedResultCard key={result.slug} result={result} featured={index === 0} {...renderResultActions(result)} />)}</div></section> : null}
 
-                {activeTab === 'analysis' && analysisResult ? <section id="pet-analysis-result" className="scroll-mt-24 pt-10"><h2 className="mb-5 text-2xl font-extrabold text-[#1a1a3e]">ผลวิเคราะห์ชื่อ {analysisResult.nameTh}</h2>{analysisResult.detailLevel === 'full' ? <div className="grid gap-4 md:grid-cols-2"><DetailedResultCard result={analysisResult} featured {...renderResultActions(analysisResult)} /></div> : <div className="grid gap-5 md:grid-cols-2"><SummaryCard result={analysisResult} {...renderResultActions(analysisResult)} /><div>{lockedPanel}</div></div>}</section> : null}
+                {activeTab === 'analysis' && analysisResult ? (() => {
+                    const mappedResult = buildPetAnalysisResult(analysisResult);
+                    const compatibilityResult = analysisMode === 'compatibility' && ownerName && ownerBirthDay
+                        ? calculateCompatibility(analysisResult, ownerName, ownerBirthDay as DayKey)
+                        : null;
+                    const analysisActions = renderResultActions(analysisResult);
+
+                    return (
+                        <section id="pet-analysis-result" className="scroll-mt-24 pt-10 animate-fade-in flex flex-col gap-5 sm:gap-6 md:gap-8">
+                            {compatibilityResult ? (
+                                <PetCompatibilityResult
+                                    result={compatibilityResult}
+                                    petName={analysisResult.nameTh}
+                                    ownerName={ownerName}
+                                    petNumerologyValue={analysisResult.numerologyValue}
+                                    isFavorite={analysisActions.isFavorite}
+                                    onFavorite={analysisActions.onFavorite}
+                                    onShare={analysisActions.onShare}
+                                    onTryAnother={() => {
+                                        setAnalysisName('');
+                                        window.requestAnimationFrame(() => document.getElementById('pet-name-tool')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+                                    }}
+                                    onFindBetter={() => {
+                                        setActiveTab('search');
+                                        window.requestAnimationFrame(() => document.getElementById('pet-name-tool')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+                                    }}
+                                    technicalDetails={(
+                                        <>
+                                            <div className="mx-auto w-full max-w-xl">
+                                                <PairAnalysisCard namePairs={mappedResult.namePairs} surnamePairs={[]} />
+                                            </div>
+                                            <NumerologyDecodeTable
+                                                name={analysisResult.nameTh}
+                                                surname=""
+                                                nameScore={mappedResult.nameScore}
+                                                surnameScore={0}
+                                                totalScore={mappedResult.totalScore}
+                                            />
+                                        </>
+                                    )}
+                                />
+                            ) : (
+                                <>
+                                    <ResultHeader result={mappedResult} changeNameHref="#pet-name-tool" changeNameLabel="ค้นหาชื่อน้องใหม่" />
+                                    <div className="mx-auto w-full max-w-xl">
+                                        <PairAnalysisCard namePairs={mappedResult.namePairs} surnamePairs={[]} />
+                                    </div>
+                                    <NumerologyDecodeTable
+                                        name={analysisResult.nameTh}
+                                        surname=""
+                                        nameScore={mappedResult.nameScore}
+                                        surnameScore={0}
+                                        totalScore={mappedResult.totalScore}
+                                    />
+                                    {analysisResult.detailLevel === 'full' ? (
+                                        <div className="mt-2 grid gap-4 md:grid-cols-2">
+                                            <DetailedResultCard result={analysisResult} featured {...analysisActions} />
+                                        </div>
+                                    ) : (
+                                        <div className="mt-2 grid gap-5 md:grid-cols-2">
+                                            <SummaryCard result={analysisResult} {...analysisActions} />
+                                            <div>{lockedPanel}</div>
+                                        </div>
+                                    )}
+                                </>
+                            )}
+                        </section>
+                    );
+                })() : null}
 
                 {favorites.length ? <section className="mt-12 rounded-xl border border-[#ead7dc] bg-[#fff8fa] p-5 shadow-sm sm:p-6"><div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-xs font-bold text-[#a65068]">SHORTLIST ของน้อง</p><h2 className="mt-1 text-xl font-extrabold text-[#1a1a3e]">ชื่อที่คุณกำลังตกหลุมรัก</h2><p className="mt-1 text-sm text-[#666680]">บันทึกอยู่ในอุปกรณ์นี้ แตะชื่อเพื่อนำออกได้</p></div><span className="rounded-full bg-white px-3 py-1.5 text-sm font-bold text-[#93485c]">{favorites.length}/{MAX_FAVORITES} ชื่อ</span></div><div className="mt-4 flex flex-wrap gap-2">{favorites.map((favorite) => <button key={favorite.slug} type="button" onClick={() => { persistFavorites(favorites.filter((item) => item.slug !== favorite.slug)); }} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#e8b9c6] bg-white px-4 text-sm font-bold text-[#8d4157]"><Heart className="h-4 w-4 fill-current" />{favorite.nameTh}</button>)}</div></section> : null}
 

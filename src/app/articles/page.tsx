@@ -9,6 +9,7 @@ import { ArticleImage } from '@/components/ArticleImage';
 import { ArticleViewCounter, ArticleViewStatsProvider } from '@/components/ArticleViewStats';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { siteUrl } from '@/lib/seo';
+import { ARTICLE_REDIRECT_MAP, isRedirectedArticleSlug } from '@/lib/articleRedirects';
 import { topicClusters } from './topicClusters';
 
 type ArticleRow = {
@@ -99,23 +100,7 @@ const getCachedDbArticles = unstable_cache(
     { revalidate: 86400, tags: ['articles'] }
 );
 
-// Old Thai slug → New English slug redirect map
-const SLUG_REDIRECTS: Record<string, string> = {
-    'ตั้งชื่อลูก-2569-คู่มือสมบูรณ์': 'baby-naming-guide-2569',
-    'ทักษา-ปกรณ์-ตั้งชื่อลูกให้ตรงจุด': 'thaksa-pakorn-naming-guide',
-    'เบอร์มงคล-วิธีเลือก-คู่เลขเสริมดวง': 'lucky-phone-numbers-guide-2569',
-    'ชื่อลูกสาว-2569-50-ชื่อมงคล': 'girl-names-2569-50-auspicious',
-    'ชื่อลูกชาย-2569-50-ชื่อมงคล': 'boy-names-2569-50-auspicious',
-};
-
 const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569']);
-const CONSOLIDATED_ARTICLE_SLUGS = new Set([
-    '100-auspicious-boy-names-2569',
-    'auspicious-boy-names-2569',
-    'check-kalakini-letters-7-days',
-    'lucky-names-by-birthday-2569',
-    '700-auspicious-names-by-birthday-2569',
-]);
 
 async function getArticles() {
     const dbArticles = await getCachedDbArticles();
@@ -141,7 +126,7 @@ async function getArticles() {
         );
 
         // If the DB slug is old (Thai) and we have a redirect, use the new English slug
-        const migratedSlug = SLUG_REDIRECTS[dbArticle.slug as string] || (localMatch ? localMatch.slug : dbArticle.slug);
+        const migratedSlug = ARTICLE_REDIRECT_MAP[dbArticle.slug as string] || (localMatch ? localMatch.slug : dbArticle.slug);
 
         return {
             ...dbArticle,
@@ -169,7 +154,7 @@ async function getArticles() {
     // do not crash React with duplicate keys.
     const uniqueBySlug = Array.from(
         new Map(allArticles.map(article => [article.slug, article])).values()
-    ).filter((article) => !CONSOLIDATED_ARTICLE_SLUGS.has(article.slug));
+    ).filter((article) => !isRedirectedArticleSlug(article.slug));
 
     // Sort by date descending
     const sorted = uniqueBySlug.sort((a, b) => parseThaiDate(b.date) - parseThaiDate(a.date));

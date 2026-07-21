@@ -34,7 +34,7 @@ describe('search SSR and birthday landing pages', () => {
     test('adds birthday pages and methodology to the sitemap', () => {
         const sitemap = readSource('src/app/sitemap.ts');
 
-        expect(sitemap).toContain("path: '/methodology'");
+        expect(sitemap).toContain("'/methodology'");
         expect(sitemap).toContain('namingDayUrls');
         expect(sitemap).toContain('/names/${gender}/by-birthday/${day}');
     });

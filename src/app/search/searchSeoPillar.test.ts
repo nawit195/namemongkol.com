@@ -54,9 +54,10 @@ describe('/search SEO pillar content', () => {
         expect(topicClustersSource).toContain("href: '/search'");
     });
 
-    test('gives /search pillar-level sitemap priority', () => {
+    test('keeps /search in the canonical sitemap route list', () => {
         const sitemapSource = readSource('src/app/sitemap.ts');
 
-        expect(sitemapSource).toContain("{ path: '/search', priority: 1.0");
+        expect(sitemapSource).toContain("'/search'");
+        expect(sitemapSource).not.toContain('<priority>');
     });
 });
