@@ -20,7 +20,7 @@ export const InlineSignupCTA = () => {
 
     return (
         <div className="w-full max-w-lg mt-5 animate-fade-in">
-            <Link
+            <Link prefetch={false}
                 href="/login"
                 data-track="home.inline_cta.signup"
                 className="flex items-center justify-between gap-3 w-full px-5 py-3 bg-amber-50 border border-amber-200 rounded-xl hover:border-amber-300 transition-all group shadow-sm"

@@ -35,11 +35,14 @@ export function PetNamePromo() {
                     </ul>
 
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <Link href="/pet-name" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0f172a] px-5 text-sm font-extrabold text-slate-100 shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#1e293b] hover:shadow-[0_12px_26px_rgba(15,23,42,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 motion-reduce:transform-none">
+                        <Link prefetch={false} href="/pet-name" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0f172a] px-5 text-sm font-extrabold text-slate-100 shadow-[0_8px_20px_rgba(15,23,42,0.18)] transition-[transform,background-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-[#1e293b] hover:shadow-[0_12px_26px_rgba(15,23,42,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 motion-reduce:transform-none">
                             ดูตัวอย่างฟรี 3 ชื่อ <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </Link>
-                        <Link href="/pet-name?mode=analysis#pet-name-tool" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d7d5e4] bg-white px-5 text-sm font-bold text-[#1a1a3e] transition-colors hover:border-[#c9933a] hover:bg-[#fff9ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2">
+                        <Link prefetch={false} href="/pet-name?mode=analysis#pet-name-tool" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d7d5e4] bg-white px-5 text-sm font-bold text-[#1a1a3e] transition-colors hover:border-[#c9933a] hover:bg-[#fff9ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2">
                             <Search className="h-4 w-4 text-[#a67828]" aria-hidden="true" /> วิเคราะห์ชื่อที่มีอยู่
+                        </Link>
+                        <Link prefetch={false} href="/articles/pet-names" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#d7d5e4] bg-white px-5 text-sm font-bold text-[#1a1a3e] transition-colors hover:border-[#c9933a] hover:bg-[#fff9ec] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2">
+                            อ่านรายชื่อสัตว์เลี้ยง 500+ ชื่อ
                         </Link>
                     </div>
                 </div>

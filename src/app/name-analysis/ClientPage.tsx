@@ -411,7 +411,7 @@ export default function NameAnalysisPage() {
                         </p>
                         <div className="mt-2 text-[11px] sm:text-xs text-amber-800">
                             หากต้องการเช็กชื่อเดี่ยวแบบไม่ล็อกอิน ใช้หน้า 
-                            <Link href="/name-check" className="underline hover:text-amber-950 font-bold transition-colors ml-1">
+                            <Link prefetch={false} href="/name-check" className="underline hover:text-amber-950 font-bold transition-colors ml-1">
                                 วิเคราะห์ชื่อ-นามสกุลฟรี
                             </Link>
                         </div>
@@ -930,7 +930,7 @@ export default function NameAnalysisPage() {
                                     <span className="transition-transform group-open:rotate-180 text-violet-500">▼</span>
                                 </summary>
                                 <p className="mt-4 text-[#5a5a82] text-sm pl-4 border-l-2 border-violet-500">
-                                    <Link href="/name-check" className="text-violet-600 hover:underline">วิเคราะห์ชื่อฟรี</Link> ทีละ 1 ชื่อ+นามสกุล<br />
+                                    <Link prefetch={false} href="/name-check" className="text-violet-600 hover:underline">วิเคราะห์ชื่อฟรี</Link> ทีละ 1 ชื่อ+นามสกุล<br />
                                     <strong className="text-violet-600">Bulk Analysis</strong> วิเคราะห์หลายชื่อพร้อมกัน (สูงสุด 1,000 ชื่อ) พร้อมจัดเกรดและเปรียบเทียบ
                                 </p>
                             </details>
@@ -1060,7 +1060,7 @@ export default function NameAnalysisPage() {
                             บริการอื่นๆ ที่เกี่ยวข้อง
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-check"
                                 className="group block bg-white border border-[#ddddf0] shadow-sm rounded-2xl p-6 hover:border-amber-300 hover:shadow-md hover:bg-[#f8f8fc] transition-all"
                             >
@@ -1071,7 +1071,7 @@ export default function NameAnalysisPage() {
                                     วิเคราะห์ชื่อ+นามสกุลทีละคู่ ดูคะแนนรวม เกรด และคำทำนายตามหลักเลขศาสตร์ ฟรีไม่จำกัด
                                 </p>
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/search"
                                 className="group block bg-white border border-[#ddddf0] shadow-sm rounded-2xl p-6 hover:border-amber-300 hover:shadow-md hover:bg-[#f8f8fc] transition-all"
                             >
@@ -1082,7 +1082,7 @@ export default function NameAnalysisPage() {
                                     ค้นหาชื่อมงคลกว่า 5,000 ชื่อ กรองตามวันเกิด เพศ และผลรวมตัวเลขที่ต้องการ
                                 </p>
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/premium-analysis"
                                 className="group block bg-white border border-[#ddddf0] shadow-sm rounded-2xl p-6 hover:border-amber-400 hover:shadow-md hover:bg-[#f8f8fc] transition-all"
                             >
@@ -1093,7 +1093,7 @@ export default function NameAnalysisPage() {
                                     วิเคราะห์เชิงลึกด้วย AI รวมถึงอายตนะ เงาอำนาจ และ Wallpaper มงคลสำหรับมือถือ
                                 </p>
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/phone-analysis"
                                 className="group block bg-white border border-[#ddddf0] shadow-sm rounded-2xl p-6 hover:border-amber-300 hover:shadow-md hover:bg-[#f8f8fc] transition-all"
                             >

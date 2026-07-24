@@ -133,13 +133,13 @@ export const PhoneSeoContent = () => {
                         </p>
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                        <Link
+                        <Link prefetch={false}
                             href="#phone-analysis-tool"
                             className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-5 py-3 text-sm font-bold text-[#1a1a3e] transition-colors hover:bg-amber-400"
                         >
                             วิเคราะห์เบอร์มงคลฟรี
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/name-analysis"
                             className="inline-flex items-center justify-center rounded-xl border border-white/20 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
                         >
@@ -148,10 +148,10 @@ export const PhoneSeoContent = () => {
                     </div>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-200">
-                    <Link href="/reviews" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">รีวิวจากผู้ใช้งานจริง</Link>
-                    <Link href="/articles" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">บทความเลขศาสตร์</Link>
-                    <Link href="/premium-analysis" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">วิเคราะห์ชื่อแบบ Premium</Link>
-                    <Link href="/search" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">ค้นหาชื่อมงคล</Link>
+                    <Link prefetch={false} href="/reviews" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">รีวิวจากผู้ใช้งานจริง</Link>
+                    <Link prefetch={false} href="/articles" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">บทความเลขศาสตร์</Link>
+                    <Link prefetch={false} href="/premium-analysis" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">วิเคราะห์ชื่อแบบ Premium</Link>
+                    <Link prefetch={false} href="/search" className="rounded-full bg-white/10 px-3 py-1.5 hover:bg-white/15">ค้นหาชื่อมงคล</Link>
                 </div>
             </div>
         </section>

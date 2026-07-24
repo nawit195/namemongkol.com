@@ -308,7 +308,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                 const premiumBadge = t('sidebar.premiumBadge', 'Premium');
                                 const premiumFeature = t('sidebar.premiumFeature', 'Premium Feature');
                                 return (
-                                    <Link
+                                    <Link prefetch={false}
                                         key={item.path}
                                         href={item.path}
                                         onClick={() => onClose()}
@@ -363,7 +363,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             const newBadge = t('sidebar.newBadge', 'New');
                             const iconTheme = getIconThemeClasses(item.key);
                             return (
-                                <Link
+                                <Link prefetch={false}
                                     key={item.path}
                                     href={item.path}
                                     onClick={() => {
@@ -493,7 +493,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                                                 <Sparkles size={14} />
                                                 <span>{credits} {t('nav.credits', 'Credits')}</span>
                                             </div>
-                                            <Link href="/topup" onClick={() => onClose()} className="text-[11px] text-emerald-950 hover:text-emerald-900 font-bold bg-emerald-400 hover:bg-emerald-300 px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5">
+                                            <Link prefetch={false} href="/topup" onClick={() => onClose()} className="text-[11px] text-emerald-950 hover:text-emerald-900 font-bold bg-emerald-400 hover:bg-emerald-300 px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5">
                                                 <Zap size={12} fill="currentColor" /> {t('nav.topup')}
                                             </Link>
                                         </div>
@@ -509,7 +509,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                             </div>
                         ) : (
                             <div className="lg:hidden space-y-3 px-2">
-                                <Link
+                                <Link prefetch={false}
                                     href="/login"
                                     onClick={() => onClose()}
                                     className="w-full flex items-center justify-center gap-3 px-5 py-3.5 rounded-2xl bg-white/65 hover:bg-white/85 text-slate-800 font-medium transition-all group border border-white/80 hover:border-amber-200 shadow-[0_10px_26px_rgba(15,23,42,0.10)]"

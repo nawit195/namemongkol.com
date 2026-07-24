@@ -86,7 +86,7 @@ export default function WorkWallpapersIntentPage() {
                     </p>
                     <p className="text-slate-300 leading-relaxed mb-5">
                         ถ้าต้องการความแม่นยำเพิ่มขึ้นในบริบทงานของคุณ สามารถ{' '}
-                        <Link
+                        <Link prefetch={false}
                             href="/wallpapers/custom"
                             className="font-medium text-emerald-300 hover:text-emerald-200 underline decoration-emerald-400/50 underline-offset-2"
                         >
@@ -95,10 +95,10 @@ export default function WorkWallpapersIntentPage() {
                         เพื่อเลือกธีมบารมีและพลังการตัดสินใจที่เหมาะกับบทบาทปัจจุบัน
                     </p>
                     <div className="flex flex-wrap gap-2">
-                        <Link href="/wallpapers/day/sunday" className="text-xs bg-slate-700/50 hover:bg-red-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันอาทิตย์ เสริมบารมีผู้นำ</Link>
-                        <Link href="/wallpapers/day/tuesday" className="text-xs bg-slate-700/50 hover:bg-pink-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันอังคาร เสริมความกล้าตัดสินใจ</Link>
-                        <Link href="/wallpapers/day/thursday" className="text-xs bg-slate-700/50 hover:bg-orange-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันพฤหัสบดี เสริมปัญญาและผู้ใหญ่อุปถัมภ์</Link>
-                        <Link href="/wallpapers/custom" className="text-xs bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 px-3 py-1.5 rounded-full text-emerald-300 hover:text-emerald-200 transition-colors">✨ ตั้งค่าภาพงานเฉพาะเป้าหมาย</Link>
+                        <Link prefetch={false} href="/wallpapers/day/sunday" className="text-xs bg-slate-700/50 hover:bg-red-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันอาทิตย์ เสริมบารมีผู้นำ</Link>
+                        <Link prefetch={false} href="/wallpapers/day/tuesday" className="text-xs bg-slate-700/50 hover:bg-pink-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันอังคาร เสริมความกล้าตัดสินใจ</Link>
+                        <Link prefetch={false} href="/wallpapers/day/thursday" className="text-xs bg-slate-700/50 hover:bg-orange-500/20 px-3 py-1.5 rounded-full text-slate-300 hover:text-white transition-colors">วันพฤหัสบดี เสริมปัญญาและผู้ใหญ่อุปถัมภ์</Link>
+                        <Link prefetch={false} href="/wallpapers/custom" className="text-xs bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 px-3 py-1.5 rounded-full text-emerald-300 hover:text-emerald-200 transition-colors">✨ ตั้งค่าภาพงานเฉพาะเป้าหมาย</Link>
                     </div>
                 </div>
             </section>

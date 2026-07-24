@@ -203,31 +203,31 @@ export default function NameAnalysisPage() {
                         บริการอื่นๆ ที่เกี่ยวข้อง
                     </p>
                     <div className="flex flex-wrap gap-2">
-                        <Link href="/name-check" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/name-check" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             วิเคราะห์ชื่อ-นามสกุล (ฟรี)
                         </Link>
-                        <Link href="/about" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/about" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             เกี่ยวกับ NameMongkol
                         </Link>
-                        <Link href="/name-generator" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/name-generator" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             สร้างชื่อมงคลด้วย AI
                         </Link>
-                        <Link href="/search" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/search" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             ค้นหาชื่อมงคลฟรี 5,000+ ชื่อ
                         </Link>
-                        <Link href="/premium-search" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/premium-search" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             เปลี่ยนชื่อมงคล Pro
                         </Link>
-                        <Link href="/premium-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/premium-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             วิเคราะห์ชื่อขั้นสูง (Premium)
                         </Link>
-                        <Link href="/phone-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/phone-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             เช็คเบอร์มงคลกราฟพลังงาน 6 ด้าน
                         </Link>
-                        <Link href="/palm-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/palm-analysis" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             วิเคราะห์ลายมือออนไลน์ด้วย AI
                         </Link>
-                        <Link href="/wallpapers" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
+                        <Link prefetch={false} href="/wallpapers" className="text-xs bg-white border border-[#ddddf0] hover:bg-[#f3f3f9] hover:border-indigo-300 hover:text-indigo-600 px-3 py-1.5 rounded-full text-[#5a5a82] transition-colors shadow-sm">
                             วอลเปเปอร์มงคลเสริมดวง ดาวน์โหลดฟรี
                         </Link>
                     </div>

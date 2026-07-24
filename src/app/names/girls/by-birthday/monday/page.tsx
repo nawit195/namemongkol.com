@@ -212,13 +212,13 @@ export default function MondayGirlNamesPage() {
                             เราขอแนะนำให้นำชื่อที่คุณเลือกจากตารางด้านบน มาตรวจสอบผลรวมเลขศาสตร์กับนามสกุลผ่านระบบของเรา
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/name-check" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-bold transition-colors">
+                            <Link prefetch={false} href="/name-check" className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-bold transition-colors">
                                 วิเคราะห์ชื่อ + นามสกุล ฟรี
                             </Link>
-                            <Link href="/name-generator" className="bg-white text-amber-700 hover:bg-amber-50 border border-amber-300 px-6 py-3 rounded-full font-bold transition-colors">
+                            <Link prefetch={false} href="/name-generator" className="bg-white text-amber-700 hover:bg-amber-50 border border-amber-300 px-6 py-3 rounded-full font-bold transition-colors">
                                 ให้ AI ตั้งชื่อมงคลให้
                             </Link>
-                            <Link href="/search" className="bg-white text-amber-700 hover:bg-amber-50 border border-amber-300 px-6 py-3 rounded-full font-bold transition-colors">
+                            <Link prefetch={false} href="/search" className="bg-white text-amber-700 hover:bg-amber-50 border border-amber-300 px-6 py-3 rounded-full font-bold transition-colors">
                                 ค้นหาชื่อวันจันทร์เพิ่มเติม (5,000+ ชื่อ)
                             </Link>
                         </div>

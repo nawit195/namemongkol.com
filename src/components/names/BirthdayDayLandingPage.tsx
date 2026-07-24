@@ -114,9 +114,9 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
             <section className="border-b border-[#ddddf0] bg-white px-4 pb-12 pt-28 sm:pt-32">
                 <div className="mx-auto max-w-5xl">
                     <nav aria-label="เส้นทางหน้า" className="text-sm text-[#5a5a82]">
-                        <Link href={`/names/${gender}`} className="hover:text-amber-700">ตั้งชื่อ{genderInfo.label}</Link>
+                        <Link prefetch={false} href={`/names/${gender}`} className="hover:text-amber-700">ตั้งชื่อ{genderInfo.label}</Link>
                         <span className="px-2" aria-hidden="true">/</span>
-                        <Link href={parentPath} className="hover:text-amber-700">ตามวันเกิด</Link>
+                        <Link prefetch={false} href={parentPath} className="hover:text-amber-700">ตามวันเกิด</Link>
                         <span className="px-2" aria-hidden="true">/</span>
                         <span aria-current="page">{dayLabel}</span>
                     </nav>
@@ -124,21 +124,21 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                     <h1 className="mt-3 max-w-4xl text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">{title}</h1>
                     <p className="mt-5 max-w-[70ch] text-base leading-8 text-[#5a5a82] sm:text-lg">{description}</p>
                     <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                        <Link
+                        <Link prefetch={false}
                             href={`/names/by-birthday/${day}`}
                             data-track={`seo.birthday.${gender}.${day}.overview`}
                             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition-colors hover:bg-slate-800"
                         >
                             ชื่อมงคลคนเกิด{dayLabel} ทั้งผู้ชายและผู้หญิง
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href={`/search${filterHash}`}
                             data-track={`seo.birthday.${gender}.${day}.search`}
                             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-800 transition-colors hover:border-amber-400 hover:bg-amber-50"
                         >
                             ค้นชื่อ{genderInfo.label}เพิ่ม
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/premium-search"
                             data-track={`seo.birthday.${gender}.${day}.premium`}
                             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-bold text-slate-950 transition-colors hover:bg-amber-400"
@@ -171,7 +171,7 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                             </div>
                         </dl>
                         <p className="mt-5 text-sm leading-6 text-[#5a5a82]">
-                            อ่านรายละเอียดเกี่ยวกับที่มาของการคำนวณได้ที่ <Link href="/methodology" className="font-semibold text-amber-700 hover:underline">วิธีคำนวณและข้อจำกัดของ NameMongkol</Link>
+                            อ่านรายละเอียดเกี่ยวกับที่มาของการคำนวณได้ที่ <Link prefetch={false} href="/methodology" className="font-semibold text-amber-700 hover:underline">วิธีคำนวณและข้อจำกัดของ NameMongkol</Link>
                         </p>
                     </div>
 
@@ -190,7 +190,7 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                             <ul className="divide-y divide-[#eeeef6]">
                                 {result.data.map((item) => (
                                     <li key={item.name} className="grid gap-2 px-5 py-4 sm:grid-cols-[1fr_2fr_0.7fr] sm:items-center">
-                                        <Link href={`/name-check?name=${encodeURIComponent(item.name)}`} className="font-bold text-sky-700 hover:underline">{item.name}</Link>
+                                        <Link prefetch={false} href={`/name-check?name=${encodeURIComponent(item.name)}`} className="font-bold text-sky-700 hover:underline">{item.name}</Link>
                                         <span className="text-sm leading-6 text-[#5a5a82]">{item.meaning || 'รออัปเดตความหมาย'}</span>
                                         <span className="w-fit rounded-lg bg-amber-50 px-3 py-1 text-sm font-bold text-amber-800 sm:justify-self-center">{item.numerology}</span>
                                     </li>
@@ -206,7 +206,7 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                     <h2 className="text-2xl font-bold">ดูชื่อมงคลวันเกิดอื่น</h2>
                     <div className="mt-5 flex flex-wrap gap-2">
                         {BIRTHDAY_DAY_KEYS.filter((key) => key !== day).map((key) => (
-                            <Link key={key} href={`/names/${gender}/by-birthday/${key}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-amber-400 hover:bg-amber-50">
+                            <Link prefetch={false} key={key} href={`/names/${gender}/by-birthday/${key}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-amber-400 hover:bg-amber-50">
                                 {dayLabels[key]}
                             </Link>
                         ))}
@@ -229,8 +229,8 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                         <h2 className="text-2xl font-bold">ชื่อที่ดีต้องเข้ากับนามสกุลด้วย</h2>
                         <p className="mt-3 max-w-[65ch] leading-7 text-slate-300">เลือกรายชื่อที่ชอบ 5–10 ชื่อ แล้วตรวจผลรวม คู่เลข และความสมพงศ์กับนามสกุลก่อนตัดสินใจ</p>
                         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                            <Link href="/name-check" data-track={`seo.birthday.${gender}.${day}.name_check`} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 font-bold hover:bg-slate-900">วิเคราะห์ชื่อฟรี</Link>
-                            <Link href="/premium-search" data-track={`seo.birthday.${gender}.${day}.premium_footer`} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">ให้ระบบช่วยคัดชื่อ Premium</Link>
+                            <Link prefetch={false} href="/name-check" data-track={`seo.birthday.${gender}.${day}.name_check`} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 font-bold hover:bg-slate-900">วิเคราะห์ชื่อฟรี</Link>
+                            <Link prefetch={false} href="/premium-search" data-track={`seo.birthday.${gender}.${day}.premium_footer`} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">ให้ระบบช่วยคัดชื่อ Premium</Link>
                         </div>
                     </div>
                 </div>

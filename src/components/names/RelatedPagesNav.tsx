@@ -23,7 +23,7 @@ export function RelatedPagesNav({ currentPath }: { currentPath: string }) {
                     {links.map((link) => {
                         const isActive = currentPath === link.path;
                         return (
-                            <Link
+                            <Link prefetch={false}
                                 key={link.path}
                                 href={link.path}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${

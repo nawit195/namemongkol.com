@@ -131,7 +131,7 @@ export default function PrivacyPage() {
                 <div className="absolute inset-x-0 top-0 h-80 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.18),transparent_35%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.12),transparent_32%)] pointer-events-none" />
 
                 <div className="relative mx-auto w-full max-w-5xl px-4 pt-24 md:pt-32 pb-28 md:pb-20">
-                    <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-10 group">
+                    <Link prefetch={false} href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-10 group">
                         <span className="p-2 rounded-full bg-white/5 group-hover:bg-white/10 transition-colors">
                             <ArrowLeft size={16} />
                         </span>
@@ -274,14 +274,14 @@ export default function PrivacyPage() {
                                 โปรดติดต่อทีมงานผ่าน LINE Official Account เราจะพิจารณาคำขอตามกฎหมายและตอบกลับโดยเร็วที่สุด
                             </p>
                             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                                <Link
+                                <Link prefetch={false}
                                     href="https://lin.ee/8N4ab3b"
                                     target="_blank"
                                     className="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300 transition-colors"
                                 >
                                     ติดต่อผ่าน LINE OA
                                 </Link>
-                                <Link
+                                <Link prefetch={false}
                                     href="/terms"
                                     className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-semibold text-white hover:bg-white/10 transition-colors"
                                 >

@@ -86,7 +86,7 @@ export default function ZodiacIndexPage() {
                     </p>
                     <p className="text-slate-300 leading-relaxed">
                         หากต้องการภาพที่ปรับตามเป้าหมายส่วนตัวมากขึ้น สามารถไปที่{' '}
-                        <Link
+                        <Link prefetch={false}
                             href="/wallpapers/custom"
                             className="font-medium text-amber-300 hover:text-amber-200 underline decoration-amber-400/50 underline-offset-2"
                         >

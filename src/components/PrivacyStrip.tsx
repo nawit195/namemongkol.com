@@ -16,7 +16,7 @@ export const PrivacyStrip = () => {
                     <ShieldCheck className="w-3 h-3 text-emerald-400/70" />
                     เข้ารหัส SSL
                 </span>
-                <Link href="/privacy" className="flex items-center gap-1 hover:text-slate-300 transition-colors">
+                <Link prefetch={false} href="/privacy" className="flex items-center gap-1 hover:text-slate-300 transition-colors">
                     <FileText className="w-3 h-3 text-emerald-400/70" />
                     นโยบายความเป็นส่วนตัว
                 </Link>

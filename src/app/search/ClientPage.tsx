@@ -162,7 +162,7 @@ function NameRow({ name, meaning, rowIndex }: { name: string; meaning?: string; 
                                 </div>
                             </div>
 
-                            <Link
+                            <Link prefetch={false}
                                 href={`/name-check?name=${encodeURIComponent(name)}`}
                                 data-track="funnel.search.name_analyze"
                                 className="inline-flex min-h-11 items-center justify-center rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition-colors hover:bg-amber-300"
@@ -601,9 +601,9 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                         <div className="relative z-10">
                                             <h3 className="text-amber-800 font-semibold mb-1 text-sm">💡 {t('pages.search.tipTitle')}</h3>
                                             <p className="text-slate-700 text-sm leading-relaxed">
-                                                {t('pages.search.tipBody')} <Link href="/name-check" className="text-amber-700 hover:underline decoration-amber-400/30 underline-offset-4">{t('pages.search.links.l1Title')}</Link>
+                                                {t('pages.search.tipBody')} <Link prefetch={false} href="/name-check" className="text-amber-700 hover:underline decoration-amber-400/30 underline-offset-4">{t('pages.search.links.l1Title')}</Link>
                                                 <span className="mx-1 text-slate-400">·</span>
-                                                ถ้ายังไม่มีชื่อในใจ ลอง <Link href="/name-generator" className="font-bold text-pink-600 hover:underline decoration-pink-300/50 underline-offset-4">สร้างชื่อมงคลด้วย AI</Link>
+                                                ถ้ายังไม่มีชื่อในใจ ลอง <Link prefetch={false} href="/name-generator" className="font-bold text-pink-600 hover:underline decoration-pink-300/50 underline-offset-4">สร้างชื่อมงคลด้วย AI</Link>
                                             </p>
                                         </div>
                                     </div>
@@ -736,7 +736,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                 <p className="text-amber-800 text-sm font-medium text-center sm:text-left">
                                     ✨ มีชื่อเกรด A+ อีก <strong>{aplusCount}</strong> ชื่อที่ตรงเงื่อนไข ดูเฉพาะเกรด A+ และ A ได้ใน Premium Search
                                 </p>
-                                <Link
+                                <Link prefetch={false}
                                     href="/premium-search"
                                     className="shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold transition-colors shadow-lg shadow-amber-500/20"
                                 >
@@ -748,7 +748,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                 <p className="text-slate-700 text-sm text-center sm:text-left">
                                     🔒 ผลลัพธ์นี้รวมเกรด A+, A และ B &nbsp;|&nbsp; ดูเฉพาะเกรด A+ และ A ได้ใน Premium Search
                                 </p>
-                                <Link
+                                <Link prefetch={false}
                                     href="/premium-search"
                                     className="shrink-0 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-colors"
                                 >
@@ -782,7 +782,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                     {hiddenAplusCount > 0 && (
                                         <tr className="border-t border-amber-200/90 bg-[linear-gradient(90deg,#fff8e7_0%,#f6f3fb_52%,#eeebf8_100%)]">
                                             <td colSpan={5} className="px-4 py-3.5 text-center">
-                                                <Link
+                                                <Link prefetch={false}
                                                     href="/premium-search"
                                                     className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
                                                 >

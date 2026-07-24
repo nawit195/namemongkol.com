@@ -70,7 +70,7 @@ export default function ProfileClientPage() {
             {/* Header */}
             <header className="sticky top-0 z-10 backdrop-blur-xl bg-[#0f172a]/80 border-b border-white/5">
                 <div className="max-w-2xl px-4 h-16 flex items-center gap-4">
-                    <Link href="/" className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors">
+                    <Link prefetch={false} href="/" className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors">
                         <ArrowLeft size={20} />
                     </Link>
                     <h1 className="text-lg font-bold text-white tracking-wide">ข้อมูลส่วนตัว</h1>

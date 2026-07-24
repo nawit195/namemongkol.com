@@ -38,13 +38,13 @@ export default function NotFound() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link
+                    <Link prefetch={false}
                         href="/"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-xl hover:from-amber-400 hover:to-orange-400 hover:scale-105 transition-all shadow-lg shadow-amber-500/25"
                     >
                         <span>🏠</span> กลับหน้าหลัก
                     </Link>
-                    <Link
+                    <Link prefetch={false}
                         href="/search"
                         className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all"
                     >

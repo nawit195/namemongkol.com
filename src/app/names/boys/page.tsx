@@ -123,7 +123,7 @@ export default function BoysNamesPage() {
                         แต่ยังคงพลังของความเป็นมงคลไว้ครบถ้วน สำหรับใครที่ยังไม่มีนามสกุลในใจ สามารถลองนำชื่อไปวิเคราะห์เดี่ยวๆ ก่อนได้
                     </p>
                     <div className="mt-8 text-center">
-                        <Link href="/name-check" className="inline-flex items-center justify-center rounded-xl bg-sky-500 px-6 py-3 font-bold text-white shadow-lg shadow-sky-500/30 transition-all hover:-translate-y-0.5 hover:bg-sky-400">
+                        <Link prefetch={false} href="/name-check" className="inline-flex items-center justify-center rounded-xl bg-sky-500 px-6 py-3 font-bold text-white shadow-lg shadow-sky-500/30 transition-all hover:-translate-y-0.5 hover:bg-sky-400">
                             วิเคราะห์ชื่อลูกชายร่วมกับนามสกุล (ฟรี)
                         </Link>
                     </div>

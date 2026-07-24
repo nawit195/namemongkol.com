@@ -99,13 +99,13 @@ export function NameCheckSeoContent() {
                         </ul>
 
                         <div className="mt-6 space-y-3 text-sm">
-                            <Link href="/search" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-amber-50 hover:border-amber-200">
+                            <Link prefetch={false} href="/search" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-amber-50 hover:border-amber-200">
                                 ค้นหาชื่อมงคล 5,000+ ชื่อ หากต้องการเริ่มจากรายชื่อแนะนำ
                             </Link>
-                            <Link href="/premium-analysis" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-purple-50 hover:border-purple-200">
+                            <Link prefetch={false} href="/premium-analysis" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-purple-50 hover:border-purple-200">
                                 วิเคราะห์ชื่อมงคลขั้นสูง หากต้องการเจาะลึกตามวันและเวลาเกิด
                             </Link>
-                            <Link href="/name-analysis" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-sky-50 hover:border-sky-200">
+                            <Link prefetch={false} href="/name-analysis" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-sky-50 hover:border-sky-200">
                                 เช็กหลายชื่อพร้อมกัน หากต้องการคัดชื่อจำนวนมากในครั้งเดียว
                             </Link>
                         </div>

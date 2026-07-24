@@ -39,7 +39,7 @@ export const WallpaperShowcase = ({ stats = [] }: WallpaperShowcaseProps) => {
                         เสริมดวงชะตาให้ครบทุกด้าน ด้วยวอลเปเปอร์มงคลเฉพาะบุคคล ออกแบบตามหลักทักษาและเลขศาสตร์
                     </p>
                 </div>
-                <Link
+                <Link prefetch={false}
                     href="/wallpapers"
                     className="flex items-center gap-2 text-amber-600 font-medium hover:text-amber-500 transition-colors group shrink-0"
                 >
@@ -49,7 +49,7 @@ export const WallpaperShowcase = ({ stats = [] }: WallpaperShowcaseProps) => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {wallpapers.map((wp) => (
-                    <Link href="/wallpapers" key={wp.id} className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-[#f8f8fc] border border-[#ddddf0] hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:-translate-y-1">
+                    <Link prefetch={false} href="/wallpapers" key={wp.id} className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-[#f8f8fc] border border-[#ddddf0] hover:border-amber-400 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:-translate-y-1">
                         <Image
                             src={wp.image}
                             alt={`วอลเปเปอร์มงคล ${wp.name} ภาพเสริมดวงตามวันเกิด`}
@@ -84,7 +84,7 @@ export const WallpaperShowcase = ({ stats = [] }: WallpaperShowcaseProps) => {
                         <h3 className="text-xl font-bold text-amber-700 mb-2">ยังไม่รู้วอลเปเปอร์ไหนเหมาะกับคุณ?</h3>
                         <p className="text-[#5a5a82] text-sm">วิเคราะห์ชื่อกับเราวันนี้ พร้อมรับคำแนะนำวอลเปเปอร์เสริมดวงที่ตรงกับชะตาของคุณที่สุด</p>
                     </div>
-                    <Link
+                    <Link prefetch={false}
                         href="/wallpapers"
                         className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all transform hover:scale-105"
                     >

@@ -166,7 +166,7 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
             <section className="border-b border-[#ddddf0] bg-white px-4 pb-12 pt-28 sm:pt-32">
                 <div className="mx-auto max-w-5xl">
                     <nav aria-label="เส้นทางหน้า" className="text-sm text-[#5a5a82]">
-                        <Link href="/search" className="hover:text-amber-700">ค้นหาชื่อมงคล</Link>
+                        <Link prefetch={false} href="/search" className="hover:text-amber-700">ค้นหาชื่อมงคล</Link>
                         <span className="px-2" aria-hidden="true">/</span>
                         <span aria-current="page">{copy.dayLabel}</span>
                     </nav>
@@ -176,8 +176,8 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                         ชื่อมงคลคนเกิด{copy.dayLabel}ควรพิจารณาทั้งความหมาย เสียงอ่าน อักษรตามหลักทักษาปกรณ์ และผลรวมเลขศาสตร์ หน้านี้รวบรวมตัวเลือกสำหรับผู้ชายและผู้หญิงจากฐานข้อมูล NameMongkol เพื่อช่วยคัดรายชื่อเบื้องต้นก่อนตรวจร่วมกับนามสกุล
                     </p>
                     <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                        <Link href={genderPath('boys', day)} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f172a] px-5 py-3 font-bold text-white hover:bg-[#1e293b]">ดูชื่อมงคลผู้ชาย{copy.dayLabel}</Link>
-                        <Link href={genderPath('girls', day)} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-50">ดูชื่อมงคลผู้หญิง{copy.dayLabel}</Link>
+                        <Link prefetch={false} href={genderPath('boys', day)} className="inline-flex min-h-11 items-center justify-center rounded-xl bg-[#0f172a] px-5 py-3 font-bold text-white hover:bg-[#1e293b]">ดูชื่อมงคลผู้ชาย{copy.dayLabel}</Link>
+                        <Link prefetch={false} href={genderPath('girls', day)} className="inline-flex min-h-11 items-center justify-center rounded-xl border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-50">ดูชื่อมงคลผู้หญิง{copy.dayLabel}</Link>
                     </div>
                 </div>
             </section>
@@ -192,7 +192,7 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                             <div className="p-5"><dt className="font-bold text-emerald-300">ศรีและมนตรี</dt><dd className="mt-2 text-sm leading-6 text-slate-300">{uniqueCharacters([...config.si, ...config.montri])}</dd></div>
                             <div className="p-5"><dt className="font-bold text-rose-300">กาลกิณีที่ควรตรวจ</dt><dd className="mt-2 text-sm leading-6 text-slate-300">{uniqueCharacters(config.kali)}</dd></div>
                         </dl>
-                        <p className="mt-5 text-sm leading-6 text-[#5a5a82]">ดูที่มาและข้อจำกัดได้ในหน้า <Link href="/methodology" className="font-semibold text-amber-700 hover:underline">วิธีคำนวณของ NameMongkol</Link></p>
+                        <p className="mt-5 text-sm leading-6 text-[#5a5a82]">ดูที่มาและข้อจำกัดได้ในหน้า <Link prefetch={false} href="/methodology" className="font-semibold text-amber-700 hover:underline">วิธีคำนวณของ NameMongkol</Link></p>
                     </div>
 
                     <div className="grid gap-6 md:grid-cols-2">
@@ -209,14 +209,14 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                                     {group.result.data.map((item) => (
                                         <li key={item.name} className="p-4">
                                             <div className="flex items-start justify-between gap-3">
-                                                <Link href={`/name-check?name=${encodeURIComponent(item.name)}`} className={`font-bold ${group.color === 'sky' ? 'text-sky-700' : 'text-rose-700'} hover:underline`}>{item.name}</Link>
+                                                <Link prefetch={false} href={`/name-check?name=${encodeURIComponent(item.name)}`} className={`font-bold ${group.color === 'sky' ? 'text-sky-700' : 'text-rose-700'} hover:underline`}>{item.name}</Link>
                                                 <span className="shrink-0 rounded-lg bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-800">รวม {item.numerology}</span>
                                             </div>
                                             <p className="mt-2 text-sm leading-6 text-[#5a5a82]">{item.meaning || 'รออัปเดตความหมาย'}</p>
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="border-t border-[#eeeeF6] p-4"><Link href={group.path} className="font-bold text-amber-800 hover:underline">ดู{group.label}{copy.dayLabel}ทั้งหมด →</Link></div>
+                                <div className="border-t border-[#eeeeF6] p-4"><Link prefetch={false} href={group.path} className="font-bold text-amber-800 hover:underline">ดู{group.label}{copy.dayLabel}ทั้งหมด →</Link></div>
                             </section>
                         ))}
                     </div>
@@ -228,7 +228,7 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                     <h2 className="text-2xl font-bold">ชื่อมงคลตามวันเกิดอื่น</h2>
                     <div className="mt-5 flex flex-wrap gap-2">
                         {DAYS.filter((item) => item !== day).map((item) => (
-                            <Link key={item} href={`/names/by-birthday/${item}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-400 hover:bg-amber-50">ชื่อมงคลคนเกิด{DAY_LABELS[item]}</Link>
+                            <Link prefetch={false} key={item} href={`/names/by-birthday/${item}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-400 hover:bg-amber-50">ชื่อมงคลคนเกิด{DAY_LABELS[item]}</Link>
                         ))}
                     </div>
                 </div>
@@ -244,8 +244,8 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                         <h2 className="text-2xl font-bold">ตรวจชื่อที่ชอบร่วมกับนามสกุล</h2>
                         <p className="mt-3 max-w-[65ch] leading-7 text-slate-300">ชื่อที่เหมาะกับวันเกิดยังอาจให้ผลรวมต่างกันเมื่อนำไปรวมกับนามสกุล เลือกชื่อไว้หลายตัวเลือกแล้วตรวจเปรียบเทียบก่อนตัดสินใจ</p>
                         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                            <Link href="/name-check" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">วิเคราะห์ชื่อและนามสกุลฟรี</Link>
-                            <Link href="/articles/auspicious-names-by-birthday-2026" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 font-bold hover:bg-slate-900">อ่านคู่มือชื่อมงคลตามวันเกิด</Link>
+                            <Link prefetch={false} href="/name-check" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">วิเคราะห์ชื่อและนามสกุลฟรี</Link>
+                            <Link prefetch={false} href="/articles/auspicious-names-by-birthday-2026" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 font-bold hover:bg-slate-900">อ่านคู่มือชื่อมงคลตามวันเกิด</Link>
                         </div>
                     </div>
                 </div>

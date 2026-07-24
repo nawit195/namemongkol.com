@@ -236,7 +236,7 @@ export const WelcomeCreditModal: React.FC<WelcomeCreditModalProps> = ({ user }) 
                         <Sparkles size={18} className="animate-pulse" />
                     </button>
 
-                    <Link
+                    <Link prefetch={false}
                         href="/reviews"
                         onClick={handleClose}
                         className="w-full border border-violet-500/30 hover:border-violet-500/60 text-violet-400 hover:text-violet-300 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"

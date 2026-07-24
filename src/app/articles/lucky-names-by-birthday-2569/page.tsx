@@ -248,16 +248,16 @@ export default function ArticleLuckyNamesByBirthday2569() {
                     {/* Breadcrumb Navigation */}
                     <nav className="mb-6 text-sm text-[#5a5a82]" aria-label="Breadcrumb">
                         <ol className="flex items-center gap-2 flex-wrap">
-                            <li><Link href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
+                            <li><Link prefetch={false} href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
                             <li className="text-slate-400">/</li>
-                            <li><Link href="/articles" className="hover:text-[#1a1a3e] transition-colors">บทความ</Link></li>
+                            <li><Link prefetch={false} href="/articles" className="hover:text-[#1a1a3e] transition-colors">บทความ</Link></li>
                             <li className="text-slate-400">/</li>
                             <li className="text-amber-600 font-medium truncate max-w-[200px] md:max-w-none">{article.title}</li>
                         </ol>
                     </nav>
 
                     {/* Back Link */}
-                    <Link href="/articles" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-amber-700 mb-6 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-amber-500/40 transition-all group shadow-sm w-fit">
+                    <Link prefetch={false} href="/articles" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-amber-700 mb-6 px-3 py-1.5 rounded-full bg-white border border-slate-200 hover:border-amber-500/40 transition-all group shadow-sm w-fit">
                         <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform text-amber-600" />
                         <span>บทความทั้งหมด</span>
                     </Link>
@@ -328,11 +328,11 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             </ul>
                         )}
                         <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                            <Link href="/name-check" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm font-bold text-[#1a1a3e] transition hover:border-amber-400 hover:bg-amber-100/70">
+                            <Link prefetch={false} href="/name-check" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm font-bold text-[#1a1a3e] transition hover:border-amber-400 hover:bg-amber-100/70">
                                 วิเคราะห์ชื่อฟรี
                                 <span className="mt-1 block text-xs font-normal leading-relaxed text-[#5a5a82]">ตรวจชื่อจริงร่วมกับนามสกุลตาม 4 ศาสตร์</span>
                             </Link>
-                            <Link href="/premium-search" className="rounded-xl border border-slate-200 bg-white/70 p-4 text-sm font-bold text-[#1a1a3e] transition hover:border-amber-500/40 hover:bg-white">
+                            <Link prefetch={false} href="/premium-search" className="rounded-xl border border-slate-200 bg-white/70 p-4 text-sm font-bold text-[#1a1a3e] transition hover:border-amber-500/40 hover:bg-white">
                                 ค้นหาชื่อมงคล Premium
                                 <span className="mt-1 block text-xs font-normal leading-relaxed text-[#5a5a82]">คัดชื่อพร้อมคะแนน ความหมาย และแนวทางเลือกใช้งาน</span>
                             </Link>
@@ -445,10 +445,10 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             ใช้ระบบ AI วิเคราะห์ชื่อมงคลฟรี! ตรวจสอบเลขศาสตร์ ทักษา อายตนะ 6 และอักษรกาลกิณีได้ภายในไม่กี่วินาที
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/name-check" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-amber-500/20">
+                            <Link prefetch={false} href="/name-check" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg shadow-amber-500/20">
                                 <span>🔮 วิเคราะห์ชื่อมงคลฟรี</span>
                             </Link>
-                            <Link href="/premium-search" className="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-[#1a1a3e] font-bold py-4 px-8 rounded-full transition-all shadow-sm">
+                            <Link prefetch={false} href="/premium-search" className="inline-flex items-center justify-center gap-2 bg-white border border-slate-200 hover:border-slate-300 text-[#1a1a3e] font-bold py-4 px-8 rounded-full transition-all shadow-sm">
                                 <span>👑 ค้นหาชื่อมงคล Premium</span>
                             </Link>
                         </div>
@@ -465,7 +465,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             <p className="text-[#5a5a82] text-sm leading-relaxed">
                                 ผู้จัดทำเนื้อหาเกี่ยวกับเลขศาสตร์ ทักษาปกรณ์ และอายตนะ 6 พร้อมอธิบายวิธีคำนวณและข้อจำกัดของผลวิเคราะห์
                             </p>
-                            <Link href="/about" className="inline-flex items-center gap-1.5 text-amber-600 hover:text-amber-700 text-sm mt-2 transition-colors">
+                            <Link prefetch={false} href="/about" className="inline-flex items-center gap-1.5 text-amber-600 hover:text-amber-700 text-sm mt-2 transition-colors">
                                 เรียนรู้เพิ่มเติมเกี่ยวกับผู้เขียน →
                             </Link>
                         </div>
@@ -483,7 +483,7 @@ export default function ArticleLuckyNamesByBirthday2569() {
                                     const relatedArticle = localArticles.find(a => a.slug === slug);
                                     const displayTitle = relatedArticle?.title || slug.replace(/-/g, ' ');
                                     return (
-                                        <Link
+                                        <Link prefetch={false}
                                             key={slug}
                                             href={`/articles/${slug}`}
                                             className="text-sm bg-white border border-slate-200 hover:border-amber-500/40 text-[#5a5a82] hover:text-amber-700 px-4 py-2 rounded-full transition-all hover:-translate-y-0.5 shadow-sm"
@@ -506,22 +506,22 @@ export default function ArticleLuckyNamesByBirthday2569() {
                             ให้บริการทั้งวิเคราะห์ชื่อฟรีและค้นหาชื่อมงคล Premium พร้อมวอลเปเปอร์มงคลเสริมดวง
                         </p>
                         <div className="flex flex-wrap gap-2">
-                            <Link href="/" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 วิเคราะห์ชื่อมงคล
                             </Link>
-                            <Link href="/name-check" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/name-check" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 เช็คชื่อมงคลฟรี
                             </Link>
-                            <Link href="/premium-search" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/premium-search" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 ค้นหาชื่อมงคล Premium
                             </Link>
-                            <Link href="/phone-analysis" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/phone-analysis" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 วิเคราะห์เบอร์มงคล
                             </Link>
-                            <Link href="/wallpapers" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/wallpapers" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 วอลเปเปอร์มงคล
                             </Link>
-                            <Link href="/articles" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/articles" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-3 py-1.5 rounded-full text-[#5a5a82] hover:text-amber-700 transition-colors shadow-sm">
                                 บทความทั้งหมด
                             </Link>
                         </div>

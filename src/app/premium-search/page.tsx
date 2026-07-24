@@ -166,7 +166,7 @@ export default function PremiumSearchPage() {
                             <p className="mt-3 text-sm leading-relaxed text-[#5a5a82]">
                                 วิเคราะห์ชื่อและนามสกุลปัจจุบัน เพื่อดูว่าปัญหาอยู่ที่ผลรวม คู่เลข หรืออักษรกาลกิณี
                             </p>
-                            <Link href="/name-check" className="mt-6 inline-flex items-center text-sm font-bold text-sky-700 hover:text-sky-600">
+                            <Link prefetch={false} href="/name-check" className="mt-6 inline-flex items-center text-sm font-bold text-sky-700 hover:text-sky-600">
                                 ไปวิเคราะห์ชื่อฟรี →
                             </Link>
                         </div>
@@ -176,10 +176,10 @@ export default function PremiumSearchPage() {
                                 ถ้ายังอยู่ในขั้นสำรวจชื่อจำนวนมาก ให้เริ่มจากฐานข้อมูลชื่อมงคลฟรีหรือเครื่องมือสร้างชื่อด้วย AI
                             </p>
                             <div className="mt-6 flex flex-wrap gap-3">
-                                <Link href="/search" className="inline-flex items-center text-sm font-bold text-amber-700 hover:text-amber-600">
+                                <Link prefetch={false} href="/search" className="inline-flex items-center text-sm font-bold text-amber-700 hover:text-amber-600">
                                     ค้นหาชื่อมงคลฟรี →
                                 </Link>
-                                <Link href="/name-generator" className="inline-flex items-center text-sm font-bold text-pink-600 hover:text-pink-500">
+                                <Link prefetch={false} href="/name-generator" className="inline-flex items-center text-sm font-bold text-pink-600 hover:text-pink-500">
                                     สร้างชื่อมงคลด้วย AI →
                                 </Link>
                             </div>
@@ -189,7 +189,7 @@ export default function PremiumSearchPage() {
                             <p className="mt-3 text-sm leading-relaxed text-[#5a5a82]">
                                 ใช้ Pro เมื่อต้องการชื่อที่คัดตามวันเกิดและอักษรนำ พร้อมลดโอกาสเจอชื่อที่ขัดกับหลักทักษา
                             </p>
-                            <Link href="/premium-analysis" className="mt-6 inline-flex items-center text-sm font-bold text-emerald-700 hover:text-emerald-600">
+                            <Link prefetch={false} href="/premium-analysis" className="mt-6 inline-flex items-center text-sm font-bold text-emerald-700 hover:text-emerald-600">
                                 วิเคราะห์ชื่อขั้นสูงต่อ →
                             </Link>
                         </div>

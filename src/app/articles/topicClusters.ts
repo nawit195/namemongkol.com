@@ -45,4 +45,14 @@ export const topicClusters: ReadonlyArray<ArticleTopicCluster> = [
             { href: '/articles/caishen-wallpaper-free-download', label: 'วอลเปเปอร์ไฉ่ซิงเอี้ย' },
         ],
     },
+    {
+        title: 'ตั้งชื่อสัตว์เลี้ยง',
+        description: 'รวมชื่อน่ารัก มงคล และหลายภาษา สำหรับน้องหมา น้องแมว และสัตว์เลี้ยงทุกชนิด',
+        links: [
+            { href: '/articles/pet-names', label: '500 ชื่อสัตว์เลี้ยงน่ารักและมงคล' },
+            { href: '/pet-name', label: 'ระบบค้นหาชื่อสัตว์เลี้ยงมงคล' },
+            { href: '/pet-name/dog', label: 'ชื่อสุนัขมงคล' },
+            { href: '/pet-name/cat', label: 'ชื่อแมวมงคล' },
+        ],
+    },
 ];

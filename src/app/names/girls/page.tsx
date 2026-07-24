@@ -119,7 +119,7 @@ export default function GirlsNamesPage() {
                         เมื่อคุณพ่อคุณแม่เลือกชื่อที่ชอบได้แล้ว ขั้นตอนที่สำคัญที่สุดคือการตรวจสอบ <strong>&ldquo;ผลรวมเลขศาสตร์&rdquo;</strong> เมื่อนำชื่อนั้นมารวมกับนามสกุลของครอบครัว
                     </p>
                     <div className="mt-8 text-center">
-                        <Link href="/name-check" className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-6 py-3 font-bold text-white shadow-lg shadow-amber-500/30 transition-all hover:-translate-y-0.5 hover:bg-amber-400">
+                        <Link prefetch={false} href="/name-check" className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-6 py-3 font-bold text-white shadow-lg shadow-amber-500/30 transition-all hover:-translate-y-0.5 hover:bg-amber-400">
                             วิเคราะห์ชื่อร่วมกับนามสกุล (ฟรี)
                         </Link>
                     </div>

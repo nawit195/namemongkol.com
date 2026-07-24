@@ -133,7 +133,7 @@ export const BulkAnalysisBanner = () => {
                             ))}
                         </ul>
 
-                        <Link
+                        <Link prefetch={false}
                             href="/name-analysis"
                             className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white font-bold text-base rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 active:scale-95"
                         >

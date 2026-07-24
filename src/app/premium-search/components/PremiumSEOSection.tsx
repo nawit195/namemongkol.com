@@ -153,7 +153,7 @@ export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }
                         <p className="mb-6 text-lg text-[#5a5a82]">
                             <strong className="text-emerald-700">คำแนะนำสำคัญ:</strong> หลังได้ชื่อที่ต้องการแล้ว อย่าลืมนำไป
                         </p>
-                        <Link
+                        <Link prefetch={false}
                             href="/"
                             className="inline-flex items-center gap-2.5 rounded-2xl border border-emerald-200 bg-white px-8 py-4 font-black text-[#1a1a3e] shadow-[0_12px_32px_rgba(16,185,129,0.12)] transition-all hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50"
                         >

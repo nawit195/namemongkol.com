@@ -206,7 +206,7 @@ export default function AuraVibeWidget() {
                             </div>
 
                             {/* CTA → Full Analysis */}
-                            <Link
+                            <Link prefetch={false}
                                 href="/aura-analysis"
                                 className="group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
                             >

@@ -46,7 +46,7 @@ export const BulkAnalysisUpsell: React.FC<BulkAnalysisUpsellProps> = ({ currentN
                 </div>
 
                 {/* CTA */}
-                <Link
+                <Link prefetch={false}
                     href="/name-analysis"
                     data-track="home.bulk_cta.click"
                     className="group flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white font-bold text-sm rounded-xl shadow-sm transition-all duration-300 hover:-translate-y-0.5 active:scale-95 whitespace-nowrap"

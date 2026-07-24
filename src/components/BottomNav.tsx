@@ -66,7 +66,7 @@ export const BottomNav = () => {
                     const Icon = item.icon;
 
                     return (
-                        <Link
+                        <Link prefetch={false}
                             key={item.path}
                             href={item.path}
                             className="group relative flex min-w-0 flex-col items-center justify-center gap-0.5"

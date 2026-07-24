@@ -137,7 +137,7 @@ export function NameListSection({ names, genderLabel }: NameListSectionProps) {
                                     <p className="mt-2 text-sm leading-6 text-slate-600">{name.meaning}</p>
                                 </div>
                                 <div className="mt-4 pt-4 border-t border-slate-100">
-                                    <Link 
+                                    <Link prefetch={false} 
                                         href={`/name-check?name=${encodeURIComponent(name.name)}`}
                                         className="block w-full rounded-xl bg-slate-900 px-4 py-2 text-center text-sm font-bold text-white transition-colors hover:bg-slate-800"
                                     >

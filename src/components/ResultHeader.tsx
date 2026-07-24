@@ -60,7 +60,7 @@ export const ResultHeader: React.FC<ResultHeaderProps> = ({ result, changeNameHr
                             result.namePrediction.color.includes('red') ||
                             result.namePrediction.color.includes('orange') ||
                             result.namePrediction.color.includes('amber')) && (
-                                <Link href={changeNameHref} className="block mt-1">
+                                <Link prefetch={false} href={changeNameHref} className="block mt-1">
                                     <button className="w-full py-2 px-3 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 hover:from-emerald-500/20 hover:to-teal-500/20 border border-emerald-500/20 hover:border-emerald-500/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group/btn hover:scale-[1.03] hover:shadow-lg hover:shadow-emerald-500/10 active:scale-95">
                                         <div className="relative">
                                             <Sparkles className="w-3.5 h-3.5 text-emerald-400 group-hover/btn:text-emerald-300 animate-pulse" />

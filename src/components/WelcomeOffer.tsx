@@ -84,7 +84,7 @@ export const WelcomeOffer = () => {
                             สมาชิกใหม่รับทันที! ใช้แลกชื่อมงคลได้เลย
                         </p>
 
-                        <Link
+                        <Link prefetch={false}
                             href="/login"
                             className="flex items-center justify-center gap-2 w-full py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs sm:text-sm rounded-lg transition-all shadow-lg shadow-amber-500/20 active:scale-95"
                         >

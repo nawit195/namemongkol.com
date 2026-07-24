@@ -326,14 +326,14 @@ export default function NameGeneratorPage() {
                             </h2>
                             <p className="mt-3 text-sm leading-7">
                                 หลังจากได้รายชื่อที่สนใจแล้ว แนะนำให้นำชื่อไปตรวจสอบเพิ่มเติมผ่านระบบ{' '}
-                                <Link href="/name-analysis" className="font-extrabold text-[#a67828] underline-offset-4 hover:underline">
+                                <Link prefetch={false} href="/name-analysis" className="font-extrabold text-[#a67828] underline-offset-4 hover:underline">
                                     วิเคราะห์ชื่อมงคล
                                 </Link>{' '}
                                 เพื่อดูรายละเอียดเชิงลึก เช่น ผลรวมชื่อ ความหมายโดยรวม ความเหมาะสมของชื่อและนามสกุล รวมถึงแนวทางการเลือกชื่อที่เหมาะกับตัวคุณมากที่สุด
                             </p>
                             <div className="mt-5 flex flex-wrap gap-3 text-sm">
                                 {internalLinks.map((link) => (
-                                    <Link
+                                    <Link prefetch={false}
                                         key={`${link.href}-${link.label}`}
                                         href={link.href}
                                         className="rounded-full border border-[#ddddf0] bg-[#f8f8fc] px-4 py-2 font-bold text-[#5a5a82] shadow-sm transition-colors hover:border-[#9b8ec4] hover:bg-[#eeebf8]"
@@ -370,7 +370,7 @@ export default function NameGeneratorPage() {
                         <p className="mx-auto mt-3 max-w-3xl text-sm leading-7 text-[#6b5b3d] sm:text-base">
                             เลือกอักษรนำหน้าที่ต้องการ แล้วให้ระบบ AI ช่วยสร้างรายชื่อมงคล Grade A+ เพื่อเป็นไอเดียสำหรับตั้งชื่อลูก เปลี่ยนชื่อ หรือออกแบบชื่อแบรนด์ของคุณ
                         </p>
-                        <Link
+                        <Link prefetch={false}
                             href="#name-generator-tool"
                             className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-[#1a1a3e] px-6 py-3 text-sm font-extrabold text-[#f8f8fc] shadow-[0_8px_20px_rgba(26,26,62,0.16)] transition-colors hover:bg-[#292955] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#9b8ec4]/25"
                         >

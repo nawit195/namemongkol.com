@@ -28,7 +28,7 @@ export default function CookieConsent() {
 
                 <div className="min-w-0 flex-1 text-left">
                     <p className="line-clamp-2 text-[9px] leading-snug text-slate-300 md:line-clamp-none md:text-sm md:leading-relaxed">
-                        เว็บไซต์นี้ใช้คุกกี้เพื่อประสบการณ์ที่ดีที่สุด การใช้งานเว็บไซต์ถือว่าท่านยอมรับ <Link href="/privacy" className="text-amber-400 hover:underline font-medium">นโยบายความเป็นส่วนตัว</Link>
+                        เว็บไซต์นี้ใช้คุกกี้เพื่อประสบการณ์ที่ดีที่สุด การใช้งานเว็บไซต์ถือว่าท่านยอมรับ <Link prefetch={false} href="/privacy" className="text-amber-400 hover:underline font-medium">นโยบายความเป็นส่วนตัว</Link>
                     </p>
                 </div>
 

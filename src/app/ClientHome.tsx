@@ -503,16 +503,16 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                                 เรารวบรวมรายชื่อมงคลที่คัดสรรมาอย่างดี แยกตามเพศและหมวดหมู่ต่างๆ ไว้ให้แล้ว เพื่อเป็นจุดเริ่มต้นที่ดีที่สุดสำหรับลูกน้อยของคุณ
                             </p>
                             <div className="flex flex-wrap justify-center gap-3">
-                                <Link href="/names/girls" className="px-5 py-2.5 rounded-full bg-pink-50 text-pink-700 font-medium hover:bg-pink-100 border border-pink-200 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/names/girls" className="px-5 py-2.5 rounded-full bg-pink-50 text-pink-700 font-medium hover:bg-pink-100 border border-pink-200 transition-colors shadow-sm">
                                     ตั้งชื่อลูกสาว
                                 </Link>
-                                <Link href="/names/boys" className="px-5 py-2.5 rounded-full bg-sky-50 text-sky-700 font-medium hover:bg-sky-100 border border-sky-200 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/names/boys" className="px-5 py-2.5 rounded-full bg-sky-50 text-sky-700 font-medium hover:bg-sky-100 border border-sky-200 transition-colors shadow-sm">
                                     ตั้งชื่อลูกชาย
                                 </Link>
-                                <Link href="/names/girls/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
+                                <Link prefetch={false} href="/names/girls/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
                                     ชื่อภาษาอังกฤษ ลูกสาว
                                 </Link>
-                                <Link href="/names/boys/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
+                                <Link prefetch={false} href="/names/boys/english-names" className="px-5 py-2.5 rounded-full bg-slate-50 text-slate-700 font-medium hover:bg-slate-100 border border-slate-200 transition-colors">
                                     ชื่อภาษาอังกฤษ ลูกชาย
                                 </Link>
                             </div>

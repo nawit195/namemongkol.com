@@ -216,7 +216,7 @@ export const BeforeAfterComparison: React.FC<BeforeAfterComparisonProps> = ({
             </div>
 
             {/* CTA Button */}
-            <Link href="/premium-search" className="block">
+            <Link prefetch={false} href="/premium-search" className="block">
                 <button className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:scale-[0.98]">
                     <Sparkles className="w-5 h-5" />
                     <span>ค้นหาชื่อมงคลที่เหมาะกับคุณ</span>

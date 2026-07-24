@@ -304,7 +304,7 @@ export default function LoginClientPage() {
                                     </svg>
                                 </div>
                                 <span className="text-xs text-slate-400 pt-0.5 leading-relaxed">
-                                    ฉันได้อ่านและยอมรับ <Link href="/privacy" className="text-amber-400 hover:underline">นโยบายความเป็นส่วนตัว</Link> และ <Link href="/terms" className="text-amber-400 hover:underline">ข้อตกลงการใช้งาน</Link> ของ NameMongkol
+                                    ฉันได้อ่านและยอมรับ <Link prefetch={false} href="/privacy" className="text-amber-400 hover:underline">นโยบายความเป็นส่วนตัว</Link> และ <Link prefetch={false} href="/terms" className="text-amber-400 hover:underline">ข้อตกลงการใช้งาน</Link> ของ NameMongkol
                                 </span>
                             </label>
                         </div>
@@ -370,7 +370,7 @@ export default function LoginClientPage() {
 
                     <div className="mt-8 text-center text-sm text-slate-400">
                         ยังไม่มีบัญชีใช่ไหม?{' '}
-                        <Link href="/register" className={`text-amber-400 hover:text-amber-300 font-medium transition-colors ${isLoading ? 'pointer-events-none opacity-50' : ''}`}>
+                        <Link prefetch={false} href="/register" className={`text-amber-400 hover:text-amber-300 font-medium transition-colors ${isLoading ? 'pointer-events-none opacity-50' : ''}`}>
                             สมัครสมาชิก
                         </Link>
                     </div>

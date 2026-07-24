@@ -41,7 +41,7 @@ export const HomeSeoContent = () => {
             </div>
 
             <div className="mb-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                <Link
+                <Link prefetch={false}
                     href="/name-check"
                     className="rounded-2xl border border-amber-200 bg-amber-50 p-5 transition-colors hover:border-amber-300 hover:bg-amber-100 shadow-sm"
                 >
@@ -53,7 +53,7 @@ export const HomeSeoContent = () => {
                     <p className="mt-4 text-sm font-medium text-amber-600">ไปวิเคราะห์ชื่อ-นามสกุลฟรี</p>
                 </Link>
 
-                <Link
+                <Link prefetch={false}
                     href="/search"
                     className="rounded-2xl border border-sky-200 bg-sky-50 p-5 transition-colors hover:border-sky-300 hover:bg-sky-100 shadow-sm"
                 >
@@ -65,7 +65,7 @@ export const HomeSeoContent = () => {
                     <p className="mt-4 text-sm font-medium text-sky-600">ไปค้นหาชื่อมงคล</p>
                 </Link>
 
-                <Link
+                <Link prefetch={false}
                     href="/name-generator"
                     className="rounded-2xl border border-pink-200 bg-pink-50 p-5 transition-colors hover:border-pink-300 hover:bg-pink-100 shadow-sm"
                 >
@@ -247,7 +247,7 @@ export const HomeSeoContent = () => {
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <Link
+                <Link prefetch={false}
                     href="/name-check"
                     className="group rounded-2xl border border-sky-200 bg-sky-50 hover:bg-sky-100 p-5 transition-all shadow-sm"
                 >
@@ -265,7 +265,7 @@ export const HomeSeoContent = () => {
                     </p>
                 </Link>
 
-                <Link
+                <Link prefetch={false}
                     href="/search"
                     className="group rounded-2xl border border-amber-200 bg-amber-50 hover:bg-amber-100 p-5 transition-all shadow-sm"
                 >
@@ -283,7 +283,7 @@ export const HomeSeoContent = () => {
                     </p>
                 </Link>
 
-                <Link
+                <Link prefetch={false}
                     href="/premium-search"
                     className="group rounded-2xl border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 p-5 transition-all shadow-sm"
                 >
@@ -301,7 +301,7 @@ export const HomeSeoContent = () => {
                     </p>
                 </Link>
 
-                <Link
+                <Link prefetch={false}
                     href="/premium-analysis"
                     className="group rounded-2xl border border-purple-200 bg-purple-50 hover:bg-purple-100 p-5 transition-all shadow-sm"
                 >

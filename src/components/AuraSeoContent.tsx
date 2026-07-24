@@ -358,7 +358,7 @@ export const AuraSeoContent = () => {
                         { href: '/premium-analysis', label: '✨ ออกแบบชื่อ Premium' },
                         { href: '/articles', label: '📚 บทความ' },
                     ].map((link) => (
-                        <Link
+                        <Link prefetch={false}
                             key={link.href}
                             href={link.href}
                             className="px-4 py-2 rounded-xl bg-slate-800/60 border border-white/5 text-slate-300 text-sm hover:text-white hover:border-purple-500/30 hover:bg-slate-700/60 transition-all"

@@ -138,7 +138,7 @@ export default function AboutSection() {
             <div className="pointer-events-none absolute inset-0 opacity-[0.045] [background-image:linear-gradient(#1a1a3e_1px,transparent_1px),linear-gradient(90deg,#1a1a3e_1px,transparent_1px)] [background-size:44px_44px]" />
 
             <div className="relative z-10 mx-auto w-full max-w-7xl px-4">
-                <Link
+                <Link prefetch={false}
                     href="/"
                     className="inline-flex items-center gap-2 rounded-full border border-[#ddddf0] bg-white/90 px-4 py-2 text-sm font-semibold text-[#5a5a82] shadow-sm transition-colors hover:border-[#c9933a]/40 hover:text-[#1a1a3e]"
                 >
@@ -179,14 +179,14 @@ export default function AboutSection() {
                         </div>
 
                         <div className="flex flex-col gap-3 sm:flex-row">
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-check"
                                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f172a] px-6 py-3 font-bold text-white shadow-lg shadow-slate-900/15 transition-all hover:-translate-y-0.5 hover:bg-[#1a1a3e]"
                             >
                                 วิเคราะห์ชื่อฟรี
                                 <ArrowRight size={18} />
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/reviews"
                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c9933a]/35 bg-white px-6 py-3 font-bold text-[#1a1a3e] shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#c9933a] hover:text-[#a67828]"
                             >
@@ -245,14 +245,14 @@ export default function AboutSection() {
                             ))}
                         </div>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-check"
                                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f172a] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/15 transition-all hover:-translate-y-0.5 hover:bg-[#1a1a3e]"
                             >
                                 ลองวิเคราะห์ชื่อฟรี
                                 <ArrowRight size={17} />
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-generator"
                                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c9933a]/35 bg-white px-6 py-3 text-sm font-bold text-[#1a1a3e] shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#c9933a] hover:text-[#a67828]"
                             >
@@ -308,7 +308,7 @@ export default function AboutSection() {
                         {services.map((service) => {
                             const Icon = service.icon;
                             return (
-                                <Link
+                                <Link prefetch={false}
                                     href={service.href}
                                     key={service.title}
                                     className="group rounded-2xl border border-[#ddddf0] bg-white p-5 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#c9933a]/60 hover:shadow-[0_14px_36px_rgba(15,23,42,0.10)]"
@@ -383,7 +383,7 @@ export default function AboutSection() {
                             {trustLinks.map((link) => {
                                 const Icon = link.icon;
                                 return (
-                                    <Link
+                                    <Link prefetch={false}
                                         href={link.href}
                                         key={link.href}
                                         className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-bold text-slate-200 transition-colors hover:border-[#e8c87e]/60 hover:text-[#f6c453]"
@@ -404,7 +404,7 @@ export default function AboutSection() {
                         ตรวจชื่อฟรีก่อน แล้วค่อยต่อยอดไปยังบทความ วิเคราะห์เชิงลึก หรือบริการที่เหมาะกับเป้าหมายของคุณ
                     </p>
                     <div className="mt-8">
-                        <Link
+                        <Link prefetch={false}
                             href="/name-check"
                             className="inline-flex items-center gap-2 rounded-full bg-[#c9933a] px-8 py-4 font-bold text-white shadow-lg shadow-[#c9933a]/20 transition-all hover:-translate-y-0.5 hover:bg-[#a67828]"
                         >

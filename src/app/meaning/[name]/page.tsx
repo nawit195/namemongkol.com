@@ -162,10 +162,10 @@ export default async function MeaningPage({ params }: Props) {
                             <div className="flex-1 text-center md:text-left">
                                 <h3 className="font-bold text-amber-100 mb-1">วิเคราะห์ชื่อมงคลแบบละเอียด?</h3>
                                 <p className="text-amber-200/60 text-sm">
-                                    เช็กความหมายนามสกุล ผลรวมคู่ และทักษาปกรณ์ (กาลกิณี) ด้วยระบบ <Link href="/" className="text-amber-400 hover:underline">วิเคราะห์ชื่อมงคล</Link> ครบ 4 ศาสตร์
+                                    เช็กความหมายนามสกุล ผลรวมคู่ และทักษาปกรณ์ (กาลกิณี) ด้วยระบบ <Link prefetch={false} href="/" className="text-amber-400 hover:underline">วิเคราะห์ชื่อมงคล</Link> ครบ 4 ศาสตร์
                                 </p>
                             </div>
-                            <Link
+                            <Link prefetch={false}
                                 href={`/?name=${encodeURIComponent(decodedName)}`}
                                 className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-amber-500/20 flex items-center gap-2 whitespace-nowrap"
                             >
@@ -176,13 +176,13 @@ export default async function MeaningPage({ params }: Props) {
 
                     {/* Internal Links / Breadcrumbs-ish */}
                     <div className="flex flex-wrap gap-4 text-sm text-slate-500">
-                        <Link href="/" className="hover:text-white transition-colors">วิเคราะห์ชื่อมงคล</Link>
+                        <Link prefetch={false} href="/" className="hover:text-white transition-colors">วิเคราะห์ชื่อมงคล</Link>
                         <span>•</span>
-                        <Link href="/articles" className="hover:text-white transition-colors">บทความ</Link>
+                        <Link prefetch={false} href="/articles" className="hover:text-white transition-colors">บทความ</Link>
                         <span>•</span>
-                        <Link href="/search" className="hover:text-white transition-colors">ค้นหาชื่อมงคล</Link>
+                        <Link prefetch={false} href="/search" className="hover:text-white transition-colors">ค้นหาชื่อมงคล</Link>
                         <span>•</span>
-                        <Link href="/name-analysis" className="hover:text-white transition-colors">เช็คชื่อหลายชื่อพร้อมกัน</Link>
+                        <Link prefetch={false} href="/name-analysis" className="hover:text-white transition-colors">เช็คชื่อหลายชื่อพร้อมกัน</Link>
                     </div>
 
                 </main>

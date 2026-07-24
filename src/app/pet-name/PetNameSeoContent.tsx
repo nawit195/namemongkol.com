@@ -33,15 +33,20 @@ export function PetNameSeoContent() {
                 </div>
 
                 <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                    <Link href="/pet-name/dog" className="rounded-lg border border-[#e6d19b] bg-white p-5 text-[#1a1a3e] shadow-sm transition-colors hover:border-[#c9933a]">
+                    <Link prefetch={false} href="/pet-name/dog" className="rounded-lg border border-[#e6d19b] bg-white p-5 text-[#1a1a3e] shadow-sm transition-colors hover:border-[#c9933a]">
                         <span className="text-xs font-bold uppercase text-amber-700">Dog Names</span>
                         <strong className="mt-2 block text-lg">ชื่อหมามงคล ความหมายดี เรียกง่าย</strong>
                         <span className="mt-2 block text-sm leading-6 text-[#5a5a82]">ดูรายชื่อสำหรับสุนัขโดยเฉพาะ พร้อมคำอ่าน ความหมาย และคาแรกเตอร์</span>
                     </Link>
-                    <Link href="/pet-name/cat" className="rounded-lg border border-[#e6d19b] bg-white p-5 text-[#1a1a3e] shadow-sm transition-colors hover:border-[#c9933a]">
+                    <Link prefetch={false} href="/pet-name/cat" className="rounded-lg border border-[#e6d19b] bg-white p-5 text-[#1a1a3e] shadow-sm transition-colors hover:border-[#c9933a]">
                         <span className="text-xs font-bold uppercase text-amber-700">Cat Names</span>
                         <strong className="mt-2 block text-lg">ชื่อแมวมงคล นำโชค ความหมายดี</strong>
                         <span className="mt-2 block text-sm leading-6 text-[#5a5a82]">ดูรายชื่อสำหรับแมวโดยเฉพาะ ทั้งชื่อไทย สากล ญี่ปุ่น และเกาหลี</span>
+                    </Link>
+                    <Link prefetch={false} href="/articles/pet-names" className="rounded-lg border border-[#e6d19b] bg-white p-5 text-[#1a1a3e] shadow-sm transition-colors hover:border-[#c9933a] sm:col-span-2">
+                        <span className="text-xs font-bold uppercase text-amber-700">Pillar Article</span>
+                        <strong className="mt-2 block text-lg">500 ชื่อสัตว์เลี้ยงน่ารักและมงคล พร้อมความหมาย</strong>
+                        <span className="mt-2 block text-sm leading-6 text-[#5a5a82]">อ่านรายชื่อครบทุกหมวด ทั้งชื่อน่ารัก มงคล ภาษาอังกฤษ ญี่ปุ่น เกาหลี พร้อมเคล็ดลับเลือกชื่อ</span>
                     </Link>
                 </div>
 
@@ -62,10 +67,10 @@ export function PetNameSeoContent() {
                 </section>
 
                 <div className="mt-12 flex flex-wrap items-center gap-4">
-                    <Link href="/name-generator" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#0f172a] px-5 py-3 text-sm font-bold text-slate-100 transition-colors hover:bg-[#1e293b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a]">
+                    <Link prefetch={false} href="/name-generator" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#0f172a] px-5 py-3 text-sm font-bold text-slate-100 transition-colors hover:bg-[#1e293b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a]">
                         สร้างชื่อมงคลสำหรับคน <ArrowRight className="h-4 w-4" aria-hidden="true" />
                     </Link>
-                    <Link href="/articles" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#ddddf0] bg-[#fafafd] px-5 py-3 text-sm font-bold text-[#1a1a3e] transition-colors hover:border-[#c9933a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a]">
+                    <Link prefetch={false} href="/articles" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#ddddf0] bg-[#fafafd] px-5 py-3 text-sm font-bold text-[#1a1a3e] transition-colors hover:border-[#c9933a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a]">
                         อ่านบทความตั้งชื่อ
                     </Link>
                 </div>

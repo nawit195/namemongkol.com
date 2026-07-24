@@ -31,7 +31,7 @@ export const SaveResultCTA = () => {
                             </p>
                         </div>
                     </div>
-                    <Link
+                    <Link prefetch={false}
                         href="/login?redirect=/"
                         data-track="result.save_cta_click"
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-amber-600 active:scale-[0.98] sm:whitespace-nowrap"

@@ -433,7 +433,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     {/* Breadcrumb */}
                     <nav className="hidden sm:block max-w-4xl mx-auto mb-6 text-sm" style={{ color: '#8e8eaa' }} aria-label="Breadcrumb">
                         <ol className="flex items-center gap-2">
-                            <li><Link href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
+                            <li><Link prefetch={false} href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
                             <li style={{ color: '#ddddf0' }}>/</li>
                             <li className="font-medium" style={{ color: '#c9933a' }}>บทความชื่อมงคล</li>
                         </ol>
@@ -441,7 +441,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
                     {/* Header */}
                     <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-                        <Link href="/" className="inline-flex items-center gap-2 mb-4 sm:mb-6 transition-colors text-sm sm:text-base" style={{ color: '#8e8eaa' }}>
+                        <Link prefetch={false} href="/" className="inline-flex items-center gap-2 mb-4 sm:mb-6 transition-colors text-sm sm:text-base" style={{ color: '#8e8eaa' }}>
                             <ArrowLeft size={16} />
                             กลับหน้าหลัก
                         </Link>
@@ -506,7 +506,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                         </form>
 
                         <div className="mt-4 flex max-w-4xl flex-wrap items-center gap-2">
-                            <Link
+                            <Link prefetch={false}
                                 href={getArticlesHref({ q: query })}
                                 className={`rounded-full border px-3 py-1.5 text-xs font-medium transition shadow-sm ${
                                     !activeCategory
@@ -517,7 +517,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                 ทั้งหมด
                             </Link>
                             {categories.map((category) => (
-                                <Link
+                                <Link prefetch={false}
                                     key={category}
                                     href={getArticlesHref({ q: query, category })}
                                     className={`rounded-full border px-3 py-1.5 text-xs font-medium transition shadow-sm ${
@@ -530,7 +530,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                 </Link>
                             ))}
                             {(query || activeCategory) && (
-                                <Link href="/articles" className="rounded-full border border-[#1e293b] bg-[#0f172a] px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:border-red-500/30 hover:bg-[#1e293b] hover:text-red-400 shadow-sm">
+                                <Link prefetch={false} href="/articles" className="rounded-full border border-[#1e293b] bg-[#0f172a] px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:border-red-500/30 hover:bg-[#1e293b] hover:text-red-400 shadow-sm">
                                     ล้างตัวกรอง
                                 </Link>
                             )}
@@ -559,7 +559,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                                     <p className="mt-1.5 hidden sm:block min-h-[60px] text-xs leading-relaxed text-slate-300">{cluster.description}</p>
                                     <div className="mt-auto pt-3 sm:pt-4 space-y-2 flex-col">
                                         {cluster.links.map((link, linkIndex) => (
-                                            <Link
+                                            <Link prefetch={false}
                                                 key={link.href}
                                                 href={link.href}
                                                 className={`${linkIndex > 1 ? 'hidden sm:block' : 'block'} rounded-lg px-2.5 sm:px-3 py-2 text-[11px] sm:text-sm leading-snug transition border bg-[#1e293b] border-slate-700/50 text-slate-300 hover:bg-slate-800 hover:border-amber-500/40 hover:text-amber-400 shadow-sm`}
@@ -576,7 +576,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     <ArticleViewStatsProvider slugs={visibleArticles.map((article) => article.slug)}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 max-w-[1400px] mx-auto">
                         {visibleArticles.map((article, index) => (
-                            <Link
+                            <Link prefetch={false}
                                 key={article.slug}
                                 href={`/articles/${article.slug}`}
                                 className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 bg-[#0f172a] border border-[#1e293b] shadow-lg hover:border-amber-500/30 hover:shadow-[0_8px_30px_rgba(245,158,11,0.12)]"
@@ -656,7 +656,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     {visibleArticles.length === 0 && (
                         <div className="mx-auto max-w-xl rounded-2xl px-6 py-12 text-center border" style={{ background: '#ffffff', borderColor: '#ddddf0', color: '#8e8eaa' }}>
                             <p className="text-base" style={{ color: '#1a1a3e' }}>ยังไม่พบบทความที่ตรงกับตัวกรองนี้</p>
-                            <Link href="/articles" className="mt-4 inline-flex rounded-full border px-4 py-2 text-sm font-medium transition" style={{ borderColor: 'rgba(201,147,58,0.35)', background: 'rgba(201,147,58,0.08)', color: '#c9933a' }}>
+                            <Link prefetch={false} href="/articles" className="mt-4 inline-flex rounded-full border px-4 py-2 text-sm font-medium transition" style={{ borderColor: 'rgba(201,147,58,0.35)', background: 'rgba(201,147,58,0.08)', color: '#c9933a' }}>
                                 ดูบทความทั้งหมด
                             </Link>
                         </div>
@@ -838,11 +838,11 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                             ใช้ระบบ AI วิเคราะห์ชื่อมงคลฟรี! ตรวจสอบเลขศาสตร์ ทักษา อายตนะ 6 และอักษรกาลกิณีได้ภายในไม่กี่วินาที
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/name-check" className="wtp-button-primary inline-flex items-center justify-center gap-2 py-4 px-8 rounded-full transition-all hover:scale-105">
+                            <Link prefetch={false} href="/name-check" className="wtp-button-primary inline-flex items-center justify-center gap-2 py-4 px-8 rounded-full transition-all hover:scale-105">
                                 <span>วิเคราะห์ชื่อมงคลฟรี</span>
                                 <ArrowLeft size={18} className="rotate-180" />
                             </Link>
-                            <Link href="/premium-search" className="inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-full transition-all border" style={{ background: '#ffffff', borderColor: '#ddddf0', color: '#1a1a3e' }}>
+                            <Link prefetch={false} href="/premium-search" className="inline-flex items-center justify-center gap-2 font-bold py-4 px-8 rounded-full transition-all border" style={{ background: '#ffffff', borderColor: '#ddddf0', color: '#1a1a3e' }}>
                                 <span>👑 ค้นหาชื่อมงคล Premium</span>
                             </Link>
                         </div>

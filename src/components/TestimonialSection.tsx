@@ -150,7 +150,7 @@ export const TestimonialSection = () => {
                 </div>
 
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <Link
+                    <Link prefetch={false}
                         href="/reviews"
                         className="px-8 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-white font-bold transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-1 flex items-center gap-2"
                     >

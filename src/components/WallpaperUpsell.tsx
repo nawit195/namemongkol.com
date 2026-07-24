@@ -104,14 +104,14 @@ export const WallpaperUpsell = ({ result, day = 'sunday' }: WallpaperUpsellProps
                                     <Wand2 size={18} />
                                     สร้างวอลเปเปอร์ส่วนตัว
                                 </button>
-                                <Link
+                                <Link prefetch={false}
                                     href="/wallpapers"
                                     className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5"
                                 >
                                     <Wallet size={18} />
                                     ดูวอลเปเปอร์ทั้งหมด
                                 </Link>
-                                <Link
+                                <Link prefetch={false}
                                     href={`/wallpapers/day/${day}`}
                                     className="flex items-center gap-2 bg-white hover:bg-[#f8f8fc] text-[#1a1a3e] font-medium py-3 px-6 rounded-xl border border-[#ddddf0] shadow-sm transition-all hover:border-[#1a1a3e]"
                                 >

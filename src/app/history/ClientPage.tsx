@@ -144,7 +144,7 @@ export default function HistoryPage() {
                             <AlertCircle size={48} className="mx-auto mb-4 opacity-30 text-amber-400" />
                             <p className="text-xl font-medium text-slate-300">ประวัติการใช้งานสำหรับสมาชิก Pro และ VVIP</p>
                             <p className="text-sm mt-2 text-slate-500">อัปเกรดสมาชิกเพื่อเริ่มเก็บประวัติการวิเคราะห์ย้อนหลัง</p>
-                            <Link
+                            <Link prefetch={false}
                                 href="/topup?plan=vvip"
                                 className="inline-flex mt-5 px-5 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 hover:bg-amber-500/30 transition-colors font-semibold"
                             >

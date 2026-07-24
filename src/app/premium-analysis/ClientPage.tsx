@@ -1126,7 +1126,7 @@ export default function PremiumAnalysisPage() {
                                 </div>
 
                                 <div className="mt-8 text-center">
-                                    <Link
+                                    <Link prefetch={false}
                                         href="/reviews"
                                         className="inline-flex items-center gap-2 text-sm font-semibold text-[#a67828] transition-colors hover:text-[#7d571f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2"
                                     >
@@ -1148,7 +1148,7 @@ export default function PremiumAnalysisPage() {
                                             Q: การวิเคราะห์ชื่อมงคลขั้นสูงต่างจากการวิเคราะห์ทั่วไปอย่างไร?
                                         </summary>
                                         <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
-                                            A: การ<strong className="text-[#1a1a3e]">วิเคราะห์ชื่อมงคลขั้นสูง</strong>นำ &quot;เวลาตกฟาก&quot; มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร นอกจากนี้ยังสามารถเลือกเน้นเจาะลึกเฉพาะด้านที่ต้องการได้ เช่น <Link href="/name-analysis" className="font-semibold text-[#a67828] underline underline-offset-4">การเงิน การงาน หรือความรัก</Link>
+                                            A: การ<strong className="text-[#1a1a3e]">วิเคราะห์ชื่อมงคลขั้นสูง</strong>นำ &quot;เวลาตกฟาก&quot; มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร นอกจากนี้ยังสามารถเลือกเน้นเจาะลึกเฉพาะด้านที่ต้องการได้ เช่น <Link prefetch={false} href="/name-analysis" className="font-semibold text-[#a67828] underline underline-offset-4">การเงิน การงาน หรือความรัก</Link>
                                         </p>
                                     </details>
 
@@ -1166,7 +1166,7 @@ export default function PremiumAnalysisPage() {
                                             Q: วิเคราะห์ชื่อมงคลขั้นสูงใช้กี่เครดิต?
                                         </summary>
                                         <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
-                                            A: การวิเคราะห์ชื่อมงคลขั้นสูงสำหรับสมาชิก VVIP และเมื่อกดวิเคราะห์ ระบบจะหัก <strong className="text-[#1a1a3e]">30 เครดิตต่อครั้ง</strong> โดยจะแสดงรายชื่อมงคล 20 ชื่อ พร้อมคำอธิบายละเอียดและคะแนน หากยังไม่เป็นสมาชิก สามารถไปที่หน้า <Link href="/topup?plan=vvip" className="font-semibold text-[#a67828] underline underline-offset-4">สมัครสมาชิก VVIP</Link> ได้ทันที
+                                            A: การวิเคราะห์ชื่อมงคลขั้นสูงสำหรับสมาชิก VVIP และเมื่อกดวิเคราะห์ ระบบจะหัก <strong className="text-[#1a1a3e]">30 เครดิตต่อครั้ง</strong> โดยจะแสดงรายชื่อมงคล 20 ชื่อ พร้อมคำอธิบายละเอียดและคะแนน หากยังไม่เป็นสมาชิก สามารถไปที่หน้า <Link prefetch={false} href="/topup?plan=vvip" className="font-semibold text-[#a67828] underline underline-offset-4">สมัครสมาชิก VVIP</Link> ได้ทันที
                                         </p>
                                     </details>
                                 </div>

@@ -194,7 +194,7 @@ export default function WallpapersPage() {
                                 เริ่มจากเลือกวันเกิดหรือเป้าหมายที่ต้องการเตือนใจ เช่น การเงิน การงาน หรือความรัก แล้วดูคำอธิบายสีและสัญลักษณ์ก่อนดาวน์โหลด วอลเปเปอร์ในหน้านี้จัดทำเพื่อเป็นเครื่องเตือนใจและสร้างกำลังใจตามความเชื่อ ไม่ใช่หลักฐานว่าภาพจะเปลี่ยนเหตุการณ์หรือรับประกันผลลัพธ์ในชีวิต
                             </p>
                             <p className="text-[#5a5a82] leading-relaxed text-sm md:text-base max-w-[70ch]">
-                                หากต้องการใช้ศาสตร์ชื่อร่วมด้วย สามารถ<Link href="/name-check" data-track="seo.wallpapers.name_check" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิเคราะห์ชื่อและนามสกุลฟรี</Link> หรืออ่าน<Link href="/methodology" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิธีคำนวณและข้อจำกัด</Link>ก่อนตัดสินใจ
+                                หากต้องการใช้ศาสตร์ชื่อร่วมด้วย สามารถ<Link prefetch={false} href="/name-check" data-track="seo.wallpapers.name_check" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิเคราะห์ชื่อและนามสกุลฟรี</Link> หรืออ่าน<Link prefetch={false} href="/methodology" className="text-amber-700 hover:text-amber-800 underline underline-offset-2 transition-colors">วิธีคำนวณและข้อจำกัด</Link>ก่อนตัดสินใจ
                             </p>
                         </div>
                     </section>
@@ -238,25 +238,25 @@ export default function WallpapersPage() {
                                 ลัดไปหน้าวอลเปเปอร์รายวันยอดนิยม
                             </p>
                             <div className="flex flex-wrap gap-2">
-                                <Link href="/wallpapers/day/monday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/day/monday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์มงคลวันจันทร์ ฟรี
                                 </Link>
-                                <Link href="/wallpapers/day/wednesday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/day/wednesday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์เรียกทรัพย์วันพุธ
                                 </Link>
-                                <Link href="/wallpapers/day/friday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/day/friday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์เสริมความรักวันศุกร์
                                 </Link>
-                                <Link href="/wallpapers/day/saturday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/day/saturday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์บารมีวันเสาร์
                                 </Link>
-                                <Link href="/wallpapers/intent/finance" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/intent/finance" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์เสริมดวงการเงิน
                                 </Link>
-                                <Link href="/wallpapers/intent/love" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/intent/love" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์เสริมดวงความรัก
                                 </Link>
-                                <Link href="/wallpapers/intent/work" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                                <Link prefetch={false} href="/wallpapers/intent/work" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์เสริมดวงการงาน
                                 </Link>
                             </div>
@@ -390,14 +390,14 @@ export default function WallpapersPage() {
                             ดาวน์โหลดวอลเปเปอร์มงคลเพื่อเปลี่ยนหน้าจอมือถือของคุณให้เป็นขุมทรัพย์แห่งความโชคดี หรือสร้างวอลเปเปอร์ส่วนตัวเฉพาะของคุณเอง
                         </p>
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 md:gap-4">
-                            <Link
+                            <Link prefetch={false}
                                 href="/wallpapers"
                                 className="justify-center px-6 md:px-8 py-3.5 rounded-xl bg-amber-500 text-black font-bold text-base shadow-lg shadow-amber-500/20 hover:bg-amber-400 hover:shadow-amber-500/40 transition-all flex items-center gap-2"
                             >
                                 <Download className="w-5 h-5" />
                                 ดูวอลเปเปอร์ทั้งหมด
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/wallpapers/custom"
                                 className="justify-center px-6 md:px-8 py-3.5 rounded-xl bg-[#0f172a] text-white font-bold text-base border border-[#1e293b] hover:bg-[#1e293b] transition-all flex items-center gap-2 shadow-sm"
                             >
@@ -414,28 +414,28 @@ export default function WallpapersPage() {
                             นอกจากวอลเปเปอร์มงคลแล้ว <strong className="text-[#1a1a3e]">NameMongkol</strong> ยังมีบริการครบวงจรเกี่ยวกับชื่อมงคลและเลขศาสตร์ ใช้ระบบ AI ผสานศาสตร์โบราณ ครอบคลุม <strong className="text-[#1a1a3e]">เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6</strong> และ <strong className="text-[#1a1a3e]">อักษรกาลกิณี</strong>
                         </p>
                         <div className="flex flex-wrap gap-2">
-                            <Link href="/" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 วิเคราะห์ชื่อฟรี
                             </Link>
-                            <Link href="/search" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/search" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 ค้นหาชื่อมงคล
                             </Link>
-                            <Link href="/name-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/name-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 เช็คชื่อมงคลหลายชื่อพร้อมกัน
                             </Link>
-                            <Link href="/premium-search" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/premium-search" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 ค้นหาชื่อมงคล Premium
                             </Link>
-                            <Link href="/premium-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/premium-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 วิเคราะห์ชื่อ Premium
                             </Link>
-                            <Link href="/phone-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/phone-analysis" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 วิเคราะห์เบอร์มงคล
                             </Link>
-                            <Link href="/articles" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/articles" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 บทความชื่อมงคล
                             </Link>
-                            <Link href="/reviews" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
+                            <Link prefetch={false} href="/reviews" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                 รีวิวจากผู้ใช้งาน
                             </Link>
                         </div>

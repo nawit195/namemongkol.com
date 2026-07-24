@@ -30,7 +30,7 @@ export const MobileHeader = ({ onMenuClick, user }: MobileHeaderProps) => {
 
             {/* Center: Logo */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-fit">
-                <Link href="/" className="flex items-center gap-2">
+                <Link prefetch={false} href="/" className="flex items-center gap-2">
                     <div className="w-8 h-8 max-[400px]:w-7 max-[400px]:h-7 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 ring-1 ring-white/10 mr-1">
                         <Sparkles size={16} className="text-white drop-shadow-md" />
                     </div>
@@ -48,14 +48,14 @@ export const MobileHeader = ({ onMenuClick, user }: MobileHeaderProps) => {
                 </div>
                 {!user ? (
                     <>
-                        <Link
+                        <Link prefetch={false}
                             href="/register"
                             className="w-9 h-9 max-[400px]:w-8 max-[400px]:h-8 rounded-xl bg-amber-600 hover:bg-amber-500 flex items-center justify-center text-white shadow-lg shadow-amber-600/20 transition-all active:scale-95"
                             aria-label={t('auth.register')}
                         >
                             <UserPlus size={17} strokeWidth={2.5} />
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/login"
                             className="w-9 h-9 max-[400px]:w-8 max-[400px]:h-8 rounded-xl bg-amber-600 hover:bg-amber-500 flex items-center justify-center text-white shadow-lg shadow-amber-600/20 transition-all active:scale-95"
                             aria-label={t('nav.login')}

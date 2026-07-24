@@ -103,15 +103,15 @@ export function PetNameCategoryPage({ category, names }: { category: PetSeoCateg
 
             <section className="border-b border-[#ddddf0] bg-white px-4 pb-12 pt-28 sm:pt-32">
                 <div className="mx-auto max-w-6xl">
-                    <nav aria-label="เส้นทางหน้า" className="text-sm text-[#5a5a82]"><Link href="/pet-name" className="hover:text-amber-700">ชื่อสัตว์เลี้ยงมงคล</Link><span className="px-2" aria-hidden="true">/</span><span aria-current="page">ชื่อ{copy.label}มงคล</span></nav>
+                    <nav aria-label="เส้นทางหน้า" className="text-sm text-[#5a5a82]"><Link prefetch={false} href="/pet-name" className="hover:text-amber-700">ชื่อสัตว์เลี้ยงมงคล</Link><span className="px-2" aria-hidden="true">/</span><span aria-current="page">ชื่อ{copy.label}มงคล</span></nav>
                     <div className="mt-8 grid items-center gap-8 lg:grid-cols-[1fr_0.7fr]">
                         <div>
                             <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-700">{copy.eyebrow}</p>
                             <h1 className="mt-3 max-w-4xl text-3xl font-extrabold leading-tight sm:text-5xl">{copy.heading}</h1>
                             <p className="mt-5 max-w-[72ch] text-base leading-8 text-[#5a5a82] sm:text-lg">{copy.intro}</p>
                             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                                <Link href="/pet-name#pet-name-tool" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#0f172a] px-5 py-3 font-bold text-white hover:bg-[#1e293b]"><Sparkles className="h-4 w-4" />ค้นหาชื่อที่เหมาะกับน้อง</Link>
-                                <Link href={copy.siblingHref} className="inline-flex min-h-11 items-center justify-center rounded-lg border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-50">{copy.siblingLabel}</Link>
+                                <Link prefetch={false} href="/pet-name#pet-name-tool" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#0f172a] px-5 py-3 font-bold text-white hover:bg-[#1e293b]"><Sparkles className="h-4 w-4" />ค้นหาชื่อที่เหมาะกับน้อง</Link>
+                                <Link prefetch={false} href={copy.siblingHref} className="inline-flex min-h-11 items-center justify-center rounded-lg border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-50">{copy.siblingLabel}</Link>
                             </div>
                         </div>
                         <div className="border-y border-[#e8c87e] py-6">
@@ -128,7 +128,7 @@ export function PetNameCategoryPage({ category, names }: { category: PetSeoCateg
                 <div className="mx-auto max-w-6xl">
                     <div className="flex flex-wrap items-end justify-between gap-4">
                         <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-700">Curated Names</p><h2 className="mt-2 text-2xl font-bold">ตัวอย่างชื่อ{copy.label}ความหมายดี</h2></div>
-                        <Link href="/pet-name#pet-name-tool" className="inline-flex min-h-11 items-center gap-2 font-bold text-amber-800 hover:underline">ใช้ตัวกรองค้นหาเพิ่มเติม <ArrowRight className="h-4 w-4" /></Link>
+                        <Link prefetch={false} href="/pet-name#pet-name-tool" className="inline-flex min-h-11 items-center gap-2 font-bold text-amber-800 hover:underline">ใช้ตัวกรองค้นหาเพิ่มเติม <ArrowRight className="h-4 w-4" /></Link>
                     </div>
                     {visibleNames.length ? (
                         <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -157,7 +157,7 @@ export function PetNameCategoryPage({ category, names }: { category: PetSeoCateg
                 <div className="mx-auto max-w-5xl">
                     <h2 className="text-2xl font-bold">คำถามที่พบบ่อยเกี่ยวกับชื่อ{copy.label}มงคล</h2>
                     <div className="mt-6 divide-y divide-[#ddddf0] border-y border-[#ddddf0]">{copy.faqs.map((item) => <article key={item.question} className="py-6"><h3 className="font-bold">{item.question}</h3><p className="mt-2 max-w-[72ch] text-sm leading-7 text-[#5a5a82]">{item.answer}</p></article>)}</div>
-                    <div className="mt-10 rounded-lg bg-slate-950 p-6 text-slate-100 sm:p-8"><h2 className="text-2xl font-bold">ให้ระบบช่วยคัดชื่อจากคาแรกเตอร์ของน้อง</h2><p className="mt-3 max-w-[65ch] leading-7 text-slate-300">เลือกเพศ ภาษา สไตล์ จำนวนพยางค์ และความหมายที่ต้องการ ทดลองดู 3 ชื่อฟรี แล้วค่อยปลดล็อกชุดเต็มเมื่อพบแนวชื่อที่ถูกใจ</p><Link href="/pet-name#pet-name-tool" className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">ทดลองค้นหา 3 ชื่อฟรี <ArrowRight className="h-4 w-4" /></Link></div>
+                    <div className="mt-10 rounded-lg bg-slate-950 p-6 text-slate-100 sm:p-8"><h2 className="text-2xl font-bold">ให้ระบบช่วยคัดชื่อจากคาแรกเตอร์ของน้อง</h2><p className="mt-3 max-w-[65ch] leading-7 text-slate-300">เลือกเพศ ภาษา สไตล์ จำนวนพยางค์ และความหมายที่ต้องการ ทดลองดู 3 ชื่อฟรี แล้วค่อยปลดล็อกชุดเต็มเมื่อพบแนวชื่อที่ถูกใจ</p><Link prefetch={false} href="/pet-name#pet-name-tool" className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">ทดลองค้นหา 3 ชื่อฟรี <ArrowRight className="h-4 w-4" /></Link></div>
                 </div>
             </section>
         </main>

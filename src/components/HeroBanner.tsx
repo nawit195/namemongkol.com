@@ -261,7 +261,7 @@ const HeroSocialProof = () => {
 
                 <span className="h-3.5 w-px bg-[#ddddf0] sm:h-4" />
 
-                <Link
+                <Link prefetch={false}
                     href="/reviews"
                     aria-label={hasReviewStats
                         ? `ดูรีวิวจากผู้ใช้งานทั้งหมด ${safeReviewCount.toLocaleString('th-TH')} รีวิว`
@@ -378,14 +378,14 @@ export const HeroBanner = ({ headingLevel = 'h1' }: HeroBannerProps) => {
                     </div>
 
                     <div className="hidden flex-wrap items-center gap-2 text-xs sm:flex sm:text-sm">
-                        <Link
+                        <Link prefetch={false}
                             href="/phone-analysis"
                             data-track="home.hero.secondary.phone"
                             className="inline-flex items-center gap-1.5 rounded-full border border-[#ddddf0] bg-white px-3 py-1.5 text-[#5a5a82] shadow-sm transition-colors hover:bg-[#f8f8fc]"
                         >
                             เช็กเบอร์มงคลฟรี <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/aura-analysis"
                             data-track="home.hero.secondary.aura"
                             className="inline-flex items-center gap-1.5 rounded-full border border-[#ddddf0] bg-white px-3 py-1.5 text-[#5a5a82] shadow-sm transition-colors hover:bg-[#f8f8fc]"

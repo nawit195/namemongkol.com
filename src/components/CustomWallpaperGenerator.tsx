@@ -514,7 +514,7 @@ export const CustomWallpaperGenerator: React.FC<CustomWallpaperGeneratorProps> =
                                 <Loader2 className="w-6 h-6 animate-spin text-amber-500" />
                             </div>
                         ) : !user ? (
-                            <Link
+                            <Link prefetch={false}
                                 href="/login"
                                 className="w-full py-3 rounded-xl bg-gradient-to-r from-slate-600 to-slate-700 text-white font-semibold flex items-center justify-center gap-2 hover:from-slate-500 hover:to-slate-600 transition-all"
                             >
@@ -546,7 +546,7 @@ export const CustomWallpaperGenerator: React.FC<CustomWallpaperGeneratorProps> =
                                         )}
                                     </button>
                                 ) : (
-                                    <Link
+                                    <Link prefetch={false}
                                         href="/topup"
                                         className="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                                     >

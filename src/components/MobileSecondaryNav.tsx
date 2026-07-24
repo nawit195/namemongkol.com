@@ -36,7 +36,7 @@ export const MobileSecondaryNav = () => {
                         const Icon = item.icon;
 
                         return (
-                            <Link
+                            <Link prefetch={false}
                                 key={item.path}
                                 href={item.path}
                                 aria-label={item.name}

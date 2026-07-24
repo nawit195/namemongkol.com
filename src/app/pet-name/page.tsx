@@ -20,13 +20,13 @@ export const metadata: Metadata = {
         url: `${siteUrl}/pet-name`,
         type: 'website',
         siteName: 'NameMongkol',
-        images: [{ url: `${siteUrl}/images/articles/modern-thai-business-cat.webp`, width: 640, height: 640, alt: 'เจ้าของกับสัตว์เลี้ยงสำหรับระบบค้นหาชื่อสัตว์เลี้ยงมงคล' }],
+        images: [{ url: `${siteUrl}/images/articles/pet-name-hero.png`, width: 640, height: 640, alt: 'เจ้าของกับสัตว์เลี้ยงสำหรับระบบค้นหาชื่อสัตว์เลี้ยงมงคล' }],
     },
     twitter: {
         card: 'summary_large_image',
         title,
         description,
-        images: [`${siteUrl}/images/articles/modern-thai-business-cat.webp`],
+        images: [`${siteUrl}/images/articles/pet-name-hero.png`],
     },
 };
 

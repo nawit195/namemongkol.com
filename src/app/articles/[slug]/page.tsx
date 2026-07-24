@@ -562,7 +562,7 @@ function ArticleEnhancementBlock({ article }: { article: Article }) {
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                     {intentLinks.map((link) => (
-                        <Link
+                        <Link prefetch={false}
                             key={link.href}
                             href={link.href}
                             className="group rounded-xl border border-slate-200 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:border-amber-500/40 hover:bg-white shadow-sm"
@@ -939,16 +939,16 @@ export default async function ArticlePage({ params }: Props) {
                     {/* Breadcrumb Navigation */}
                     <nav className="mb-6 text-sm text-[#5a5a82]" aria-label="Breadcrumb">
                         <ol className="flex items-center gap-2 flex-wrap">
-                            <li><Link href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
+                            <li><Link prefetch={false} href="/" className="hover:text-[#1a1a3e] transition-colors">หน้าหลัก</Link></li>
                             <li className="text-slate-500">/</li>
-                            <li><Link href="/articles" className="hover:text-[#1a1a3e] transition-colors">บทความ</Link></li>
+                            <li><Link prefetch={false} href="/articles" className="hover:text-[#1a1a3e] transition-colors">บทความ</Link></li>
                             <li className="text-slate-500">/</li>
                             <li className="text-amber-600 font-medium truncate max-w-[200px] md:max-w-none">{article.title}</li>
                         </ol>
                     </nav>
 
                     {/* Back Link */}
-                    <Link href="/articles" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-amber-700 mb-8 px-4 py-2 rounded-full bg-white border border-slate-200 hover:border-amber-500/40 transition-all group shadow-sm w-fit">
+                    <Link prefetch={false} href="/articles" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-amber-700 mb-8 px-4 py-2 rounded-full bg-white border border-slate-200 hover:border-amber-500/40 transition-all group shadow-sm w-fit">
                         <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform text-amber-600" />
                         <span>บทความทั้งหมด</span>
                     </Link>
@@ -1095,7 +1095,7 @@ export default async function ArticlePage({ params }: Props) {
                             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none"></div>
                             <h3 className="text-xl font-bold text-[#1a1a3e] mb-3 relative z-10">อยากลองวิเคราะห์ลายมือของคุณด้วย AI?</h3>
                             <p className="text-[#5a5a82] text-sm mb-6 max-w-lg mx-auto relative z-10">ระบบ AI ของ NameMongkol อ่านเส้นชีวิต เส้นสมอง เส้นหัวใจ และเส้นวาสนา พร้อมให้คำแนะนำเชิงสร้างสรรค์</p>
-                            <Link href="/palm-analysis" className="inline-block px-8 py-3.5 bg-[#c9933a] hover:bg-[#d4a54e] text-white font-bold rounded-xl transition-all shadow-[0_0_24px_rgba(245,158,11,0.22)] hover:shadow-[0_0_32px_rgba(245,158,11,0.30)] hover:-translate-y-0.5 relative z-10">วิเคราะห์ลายมือฟรีที่นี่</Link>
+                            <Link prefetch={false} href="/palm-analysis" className="inline-block px-8 py-3.5 bg-[#c9933a] hover:bg-[#d4a54e] text-white font-bold rounded-xl transition-all shadow-[0_0_24px_rgba(245,158,11,0.22)] hover:shadow-[0_0_32px_rgba(245,158,11,0.30)] hover:-translate-y-0.5 relative z-10">วิเคราะห์ลายมือฟรีที่นี่</Link>
                         </div>
                     )}
 
@@ -1116,16 +1116,16 @@ export default async function ArticlePage({ params }: Props) {
                                 โดยอธิบายหลักการคำนวณ แหล่งข้อมูล และข้อจำกัดของผลวิเคราะห์อย่างโปร่งใส
                             </p>
                             <div className="flex flex-wrap gap-3">
-                                <Link href="/about" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                <Link prefetch={false} href="/about" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <BookOpen size={12} className="text-amber-600" /> เกี่ยวกับผู้เขียน
                                 </Link>
-                                <Link href="/methodology" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                <Link prefetch={false} href="/methodology" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <BookOpen size={12} className="text-amber-600" /> วิธีคำนวณและข้อจำกัด
                                 </Link>
-                                <Link href="/name-check" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                <Link prefetch={false} href="/name-check" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <ExternalLink size={12} className="text-amber-600" /> วิเคราะห์ชื่อฟรี
                                 </Link>
-                                <Link href="/reviews" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
+                                <Link prefetch={false} href="/reviews" className="inline-flex items-center gap-1.5 text-xs text-[#5a5a82] hover:text-[#1a1a3e] bg-white border border-slate-200 px-4 py-2 rounded-full hover:bg-slate-50 hover:border-slate-300 transition-all">
                                     <Star size={12} className="text-amber-600" /> ดูรีวิวผู้ใช้งาน
                                 </Link>
                             </div>
@@ -1153,7 +1153,7 @@ export default async function ArticlePage({ params }: Props) {
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {relatedArticles.map((related) => (
-                                    <Link
+                                    <Link prefetch={false}
                                         key={related.slug}
                                         href={`/articles/${related.slug}`}
                                         className="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-amber-500/30 hover:-translate-y-1 hover:shadow-xl shadow-md transition-all flex flex-col"
@@ -1190,19 +1190,19 @@ export default async function ArticlePage({ params }: Props) {
                             ให้บริการทั้งวิเคราะห์ชื่อฟรีและค้นหาชื่อมงคล Premium พร้อมวอลเปเปอร์มงคลเสริมดวง
                         </p>
                         <div className="flex flex-wrap gap-2">
-                            <Link href="/name-check" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
+                            <Link prefetch={false} href="/name-check" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
                                 เช็คชื่อมงคลฟรี
                             </Link>
-                            <Link href="/premium-search" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
+                            <Link prefetch={false} href="/premium-search" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
                                 ค้นหาชื่อมงคล Premium
                             </Link>
-                            <Link href="/phone-analysis" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
+                            <Link prefetch={false} href="/phone-analysis" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
                                 วิเคราะห์เบอร์มงคล
                             </Link>
-                            <Link href="/wallpapers" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
+                            <Link prefetch={false} href="/wallpapers" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
                                 วอลเปเปอร์มงคล
                             </Link>
-                            <Link href="/articles" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
+                            <Link prefetch={false} href="/articles" className="text-xs bg-[#f0f0f8] border border-slate-200 hover:border-amber-500/40 px-4 py-2 rounded-full text-[#5a5a82] hover:text-amber-700 transition-all shadow-sm">
                                 บทความทั้งหมด
                             </Link>
                         </div>

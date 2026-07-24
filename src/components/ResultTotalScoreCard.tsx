@@ -64,7 +64,7 @@ export const ResultTotalScoreCard: React.FC<ResultTotalScoreCardProps> = ({ resu
                     result.prediction.color.includes('red') ||
                     result.prediction.color.includes('rose') ||
                     result.prediction.color.includes('amber')) && (
-                        <Link
+                        <Link prefetch={false}
                             href="/premium-analysis"
                             className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white rounded-xl shadow-sm transition-all hover:-translate-y-0.5"
                         >

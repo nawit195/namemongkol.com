@@ -433,7 +433,7 @@ export default function RegisterClientPage() {
 
                             <div className="mt-8 text-center text-sm text-slate-400">
                                 มีบัญชีอยู่แล้ว?{' '}
-                                <Link href="/login" className={`text-amber-400 hover:text-amber-300 font-medium transition-colors ${isLoading ? 'pointer-events-none opacity-50' : ''}`}>
+                                <Link prefetch={false} href="/login" className={`text-amber-400 hover:text-amber-300 font-medium transition-colors ${isLoading ? 'pointer-events-none opacity-50' : ''}`}>
                                     เข้าสู่ระบบ
                                 </Link>
                             </div>

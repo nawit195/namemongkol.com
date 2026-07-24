@@ -242,10 +242,10 @@ export const PalmSeoContent = () => {
       </div>
 
       <div className="text-sm text-slate-500 leading-relaxed border-t border-[#ddddf0] pt-6">
-        ดูเพิ่มเติม: <Link href="/articles" className="text-amber-600 hover:text-amber-700">บทความความรู้เสริมดวง</Link> •{' '}
-        <Link href="/name-analysis" className="text-amber-600 hover:text-amber-700">เช็คชื่อมงคลหลายชื่อพร้อมกัน</Link> •{' '}
-        <Link href="/phone-analysis" className="text-amber-600 hover:text-amber-700">เช็คเบอร์มงคลกราฟพลังงาน 6 ด้าน</Link> •{' '}
-        <Link href="/wallpapers" className="text-amber-600 hover:text-amber-700">วอลเปเปอร์มงคลเสริมดวง ดาวน์โหลดฟรี</Link>
+        ดูเพิ่มเติม: <Link prefetch={false} href="/articles" className="text-amber-600 hover:text-amber-700">บทความความรู้เสริมดวง</Link> •{' '}
+        <Link prefetch={false} href="/name-analysis" className="text-amber-600 hover:text-amber-700">เช็คชื่อมงคลหลายชื่อพร้อมกัน</Link> •{' '}
+        <Link prefetch={false} href="/phone-analysis" className="text-amber-600 hover:text-amber-700">เช็คเบอร์มงคลกราฟพลังงาน 6 ด้าน</Link> •{' '}
+        <Link prefetch={false} href="/wallpapers" className="text-amber-600 hover:text-amber-700">วอลเปเปอร์มงคลเสริมดวง ดาวน์โหลดฟรี</Link>
       </div>
     </section>
   );

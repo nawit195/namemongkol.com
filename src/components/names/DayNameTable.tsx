@@ -52,7 +52,7 @@ export function DayNameTable({ names = [], title, description }: DayNameTablePro
                                         </span>
                                     </td>
                                     <td className="px-4 py-3 text-center">
-                                        <Link
+                                        <Link prefetch={false}
                                             href={`/name-check?name=${encodeURIComponent(name.name || '')}`}
                                             className="text-[11px] font-medium text-amber-600 hover:text-amber-800 hover:underline whitespace-nowrap"
                                         >
@@ -91,7 +91,7 @@ export function DayNameTable({ names = [], title, description }: DayNameTablePro
                                 <span className="text-xs text-pink-700 bg-pink-50 px-2 py-1 rounded-md border border-pink-100">
                                     {name.highlight || ''}
                                 </span>
-                                <Link
+                                <Link prefetch={false}
                                     href={`/name-check?name=${encodeURIComponent(name.name || '')}`}
                                     className="text-xs font-medium text-amber-600 hover:underline"
                                 >

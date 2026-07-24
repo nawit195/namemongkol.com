@@ -1166,7 +1166,7 @@ export default function StandaloneWallpaperGenerator() {
 
                         {!user && (
                             <p className="text-center text-slate-500 text-sm">
-                                <Link href="/login" className="text-purple-400 hover:underline">เข้าสู่ระบบ</Link> เพื่อสร้างวอลเปเปอร์
+                                <Link prefetch={false} href="/login" className="text-purple-400 hover:underline">เข้าสู่ระบบ</Link> เพื่อสร้างวอลเปเปอร์
                             </p>
                         )}
                     </div>

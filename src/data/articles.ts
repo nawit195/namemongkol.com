@@ -17,6 +17,7 @@ import { articleSundayBoyNamesAvoidKalakini2569 } from './article-sunday-boy-nam
 import { articleWednesdayNightBoyNames2569 } from './article-wednesday-night-boy-names-2569';
 import { articleFreeNameAnalysisNumerologyGuide } from './article-free-name-analysis-numerology-guide';
 import { articleChangeNameChecklistNumerologyThaksaAyatana } from './article-change-name-checklist-numerology-thaksa-ayatana';
+import { articlePetNames } from './article-pet-names';
 
 export interface FaqItem {
     question: string;
@@ -69,6 +70,7 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+    articlePetNames,
     articleWhatIsNameAnalysis,
     articleFreeNameAnalysisNumerologyGuide,
     articleChangeNameChecklistNumerologyThaksaAyatana,

@@ -68,7 +68,7 @@ export const AdminSidebar = () => {
                         {menuItems.map((item) => {
                             const isActive = pathname === item.path;
                             return (
-                                <Link
+                                <Link prefetch={false}
                                     key={item.path}
                                     href={item.path}
                                     onClick={() => setIsOpen(false)}
@@ -86,7 +86,7 @@ export const AdminSidebar = () => {
 
                     {/* Footer / Logout */}
                     <div className="border-t border-slate-700 pt-4 space-y-2">
-                        <Link
+                        <Link prefetch={false}
                             href="/"
                             className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all"
                         >

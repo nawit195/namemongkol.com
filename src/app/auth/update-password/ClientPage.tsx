@@ -177,7 +177,7 @@ export default function UpdatePasswordClientPage() {
                                 <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
                                 <span>{error || 'ลิงก์รีเซ็ตรหัสผ่านไม่ถูกต้องหรือหมดอายุ'}</span>
                             </div>
-                            <Link
+                            <Link prefetch={false}
                                 href="/login"
                                 className="block w-full py-3 px-4 text-center bg-white/10 hover:bg-white/20 text-white font-medium rounded-xl transition-all"
                             >

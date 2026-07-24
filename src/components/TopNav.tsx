@@ -154,7 +154,7 @@ export const TopNav = () => {
 
     return (
         <div className="hidden lg:flex fixed top-4 right-6 z-50 items-center gap-6">
-            <Link
+            <Link prefetch={false}
                 href="/articles"
                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm border shadow-sm ${pathname === '/articles'
                     ? 'border-amber-400 bg-[#0f172a] text-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.25)]'
@@ -172,7 +172,7 @@ export const TopNav = () => {
                 <span>{t('nav.articles')}</span>
             </Link>
 
-            <Link
+            <Link prefetch={false}
                 href="/about"
                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm border shadow-sm ${pathname === '/about'
                     ? 'border-amber-400 bg-[#0f172a] text-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.25)]'
@@ -229,7 +229,7 @@ export const TopNav = () => {
                                         <Sparkles size={14} />
                                         <span>{credits ?? 0}</span>
                                     </div>
-                                    <Link
+                                    <Link prefetch={false}
                                         href="/topup"
                                         onClick={() => setIsOpen(false)}
                                         className="text-[10px] text-emerald-950 hover:text-emerald-900 font-bold bg-emerald-400 hover:bg-emerald-300 px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5"
@@ -252,7 +252,7 @@ export const TopNav = () => {
                     )}
                 </div>
             ) : (
-                <Link
+                <Link prefetch={false}
                     href="/login"
                     className={`flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-md border ${pathname === '/login'
                         ? 'bg-amber-500/20 text-amber-300 border-amber-500/30'

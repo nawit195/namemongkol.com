@@ -292,7 +292,7 @@ export const PremiumBlurOverlay: React.FC<PremiumBlurOverlayProps> = ({
                     {/* Login Prompt (if not logged in) */}
                     {!isLoading && !user && (
                         <p className="text-[#5a5a82] text-xs sm:text-sm mt-3 text-center">
-                            <Link href="/login" className="text-amber-600 hover:text-amber-500 font-medium underline underline-offset-2">
+                            <Link prefetch={false} href="/login" className="text-amber-600 hover:text-amber-500 font-medium underline underline-offset-2">
                                 เข้าสู่ระบบ
                             </Link>
                             {' '}เพื่อปลดล็อกและรับโบนัสฟรี 50 Coins!
@@ -305,7 +305,7 @@ export const PremiumBlurOverlay: React.FC<PremiumBlurOverlayProps> = ({
                             {typeof credits === 'number' && (
                                 <span className="text-[#1a1a3e]">เครดิตคงเหลือ: <span className="text-amber-600 font-bold">{credits}</span></span>
                             )}
-                            <Link href="/topup" className="text-amber-600 hover:text-amber-500 font-medium flex items-center gap-1">
+                            <Link prefetch={false} href="/topup" className="text-amber-600 hover:text-amber-500 font-medium flex items-center gap-1">
                                 เติมเครดิต <ChevronRight className="w-3 h-3" />
                             </Link>
                         </p>

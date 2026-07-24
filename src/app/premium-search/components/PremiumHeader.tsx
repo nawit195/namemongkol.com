@@ -55,7 +55,7 @@ export default function PremiumHeader({ totalNames, filteredCount, availableLett
                     </div>
                     <div className="mt-3 flex items-end justify-between gap-3">
                         <span className="font-mono text-3xl font-black text-amber-200">{credits !== null ? credits.toLocaleString('th-TH') : '—'}</span>
-                        <Link href="/topup" className="rounded-lg border border-amber-400/50 px-3 py-1.5 text-xs font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-[#172033]">
+                        <Link prefetch={false} href="/topup" className="rounded-lg border border-amber-400/50 px-3 py-1.5 text-xs font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-[#172033]">
                             เติมเครดิต
                         </Link>
                     </div>

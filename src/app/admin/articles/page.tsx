@@ -575,7 +575,7 @@ export default function AdminArticlesPage() {
                                     </td>
                                     <td className="p-4 text-right">
                                         <div className="flex justify-end gap-2">
-                                            <Link
+                                            <Link prefetch={false}
                                                 href={`/articles/${article.slug}`}
                                                 target="_blank"
                                                 className="p-2 hover:bg-blue-500/20 text-slate-400 hover:text-blue-400 rounded-lg transition-colors"

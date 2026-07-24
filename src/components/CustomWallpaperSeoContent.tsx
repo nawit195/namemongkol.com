@@ -93,14 +93,14 @@ export default function CustomWallpaperSeoContent() {
                         โดยยังใช้งานง่ายบนมือถือภายในไม่กี่คลิก
                     </p>
                     <div className="mt-5 flex flex-wrap gap-3">
-                        <Link
+                        <Link prefetch={false}
                             href="/wallpapers"
                             className="inline-flex items-center gap-2 rounded-lg bg-amber-400 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-300"
                         >
                             ดูวอลเปเปอร์ยอดนิยม
                             <ArrowRight className="h-4 w-4" />
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/name-check"
                             className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-slate-400 hover:text-white"
                         >
@@ -166,7 +166,7 @@ export default function CustomWallpaperSeoContent() {
                     <h2 className="text-xl font-semibold text-white">ลิงก์แนะนำที่เกี่ยวข้อง</h2>
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
                         {relatedLinks.map((item) => (
-                            <Link
+                            <Link prefetch={false}
                                 key={item.href}
                                 href={item.href}
                                 className="group rounded-lg border border-slate-700/80 bg-slate-950/40 p-4 transition hover:border-amber-300/40"

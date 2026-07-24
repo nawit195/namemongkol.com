@@ -81,7 +81,7 @@ export const ArticleSection: React.FC<ArticleSectionProps> = ({
                         </p>
                     </div>
 
-                    <Link
+                    <Link prefetch={false}
                         href="/articles"
                         className="group flex items-center gap-2 text-[#5a5a82] hover:text-[#1a1a3e] transition-colors px-4 py-2 rounded-lg hover:bg-white border border-transparent hover:border-[#ddddf0] hover:shadow-sm shrink-0"
                     >
@@ -92,7 +92,7 @@ export const ArticleSection: React.FC<ArticleSectionProps> = ({
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {articles.map((article) => (
-                        <Link
+                        <Link prefetch={false}
                             key={article.id}
                             href={`/articles/${article.slug}`}
                             className="group relative flex flex-col h-full bg-white backdrop-blur-sm border border-[#ddddf0] rounded-2xl overflow-hidden hover:border-purple-400 transition-all hover:-translate-y-1 shadow-sm hover:shadow-[0_8px_30px_rgba(168,85,247,0.1)]"

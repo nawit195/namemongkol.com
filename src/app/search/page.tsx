@@ -233,7 +233,7 @@ export default async function SearchPage() {
                         <article className="rounded-xl border border-purple-100 bg-white p-5 shadow-sm">
                             <h3 className="font-bold text-purple-700">หลังเลือกชื่อแล้วควรวิเคราะห์ร่วมกับนามสกุลอย่างไร</h3>
                             <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
-                                เมื่อลิสต์ชื่อที่ชอบได้แล้ว ควรนำไปเช็กในหน้า <Link href="/name-check" className="font-semibold text-purple-700 hover:underline">วิเคราะห์ชื่อ-นามสกุลฟรี</Link> เพื่อดูผลรวม เลขคู่ และความสมพงศ์กับนามสกุลก่อนตัดสินใจ
+                                เมื่อลิสต์ชื่อที่ชอบได้แล้ว ควรนำไปเช็กในหน้า <Link prefetch={false} href="/name-check" className="font-semibold text-purple-700 hover:underline">วิเคราะห์ชื่อ-นามสกุลฟรี</Link> เพื่อดูผลรวม เลขคู่ และความสมพงศ์กับนามสกุลก่อนตัดสินใจ
                             </p>
                         </article>
                     </div>
@@ -251,22 +251,22 @@ export default async function SearchPage() {
                             </p>
                         </div>
                         <div className="grid gap-3 sm:grid-cols-2">
-                            <Link href="/names/girls" className="rounded-xl border border-pink-200 bg-pink-50 px-5 py-3 font-medium text-pink-700 shadow-sm transition-colors hover:bg-pink-100">
+                            <Link prefetch={false} href="/names/girls" className="rounded-xl border border-pink-200 bg-pink-50 px-5 py-3 font-medium text-pink-700 shadow-sm transition-colors hover:bg-pink-100">
                                 ตั้งชื่อลูกสาว
                             </Link>
-                            <Link href="/names/boys" className="rounded-xl border border-sky-200 bg-sky-50 px-5 py-3 font-medium text-sky-700 shadow-sm transition-colors hover:bg-sky-100">
+                            <Link prefetch={false} href="/names/boys" className="rounded-xl border border-sky-200 bg-sky-50 px-5 py-3 font-medium text-sky-700 shadow-sm transition-colors hover:bg-sky-100">
                                 ตั้งชื่อลูกชาย
                             </Link>
-                            <Link href="/names/girls/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                            <Link prefetch={false} href="/names/girls/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อภาษาอังกฤษ ลูกสาว
                             </Link>
-                            <Link href="/names/boys/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                            <Link prefetch={false} href="/names/boys/english-names" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อภาษาอังกฤษ ลูกชาย
                             </Link>
-                            <Link href="/names/girls/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                            <Link prefetch={false} href="/names/girls/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อเล่นลูกสาว
                             </Link>
-                            <Link href="/names/boys/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
+                            <Link prefetch={false} href="/names/boys/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อเล่นลูกชาย
                             </Link>
                         </div>
@@ -301,14 +301,14 @@ export default async function SearchPage() {
                         ))}
                     </div>
                     <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                        <Link
+                        <Link prefetch={false}
                             href="/name-check"
                             data-track="seo.search.compare.free_analysis"
                             className="inline-flex min-h-11 items-center justify-center rounded-xl border border-sky-200 bg-white/80 px-5 py-3 text-sm font-bold text-sky-800 transition-colors hover:border-sky-300 hover:bg-sky-50"
                         >
                             วิเคราะห์ชื่อฟรี
                         </Link>
-                        <Link
+                        <Link prefetch={false}
                             href="/premium-search"
                             data-track="seo.search.compare.premium"
                             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-[#e8c87e] to-[#c9933a] px-5 py-3 text-sm font-bold text-slate-950 shadow-[0_8px_18px_rgba(201,147,58,0.2)] transition-colors hover:from-[#f0d997] hover:to-[#d4a54e]"
@@ -325,7 +325,7 @@ export default async function SearchPage() {
                     <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5a82]">เลือกวันเกิดเพื่อดูอักษรมงคล อักษรกาลกิณี และรายชื่อผู้ชายกับผู้หญิงจากฐานข้อมูลจริง</p>
                     <div className="mt-5 flex flex-wrap gap-2">
                         {birthdayDayLinks.map(([day, label]) => (
-                            <Link key={day} href={`/names/by-birthday/${day}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-amber-400 hover:bg-amber-50">
+                            <Link prefetch={false} key={day} href={`/names/by-birthday/${day}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:border-amber-400 hover:bg-amber-50">
                                 ชื่อมงคลคนเกิด{label}
                             </Link>
                         ))}
@@ -354,7 +354,7 @@ export default async function SearchPage() {
                     <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">
                         หน้า Search ช่วยให้เริ่มจากชื่อที่ความหมายดีและมีผลรวมเลขศาสตร์น่าสนใจ แต่ก่อนใช้จริงควรนำชื่อที่เลือกไปวิเคราะห์ร่วมกับนามสกุล เพราะ NameMongkol จะถอดตัวอักษรเป็นเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังและความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น
                     </p>
-                    <Link href="/name-check" data-track="seo.search.next_step.name_check" className="mt-6 inline-flex rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300">
+                    <Link prefetch={false} href="/name-check" data-track="seo.search.next_step.name_check" className="mt-6 inline-flex rounded-xl bg-amber-400 px-5 py-3 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300">
                         วิเคราะห์ชื่อ-นามสกุลฟรี
                     </Link>
                 </div>

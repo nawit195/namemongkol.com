@@ -90,7 +90,7 @@ export default function TermsPage() {
 
                 <div className="relative w-full max-w-[1400px] px-4 pt-6 md:pt-32 pb-28 md:pb-20">
                     {/* Navigation */}
-                    <Link
+                    <Link prefetch={false}
                         href="/"
                         className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 group"
                     >

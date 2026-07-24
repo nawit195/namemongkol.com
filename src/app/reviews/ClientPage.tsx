@@ -650,7 +650,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                             <div className="mt-1 flex flex-wrap items-center gap-2 text-xs font-semibold text-[#667085]">
                                 {review.role ? <span>{review.role}</span> : null}
                                 {review.role ? <span className="h-1 w-1 rounded-full bg-[#d8b56d]" /> : null}
-                                <Link href={serviceInfo.url} className={`${tone.service} hover:underline`}>
+                                <Link prefetch={false} href={serviceInfo.url} className={`${tone.service} hover:underline`}>
                                     {serviceInfo.shortName}
                                 </Link>
                             </div>
@@ -671,7 +671,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                     {review.tags.length > 0 ? (
                         <div className="flex flex-wrap gap-2 border-t border-[#efe3c9] pt-4">
                             {review.tags.map(tag => (
-                                <Link
+                                <Link prefetch={false}
                                     key={`${review.id}-${tag}`}
                                     href={TAG_URLS[tag] || `/reviews?category=${encodeURIComponent(tag)}`}
                                     className={`rounded-full border px-3 py-1 text-[11px] font-semibold transition-colors ${tone.tag}`}
@@ -778,7 +778,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                             </span>
                                         </span>
                                     </button>
-                                    <Link
+                                    <Link prefetch={false}
                                         href="/name-analysis"
                                         className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#ddddf0] bg-white px-4 py-2.5 text-xs font-bold text-[#1a1a3e] shadow-sm transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-700 sm:w-auto sm:rounded-xl sm:px-5 sm:py-3.5 sm:text-base"
                                     >
@@ -786,7 +786,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                         <Search size={18} className="hidden text-amber-500 sm:block" />
                                         {t('pages.reviews.ctaAnalyze')}
                                     </Link>
-                                    <Link
+                                    <Link prefetch={false}
                                         href="/name-generator"
                                         className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-pink-200 bg-pink-50 px-4 py-2.5 text-xs font-bold text-pink-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-pink-300 hover:bg-pink-100 sm:w-auto sm:rounded-xl sm:px-5 sm:py-3.5 sm:text-base"
                                     >
@@ -858,7 +858,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                         {tr('pages.reviews.featuredTitle', REVIEW_COPY_TH.featuredTitle)}
                                     </h2>
                                 </div>
-                                <Link href="/premium-search" className="text-sm font-bold text-amber-700 hover:text-amber-800 hover:underline sm:shrink-0">
+                                <Link prefetch={false} href="/premium-search" className="text-sm font-bold text-amber-700 hover:text-amber-800 hover:underline sm:shrink-0">
                                     {tr('pages.reviews.featuredLink', REVIEW_COPY_TH.featuredLink)}
                                 </Link>
                             </div>
@@ -907,7 +907,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                                     </span>
                                                     {formattedDate ? <time dateTime={formattedDate.isoDate}>{formattedDate.thaiDate}</time> : null}
                                                 </div>
-                                                <Link
+                                                <Link prefetch={false}
                                                     href={serviceInfo.url}
                                                     className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#d8b56d] bg-[#0f1b34] px-3.5 py-2 text-xs font-extrabold text-white shadow-[0_5px_6px_rgba(15,23,42,0.14)] transition-colors hover:bg-[#172744] sm:mt-5 sm:w-auto sm:px-4 sm:py-2.5 sm:text-sm lg:mt-7"
                                                 >
@@ -929,7 +929,7 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                                         {tr('pages.reviews.midCtaDesc', REVIEW_COPY_TH.midCtaDesc)}
                                     </p>
                                 </div>
-                                <Link
+                                <Link prefetch={false}
                                     href="/name-analysis"
                                     className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3.5 text-sm font-extrabold text-[#1a1a3e] shadow-[0_8px_24px_rgba(245,158,11,0.22)] transition-all hover:-translate-y-0.5 hover:bg-amber-400 sm:mt-0 sm:w-auto"
                                 >
@@ -1011,21 +1011,21 @@ export default function ClientPage({ initialReviews = [] }: ClientPageProps) {
                             {t('pages.reviews.bottomDesc')}
                         </p>
                         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-analysis"
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 py-3 text-sm font-bold text-[#1a1a3e] transition-colors hover:bg-amber-400 sm:w-auto"
                             >
                                 <Search size={17} />
                                 {t('pages.reviews.bottomCta')}
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/topup"
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-amber-400/40 hover:bg-white/10 sm:w-auto"
                             >
                                 <CreditCard size={17} className="text-amber-300" />
                                 {tr('pages.reviews.packageCta', REVIEW_COPY_TH.packageCta)}
                             </Link>
-                            <Link
+                            <Link prefetch={false}
                                 href="/name-generator"
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-pink-300/35 bg-pink-400/10 px-5 py-3 text-sm font-bold text-pink-100 transition-colors hover:border-pink-300/70 hover:bg-pink-400/20 sm:w-auto"
                             >

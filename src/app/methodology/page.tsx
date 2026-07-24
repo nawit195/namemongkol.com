@@ -178,7 +178,7 @@ export default function MethodologyPage() {
                     <div>
                         <h2 className="text-2xl font-bold">การแก้ไขข้อมูล</h2>
                         <p className="mt-4 text-sm leading-7 text-[#5a5a82]">
-                            หากพบตาราง ความหมาย หรือข้อความที่ควรแก้ไข โปรดส่ง URL พร้อมจุดที่พบและแหล่งอ้างอิงผ่านหน้า <Link href="/about" className="font-semibold text-amber-700 hover:underline">เกี่ยวกับ NameMongkol</Link> ทีมงานจะตรวจเทียบข้อมูล โค้ด และหน้าแสดงผลก่อนบันทึกวันที่แก้ไขจริง
+                            หากพบตาราง ความหมาย หรือข้อความที่ควรแก้ไข โปรดส่ง URL พร้อมจุดที่พบและแหล่งอ้างอิงผ่านหน้า <Link prefetch={false} href="/about" className="font-semibold text-amber-700 hover:underline">เกี่ยวกับ NameMongkol</Link> ทีมงานจะตรวจเทียบข้อมูล โค้ด และหน้าแสดงผลก่อนบันทึกวันที่แก้ไขจริง
                         </p>
                         <p className="mt-3 text-xs text-[#8e8eaa]">เวอร์ชันข้อมูล: 2026.07.15 · ตรวจล่าสุด 15 กรกฎาคม 2569</p>
                     </div>
@@ -188,8 +188,8 @@ export default function MethodologyPage() {
                     <h2 className="text-2xl font-bold">ทดลองตรวจชื่อด้วยข้อมูลของคุณ</h2>
                     <p className="mt-3 max-w-[65ch] leading-7 text-amber-950/80">เริ่มจากผลฟรีเพื่อดูวิธีคำนวณแต่ละส่วน แล้วใช้ Premium เมื่อต้องการเปรียบเทียบและคัดหลายชื่ออย่างละเอียด</p>
                     <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                        <Link href="/name-check" data-track="seo.methodology.name_check" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-100">วิเคราะห์ชื่อฟรี</Link>
-                        <Link href="/premium-search" data-track="seo.methodology.premium" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-400">ดูการคัดชื่อ Premium</Link>
+                        <Link prefetch={false} href="/name-check" data-track="seo.methodology.name_check" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-amber-300 bg-white px-5 py-3 font-bold text-amber-900 hover:bg-amber-100">วิเคราะห์ชื่อฟรี</Link>
+                        <Link prefetch={false} href="/premium-search" data-track="seo.methodology.premium" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-400">ดูการคัดชื่อ Premium</Link>
                     </div>
                 </section>
             </article>

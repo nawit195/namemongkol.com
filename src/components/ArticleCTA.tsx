@@ -1,30 +1,30 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Image as ImageIcon, Phone, Users } from 'lucide-react';
+import { ArrowRight, Sparkles, Image as ImageIcon, PawPrint, Phone, Users } from 'lucide-react';
 
 export const ArticleCTA = () => {
     return (
         <div className="my-8">
             <p className="text-[#5a5a82] mb-4">
                 อยากรู้ว่าชื่อของคุณดีแค่ไหน?{' '}
-                <Link href="/name-check" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
+                <Link prefetch={false} href="/name-check" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
                     วิเคราะห์ชื่อมงคลฟรี
                 </Link>{' '}หรือ{' '}
-                <Link href="/name-analysis" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
+                <Link prefetch={false} href="/name-analysis" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
                     เช็คชื่อมงคลหลายชื่อพร้อมกัน
                 </Link>
             </p>
             <p className="text-[#5a5a82] text-sm mb-4">
                 ต้องการเสริมดวงเฉพาะเป้าหมาย? ลองใช้{' '}
-                <Link href="/wallpapers/intent/finance" className="text-emerald-600 hover:text-emerald-700 underline underline-offset-2">วอลเปเปอร์การเงิน</Link>{' '}
-                / <Link href="/wallpapers/intent/love" className="text-pink-600 hover:text-pink-700 underline underline-offset-2">วอลเปเปอร์ความรัก</Link>{' '}
-                / <Link href="/wallpapers/intent/work" className="text-blue-600 hover:text-blue-700 underline underline-offset-2">วอลเปเปอร์การงาน</Link>
+                <Link prefetch={false} href="/wallpapers/intent/finance" className="text-emerald-600 hover:text-emerald-700 underline underline-offset-2">วอลเปเปอร์การเงิน</Link>{' '}
+                / <Link prefetch={false} href="/wallpapers/intent/love" className="text-pink-600 hover:text-pink-700 underline underline-offset-2">วอลเปเปอร์ความรัก</Link>{' '}
+                / <Link prefetch={false} href="/wallpapers/intent/work" className="text-blue-600 hover:text-blue-700 underline underline-offset-2">วอลเปเปอร์การงาน</Link>
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in-up">
 
             {/* Mandatory: วิเคราะห์ชื่อมงคล - links to /name-check (Golden Rule) */}
-            <Link href="/name-check" className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-amber-50 to-[#f0f0f8] border border-amber-300 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/name-check" className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-amber-50 to-[#f0f0f8] border border-amber-300 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <span className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 block">แนะนำ</span>
@@ -38,7 +38,7 @@ export const ArticleCTA = () => {
             </Link>
 
             {/* เช็คชื่อมงคลหลายชื่อ - links to /name-analysis for bulk intent */}
-            <Link href="/name-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-indigo-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/name-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-indigo-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center mb-3 text-indigo-600">
@@ -54,7 +54,7 @@ export const ArticleCTA = () => {
             </Link>
 
             {/* Premium Analysis Card */}
-            <Link href="/premium-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-purple-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/premium-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-purple-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center mb-3 text-purple-600">
@@ -70,7 +70,7 @@ export const ArticleCTA = () => {
             </Link>
 
             {/* Wallpapers Card */}
-            <Link href="/wallpapers" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/wallpapers" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center mb-3 text-amber-600">
@@ -85,8 +85,24 @@ export const ArticleCTA = () => {
                 </div>
             </Link>
 
+            {/* Pet Name Search Card */}
+            <Link prefetch={false} href="/pet-name" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-rose-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+                <div className="flex items-start justify-between">
+                    <div>
+                        <div className="w-8 h-8 rounded-lg bg-rose-100 flex items-center justify-center mb-3 text-rose-600">
+                            <PawPrint className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-rose-600 transition-colors">ค้นหาชื่อสัตว์เลี้ยงมงคล</h3>
+                        <p className="text-[#5a5a82] text-xs mb-0 line-clamp-2">
+                            ชื่อน่ารัก มงคล หลายภาษา สำหรับน้องหมาน้องแมว
+                        </p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-rose-500 group-hover:translate-x-1 transition-all" />
+                </div>
+            </Link>
+
             {/* Phone Analysis Card */}
-            <Link href="/phone-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-emerald-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/phone-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-emerald-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center mb-3 text-emerald-600">
@@ -102,7 +118,7 @@ export const ArticleCTA = () => {
             </Link>
 
             {/* Search Auspicious Names Card */}
-            <Link href="/search" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/search" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center mb-3 text-amber-600">
@@ -118,7 +134,7 @@ export const ArticleCTA = () => {
             </Link>
 
             {/* Name Generator Card - replaces duplicate name-analysis link */}
-            <Link href="/name-generator" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-blue-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
+            <Link prefetch={false} href="/name-generator" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-blue-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center mb-3 text-blue-600">
