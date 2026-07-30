@@ -232,9 +232,9 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
     const [visibleCount, setVisibleCount] = useState(10);
     const [isUnlocking, setIsUnlocking] = useState(false);
 
-    const [names, setNames] = useState<SearchName[]>(initialNames);
-    const [resultTotal, setResultTotal] = useState(initialTotal);
-    const [loading, setLoading] = useState(false);
+    // All names are pre-loaded from the server — no API fetch needed for filtering.
+    const names = initialNames;
+    const resultTotal = initialTotal;
     const [publicStats, setPublicStats] = useState<PublicStats | null>(null);
 
     // URL fragments preserve useful filter state without creating crawlable faceted URLs.
@@ -250,48 +250,6 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
         }
         if (initial) setSelectedLetter(initial);
     }, []);
-
-    // Fetch only the current result window instead of downloading the full database.
-    useEffect(() => {
-        if (selectedDay === 'all' && selectedGender === 'all' && selectedLetter === 'all') {
-            setNames(initialNames);
-            setResultTotal(initialTotal);
-            setLoading(false);
-            return;
-        }
-
-        const controller = new AbortController();
-        const fetchNames = async () => {
-            setLoading(true);
-            try {
-                const params = new URLSearchParams({
-                    day: selectedDay,
-                    gender: selectedGender,
-                    initial: selectedLetter,
-                    page: '1',
-                    limit: '50',
-                });
-                const res = await fetch(`/api/public/names?${params.toString()}`, {
-                    signal: controller.signal,
-                });
-                const json = await res.json();
-
-                if (json.success && Array.isArray(json.data)) {
-                    setNames(json.data as SearchName[]);
-                    setResultTotal(typeof json.total === 'number' ? json.total : json.data.length);
-                }
-            } catch (err) {
-                if (!(err instanceof DOMException && err.name === 'AbortError')) {
-                    console.error('Error fetching names API:', err);
-                }
-            } finally {
-                if (!controller.signal.aborted) setLoading(false);
-            }
-        };
-
-        void fetchNames();
-        return () => controller.abort();
-    }, [initialNames, initialTotal, selectedDay, selectedGender, selectedLetter]);
 
     useEffect(() => {
         const fetchPublicStats = async () => {
@@ -322,7 +280,6 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
     // Filter Logic
     const filteredNames = useMemo(() => {
-        if (loading) return [];
         return names.filter((item) => {
             const { name, gender } = item;
 
@@ -347,7 +304,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
             return true;
         }); // Return whole item
-    }, [selectedDay, selectedGender, selectedLetter, names, loading]);
+    }, [selectedDay, selectedGender, selectedLetter, names]);
 
     // Grade distribution across all filtered names (for banner + CTA)
     const gradeStats = useMemo(() => {

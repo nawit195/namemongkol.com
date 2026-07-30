@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ClientPage from './ClientPage';
 import { fetchPublicAggregateStats } from '@/lib/publicStats';
 import { getLiveNameCountLabel } from '@/lib/nameCounts';
-import { queryPublicNames } from '@/lib/publicNames';
+import { fetchAllPublicNames } from '@/lib/publicNames';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
@@ -77,9 +77,9 @@ const birthdayDayLinks = [
 ] as const;
 
 export default async function SearchPage() {
-    const [aggregate, initialNames] = await Promise.all([
+    const [aggregate, allNames] = await Promise.all([
         fetchPublicAggregateStats(),
-        queryPublicNames({ page: 1, limit: 30 }),
+        fetchAllPublicNames(),
     ]);
     const liveNamesCount = aggregate.stats.totalNames;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
@@ -151,9 +151,9 @@ export default async function SearchPage() {
         '@type': 'ItemList',
         'name': `รายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
         'description': 'รวมรายชื่อมงคลพร้อมความหมาย เลขศาสตร์ เพศ และวันเกิดที่เหมาะสมสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล',
-        numberOfItems: initialNames.total,
+        numberOfItems: allNames.length,
         'itemListOrder': 'https://schema.org/ItemListOrderAscending',
-        'itemListElement': initialNames.data.slice(0, 20).map((item, index) => ({
+        'itemListElement': allNames.slice(0, 20).map((item, index) => ({
             '@type': 'ListItem',
             'position': index + 1,
             'name': item.name,
@@ -203,7 +203,7 @@ export default async function SearchPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
-            <ClientPage initialNames={initialNames.data} initialTotal={initialNames.total} />
+            <ClientPage initialNames={allNames} initialTotal={allNames.length} />
             <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>

@@ -79,7 +79,7 @@ function createFallbackNames(): PublicNameRecord[] {
     return [...girls, ...boys].sort((a, b) => a.name.localeCompare(b.name, 'th'));
 }
 
-const fetchAllPublicNames = unstable_cache(
+export const fetchAllPublicNames = unstable_cache(
     async (): Promise<PublicNameRecord[]> => {
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
