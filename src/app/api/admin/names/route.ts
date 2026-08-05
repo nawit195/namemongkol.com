@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
+import { revalidatePath, revalidateTag } from 'next/cache';
 import { createClient } from '@/utils/supabaseServer';
 
 const PAGE_SIZE = 1000;
 const INSERT_BATCH_SIZE = 500;
+
+function revalidatePublicNames() {
+    revalidateTag('public-names', 'max');
+    revalidatePath('/search');
+}
 
 async function fetchAllAuspiciousNames() {
     const supabase = await createClient();
@@ -150,6 +156,8 @@ export async function POST(req: Request) {
                 }
             }
 
+            revalidatePublicNames();
+
             return NextResponse.json({
                 success: true,
                 message: `Replace complete: inserted ${unique.length} names`,
@@ -183,6 +191,8 @@ export async function POST(req: Request) {
         }
 
         console.log(`[Admin Names] Append done: inserted=${inserted} skipped=${skippedDuplicate}`);
+
+        if (inserted > 0) revalidatePublicNames();
 
         return NextResponse.json({
             success: true,

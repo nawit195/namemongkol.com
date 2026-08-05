@@ -12,13 +12,22 @@ describe('/search SEO pillar content', () => {
 
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
-        expect(pageSource).toContain('numberOfItems: initialNames.total');
-        expect(pageSource).toContain("'itemListElement': initialNames.data");
-        expect(pageSource).toContain('<ClientPage initialNames={initialNames.data} initialTotal={initialNames.total} />');
+        expect(pageSource).toContain('numberOfItems: allNames.length');
+        expect(pageSource).toContain("'itemListElement': allNames.slice");
+        expect(pageSource).toContain('const searchNames = allNames.map');
+        expect(pageSource).toContain('<ClientPage initialNames={searchNames} initialTotal={searchNames.length} />');
         expect(pageSource).not.toContain('numberOfItems: 5000');
 
         expect(clientSource).toContain('totalNames');
         expect(clientSource).toContain('liveNameCount');
+        expect(clientSource).toContain("{total.toLocaleString('th-TH')}");
+        expect(clientSource).toContain("{filteredNames.length.toLocaleString('th-TH')}");
+        expect(clientSource).toContain('bGradeCount > 0');
+        expect(clientSource).toContain("{bGradeCount.toLocaleString('th-TH')}");
+        expect(clientSource).toContain("selectedLetter === 'all'");
+        expect(clientSource).toContain('sortSearchNamesByNewest(matchingNames)');
+        expect(clientSource).toContain('createdAt={item.createdAt}');
+        expect(clientSource).not.toContain('{resultTotal}');
         expect(clientSource).toContain('ชื่อในฐานข้อมูลล่าสุด');
     });
 

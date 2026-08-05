@@ -81,6 +81,14 @@ export default async function SearchPage() {
         fetchPublicAggregateStats(),
         fetchAllPublicNames(),
     ]);
+    // The client recalculates numerology and day suitability as filters change.
+    // Keep the RSC payload lean by sending only fields the interactive table reads.
+    const searchNames = allNames.map(({ name, gender, meaning, createdAt }) => ({
+        name,
+        gender,
+        meaning,
+        createdAt,
+    }));
     const liveNamesCount = aggregate.stats.totalNames;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
 
@@ -203,7 +211,7 @@ export default async function SearchPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
-            <ClientPage initialNames={allNames} initialTotal={allNames.length} />
+            <ClientPage initialNames={searchNames} initialTotal={searchNames.length} />
             <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>

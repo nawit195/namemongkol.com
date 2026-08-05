@@ -30,7 +30,10 @@ import {
     palmistryMetaOverrides,
 } from '@/data/palmistry-seo-config';
 
-const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569']);
+const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set([
+    'boy-names-wednesday-night-2569',
+    'lucky-names-for-2026-grade-a-plus',
+]);
 
 // ISR: cache 24 hours, invalidate on demand via revalidateTag('articles') when admin updates
 export const revalidate = 86400;

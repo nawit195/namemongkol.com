@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 import { calculateScore } from '@/utils/numerologyUtils';
 import { analyzeNameSuitability } from '@/utils/thaksaUtils';
 import { analyzeName } from '@/utils/nameAnalysis';
+import { getFirstThaiConsonant } from '@/utils/thaiNameInitial';
+import { isRecentlyAdded, sortSearchNamesByNewest } from '@/utils/searchNameSort';
 import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
@@ -30,7 +32,7 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, meaning, rowIndex }: { name: string; meaning?: string; rowIndex: number }) {
+function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning?: string; createdAt?: string; rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const score = calculateScore(name);
     // Always calculate to know if it's usable on multiple days
@@ -55,9 +57,16 @@ function NameRow({ name, meaning, rowIndex }: { name: string; meaning?: string; 
             >
                 {/* Column 1: Name (Mobile + Desktop) */}
                 <td className="w-1/3 px-4 py-[18px] md:w-auto">
-                    <span className="whitespace-nowrap text-base font-bold text-[#1a1a3e] transition-colors group-hover:text-sky-900 md:text-lg">
-                        {name}
-                    </span>
+                    <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="whitespace-nowrap text-base font-bold text-[#1a1a3e] transition-colors group-hover:text-sky-900 md:text-lg">
+                            {name}
+                        </span>
+                        {isRecentlyAdded(createdAt) ? (
+                            <span className="inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-800">
+                                เพิ่มล่าสุด
+                            </span>
+                        ) : null}
+                    </div>
                 </td>
 
                 {/* Column 2: Meaning (Mobile + Desktop) */}
@@ -189,15 +198,6 @@ const THAI_LETTERS = [
 const UNLOCK_COST = 10;
 const UNLOCK_AMOUNT = 20;
 
-// Thai leading vowels that appear before the consonant in written form
-const THAI_LEADING_VOWELS = new Set(['\u0E40', '\u0E41', '\u0E42', '\u0E43', '\u0E44']); // เ แ โ ใ ไ
-
-/** Returns the first consonant of a Thai name, skipping any leading vowels */
-const getFirstConsonant = (name: string): string => {
-    if (!name) return '';
-    return THAI_LEADING_VOWELS.has(name.charAt(0)) ? name.charAt(1) : name.charAt(0);
-};
-
 type PublicStats = {
     totalAnalyses: number;
     weeklyAnalyses: number;
@@ -212,8 +212,7 @@ type SearchName = {
     name: string;
     gender: 'male' | 'female' | 'neutral';
     meaning?: string;
-    numerology: number;
-    suitableDays: DayKey[];
+    createdAt?: string;
 };
 
 type SearchPageProps = {
@@ -234,7 +233,6 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
     // All names are pre-loaded from the server — no API fetch needed for filtering.
     const names = initialNames;
-    const resultTotal = initialTotal;
     const [publicStats, setPublicStats] = useState<PublicStats | null>(null);
 
     // URL fragments preserve useful filter state without creating crawlable faceted URLs.
@@ -280,7 +278,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
     // Filter Logic
     const filteredNames = useMemo(() => {
-        return names.filter((item) => {
+        const matchingNames = names.filter((item) => {
             const { name, gender } = item;
 
             // 1. Gender Filter
@@ -297,13 +295,17 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                 if (!suitability.suitable.includes(targetDayName)) return false;
             }
 
-            // 3. Letter Filter — uses getFirstConsonant to correctly handle leading vowels (เ แ โ ไ ใ)
+            // 3. Letter Filter - resolve the consonant behind Thai leading vowels (เ แ โ ใ ไ).
             if (selectedLetter !== 'all') {
-                if (getFirstConsonant(name) !== selectedLetter) return false;
+                if (getFirstThaiConsonant(name) !== selectedLetter) return false;
             }
 
             return true;
-        }); // Return whole item
+        });
+
+        return selectedLetter === 'all'
+            ? matchingNames
+            : sortSearchNamesByNewest(matchingNames);
     }, [selectedDay, selectedGender, selectedLetter, names]);
 
     // Grade distribution across all filtered names (for banner + CTA)
@@ -684,14 +686,26 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                     {/* CTA Banner — dynamic styling based on grade distribution */}
                     {gradeStats && (() => {
                         const total = filteredNames.length;
-                        const bCount = (gradeStats['B'] || 0) + (gradeStats['C'] || 0);
+                        const bGradeCount = gradeStats['B'] || 0;
+                        const lowerGradeCount = bGradeCount + (gradeStats['C'] || 0);
                         const aplusCount = gradeStats['A+'] || 0;
-                        const isMostlyB = bCount > total * 0.5;
+                        const aCount = gradeStats['A'] || 0;
+                        const isMostlyB = lowerGradeCount > total * 0.5;
 
                         return isMostlyB ? (
                             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
                                 <p className="text-amber-800 text-sm font-medium text-center sm:text-left">
-                                    ✨ มีชื่อเกรด A+ อีก <strong>{aplusCount}</strong> ชื่อที่ตรงเงื่อนไข ดูเฉพาะเกรด A+ และ A ได้ใน Premium Search
+                                    พบทั้งหมด <strong>{total.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
+                                    <span className="mx-1.5 text-amber-500">•</span>
+                                    เกรด A+ <strong>{aplusCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                    <span className="mx-1.5 text-amber-500">•</span>
+                                    เกรด A <strong>{aCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                    {bGradeCount > 0 ? (
+                                        <>
+                                            <span className="mx-1.5 text-amber-500">•</span>
+                                            เกรด B <strong>{bGradeCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                        </>
+                                    ) : null}
                                 </p>
                                 <Link prefetch={false}
                                     href="/premium-search"
@@ -703,7 +717,17 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                         ) : (
                             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 shadow-sm shadow-slate-950/5">
                                 <p className="text-slate-700 text-sm text-center sm:text-left">
-                                    🔒 ผลลัพธ์นี้รวมเกรด A+, A และ B &nbsp;|&nbsp; ดูเฉพาะเกรด A+ และ A ได้ใน Premium Search
+                                    พบทั้งหมด <strong>{total.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
+                                    <span className="mx-1.5 text-slate-400">•</span>
+                                    เกรด A+ <strong>{aplusCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                    <span className="mx-1.5 text-slate-400">•</span>
+                                    เกรด A <strong>{aCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                    {bGradeCount > 0 ? (
+                                        <>
+                                            <span className="mx-1.5 text-slate-400">•</span>
+                                            เกรด B <strong>{bGradeCount.toLocaleString('th-TH')}</strong> ชื่อ
+                                        </>
+                                    ) : null}
                                 </p>
                                 <Link prefetch={false}
                                     href="/premium-search"
@@ -732,7 +756,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                             {filteredNames.length > 0 ? (
                                 <>
                                     {filteredNames.slice(0, visibleCount).map((item, index) => (
-                                        <NameRow key={`${item.name}-${index}`} name={item.name} meaning={item.meaning} rowIndex={index} />
+                                        <NameRow key={`${item.name}-${index}`} name={item.name} meaning={item.meaning} createdAt={item.createdAt} rowIndex={index} />
                                     ))}
 
                                     {/* Teaser row: show count of hidden A+ names to drive upgrade */}
@@ -743,7 +767,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                                     href="/premium-search"
                                                     className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
                                                 >
-                                                    ✨ มีชื่อเกรด A+ อีก <strong>{hiddenAplusCount}</strong> ชื่อที่ตรงเงื่อนไขของคุณใน Premium Search
+                                                    ยังไม่แสดงชื่อเกรด A+ อีก <strong>{hiddenAplusCount.toLocaleString('th-TH')}</strong> ชื่อ ดูชุดคัดกรองได้ใน Premium Search
                                                     <span className="text-amber-600">→</span>
                                                 </Link>
                                             </td>
@@ -799,7 +823,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
                 {filteredNames.length > 0 && (
                     <div className="mt-4 text-center text-slate-500 text-sm">
-                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length)} {t('pages.search.showingConnector')} {resultTotal}
+                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length).toLocaleString('th-TH')} {t('pages.search.showingConnector')} {filteredNames.length.toLocaleString('th-TH')}
                     </div>
                 )}
 

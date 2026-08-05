@@ -18,6 +18,7 @@ import { articleWednesdayNightBoyNames2569 } from './article-wednesday-night-boy
 import { articleFreeNameAnalysisNumerologyGuide } from './article-free-name-analysis-numerology-guide';
 import { articleChangeNameChecklistNumerologyThaksaAyatana } from './article-change-name-checklist-numerology-thaksa-ayatana';
 import { articlePetNames } from './article-pet-names';
+import { articleLuckyNamesGradeA2569 } from './article-lucky-names-grade-a-2569';
 
 export interface FaqItem {
     question: string;
@@ -69,7 +70,8 @@ export interface Article {
     reviewer?: ArticleReviewer; // Only populate for a real reviewer with a public profile
 }
 
-export const articles: Article[] = [
+const articleEntries: Article[] = [
+    articleLuckyNamesGradeA2569,
     articlePetNames,
     articleWhatIsNameAnalysis,
     articleFreeNameAnalysisNumerologyGuide,
@@ -9345,3 +9347,7 @@ export const articles: Article[] = [
         `
     }
 ];
+
+export const articles: Article[] = articleEntries.filter((article, index, collection) =>
+    collection.findIndex((candidate) => candidate.slug === article.slug) === index
+);

@@ -7,10 +7,10 @@ import { girlNamesCurated } from '@/data/girlNamesCurated';
 import { thaksaConfig, type DayKey } from '@/data/thaksa';
 import { calculateScore } from '@/utils/numerologyUtils';
 import { analyzeNameSuitability } from '@/utils/thaksaUtils';
+import { getFirstThaiConsonant } from '@/utils/thaiNameInitial';
 
 const PAGE_SIZE_DEFAULT = 30;
 const PAGE_SIZE_MAX = 50;
-const THAI_LEADING_VOWELS = new Set(['เ', 'แ', 'โ', 'ใ', 'ไ']);
 const DAY_KEYS = Object.keys(thaksaConfig) as DayKey[];
 
 export type PublicNameGender = 'male' | 'female' | 'neutral';
@@ -19,6 +19,7 @@ export type PublicNameRecord = {
     name: string;
     gender: PublicNameGender;
     meaning?: string;
+    createdAt?: string;
     numerology: number;
     suitableDays: DayKey[];
 };
@@ -47,14 +48,6 @@ export type PublicNamesResult = {
 function stripInvisible(value: string) {
     return value.replace(/[\s\u200B\u200C\u200D\uFEFF]+/g, '');
 }
-function getFirstConsonant(name: string) {
-    const normalized = stripInvisible(name);
-    if (!normalized) return '';
-    return THAI_LEADING_VOWELS.has(normalized.charAt(0))
-        ? normalized.charAt(1) ?? ''
-        : normalized.charAt(0);
-}
-
 function normalizeGender(value: string | null | undefined): PublicNameGender {
     if (value === 'male' || value === 'female') return value;
     return 'neutral';
@@ -89,13 +82,13 @@ export const fetchAllPublicNames = unstable_cache(
         const supabase = createClient(supabaseUrl, supabaseKey, {
             auth: { persistSession: false },
         });
-        const rows: { name: string; gender: string | null; meaning: string | null }[] = [];
+        const rows: { name: string; gender: string | null; meaning: string | null; created_at: string | null }[] = [];
         const pageSize = 1000;
 
         for (let from = 0; ; from += pageSize) {
             const { data, error } = await supabase
                 .from('auspicious_names')
-                .select('name, gender, meaning')
+                .select('name, gender, meaning, created_at')
                 .order('name', { ascending: true })
                 .range(from, from + pageSize - 1);
 
@@ -123,13 +116,14 @@ export const fetchAllPublicNames = unstable_cache(
                     name,
                     gender: normalizeGender(row.gender),
                     meaning: row.meaning || undefined,
+                    createdAt: row.created_at || undefined,
                     numerology: calculateScore(name),
                     suitableDays,
                 };
             })
             .filter((row) => row.name);
     },
-    ['public-auspicious-names-v2'],
+    ['public-auspicious-names-v3'],
     { revalidate: 600, tags: ['public-names'] },
 );
 
@@ -146,7 +140,7 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
         if (gender === 'female' && item.gender !== 'female' && item.gender !== 'neutral') return false;
         if (gender === 'neutral' && item.gender !== 'neutral') return false;
         if (day !== 'all' && !item.suitableDays.includes(day)) return false;
-        if (initial !== 'all' && getFirstConsonant(item.name) !== initial) return false;
+        if (initial !== 'all' && getFirstThaiConsonant(item.name) !== initial) return false;
         return true;
     });
 
@@ -157,7 +151,7 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
 
     for (const item of allNames) {
         genders[item.gender] += 1;
-        initials.add(getFirstConsonant(item.name));
+        initials.add(getFirstThaiConsonant(item.name));
         for (const suitableDay of item.suitableDays) days[suitableDay] += 1;
     }
 
