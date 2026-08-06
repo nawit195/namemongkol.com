@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Save, RefreshCw, FileText, AlertTriangle, Copy, Plus, Replace, Database, Crown } from 'lucide-react';
+import MeaningReviewPanel from './MeaningReviewPanel';
 
 type DataSource = 'db' | 'premium';
 type SaveMode = 'append' | 'replace';
+type AdminSection = 'names' | 'meanings';
 
 interface SaveStats {
     received: number;
@@ -24,6 +26,7 @@ export default function AdminNamesPage() {
     const [isSaving, setIsSaving] = useState(false);
     const [saveMode, setSaveMode] = useState<SaveMode>('append');
     const [lastStats, setLastStats] = useState<SaveStats | null>(null);
+    const [adminSection, setAdminSection] = useState<AdminSection>('names');
 
     const apiEndpoint = dataSource === 'db' ? '/api/admin/names' : '/api/admin/premium-names';
 
@@ -84,10 +87,16 @@ export default function AdminNamesPage() {
     const handleSave = async () => {
         const Swal = (await import('sweetalert2')).default;
 
-        const newNames = rawInput
+        const inputLines = rawInput
             .split(/[\n,]+/)
             .map(s => s.trim())
             .filter(s => s.length > 0);
+        const records = inputLines.map((line) => {
+            const [name = '', meaning = '', rawGender = 'neutral'] = line.split('|').map((part) => part.trim());
+            const gender = rawGender === 'male' || rawGender === 'female' ? rawGender : 'neutral';
+            return { name, meaning, gender };
+        }).filter((record) => record.name);
+        const newNames = records.map((record) => record.name);
 
         if (newNames.length === 0) return;
 
@@ -113,6 +122,7 @@ export default function AdminNamesPage() {
             const body: Record<string, unknown> = { names: newNames };
             if (dataSource === 'db') {
                 body.mode = saveMode;
+                body.records = records;
             }
 
             const res = await fetch(apiEndpoint, {
@@ -210,6 +220,28 @@ export default function AdminNamesPage() {
                     </div>
                 </header>
 
+                <div className="flex gap-2 border-b border-slate-700" role="tablist" aria-label="จัดการฐานรายชื่อ">
+                    <button
+                        type="button"
+                        role="tab"
+                        aria-selected={adminSection === 'names'}
+                        onClick={() => setAdminSection('names')}
+                        className={`min-h-11 border-b-2 px-4 text-sm font-bold transition-colors ${adminSection === 'names' ? 'border-amber-400 text-amber-300' : 'border-transparent text-slate-400 hover:text-white'}`}
+                    >
+                        จัดการรายชื่อ
+                    </button>
+                    <button
+                        type="button"
+                        role="tab"
+                        aria-selected={adminSection === 'meanings'}
+                        onClick={() => { setDataSource('db'); setAdminSection('meanings'); }}
+                        className={`min-h-11 border-b-2 px-4 text-sm font-bold transition-colors ${adminSection === 'meanings' ? 'border-amber-400 text-amber-300' : 'border-transparent text-slate-400 hover:text-white'}`}
+                    >
+                        ตรวจความหมาย
+                    </button>
+                </div>
+
+                {adminSection === 'meanings' ? <MeaningReviewPanel /> : <>
                 {/* Data Source Toggle */}
                 <div className="flex items-center gap-3">
                     <span className="text-sm text-slate-400 font-medium">แหล่งข้อมูล:</span>
@@ -337,6 +369,11 @@ export default function AdminNamesPage() {
                     </div>
 
                     <div className="relative">
+                        {!isPremium ? (
+                            <p className="mb-3 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs leading-5 text-sky-200">
+                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว หรือ <strong>ชื่อ | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral ชื่อที่ไม่มีความหมายจะถูกเก็บเป็นรายการรอตรวจและยังไม่แสดงหน้า Search
+                            </p>
+                        ) : null}
                         <textarea
                             value={rawInput}
                             onChange={(e) => setRawInput(e.target.value)}
@@ -429,6 +466,7 @@ export default function AdminNamesPage() {
                         )}
                     </div>
                 </div>
+                </>}
             </div>
         </div>
     );

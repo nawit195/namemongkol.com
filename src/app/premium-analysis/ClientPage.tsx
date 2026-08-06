@@ -456,13 +456,13 @@ export default function PremiumAnalysisPage() {
     // --- Components ---
 
     const resultsContent = (
-        <div className="space-y-10 animate-fade-in-up">
+        <div className="space-y-8 text-slate-100 animate-fade-in-up md:space-y-10">
 
             {/* Header / Actions */}
-            <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
+            <div className="flex flex-col-reverse items-center justify-between gap-4 rounded-xl border border-slate-700 bg-[#111c31] p-4 md:flex-row">
                 <button
                     onClick={handleReset}
-                    className="flex items-center gap-2 text-slate-400 hover:text-white transition-all px-4 py-2 hover:bg-white/5 rounded-lg text-sm"
+                    className="flex min-h-11 items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
                 >
                     <ArrowLeft size={16} />
                     <span>คำนวณใหม่</span>
@@ -478,18 +478,18 @@ export default function PremiumAnalysisPage() {
 
             {/* Date Details Box */}
             {dateDetails && (
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center space-y-4">
-                    <p className="text-xl text-slate-200">
+                <div className="space-y-4 rounded-2xl border border-slate-700 bg-[#111c31] p-5 text-center md:p-6">
+                    <p className="text-xl font-semibold text-slate-100">
                         คุณเกิดวัน <span className="text-amber-400 font-bold">{dateDetails.dayOfWeek}</span> ครับ
                     </p>
-                    <div className="text-sm text-slate-300 space-y-2 bg-black/20 p-4 rounded-xl border border-white/5 inline-block w-full max-w-2xl">
+                    <div className="inline-block w-full max-w-2xl space-y-2 rounded-xl border border-slate-700 bg-[#0b1426] p-4 text-sm text-slate-300">
                         <p>สำหรับรายละเอียดเพิ่มเติมของวันที่ {dateDetails.fullSolarDateWithType} มีดังนี้ครับ:</p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left md:text-center">
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+                            <div className="rounded-lg border border-slate-700 bg-slate-800/70 p-3">
                                 <span className="block text-xs text-slate-500 mb-1">ตรงกับวัน</span>
                                 <span className="text-white font-medium">{dateDetails.dayOfWeek}</span>
                             </div>
-                            <div className="bg-white/5 p-3 rounded-lg border border-white/5">
+                            <div className="rounded-lg border border-slate-700 bg-slate-800/70 p-3">
                                 <span className="block text-xs text-slate-500 mb-1">วันทางจันทรคติ</span>
                                 <span className="text-amber-200 font-medium">{dateDetails.lunarDate}</span>
                             </div>
@@ -499,20 +499,20 @@ export default function PremiumAnalysisPage() {
             )}
 
             {/* Recommendation Box */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-emerald-900/40 to-teal-900/40 border border-emerald-500/30 rounded-3xl p-8 text-center space-y-3">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-50"></div>
+            <div className="relative overflow-hidden rounded-2xl border border-emerald-500/40 bg-[#102a27] p-6 text-center shadow-[0_16px_40px_rgba(2,44,34,0.24)] md:p-8">
+                <div className="absolute inset-x-0 top-0 h-1 bg-emerald-400/70"></div>
 
-                <h3 className="text-emerald-300 font-bold text-xl flex items-center justify-center gap-2">
+                <h3 className="flex items-center justify-center gap-2 text-xl font-bold text-emerald-300">
                     <ShieldCheck size={24} />
                     ผลลัพธ์การวิเคราะห์
                 </h3>
-                <p className="text-slate-200">
+                <p className="mt-3 text-slate-100">
                     ชื่อมงคลสำหรับนามสกุล <span className="text-white font-bold underline decoration-amber-500/50 underline-offset-4 px-1">&quot;{surname}&quot;</span>
                 </p>
-                <p className="text-slate-300 text-sm max-w-2xl mx-auto">
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">
                     รายชื่อเหล่านี้ถูกคัดสรรจากศาสตร์ทักษาปกรณ์และเลขศาสตร์ชั้นสูง โดยคำนวณจากวันเดือนปีเกิดและเวลาเกิดของท่านโดยเฉพาะ
                 </p>
-                <div className="flex items-center justify-center gap-2 mt-2">
+                <div className="mt-4 flex items-center justify-center gap-2">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border bg-amber-500/15 text-amber-300 border-amber-500/25">
                         ✦ ชื่อส่วนตัว — ไม่ใช่ผลการค้นหาทั่วไป
                     </span>
@@ -526,10 +526,10 @@ export default function PremiumAnalysisPage() {
                     return (
                         <div
                             key={idx}
-                            className={`relative group p-6 rounded-3xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col justify-between overflow-hidden
+                            className={`group relative flex min-h-[19rem] flex-col justify-between overflow-hidden rounded-2xl border p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-2xl
                                 ${isPremium
-                                    ? 'bg-indigo-950/40 border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.1)]'
-                                    : 'bg-white/5 border-white/5 hover:bg-white/10'
+                                    ? 'border-amber-400/60 bg-[#17233a] shadow-[0_12px_30px_rgba(0,0,0,0.2)] hover:border-amber-300'
+                                    : 'border-slate-700 bg-[#131e33] hover:border-slate-500'
                                 }`}
                         >
                             {/* Decorative Elements for Premium Cards */}
@@ -545,23 +545,23 @@ export default function PremiumAnalysisPage() {
                                 <div className="flex items-center gap-3 mb-4">
                                     <div className={`px-3 py-1 rounded-lg text-xs font-bold font-mono border ${isPremium
                                         ? 'bg-amber-950/40 text-amber-300 border-amber-500/30'
-                                        : 'bg-white/5 text-slate-400 border-white/10'
+                                        : 'border-slate-600 bg-slate-800 text-slate-200'
                                         }`}>
                                         Grade {result.grade}
                                     </div>
                                     {isPremium && <span className="text-[10px] text-amber-500 uppercase tracking-widest font-bold">เฉพาะสำหรับคุณ</span>}
                                 </div>
 
-                                <h3 className={`text-3xl font-bold mb-2 transition-colors ${isPremium ? 'text-white' : 'text-slate-200 group-hover:text-white'}`}>
+                                <h3 className="mb-2 text-3xl font-black text-white">
                                     {result.name}
                                 </h3>
-                                <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+                                <p className="mb-6 text-sm leading-7 text-slate-300">
                                     {result.meaning}
                                 </p>
 
                                 <div className="space-y-3 mb-6">
                                     {result.notes.map((note, i) => (
-                                        <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                                        <div key={i} className="flex items-start gap-2.5 text-sm leading-6 text-slate-300">
                                             <CheckCircle2 size={15} className={`mt-0.5 shrink-0 ${isPremium ? 'text-amber-400' : 'text-emerald-500/70'}`} />
                                             <span className="opacity-90">{note}</span>
                                         </div>
@@ -571,7 +571,7 @@ export default function PremiumAnalysisPage() {
 
 
                             {/* ปุ่มออกใบรับรองมงคล */}
-                            <div className="pt-3 mt-3 border-t border-white/5">
+                            <div className="mt-3 border-t border-slate-700 pt-3">
                                 <CertificateGenerator
                                     name={result.name}
                                     surname={surname}
@@ -588,7 +588,7 @@ export default function PremiumAnalysisPage() {
                         </div>
                     );
                 }) : (
-                    <div className="col-span-full py-20 text-center text-slate-300 bg-white/5 rounded-3xl border border-white/10 border-dashed">
+                    <div className="col-span-full rounded-2xl border border-dashed border-slate-600 bg-[#111c31] py-20 text-center text-slate-300">
                         <AlertCircle size={48} className="mx-auto mb-4 opacity-30" />
                         <p className="text-xl font-bold text-slate-300">ไม่พบรายชื่อที่ตรงกับเงื่อนไข</p>
                         <p className="mt-2 text-sm text-slate-500">กรุณาลองเปลี่ยนค่าพลัง (Focus) หรือตรวจสอบข้อมูลอีกครั้ง</p>
@@ -954,8 +954,11 @@ export default function PremiumAnalysisPage() {
                     </header>
 
                     {/* Main Content Area */}
-                    <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border border-[#ddddf0] bg-[#fefeff] px-4 py-6 text-[#1a1a3e] shadow-[0_12px_36px_rgba(26,26,62,0.08)] sm:px-6 md:rounded-[2rem] md:px-10 md:py-10">
-                        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[#e8c87e]"></div>
+                    <div className={`relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border px-4 py-6 shadow-[0_12px_36px_rgba(26,26,62,0.12)] sm:px-6 md:rounded-[2rem] md:px-10 md:py-10 ${hasAnalyzed
+                        ? 'border-[#263552] bg-[#0b1220] text-slate-100'
+                        : 'border-[#ddddf0] bg-[#fefeff] text-[#1a1a3e]'
+                        }`}>
+                        <div className={`pointer-events-none absolute inset-x-8 top-0 h-px ${hasAnalyzed ? 'bg-amber-400/70' : 'bg-[#e8c87e]'}`}></div>
                         {!hasAnalyzed ? formContent : resultsContent}
                     </div>
 

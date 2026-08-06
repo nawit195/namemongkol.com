@@ -107,6 +107,7 @@ export const fetchAllPublicNames = unstable_cache(
         return rows
             .map((row) => {
                 const name = stripInvisible(row.name);
+                const meaning = row.meaning?.trim();
                 const suitability = analyzeNameSuitability(name);
                 const suitableDays = DAY_KEYS.filter((day) =>
                     suitability.suitable.includes(thaksaConfig[day].name),
@@ -115,13 +116,13 @@ export const fetchAllPublicNames = unstable_cache(
                 return {
                     name,
                     gender: normalizeGender(row.gender),
-                    meaning: row.meaning || undefined,
+                    meaning: meaning || undefined,
                     createdAt: row.created_at || undefined,
                     numerology: calculateScore(name),
                     suitableDays,
                 };
             })
-            .filter((row) => row.name);
+            .filter((row) => row.name && row.meaning);
     },
     ['public-auspicious-names-v3'],
     { revalidate: 600, tags: ['public-names'] },
