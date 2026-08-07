@@ -118,11 +118,7 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
         supabase.from('analysis_results').select('*', { count: 'exact', head: true }).gte('created_at', weekAgo),
         supabase.from('user_profiles').select('*', { count: 'exact', head: true }),
         supabase.from('reviews').select('rating').eq('status', 'approved'),
-        supabase
-            .from('auspicious_names')
-            .select('*', { count: 'exact', head: true })
-            .not('meaning', 'is', null)
-            .neq('meaning', ''),
+        supabase.from('auspicious_names').select('*', { count: 'exact', head: true }),
     ]);
 
     const onlineNow = onlineRes.error || !onlineRes.data

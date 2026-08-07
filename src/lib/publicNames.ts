@@ -122,9 +122,9 @@ export const fetchAllPublicNames = unstable_cache(
                     suitableDays,
                 };
             })
-            .filter((row) => row.name && row.meaning);
+            .filter((row) => row.name);
     },
-    ['public-auspicious-names-v3'],
+    ['public-auspicious-names-v4'],
     { revalidate: 600, tags: ['public-names'] },
 );
 

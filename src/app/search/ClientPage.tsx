@@ -45,6 +45,7 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
         }
         return meaning;
     }, [meaning]);
+    const meaningText = displayMeaning || 'อยู่ระหว่างเพิ่มความหมาย';
 
     return (
         <>
@@ -72,7 +73,7 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
                 {/* Column 2: Meaning (Mobile + Desktop) */}
                 <td className="px-2 py-[18px]">
                     <div className={`line-clamp-1 max-w-[140px] text-sm transition-colors xs:max-w-[180px] sm:max-w-none lg:line-clamp-2 ${displayMeaning ? 'text-slate-700 group-hover:text-slate-950' : 'italic text-slate-500'}`}>
-                        {displayMeaning}
+                        {meaningText}
                     </div>
                 </td>
 
@@ -132,7 +133,7 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
                             {/* Full Meaning */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="font-semibold text-slate-700 w-24 flex-shrink-0">ความหมาย</span>
-                                <span className="text-slate-950">{displayMeaning}</span>
+                                <span className={displayMeaning ? 'text-slate-950' : 'italic text-slate-600'}>{meaningText}</span>
                             </div>
 
                             {/* Birth Days */}

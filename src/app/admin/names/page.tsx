@@ -371,7 +371,7 @@ export default function AdminNamesPage() {
                     <div className="relative">
                         {!isPremium ? (
                             <p className="mb-3 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs leading-5 text-sky-200">
-                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว หรือ <strong>ชื่อ | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral ชื่อที่ไม่มีความหมายจะถูกเก็บเป็นรายการรอตรวจและยังไม่แสดงหน้า Search
+                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว หรือ <strong>ชื่อ | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral รายชื่อใหม่จะแสดงในหมวดอักษรของหน้า Search ทันที ส่วนความหมายสามารถเพิ่มและตรวจสอบภายหลังได้
                             </p>
                         ) : null}
                         <textarea

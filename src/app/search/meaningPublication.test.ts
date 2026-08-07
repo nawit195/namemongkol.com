@@ -7,20 +7,21 @@ function readSource(relativePath: string) {
 }
 
 describe('public name meaning publication', () => {
-    it('removes names without an approved stored meaning from public data', () => {
+    it('publishes newly added names even when meaning is not available yet', () => {
         const source = readSource('src/lib/publicNames.ts');
-        expect(source).toContain('.filter((row) => row.name && row.meaning)');
+        expect(source).toContain('.filter((row) => row.name)');
+        expect(source).not.toContain('.filter((row) => row.name && row.meaning)');
     });
 
-    it('counts only names with stored meanings in public stats', () => {
+    it('counts every stored name in public stats', () => {
         const source = readSource('src/lib/publicStats.ts');
-        expect(source).toContain(".not('meaning', 'is', null)");
-        expect(source).toContain(".neq('meaning', '')");
+        expect(source).not.toContain(".not('meaning', 'is', null)");
+        expect(source).not.toContain(".neq('meaning', '')");
     });
 
-    it('does not show a waiting-for-update placeholder in search results', () => {
+    it('shows a transparent status when a name has no meaning yet', () => {
         const source = readSource('src/app/search/ClientPage.tsx');
-        expect(source).not.toContain('รออัปเดต');
+        expect(source).toContain('อยู่ระหว่างเพิ่มความหมาย');
     });
 
     it('ships the review-state migration and admin review actions', () => {
