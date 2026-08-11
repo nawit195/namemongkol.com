@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { createSearchResultCacheKey, SearchResultLruCache } from './searchResultCache';
+import {
+    createPublicNamesRequestUrl,
+    createSearchResultCacheKey,
+    SearchResultLruCache,
+} from './searchResultCache';
 
 describe('search result session cache', () => {
     it('creates a stable key for one filter and page combination', () => {
@@ -18,5 +22,19 @@ describe('search result session cache', () => {
         expect(cache.get('first')).toBe(1);
         expect(cache.get('third')).toBe(3);
         expect(cache.size).toBe(2);
+    });
+
+    it('uses the pre-rendered endpoint for a first-page initial-only filter', () => {
+        expect(createPublicNamesRequestUrl({ day: 'all', gender: 'all', initial: 'ฉ' }, 1))
+            .toBe('/api/public/name-initials/%E0%B8%89');
+    });
+
+    it('keeps combined filters and later pages on the dynamic endpoint', () => {
+        expect(createPublicNamesRequestUrl({ day: 'monday', gender: 'all', initial: 'ก' }, 1))
+            .toContain('/api/public/names?');
+        expect(createPublicNamesRequestUrl({ day: 'all', gender: 'male', initial: 'ก' }, 1))
+            .toContain('/api/public/names?');
+        expect(createPublicNamesRequestUrl({ day: 'all', gender: 'all', initial: 'ก' }, 2))
+            .toContain('/api/public/names?');
     });
 });

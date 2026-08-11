@@ -9,6 +9,7 @@ describe('/search SEO pillar content', () => {
     test('uses database-backed name counts instead of a hardcoded marketing number', () => {
         const pageSource = readSource('src/app/search/page.tsx');
         const clientSource = readSource('src/app/search/ClientPage.tsx');
+        const requestCacheSource = readSource('src/app/search/searchResultCache.ts');
 
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
@@ -26,7 +27,8 @@ describe('/search SEO pillar content', () => {
         expect(clientSource).toContain('bGradeCount > 0');
         expect(clientSource).toContain("{bGradeCount.toLocaleString('th-TH')}");
         expect(clientSource).toContain("initial: selectedLetter");
-        expect(clientSource).toContain("limit: '50'");
+        expect(clientSource).toContain('createPublicNamesRequestUrl(filters, page)');
+        expect(requestCacheSource).toContain("limit: '50'");
         expect(clientSource).toContain('<NameRow key={`${item.name}-${index}`} {...item} rowIndex={index} />');
         expect(clientSource).toContain('{resultTotal.toLocaleString');
         expect(clientSource).toContain('ชื่อในฐานข้อมูลล่าสุด');

@@ -8,6 +8,25 @@ export function createSearchResultCacheKey(filters: SearchFilterState, page: num
     return `${filters.day}|${filters.gender}|${filters.initial}|${page}`;
 }
 
+export function createPublicNamesRequestUrl(filters: SearchFilterState, page: number): string {
+    const isStaticInitialRequest = page === 1
+        && filters.day === 'all'
+        && filters.gender === 'all'
+        && filters.initial !== 'all';
+
+    if (isStaticInitialRequest) {
+        return `/api/public/name-initials/${encodeURIComponent(filters.initial)}`;
+    }
+
+    return `/api/public/names?${new URLSearchParams({
+        day: filters.day,
+        gender: filters.gender,
+        initial: filters.initial,
+        page: String(page),
+        limit: '50',
+    }).toString()}`;
+}
+
 export class SearchResultLruCache<T> {
     private readonly entries = new Map<string, T>();
 

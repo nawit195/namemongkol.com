@@ -8,6 +8,7 @@ const readSource = (filePath: string) => readFileSync(path.join(root, filePath),
 describe('search SSR and birthday landing pages', () => {
     test('serves paginated and filterable public names', () => {
         const routeSource = readSource('src/app/api/public/names/route.ts');
+        const staticInitialRoute = readSource('src/app/api/public/name-initials/[letter]/route.ts');
         const dataSource = readSource('src/lib/publicNames.ts');
         const catalogSource = readSource('src/lib/publicNameCatalog.ts');
 
@@ -24,6 +25,9 @@ describe('search SSR and birthday landing pages', () => {
         expect(catalogSource).toContain('sortSearchNamesByNewest(filtered)');
         expect(catalogSource).toContain('buckets.reduce');
         expect(routeSource).toContain('...result');
+        expect(staticInitialRoute).toContain("dynamic = 'force-static'");
+        expect(staticInitialRoute).toContain('generateStaticParams');
+        expect(dataSource).toContain("tags: ['public-names']");
     });
 
     test('pre-renders eight birthday variants for both genders', () => {

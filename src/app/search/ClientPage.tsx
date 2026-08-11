@@ -14,7 +14,12 @@ import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { trackEvent } from '@/lib/analytics';
-import { createSearchResultCacheKey, SearchResultLruCache } from './searchResultCache';
+import {
+    createPublicNamesRequestUrl,
+    createSearchResultCacheKey,
+    SearchResultLruCache,
+} from './searchResultCache';
+import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 
 const getDayBadgeProps = (d: string) => {
     if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-100 text-rose-800 border border-rose-200' };
@@ -208,13 +213,6 @@ function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitable
     );
 }
 
-// Thai consonants for letter filter
-const THAI_LETTERS = [
-    'ก','ข','ฃ','ค','ฅ','ฆ','ง','จ','ฉ','ช','ซ','ฌ','ญ','ฎ','ฏ','ฐ','ฑ','ฒ','ณ',
-    'ด','ต','ถ','ท','ธ','น','บ','ป','ผ','ฝ','พ','ฟ','ภ','ม','ย','ร','ล','ว',
-    'ศ','ษ','ส','ห','ฬ','อ','ฮ',
-];
-
 const UNLOCK_COST = 10;
 const UNLOCK_AMOUNT = 20;
 
@@ -311,14 +309,8 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         const cached = resultCache.get(cacheKey);
         if (cached) return cached;
 
-        const params = new URLSearchParams({
-            day: filters.day,
-            gender: filters.gender,
-            initial: filters.initial,
-            page: String(page),
-            limit: '50',
-        });
-        const response = await fetch(`/api/public/names?${params.toString()}`, {
+        const requestUrl = createPublicNamesRequestUrl(filters, page);
+        const response = await fetch(requestUrl, {
             cache: 'force-cache',
             signal,
         });
@@ -812,7 +804,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                             >
                                 ทั้งหมด
                             </button>
-                            {THAI_LETTERS.map((letter) => (
+                            {THAI_NAME_INITIALS.map((letter) => (
                                 <button
                                     key={letter}
                                     onClick={() => handleLetterChange(letter)}
@@ -908,6 +900,12 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                 </div>
 
                 {/* Results Table */}
+                {isLoadingNames && names.length > 0 ? (
+                    <div className="mb-3 flex min-h-11 items-center gap-2 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-sm font-medium text-sky-800" role="status" aria-live="polite">
+                        <RotateCw className="h-4 w-4 animate-spin" />
+                        กำลังเปลี่ยนรายชื่อ ระบบยังแสดงผลชุดเดิมไว้ระหว่างโหลด
+                    </div>
+                ) : null}
                 {namesError ? (
                     <div className="mb-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800" role="alert">
                         <p className="font-medium">{namesError} ระบบยังคงผลลัพธ์ล่าสุดไว้ให้</p>
@@ -937,8 +935,8 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                                 <th className="px-4 py-4"></th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-[#eeeef6] bg-[#fafafd]">
-                            {isLoadingNames ? (
+                        <tbody className={`divide-y divide-[#eeeef6] bg-[#fafafd] transition-opacity ${isLoadingNames && names.length > 0 ? 'opacity-55' : 'opacity-100'}`}>
+                            {isLoadingNames && names.length === 0 ? (
                                 Array.from({ length: 5 }, (_, index) => (
                                     <tr key={`loading-${index}`} className="border-b border-[#eeeef6] bg-white/80">
                                         <td colSpan={6} className="px-4 py-4">
