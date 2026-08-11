@@ -8,8 +8,7 @@ import { thaksaConfig, type DayKey } from '@/data/thaksa';
 import { calculateScore } from '@/utils/numerologyUtils';
 import { analyzeNameSuitability } from '@/utils/thaksaUtils';
 import { analyzeName, type NameAnalysisResult } from '@/utils/nameAnalysis';
-import { getFirstThaiConsonant } from '@/utils/thaiNameInitial';
-import { sortSearchNamesByNewest } from '@/utils/searchNameSort';
+import { buildPublicNameCatalog, selectPublicNameCandidates } from '@/lib/publicNameCatalog';
 
 const PAGE_SIZE_DEFAULT = 30;
 const PAGE_SIZE_MAX = 50;
@@ -180,43 +179,24 @@ export const fetchAllPublicNames = unstable_cache(
     { revalidate: 600, tags: ['public-names'] },
 );
 
+const fetchPublicNamesCatalog = unstable_cache(
+    async () => buildPublicNameCatalog(await fetchAllPublicNames(), DAY_KEYS),
+    ['public-auspicious-name-catalog-v1'],
+    { revalidate: 600, tags: ['public-names'] },
+);
+
 export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<PublicNamesResult> {
     const allNames = await fetchAllPublicNames();
+    const catalog = await fetchPublicNamesCatalog();
     const day = query.day && query.day !== 'all' && DAY_KEYS.includes(query.day) ? query.day : 'all';
     const gender = query.gender ?? 'all';
     const initial = query.initial?.trim() || 'all';
     const page = Math.max(1, Math.floor(query.page ?? 1));
     const pageSize = Math.min(PAGE_SIZE_MAX, Math.max(1, Math.floor(query.limit ?? PAGE_SIZE_DEFAULT)));
 
-    const filtered = allNames.filter((item) => {
-        if (gender === 'male' && item.gender !== 'male' && item.gender !== 'neutral') return false;
-        if (gender === 'female' && item.gender !== 'female' && item.gender !== 'neutral') return false;
-        if (gender === 'neutral' && item.gender !== 'neutral') return false;
-        if (day !== 'all' && !item.suitableDays.includes(day)) return false;
-        if (initial !== 'all' && getFirstThaiConsonant(item.name) !== initial) return false;
-        return true;
-    });
-
-    const ordered = initial === 'all' ? filtered : sortSearchNamesByNewest(filtered);
+    const ordered = selectPublicNameCandidates(allNames, catalog, { day, gender, initial });
     const start = (page - 1) * pageSize;
-    const genders: Record<PublicNameGender, number> = { male: 0, female: 0, neutral: 0 };
-    const days = Object.fromEntries(DAY_KEYS.map((key) => [key, 0])) as Record<DayKey, number>;
-    const initials = new Set<string>();
     const grades: PublicNamesSummary['grades'] = { 'A+': 0, A: 0, B: 0, C: 0 };
-    let withPronunciation = 0;
-    let withMeaning = 0;
-    let latestCreatedAt: string | undefined;
-
-    for (const item of allNames) {
-        genders[item.gender] += 1;
-        initials.add(getFirstThaiConsonant(item.name));
-        for (const suitableDay of item.suitableDays) days[suitableDay] += 1;
-        if (item.pronunciation) withPronunciation += 1;
-        if (item.meaning) withMeaning += 1;
-        if (item.createdAt && (!latestCreatedAt || Date.parse(item.createdAt) > Date.parse(latestCreatedAt))) {
-            latestCreatedAt = item.createdAt;
-        }
-    }
 
     for (const item of ordered) grades[item.grade] += 1;
 
@@ -226,16 +206,10 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
         page,
         pageSize,
         totalPages: Math.max(1, Math.ceil(ordered.length / pageSize)),
-        facets: {
-            genders,
-            initials: [...initials].filter(Boolean).sort((a, b) => a.localeCompare(b, 'th')),
-            days,
-        },
+        facets: catalog.facets,
         summary: {
             grades,
-            withPronunciation,
-            withMeaning,
-            latestCreatedAt,
+            ...catalog.quality,
         },
     };
 }

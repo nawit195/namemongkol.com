@@ -9,6 +9,7 @@ describe('search SSR and birthday landing pages', () => {
     test('serves paginated and filterable public names', () => {
         const routeSource = readSource('src/app/api/public/names/route.ts');
         const dataSource = readSource('src/lib/publicNames.ts');
+        const catalogSource = readSource('src/lib/publicNameCatalog.ts');
 
         for (const parameter of ['day', 'gender', 'initial', 'page', 'limit']) {
             expect(routeSource).toContain(`params.get('${parameter}')`);
@@ -19,7 +20,9 @@ describe('search SSR and birthday landing pages', () => {
         expect(dataSource).toContain('withPronunciation');
         expect(dataSource).toContain('withMeaning');
         expect(dataSource).toContain('latestCreatedAt');
-        expect(dataSource).toContain('sortSearchNamesByNewest(filtered)');
+        expect(dataSource).toContain('selectPublicNameCandidates');
+        expect(catalogSource).toContain('sortSearchNamesByNewest(filtered)');
+        expect(catalogSource).toContain('buckets.reduce');
         expect(routeSource).toContain('...result');
     });
 

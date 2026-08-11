@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import ReviewBadge from '@/components/ReviewBadge';
@@ -15,6 +14,7 @@ import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { trackEvent } from '@/lib/analytics';
+import { createSearchResultCacheKey, SearchResultLruCache } from './searchResultCache';
 
 const getDayBadgeProps = (d: string) => {
     if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-100 text-rose-800 border border-rose-200' };
@@ -255,6 +255,12 @@ type SearchNamesResult = {
     summary: SearchSummary;
 };
 
+type SearchFilters = {
+    day: DayKey | 'all';
+    gender: 'all' | 'male' | 'female' | 'neutral';
+    initial: string;
+};
+
 type SearchPageProps = {
     initialResult: SearchNamesResult;
     initialStats: PublicStats;
@@ -278,29 +284,37 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     const [isLoadingNames, setIsLoadingNames] = useState(false);
     const [namesError, setNamesError] = useState<string | null>(null);
     const [filtersReady, setFiltersReady] = useState(false);
-    const skippedInitialRequest = useRef(false);
     const [publicStats, setPublicStats] = useState<PublicStats>(initialStats);
+    const [resultCache] = useState(() => {
+        const cache = new SearchResultLruCache<SearchNamesResult>(30);
+        cache.set(createSearchResultCacheKey({ day: 'all', gender: 'all', initial: 'all' }, 1), initialResult);
+        return cache;
+    });
+    const activeFilterRequest = useRef<AbortController | null>(null);
+    const latestFilterRequestId = useRef(0);
 
-    // URL fragments preserve useful filter state without creating crawlable faceted URLs.
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-        const day = params.get('day');
-        const gender = params.get('gender');
-        const initial = params.get('initial');
-
-        if (day && (day === 'all' || day in thaksaConfig)) setSelectedDay(day as DayKey | 'all');
-        if (gender && ['all', 'male', 'female', 'neutral'].includes(gender)) {
-            setSelectedGender(gender as 'all' | 'male' | 'female' | 'neutral');
-        }
-        if (initial) setSelectedLetter(initial);
-        setFiltersReady(true);
+    const applyNamesResult = useCallback((result: SearchNamesResult) => {
+        setNames(result.data);
+        setTotal(result.total);
+        setTotalPages(result.totalPages);
+        setLoadedPage(result.page);
+        setSummary(result.summary);
+        setVisibleCount(10);
     }, []);
 
-    const requestNamesPage = useCallback(async (page: number, signal?: AbortSignal): Promise<SearchNamesResult> => {
+    const requestNamesPage = useCallback(async (
+        filters: SearchFilters,
+        page: number,
+        signal?: AbortSignal,
+    ): Promise<SearchNamesResult> => {
+        const cacheKey = createSearchResultCacheKey(filters, page);
+        const cached = resultCache.get(cacheKey);
+        if (cached) return cached;
+
         const params = new URLSearchParams({
-            day: selectedDay,
-            gender: selectedGender,
-            initial: selectedLetter,
+            day: filters.day,
+            gender: filters.gender,
+            initial: filters.initial,
             page: String(page),
             limit: '50',
         });
@@ -312,41 +326,70 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
             throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
         }
-        return payload as SearchNamesResult;
-    }, [selectedDay, selectedGender, selectedLetter]);
+        const result = payload as SearchNamesResult;
+        resultCache.set(cacheKey, result);
+        return result;
+    }, [resultCache]);
 
-    const applyFirstPage = useCallback(async (signal?: AbortSignal) => {
+    const loadFirstPage = useCallback(async (filters: SearchFilters) => {
+        activeFilterRequest.current?.abort();
+        const requestId = ++latestFilterRequestId.current;
+        const cacheKey = createSearchResultCacheKey(filters, 1);
+        const cached = resultCache.get(cacheKey);
+
+        if (cached) {
+            applyNamesResult(cached);
+            setNamesError(null);
+            setIsLoadingNames(false);
+            return;
+        }
+
+        const controller = new AbortController();
+        activeFilterRequest.current = controller;
         setIsLoadingNames(true);
         setNamesError(null);
         try {
-            const result = await requestNamesPage(1, signal);
-            setNames(result.data);
-            setTotal(result.total);
-            setTotalPages(result.totalPages);
-            setLoadedPage(1);
-            setSummary(result.summary);
-            setVisibleCount(10);
+            const result = await requestNamesPage(filters, 1, controller.signal);
+            if (requestId !== latestFilterRequestId.current) return;
+            applyNamesResult(result);
         } catch (error) {
-            if (error instanceof DOMException && error.name === 'AbortError') return;
+            if (error instanceof Error && error.name === 'AbortError') return;
+            if (requestId !== latestFilterRequestId.current) return;
             console.error('Failed to load filtered names:', error);
             setNamesError('โหลดรายชื่อไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
         } finally {
-            if (!signal?.aborted) setIsLoadingNames(false);
+            if (requestId === latestFilterRequestId.current) {
+                setIsLoadingNames(false);
+                activeFilterRequest.current = null;
+            }
         }
-    }, [requestNamesPage]);
+    }, [applyNamesResult, requestNamesPage, resultCache]);
 
+    // URL fragments preserve useful filter state without creating crawlable faceted URLs.
     useEffect(() => {
-        if (!filtersReady) return;
-        const isDefaultFilter = selectedDay === 'all' && selectedGender === 'all' && selectedLetter === 'all';
-        if (!skippedInitialRequest.current && isDefaultFilter) {
-            skippedInitialRequest.current = true;
-            return;
+        const params = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        const rawDay = params.get('day');
+        const rawGender = params.get('gender');
+        const rawInitial = params.get('initial');
+        const filters: SearchFilters = {
+            day: rawDay && rawDay in thaksaConfig ? rawDay as DayKey : 'all',
+            gender: rawGender && ['male', 'female', 'neutral'].includes(rawGender)
+                ? rawGender as SearchFilters['gender']
+                : 'all',
+            initial: rawInitial || 'all',
+        };
+
+        setSelectedDay(filters.day);
+        setSelectedGender(filters.gender);
+        setSelectedLetter(filters.initial);
+        setFiltersReady(true);
+
+        if (filters.day !== 'all' || filters.gender !== 'all' || filters.initial !== 'all') {
+            void loadFirstPage(filters);
         }
-        skippedInitialRequest.current = true;
-        const controller = new AbortController();
-        void applyFirstPage(controller.signal);
-        return () => controller.abort();
-    }, [applyFirstPage, filtersReady, selectedDay, selectedGender, selectedLetter]);
+    }, [loadFirstPage]);
+
+    useEffect(() => () => activeFilterRequest.current?.abort(), []);
 
     useEffect(() => {
         if (!filtersReady) return;
@@ -409,13 +452,24 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
 
 
     const handleDayChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedDay(e.target.value as DayKey | 'all');
+        const day = e.target.value as DayKey | 'all';
+        setSelectedDay(day);
         setVisibleCount(10);
+        void loadFirstPage({ day, gender: selectedGender, initial: selectedLetter });
     };
 
     const handleLetterChange = (letter: string) => {
+        if (letter === selectedLetter && !namesError) return;
         setSelectedLetter(letter);
         setVisibleCount(10);
+        void loadFirstPage({ day: selectedDay, gender: selectedGender, initial: letter });
+    };
+
+    const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const gender = e.target.value as SearchFilters['gender'];
+        setSelectedGender(gender);
+        setVisibleCount(10);
+        void loadFirstPage({ day: selectedDay, gender, initial: selectedLetter });
     };
 
     const handleUnlock = async () => {
@@ -431,7 +485,11 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
             const requiredCount = visibleCount + unlockCount;
 
             while (availableNames.length < requiredCount && nextLoadedPage < totalPages) {
-                const nextResult = await requestNamesPage(nextLoadedPage + 1);
+                const nextResult = await requestNamesPage({
+                    day: selectedDay,
+                    gender: selectedGender,
+                    initial: selectedLetter,
+                }, nextLoadedPage + 1);
                 if (nextResult.data.length === 0) break;
                 availableNames = [...availableNames, ...nextResult.data];
                 nextLoadedPage = nextResult.page;
@@ -715,10 +773,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                             </div>
                             <select
                                 value={selectedGender}
-                                onChange={(e) => {
-                                    setSelectedGender(e.target.value as any);
-                                    setVisibleCount(10);
-                                }}
+                                onChange={handleGenderChange}
                                 className="block w-full pl-12 pr-4 py-2.5 md:py-3 text-sm md:text-base bg-slate-950/90 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-transparent shadow-lg shadow-slate-950/10 transition-all appearance-none cursor-pointer"
                             >
                                 <option value="all" className="bg-slate-900 text-slate-200">{t('pages.search.filters.genderAll')}</option>
@@ -853,8 +908,25 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                 </div>
 
                 {/* Results Table */}
+                {namesError ? (
+                    <div className="mb-3 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800" role="alert">
+                        <p className="font-medium">{namesError} ระบบยังคงผลลัพธ์ล่าสุดไว้ให้</p>
+                        <button
+                            type="button"
+                            onClick={() => void loadFirstPage({
+                                day: selectedDay,
+                                gender: selectedGender,
+                                initial: selectedLetter,
+                            })}
+                            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-rose-300 bg-white px-3 py-2 font-bold text-rose-800 transition-colors hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
+                        >
+                            <RotateCw className="h-4 w-4" />
+                            ลองโหลดอีกครั้ง
+                        </button>
+                    </div>
+                ) : null}
                 <div className="mb-8 overflow-hidden rounded-2xl border border-[#ddddf0] bg-[#fafafd] shadow-[0_12px_30px_rgba(15,23,42,0.07)]">
-                    <table className="w-full text-left">
+                    <table className="w-full text-left" aria-busy={isLoadingNames}>
                         <thead>
                             <tr className="border-b-2 border-amber-300/70 bg-[linear-gradient(90deg,#f8f8fc_0%,#f3f3f9_52%,#e8ecf2_100%)] text-[#1a1a3e]">
                                 <th className="px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.name')}</th>
@@ -874,20 +946,6 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                                         </td>
                                     </tr>
                                 ))
-                            ) : namesError ? (
-                                <tr>
-                                    <td colSpan={6} className="px-8 py-14 text-center">
-                                        <p className="font-medium text-rose-700">{namesError}</p>
-                                        <button
-                                            type="button"
-                                            onClick={() => void applyFirstPage()}
-                                            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800 transition-colors hover:border-amber-400 hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-                                        >
-                                            <RotateCw className="h-4 w-4" />
-                                            ลองโหลดอีกครั้ง
-                                        </button>
-                                    </td>
-                                </tr>
                             ) : names.length > 0 ? (
                                 <>
                                     {names.slice(0, visibleCount).map((item, index) => (
@@ -956,7 +1014,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                     </table>
                 </div>
 
-                {!isLoadingNames && !namesError && total > 0 && (
+                {!isLoadingNames && total > 0 && (
                     <div className="mt-4 text-center text-slate-500 text-sm">
                         {t('pages.search.showingPrefix')} {Math.min(visibleCount, total).toLocaleString('th-TH')} {t('pages.search.showingConnector')} {total.toLocaleString('th-TH')}
                     </div>
