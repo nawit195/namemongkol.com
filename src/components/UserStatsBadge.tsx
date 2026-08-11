@@ -3,9 +3,11 @@ import { Users } from 'lucide-react';
 export default function UserStatsBadge({
   users,
   label = 'มีผู้ค้นหาแล้ว',
+  suffix = 'คน',
 }: {
   users?: number | null;
   label?: string;
+  suffix?: string;
 }) {
   const hasUsers = typeof users === 'number' && users > 0;
 
@@ -14,7 +16,7 @@ export default function UserStatsBadge({
       <Users className="h-4 w-4 text-emerald-700" />
       <span className="text-emerald-800">{label}</span>
       <span className="font-black tabular-nums text-[#1a1a3e]">{hasUsers ? users.toLocaleString('th-TH') : '...'}</span>
-      <span className="font-semibold text-[#5a5a82]">คน</span>
+      <span className="font-semibold text-[#5a5a82]">{suffix}</span>
     </div>
   );
 }

@@ -12,29 +12,32 @@ describe('/search SEO pillar content', () => {
 
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
-        expect(pageSource).toContain('numberOfItems: allNames.length');
-        expect(pageSource).toContain("'itemListElement': allNames.slice");
-        expect(pageSource).toContain('const searchNames = allNames.map');
-        expect(pageSource).toContain('<ClientPage initialNames={searchNames} initialTotal={searchNames.length} />');
+        expect(pageSource).toContain('queryPublicNames({ page: 1, limit: 50 })');
+        expect(pageSource).toContain('numberOfItems: initialResult.total');
+        expect(pageSource).toContain('initialResult.data.slice(0, 10)');
+        expect(pageSource).toContain('<ClientPage initialResult={initialResult} initialStats={aggregate.stats} />');
+        expect(pageSource).not.toContain('fetchAllPublicNames()');
         expect(pageSource).not.toContain('numberOfItems: 5000');
 
         expect(clientSource).toContain('totalNames');
         expect(clientSource).toContain('liveNameCount');
         expect(clientSource).toContain("{total.toLocaleString('th-TH')}");
-        expect(clientSource).toContain("{filteredNames.length.toLocaleString('th-TH')}");
+        expect(clientSource).toContain("{total.toLocaleString('th-TH')}");
         expect(clientSource).toContain('bGradeCount > 0');
         expect(clientSource).toContain("{bGradeCount.toLocaleString('th-TH')}");
-        expect(clientSource).toContain("selectedLetter === 'all'");
-        expect(clientSource).toContain('sortSearchNamesByNewest(matchingNames)');
-        expect(clientSource).toContain('createdAt={item.createdAt}');
-        expect(clientSource).not.toContain('{resultTotal}');
+        expect(clientSource).toContain("initial: selectedLetter");
+        expect(clientSource).toContain("limit: '50'");
+        expect(clientSource).toContain('<NameRow key={`${item.name}-${index}`} {...item} rowIndex={index} />');
+        expect(clientSource).toContain('{resultTotal.toLocaleString');
         expect(clientSource).toContain('ชื่อในฐานข้อมูลล่าสุด');
+        expect(clientSource.indexOf('requestNamesPage(nextLoadedPage + 1)'))
+            .toBeLessThan(clientSource.indexOf("supabase.rpc('deduct_credits'"));
     });
 
     test('targets ชื่อมงคล as the primary search landing page', () => {
         const pageSource = readSource('src/app/search/page.tsx');
 
-        expect(pageSource).toContain('ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด');
+        expect(pageSource).toContain('ค้นหาชื่อมงคล พร้อมคำอ่าน ความหมาย และเลขศาสตร์');
         expect(pageSource).toContain('title: { absolute: searchPageTitle }');
         expect(pageSource).toContain('รายชื่อมงคล');
         expect(pageSource).toContain('ตั้งชื่อลูก');
@@ -48,7 +51,9 @@ describe('/search SEO pillar content', () => {
         expect(pageSource).toContain('id="search-faq"');
         expect(pageSource).toContain('pillarFaqs');
         expect(pageSource).toContain('FAQPage');
-        expect(pageSource).toContain('SpeakableSpecification');
+        expect(pageSource).toContain("'@type': 'DefinedTermSet'");
+        expect(pageSource).toContain("'@type': 'SoftwareApplication'");
+        expect(pageSource).not.toContain('SpeakableSpecification');
     });
 
     test('passes internal authority from related pages to /search', () => {

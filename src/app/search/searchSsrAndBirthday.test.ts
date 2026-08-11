@@ -16,6 +16,11 @@ describe('search SSR and birthday landing pages', () => {
         expect(dataSource).toContain('totalPages');
         expect(dataSource).toContain('facets');
         expect(dataSource).toContain('pageSize');
+        expect(dataSource).toContain('withPronunciation');
+        expect(dataSource).toContain('withMeaning');
+        expect(dataSource).toContain('latestCreatedAt');
+        expect(dataSource).toContain('sortSearchNamesByNewest(filtered)');
+        expect(routeSource).toContain('...result');
     });
 
     test('pre-renders eight birthday variants for both genders', () => {

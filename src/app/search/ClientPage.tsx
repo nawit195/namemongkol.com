@@ -1,20 +1,16 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import ReviewBadge from '@/components/ReviewBadge';
 import UserStatsBadge from '@/components/UserStatsBadge';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/utils/supabase';
-import { Sparkles, ChevronDown, Filter, Lock, Type, Plus, Minus } from 'lucide-react';
+import { Sparkles, ChevronDown, Filter, Lock, Type, Plus, Minus, RotateCw } from 'lucide-react';
 import Swal from 'sweetalert2';
 
-import { calculateScore } from '@/utils/numerologyUtils';
-import { analyzeNameSuitability } from '@/utils/thaksaUtils';
-import { analyzeName } from '@/utils/nameAnalysis';
-import { getFirstThaiConsonant } from '@/utils/thaiNameInitial';
-import { isRecentlyAdded, sortSearchNamesByNewest } from '@/utils/searchNameSort';
+import { isRecentlyAdded } from '@/utils/searchNameSort';
 import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
@@ -32,11 +28,16 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning?: string; createdAt?: string; rowIndex: number }) {
+function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
-    const score = calculateScore(name);
-    // Always calculate to know if it's usable on multiple days
-    const suitability = useMemo(() => analyzeNameSuitability(name), [name]);
+    const suitability = useMemo(() => {
+        const suitable = suitableDays.map((day) => thaksaConfig[day].name);
+        const suitableSet = new Set(suitableDays);
+        const unsuitable = (Object.keys(thaksaConfig) as DayKey[])
+            .filter((day) => !suitableSet.has(day))
+            .map((day) => thaksaConfig[day].name);
+        return { suitable, unsuitable };
+    }, [suitableDays]);
 
     const displayMeaning = useMemo(() => {
         if (!meaning) return undefined;
@@ -68,16 +69,26 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
                             </span>
                         ) : null}
                     </div>
+                    {pronunciation ? (
+                        <span className="mt-1 block text-xs font-medium leading-5 text-[#5a5a82] lg:hidden">
+                            อ่านว่า {pronunciation}
+                        </span>
+                    ) : null}
                 </td>
 
-                {/* Column 2: Meaning (Mobile + Desktop) */}
+                {/* Column 2: Pronunciation (Desktop Only) */}
+                <td className="hidden px-3 py-[18px] text-sm font-medium leading-6 text-[#5a5a82] lg:table-cell">
+                    {pronunciation || '—'}
+                </td>
+
+                {/* Column 3: Meaning (Mobile + Desktop) */}
                 <td className="px-2 py-[18px]">
                     <div className={`line-clamp-1 max-w-[140px] text-sm transition-colors xs:max-w-[180px] sm:max-w-none lg:line-clamp-2 ${displayMeaning ? 'text-slate-700 group-hover:text-slate-950' : 'italic text-slate-500'}`}>
                         {meaningText}
                     </div>
                 </td>
 
-                {/* Column 3: Day Badges (Desktop Only) */}
+                {/* Column 4: Day Badges (Desktop Only) */}
                 <td className="hidden px-4 py-[18px] text-sm text-slate-700 transition-colors group-hover:text-slate-950 md:table-cell">
                     {suitability.suitable.length === 8 ? (
                         <span className="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800">
@@ -99,14 +110,14 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
                     )}
                 </td>
 
-                {/* Column 4: Score (Desktop Only) */}
+                {/* Column 5: Score (Desktop Only) */}
                 <td className="hidden px-4 py-[18px] text-center md:table-cell">
                     <span className="inline-flex h-9 min-w-11 items-center justify-center rounded-full border border-[#e8c87e] bg-[#fff8e7] px-3 text-sm font-bold tabular-nums text-amber-800 shadow-sm transition-colors duration-200 group-hover:border-[#c9933a] group-hover:text-amber-950 md:text-base">
-                        {score}
+                        {numerology}
                     </span>
                 </td>
 
-                {/* Column 5: Expand Icon (Mobile + Desktop) */}
+                {/* Column 6: Expand Icon (Mobile + Desktop) */}
                 <td className="w-[10%] px-3 py-[18px] text-right align-middle md:px-4">
                     <button
                         type="button"
@@ -127,9 +138,17 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
             {/* Expanded Details Row */}
             {isExpanded && (
                 <tr className="animate-fade-in border-b border-[#ddd8ee] bg-[#eeebf8]">
-                    <td colSpan={5} className="p-0">
+                    <td colSpan={6} className="p-0">
                         <div className="grid gap-4 bg-[#fafafd] px-5 py-5 text-sm md:px-6">
-                            
+
+                            {/* Pronunciation */}
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                <span className="w-24 flex-shrink-0 font-semibold text-slate-700">คำอ่าน</span>
+                                <span className={pronunciation ? 'font-medium text-slate-950' : 'italic text-slate-600'}>
+                                    {pronunciation || 'ยังไม่มีข้อมูลคำอ่าน'}
+                                </span>
+                            </div>
+
                             {/* Full Meaning */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="font-semibold text-slate-700 w-24 flex-shrink-0">ความหมาย</span>
@@ -168,7 +187,7 @@ function NameRow({ name, meaning, createdAt, rowIndex }: { name: string; meaning
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                                 <span className="font-semibold text-slate-700 w-24 flex-shrink-0">เลขศาสตร์</span>
                                 <div className="w-fit rounded-full border border-[#e8c87e] bg-[#fff8e7] px-3 py-1 text-sm font-bold text-amber-800 shadow-sm">
-                                    {score}
+                                    {numerology}
                                 </div>
                             </div>
 
@@ -212,16 +231,36 @@ type PublicStats = {
 type SearchName = {
     name: string;
     gender: 'male' | 'female' | 'neutral';
+    pronunciation?: string;
     meaning?: string;
     createdAt?: string;
+    numerology: number;
+    suitableDays: DayKey[];
+    grade: 'A+' | 'A' | 'B' | 'C';
+};
+
+type SearchSummary = {
+    grades: Record<SearchName['grade'], number>;
+    withPronunciation: number;
+    withMeaning: number;
+    latestCreatedAt?: string;
+};
+
+type SearchNamesResult = {
+    data: SearchName[];
+    total: number;
+    page: number;
+    pageSize: number;
+    totalPages: number;
+    summary: SearchSummary;
 };
 
 type SearchPageProps = {
-    initialNames: SearchName[];
-    initialTotal: number;
+    initialResult: SearchNamesResult;
+    initialStats: PublicStats;
 };
 
-export default function SearchPage({ initialNames, initialTotal }: SearchPageProps) {
+export default function SearchPage({ initialResult, initialStats }: SearchPageProps) {
     const router = useRouter();
     const { t } = useLanguage();
     const [selectedDay, setSelectedDay] = useState<DayKey | 'all'>('all');
@@ -231,10 +270,16 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
     // Freemium State
     const [visibleCount, setVisibleCount] = useState(10);
     const [isUnlocking, setIsUnlocking] = useState(false);
-
-    // All names are pre-loaded from the server — no API fetch needed for filtering.
-    const names = initialNames;
-    const [publicStats, setPublicStats] = useState<PublicStats | null>(null);
+    const [names, setNames] = useState<SearchName[]>(initialResult.data);
+    const [total, setTotal] = useState(initialResult.total);
+    const [totalPages, setTotalPages] = useState(initialResult.totalPages);
+    const [loadedPage, setLoadedPage] = useState(initialResult.page);
+    const [summary, setSummary] = useState<SearchSummary>(initialResult.summary);
+    const [isLoadingNames, setIsLoadingNames] = useState(false);
+    const [namesError, setNamesError] = useState<string | null>(null);
+    const [filtersReady, setFiltersReady] = useState(false);
+    const skippedInitialRequest = useRef(false);
+    const [publicStats, setPublicStats] = useState<PublicStats>(initialStats);
 
     // URL fragments preserve useful filter state without creating crawlable faceted URLs.
     useEffect(() => {
@@ -248,7 +293,70 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
             setSelectedGender(gender as 'all' | 'male' | 'female' | 'neutral');
         }
         if (initial) setSelectedLetter(initial);
+        setFiltersReady(true);
     }, []);
+
+    const requestNamesPage = useCallback(async (page: number, signal?: AbortSignal): Promise<SearchNamesResult> => {
+        const params = new URLSearchParams({
+            day: selectedDay,
+            gender: selectedGender,
+            initial: selectedLetter,
+            page: String(page),
+            limit: '50',
+        });
+        const response = await fetch(`/api/public/names?${params.toString()}`, {
+            cache: 'force-cache',
+            signal,
+        });
+        const payload = await response.json();
+        if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
+            throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
+        }
+        return payload as SearchNamesResult;
+    }, [selectedDay, selectedGender, selectedLetter]);
+
+    const applyFirstPage = useCallback(async (signal?: AbortSignal) => {
+        setIsLoadingNames(true);
+        setNamesError(null);
+        try {
+            const result = await requestNamesPage(1, signal);
+            setNames(result.data);
+            setTotal(result.total);
+            setTotalPages(result.totalPages);
+            setLoadedPage(1);
+            setSummary(result.summary);
+            setVisibleCount(10);
+        } catch (error) {
+            if (error instanceof DOMException && error.name === 'AbortError') return;
+            console.error('Failed to load filtered names:', error);
+            setNamesError('โหลดรายชื่อไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+        } finally {
+            if (!signal?.aborted) setIsLoadingNames(false);
+        }
+    }, [requestNamesPage]);
+
+    useEffect(() => {
+        if (!filtersReady) return;
+        const isDefaultFilter = selectedDay === 'all' && selectedGender === 'all' && selectedLetter === 'all';
+        if (!skippedInitialRequest.current && isDefaultFilter) {
+            skippedInitialRequest.current = true;
+            return;
+        }
+        skippedInitialRequest.current = true;
+        const controller = new AbortController();
+        void applyFirstPage(controller.signal);
+        return () => controller.abort();
+    }, [applyFirstPage, filtersReady, selectedDay, selectedGender, selectedLetter]);
+
+    useEffect(() => {
+        if (!filtersReady) return;
+        const params = new URLSearchParams();
+        if (selectedDay !== 'all') params.set('day', selectedDay);
+        if (selectedGender !== 'all') params.set('gender', selectedGender);
+        if (selectedLetter !== 'all') params.set('initial', selectedLetter);
+        const fragment = params.toString();
+        window.history.replaceState(null, '', fragment ? `/search#${fragment}` : '/search');
+    }, [filtersReady, selectedDay, selectedGender, selectedLetter]);
 
     useEffect(() => {
         const fetchPublicStats = async () => {
@@ -277,56 +385,24 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
         fetchPublicStats();
     }, []);
 
-    // Filter Logic
-    const filteredNames = useMemo(() => {
-        const matchingNames = names.filter((item) => {
-            const { name, gender } = item;
-
-            // 1. Gender Filter
-            if (selectedGender !== 'all') {
-                if (selectedGender === 'male' && gender !== 'male' && gender !== 'neutral') return false;
-                if (selectedGender === 'female' && gender !== 'female' && gender !== 'neutral') return false;
-                if (selectedGender === 'neutral' && gender !== 'neutral') return false;
-            }
-
-            // 2. Day Filter (Suitability)
-            if (selectedDay !== 'all') {
-                const targetDayName = thaksaConfig[selectedDay].name;
-                const suitability = analyzeNameSuitability(name);
-                if (!suitability.suitable.includes(targetDayName)) return false;
-            }
-
-            // 3. Letter Filter - resolve the consonant behind Thai leading vowels (เ แ โ ใ ไ).
-            if (selectedLetter !== 'all') {
-                if (getFirstThaiConsonant(name) !== selectedLetter) return false;
-            }
-
-            return true;
-        });
-
-        return selectedLetter === 'all'
-            ? matchingNames
-            : sortSearchNamesByNewest(matchingNames);
-    }, [selectedDay, selectedGender, selectedLetter, names]);
-
-    // Grade distribution across all filtered names (for banner + CTA)
-    const gradeStats = useMemo(() => {
-        if (filteredNames.length === 0) return null;
-        const counts: Record<string, number> = { 'A+': 0, 'A': 0, 'B': 0, 'C': 0 };
-        filteredNames.forEach(item => {
-            const g = analyzeName(item.name)?.grade ?? 'B';
-            counts[g] = (counts[g] || 0) + 1;
-        });
-        return counts;
-    }, [filteredNames]);
+    const gradeStats = !isLoadingNames && !namesError && total > 0 ? summary.grades : null;
 
     // Count A+ names hidden beyond visible rows (for teaser row)
     const hiddenAplusCount = useMemo(() => {
-        if (filteredNames.length <= visibleCount) return 0;
-        return filteredNames.slice(visibleCount).filter(item => analyzeName(item.name)?.grade === 'A+').length;
-    }, [filteredNames, visibleCount]);
+        const visibleAplus = names.slice(0, Math.min(visibleCount, names.length))
+            .filter((item) => item.grade === 'A+').length;
+        return Math.max(0, summary.grades['A+'] - visibleAplus);
+    }, [names, summary.grades, visibleCount]);
 
-    const liveNameCount = publicStats?.totalNames || initialTotal;
+    const liveNameCount = initialResult.total;
+    const latestNamesUpdate = initialResult.summary.latestCreatedAt
+        ? new Intl.DateTimeFormat('th-TH', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'Asia/Bangkok',
+        }).format(new Date(initialResult.summary.latestCreatedAt))
+        : 'อัปเดตต่อเนื่อง';
 
     // Reset to page 1 when filters change is now handled in event handlers
 
@@ -347,6 +423,29 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
         setIsUnlocking(true);
 
         try {
+            const unlockCount = Math.min(UNLOCK_AMOUNT, Math.max(0, total - visibleCount));
+            if (unlockCount === 0) return;
+
+            let availableNames = names;
+            let nextLoadedPage = loadedPage;
+            const requiredCount = visibleCount + unlockCount;
+
+            while (availableNames.length < requiredCount && nextLoadedPage < totalPages) {
+                const nextResult = await requestNamesPage(nextLoadedPage + 1);
+                if (nextResult.data.length === 0) break;
+                availableNames = [...availableNames, ...nextResult.data];
+                nextLoadedPage = nextResult.page;
+            }
+
+            if (availableNames.length < requiredCount) {
+                throw new Error('โหลดรายชื่อชุดถัดไปไม่ครบ กรุณาลองใหม่อีกครั้ง');
+            }
+
+            if (availableNames !== names) {
+                setNames(availableNames);
+                setLoadedPage(nextLoadedPage);
+            }
+
             // 1. Check Login Status
             const { data: { user } } = await supabase.auth.getUser();
 
@@ -437,7 +536,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
             const result = await Swal.fire({
                 title: `ปลดล็อก ${UNLOCK_COST} เครดิต`,
-                text: `โหลดเพิ่มอีก ${UNLOCK_AMOUNT} รายชื่อ`,
+                text: `โหลดเพิ่มอีก ${unlockCount} รายชื่อ`,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonText: 'ยืนยัน',
@@ -465,8 +564,8 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                 return;
             }
 
-            const unlockedNames = filteredNames.slice(visibleCount, visibleCount + UNLOCK_AMOUNT);
-            setVisibleCount(prev => prev + UNLOCK_AMOUNT);
+            const unlockedNames = availableNames.slice(visibleCount, visibleCount + unlockCount);
+            setVisibleCount((previous) => Math.min(previous + unlockCount, total));
             window.dispatchEvent(new Event('force_credits_update'));
 
             if ((latestProfile.tier === 'pro' || latestProfile.tier === 'vvip') && unlockedNames.length > 0) {
@@ -474,11 +573,10 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                     await supabase.rpc('cleanup_analysis_history_by_tier');
 
                     const resultData = unlockedNames.map((item) => {
-                        const suitability = analyzeNameSuitability(item.name);
                         return {
                             name: item.name,
-                            totalScore: calculateScore(item.name),
-                            suitableDays: suitability.suitable
+                            totalScore: item.numerology,
+                            suitableDays: item.suitableDays.map((day) => thaksaConfig[day].name),
                         };
                     });
 
@@ -500,7 +598,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
             await Swal.fire({
                 title: 'โหลดรายชื่อสำเร็จ!',
-                text: `เพิ่มรายชื่ออีก ${UNLOCK_AMOUNT} ชื่อเรียบร้อยแล้ว`,
+                text: `เพิ่มรายชื่ออีก ${unlockCount} ชื่อเรียบร้อยแล้ว`,
                 icon: 'success',
                 timer: 1500,
                 showConfirmButton: false,
@@ -538,20 +636,33 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                     <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
                                         <ReviewBadge rating={publicStats?.avgRating} count={publicStats?.reviewCount} />
                                         <UserStatsBadge users={publicStats?.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
-                                        <UserStatsBadge users={liveNameCount} label="ชื่อในฐานข้อมูลล่าสุด" />
+                                        <UserStatsBadge users={liveNameCount} label="ชื่อในฐานข้อมูลล่าสุด" suffix="ชื่อ" />
                                     </div>
                                 </div>
                                 <div className="mb-5 text-center md:mb-12">
                                     <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-100/70 px-3 py-1 text-xs text-amber-800 md:mb-4 md:text-sm">
                                         <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                                        <span>{t('pages.search.badge')}</span>
+                                        <span>ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง</span>
                                     </div>
-                                    <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:mb-6 md:text-5xl lg:text-6xl">
-                                        {t('pages.search.title')}
+                                    <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
+                                        ค้นหาชื่อมงคล พร้อมคำอ่านและความหมาย
                                     </h1>
                                     <p className="mx-auto mb-4 max-w-[65ch] px-2 text-sm leading-relaxed text-slate-700 sm:text-base md:mb-6">
-                                        {t('pages.search.description')}
+                                        ค้นหาชื่อสำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสมจากฐานข้อมูลที่อัปเดตต่อเนื่อง
                                     </p>
+                                    <dl className="mx-auto mb-5 grid max-w-3xl grid-cols-2 overflow-hidden rounded-xl border border-slate-200 bg-white/90 text-left shadow-sm md:grid-cols-4">
+                                        {[
+                                            ['ชื่อทั้งหมด', initialResult.total.toLocaleString('th-TH')],
+                                            ['มีคำอ่าน', initialResult.summary.withPronunciation.toLocaleString('th-TH')],
+                                            ['มีความหมาย', initialResult.summary.withMeaning.toLocaleString('th-TH')],
+                                            ['อัปเดตล่าสุด', latestNamesUpdate],
+                                        ].map(([label, value]) => (
+                                            <div key={label} className="border-b border-r border-slate-100 px-4 py-3 last:border-r-0 md:border-b-0">
+                                                <dt className="text-xs font-medium text-slate-500">{label}</dt>
+                                                <dd className="mt-1 text-sm font-bold text-slate-950 sm:text-base">{value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
                                     {/* Pro Tip / Guidance Block */}
                                     <div className="relative mx-auto hidden max-w-2xl items-start gap-4 overflow-hidden rounded-xl border border-amber-200 bg-white/80 p-4 text-left shadow-sm shadow-slate-950/5 sm:flex">
                                         <div className="absolute inset-0 bg-gradient-to-r from-amber-100/70 to-transparent opacity-70 transition-opacity"></div>
@@ -686,17 +797,17 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
 
                     {/* CTA Banner — dynamic styling based on grade distribution */}
                     {gradeStats && (() => {
-                        const total = filteredNames.length;
+                        const resultTotal = total;
                         const bGradeCount = gradeStats['B'] || 0;
                         const lowerGradeCount = bGradeCount + (gradeStats['C'] || 0);
                         const aplusCount = gradeStats['A+'] || 0;
                         const aCount = gradeStats['A'] || 0;
-                        const isMostlyB = lowerGradeCount > total * 0.5;
+                        const isMostlyB = lowerGradeCount > resultTotal * 0.5;
 
                         return isMostlyB ? (
                             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/30">
                                 <p className="text-amber-800 text-sm font-medium text-center sm:text-left">
-                                    พบทั้งหมด <strong>{total.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
+                                    พบทั้งหมด <strong>{resultTotal.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
                                     <span className="mx-1.5 text-amber-500">•</span>
                                     เกรด A+ <strong>{aplusCount.toLocaleString('th-TH')}</strong> ชื่อ
                                     <span className="mx-1.5 text-amber-500">•</span>
@@ -718,7 +829,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                         ) : (
                             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 shadow-sm shadow-slate-950/5">
                                 <p className="text-slate-700 text-sm text-center sm:text-left">
-                                    พบทั้งหมด <strong>{total.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
+                                    พบทั้งหมด <strong>{resultTotal.toLocaleString('th-TH')}</strong> ชื่อในหมวดนี้
                                     <span className="mx-1.5 text-slate-400">•</span>
                                     เกรด A+ <strong>{aplusCount.toLocaleString('th-TH')}</strong> ชื่อ
                                     <span className="mx-1.5 text-slate-400">•</span>
@@ -747,6 +858,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                         <thead>
                             <tr className="border-b-2 border-amber-300/70 bg-[linear-gradient(90deg,#f8f8fc_0%,#f3f3f9_52%,#e8ecf2_100%)] text-[#1a1a3e]">
                                 <th className="px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.name')}</th>
+                                <th className="hidden px-3 py-4 text-left text-sm font-semibold uppercase tracking-wide lg:table-cell">คำอ่าน</th>
                                 <th className="px-2 py-4 font-semibold text-sm tracking-wide uppercase text-left">ความหมาย</th>
                                 <th className="hidden md:table-cell px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.day')}</th>
                                 <th className="hidden md:table-cell px-4 py-4 font-semibold text-sm tracking-wide uppercase text-center">{t('pages.search.table.score')}</th>
@@ -754,16 +866,38 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[#eeeef6] bg-[#fafafd]">
-                            {filteredNames.length > 0 ? (
+                            {isLoadingNames ? (
+                                Array.from({ length: 5 }, (_, index) => (
+                                    <tr key={`loading-${index}`} className="border-b border-[#eeeef6] bg-white/80">
+                                        <td colSpan={6} className="px-4 py-4">
+                                            <div className="h-10 animate-pulse rounded-lg bg-slate-200/80" />
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : namesError ? (
+                                <tr>
+                                    <td colSpan={6} className="px-8 py-14 text-center">
+                                        <p className="font-medium text-rose-700">{namesError}</p>
+                                        <button
+                                            type="button"
+                                            onClick={() => void applyFirstPage()}
+                                            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-800 transition-colors hover:border-amber-400 hover:bg-amber-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                                        >
+                                            <RotateCw className="h-4 w-4" />
+                                            ลองโหลดอีกครั้ง
+                                        </button>
+                                    </td>
+                                </tr>
+                            ) : names.length > 0 ? (
                                 <>
-                                    {filteredNames.slice(0, visibleCount).map((item, index) => (
-                                        <NameRow key={`${item.name}-${index}`} name={item.name} meaning={item.meaning} createdAt={item.createdAt} rowIndex={index} />
+                                    {names.slice(0, visibleCount).map((item, index) => (
+                                        <NameRow key={`${item.name}-${index}`} {...item} rowIndex={index} />
                                     ))}
 
                                     {/* Teaser row: show count of hidden A+ names to drive upgrade */}
                                     {hiddenAplusCount > 0 && (
                                         <tr className="border-t border-amber-200/90 bg-[linear-gradient(90deg,#fff8e7_0%,#f6f3fb_52%,#eeebf8_100%)]">
-                                            <td colSpan={5} className="px-4 py-3.5 text-center">
+                                            <td colSpan={6} className="px-4 py-3.5 text-center">
                                                 <Link prefetch={false}
                                                     href="/premium-search"
                                                     className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
@@ -776,9 +910,9 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                     )}
 
                                     {/* Locked State / Load More Button */}
-                                    {visibleCount < filteredNames.length && (
+                                    {visibleCount < total && (
                                         <tr className="bg-[linear-gradient(145deg,#fafafd_0%,#f3f3f9_58%,#eeebf8_100%)]">
-                                            <td colSpan={5} className="relative h-28 overflow-hidden p-0">
+                                            <td colSpan={6} className="relative h-28 overflow-hidden p-0">
                                                 {/* Blurred content (fake rows) */}
                                                 <div className="pointer-events-none absolute inset-0 flex h-full w-full select-none flex-col gap-3 p-4 opacity-35 blur-sm">
                                                     <div className="h-9 w-full rounded-xl bg-white/80"></div>
@@ -810,7 +944,7 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                                 </>
                             ) : (
                                 <tr>
-                                    <td colSpan={5} className="px-8 py-16 text-center text-slate-500">
+                                    <td colSpan={6} className="px-8 py-16 text-center text-slate-500">
                                         <div className="flex flex-col items-center gap-3">
                                             <Sparkles className="w-8 h-8 opacity-20" />
                                             <span>{t('pages.search.empty')}</span>
@@ -822,9 +956,9 @@ export default function SearchPage({ initialNames, initialTotal }: SearchPagePro
                     </table>
                 </div>
 
-                {filteredNames.length > 0 && (
+                {!isLoadingNames && !namesError && total > 0 && (
                     <div className="mt-4 text-center text-slate-500 text-sm">
-                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, filteredNames.length).toLocaleString('th-TH')} {t('pages.search.showingConnector')} {filteredNames.length.toLocaleString('th-TH')}
+                        {t('pages.search.showingPrefix')} {Math.min(visibleCount, total).toLocaleString('th-TH')} {t('pages.search.showingConnector')} {total.toLocaleString('th-TH')}
                     </div>
                 )}
 

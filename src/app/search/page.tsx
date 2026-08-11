@@ -3,12 +3,12 @@ import Link from 'next/link';
 import ClientPage from './ClientPage';
 import { fetchPublicAggregateStats } from '@/lib/publicStats';
 import { getLiveNameCountLabel } from '@/lib/nameCounts';
-import { fetchAllPublicNames } from '@/lib/publicNames';
+import { queryPublicNames } from '@/lib/publicNames';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
-const searchPageTitle = 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม | NameMongkol';
-const searchPageDescription = 'ค้นหาชื่อมงคลจากฐานข้อมูลที่อัปเดตต่อเนื่อง สำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมความหมาย เลขศาสตร์ วันเกิดที่เหมาะสม และขั้นตอนวิเคราะห์ร่วมกับนามสกุล';
+const searchPageTitle = 'ค้นหาชื่อมงคล พร้อมคำอ่าน ความหมาย และเลขศาสตร์ | NameMongkol';
+const searchPageDescription = 'ค้นหาชื่อมงคลจากฐานข้อมูลที่อัปเดตต่อเนื่อง พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสม สำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ ใช้งานฟรี';
 
 export const revalidate = 600;
 
@@ -16,10 +16,9 @@ export const metadata: Metadata = {
     title: { absolute: searchPageTitle },
     alternates: { canonical: `${baseUrl}/search` },
     description: searchPageDescription,
-    keywords: ['ชื่อมงคล', 'ค้นหาชื่อมงคล', 'ตั้งชื่อลูก', 'ตั้งชื่อลูก 2569', 'ตั้งชื่อลูกชาย', 'ตั้งชื่อลูกสาว', 'เปลี่ยนชื่อมงคล', 'ชื่อความหมายดี', 'ชื่อเสริมดวง', 'ชื่อมงคลชาย', 'ชื่อมงคลหญิง', 'ชื่อมงคลตามวันเกิด', 'เลขศาสตร์ชื่อ', 'ถอดอักษรเป็นเลขศาสตร์', 'วิเคราะห์คู่เลขในชื่อ'],
     openGraph: {
-        title: 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมายและเลขศาสตร์ | NameMongkol',
-        description: 'ฐานรายชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล เลือกชื่อความหมายดีแล้วนำไปวิเคราะห์ชื่อ-นามสกุลเพื่อดูคู่เลขแบบละเอียด',
+        title: searchPageTitle,
+        description: searchPageDescription,
         url: `${baseUrl}/search`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -28,8 +27,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'ค้นหาชื่อมงคลจากฐานข้อมูลล่าสุด พร้อมความหมายและเลขศาสตร์ | NameMongkol',
-        description: 'ค้นหาชื่อมงคลสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล พร้อมความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม',
+        title: searchPageTitle,
+        description: searchPageDescription,
         images: [`${baseUrl}/api/og?variant=default&title=ค้นหาชื่อมงคล`],
     },
 };
@@ -77,62 +76,12 @@ const birthdayDayLinks = [
 ] as const;
 
 export default async function SearchPage() {
-    const [aggregate, allNames] = await Promise.all([
+    const [aggregate, initialResult] = await Promise.all([
         fetchPublicAggregateStats(),
-        fetchAllPublicNames(),
+        queryPublicNames({ page: 1, limit: 50 }),
     ]);
-    // The client recalculates numerology and day suitability as filters change.
-    // Keep the RSC payload lean by sending only fields the interactive table reads.
-    const searchNames = allNames.map(({ name, gender, meaning, createdAt }) => ({
-        name,
-        gender,
-        meaning,
-        createdAt,
-    }));
-    const liveNamesCount = aggregate.stats.totalNames;
+    const liveNamesCount = initialResult.total;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
-
-    const webPageJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        '@id': `${baseUrl}/search#webpage`,
-        'url': `${baseUrl}/search`,
-        'name': searchPageTitle,
-        'description': searchPageDescription,
-        'inLanguage': 'th-TH',
-        'isPartOf': { '@id': `${baseUrl}/#website` },
-        'speakable': {
-            '@type': 'SpeakableSpecification',
-            'cssSelector': ['h1', '#auspicious-name-pillar', '#search-next-step', '#search-faq'],
-        },
-    };
-
-    // Enhanced JSON-LD Schema
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'WebApplication',
-        'name': `ค้นหาชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ - NameMongkol`,
-        'alternateName': 'NameMongkol Free Auspicious Name Search',
-        'description': `ระบบค้นหารายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ พร้อมชื่อความหมายดี เลขศาสตร์ เพศ วันเกิดที่เหมาะสม และลิงก์ต่อไปวิเคราะห์ชื่อ-นามสกุลแบบละเอียด`,
-        'url': `${baseUrl}/search`,
-        'applicationCategory': 'LifestyleApplication',
-        'operatingSystem': 'Web',
-        'offers': {
-            '@type': 'Offer',
-            'price': '0',
-            'priceCurrency': 'THB',
-            'description': 'ค้นหาชื่อมงคลฟรี ไม่มีค่าใช้จ่าย'
-        },
-        'featureList': [
-            `ฐานข้อมูลชื่อมงคล ${liveNamesLabel}`,
-            'กรองชื่อมงคลตามวันเกิด',
-            'กรองตามเพศสำหรับตั้งชื่อลูกชายและตั้งชื่อลูกสาว',
-            'กรองตามผลรวมเลขศาสตร์',
-            'แสดงวันที่ใช้ได้และห้ามใช้',
-            'แสดงชื่อความหมายดีและความหมายของชื่อ',
-            'เป็นจุดเริ่มต้นก่อนนำชื่อไปวิเคราะห์คู่เลขกับนามสกุลในหน้าวิเคราะห์ชื่อ-นามสกุลฟรี'
-        ]
-    };
 
     // FAQ Schema
     const faqs = pillarFaqs.map((faq) => ({
@@ -140,51 +89,85 @@ export default async function SearchPage() {
         answer: faq.answer.replace('ฐานข้อมูลที่อัปเดตต่อเนื่อง', `ฐานข้อมูล ${liveNamesLabel}`),
     }));
 
-    const faqJsonLd = {
+    const definedTermSetId = `${baseUrl}/search#auspicious-names`;
+    const hasRealRating = aggregate.stats.avgRating > 0 && aggregate.stats.reviewCount > 0;
+    const jsonLd = {
         '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        'mainEntity': faqs.map((faq) => ({
-            '@type': 'Question',
-            'name': faq.question,
-            'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': faq.answer,
-            },
-        })),
-    };
-
-    // ItemList Schema for better search visibility
-    const itemListJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        'name': `รายชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
-        'description': 'รวมรายชื่อมงคลพร้อมความหมาย เลขศาสตร์ เพศ และวันเกิดที่เหมาะสมสำหรับตั้งชื่อลูกชาย ตั้งชื่อลูกสาว และเปลี่ยนชื่อมงคล',
-        numberOfItems: allNames.length,
-        'itemListOrder': 'https://schema.org/ItemListOrderAscending',
-        'itemListElement': allNames.slice(0, 20).map((item, index) => ({
-            '@type': 'ListItem',
-            'position': index + 1,
-            'name': item.name,
-            'description': item.meaning,
-            'url': `${baseUrl}/name-check?name=${encodeURIComponent(item.name)}`,
-        })),
-    };
-
-    const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        'itemListElement': [
+        '@graph': [
             {
-                '@type': 'ListItem',
-                'position': 1,
-                'name': 'หน้าแรก',
-                'item': baseUrl,
+                '@type': 'WebPage',
+                '@id': `${baseUrl}/search#webpage`,
+                url: `${baseUrl}/search`,
+                name: searchPageTitle,
+                description: searchPageDescription,
+                inLanguage: 'th-TH',
+                isPartOf: { '@id': `${baseUrl}/#website` },
+                mainEntity: { '@id': `${baseUrl}/search#software` },
             },
             {
-                '@type': 'ListItem',
-                'position': 2,
-                'name': `ชื่อมงคล ${liveNamesLabel} สำหรับตั้งชื่อลูกและเปลี่ยนชื่อ`,
-                'item': `${baseUrl}/search`,
+                '@type': 'SoftwareApplication',
+                '@id': `${baseUrl}/search#software`,
+                name: 'ระบบค้นหาชื่อมงคล NameMongkol',
+                alternateName: 'NameMongkol Auspicious Name Search',
+                description: `ค้นหาชื่อมงคล ${liveNamesLabel} พร้อมคำอ่าน ความหมาย เลขศาสตร์ และวันเกิดที่เหมาะสม`,
+                url: `${baseUrl}/search`,
+                applicationCategory: 'LifestyleApplication',
+                operatingSystem: 'Web',
+                offers: {
+                    '@type': 'Offer',
+                    price: '0',
+                    priceCurrency: 'THB',
+                },
+                ...(hasRealRating ? {
+                    aggregateRating: {
+                        '@type': 'AggregateRating',
+                        ratingValue: aggregate.stats.avgRating,
+                        reviewCount: aggregate.stats.reviewCount,
+                        bestRating: 5,
+                        worstRating: 1,
+                    },
+                } : {}),
+            },
+            {
+                '@type': 'DefinedTermSet',
+                '@id': definedTermSetId,
+                name: `ฐานข้อมูลชื่อมงคล ${liveNamesLabel}`,
+                description: 'ฐานข้อมูลชื่อมงคลพร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสม',
+                url: `${baseUrl}/search`,
+            },
+            {
+                '@type': 'ItemList',
+                '@id': `${baseUrl}/search#visible-names`,
+                name: 'ตัวอย่างรายชื่อมงคลที่แสดงฟรี',
+                numberOfItems: initialResult.total,
+                itemListElement: initialResult.data.slice(0, 10).map((item, index) => ({
+                    '@type': 'ListItem',
+                    position: index + 1,
+                    item: {
+                        '@type': 'DefinedTerm',
+                        name: item.name,
+                        ...(item.pronunciation ? { alternateName: item.pronunciation } : {}),
+                        ...(item.meaning ? { description: item.meaning } : {}),
+                        inDefinedTermSet: { '@id': definedTermSetId },
+                    },
+                })),
+            },
+            {
+                '@type': 'BreadcrumbList',
+                '@id': `${baseUrl}/search#breadcrumb`,
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'หน้าแรก', item: baseUrl },
+                    { '@type': 'ListItem', position: 2, name: 'ค้นหาชื่อมงคล', item: `${baseUrl}/search` },
+                ],
+            },
+            {
+                '@type': 'FAQPage',
+                '@id': `${baseUrl}/search#faq`,
+                mainEntity: faqs.map((faq) => ({
+                    '@type': 'Question',
+                    name: faq.question,
+                    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+                })),
             },
         ],
     };
@@ -193,31 +176,34 @@ export default async function SearchPage() {
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-            />
-            <ClientPage initialNames={searchNames} initialTotal={searchNames.length} />
+            <ClientPage initialResult={initialResult} initialStats={aggregate.stats} />
             <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>
                     <h2 className="mt-3 text-2xl font-bold leading-snug sm:text-3xl">ชื่อมงคลคืออะไร และควรเลือกจากอะไรบ้าง</h2>
                     <p className="mt-4 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
                         ชื่อมงคลคือชื่อที่รวมเสียงไพเราะ ชื่อความหมายดี เลขศาสตร์ และความเหมาะสมกับวันเกิดไว้ด้วยกัน หน้านี้จึงเป็นจุดเริ่มต้นสำหรับคนที่กำลังตั้งชื่อลูก 2569 ตั้งชื่อลูกชาย ตั้งชื่อลูกสาว หรือเปลี่ยนชื่อมงคล ก่อนนำชื่อที่สนใจไปวิเคราะห์ร่วมกับนามสกุลอีกครั้ง
+                    </p>
+                    <dl className="mt-7 grid border-y border-slate-200 py-5 sm:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            ['คำอ่าน', 'ช่วยตรวจเสียงเรียกและลดความคลาดเคลื่อนในการออกเสียงชื่อ'],
+                            ['ความหมาย', 'อธิบายแนวคิดและคุณค่าของชื่อเพื่อใช้ประกอบการตัดสินใจ'],
+                            ['เลขศาสตร์', 'แปลงอักษรเป็นค่าตัวเลขเพื่อดูผลรวมและองค์ประกอบของชื่อ'],
+                            ['วันเกิดที่เหมาะสม', 'ตรวจอักษรตามหลักทักษาและหลีกเลี่ยงกาลกิณีประจำวันเกิด'],
+                        ].map(([term, description]) => (
+                            <div key={term} className="px-4 py-3 first:pl-0 lg:border-r lg:border-slate-200 lg:last:border-r-0">
+                                <dt className="font-bold text-slate-950">{term}</dt>
+                                <dd className="mt-1 text-sm leading-6 text-slate-600">{description}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                    <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-600">
+                        หมายเหตุ: ชื่อเฉพาะบางชื่ออาจอ่านได้มากกว่าหนึ่งแบบตามเจตนาของผู้ตั้งชื่อ ควรตรวจเสียงอ่านกับครอบครัวหรือเจ้าของชื่ออีกครั้ง ดูหลักการคำนวณและแหล่งข้อมูลได้ที่{' '}
+                        <Link prefetch={false} href="/methodology" className="font-semibold text-amber-800 underline decoration-amber-300 underline-offset-4 hover:text-amber-950">
+                            วิธีวิเคราะห์ของ NameMongkol
+                        </Link>
                     </p>
                     <div className="mt-7 grid gap-4 md:grid-cols-2">
                         <article className="rounded-xl border border-amber-100 bg-white p-5 shadow-sm">
