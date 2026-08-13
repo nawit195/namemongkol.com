@@ -21,6 +21,7 @@ import {
 } from './searchResultCache';
 import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 
+
 const getDayBadgeProps = (d: string) => {
     if (d.includes('อาทิตย์')) return { label: 'อา.', className: 'bg-rose-100 text-rose-800 border border-rose-200' };
     if (d.includes('จันทร์')) return { label: 'จัน.', className: 'bg-amber-100 text-amber-800 border border-amber-200' };
@@ -290,6 +291,8 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     });
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
+    const prefetchedLetters = useRef<Set<string>>(new Set());
+    const backgroundPrefetchStarted = useRef(false);
 
     const applyNamesResult = useCallback((result: SearchNamesResult) => {
         setNames(result.data);
@@ -449,6 +452,66 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         setVisibleCount(10);
         void loadFirstPage({ day, gender: selectedGender, initial: selectedLetter });
     };
+
+    const prefetchLetter = useCallback((letter: string) => {
+        if (letter === 'all' || prefetchedLetters.current.has(letter)) return;
+        const filters: SearchFilters = { day: 'all', gender: 'all', initial: letter };
+        const cacheKey = createSearchResultCacheKey(filters, 1);
+        if (resultCache.get(cacheKey)) {
+            prefetchedLetters.current.add(letter);
+            return;
+        }
+        prefetchedLetters.current.add(letter);
+        void requestNamesPage(filters, 1).catch(() => {
+            prefetchedLetters.current.delete(letter);
+        });
+    }, [requestNamesPage, resultCache]);
+
+    // Background prefetch: after page load, silently prefetch all static letter endpoints
+    useEffect(() => {
+        if (backgroundPrefetchStarted.current) return;
+        backgroundPrefetchStarted.current = true;
+
+        const letters = [...THAI_NAME_INITIALS];
+        let index = 0;
+
+        function prefetchNext() {
+            if (index >= letters.length) return;
+            const letter = letters[index++];
+            prefetchLetter(letter);
+            // Stagger prefetches to avoid saturating the network
+            if (typeof requestIdleCallback === 'function') {
+                requestIdleCallback(prefetchNext, { timeout: 3000 });
+            } else {
+                setTimeout(prefetchNext, 150);
+            }
+        }
+
+        // Delay the first prefetch so it doesn't compete with initial page interactivity
+        const timer = setTimeout(() => {
+            if (typeof requestIdleCallback === 'function') {
+                requestIdleCallback(prefetchNext, { timeout: 5000 });
+            } else {
+                prefetchNext();
+            }
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [prefetchLetter]);
+
+    const handleLetterHover = useCallback((letter: string) => {
+        if (letter === selectedLetter) return;
+        // For initial-only filters (most common hover case), prefetch the static endpoint
+        prefetchLetter(letter);
+        // Also prefetch with current day/gender combo if they differ from 'all'
+        if (selectedDay !== 'all' || selectedGender !== 'all') {
+            const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: letter };
+            const cacheKey = createSearchResultCacheKey(filters, 1);
+            if (!resultCache.get(cacheKey)) {
+                void requestNamesPage(filters, 1).catch(() => {/* silent */});
+            }
+        }
+    }, [selectedLetter, selectedDay, selectedGender, prefetchLetter, requestNamesPage, resultCache]);
 
     const handleLetterChange = (letter: string) => {
         if (letter === selectedLetter && !namesError) return;
@@ -808,6 +871,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                                 <button
                                     key={letter}
                                     onClick={() => handleLetterChange(letter)}
+                                    onPointerEnter={() => handleLetterHover(letter)}
                                     className={`w-7 h-7 md:w-9 md:h-9 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center justify-center ${
                                         selectedLetter === letter
                                             ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg shadow-amber-500/20 scale-110'
