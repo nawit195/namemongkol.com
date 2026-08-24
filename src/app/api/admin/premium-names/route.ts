@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
+import { revalidateTag } from 'next/cache';
 import { createClient } from '@/utils/supabaseServer';
 
 export const dynamic = 'force-dynamic';
@@ -153,6 +154,8 @@ export async function POST(req: Request) {
         const { count } = await supabase.from('premium_names').select('*', { count: 'exact', head: true });
 
         console.log(`[Premium Names] Append done: inserted=${inserted} skipped=${skippedDuplicate}`);
+
+        if (inserted > 0) revalidateTag('premium-names', 'max');
 
         return NextResponse.json({
             success: true,

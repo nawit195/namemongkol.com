@@ -9,7 +9,17 @@ export interface PremiumNameData {
     suitableDays: string[];
     scoreBreakdown: string[];
     gender: Gender;
+    pronunciation?: string;
+    pronunciationVariants?: string[];
+    pronunciationStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
+    meaning?: string;
+    meaningStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
 }
+
+export type PremiumNameDetailInput = Pick<
+    PremiumNameData,
+    'name' | 'pronunciation' | 'pronunciationVariants' | 'pronunciationStatus' | 'meaning' | 'meaningStatus'
+>;
 
 const SHORT_DAY_NAMES: Record<DayKey, string> = {
     sunday: 'อาทิตย์',
@@ -77,4 +87,23 @@ export const parsePremiumNames = (rawData: string): PremiumNameData[] => {
     }
 
     return results;
+};
+
+export const mergePremiumNameDetails = (
+    names: PremiumNameData[],
+    details: PremiumNameDetailInput[],
+): PremiumNameData[] => {
+    const detailsByName = new Map(details.map((detail) => [detail.name.normalize('NFC').trim(), detail]));
+    return names.map((item) => {
+        const detail = detailsByName.get(item.name.normalize('NFC').trim());
+        if (!detail) return item;
+        return {
+            ...item,
+            pronunciation: detail.pronunciation,
+            pronunciationVariants: detail.pronunciationVariants ?? [],
+            pronunciationStatus: detail.pronunciationStatus,
+            meaning: detail.meaning,
+            meaningStatus: detail.meaningStatus,
+        };
+    });
 };

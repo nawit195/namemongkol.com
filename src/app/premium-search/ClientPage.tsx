@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, Coins, CheckCircle2 } from 'lucide-react';
 import { premiumNamesRaw } from '@/data/premiumNamesRaw';
-import { parsePremiumNames } from '@/utils/premiumDataParser';
+import { mergePremiumNameDetails, parsePremiumNames, type PremiumNameDetailInput } from '@/utils/premiumDataParser';
 import { supabase } from '@/utils/supabase';
 import { getPrediction } from '@/utils/getPrediction';
 import { useRouter } from 'next/navigation';
@@ -153,45 +153,25 @@ export default function ClientPage() {
     const [allNames, setAllNames] = useState(() => parsePremiumNames(premiumNamesRaw));
 
     useEffect(() => {
-        const fetchPremiumNamesFromDB = async () => {
+        const controller = new AbortController();
+        const fetchPremiumNames = async () => {
             try {
-                let allFetchedNames: string[] = [];
-                let from = 0;
-                const PAGE_SIZE = 1000;
-
-                while (true) {
-                    const { data, error } = await supabase
-                        .from('premium_names')
-                        .select('name')
-                        .order('name', { ascending: true })
-                        .range(from, from + PAGE_SIZE - 1);
-
-                    if (error) {
-                        if (error.code !== '42P01') {
-                            console.error('Error fetching premium names from DB:', error);
-                        }
-                        return; // fallback remains
-                    }
-
-                    if (!data || data.length === 0) break;
-
-                    allFetchedNames = allFetchedNames.concat(data.map(row => row.name));
-                    
-                    if (data.length < PAGE_SIZE) break;
-
-                    from += PAGE_SIZE;
-                }
-
-                if (allFetchedNames.length > 0) {
-                    const rawString = allFetchedNames.join('\n');
-                    setAllNames(parsePremiumNames(rawString));
-                }
+                const response = await fetch('/api/public/premium-names', { signal: controller.signal });
+                if (!response.ok) return;
+                const payload = await response.json() as { success?: boolean; data?: PremiumNameDetailInput[] };
+                const details = Array.isArray(payload.data) ? payload.data : [];
+                if (!payload.success || details.length === 0) return;
+                const parsedNames = parsePremiumNames(details.map((record) => record.name).join('\n'));
+                setAllNames(mergePremiumNameDetails(parsedNames, details));
             } catch (err) {
-                console.error('Error in fetchPremiumNamesFromDB:', err);
+                if (!(err instanceof DOMException && err.name === 'AbortError')) {
+                    console.error('Error fetching public premium names:', err);
+                }
             }
         };
 
-        fetchPremiumNamesFromDB();
+        void fetchPremiumNames();
+        return () => controller.abort();
     }, []);
 
     const filteredNames = useMemo(() => {
