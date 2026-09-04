@@ -34,7 +34,7 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
+function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const suitability = useMemo(() => {
         const suitable = suitableDays.map((day) => thaksaConfig[day].name);
@@ -53,6 +53,9 @@ function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitable
         return meaning;
     }, [meaning]);
     const meaningText = displayMeaning || 'อยู่ระหว่างเพิ่มความหมาย';
+    const displayPronunciation = [pronunciation, ...pronunciationVariants]
+        .filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index)
+        .join(' / ');
 
     return (
         <>
@@ -75,16 +78,20 @@ function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitable
                             </span>
                         ) : null}
                     </div>
-                    {pronunciation ? (
+                    {displayPronunciation ? (
                         <span className="mt-1 block text-xs font-medium leading-5 text-[#5a5a82] lg:hidden">
-                            อ่านว่า {pronunciation}
+                            อ่านว่า {displayPronunciation}
+                            {pronunciationStatus && pronunciationStatus !== 'approved' ? <span className="ml-1 text-amber-700">(รอยืนยัน)</span> : null}
                         </span>
                     ) : null}
                 </td>
 
                 {/* Column 2: Pronunciation (Desktop Only) */}
                 <td className="hidden px-3 py-[18px] text-sm font-medium leading-6 text-[#5a5a82] lg:table-cell">
-                    {pronunciation || '—'}
+                    <span>{displayPronunciation || <span className="font-normal italic text-slate-500">รอตรวจสอบคำอ่าน</span>}</span>
+                    {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? (
+                        <span className="ml-2 inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-800">รอยืนยันการอ่าน</span>
+                    ) : null}
                 </td>
 
                 {/* Column 3: Meaning (Mobile + Desktop) */}
@@ -150,15 +157,18 @@ function NameRow({ name, pronunciation, meaning, createdAt, numerology, suitable
                             {/* Pronunciation */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="w-24 flex-shrink-0 font-semibold text-slate-700">คำอ่าน</span>
-                                <span className={pronunciation ? 'font-medium text-slate-950' : 'italic text-slate-600'}>
-                                    {pronunciation || 'ยังไม่มีข้อมูลคำอ่าน'}
+                                <span className={displayPronunciation ? 'font-medium text-slate-950' : 'italic text-slate-600'}>
+                                    {displayPronunciation || 'รอตรวจสอบคำอ่าน'}
+                                    {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? ' · รอยืนยันการอ่าน' : ''}
                                 </span>
                             </div>
 
                             {/* Full Meaning */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="font-semibold text-slate-700 w-24 flex-shrink-0">ความหมาย</span>
-                                <span className={displayMeaning ? 'text-slate-950' : 'italic text-slate-600'}>{meaningText}</span>
+                                <span className={displayMeaning ? 'text-slate-950' : 'italic text-slate-600'}>
+                                    {meaningText}{displayMeaning && meaningStatus && meaningStatus !== 'approved' ? ' · อยู่ระหว่างตรวจรากศัพท์' : ''}
+                                </span>
                             </div>
 
                             {/* Birth Days */}
@@ -231,7 +241,10 @@ type SearchName = {
     name: string;
     gender: 'male' | 'female' | 'neutral';
     pronunciation?: string;
+    pronunciationVariants?: string[];
+    pronunciationStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
     meaning?: string;
+    meaningStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
     createdAt?: string;
     numerology: number;
     suitableDays: DayKey[];

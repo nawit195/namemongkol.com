@@ -11,7 +11,7 @@ export const revalidate = 600;
 
 const getCachedPublicStats = unstable_cache(
     fetchPublicAggregateStats,
-    ['public-stats:v2'],
+    ['public-stats:v3'],
     {
         revalidate: PUBLIC_STATS_REVALIDATE_SECONDS,
         tags: ['public-stats', 'public-live-stats'],

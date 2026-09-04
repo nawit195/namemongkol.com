@@ -1,0 +1,6189 @@
+{
+  "generatedAt": "2026-08-24T04:25:40.055Z",
+  "initial": "ข",
+  "expectedCount": 285,
+  "source": "outputs/auspicious-names-7348-audit.json",
+  "policy": "Publish only complete root compositions with traceable sources; hide rather than guess.",
+  "counts": {
+    "total": 285,
+    "published": 45,
+    "hidden": 240,
+    "pending": 0
+  },
+  "records": [
+    {
+      "name": "ขจร",
+      "pronunciation": "ขะ-จอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน"
+    },
+    {
+      "name": "ขจรกัณฑ์",
+      "pronunciation": "ขะ-จอน-กัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "กัณฑ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "กัณฑ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-กัน"
+    },
+    {
+      "name": "ขจรจบ",
+      "pronunciation": "ขะ-จอน-จบ",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "จบ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "จบ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-จบ"
+    },
+    {
+      "name": "ขจรทองคำ",
+      "pronunciation": "ขะ-จอน-ทอง-คำ",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "ทองคำ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "ทองคำ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-ทอง-คำ"
+    },
+    {
+      "name": "ขจรวรรณ",
+      "pronunciation": "ขะ-จอน-วัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วรรณ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วรรณ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-วัน"
+    },
+    {
+      "name": "ขจรวรรณรักษ์",
+      "pronunciation": "ขะ-จอน-วัน-นะ-รัก",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วรรณ",
+          "รักษ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วรรณ",
+          "รักษ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-วัน-นะ-รัก"
+    },
+    {
+      "name": "ขจรวัจน์",
+      "pronunciation": "ขะ-จอน-วัด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วัจน์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "วัจน์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-วัด"
+    },
+    {
+      "name": "ขจรอุษา",
+      "pronunciation": "ขะ-จอน-อุ-สา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "อุษา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขจร",
+          "อุษา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขะ-จอน-อุ-สา"
+    },
+    {
+      "name": "ขต",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขด"
+    },
+    {
+      "name": "ขบวรวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-บอน-วัน-วอน"
+    },
+    {
+      "name": "ขรรค์",
+      "pronunciation": "ขัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขรรค์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขรรค์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน"
+    },
+    {
+      "name": "ขวัญ",
+      "pronunciation": "ขวัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน"
+    },
+    {
+      "name": "ขวัญกจร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-จะ-กอน"
+    },
+    {
+      "name": "ขวัญกนก",
+      "pronunciation": "ขวัน-กะ-หนก",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "กนก"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "กนก"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-กะ-หนก"
+    },
+    {
+      "name": "ขวัญกมล",
+      "pronunciation": "ขวัน-กะ-มน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "กมล"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "กมล"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-กะ-มน"
+    },
+    {
+      "name": "ขวัญกลับ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-กะ-บับ"
+    },
+    {
+      "name": "ขวัญขจร",
+      "pronunciation": "ขวัน-ขะ-จอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ขจร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ขจร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ขะ-จอน"
+    },
+    {
+      "name": "ขวัญจร",
+      "pronunciation": "ขวัน-จอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "จร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "จร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-จอน"
+    },
+    {
+      "name": "ขวัญจิรา",
+      "pronunciation": "ขวัน-จิ-รา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "จิรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "จิรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-จิ-รา"
+    },
+    {
+      "name": "ขวัญใจ",
+      "pronunciation": "ขวัน-ใจ",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ใจ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ใจ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ใจ"
+    },
+    {
+      "name": "ขวัญชญา",
+      "pronunciation": "ขวัน-ชะ-ยา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ชญา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ชญา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ชะ-ยา"
+    },
+    {
+      "name": "ขวัญธิดา",
+      "pronunciation": "ขวัน-ทิ-ดา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ธิดา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ธิดา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ทิ-ดา"
+    },
+    {
+      "name": "ขวัญนรี",
+      "pronunciation": "ขวัน-นะ-รี",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "นรี"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "นรี"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-นะ-รี"
+    },
+    {
+      "name": "ขวัญนานน",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-นา-นน"
+    },
+    {
+      "name": "ขวัญนารี",
+      "pronunciation": "ขวัน-นา-รี",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "นารี"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "นารี"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-นา-รี"
+    },
+    {
+      "name": "ขวัญมนัท",
+      "pronunciation": "ขวัน-มะ-นัด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "มนัท"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "มนัท"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-มะ-นัด"
+    },
+    {
+      "name": "ขวัญมนัส",
+      "pronunciation": "ขวัน-มะ-นัด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "มนัส"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "มนัส"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-มะ-นัด"
+    },
+    {
+      "name": "ขวัญลักษณ์",
+      "pronunciation": "ขวัน-ลัก",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ลักษณ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "ลักษณ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ลัก"
+    },
+    {
+      "name": "ขวัญวร",
+      "pronunciation": "ขวัน-วอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-วอน"
+    },
+    {
+      "name": "ขวัญวรัชญ์",
+      "pronunciation": "ขวัน-วะ-รัด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วร",
+          "รัชญ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วร",
+          "รัชญ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-วะ-รัด"
+    },
+    {
+      "name": "ขวัญวิชญ์",
+      "pronunciation": "ขวัน-วิด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วิชญ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "วิชญ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-ยิด"
+    },
+    {
+      "name": "ขวัญศิริลักษ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-สิ-หริ-ลัก"
+    },
+    {
+      "name": "ขวัญสรวง",
+      "pronunciation": "ขวัน-สวง",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "สรวง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "สรวง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-สวง"
+    },
+    {
+      "name": "ขวัญเอิง",
+      "pronunciation": "ขวัน-เอิง",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "เอิง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขวัญ",
+          "เอิง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขวัน-เอิง"
+    },
+    {
+      "name": "ขวัณนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-นน"
+    },
+    {
+      "name": "ขวัณภรณ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวัน-พอน"
+    },
+    {
+      "name": "ขวาจอมทอง",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวาม-จอม-ทอง"
+    },
+    {
+      "name": "ขวานทองคำ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวธ-นาง-คำ"
+    },
+    {
+      "name": "ขอนทอง",
+      "pronunciation": "ขอน-ทอง",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขอน",
+          "ทอง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขอน",
+          "ทอง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขอน-ทอง"
+    },
+    {
+      "name": "ขันคำ",
+      "pronunciation": "ขัน-คำ",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขัน",
+          "คำ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขัน",
+          "คำ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-คำ"
+    },
+    {
+      "name": "ขันทอง",
+      "pronunciation": "ขัน-ทอง",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขัน",
+          "ทอง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขัน",
+          "ทอง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทอง"
+    },
+    {
+      "name": "ขันทะ",
+      "pronunciation": "ขัน-ทะ",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันทะ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันทะ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทะ"
+    },
+    {
+      "name": "ขันธ์",
+      "pronunciation": "ขัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน"
+    },
+    {
+      "name": "ขันธม่วง",
+      "pronunciation": "ขัน-ทะ-ม่วง",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "ม่วง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "ม่วง"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทะ-ม่วง"
+    },
+    {
+      "name": "ขันธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขัน-ทำ"
+    },
+    {
+      "name": "ขันธสรณ์",
+      "pronunciation": "ขัน-ทะ-สอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "สรณ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "สรณ์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทะ-สอน"
+    },
+    {
+      "name": "ขันธาวาร",
+      "pronunciation": "ขัน-ทา-วาน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธา",
+          "วาร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธา",
+          "วาร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทา-วาน"
+    },
+    {
+      "name": "ขันธุลา",
+      "pronunciation": "ขัน-ทุ-ลา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "ตุลา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขันธ",
+          "ตุลา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขัน-ทุ-ลา"
+    },
+    {
+      "name": "ขัมน์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขำ"
+    },
+    {
+      "name": "ขิม",
+      "pronunciation": "ขิม",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขิม"
+    },
+    {
+      "name": "ขิม่",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขิ-ม่"
+    },
+    {
+      "name": "ขิมจันทร์",
+      "pronunciation": "ขิม-จัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม",
+          "จันทร์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม",
+          "จันทร์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขิม-จัน"
+    },
+    {
+      "name": "ขิมน",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขิ-มน"
+    },
+    {
+      "name": "ขิมนนท์",
+      "pronunciation": "ขิม-นน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม",
+          "นนท์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "ขิม",
+          "นนท์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "ขิม-นน"
+    },
+    {
+      "name": "เขตประกร",
+      "pronunciation": "เขด-ประ-กอน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขต",
+          "ประกร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขต",
+          "ประกร"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "เขด-ประ-กอน"
+    },
+    {
+      "name": "เขตอนันต์",
+      "pronunciation": "เขด-อะ-นัน",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขต",
+          "อนันต์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขต",
+          "อนันต์"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "เขด-อัน-ตะ"
+    },
+    {
+      "name": "เขมจิรา",
+      "pronunciation": "เข-มะ-จิ-รา",
+      "pronunciationVariants": [
+        "เขม-จิ-รา"
+      ],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "จิรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "จิรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "เขม-จิ-รา"
+    },
+    {
+      "name": "เขมนิจ",
+      "pronunciation": "เข-มะ-นิด",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "นิจ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "นิจ"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "เข-มะ-นิด"
+    },
+    {
+      "name": "เขมิณทรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-มิน-ทรา"
+    },
+    {
+      "name": "เขมินทรา",
+      "pronunciation": "เข-มิน-ทรา",
+      "pronunciationVariants": [],
+      "pronunciationStatus": "approved",
+      "pronunciationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "อินทรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ],
+        "note": "ตรวจรูปชื่อและประกอบคำอ่านจากรากศัพท์ที่ระบุ"
+      },
+      "publicationStatus": "published",
+      "publicationReason": "แยกรากศัพท์ครบและมีแหล่งอ้างอิงสำหรับประกอบคำอ่าน",
+      "publicationEvidence": {
+        "method": "curated-root-composition",
+        "roots": [
+          "เขม",
+          "อินทรา"
+        ],
+        "sources": [
+          {
+            "title": "พจนานุกรม ฉบับราชบัณฑิตยสถาน พ.ศ. 2554",
+            "url": "https://dictionary.orst.go.th/"
+          }
+        ]
+      },
+      "legacyPronunciation": "เข-มิน-ทรา"
+    },
+    {
+      "name": "เขรกรรินทร์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-กริน"
+    },
+    {
+      "name": "เขรกรลักษณ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-รก-ลัก"
+    },
+    {
+      "name": "เขรคุณณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-คุน-นัด"
+    },
+    {
+      "name": "เขรจิราณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-ริ-จา-รัน-นะ-ดิ"
+    },
+    {
+      "name": "เขรจิราธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-จิ-รา-ทำ"
+    },
+    {
+      "name": "เขรจิราวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-จะ-ริ-วา-รัน"
+    },
+    {
+      "name": "เขรญารินทร์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ยา-ริน"
+    },
+    {
+      "name": "เขรญาลักษณ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-รา-ยัล"
+    },
+    {
+      "name": "เขรณัฐคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-นัด-คุน"
+    },
+    {
+      "name": "เขรณัฐจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-นัน-จิ-รา"
+    },
+    {
+      "name": "เขรณัฐนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-นัน-ทะ"
+    },
+    {
+      "name": "เขรณัฐภัทร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-นัด-พัด"
+    },
+    {
+      "name": "เขรณัฐวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-นัน-วัด"
+    },
+    {
+      "name": "เขรณัฐวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-นัด-ถะ-วิด"
+    },
+    {
+      "name": "เขรณัฐอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-นัด-ออน"
+    },
+    {
+      "name": "เขรธรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-ทอ-ระ-นน"
+    },
+    {
+      "name": "เขรธรรมจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ทอน-มิ-จิ-รา"
+    },
+    {
+      "name": "เขรธรรมนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-ทำ-มะ-นน"
+    },
+    {
+      "name": "เขรธรรมวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-ซำ-มะ-วัน"
+    },
+    {
+      "name": "เขรธรลักษณ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-ระ-ลัก"
+    },
+    {
+      "name": "เขรธรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-ทระ-วิด"
+    },
+    {
+      "name": "เขรนนท์ณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-รน-นะ-นัด"
+    },
+    {
+      "name": "เขรนนท์ธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-รน-ทอน"
+    },
+    {
+      "name": "เขรนนท์ธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-นอน-ทำ"
+    },
+    {
+      "name": "เขรภัทรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-พัด-ทระ-นัด"
+    },
+    {
+      "name": "เขรรินทร์กร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-นิ-ทะ-กอน"
+    },
+    {
+      "name": "เขรรินทร์ญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-นิ-ยา"
+    },
+    {
+      "name": "เขรวรรณณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-วัน-นัด"
+    },
+    {
+      "name": "เขรวิชญ์ธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ระ-วิด-ทอน"
+    },
+    {
+      "name": "เขรอรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขอ-ระ-นัด"
+    },
+    {
+      "name": "เขรินกรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-กอ-ระ-นัด"
+    },
+    {
+      "name": "เขรินญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริ-ยา-นัด"
+    },
+    {
+      "name": "เขรินณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-นัด-ถะ-กอน"
+    },
+    {
+      "name": "เขรินณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-นัด-ถะ-ยา"
+    },
+    {
+      "name": "เขรินณัฐอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-นัด-ถอน"
+    },
+    {
+      "name": "เขรินวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-วัน"
+    },
+    {
+      "name": "เขรินวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-วิด"
+    },
+    {
+      "name": "เขรินอรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-ริน-อะ-นัด"
+    },
+    {
+      "name": "เขวกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-กอน"
+    },
+    {
+      "name": "เขวกรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-กระ-วิด"
+    },
+    {
+      "name": "เขวคุณนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขด-คุน-นะ-นน"
+    },
+    {
+      "name": "เขวญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-ยา"
+    },
+    {
+      "name": "เขวญาวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-ยา-วิด"
+    },
+    {
+      "name": "เขวณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-นัด-ทอน"
+    },
+    {
+      "name": "เขวณัฐธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-นัด-ถะ-ทำ"
+    },
+    {
+      "name": "เขวธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-ทะ-นัด"
+    },
+    {
+      "name": "เขวธรรมณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-มะ-ทะ-นัน-ด้"
+    },
+    {
+      "name": "เขวนนท์คุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วน-คุน"
+    },
+    {
+      "name": "เขวนนท์อร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วน-ออน"
+    },
+    {
+      "name": "เขววิชญ์กร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-วิด-กอน"
+    },
+    {
+      "name": "เขววิชญ์ญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เขว-วิด-ยา"
+    },
+    {
+      "name": "เขววิชญ์อร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วะ-วิด-ออน"
+    },
+    {
+      "name": "เขวอรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วอ-ระ-นน"
+    },
+    {
+      "name": "เขวอรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-อะ-วะ-ริด"
+    },
+    {
+      "name": "เขวิกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-เวิน-กอน"
+    },
+    {
+      "name": "เขวิกรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิน-ยะ-กา"
+    },
+    {
+      "name": "เขวิกรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-กระ-ทำ"
+    },
+    {
+      "name": "เขวิคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-คุน"
+    },
+    {
+      "name": "เขวิคุณณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-คุน-นัด"
+    },
+    {
+      "name": "เขวิญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ยา"
+    },
+    {
+      "name": "เขวิญาธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ยา-ทำ"
+    },
+    {
+      "name": "เขวิณัฐคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-นัด-คุน"
+    },
+    {
+      "name": "เขวิณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-นัด-ถะ-กอน"
+    },
+    {
+      "name": "เขวิณัฐอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-นัด"
+    },
+    {
+      "name": "เขวิธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทะ-นะ-รัด"
+    },
+    {
+      "name": "เขวิธรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทะ-นะ-รน"
+    },
+    {
+      "name": "เขวิธรรมกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทำ-มะ-กอน"
+    },
+    {
+      "name": "เขวิธรรมญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทำ-ยา"
+    },
+    {
+      "name": "เขวิธรรมอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทำ-มอน"
+    },
+    {
+      "name": "เขวิธรวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทอน-วัน"
+    },
+    {
+      "name": "เขวินนท์ธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิน-ทอน"
+    },
+    {
+      "name": "เขวินนท์อร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิน-นอน"
+    },
+    {
+      "name": "เขวิภัทร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-พัด"
+    },
+    {
+      "name": "เขวิรินทร์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ริน"
+    },
+    {
+      "name": "เขวิวรรณธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-นัน"
+    },
+    {
+      "name": "เขวิอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ออน"
+    },
+    {
+      "name": "เขวิอรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ออน-นัด"
+    },
+    {
+      "name": "เขวิอรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ทอน-มำ"
+    },
+    {
+      "name": "เขวิอรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "เข-วิ-ออน-นน"
+    },
+    {
+      "name": "แข็งแรง",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "รูปชื่อหรือองค์ประกอบยังไม่มีหลักฐานทางภาษาเพียงพอ จึงไม่เผยแพร่ชื่อและคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "แข็ง-แรง"
+    },
+    {
+      "name": "โขธรกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-ระ-กอน"
+    },
+    {
+      "name": "โขธรกรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอน-กะ-ระ-ยา"
+    },
+    {
+      "name": "โขธรกรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-กำ-ทะ-ระ"
+    },
+    {
+      "name": "โขธรกรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-ระ-กอน-วิด"
+    },
+    {
+      "name": "โขธรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-รุน"
+    },
+    {
+      "name": "โขธรคุณณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-รุน-นัด"
+    },
+    {
+      "name": "โขธรคุณธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-คะ-ทะ-รุน-คุ-ทำ"
+    },
+    {
+      "name": "โขธรคุณนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-รุน-นน"
+    },
+    {
+      "name": "โขธรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-ระ-ยา"
+    },
+    {
+      "name": "โขธรญาธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-ทา-ระ-ยะ-ทำ"
+    },
+    {
+      "name": "โขธรญาวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทรา-ยา-วิด"
+    },
+    {
+      "name": "โขธรณัฐคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-นัน-คุ-นะ"
+    },
+    {
+      "name": "โขธรณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-ระ-นัด-ถะ-ทอน"
+    },
+    {
+      "name": "โขธรณัฐภัทร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-นะ-รัด-ถะ-พัด"
+    },
+    {
+      "name": "โขธรณัฐวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-นัน-ระ-วัด"
+    },
+    {
+      "name": "โขธรณัฐอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-นอ-ระ-อัด"
+    },
+    {
+      "name": "โขธรธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอ-ระ-ทะ-นัด"
+    },
+    {
+      "name": "โขธรธรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทะ-ระ-ทน"
+    },
+    {
+      "name": "โขธรธรรมกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-ทำ-มะ-กอน"
+    },
+    {
+      "name": "โขธรธรรมคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทำ-มะ-ทุน-คอน"
+    },
+    {
+      "name": "โขธรธรรมญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทำ-มะ-ทะ-ยา"
+    },
+    {
+      "name": "โขธรธรรมอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอ-ระ-ทำ-มะ-ออน"
+    },
+    {
+      "name": "โขธรธรวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-ทะ-ระ-วัน"
+    },
+    {
+      "name": "โขธรนนท์คุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-นะ-คุน"
+    },
+    {
+      "name": "โขธรนนท์ธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-นะ-นน"
+    },
+    {
+      "name": "โขธรนนท์อร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ทอน-นอน"
+    },
+    {
+      "name": "โขธรภัทร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอน-รัด"
+    },
+    {
+      "name": "โขธรภัทรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอน-รัด-นัด"
+    },
+    {
+      "name": "โขธรรินทร์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-ระ-นิน"
+    },
+    {
+      "name": "โขธรวรรณณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-วัน-นะ-วัด"
+    },
+    {
+      "name": "โขธรวรรณธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-วัน-ทะ-ระ-นะ"
+    },
+    {
+      "name": "โขธรวิชญ์กร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทะ-ระ-วิด-ชะ-กอน"
+    },
+    {
+      "name": "โขธรวิชญ์ญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-ซะ-วิด-ชะ-ยา"
+    },
+    {
+      "name": "โขธรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอ-รอน"
+    },
+    {
+      "name": "โขธรอรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอ-รอน-นัด"
+    },
+    {
+      "name": "โขธรอรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขด-อะ-ทอน-ระ-มี"
+    },
+    {
+      "name": "โขธรอรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ทอ-รอน-นน"
+    },
+    {
+      "name": "โขรินกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-เริน-กอน"
+    },
+    {
+      "name": "โขรินกรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-เริน-กอน-นัด"
+    },
+    {
+      "name": "โขรินกรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-โริน-กรม-รด"
+    },
+    {
+      "name": "โขรินกรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-เริน-กอน-นน"
+    },
+    {
+      "name": "โขรินญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-ยา"
+    },
+    {
+      "name": "โขรินญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-ยา-นัด"
+    },
+    {
+      "name": "โขรินณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-นัด-ถะ-กอน"
+    },
+    {
+      "name": "โขรินณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-นัด-ยา"
+    },
+    {
+      "name": "โขรินณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-นัด-ทะ-นะ"
+    },
+    {
+      "name": "โขรินธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-ริน-ทอ-ระ-นัด"
+    },
+    {
+      "name": "โขรินธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-ริน-ทำ"
+    },
+    {
+      "name": "โขรินวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-ริน-วิด"
+    },
+    {
+      "name": "โขวิทญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขะ-วิด-ยา-นัด"
+    },
+    {
+      "name": "โขวิทณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิด-ทะ-นัด-ถะ-กอน"
+    },
+    {
+      "name": "โขวิทณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-ทิด-นัด-ยา"
+    },
+    {
+      "name": "โขวิทณัฐอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-ทิด-อะ-นัด"
+    },
+    {
+      "name": "โขวิทวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิด-ทะ-วัน"
+    },
+    {
+      "name": "โขวิทวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิด-ทะ-ยิด"
+    },
+    {
+      "name": "โขวิทอรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-ทิ-อะ-นัด"
+    },
+    {
+      "name": "โขวินกรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวิ-วน-กอน-คน"
+    },
+    {
+      "name": "โขวินกรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวิ-วอน-กะ-นัด"
+    },
+    {
+      "name": "โขวินกรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวา-วิน-กรอน"
+    },
+    {
+      "name": "โขวินคุณกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-นิน-คุน-กะ-รบ"
+    },
+    {
+      "name": "โขวินคุณญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-นิ-คุ-ยา"
+    },
+    {
+      "name": "โขวินคุณอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวะ-เหนิน-คุน-ออน"
+    },
+    {
+      "name": "โขวินจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-จิน-จิ-รา"
+    },
+    {
+      "name": "โขวินญาคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-นิ-ยา-คุน"
+    },
+    {
+      "name": "โขวินญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-ลิ-ยา-นัด"
+    },
+    {
+      "name": "โขวินญาอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวิ-ยาน-ออน"
+    },
+    {
+      "name": "โขวินณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิน-นัด-ถะ-กอน"
+    },
+    {
+      "name": "โขวินณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-ลิด-นัด"
+    },
+    {
+      "name": "โขวินนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ขวิ-นิน"
+    },
+    {
+      "name": "โขวินวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-วิ-นัน"
+    },
+    {
+      "name": "โขวินวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิน-วิด"
+    },
+    {
+      "name": "โขวินอรกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิน-อะ-ระ-กอน"
+    },
+    {
+      "name": "โขวินอรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โขว-นิ-อะ-คุน"
+    },
+    {
+      "name": "โขวินอรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "โข-วิน-อะ-ยา"
+    },
+    {
+      "name": "ไขธรกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-กอน"
+    },
+    {
+      "name": "ไขธรกรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-กอน-นัด"
+    },
+    {
+      "name": "ไขธรกรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-กำ"
+    },
+    {
+      "name": "ไขธรกรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-กอน-นน"
+    },
+    {
+      "name": "ไขธรจิราธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทระ-รา-จิ-ทอน"
+    },
+    {
+      "name": "ไขธรจิราอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทริ-จาน-อิ-รา"
+    },
+    {
+      "name": "ไขธรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-ยา"
+    },
+    {
+      "name": "ไขธรญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-ยา-นัด"
+    },
+    {
+      "name": "ไขธรญาธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-ยา-ระ-ทำ"
+    },
+    {
+      "name": "ไขธรญานนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-ยา-นน"
+    },
+    {
+      "name": "ไขธรณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-รัน-นะ-กอน"
+    },
+    {
+      "name": "ไขธรณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-รัน-ดา"
+    },
+    {
+      "name": "ไขธรณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-นัด-ถะ-ทอน"
+    },
+    {
+      "name": "ไขธรธรจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทระ-รา-จิ-ทรา"
+    },
+    {
+      "name": "ไขธรธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-นะ-ทัด"
+    },
+    {
+      "name": "ไขธรธรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-ทำ"
+    },
+    {
+      "name": "ไขธรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทำ-ระ-ทิม"
+    },
+    {
+      "name": "ไขธรธรรมกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทำ-ระ-ทิม-กอน"
+    },
+    {
+      "name": "ไขธรธรรมญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทำ-กะ-ระ-ยา"
+    },
+    {
+      "name": "ไขธรธรรมธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทำ-ทะ-ระ-ทอม"
+    },
+    {
+      "name": "ไขธรธรรมอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทำ-ระ-ทิม-ออน"
+    },
+    {
+      "name": "ไขธรธรวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทระ-ทอ-ระ-วัน"
+    },
+    {
+      "name": "ไขธรนนท์กร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-นะ-กน"
+    },
+    {
+      "name": "ไขธรนนท์ญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-นะ-ยา"
+    },
+    {
+      "name": "ไขธรรินทร์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทัน-นิ"
+    },
+    {
+      "name": "ไขธรวรรณธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-วัน"
+    },
+    {
+      "name": "ไขธรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทะ-ระ-วิด"
+    },
+    {
+      "name": "ไขธรอรจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-อะ-จิ-รา"
+    },
+    {
+      "name": "ไขธรอรธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ทอ-ระ-ทอน"
+    },
+    {
+      "name": "ไขรินคุณธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-คุน-นะ-คอน"
+    },
+    {
+      "name": "ไขรินคุณอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-คุน-ออน"
+    },
+    {
+      "name": "ไขรินณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-นัด"
+    },
+    {
+      "name": "ไขรินณัฐธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-นะ-ทัด"
+    },
+    {
+      "name": "ไขรินธรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-ทอ-ระ-คุน"
+    },
+    {
+      "name": "ไขรินธรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-ทอน-นัด"
+    },
+    {
+      "name": "ไขรินธรรม",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-ทำ"
+    },
+    {
+      "name": "ไขรินธรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-ทอ-ระ"
+    },
+    {
+      "name": "ไขรินนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริ-นน"
+    },
+    {
+      "name": "ไขรินอรธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ริน-ออน"
+    },
+    {
+      "name": "ไขวรกรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-ระ-กอน-คุน"
+    },
+    {
+      "name": "ไขวรกรณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วอ-ระ-นะ-กอน-รัด"
+    },
+    {
+      "name": "ไขวรกรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วอน-กรอ"
+    },
+    {
+      "name": "ไขวรคุณกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-ระ-คุน-นะ-กอน"
+    },
+    {
+      "name": "ไขวรคุณญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-รุน-คุ-ยา"
+    },
+    {
+      "name": "ไขวรคุณอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-คอน-อุ-นอน"
+    },
+    {
+      "name": "ไขวรจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-ริ-จะ-รา"
+    },
+    {
+      "name": "ไขวรญาคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขร-อะ-นา-ยุก"
+    },
+    {
+      "name": "ไขวรญาณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-รอ-ยา-นัด"
+    },
+    {
+      "name": "ไขวรญาอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วอน-ยา-ออน"
+    },
+    {
+      "name": "ไขวรณัฐกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วอ-ระ-นัด-ถะ-กอน"
+    },
+    {
+      "name": "ไขวรณัฐญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-ระ-นะ-วัด-ถะ-ยา"
+    },
+    {
+      "name": "ไขวรนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วะ-รน"
+    },
+    {
+      "name": "ไขวรวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-ระ-วัน"
+    },
+    {
+      "name": "ไขวรวิชญ์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-รวด-ชิ"
+    },
+    {
+      "name": "ไขวรอรกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-รอ-ระ-กอน"
+    },
+    {
+      "name": "ไขวรอรคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-รอ-คุน"
+    },
+    {
+      "name": "ไขวรอรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-รอน-อา-ยา"
+    },
+    {
+      "name": "ไขวินกรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-กอ-ระ-ยา"
+    },
+    {
+      "name": "ไขวินกรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิก-ขอ-รอ"
+    },
+    {
+      "name": "ไขวินคุณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิน"
+    },
+    {
+      "name": "ไขวินจิรา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-จิ-รา"
+    },
+    {
+      "name": "ไขวินญาอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิ-ยา"
+    },
+    {
+      "name": "ไขวินณัฐ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิ-ถั"
+    },
+    {
+      "name": "ไขวินธรอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-ทอน"
+    },
+    {
+      "name": "ไขวินนนท์",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-นน"
+    },
+    {
+      "name": "ไขวินภัทร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-พัด"
+    },
+    {
+      "name": "ไขวินวรรณ",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิว"
+    },
+    {
+      "name": "ไขวินอร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิ-ออน"
+    },
+    {
+      "name": "ไขวินอรกร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-นิ-ออน-กอน"
+    },
+    {
+      "name": "ไขวินอรญา",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไข-วิน-อะ-ยา"
+    },
+    {
+      "name": "ไขวินอรธร",
+      "pronunciation": null,
+      "pronunciationVariants": [],
+      "pronunciationStatus": "rejected",
+      "pronunciationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "publicationStatus": "hidden",
+      "publicationReason": "ไม่พบการแบ่งรากศัพท์ครบทุกส่วนจากแหล่งทางการ จึงซ่อนแทนการเดาคำอ่าน",
+      "publicationEvidence": {
+        "method": "initial-kho-conservative-review",
+        "roots": [],
+        "sources": []
+      },
+      "legacyPronunciation": "ไขว-อิน-ทรอ"
+    }
+  ]
+}

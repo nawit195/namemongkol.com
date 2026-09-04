@@ -1,7 +1,8 @@
 import { thaksaConfig, DayKey } from '../data/thaksa';
 import { calculateScore } from './calculateScore';
 import { premiumNamesRaw } from '../data/premiumNamesRaw';
-import { parsePremiumNames, PremiumNameData } from './premiumDataParser';
+import { mergePremiumNameSources, PremiumNameData } from './premiumDataParser';
+import { premiumInitialChoNames, premiumInitialChoNamesRaw } from '../data/premiumInitialChoNames';
 import { AUSPICIOUS_SUMS } from './gradeResult';
 
 // Cache parsed names
@@ -9,7 +10,10 @@ let cachedParsedNames: PremiumNameData[] | null = null;
 
 const getParsedNames = () => {
     if (!cachedParsedNames) {
-        cachedParsedNames = parsePremiumNames(premiumNamesRaw);
+        cachedParsedNames = mergePremiumNameSources(
+            [premiumNamesRaw, premiumInitialChoNamesRaw].join('\n'),
+            premiumInitialChoNames,
+        );
     }
     return cachedParsedNames;
 };
@@ -274,7 +278,7 @@ export const generatePremiumNames = (
 
         results.push({
             name: data.name,
-            meaning: data.scoreBreakdown.join(' '),
+            meaning: data.meaning || data.scoreBreakdown.join(' '),
             totalScore: totalSum,
             grade,
             notes

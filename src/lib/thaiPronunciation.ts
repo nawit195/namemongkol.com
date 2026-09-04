@@ -1,7 +1,7 @@
 const THAI_MARKS = '\\u0E31\\u0E34-\\u0E3A\\u0E47-\\u0E4E';
 const THAI_LEADING_VOWELS = '\\u0E40-\\u0E44';
 
-export function normalizePronunciationText(value) {
+export function normalizePronunciationText(value: unknown) {
     return String(value ?? '')
         .normalize('NFC')
         .trim()
@@ -10,9 +10,9 @@ export function normalizePronunciationText(value) {
         .replace(/-{2,}/g, '-');
 }
 
-export function getPronunciationIssues(value) {
+export function getPronunciationIssues(value: unknown) {
     const pronunciation = normalizePronunciationText(value);
-    const issues = [];
+    const issues: string[] = [];
 
     if (!pronunciation) return ['blank'];
     if (/\s/u.test(pronunciation)) issues.push('contains-space');
@@ -25,47 +25,47 @@ export function getPronunciationIssues(value) {
     return [...new Set(issues)];
 }
 
-export function getPublicationPronunciationIssues(value) {
+export function getPublicationPronunciationIssues(value: unknown) {
     const pronunciation = normalizePronunciationText(value);
     const issues = getPronunciationIssues(pronunciation);
-
-    // PyThaiNLP uses pinthu as phonetic notation. It is useful for linguistic
-    // analysis, but too technical and ambiguous for a public reading guide.
     if (/ฺ/u.test(pronunciation)) issues.push('technical-pinthu');
-
     return [...new Set(issues)];
 }
 
-export function normalizePronunciationDraft(value) {
-    return normalizePronunciationText(value).replace(/ฺ/gu, '');
-}
+export type LinguisticEvidence = {
+    roots?: string[];
+    sources?: Array<{ title: string; url: string }>;
+    note?: string;
+    method?: string;
+};
 
-export function isPronunciationStructurallyValid(value) {
-    return getPronunciationIssues(value).length === 0;
-}
-
-export function normalizePronunciationVariants(value) {
-    return [...new Set((Array.isArray(value) ? value : [])
+export function normalizePronunciationVariants(value: unknown): string[] {
+    const values = Array.isArray(value) ? value : [];
+    return [...new Set(values
         .map(normalizePronunciationText)
         .filter(Boolean))];
 }
 
-export function getLinguisticEvidenceIssues(value) {
+export function getLinguisticEvidenceIssues(value: unknown): string[] {
     if (!value || typeof value !== 'object' || Array.isArray(value)) return ['missing-evidence'];
-    const roots = Array.isArray(value.roots) ? value.roots.filter((root) => String(root).trim()) : [];
-    const sources = Array.isArray(value.sources)
-        ? value.sources.filter((source) => String(source?.title ?? '').trim() && /^https:\/\//u.test(String(source?.url ?? '')))
+    const evidence = value as LinguisticEvidence;
+    const roots = Array.isArray(evidence.roots) ? evidence.roots.filter((root) => root.trim()) : [];
+    const sources = Array.isArray(evidence.sources)
+        ? evidence.sources.filter((source) => source?.title?.trim() && /^https:\/\//u.test(source?.url ?? ''))
         : [];
-    const issues = [];
+    const issues: string[] = [];
     if (roots.length === 0) issues.push('missing-roots');
     if (sources.length === 0) issues.push('missing-sources');
     return issues;
 }
 
-export function getPronunciationApprovalIssues(pronunciation, variants, evidence) {
+export function getPronunciationApprovalIssues(
+    pronunciation: unknown,
+    variants: unknown,
+    evidence: unknown,
+): string[] {
     const readings = [normalizePronunciationText(pronunciation), ...normalizePronunciationVariants(variants)].filter(Boolean);
-    return [...new Set([
-        ...readings.flatMap(getPublicationPronunciationIssues),
-        ...getLinguisticEvidenceIssues(evidence),
-    ])];
+    const issues = readings.flatMap(getPublicationPronunciationIssues);
+    issues.push(...getLinguisticEvidenceIssues(evidence));
+    return [...new Set(issues)];
 }

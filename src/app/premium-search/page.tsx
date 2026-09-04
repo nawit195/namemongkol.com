@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import ClientPage from './ClientPage';
-import { premiumNamesRaw } from '@/data/premiumNamesRaw';
+import { premiumSearchNamesRaw } from '@/data/premiumSearchNames';
 import { countRawNameLines } from '@/lib/nameCounts';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
-const premiumNamesCount = countRawNameLines(premiumNamesRaw);
+const premiumNamesCount = countRawNameLines(premiumSearchNamesRaw);
 const premiumNamesCountLabel = premiumNamesCount.toLocaleString('th-TH');
 
 export const metadata: Metadata = {

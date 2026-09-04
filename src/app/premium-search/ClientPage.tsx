@@ -2,8 +2,8 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, Coins, CheckCircle2 } from 'lucide-react';
-import { premiumNamesRaw } from '@/data/premiumNamesRaw';
-import { mergePremiumNameDetails, parsePremiumNames, type PremiumNameDetailInput } from '@/utils/premiumDataParser';
+import { premiumSearchNameDetails, premiumSearchNamesRaw } from '@/data/premiumSearchNames';
+import { mergePremiumNameSources, type PremiumNameDetailInput } from '@/utils/premiumDataParser';
 import { supabase } from '@/utils/supabase';
 import { getPrediction } from '@/utils/getPrediction';
 import { useRouter } from 'next/navigation';
@@ -150,7 +150,9 @@ export default function ClientPage() {
         { value: 'เสาร์', label: t('pages.premiumSearch.days.saturday') },
     ]), [t]);
 
-    const [allNames, setAllNames] = useState(() => parsePremiumNames(premiumNamesRaw));
+    const [allNames, setAllNames] = useState(() => (
+        mergePremiumNameSources(premiumSearchNamesRaw, premiumSearchNameDetails)
+    ));
 
     useEffect(() => {
         const controller = new AbortController();
@@ -161,8 +163,7 @@ export default function ClientPage() {
                 const payload = await response.json() as { success?: boolean; data?: PremiumNameDetailInput[] };
                 const details = Array.isArray(payload.data) ? payload.data : [];
                 if (!payload.success || details.length === 0) return;
-                const parsedNames = parsePremiumNames(details.map((record) => record.name).join('\n'));
-                setAllNames(mergePremiumNameDetails(parsedNames, details));
+                setAllNames(mergePremiumNameSources(premiumSearchNamesRaw, premiumSearchNameDetails, details));
             } catch (err) {
                 if (!(err instanceof DOMException && err.name === 'AbortError')) {
                     console.error('Error fetching public premium names:', err);

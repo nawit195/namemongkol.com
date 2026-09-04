@@ -1,11 +1,21 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-// @ts-expect-error The executable importer is plain ESM and intentionally has no runtime dependency on TypeScript.
 import { parseCsv, validateCsv } from '../../scripts/import-auspicious-name-details.mjs';
-// @ts-expect-error The shared validation helper is plain ESM for the executable importer.
-import { getPronunciationIssues, normalizePronunciationText } from '../../scripts/lib/thai-pronunciation.mjs';
+import {
+    getPronunciationIssues,
+    getPublicationPronunciationIssues,
+    normalizePronunciationText,
+} from '../../scripts/lib/thai-pronunciation.mjs';
 
 describe('auspicious name CSV import', () => {
+    it('ships reviewed and audit CSV artifacts for all 7,348 names', () => {
+        const reviewed = parseCsv(readFileSync('outputs/auspicious-names-7348-reviewed.csv', 'utf8'));
+        const audit = parseCsv(readFileSync('outputs/auspicious-names-7348-audit.csv', 'utf8'));
+        expect(reviewed[0]).toEqual(['ชื่อ', 'คำอ่าน', 'ความหมาย']);
+        expect(reviewed).toHaveLength(7349);
+        expect(audit[0]).toEqual(['ชื่อ', 'คำอ่านหลัก', 'คำอ่านอื่น', 'สถานะคำอ่าน', 'สถานะความหมาย', 'รากศัพท์', 'แหล่งอ้างอิง', 'หมายเหตุ']);
+        expect(audit).toHaveLength(7349);
+    });
     it('parses quoted commas, quotes and new lines', () => {
         const rows = parseCsv('\uFEFFชื่อมงคล,คำอ่าน,ความหมาย\r\nกมล,"กะ-มน","ใจ, \"\"ดวงใจ\"\"\nที่งดงาม"\r\n');
         expect(rows).toEqual([
@@ -47,6 +57,11 @@ describe('auspicious name CSV import', () => {
         expect(getPronunciationIssues('ลิ-่น')).toContain('detached-thai-mark');
         expect(() => validateCsv('ชื่อมงคล,คำอ่าน,ความหมาย\nกณิกนันต์,กะ-นะิก-นัน,ผู้มีความสุข', 1))
             .toThrow('invalid pronunciation');
+    });
+
+    it('keeps technical pinthu in drafts but blocks it from public approval', () => {
+        expect(getPronunciationIssues('หฺนู-ปฺระ-โคน')).toEqual([]);
+        expect(getPublicationPronunciationIssues('หฺนู-ปฺระ-โคน')).toContain('technical-pinthu');
     });
 
     it('keeps database-only names behind an explicit preservation flag', () => {

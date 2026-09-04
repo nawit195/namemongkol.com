@@ -9,22 +9,35 @@ import {
     canGenerateMeaningDraft,
     parseGeminiMeaningBatchResponse,
 } from '@/lib/nameMeaningDraft';
+import {
+    getLinguisticEvidenceIssues,
+    getPublicationPronunciationIssues,
+    getPronunciationApprovalIssues,
+    normalizePronunciationText,
+    normalizePronunciationVariants,
+} from '@/lib/thaiPronunciation';
 
 const PAGE_SIZE = 1000;
 const INSERT_BATCH_SIZE = 500;
 const MEANING_BATCH_SIZE = 20;
 const MEANING_STATUSES = ['pending', 'draft', 'approved', 'rejected'] as const;
 type MeaningStatus = typeof MEANING_STATUSES[number];
+const PRONUNCIATION_STATUSES = ['pending', 'draft', 'approved', 'rejected'] as const;
+type PronunciationStatus = typeof PRONUNCIATION_STATUSES[number];
 
 type MeaningImportRecord = {
     name: string;
+    pronunciation?: string;
     meaning?: string;
     gender?: 'male' | 'female' | 'neutral';
 };
 
 function revalidatePublicNames() {
     revalidateTag('public-names', 'max');
+    revalidateTag('public-stats', 'max');
+    revalidateTag('public-live-stats', 'max');
     revalidatePath('/search');
+    revalidatePath('/names', 'layout');
 }
 
 async function fetchAllAuspiciousNames() {
@@ -97,8 +110,9 @@ function normalizeMeaningRecord(value: unknown): MeaningImportRecord | null {
     const name = typeof input.name === 'string' ? input.name.trim() : '';
     if (!name) return null;
     const meaning = typeof input.meaning === 'string' ? input.meaning.trim() : '';
+    const pronunciation = normalizePronunciationText(input.pronunciation);
     const gender = input.gender === 'male' || input.gender === 'female' ? input.gender : 'neutral';
-    return { name, meaning: meaning || undefined, gender };
+    return { name, pronunciation: pronunciation || undefined, meaning: meaning || undefined, gender };
 }
 
 async function generateMeaningDrafts(supabase: any, ids?: string[]) {
@@ -206,6 +220,44 @@ export async function GET(req: Request) {
         if ('error' in auth && auth.error) return auth.error;
 
         const { searchParams } = new URL(req.url);
+        if (searchParams.get('view') === 'pronunciation-review') {
+            const rawStatus = searchParams.get('status');
+            const status = PRONUNCIATION_STATUSES.includes(rawStatus as PronunciationStatus)
+                ? rawStatus as PronunciationStatus
+                : 'pending';
+            const search = searchParams.get('q')?.trim() ?? '';
+            const page = Math.max(1, Number.parseInt(searchParams.get('page') ?? '1', 10) || 1);
+            const pageSize = 30;
+            const from = (page - 1) * pageSize;
+
+            let recordsQuery = supabase
+                .from('auspicious_names')
+                .select('id, name, pronunciation, pronunciation_draft, pronunciation_variants, pronunciation_status, pronunciation_source, pronunciation_evidence, pronunciation_review_notes, publication_status, publication_reason, publication_evidence, updated_at', { count: 'exact' })
+                .eq('pronunciation_status', status)
+                .order('updated_at', { ascending: false })
+                .range(from, from + pageSize - 1);
+            if (search) recordsQuery = recordsQuery.ilike('name', `%${search}%`);
+
+            const countQueries = PRONUNCIATION_STATUSES.map((item) => supabase
+                .from('auspicious_names')
+                .select('*', { count: 'exact', head: true })
+                .eq('pronunciation_status', item));
+            const [recordsResult, ...countResults] = await Promise.all([recordsQuery, ...countQueries]);
+            if (recordsResult.error) throw recordsResult.error;
+
+            return NextResponse.json({
+                success: true,
+                records: recordsResult.data ?? [],
+                counts: Object.fromEntries(PRONUNCIATION_STATUSES.map((item, index) => [
+                    item,
+                    countResults[index]?.count ?? 0,
+                ])),
+                total: recordsResult.count ?? 0,
+                page,
+                pageSize,
+            });
+        }
+
         if (searchParams.get('view') === 'meaning-review') {
             const rawStatus = searchParams.get('status');
             const status = MEANING_STATUSES.includes(rawStatus as MeaningStatus)
@@ -218,7 +270,7 @@ export async function GET(req: Request) {
 
             let recordsQuery = supabase
                 .from('auspicious_names')
-                .select('id, name, gender, meaning, meaning_draft, meaning_status, meaning_source, meaning_review_notes, updated_at', { count: 'exact' })
+                .select('id, name, gender, meaning, meaning_draft, meaning_status, meaning_source, meaning_evidence, meaning_review_notes, updated_at', { count: 'exact' })
                 .eq('meaning_status', status)
                 .order('updated_at', { ascending: false })
                 .range(from, from + pageSize - 1);
@@ -269,6 +321,123 @@ export async function POST(req: Request) {
         const body = await req.json();
         const action = typeof body.action === 'string' ? body.action : '';
 
+        if (action === 'review_pronunciation') {
+            const id = typeof body.id === 'string' ? body.id : '';
+            const decision = body.decision === 'approved' || body.decision === 'rejected' ? body.decision : null;
+            const draft = normalizePronunciationText(body.pronunciationDraft);
+            const variants = normalizePronunciationVariants(body.pronunciationVariants);
+            const evidence = body.pronunciationEvidence && typeof body.pronunciationEvidence === 'object' ? body.pronunciationEvidence : {};
+            const issues = getPronunciationApprovalIssues(draft, variants, evidence);
+            if (!id || !decision || (decision === 'approved' && issues.length > 0)) {
+                return NextResponse.json({
+                    success: false,
+                    error: issues.length > 0 ? `คำอ่านยังไม่พร้อมเผยแพร่: ${issues.join(', ')}` : 'Invalid review payload',
+                }, { status: 400 });
+            }
+
+            const update = decision === 'approved'
+                ? {
+                    pronunciation: draft,
+                    pronunciation_draft: draft,
+                    pronunciation_variants: variants,
+                    pronunciation_evidence: evidence,
+                    pronunciation_status: 'approved',
+                    pronunciation_source: 'manual-admin',
+                    pronunciation_review_notes: null,
+                    pronunciation_reviewed_at: new Date().toISOString(),
+                    pronunciation_reviewed_by: auth.user.id,
+                }
+                : {
+                    pronunciation: null,
+                    pronunciation_draft: draft || null,
+                    pronunciation_variants: variants,
+                    pronunciation_evidence: evidence,
+                    pronunciation_status: 'rejected',
+                    pronunciation_source: 'manual-admin',
+                    pronunciation_reviewed_at: new Date().toISOString(),
+                    pronunciation_reviewed_by: auth.user.id,
+                };
+            const { error } = await supabase.from('auspicious_names').update(update).eq('id', id);
+            if (error) throw error;
+            revalidatePublicNames();
+            return NextResponse.json({ success: true });
+        }
+
+        if (action === 'save_pronunciation_draft') {
+            const id = typeof body.id === 'string' ? body.id : '';
+            const draft = normalizePronunciationText(body.pronunciationDraft);
+            const variants = normalizePronunciationVariants(body.pronunciationVariants);
+            const evidence = body.pronunciationEvidence && typeof body.pronunciationEvidence === 'object' ? body.pronunciationEvidence : {};
+            const issues = getPronunciationApprovalIssues(draft, variants, evidence);
+            if (!id || !draft) {
+                return NextResponse.json({ success: false, error: 'Invalid pronunciation draft' }, { status: 400 });
+            }
+            const { error } = await supabase
+                .from('auspicious_names')
+                .update({
+                    pronunciation: null,
+                    pronunciation_draft: draft,
+                    pronunciation_variants: variants,
+                    pronunciation_evidence: evidence,
+                    pronunciation_status: 'draft',
+                    pronunciation_source: 'manual-admin-draft',
+                    pronunciation_review_notes: issues.length > 0 ? `รอตรวจ: ${issues.join(', ')}` : null,
+                    pronunciation_reviewed_at: null,
+                    pronunciation_reviewed_by: null,
+                })
+                .eq('id', id);
+            if (error) throw error;
+            revalidatePublicNames();
+            return NextResponse.json({ success: true, issues });
+        }
+
+        if (action === 'set_name_publication') {
+            const id = typeof body.id === 'string' ? body.id : '';
+            const publicationStatus = body.publicationStatus === 'published' || body.publicationStatus === 'hidden'
+                ? body.publicationStatus
+                : null;
+            const reason = typeof body.publicationReason === 'string' ? body.publicationReason.trim() : '';
+            const evidence = body.publicationEvidence && typeof body.publicationEvidence === 'object'
+                ? body.publicationEvidence
+                : {};
+            if (!id || !publicationStatus || !reason) {
+                return NextResponse.json({ success: false, error: 'Invalid publication payload' }, { status: 400 });
+            }
+
+            if (publicationStatus === 'published') {
+                const { data: current, error: readError } = await supabase
+                    .from('auspicious_names')
+                    .select('pronunciation, pronunciation_status, pronunciation_variants, pronunciation_evidence')
+                    .eq('id', id)
+                    .single();
+                if (readError) throw readError;
+                const issues = getPronunciationApprovalIssues(
+                    current?.pronunciation,
+                    current?.pronunciation_variants,
+                    current?.pronunciation_evidence,
+                );
+                if (current?.pronunciation_status !== 'approved' || issues.length > 0) {
+                    return NextResponse.json({
+                        success: false,
+                        error: `ยังเผยแพร่ชื่อไม่ได้: ${issues.join(', ') || 'คำอ่านยังไม่ได้รับอนุมัติ'}`,
+                    }, { status: 400 });
+                }
+            }
+
+            const { error } = await supabase
+                .from('auspicious_names')
+                .update({
+                    publication_status: publicationStatus,
+                    publication_reason: reason,
+                    publication_evidence: evidence,
+                    publication_reviewed_at: new Date().toISOString(),
+                })
+                .eq('id', id);
+            if (error) throw error;
+            revalidatePublicNames();
+            return NextResponse.json({ success: true });
+        }
+
         if (action === 'generate_meaning_drafts') {
             const ids = Array.isArray(body.ids)
                 ? body.ids.filter((id: unknown): id is string => typeof id === 'string').slice(0, MEANING_BATCH_SIZE)
@@ -281,7 +450,9 @@ export async function POST(req: Request) {
             const id = typeof body.id === 'string' ? body.id : '';
             const decision = body.decision === 'approved' || body.decision === 'rejected' ? body.decision : null;
             const draft = typeof body.meaningDraft === 'string' ? body.meaningDraft.trim() : '';
-            if (!id || !decision || (decision === 'approved' && draft.length < 3)) {
+            const evidence = body.meaningEvidence && typeof body.meaningEvidence === 'object' ? body.meaningEvidence : {};
+            const evidenceIssues = getLinguisticEvidenceIssues(evidence);
+            if (!id || !decision || (decision === 'approved' && (draft.length < 3 || evidenceIssues.length > 0))) {
                 return NextResponse.json({ success: false, error: 'Invalid review payload' }, { status: 400 });
             }
 
@@ -289,6 +460,7 @@ export async function POST(req: Request) {
                 ? {
                     meaning: draft,
                     meaning_draft: draft,
+                    meaning_evidence: evidence,
                     meaning_status: 'approved',
                     meaning_reviewed_at: new Date().toISOString(),
                     meaning_reviewed_by: auth.user.id,
@@ -296,6 +468,7 @@ export async function POST(req: Request) {
                 : {
                     meaning: null,
                     meaning_status: 'rejected',
+                    meaning_evidence: evidence,
                     meaning_reviewed_at: new Date().toISOString(),
                     meaning_reviewed_by: auth.user.id,
                 };
@@ -308,12 +481,13 @@ export async function POST(req: Request) {
         if (action === 'save_meaning_draft') {
             const id = typeof body.id === 'string' ? body.id : '';
             const draft = typeof body.meaningDraft === 'string' ? body.meaningDraft.trim() : '';
+            const evidence = body.meaningEvidence && typeof body.meaningEvidence === 'object' ? body.meaningEvidence : {};
             if (!id || draft.length < 3) {
                 return NextResponse.json({ success: false, error: 'Invalid draft payload' }, { status: 400 });
             }
             const { error } = await supabase
                 .from('auspicious_names')
-                .update({ meaning_draft: draft, meaning_status: 'draft', meaning_source: 'manual' })
+                .update({ meaning_draft: draft, meaning_evidence: evidence, meaning_status: 'draft', meaning_source: 'manual' })
                 .eq('id', id);
             if (error) throw error;
             return NextResponse.json({ success: true });
@@ -323,6 +497,14 @@ export async function POST(req: Request) {
         const importedRecords: MeaningImportRecord[] = Array.isArray(body.records)
             ? body.records.map(normalizeMeaningRecord).filter((record: MeaningImportRecord | null): record is MeaningImportRecord => Boolean(record))
             : [];
+        const invalidPronunciationRecord = importedRecords.find((record) =>
+            record.pronunciation && getPublicationPronunciationIssues(record.pronunciation).length > 0);
+        if (invalidPronunciationRecord?.pronunciation) {
+            return NextResponse.json({
+                success: false,
+                error: `คำอ่านของ ${invalidPronunciationRecord.name} ยังไม่พร้อมเผยแพร่: ${getPublicationPronunciationIssues(invalidPronunciationRecord.pronunciation).join(', ')}`,
+            }, { status: 400 });
+        }
         const rawNames = Array.isArray(names) ? names : importedRecords.map((record) => record.name);
 
         if (!Array.isArray(rawNames)) {
@@ -366,10 +548,14 @@ export async function POST(req: Request) {
                 return {
                     name,
                     gender: record?.gender ?? 'neutral',
+                    pronunciation: record?.pronunciation ?? null,
+                    pronunciation_draft: record?.pronunciation ?? null,
+                    pronunciation_status: 'pending',
+                    pronunciation_source: record?.pronunciation ? 'manual-import-pending-evidence' : null,
                     meaning: record?.meaning ?? null,
                     meaning_draft: record?.meaning ?? null,
-                    meaning_status: record?.meaning ? 'approved' : 'pending',
-                    meaning_source: record?.meaning ? 'manual-import' : null,
+                    meaning_status: 'pending',
+                    meaning_source: record?.meaning ? 'manual-import-pending-evidence' : null,
                 };
             });
             for (let i = 0; i < insertData.length; i += INSERT_BATCH_SIZE) {
@@ -397,32 +583,45 @@ export async function POST(req: Request) {
         let inserted = 0;
         let skippedDuplicate = 0;
 
-        const insertData = unique.map((name) => ({ name, gender: recordsByName.get(name)?.gender ?? 'neutral' }));
+        const insertData = unique.map((name) => ({
+            name,
+            gender: recordsByName.get(name)?.gender ?? 'neutral',
+            pronunciation_status: 'pending',
+        }));
 
-        const recordsWithMeanings = unique
+        const recordsWithDetails = unique
             .map((name) => recordsByName.get(name))
-            .filter((record): record is MeaningImportRecord & { meaning: string } => Boolean(record?.meaning));
-        if (recordsWithMeanings.length > 0) {
-            const meaningRows = recordsWithMeanings.map((record) => ({
+            .filter((record): record is MeaningImportRecord => Boolean(record?.meaning || record?.pronunciation));
+        if (recordsWithDetails.length > 0) {
+            const detailRows = recordsWithDetails.map((record) => ({
                 name: record.name,
                 gender: record.gender ?? 'neutral',
-                meaning: record.meaning,
-                meaning_draft: record.meaning,
-                meaning_status: 'approved',
-                meaning_source: 'manual-import',
-                meaning_reviewed_at: new Date().toISOString(),
-                meaning_reviewed_by: auth.user.id,
+                ...(record.pronunciation ? {
+                    pronunciation: record.pronunciation,
+                    pronunciation_draft: record.pronunciation,
+                    pronunciation_status: 'pending',
+                    pronunciation_source: 'manual-import-pending-evidence',
+                } : {}),
+                ...(record.meaning ? {
+                    meaning: record.meaning,
+                    meaning_draft: record.meaning,
+                    meaning_status: 'pending',
+                    meaning_source: 'manual-import-pending-evidence',
+                } : {}),
             }));
-            const { error: meaningUpsertError } = await supabase
+            const { error: detailUpsertError } = await supabase
                 .from('auspicious_names')
-                .upsert(meaningRows, { onConflict: 'name' });
-            if (meaningUpsertError) throw meaningUpsertError;
+                .upsert(detailRows, { onConflict: 'name' });
+            if (detailUpsertError) throw detailUpsertError;
         }
 
         for (let i = 0; i < insertData.length; i += INSERT_BATCH_SIZE) {
             const chunk = insertData
                 .slice(i, i + INSERT_BATCH_SIZE)
-                .filter((record) => !recordsByName.get(record.name)?.meaning);
+                .filter((record) => {
+                    const imported = recordsByName.get(record.name);
+                    return !imported?.meaning && !imported?.pronunciation;
+                });
             if (chunk.length === 0) continue;
 
             // Use upsert with ignoreDuplicates to skip existing names (UNIQUE constraint on `name`)
@@ -443,7 +642,7 @@ export async function POST(req: Request) {
 
         console.log(`[Admin Names] Append done: inserted=${inserted} skipped=${skippedDuplicate}`);
 
-        if (inserted > 0 || recordsWithMeanings.length > 0) revalidatePublicNames();
+        if (inserted > 0 || recordsWithDetails.length > 0) revalidatePublicNames();
 
         return NextResponse.json({
             success: true,

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { Check, RefreshCw, Search, Sparkles, X } from 'lucide-react';
+import LinguisticEvidenceEditor, { type EvidenceValue } from './LinguisticEvidenceEditor';
 
 type MeaningStatus = 'pending' | 'draft' | 'approved' | 'rejected';
 
@@ -13,6 +14,7 @@ type MeaningRecord = {
     meaning_draft: string | null;
     meaning_status: MeaningStatus;
     meaning_source: string | null;
+    meaning_evidence: EvidenceValue | null;
     meaning_review_notes: string | null;
 };
 
@@ -85,8 +87,8 @@ export default function MeaningReviewPanel() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(decision === 'save'
-                    ? { action: 'save_meaning_draft', id: record.id, meaningDraft: record.meaning_draft }
-                    : { action: 'review_meaning', id: record.id, meaningDraft: record.meaning_draft, decision }),
+                    ? { action: 'save_meaning_draft', id: record.id, meaningDraft: record.meaning_draft, meaningEvidence: record.meaning_evidence }
+                    : { action: 'review_meaning', id: record.id, meaningDraft: record.meaning_draft, meaningEvidence: record.meaning_evidence, decision }),
             });
             const payload = await response.json();
             if (!response.ok || !payload.success) throw new Error(payload.error || 'บันทึกไม่สำเร็จ');
@@ -167,13 +169,16 @@ export default function MeaningReviewPanel() {
                                     <p className="mt-1 text-xs text-slate-500">{record.meaning_source || 'ยังไม่มีแหล่งที่มา'}</p>
                                     {record.meaning_review_notes ? <p className="mt-2 text-xs leading-5 text-slate-400">{record.meaning_review_notes}</p> : null}
                                 </div>
-                                <textarea
-                                    value={record.meaning_draft ?? record.meaning ?? ''}
-                                    onChange={(event) => setRecords((current) => current.map((item) => item.id === record.id ? { ...item, meaning_draft: event.target.value } : item))}
-                                    rows={3}
-                                    aria-label={`ร่างความหมายชื่อ ${record.name}`}
-                                    className="w-full resize-y rounded-lg border border-slate-700 bg-slate-900 p-3 text-sm leading-6 text-slate-100 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
-                                />
+                                <div>
+                                    <textarea
+                                        value={record.meaning_draft ?? record.meaning ?? ''}
+                                        onChange={(event) => setRecords((current) => current.map((item) => item.id === record.id ? { ...item, meaning_draft: event.target.value } : item))}
+                                        rows={3}
+                                        aria-label={`ร่างความหมายชื่อ ${record.name}`}
+                                        className="w-full resize-y rounded-lg border border-slate-700 bg-slate-900 p-3 text-sm leading-6 text-slate-100 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20"
+                                    />
+                                    <LinguisticEvidenceEditor value={record.meaning_evidence} onChange={(value) => setRecords((current) => current.map((item) => item.id === record.id ? { ...item, meaning_evidence: value } : item))} />
+                                </div>
                                 <div className="flex gap-2 lg:flex-col">
                                     <button type="button" disabled={savingId === record.id} onClick={() => void updateRecord(record, 'approved')} className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg bg-emerald-600 px-3 text-sm font-bold text-white hover:bg-emerald-500 disabled:opacity-50"><Check className="h-4 w-4" /> อนุมัติ</button>
                                     <button type="button" disabled={savingId === record.id} onClick={() => void updateRecord(record, 'save')} className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-600 px-3 text-sm font-semibold text-slate-200 hover:bg-slate-800 disabled:opacity-50">บันทึกร่าง</button>

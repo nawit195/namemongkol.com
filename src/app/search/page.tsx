@@ -146,8 +146,10 @@ export default async function SearchPage() {
                     item: {
                         '@type': 'DefinedTerm',
                         name: item.name,
-                        ...(item.pronunciation ? { alternateName: item.pronunciation } : {}),
-                        ...(item.meaning ? { description: item.meaning } : {}),
+                        ...(item.pronunciation && item.pronunciationStatus === 'approved' ? {
+                            alternateName: [item.pronunciation, ...(item.pronunciationVariants ?? [])].join(' / '),
+                        } : {}),
+                        ...(item.meaning && item.meaningStatus === 'approved' ? { description: item.meaning } : {}),
                         inDefinedTermSet: { '@id': definedTermSetId },
                     },
                 })),

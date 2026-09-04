@@ -4,8 +4,10 @@ export type SearchFilterState = {
     initial: string;
 };
 
+const SEARCH_DATA_VERSION = 'pronunciation-evidence-v3';
+
 export function createSearchResultCacheKey(filters: SearchFilterState, page: number): string {
-    return `${filters.day}|${filters.gender}|${filters.initial}|${page}`;
+    return `${SEARCH_DATA_VERSION}|${filters.day}|${filters.gender}|${filters.initial}|${page}`;
 }
 
 export function createPublicNamesRequestUrl(filters: SearchFilterState, page: number): string {
@@ -15,10 +17,11 @@ export function createPublicNamesRequestUrl(filters: SearchFilterState, page: nu
         && filters.initial !== 'all';
 
     if (isStaticInitialRequest) {
-        return `/api/public/name-initials/${encodeURIComponent(filters.initial)}`;
+        return `/api/public/name-initials/${encodeURIComponent(filters.initial)}?v=${SEARCH_DATA_VERSION}`;
     }
 
     return `/api/public/names?${new URLSearchParams({
+        v: SEARCH_DATA_VERSION,
         day: filters.day,
         gender: filters.gender,
         initial: filters.initial,

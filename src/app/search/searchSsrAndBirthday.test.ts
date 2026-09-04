@@ -25,9 +25,24 @@ describe('search SSR and birthday landing pages', () => {
         expect(catalogSource).toContain('sortSearchNamesByNewest(filtered)');
         expect(catalogSource).toContain('buckets.reduce');
         expect(routeSource).toContain('...result');
-        expect(staticInitialRoute).toContain("dynamic = 'force-static'");
+        expect(staticInitialRoute).toContain('revalidate = 600');
         expect(staticInitialRoute).toContain('generateStaticParams');
         expect(dataSource).toContain("tags: ['public-names']");
+    });
+
+    test('caches public names in bounded database pages instead of aggregate entries', () => {
+        const dataSource = readSource('src/lib/publicNames.ts');
+
+        expect(dataSource).toContain('const DATABASE_PAGE_SIZE = 1000;');
+        expect(dataSource).toContain('const fetchPublicNameRowsPage = unstable_cache(');
+        expect(dataSource).toContain("['public-auspicious-name-page-v16']");
+        expect(dataSource).toContain("{ revalidate: 600, tags: ['public-names'] }");
+        expect(dataSource).toContain('export const fetchAllPublicNames = cache(loadAllPublicNames);');
+        expect(dataSource).toContain('const fetchPublicNamesDataset = cache(async () =>');
+        expect(dataSource).not.toContain('export const fetchAllPublicNames = unstable_cache(');
+        expect(dataSource).not.toContain('const fetchPublicNamesCatalog = unstable_cache(');
+        expect(dataSource.match(/unstable_cache\(/g)).toHaveLength(1);
+        expect(dataSource).toContain("row.publication_status !== 'hidden'");
     });
 
     test('pre-renders eight birthday variants for both genders', () => {

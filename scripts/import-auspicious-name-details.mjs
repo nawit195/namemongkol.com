@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import {
     getPronunciationIssues,
@@ -10,6 +11,7 @@ import {
 const EXPECTED_HEADERS = ['ชื่อมงคล', 'คำอ่าน', 'ความหมาย'];
 const EXPECTED_ROW_COUNT = 7348;
 const PAGE_SIZE = 1000;
+const IMPORT_BATCH_SIZE = 250;
 
 export function parseCsv(input) {
     const text = input.replace(/^\uFEFF/, '');
@@ -124,6 +126,11 @@ function readPronunciationReviews(file, expectedNames) {
         return new Map([...expectedNames].map((name) => [name, {
             name,
             confidence: 'medium',
+            status: 'pending',
+            pronunciationVariants: [],
+            pronunciationEvidence: {},
+            meaningStatus: 'pending',
+            meaningEvidence: {},
             source: 'csv-import-unreviewed',
             note: 'นำเข้าจาก CSV โดยไม่มีผลตรวจคำอ่านประกอบ',
         }]));
@@ -134,13 +141,23 @@ function readPronunciationReviews(file, expectedNames) {
     const reviews = new Map();
     for (const value of parsed) {
         const name = typeof value?.name === 'string' ? value.name.trim() : '';
-        const confidence = typeof value?.confidence === 'string' ? value.confidence : '';
-        if (!name || !['high', 'medium', 'low'].includes(confidence)) {
-            throw new Error('Pronunciation review contains an invalid name or confidence.');
+        const confidence = ['high', 'medium', 'low'].includes(value?.confidence) ? value.confidence : 'medium';
+        const status = typeof value?.pronunciationStatus === 'string'
+            ? value.pronunciationStatus
+            : typeof value?.status === 'string' ? value.status : 'pending';
+        const meaningStatus = typeof value?.meaningStatus === 'string' ? value.meaningStatus : 'pending';
+        if (!name || !['pending', 'draft', 'approved', 'rejected'].includes(status) || !['pending', 'draft', 'approved', 'rejected'].includes(meaningStatus)) {
+            throw new Error('Pronunciation review contains an invalid name or review status.');
         }
         reviews.set(name, {
             name,
             confidence,
+            status,
+            pronunciationDraft: typeof value.pronunciationDraft === 'string' ? value.pronunciationDraft.trim() : '',
+            pronunciationVariants: Array.isArray(value.pronunciationVariants) ? value.pronunciationVariants.filter((item) => typeof item === 'string') : [],
+            pronunciationEvidence: value.pronunciationEvidence && typeof value.pronunciationEvidence === 'object' ? value.pronunciationEvidence : {},
+            meaningStatus,
+            meaningEvidence: value.meaningEvidence && typeof value.meaningEvidence === 'object' ? value.meaningEvidence : {},
             source: typeof value.source === 'string' ? value.source.trim() : 'pronunciation-review',
             note: typeof value.note === 'string' ? value.note.trim() : '',
         });
@@ -155,6 +172,8 @@ async function fetchDatabaseRows(supabase, includePronunciation) {
         'id',
         'name',
         ...(includePronunciation ? ['pronunciation'] : []),
+        ...(includePronunciation ? ['pronunciation_draft', 'pronunciation_status'] : []),
+        ...(includePronunciation ? ['pronunciation_variants', 'pronunciation_evidence'] : []),
         'meaning',
         'meaning_draft',
         'meaning_status',
@@ -162,6 +181,7 @@ async function fetchDatabaseRows(supabase, includePronunciation) {
         'meaning_review_notes',
         'meaning_reviewed_at',
         'meaning_reviewed_by',
+        ...(includePronunciation ? ['meaning_evidence'] : []),
     ].join(', ');
     const rows = [];
 
@@ -224,7 +244,7 @@ export async function runImport({ file, reviewFile, apply, preserveDatabaseExtra
     let pronunciationAvailable = true;
     let databaseResult = await fetchDatabaseRows(supabase, true);
 
-    if (databaseResult.error && /pronunciation/i.test(databaseResult.error.message ?? '')) {
+    if (databaseResult.error && /pronunciation|meaning_evidence/i.test(databaseResult.error.message ?? '')) {
         pronunciationAvailable = false;
         databaseResult = await fetchDatabaseRows(supabase, false);
     }
@@ -266,6 +286,10 @@ export async function runImport({ file, reviewFile, apply, preserveDatabaseExtra
             high: [...pronunciationReviews.values()].filter((review) => review.confidence === 'high').length,
             medium: [...pronunciationReviews.values()].filter((review) => review.confidence === 'medium').length,
             low: [...pronunciationReviews.values()].filter((review) => review.confidence === 'low').length,
+            pending: [...pronunciationReviews.values()].filter((review) => review.status === 'pending').length,
+            draft: [...pronunciationReviews.values()].filter((review) => review.status === 'draft').length,
+            approved: [...pronunciationReviews.values()].filter((review) => review.status === 'approved').length,
+            rejected: [...pronunciationReviews.values()].filter((review) => review.status === 'rejected').length,
         },
     };
 
@@ -275,26 +299,54 @@ export async function runImport({ file, reviewFile, apply, preserveDatabaseExtra
     }
 
     const backupPath = writeBackup(databaseRows);
+    const importFingerprint = createHash('sha256')
+        .update(fs.readFileSync(file))
+        .update(reviewFile ? fs.readFileSync(reviewFile) : '')
+        .digest('hex');
     const records = parsed.uniqueRecords.map((record) => {
         const review = pronunciationReviews.get(record.name);
         return {
             ...record,
-            pronunciation_status: review.confidence === 'high' ? 'approved' : review.confidence === 'medium' ? 'draft' : 'pending',
+            pronunciation_draft: review.pronunciationDraft || record.pronunciation,
+            pronunciation_status: review.status,
             pronunciation_source: review.source,
             pronunciation_review_notes: review.note || null,
+            pronunciation_variants: review.pronunciationVariants,
+            pronunciation_evidence: review.pronunciationEvidence,
+            meaning_status: review.meaningStatus,
+            meaning_evidence: review.meaningEvidence,
         };
     });
-    const { data, error } = await supabase.rpc('admin_import_auspicious_name_details', {
-        records,
-    });
-    if (error) throw new Error(`Import RPC failed: ${error.message}`);
+    const checkpointPath = path.resolve('outputs/auspicious-names-import-checkpoint.json');
+    const checkpoint = fs.existsSync(checkpointPath)
+        ? JSON.parse(fs.readFileSync(checkpointPath, 'utf8'))
+        : { completedBatches: [] };
+    const completedBatches = new Set(checkpoint.fingerprint === importFingerprint && Array.isArray(checkpoint.completedBatches) ? checkpoint.completedBatches : []);
+    const rpcResult = [];
+    for (let offset = 0; offset < records.length; offset += IMPORT_BATCH_SIZE) {
+        const batchNumber = Math.floor(offset / IMPORT_BATCH_SIZE);
+        if (completedBatches.has(batchNumber)) continue;
+        const batch = records.slice(offset, offset + IMPORT_BATCH_SIZE);
+        const { data, error } = await supabase.rpc('admin_import_auspicious_name_details', { records: batch });
+        if (error) throw new Error(`Import RPC batch ${batchNumber + 1} failed: ${error.message}`);
+        rpcResult.push(data);
+        completedBatches.add(batchNumber);
+        fs.writeFileSync(checkpointPath, `${JSON.stringify({ fingerprint: importFingerprint, completedBatches: [...completedBatches].sort((a, b) => a - b), updatedAt: new Date().toISOString() }, null, 2)}\n`, 'utf8');
+    }
 
     const verification = await fetchDatabaseRows(supabase, true);
     if (verification.error) throw new Error(`Post-import verification failed: ${verification.error.message}`);
     const verifiedByName = new Map(verification.rows.map((row) => [String(row.name).trim(), row]));
     const mismatchedCsvRecords = parsed.uniqueRecords.filter((record) => {
         const row = verifiedByName.get(record.name);
-        return (row?.pronunciation ?? '').trim() !== record.pronunciation
+        const review = pronunciationReviews.get(record.name);
+        const expectedDraft = review.pronunciationDraft || record.pronunciation;
+        const expectedPublished = review.status === 'approved' ? expectedDraft : '';
+        return (row?.pronunciation ?? '').trim() !== expectedPublished
+            || (row?.pronunciation_draft ?? '').trim() !== expectedDraft
+            || row?.pronunciation_status !== review.status
+            || JSON.stringify(row?.pronunciation_variants ?? []) !== JSON.stringify(review.pronunciationVariants)
+            || row?.meaning_status !== review.meaningStatus
             || (row?.meaning ?? '').trim() !== record.meaning;
     });
     if (verification.rows.length !== EXPECTED_ROW_COUNT || mismatchedCsvRecords.length > 0) {
@@ -306,7 +358,8 @@ export async function runImport({ file, reviewFile, apply, preserveDatabaseExtra
         summary,
         backupPath,
         verifiedCsvNames: parsed.uniqueRecords.length,
-        rpcResult: data,
+        rpcResult,
+        checkpointPath,
     };
 }
 

@@ -3,10 +3,11 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Save, RefreshCw, FileText, AlertTriangle, Copy, Plus, Replace, Database, Crown } from 'lucide-react';
 import MeaningReviewPanel from './MeaningReviewPanel';
+import PronunciationReviewPanel from './PronunciationReviewPanel';
 
 type DataSource = 'db' | 'premium';
 type SaveMode = 'append' | 'replace';
-type AdminSection = 'names' | 'meanings';
+type AdminSection = 'names' | 'meanings' | 'pronunciations';
 
 interface SaveStats {
     received: number;
@@ -92,9 +93,14 @@ export default function AdminNamesPage() {
             .map(s => s.trim())
             .filter(s => s.length > 0);
         const records = inputLines.map((line) => {
-            const [name = '', meaning = '', rawGender = 'neutral'] = line.split('|').map((part) => part.trim());
+            const parts = line.split('|').map((part) => part.trim());
+            const [name = ''] = parts;
+            const hasPronunciation = parts.length >= 4;
+            const pronunciation = hasPronunciation ? parts[1] : '';
+            const meaning = hasPronunciation ? parts[2] : parts[1] ?? '';
+            const rawGender = hasPronunciation ? parts[3] : parts[2] ?? 'neutral';
             const gender = rawGender === 'male' || rawGender === 'female' ? rawGender : 'neutral';
-            return { name, meaning, gender };
+            return { name, pronunciation, meaning, gender };
         }).filter((record) => record.name);
         const newNames = records.map((record) => record.name);
 
@@ -239,9 +245,22 @@ export default function AdminNamesPage() {
                     >
                         ตรวจความหมาย
                     </button>
+                    <button
+                        type="button"
+                        role="tab"
+                        aria-selected={adminSection === 'pronunciations'}
+                        onClick={() => { setDataSource('db'); setAdminSection('pronunciations'); }}
+                        className={`min-h-11 border-b-2 px-4 text-sm font-bold transition-colors ${adminSection === 'pronunciations' ? 'border-amber-400 text-amber-300' : 'border-transparent text-slate-400 hover:text-white'}`}
+                    >
+                        ตรวจคำอ่าน
+                    </button>
                 </div>
 
-                {adminSection === 'meanings' ? <MeaningReviewPanel /> : <>
+                {adminSection === 'meanings'
+                    ? <MeaningReviewPanel />
+                    : adminSection === 'pronunciations'
+                        ? <PronunciationReviewPanel />
+                        : <>
                 {/* Data Source Toggle */}
                 <div className="flex items-center gap-3">
                     <span className="text-sm text-slate-400 font-medium">แหล่งข้อมูล:</span>
@@ -371,7 +390,7 @@ export default function AdminNamesPage() {
                     <div className="relative">
                         {!isPremium ? (
                             <p className="mb-3 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs leading-5 text-sky-200">
-                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว หรือ <strong>ชื่อ | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral รายชื่อใหม่จะแสดงในหมวดอักษรของหน้า Search ทันที ส่วนความหมายสามารถเพิ่มและตรวจสอบภายหลังได้
+                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว, <strong>ชื่อ | ความหมาย | เพศ</strong> หรือ <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral คำอ่านที่ระบุจะเผยแพร่เมื่อรูปแบบผ่านการตรวจ ส่วนรายการที่ยังไม่มีคำอ่านจะเข้าคิวรอตรวจ
                             </p>
                         ) : null}
                         <textarea
@@ -459,6 +478,7 @@ export default function AdminNamesPage() {
                         ) : (
                             <ul className="text-sm text-slate-400 space-y-1 list-disc list-inside">
                                 <li><strong>Append (เพิ่มต่อ)</strong>: วางเฉพาะชื่อใหม่ ระบบจะข้ามชื่อที่มีอยู่แล้วอัตโนมัติ</li>
+                                <li>รูปแบบพร้อมคำอ่าน: <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> หรือใช้รูปแบบเดิม <strong>ชื่อ | ความหมาย | เพศ</strong></li>
                                 <li><strong>Replace (เขียนทับ)</strong>: แทนที่รายชื่อทั้งหมดในฐานข้อมูล — ใช้ด้วยความระวัง!</li>
                                 <li>ใช้เครื่องหมาย <strong>จุลภาค (,)</strong> หรือ <strong>การขึ้นบรรทัดใหม่</strong> เพื่อแยกแต่ละชื่อออกจากกัน</li>
                                 <li>ระบบจะ trim ช่องว่าง และลบชื่อซ้ำใน payload ให้โดยอัตโนมัติ</li>

@@ -102,6 +102,10 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
     const ago5m = new Date(now.getTime() - 5 * 60 * 1000).toISOString();
     const ago30m = new Date(now.getTime() - 30 * 60 * 1000).toISOString();
     const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
+    const namesTotalPromise = supabase
+        .from('auspicious_names')
+        .select('*', { count: 'exact', head: true })
+        .neq('publication_status', 'hidden');
 
     const [
         onlineRes,
@@ -110,7 +114,7 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
         weeklyAnalysisRes,
         userTotalRes,
         reviewsRes,
-        namesTotalRes,
+        initialNamesTotalRes,
     ] = await Promise.all([
         supabase.from('user_action_events').select('session_id').gte('created_at', ago5m),
         supabase.from('user_action_events').select('button_key').gte('created_at', ago30m),
@@ -118,8 +122,12 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
         supabase.from('analysis_results').select('*', { count: 'exact', head: true }).gte('created_at', weekAgo),
         supabase.from('user_profiles').select('*', { count: 'exact', head: true }),
         supabase.from('reviews').select('rating').eq('status', 'approved'),
-        supabase.from('auspicious_names').select('*', { count: 'exact', head: true }),
+        namesTotalPromise,
     ]);
+
+    const namesTotalRes = initialNamesTotalRes.error && /publication_status/i.test(initialNamesTotalRes.error.message ?? '')
+        ? await supabase.from('auspicious_names').select('*', { count: 'exact', head: true })
+        : initialNamesTotalRes;
 
     const onlineNow = onlineRes.error || !onlineRes.data
         ? 0
