@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-06-25T12:36:43.086Z",
+  "dryRun": true,
+  "counts": {
+    "articleCategories": 6,
+    "brands": 7,
+    "brandCategoryIntros": 6,
+    "solutions": 5,
+    "industries": 6,
+    "navItems": 23,
+    "articles": 45,
+    "products": 129
+  }
+}

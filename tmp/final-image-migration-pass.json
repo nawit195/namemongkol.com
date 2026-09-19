@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-06-06T04:52:20.766Z",
+  "mode": "migrate",
+  "scope": "pilot",
+  "bucket": "admin-media",
+  "inventoryOnly": false,
+  "apply": true,
+  "files": ["src/data/site.ts", "src/data/brand-images.ts", "src/data/article-images.ts"],
+  "candidates": [
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1671007714983.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:530"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1671007732725.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:630"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1664272008966.jpg",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:725"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1671007744739.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:823"
+    }
+  ],
+  "migrated": [
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007714983.png",
+      "resolvedUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007714983.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/bd9dfa44b8d0-crop-1671007714983.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:530",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/bd9dfa44b8d0-crop-1671007714983.png",
+      "contentType": "image/png",
+      "bytes": 207344
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007732725.png",
+      "resolvedUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007732725.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/04f4b86eff4d-crop-1671007732725.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:630",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/04f4b86eff4d-crop-1671007732725.png",
+      "contentType": "image/png",
+      "bytes": 208585
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1664272008966.jpg",
+      "resolvedUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1664272008966.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/8adbfe6be5f6-crop-1664272008966.jpg",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:725",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/8adbfe6be5f6-crop-1664272008966.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 16882
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007744739.png",
+      "resolvedUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1671007744739.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/7abc119253a3-crop-1671007744739.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:823",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/7abc119253a3-crop-1671007744739.png",
+      "contentType": "image/png",
+      "bytes": 229208
+    }
+  ],
+  "failed": []
+}

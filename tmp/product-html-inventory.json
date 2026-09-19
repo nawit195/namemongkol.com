@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-06-06T04:37:42.862Z",
+  "mode": "inventory",
+  "scope": "product-html",
+  "bucket": "admin-media",
+  "inventoryOnly": true,
+  "apply": false,
+  "files": [
+    "src/data/product-details.ts"
+  ],
+  "candidates": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0446/9369/files/blackwire3300-3.png?v=1617706965",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2059598"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0446/9369/files/Blackwire3300_5984.jpg?v=1619007875",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2062000"
+    },
+    {
+      "url": "https://image.makewebeasy.net/makeweb/0/jxlPpOYv8/DigitalMedia/26.png",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2074754"
+    },
+    {
+      "url": "https://image.makewebeasy.net/makeweb/0/jxlPpOYv8/DigitalMedia/S10.jpg",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2075246"
+    }
+  ],
+  "migrated": []
+}

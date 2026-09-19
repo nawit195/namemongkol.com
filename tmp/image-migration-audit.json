@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-06-06T04:52:41.391Z",
+  "mode": "inventory",
+  "scope": "all",
+  "bucket": "admin-media",
+  "inventoryOnly": true,
+  "apply": false,
+  "files": [
+    "src/data/site.ts",
+    "src/data/brand-images.ts",
+    "src/data/article-images.ts",
+    "src/data/article-contents.ts",
+    "src/data/product-details.ts"
+  ],
+  "candidates": [],
+  "migrated": [],
+  "failed": []
+}

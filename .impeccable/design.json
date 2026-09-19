@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-07T03:15:00Z",
+  "title": "Design System: Matrix Intertrade",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Corporate Navy",
+        "canonical": "oklch(0.205 0.075 258)",
+        "tonalRamp": [
+          "oklch(0.1 0.075 258)",
+          "oklch(0.2 0.075 258)",
+          "oklch(0.3 0.075 258)",
+          "oklch(0.4 0.075 258)",
+          "oklch(0.5 0.075 258)",
+          "oklch(0.7 0.075 258)",
+          "oklch(0.85 0.075 258)",
+          "oklch(0.95 0.075 258)"
+        ]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Digital Cyan",
+        "canonical": "oklch(0.78 0.14 210)",
+        "tonalRamp": [
+          "oklch(0.2 0.14 210)",
+          "oklch(0.3 0.14 210)",
+          "oklch(0.4 0.14 210)",
+          "oklch(0.5 0.14 210)",
+          "oklch(0.6 0.14 210)",
+          "oklch(0.7 0.14 210)",
+          "oklch(0.85 0.14 210)",
+          "oklch(0.95 0.14 210)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only." }
+    },
+    "shadows": [
+      {
+        "name": "card-shadow",
+        "value": "0 1px 2px oklch(0.205 0.075 258 / 0.04), 0 4px 12px -4px oklch(0.205 0.075 258 / 0.08)",
+        "purpose": "Static cards to lift gently."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for state transitions."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button.",
+      "html": "<button class=\"ds-btn-primary\">CONTACT US</button>",
+      "css": ".ds-btn-primary { background: oklch(0.205 0.075 258); color: oklch(1 0 0); padding: 12px 24px; border-radius: 0.875rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 1px 2px oklch(0.205 0.075 258 / 0.04); } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px -8px oklch(0.78 0.14 210 / 0.5); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Professional Vanguard",
+    "overview": "The Professional Vanguard is a design system that embodies B2B reliability, forward-looking technology, and corporate trust. It relies on a strong \"Corporate Navy\" base paired with \"Digital Cyan\" to project both stability and innovation. The layouts prioritize clarity over density, ensuring that users are never overwhelmed by information.\n\nThis system explicitly rejects the \"cluttered retail e-commerce\" look. Every element must earn its place, and space is treated as a feature, not emptiness.",
+    "keyCharacteristics": [
+      "Tactical and confident structures",
+      "Clear information hierarchy",
+      "Layered and lifted components",
+      "Strong, legible typography"
+    ],
+    "rules": [
+      {
+        "name": "The Professional Restraint Rule",
+        "body": "Bright accents (Cyan/Violet) should never dominate the screen. They are reserved for interactive elements, highlights, and gradients, taking up no more than 10-15% of the visual space to maintain a corporate feel.",
+        "section": "colors"
+      },
+      {
+        "name": "The Structural Legibility Rule",
+        "body": "Never use light weights (below 400) for body text. B2B clients need to read specs clearly without squinting.",
+        "section": "typography"
+      },
+      {
+        "name": "The Intentional Lift Rule",
+        "body": "Shadows are structural, not decorative. Use them to indicate that an element is interactive (buttons, cards) or overlays content (modals, navs).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use generous whitespace (spacing-12 or more) between major sections.",
+      "Do ensure all body text meets a minimum 4.5:1 contrast ratio against its background.",
+      "Do use high-quality imagery of products and projects to \"Show, Don't Tell\"."
+    ],
+    "donts": [
+      "Don't clutter the screen with excessive information or dense walls of text.",
+      "Don't use decorative side-stripe borders (e.g., border-left: 4px solid blue).",
+      "Don't use neon or bright colors for large background areas.",
+      "Don't use overly rounded corners (full pill shapes) for structural cards, as it breaks the professional B2B feel."
+    ]
+  }
+}

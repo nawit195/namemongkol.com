@@ -1,0 +1,84 @@
+{
+  "generatedAt": "2026-06-06T04:45:24.087Z",
+  "mode": "migrate",
+  "scope": "product-html",
+  "bucket": "admin-media",
+  "inventoryOnly": false,
+  "apply": true,
+  "files": [
+    "src/data/product-details.ts"
+  ],
+  "candidates": [
+    {
+      "url": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/39f2334fd8b3-blackwire3300-3.png",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2060748"
+    },
+    {
+      "url": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/fab46eafab3d-blackwire3300_5984.jpg",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2063209"
+    },
+    {
+      "url": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/57f61ecd7f7e-26.png",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2076022"
+    },
+    {
+      "url": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/3d5d1234321b-s10.jpg",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2076579"
+    }
+  ],
+  "migrated": [
+    {
+      "sourceUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/39f2334fd8b3-blackwire3300-3.png",
+      "resolvedUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/39f2334fd8b3-blackwire3300-3.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/4570e65ce8c5-39f2334fd8b3-blackwire3300-3.png",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2060748",
+      "objectPath": "legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/4570e65ce8c5-39f2334fd8b3-blackwire3300-3.png",
+      "contentType": "image/png",
+      "bytes": 286985
+    },
+    {
+      "sourceUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/fab46eafab3d-blackwire3300_5984.jpg",
+      "resolvedUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/cdn.shopify.com/fab46eafab3d-blackwire3300_5984.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/535eb3b2c7a9-fab46eafab3d-blackwire3300_5984.jpg",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2063209",
+      "objectPath": "legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/535eb3b2c7a9-fab46eafab3d-blackwire3300_5984.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 87708
+    },
+    {
+      "sourceUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/57f61ecd7f7e-26.png",
+      "resolvedUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/57f61ecd7f7e-26.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/150f790a4a67-57f61ecd7f7e-26.png",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2076022",
+      "objectPath": "legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/150f790a4a67-57f61ecd7f7e-26.png",
+      "contentType": "image/png",
+      "bytes": 314310
+    },
+    {
+      "sourceUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/3d5d1234321b-s10.jpg",
+      "resolvedUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/image.makewebeasy.net/3d5d1234321b-s10.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/48425c316455-3d5d1234321b-s10.jpg",
+      "filePath": "src/data/product-details.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/product-details.ts:2076579",
+      "objectPath": "legacy-imports/sefxaafqvjpmjmewsfuw.supabase.co/48425c316455-3d5d1234321b-s10.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 38670
+    }
+  ],
+  "failed": []
+}

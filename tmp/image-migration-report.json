@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-06-06T04:34:55.705Z",
+  "mode": "migrate",
+  "scope": "pilot",
+  "bucket": "admin-media",
+  "inventoryOnly": false,
+  "apply": true,
+  "files": ["src/data/site.ts", "src/data/brand-images.ts", "src/data/article-images.ts"],
+  "candidates": [
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/LED_Display1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:857"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Interactive_Display12.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1095"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Projector11.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1306"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/wireless_presentation1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1524"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/AV_Solutions1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1747"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/banner/crop-1751441846240.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:146"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1664270486366.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:232"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1664192588573.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:327"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/banner/crop-1773024256470.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:420"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/banner/crop-1751514312395.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:508"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1751960721283.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:158"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/ready-template/crop-1755832392467.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:270"
+    }
+  ],
+  "migrated": [
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/editor/LED_Display1.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/a6492e1dbcf9-led_display1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:857",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/a6492e1dbcf9-led_display1.png",
+      "contentType": "image/png",
+      "bytes": 1711180
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/editor/Interactive_Display12.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/f7c323982191-interactive_display12.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1095",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/f7c323982191-interactive_display12.png",
+      "contentType": "image/png",
+      "bytes": 831608
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/editor/Projector11.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/3ddadb3d3dff-projector11.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1306",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/3ddadb3d3dff-projector11.png",
+      "contentType": "image/png",
+      "bytes": 1165688
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/editor/wireless_presentation1.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/55c7fda91436-wireless_presentation1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1524",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/55c7fda91436-wireless_presentation1.png",
+      "contentType": "image/png",
+      "bytes": 933067
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/editor/AV_Solutions1.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/7b9fc0dd456f-av_solutions1.png",
+      "filePath": "src/data/site.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/site.ts:1747",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/7b9fc0dd456f-av_solutions1.png",
+      "contentType": "image/png",
+      "bytes": 1398998
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/banner/crop-1751441846240.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/6b2785b3dc72-crop-1751441846240.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:146",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/6b2785b3dc72-crop-1751441846240.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 348938
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1664270486366.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/53aa84128a4c-crop-1664270486366.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:232",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/53aa84128a4c-crop-1664270486366.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 57751
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1664192588573.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/84c6dde0fa04-crop-1664192588573.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:327",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/84c6dde0fa04-crop-1664192588573.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 78269
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/banner/crop-1773024256470.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/8a1957ba9a56-crop-1773024256470.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:420",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/8a1957ba9a56-crop-1773024256470.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 242021
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/banner/crop-1751514312395.jpg",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/7611e6f76df0-crop-1751514312395.jpg",
+      "filePath": "src/data/brand-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/brand-images.ts:508",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/7611e6f76df0-crop-1751514312395.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 366712
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1751960721283.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/ed250072c6ef-crop-1751960721283.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:158",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/ed250072c6ef-crop-1751960721283.png",
+      "contentType": "image/png",
+      "bytes": 371459
+    },
+    {
+      "sourceUrl": "https://www.matrixintertrade.com/images/ready-template/crop-1755832392467.png",
+      "targetUrl": "https://sefxaafqvjpmjmewsfuw.supabase.co/storage/v1/object/public/admin-media/legacy-imports/www.matrixintertrade.com/a6e77a1db96d-crop-1755832392467.png",
+      "filePath": "src/data/article-images.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-images.ts:270",
+      "objectPath": "legacy-imports/www.matrixintertrade.com/a6e77a1db96d-crop-1755832392467.png",
+      "contentType": "image/png",
+      "bytes": 456491
+    }
+  ]
+}

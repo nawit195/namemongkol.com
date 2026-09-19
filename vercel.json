@@ -1,0 +1,559 @@
+{
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/videos/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(jpg|jpeg|png|webp|avif|svg|mp4|webm)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/17964944/หน้าแรก",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/17964944/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/โรงเรียน-และสถาบันการศึกษา",
+      "destination": "/industry/education",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99-%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2",
+      "destination": "/industry/education",
+      "permanent": true
+    },
+    {
+      "source": "/โรงพยาบาล-คลีนิค",
+      "destination": "/industry/healthcare",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A2%E0%B8%B2%E0%B8%9A%E0%B8%B2%E0%B8%A5-%E0%B8%84%E0%B8%A5%E0%B8%B5%E0%B8%99%E0%B8%B4%E0%B8%84",
+      "destination": "/industry/healthcare",
+      "permanent": true
+    },
+    {
+      "source": "/สำนักงานและองค์กรธุรกิจ",
+      "destination": "/industry/corporate",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%AA%E0%B8%B3%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88",
+      "destination": "/industry/corporate",
+      "permanent": true
+    },
+    {
+      "source": "/ระบบวิดีโอคอนเฟอเร้นซ์-เพื่อทุกหน่วยงาน",
+      "destination": "/industry/government",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%A7%E0%B8%B4%E0%B8%94%E0%B8%B5%E0%B9%82%E0%B8%AD%E0%B8%84%E0%B8%AD%E0%B8%99%E0%B9%80%E0%B8%9F%E0%B8%AD%E0%B9%80%E0%B8%A3%E0%B9%89%E0%B8%99%E0%B8%8B%E0%B9%8C-%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99",
+      "destination": "/industry/government",
+      "permanent": true
+    },
+    {
+      "source": "/โซลูชั่นของเรา",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B9%82%E0%B8%8B%E0%B8%A5%E0%B8%B9%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา/Unilumin",
+      "destination": "/category/288194",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2/Unilumin",
+      "destination": "/category/288194",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา/kramerav",
+      "destination": "/category/235610",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2/kramerav",
+      "destination": "/category/235610",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา/Grandview",
+      "destination": "/category/237068",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2/Grandview",
+      "destination": "/category/237068",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา/Persona",
+      "destination": "/category/288209",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2/Persona",
+      "destination": "/category/288209",
+      "permanent": true
+    },
+    {
+      "source": "/ผลิตภัณฑ์ของเรา/tranScreen",
+      "destination": "/category/288210",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9C%E0%B8%A5%E0%B8%B4%E0%B8%95%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2/tranScreen",
+      "destination": "/category/288210",
+      "permanent": true
+    },
+    {
+      "source": "/switcher",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/conference",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/matrix",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/extender",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/control-system",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/cable",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/camera",
+      "destination": "/category/0",
+      "permanent": true
+    },
+    {
+      "source": "/บทความ",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%9A%E0%B8%97%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/ข่าว",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/smart-hospital",
+      "destination": "/industry/healthcare",
+      "permanent": true
+    },
+    {
+      "source": "/ติดตั้งจอ-led-คุณกำลังจ่ายเพื่อ-“ราคา”-หรือ-“คุณภาพการใช้งานระยะยาว”",
+      "destination": "/blog/article-1",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led-%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%88%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD-%E2%80%9C%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E2%80%9D-%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD-%E2%80%9C%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%B0%E0%B8%A2%E0%B8%B2%E0%B8%A7%E2%80%9D",
+      "destination": "/blog/article-1",
+      "permanent": true
+    },
+    {
+      "source": "/กำลังจะติดตั้งจอ-led-ถ้ายังดูแค่ราคา-คุณอาจกำลังตัดสินใจผิด",
+      "destination": "/blog/article-2",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%88%E0%B8%B0%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led-%E0%B8%96%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%84%E0%B9%88%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2-%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%9C%E0%B8%B4%E0%B8%94",
+      "destination": "/blog/article-2",
+      "permanent": true
+    },
+    {
+      "source": "/งบเท่านี้ซื้อจอ-led-ได้แบบไหน-คู่มือวางงบ-led-display-สำหรับองค์กร",
+      "destination": "/blog/article-3",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%87%E0%B8%9A%E0%B9%80%E0%B8%97%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%88%E0%B8%AD-led-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B9%84%E0%B8%AB%E0%B8%99-%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%A7%E0%B8%B2%E0%B8%87%E0%B8%87%E0%B8%9A-led-display-%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3",
+      "destination": "/blog/article-3",
+      "permanent": true
+    },
+    {
+      "source": "/10-คำถามเชิงกลยุทธ์ที่องค์กรต้องรู้-ก่อนตัดสินใจติดตั้งจอ-led",
+      "destination": "/blog/article-8",
+      "permanent": true
+    },
+    {
+      "source": "/10-%E0%B8%84%E0%B8%B3%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B8%81%E0%B8%A5%E0%B8%A2%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B9%8C%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%B9%E0%B9%89-%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led",
+      "destination": "/blog/article-8",
+      "permanent": true
+    },
+    {
+      "source": "/7-เหตุผลที่หน่วยงานรัฐควรติดตั้งจอ-led-กลางแจ้ง-แทนป้ายไวนิลแบบเดิม-ๆ",
+      "destination": "/blog/article-9",
+      "permanent": true
+    },
+    {
+      "source": "/7-%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%9C%E0%B8%A5%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led-%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87%E0%B9%81%E0%B8%88%E0%B9%89%E0%B8%87-%E0%B9%81%E0%B8%97%E0%B8%99%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%A2%E0%B9%84%E0%B8%A7%E0%B8%99%E0%B8%B4%E0%B8%A5%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%A1-%E0%B9%86",
+      "destination": "/blog/article-9",
+      "permanent": true
+    },
+    {
+      "source": "/ทำไมจอ-persona-ถึงเป็นจอสัมผัสอัจฉริยะอันดับ-1-จากไต้หวัน",
+      "destination": "/blog/article-10",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1%E0%B8%88%E0%B8%AD-persona-%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%88%E0%B8%AD%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%9C%E0%B8%B1%E0%B8%AA%E0%B8%AD%E0%B8%B1%E0%B8%88%E0%B8%89%E0%B8%A3%E0%B8%B4%E0%B8%A2%E0%B8%B0%E0%B8%AD%E0%B8%B1%E0%B8%99%E0%B8%94%E0%B8%B1%E0%B8%9A-1-%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B9%84%E0%B8%95%E0%B9%89%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%99",
+      "destination": "/blog/article-10",
+      "permanent": true
+    },
+    {
+      "source": "/การดูแลและบำรุงรักษาจอ-led-เพื่อให้ใช้งานได้ยาวนานในองค์กร",
+      "destination": "/blog/article-11",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B9%E0%B9%81%E0%B8%A5%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9A%E0%B8%B3%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%B2%E0%B8%88%E0%B8%AD-led-%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A2%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B2%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3",
+      "destination": "/blog/article-11",
+      "permanent": true
+    },
+    {
+      "source": "/5-เหตุผลที่จออินเตอร์แอคทีฟ-กำลังเป็นมาตรฐานของห้องเรียนอัจฉริยะ",
+      "destination": "/blog/article-12",
+      "permanent": true
+    },
+    {
+      "source": "/5-%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%9C%E0%B8%A5%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%88%E0%B8%AD%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%AD%E0%B8%84%E0%B8%97%E0%B8%B5%E0%B8%9F-%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%A1%E0%B8%B2%E0%B8%95%E0%B8%A3%E0%B8%90%E0%B8%B2%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%88%E0%B8%89%E0%B8%A3%E0%B8%B4%E0%B8%A2%E0%B8%B0",
+      "destination": "/blog/article-12",
+      "permanent": true
+    },
+    {
+      "source": "/whiteboard-บนจอ-persona-ดีกว่าจออินเตอร์แอคทีฟทั่วไปอย่างไร",
+      "destination": "/blog/article-13",
+      "permanent": true
+    },
+    {
+      "source": "/whiteboard-%E0%B8%9A%E0%B8%99%E0%B8%88%E0%B8%AD-persona-%E0%B8%94%E0%B8%B5%E0%B8%81%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%88%E0%B8%AD%E0%B8%AD%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%AD%E0%B8%84%E0%B8%97%E0%B8%B5%E0%B8%9F%E0%B8%97%E0%B8%B1%E0%B9%88%E0%B8%A7%E0%B9%84%E0%B8%9B%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%A3",
+      "destination": "/blog/article-13",
+      "permanent": true
+    },
+    {
+      "source": "/led-display-vs-lcd-display-เลือกแบบไหนให้เหมาะกับองค์กรของคุณ",
+      "destination": "/blog/article-14",
+      "permanent": true
+    },
+    {
+      "source": "/led-display-vs-lcd-display-%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B9%84%E0%B8%AB%E0%B8%99%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B8%E0%B8%93",
+      "destination": "/blog/article-14",
+      "permanent": true
+    },
+    {
+      "source": "/จอ-persona-vs-projector-ต่างกันอย่างไร-เลือกให้ถูกก่อนตัดสินใจซื้อ",
+      "destination": "/blog/article-15",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%88%E0%B8%AD-persona-vs-projector-%E0%B8%95%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%A3-%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%96%E0%B8%B9%E0%B8%81%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD",
+      "destination": "/blog/article-15",
+      "permanent": true
+    },
+    {
+      "source": "/จอ-persona-vs-tv-ทั่วไป-ต่างกันแค่ไหน-เทียบชัดทุกจุดแบบมืออาชีพ",
+      "destination": "/blog/article-16",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%88%E0%B8%AD-persona-vs-tv-%E0%B8%97%E0%B8%B1%E0%B9%88%E0%B8%A7%E0%B9%84%E0%B8%9B-%E0%B8%95%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%84%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99-%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B8%A2%E0%B8%9A%E0%B8%8A%E0%B8%B1%E0%B8%94%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%88%E0%B8%B8%E0%B8%94%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B2%E0%B8%8A%E0%B8%B5%E0%B8%9E",
+      "destination": "/blog/article-16",
+      "permanent": true
+    },
+    {
+      "source": "/6-เหตุผลที่หน่วยงานรัฐควรใช้จอ-led-แทนโปรเจคเตอร์",
+      "destination": "/blog/article-17",
+      "permanent": true
+    },
+    {
+      "source": "/6-%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%9C%E0%B8%A5%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%AD-led-%E0%B9%81%E0%B8%97%E0%B8%99%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%88%E0%B8%84%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C",
+      "destination": "/blog/article-17",
+      "permanent": true
+    },
+    {
+      "source": "/classcraft-โซลูชั่นห้องเรียนอัจฉริยะจาก-persona",
+      "destination": "/blog/article-18",
+      "permanent": true
+    },
+    {
+      "source": "/classcraft-%E0%B9%82%E0%B8%8B%E0%B8%A5%E0%B8%B9%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%88%E0%B8%89%E0%B8%A3%E0%B8%B4%E0%B8%A2%E0%B8%B0%E0%B8%88%E0%B8%B2%E0%B8%81-persona",
+      "destination": "/blog/article-18",
+      "permanent": true
+    },
+    {
+      "source": "/เลือกจอ-interactive-ปี-2026-ทำไม-persona-คือคำตอบ",
+      "destination": "/blog/article-19",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%88%E0%B8%AD-interactive-%E0%B8%9B%E0%B8%B5-2026-%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1-persona-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%84%E0%B8%B3%E0%B8%95%E0%B8%AD%E0%B8%9A",
+      "destination": "/blog/article-19",
+      "permanent": true
+    },
+    {
+      "source": "/7-checklists-ที่องค์กรต้องรู้-ก่อนตัดสินใจติดตั้งจอ-led",
+      "destination": "/blog/article-20",
+      "permanent": true
+    },
+    {
+      "source": "/7-checklists-%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%B9%E0%B9%89-%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led",
+      "destination": "/blog/article-20",
+      "permanent": true
+    },
+    {
+      "source": "/5-แนวทางวางระบบจอ-led-สำหรับห้องประชุมองค์กรในปี-2026",
+      "destination": "/blog/article-22",
+      "permanent": true
+    },
+    {
+      "source": "/5-%E0%B9%81%E0%B8%99%E0%B8%A7%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%A7%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%88%E0%B8%AD-led-%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B9%83%E0%B8%99%E0%B8%9B%E0%B8%B5-2026",
+      "destination": "/blog/article-22",
+      "permanent": true
+    },
+    {
+      "source": "/google-edla-certified-คืออะไร-และทำไมจอ-persona-ถึงเหนือกว่าคู่แข่ง",
+      "destination": "/blog/article-23",
+      "permanent": true
+    },
+    {
+      "source": "/google-edla-certified-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1%E0%B8%88%E0%B8%AD-persona-%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B9%80%E0%B8%AB%E0%B8%99%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B9%81%E0%B8%82%E0%B9%88%E0%B8%87",
+      "destination": "/blog/article-23",
+      "permanent": true
+    },
+    {
+      "source": "/โซลูชั่นห้องเรียนอัจฉริยะด้วย-persona-interactive",
+      "destination": "/blog/article-24",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B9%82%E0%B8%8B%E0%B8%A5%E0%B8%B9%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%88%E0%B8%89%E0%B8%A3%E0%B8%B4%E0%B8%A2%E0%B8%B0%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-persona-interactive",
+      "destination": "/blog/article-24",
+      "permanent": true
+    },
+    {
+      "source": "/อยากติดตั้งจอ-led-ในองค์กร-ต้องเริ่มต้นอย่างไรบ้าง",
+      "destination": "/blog/article-25",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%AD%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%AD-led-%E0%B9%83%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3-%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%95%E0%B9%89%E0%B8%99%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%A3%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%87",
+      "destination": "/blog/article-25",
+      "permanent": true
+    },
+    {
+      "source": "/persona-interactive-ใช้สอนออนไลน์ได้ไหม-รองรับโปรแกรมอะไรบ้าง",
+      "destination": "/blog/article-26",
+      "permanent": true
+    },
+    {
+      "source": "/persona-interactive-%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%AA%E0%B8%AD%E0%B8%99%E0%B8%AD%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A5%E0%B8%99%E0%B9%8C%E0%B9%84%E0%B8%94%E0%B9%89%E0%B9%84%E0%B8%AB%E0%B8%A1-%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%87",
+      "destination": "/blog/article-26",
+      "permanent": true
+    },
+    {
+      "source": "/10-คำถามที่โรงเรียน-องค์กรถามบ่อยก่อนซื้อ-จอ-persona",
+      "destination": "/blog/article-27",
+      "permanent": true
+    },
+    {
+      "source": "/10-%E0%B8%84%E0%B8%B3%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99-%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD-%E0%B8%88%E0%B8%AD-persona",
+      "destination": "/blog/article-27",
+      "permanent": true
+    },
+    {
+      "source": "/9-ฟีเจอร์เด่นของ-persona-interactive-display",
+      "destination": "/blog/article-28",
+      "permanent": true
+    },
+    {
+      "source": "/9-%E0%B8%9F%E0%B8%B5%E0%B9%80%E0%B8%88%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%94%E0%B9%88%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87-persona-interactive-display",
+      "destination": "/blog/article-28",
+      "permanent": true
+    },
+    {
+      "source": "/ติดตั้งจอled",
+      "destination": "/blog/article-1",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%ADled",
+      "destination": "/blog/article-1",
+      "permanent": true
+    },
+    {
+      "source": "/5-ปัจจัยที่ต้องรู้ก่อนสั่งซื้อ-“จอ-led”-เพื่อใช้งานจริงในองค์กร",
+      "destination": "/blog/article-31",
+      "permanent": true
+    },
+    {
+      "source": "/5-%E0%B8%9B%E0%B8%B1%E0%B8%88%E0%B8%88%E0%B8%B1%E0%B8%A2%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%B9%E0%B9%89%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%8B%E0%B8%B7%E0%B9%89%E0%B8%AD-%E2%80%9C%E0%B8%88%E0%B8%AD-led%E2%80%9D-%E0%B9%80%E0%B8%9E%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B9%83%E0%B8%99%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B9%8C%E0%B8%81%E0%B8%A3",
+      "destination": "/blog/article-31",
+      "permanent": true
+    },
+    {
+      "source": "/ทำไมธุรกิจยุคใหม่ถึงเลือกใช้จอledแทนโปรเจกเตอร์",
+      "destination": "/blog/article-32",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%A2%E0%B8%B8%E0%B8%84%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%81%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%ADled%E0%B9%81%E0%B8%97%E0%B8%99%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%80%E0%B8%88%E0%B8%81%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C",
+      "destination": "/blog/article-32",
+      "permanent": true
+    },
+    {
+      "source": "/สิ่งที่ควรรู้ก่อนตัดสินใจติดตั้งจอled",
+      "destination": "/blog/article-33",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%84%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%B9%E0%B9%89%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%95%E0%B8%B1%E0%B8%94%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B9%83%E0%B8%88%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%88%E0%B8%ADled",
+      "destination": "/blog/article-33",
+      "permanent": true
+    },
+    {
+      "source": "/umate-lm-จาก-unilumin-—-จอ-led-ที่ตอบโจทย์ทุกภาคธุรกิจ",
+      "destination": "/blog/article-40",
+      "permanent": true
+    },
+    {
+      "source": "/umate-lm-%E0%B8%88%E0%B8%B2%E0%B8%81-unilumin-%E2%80%94-%E0%B8%88%E0%B8%AD-led-%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%95%E0%B8%AD%E0%B8%9A%E0%B9%82%E0%B8%88%E0%B8%97%E0%B8%A2%E0%B9%8C%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88",
+      "destination": "/blog/article-40",
+      "permanent": true
+    },
+    {
+      "source": "/มาทำความรู้จักกับ-screen-resolution-คืออะไร",
+      "destination": "/blog/article-41",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%A1%E0%B8%B2%E0%B8%97%E0%B8%B3%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%E0%B8%88%E0%B8%B1%E0%B8%81%E0%B8%81%E0%B8%B1%E0%B8%9A-screen-resolution-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3",
+      "destination": "/blog/article-41",
+      "permanent": true
+    },
+    {
+      "source": "/ความแตกต่างระหว่าง-module-led-และ-cabinet-led",
+      "destination": "/blog/article-42",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%81%E0%B8%95%E0%B8%81%E0%B8%95%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B0%E0%B8%AB%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%87-module-led-%E0%B9%81%E0%B8%A5%E0%B8%B0-cabinet-led",
+      "destination": "/blog/article-42",
+      "permanent": true
+    },
+    {
+      "source": "/รู้หรือไม่-pixel-pitch-คืออะไร-และสำคัญอย่างไรกับจอ-led",
+      "destination": "/blog/article-43",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%A3%E0%B8%B9%E0%B9%89%E0%B8%AB%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B9%84%E0%B8%A1%E0%B9%88-pixel-pitch-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%A3%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%88%E0%B8%AD-led",
+      "destination": "/blog/article-43",
+      "permanent": true
+    },
+    {
+      "source": "/จอledallinoneครองตลาดห้องประชุมยุคlcdกำลังจะล้าสมัย",
+      "destination": "/blog/article-44",
+      "permanent": true
+    },
+    {
+      "source": "/%E0%B8%88%E0%B8%ADledallinone%E0%B8%84%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%95%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%A2%E0%B8%B8%E0%B8%84lcd%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B8%88%E0%B8%B0%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%AA%E0%B8%A1%E0%B8%B1%E0%B8%A2",
+      "destination": "/blog/article-44",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-avoverip",
+      "destination": "/blog/article-45",
+      "permanent": true
+    },
+    {
+      "source": "/5-เทคโนโลยีสุดล้ำ-เปลี่ยนห้องประชุมธรรมดาให้กลายเป็นห้องประชุมยุคใหม่",
+      "destination": "/blog/article-47",
+      "permanent": true
+    },
+    {
+      "source": "/5-%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%A5%E0%B9%89%E0%B8%B3-%E0%B9%80%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%99%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%98%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%94%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%A2%E0%B8%B8%E0%B8%84%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88",
+      "destination": "/blog/article-47",
+      "permanent": true
+    },
+    {
+      "source": "/5เหตุผลว่าทำไมจอnewlineqseriesเหมาะกับโรงเรียนของคุณ",
+      "destination": "/blog/article-48",
+      "permanent": true
+    },
+    {
+      "source": "/5%E0%B9%80%E0%B8%AB%E0%B8%95%E0%B8%B8%E0%B8%9C%E0%B8%A5%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1%E0%B8%88%E0%B8%ADnewlineqseries%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B8%E0%B8%93",
+      "destination": "/blog/article-48",
+      "permanent": true
+    },
+    {
+      "source": "/hdbaset-คืออะไร-เทคโนโลยีนี้ทำงานอย่างไร",
+      "destination": "/blog/article-50",
+      "permanent": true
+    },
+    {
+      "source": "/hdbaset-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%A3",
+      "destination": "/blog/article-50",
+      "permanent": true
+    }
+  ]
+}

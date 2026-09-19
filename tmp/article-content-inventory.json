@@ -1,0 +1,360 @@
+{
+  "generatedAt": "2026-06-06T04:37:42.812Z",
+  "mode": "inventory",
+  "scope": "article-content",
+  "bucket": "admin-media",
+  "inventoryOnly": true,
+  "apply": false,
+  "files": ["src/data/article-contents.ts"],
+  "candidates": [
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/ติดตั้งจอ_LED_คุณกำลังจ่ายเพื่อ_ราคา_หรือ_คุณภาพการใช้งานระยะยาว2.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:997"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/กำลังจะติดตั้งจอ_LED_ถ้ายังดูแค่ราคา_คุณอาจกำลังตัดสินใจผิด.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:8484"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/งบเท่านี้ซื้อจอ_LED_ได้แบบไหน_คู่มือวางงบ_LED_Display_สำหรับองค์กร.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:15135"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Hybrid_Meeting_ยังไม่เวิร์ก_แก้ได้ด้วย_Persona_Interactive_และระบบที่องค์กรต้องมี.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:22477"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_LED_1_จอ_ต้องมีอะไรบ้าง_คู่มือระบบ_LED_Display_สำหรับองค์กรที่มือใหม่ก็เข้าใจ.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:30262"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Active_Learning_ด้วย_Persona_ยกระดับห้องเรียนสู่_Smart_Classroom.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:38336"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Case_Study_อัปเกรดห้องเรียนด้วย_Persona_Interactive_ที่โรงเรียนจุฑาทิพย์_จ.ฉะเชิงเทรา_1_.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:47464"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/10_คำถามเชิงกลยุทธ์ที่องค์กรต้องรู้_ก่อนตัดสินใจติดตั้งจอ_LED_ed1.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:57044"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_LED_กลางแจ้ง_สำหรับหน่วยงานรัฐ.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:65390"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/ทำไมจอ_Persona_ถึงเป็นจอสัมผัสอัจฉริยะอันดับ_1_จากไต้หวัน.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:72999"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/การดูแลและบำรุงรักษาจอ_LED_เพื่อให้ใช้งานได้ยาวนานในองค์กร.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:80449"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/5_เหตุผลที่จออินเตอร์แอคทีฟ_กำลังเป็นมาตรฐานของห้องเรียนอัจฉริยะ.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:88972"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Whiteboard_บนจอ_Persona_ดีกว่าจออินเตอร์แอคทีฟทั่วไปอย่างไร.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:96112"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/LED_Display_vs_LCD_Display_เลือกแบบไหนให้เหมาะกับองค์กรของคุณ.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:103141"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_Persona_vs_Projector_ต่างกันอย่างไร_เลือกให้ถูกก่อนตัดสินใจซื้อ-.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:110592"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_Persona_vs_TV_ทั่วไป_ต่างกันแค่ไหน_เทียบชัดทุกจุดแบบมืออาชีพ-.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:118516"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/6_เหตุผลที่หน่วยงานรัฐควรใช้จอ_LED_แทนโปรเจคเตอร์.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:126167"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/ClassCraft_โซลูชั่นห้องเรียนอัจฉริยะจาก_Persona.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:133761"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/เลือกจอ_Interactive_ปี_2026_ทำไม_Persona_คือคำตอบ.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:141177"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/7_Checklists_ที่องค์กรต้องรู้_ก่อนตัดสินใจติดตั้งจอ_LED.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:149207"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/DMS+_ระบบจัดการจอจากระยะไกล_ที่โรงเรียนยุคใหม่ต้องมี.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:157512"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/5_แนวทางวางระบบจอ_LED_สำหรับห้องประชุมองค์กรในปี_20261.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:166409"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Google_EDLA_Certified_คืออะไร_และทำไมจอ_Persona_ถึงเหนือกว่าคู่แข่ง.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:176142"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/โซลูชันห้องเรียนอัจฉริยะด้วย_Persona_Interactive-.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:185403"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_LED_Unilumin.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:194444"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Persona_Interactive_ใช้สอนออนไลน์ได้ไหม_รองรับโปรแกรมอะไรบ้าง.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:202215"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/10_คำถามที่โรงเรียน-องค์กรถามบ่อยก่อนซื้อ_จอ_Persona--.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:209493"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/9_ฟีเจอร์เด่นจอ_Persona--.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:217655"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_LED_แบบ_SMD_GOB_COB_ต่างกันอย่างไร.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:224400"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/จอ_LED.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:240979"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/บทความจอ_LED.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:247507"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/ประเภทการติดตัั้งจอ_LED.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:252464"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umate_SF2.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:258315"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umate_SF3.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:258431"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umate_SF11.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:259496"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umate_SF21.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:260620"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/KTA-PRO-FULL(官網BN)_1.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:263947"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/TH_KTA_PRO_FULL_#1_.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:266756"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Matrix_TH_(2).png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:266882"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Screen_กรอบ_Silver.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:268420"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Usurface.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:269748"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Usurface1.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:271021"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Usurface2.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:271989"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/AIO.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:279902"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umini_P_-_Unilumin_1.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:283008"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umini_P_-_Unilumin_21.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:283892"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umini_P_-_Unilumin_3.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:284799"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umini_P_-_Unilumin_5.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:285562"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Umini_P_-_Unilumin_6.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:286406"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/ULM1.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:288523"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Unilumin-2.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:289984"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Unilumin-3.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:290802"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/Unilumin-4.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:290919"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/original-1742871421689.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:291366"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/original-1742954908296.jpg",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:296023"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/5_เหตุผล_(1)1.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:300438"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/3.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:304879"
+    },
+    {
+      "url": "https://www.matrixintertrade.com/images/editor/เปลี่ยนห้องประชุมธรรมดาให้กลายเป็นห้องประชุมยุคใหม่.png",
+      "filePath": "src/data/article-contents.ts",
+      "sourceKind": "plain-string",
+      "sourceRef": "src/data/article-contents.ts:314250"
+    }
+  ],
+  "migrated": []
+}

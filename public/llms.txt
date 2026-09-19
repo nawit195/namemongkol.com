@@ -1,0 +1,20 @@
+# Matrix Intertrade
+
+> ผู้เชี่ยวชาญด้าน AV Solutions ในประเทศไทย — LED Display, Interactive Display, Projector, Wireless Presentation และระบบภาพ-เสียงครบวงจรสำหรับองค์กร โรงเรียน โรงแรม และหน่วยงานรัฐ
+
+Matrix Intertrade เป็นตัวแทนจำหน่ายอย่างเป็นทางการของแบรนด์ AV ระดับโลก เช่น Unilumin, Persona, KramerAV, Grandview และ tranScreen พร้อมทีม Sales Engineer และทีมช่างที่ดูแลตั้งแต่ออกแบบ ติดตั้ง จนถึงบริการหลังการขาย
+
+## Pages
+
+- [หน้าแรก](/): ภาพรวมโซลูชั่นภาพและเสียงของ Matrix Intertrade
+- [เกี่ยวกับเรา](/aboutus): ประวัติบริษัท วิสัยทัศน์ และพันธมิตรแบรนด์
+- [โซลูชั่นทั้งหมด](/solutions): สรุปกลุ่มโซลูชั่นที่บริษัทให้บริการ
+- [LED Display](/led-display): จอ LED Indoor / Outdoor / All-in-One
+- [Interactive Display](/interactive-display): จอสัมผัส Persona สำหรับการเรียนการสอนและประชุม
+- [Projector](/projector): โปรเจกเตอร์ความสว่างสูงและจอรับภาพ Grandview
+- [Wireless Presentation](/wireless-presentation): tranScreen ระบบนำเสนอไร้สาย
+- [AV Solutions](/av-solutions): ระบบภาพและเสียงครบวงจร Kramer AV
+- [แบรนด์พันธมิตร](/brands): รายชื่อแบรนด์ที่บริษัทเป็นตัวแทนจำหน่าย
+- [สินค้าทั้งหมด](/category/all-products): แค็ตตาล็อกสินค้า AV
+- [บทความและคู่มือ](/blog): ความรู้และ Case Study ด้าน AV
+- [ติดต่อเรา](/contactus): ขอใบเสนอราคาและนัด Site Survey
