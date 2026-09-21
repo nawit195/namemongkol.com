@@ -425,13 +425,36 @@ function getArticleTakeaways(article: Article) {
 
 function getArticleIntentLinks(article: Article) {
     const searchText = `${article.title} ${article.excerpt} ${article.category} ${(article.keywords || []).join(' ')}`.toLowerCase();
+    const changeNamePillarSlug = 'change-auspicious-name-checklist-numerology-thaksa-ayatana-surname';
     const links = [
         {
             href: '/name-check',
-            title: 'วิเคราะห์ชื่อฟรี',
+            title: 'วิเคราะห์ชื่อ-นามสกุลฟรี',
             description: 'ตรวจผลรวมชื่อ ทักษา อายตนะ และอักษรกาลกิณีจากชื่อจริงของคุณ',
         },
     ];
+
+    if (
+        searchText.includes('ตั้งชื่อ')
+        || searchText.includes('ชื่อลูก')
+        || searchText.includes('ชื่อผู้ชาย')
+        || searchText.includes('ชื่อผู้หญิง')
+        || searchText.includes('เปลี่ยนชื่อ')
+    ) {
+        links.push({
+            href: '/search',
+            title: 'ค้นหาชื่อมงคล',
+            description: 'ค้นชื่อพร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสม',
+        });
+    }
+
+    if (searchText.includes('เปลี่ยนชื่อ') && article.slug !== changeNamePillarSlug) {
+        links.push({
+            href: `/articles/${changeNamePillarSlug}`,
+            title: 'เช็กลิสต์ก่อนเปลี่ยนชื่อมงคล',
+            description: 'ตรวจเลขศาสตร์ ทักษา อายตนะ เสียงเรียก และความเข้ากันกับนามสกุลก่อนเปลี่ยนชื่อ',
+        });
+    }
 
     if (searchText.includes('เบอร์') || searchText.includes('phone')) {
         links.push({

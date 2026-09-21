@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import ClientHome from '@/app/ClientHome';
 import { HomeFallback } from '@/components/HomeFallback';
 import { NameCheckSeoContent } from '@/components/NameCheckSeoContent';
+import { nameCheckFaqItems, nameCheckHowTo } from '@/data/nameCheckSeo';
 import { siteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -73,60 +74,28 @@ const breadcrumbSchema = {
 const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-        {
-            '@type': 'Question',
-            name: 'NameMongkol วิเคราะห์ละเอียดต่างจากการดูผลรวมเลขอย่างไร?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'จุดเด่นของ NameMongkol คือการวิเคราะห์ชื่อแบบละเอียด โดยถอดตัวอักษรแต่ละตัวเป็นค่าเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังส่งเสริม จุดที่ควรระวัง และความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น',
-            },
+    mainEntity: nameCheckFaqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
         },
-        {
-            '@type': 'Question',
-            name: 'หน้า /name-check เหมาะกับการเช็กอะไร?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'เหมาะกับการเช็กชื่อจริงและนามสกุลแบบละเอียดก่อนเปลี่ยนชื่อ ตั้งชื่อลูก หรือเลือกชื่อที่เข้ากับนามสกุล ผู้ใช้จะเห็นผลรวมเลขศาสตร์ ตารางถอดรหัสตัวอักษร คู่เลขในชื่อ คู่เลขในนามสกุล และคำอธิบายพลังของแต่ละคู่',
-            },
-        },
-        {
-            '@type': 'Question',
-            name: 'ผลลัพธ์หลังวิเคราะห์ชื่อแสดงอะไรบ้าง?',
-            acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'ผลลัพธ์แสดงทั้งผลรวมเลขศาสตร์ คะแนนภาพรวม ตารางถอดอักษรเป็นเลข คู่เลขในชื่อ คู่เลขในนามสกุล ทักษาปกรณ์ อักษรกาลกิณี อายตนะ 6 และนิรันดร์ศาสตร์ เพื่อให้เห็นภาพรวมมากกว่าค่าเลขรวมเพียงค่าเดียว',
-            },
-        },
-    ],
+    })),
 };
 
 const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: 'วิธีวิเคราะห์ชื่อ-นามสกุลแบบละเอียดที่ NameMongkol',
-    description: 'ขั้นตอนเช็กชื่อจริงและนามสกุล โดยถอดอักษรเป็นเลขศาสตร์ รวมเลข และจับคู่เลขเพื่ออ่านพลังรายคู่',
-    totalTime: 'PT1M',
-    step: [
-        {
-            '@type': 'HowToStep',
-            position: 1,
-            name: 'กรอกชื่อจริงและนามสกุล',
-            text: 'พิมพ์ชื่อจริงและนามสกุลที่ต้องการตรวจ เพื่อให้ระบบถอดตัวอักษรแต่ละตัวเป็นค่าเลขศาสตร์',
-        },
-        {
-            '@type': 'HowToStep',
-            position: 2,
-            name: 'เลือกวันเกิด',
-            text: 'เลือกวันเกิดเพื่อให้ระบบตรวจทักษาปกรณ์ อักษรกาลกิณี และพลังที่สัมพันธ์กับวันเกิด',
-        },
-        {
-            '@type': 'HowToStep',
-            position: 3,
-            name: 'ดูผลรวมและคู่เลขรายตัว',
-            text: 'ผลลัพธ์จะแสดงทั้งผลรวมเลขศาสตร์ ตารางถอดรหัสเลขศาสตร์ คู่เลขในชื่อ คู่เลขในนามสกุล และคำอธิบายพลังของแต่ละคู่ ไม่ใช่จัดเกรดจากผลรวมเพียงอย่างเดียว',
-        },
-    ],
+    name: nameCheckHowTo.name,
+    description: nameCheckHowTo.description,
+    totalTime: nameCheckHowTo.totalTime,
+    step: nameCheckHowTo.steps.map((item, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: item.name,
+        text: item.text,
+    })),
 };
 
 export default function NameCheckPage() {
@@ -170,9 +139,8 @@ export default function NameCheckPage() {
                 </div>
             </section>
 
-            {/* Reuse the main Home tool — same experience, different URL targeting new keyword */}
-            <Suspense fallback={<HomeFallback heroHeadingLevel="h2" />}>
-                <ClientHome heroHeadingLevel="h2" />
+            <Suspense fallback={<HomeFallback surface="name-check" />}>
+                <ClientHome surface="name-check" />
             </Suspense>
 
             <NameCheckSeoContent />

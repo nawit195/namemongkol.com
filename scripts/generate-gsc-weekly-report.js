@@ -158,16 +158,35 @@ const PRESETS = {
     'name-seo': {
         title: 'Weekly GSC Report (Name SEO & Premium Funnel)',
         cohortMatchers: [
+            {
+                key: 'home',
+                label: '/',
+                match: (u) => {
+                    try {
+                        return new URL(u).pathname === '/';
+                    } catch {
+                        return u === '/';
+                    }
+                },
+            },
             { key: 'search', label: '/search', match: (u) => /\/search$/.test(u) },
             { key: 'name-check', label: '/name-check', match: (u) => /\/name-check$/.test(u) },
             { key: 'name-generator', label: '/name-generator', match: (u) => /\/name-generator$/.test(u) },
             { key: 'premium-search', label: '/premium-search', match: (u) => /\/premium-search$/.test(u) },
+            { key: 'change-name-pillar', label: '/articles/change-auspicious-name-checklist-*', match: (u) => /\/articles\/change-auspicious-name-checklist-numerology-thaksa-ayatana-surname$/.test(u) },
+            { key: 'change-name-2569', label: '/articles/change-name-destiny-tuning-2569', match: (u) => /\/articles\/change-name-destiny-tuning-2569$/.test(u) },
+            { key: 'protected-monday-girl', label: '/articles/monday-girl-names-2569-no-sara', match: (u) => /\/articles\/monday-girl-names-2569-no-sara$/.test(u) },
+            { key: 'protected-wallpapers', label: '/wallpapers and /wallpapers/day/*', match: (u) => /\/wallpapers$|\/wallpapers\/day\//.test(u) },
             { key: 'boys', label: '/names/boys', match: (u) => /\/names\/boys$/.test(u) },
             { key: 'girls', label: '/names/girls', match: (u) => /\/names\/girls$/.test(u) },
             { key: 'birthday-overviews', label: '/names/by-birthday/*', match: (u) => /\/names\/by-birthday\//.test(u) },
             { key: 'birthday-gender-pages', label: '/names/*/by-birthday/*', match: (u) => /\/names\/(boys|girls)\/by-birthday\//.test(u) },
         ],
         queryMatchers: [
+            { key: 'name-head-exact', pattern: /^ชื่อมงคล$/i },
+            { key: 'analyze-name-exact', pattern: /^วิเคราะห์ชื่อ$/i },
+            { key: 'analyze-auspicious-name-exact', pattern: /^วิเคราะห์ชื่อมงคล$/i },
+            { key: 'change-name-exact', pattern: /^เปลี่ยนชื่อมงคล$/i },
             { key: 'search-names', pattern: /(ค้นหาชื่อมงคล|ชื่อมงคล|ชื่อความหมายดี)/i },
             { key: 'analyze-name', pattern: /(วิเคราะห์ชื่อ|วิเคราะห์ชื่อ.*นามสกุล|เช็คชื่อ)/i },
             { key: 'boy-names', pattern: /(ตั้งชื่อลูกชาย|ชื่อลูกชาย)/i },
@@ -180,10 +199,23 @@ const PRESETS = {
             { key: 'ai-name', pattern: /(ตั้งชื่อด้วย ai|สร้างชื่อ.*ai)/i },
         ],
         cannibalizationPages: [
+            {
+                key: 'home',
+                label: '/',
+                match: (u) => {
+                    try {
+                        return new URL(u).pathname === '/';
+                    } catch {
+                        return u === '/';
+                    }
+                },
+            },
             { key: 'search', label: '/search', match: (u) => /\/search$/.test(u) },
             { key: 'name-check', label: '/name-check', match: (u) => /\/name-check$/.test(u) },
             { key: 'name-generator', label: '/name-generator', match: (u) => /\/name-generator$/.test(u) },
             { key: 'premium-search', label: '/premium-search', match: (u) => /\/premium-search$/.test(u) },
+            { key: 'change-name-pillar', label: '/articles/change-auspicious-name-checklist-*', match: (u) => /\/articles\/change-auspicious-name-checklist-numerology-thaksa-ayatana-surname$/.test(u) },
+            { key: 'change-name-2569', label: '/articles/change-name-destiny-tuning-2569', match: (u) => /\/articles\/change-name-destiny-tuning-2569$/.test(u) },
             { key: 'boys', label: '/names/boys', match: (u) => /\/names\/boys$/.test(u) },
             { key: 'girls', label: '/names/girls', match: (u) => /\/names\/girls$/.test(u) },
             { key: 'birthday-overviews', label: '/names/by-birthday/*', match: (u) => /\/names\/by-birthday\//.test(u) },

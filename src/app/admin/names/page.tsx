@@ -1,13 +1,29 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Save, RefreshCw, FileText, AlertTriangle, Copy, Plus, Replace, Database, Crown } from 'lucide-react';
+import { Save, RefreshCw, FileText, AlertTriangle, Copy, Plus, Replace, Database, Crown, Download } from 'lucide-react';
+import { thaksaConfig, type DayKey } from '@/data/thaksa';
+import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 import MeaningReviewPanel from './MeaningReviewPanel';
 import PronunciationReviewPanel from './PronunciationReviewPanel';
 
 type DataSource = 'db' | 'premium';
 type SaveMode = 'append' | 'replace';
 type AdminSection = 'names' | 'meanings' | 'pronunciations';
+type ExportGender = 'all' | 'male' | 'female' | 'neutral';
+
+function getDownloadFilename(contentDisposition: string | null): string | null {
+    if (!contentDisposition) return null;
+    const utf8Filename = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+    if (utf8Filename) {
+        try {
+            return decodeURIComponent(utf8Filename);
+        } catch {
+            return null;
+        }
+    }
+    return contentDisposition.match(/filename="([^"]+)"/i)?.[1] ?? null;
+}
 
 interface SaveStats {
     received: number;
@@ -28,6 +44,10 @@ export default function AdminNamesPage() {
     const [saveMode, setSaveMode] = useState<SaveMode>('append');
     const [lastStats, setLastStats] = useState<SaveStats | null>(null);
     const [adminSection, setAdminSection] = useState<AdminSection>('names');
+    const [exportDay, setExportDay] = useState<DayKey | 'all'>('all');
+    const [exportGender, setExportGender] = useState<ExportGender>('all');
+    const [exportInitial, setExportInitial] = useState<string>('all');
+    const [isExporting, setIsExporting] = useState(false);
 
     const apiEndpoint = dataSource === 'db' ? '/api/admin/names' : '/api/admin/premium-names';
 
@@ -200,6 +220,46 @@ export default function AdminNamesPage() {
         });
     };
 
+    const downloadSearchCsv = async () => {
+        if (isExporting) return;
+        setIsExporting(true);
+        try {
+            const params = new URLSearchParams({
+                view: 'csv',
+                day: exportDay,
+                gender: exportGender,
+                initial: exportInitial,
+            });
+            const response = await fetch(`/api/admin/names?${params.toString()}`, { cache: 'no-store' });
+            if (!response.ok) {
+                const payload = await response.json().catch(() => null) as { error?: string } | null;
+                throw new Error(payload?.error || 'ไม่สามารถสร้างไฟล์ CSV ได้');
+            }
+
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = getDownloadFilename(response.headers.get('Content-Disposition'))
+                ?? `รายชื่อมงคล-search-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        } catch (error: unknown) {
+            const Swal = (await import('sweetalert2')).default;
+            await Swal.fire({
+                title: 'ดาวน์โหลดไม่สำเร็จ',
+                text: error instanceof Error ? error.message : 'ไม่สามารถสร้างไฟล์ CSV ได้',
+                icon: 'error',
+                background: '#1e293b',
+                color: '#fff',
+            });
+        } finally {
+            setIsExporting(false);
+        }
+    };
+
     const isPremium = dataSource === 'premium';
 
     return (
@@ -261,6 +321,77 @@ export default function AdminNamesPage() {
                     : adminSection === 'pronunciations'
                         ? <PronunciationReviewPanel />
                         : <>
+                {/* Public search CSV export */}
+                <section className="rounded-2xl border border-emerald-500/20 bg-emerald-950/20 p-5 shadow-xl" aria-labelledby="search-csv-export-title">
+                    <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                        <div>
+                            <h2 id="search-csv-export-title" className="flex items-center gap-2 text-lg font-bold text-white">
+                                <Download className="h-5 w-5 text-emerald-400" />
+                                ดาวน์โหลดข้อมูลหน้า /search
+                            </h2>
+                            <p className="mt-1 text-sm leading-6 text-slate-400">
+                                ส่งออกชื่อมงคล คำอ่าน ความหมาย วัน และผลรวมเลขศาสตร์ทั้งหมดที่ตรงกับตัวกรอง
+                            </p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={downloadSearchCsv}
+                            disabled={isExporting}
+                            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-950/30 transition-colors hover:bg-emerald-500 disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                            {isExporting ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+                            {isExporting ? 'กำลังสร้าง CSV...' : 'ดาวน์โหลด CSV'}
+                        </button>
+                    </div>
+
+                    <div className="mt-5 grid gap-4 md:grid-cols-3">
+                        <label className="space-y-2 text-sm font-medium text-slate-300">
+                            <span>วันเกิดที่เหมาะสม</span>
+                            <select
+                                value={exportDay}
+                                onChange={(event) => setExportDay(event.target.value as DayKey | 'all')}
+                                disabled={isExporting}
+                                className="min-h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-slate-200 outline-none transition-colors focus:border-emerald-500 disabled:opacity-60"
+                            >
+                                <option value="all">ทุกวัน</option>
+                                {(Object.entries(thaksaConfig) as Array<[DayKey, (typeof thaksaConfig)[DayKey]]>).map(([key, config]) => (
+                                    <option key={key} value={key}>{config.name}</option>
+                                ))}
+                            </select>
+                        </label>
+
+                        <label className="space-y-2 text-sm font-medium text-slate-300">
+                            <span>เพศ</span>
+                            <select
+                                value={exportGender}
+                                onChange={(event) => setExportGender(event.target.value as ExportGender)}
+                                disabled={isExporting}
+                                className="min-h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-slate-200 outline-none transition-colors focus:border-emerald-500 disabled:opacity-60"
+                            >
+                                <option value="all">ทุกเพศ</option>
+                                <option value="male">ชาย</option>
+                                <option value="female">หญิง</option>
+                                <option value="neutral">ใช้ได้ทุกเพศ</option>
+                            </select>
+                        </label>
+
+                        <label className="space-y-2 text-sm font-medium text-slate-300">
+                            <span>อักษรนำ</span>
+                            <select
+                                value={exportInitial}
+                                onChange={(event) => setExportInitial(event.target.value)}
+                                disabled={isExporting}
+                                className="min-h-11 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 text-slate-200 outline-none transition-colors focus:border-emerald-500 disabled:opacity-60"
+                            >
+                                <option value="all">ทุกอักษร</option>
+                                {THAI_NAME_INITIALS.map((initial) => (
+                                    <option key={initial} value={initial}>{initial}</option>
+                                ))}
+                            </select>
+                        </label>
+                    </div>
+                </section>
+
                 {/* Data Source Toggle */}
                 <div className="flex items-center gap-3">
                     <span className="text-sm text-slate-400 font-medium">แหล่งข้อมูล:</span>

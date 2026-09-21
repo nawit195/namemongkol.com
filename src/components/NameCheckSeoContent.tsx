@@ -1,32 +1,5 @@
 import Link from 'next/link';
-
-const faqItems = [
-    {
-        question: 'NameMongkol วิเคราะห์ละเอียดต่างจากการดูผลรวมเลขอย่างไร?',
-        answer:
-            'จุดเด่นของ NameMongkol คือการวิเคราะห์ชื่อแบบละเอียด โดยถอดตัวอักษรแต่ละตัวเป็นค่าเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังส่งเสริม จุดที่ควรระวัง และความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น',
-    },
-    {
-        question: 'วิเคราะห์ชื่อ นามสกุล ฟรี ต้องสมัครสมาชิกไหม?',
-        answer:
-            'เพียงสมัครสมาชิกและเข้าสู่ระบบ จากนั้นกรอกชื่อ นามสกุล และวันเกิด ระบบจะคำนวณผลรวมเลขศาสตร์ ตรวจอักษรกาลกิณี และวิเคราะห์ความสมพงศ์ของชื่อกับนามสกุลให้ทันที',
-    },
-    {
-        question: 'วิเคราะห์ชื่อ แล้วได้ข้อมูลอะไรบ้าง?',
-        answer:
-            'คุณจะเห็นผลรวมเลขศาสตร์ เกรดชื่อ คำทำนายพลังชื่อ วิเคราะห์ทักษาปกรณ์ อายตนะ 6 นิรันดร์ศาสตร์ และคู่เลขที่ต้องระวังในชื่อกับนามสกุล',
-    },
-    {
-        question: 'ทำไมต้องวิเคราะห์ทั้งชื่อและนามสกุล?',
-        answer:
-            'เพราะผลรวมเลขศาสตร์ที่มีผลจริงคำนวณจากชื่อและนามสกุลรวมกัน อีกทั้งนิรันดร์ศาสตร์ยังใช้ดูว่าทั้งสองส่วนส่งเสริมกันหรือขัดกัน',
-    },
-    {
-        question: 'ถ้าผลวิเคราะห์ยังไม่ดี ควรทำอะไรต่อ?',
-        answer:
-            'ถ้าต้องการหาชื่อใหม่สามารถไปที่หน้าค้นหาชื่อมงคล หรือถ้าต้องการเจาะลึกให้เหมาะกับวันเวลาเกิดมากขึ้น สามารถใช้บริการวิเคราะห์ชื่อมงคลขั้นสูงได้ต่อทันที',
-    },
-];
+import { nameCheckFaqItems, nameCheckHowTo } from '@/data/nameCheckSeo';
 
 export function NameCheckSeoContent() {
     return (
@@ -52,6 +25,22 @@ export function NameCheckSeoContent() {
                     <p className="mt-3 text-sm leading-7 text-[#5a5a82] sm:text-base">
                         จุดเด่นของ NameMongkol คือการวิเคราะห์ชื่อแบบละเอียด โดยถอดตัวอักษรแต่ละตัวเป็นค่าเลขศาสตร์ แล้วจับเลขที่อยู่ติดกันเป็นคู่ เช่น 14, 24, 65 เพื่ออ่านพลังส่งเสริม จุดที่ควรระวัง และความหมายเชิงลึกของชื่อ ไม่ใช่ดูเฉพาะผลรวมตัวเลขเท่านั้น หลังวิเคราะห์ ผู้ใช้จะเห็นทั้งตารางถอดรหัสเลขศาสตร์ การ์ดคู่เลขในชื่อ และการ์ดคู่เลขในนามสกุล เพื่อใช้พิจารณาว่าชื่อส่งเสริมกันตรงไหน และจุดใดควรระวังก่อนนำไปใช้จริง
                     </p>
+                </div>
+
+                <div className="mt-10">
+                    <h2 className="text-xl font-bold text-[#1a1a3e] sm:text-2xl">{nameCheckHowTo.name}</h2>
+                    <p className="mt-3 text-sm leading-7 text-[#5a5a82] sm:text-base">{nameCheckHowTo.description}</p>
+                    <ol className="mt-5 grid gap-4 md:grid-cols-3">
+                        {nameCheckHowTo.steps.map((step, index) => (
+                            <li key={step.name} className="rounded-2xl border border-[#ddddf0] bg-white p-5 shadow-sm">
+                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-sm font-bold text-amber-700">
+                                    {index + 1}
+                                </span>
+                                <h3 className="mt-4 font-semibold text-[#1a1a3e]">{step.name}</h3>
+                                <p className="mt-2 text-sm leading-6 text-[#5a5a82]">{step.text}</p>
+                            </li>
+                        ))}
+                    </ol>
                 </div>
 
                 <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
@@ -115,7 +104,7 @@ export function NameCheckSeoContent() {
                 <div id="name-check-faq" className="mt-10">
                     <h2 className="text-xl font-bold text-[#1a1a3e] sm:text-2xl">คำถามที่พบบ่อยเกี่ยวกับการวิเคราะห์ชื่อ</h2>
                     <div className="mt-5 grid gap-4">
-                        {faqItems.map((item) => (
+                        {nameCheckFaqItems.map((item) => (
                             <div key={item.question} className="rounded-2xl border border-[#ddddf0] bg-white p-5 shadow-sm">
                                 <h3 className="font-semibold text-[#1a1a3e]">{item.question}</h3>
                                 <p className="mt-2 text-sm leading-6 text-[#5a5a82]">{item.answer}</p>

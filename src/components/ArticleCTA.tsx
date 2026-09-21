@@ -9,10 +9,10 @@ export const ArticleCTA = () => {
             <p className="text-[#5a5a82] mb-4">
                 อยากรู้ว่าชื่อของคุณดีแค่ไหน?{' '}
                 <Link prefetch={false} href="/name-check" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
-                    วิเคราะห์ชื่อมงคลฟรี
+                    วิเคราะห์ชื่อ-นามสกุลฟรี
                 </Link>{' '}หรือ{' '}
                 <Link prefetch={false} href="/name-analysis" className="text-amber-600 hover:text-amber-700 font-semibold underline underline-offset-2">
-                    เช็คชื่อมงคลหลายชื่อพร้อมกัน
+                    เปรียบเทียบหลายชื่อพร้อมกัน
                 </Link>
             </p>
             <p className="text-[#5a5a82] text-sm mb-4">
@@ -23,30 +23,30 @@ export const ArticleCTA = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in-up">
 
-            {/* Mandatory: วิเคราะห์ชื่อมงคล - links to /name-check (Golden Rule) */}
+            {/* Single-name + surname intent belongs to /name-check. */}
             <Link prefetch={false} href="/name-check" className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-amber-50 to-[#f0f0f8] border border-amber-300 hover:border-amber-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <span className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 block">แนะนำ</span>
-                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-amber-700 transition-colors">วิเคราะห์ชื่อมงคล</h3>
+                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-amber-700 transition-colors">วิเคราะห์ชื่อ-นามสกุลฟรี</h3>
                         <p className="text-[#5a5a82] text-xs mb-0 line-clamp-2">
-                            เช็คดวงชื่อฟรี ด้วย AI ผสาน 4 ศาสตร์ เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6
+                            เช็กชื่อจริงร่วมกับนามสกุลด้วยเลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์
                         </p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-amber-500 group-hover:text-amber-600 group-hover:translate-x-1 transition-all" />
                 </div>
             </Link>
 
-            {/* เช็คชื่อมงคลหลายชื่อ - links to /name-analysis for bulk intent */}
+            {/* Bulk comparison intent belongs to /name-analysis. */}
             <Link prefetch={false} href="/name-analysis" className="group relative overflow-hidden rounded-xl bg-white border border-slate-200 hover:border-indigo-400 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:shadow-xl shadow-md p-5">
                 <div className="flex items-start justify-between">
                     <div>
                         <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center mb-3 text-indigo-600">
                             <Users className="w-4 h-4" />
                         </div>
-                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-indigo-600 transition-colors">เช็คชื่อมงคลหลายชื่อ</h3>
+                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-indigo-600 transition-colors">เปรียบเทียบชื่อหลายชื่อ</h3>
                         <p className="text-[#5a5a82] text-xs mb-0 line-clamp-2">
-                            เช็คชื่อมงคล ตรวจสอบหลายชื่อพร้อมกัน สูงสุด 1,000 ชื่อ
+                            จัดเกรดและเปรียบเทียบรายชื่อพร้อมกันสูงสุด 1,000 ชื่อ
                         </p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all" />
@@ -124,9 +124,9 @@ export const ArticleCTA = () => {
                         <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center mb-3 text-amber-600">
                             <Sparkles className="w-4 h-4" />
                         </div>
-                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-amber-600 transition-colors">ตั้งชื่อมงคล ตั้งชื่อลูก</h3>
+                        <h3 className="text-lg font-bold text-[#1a1a3e] mb-1 group-hover:text-amber-600 transition-colors">ค้นหาชื่อมงคล</h3>
                         <p className="text-[#5a5a82] text-xs mb-0 line-clamp-2">
-                            ค้นหาชื่อมงคลจาก 5,000+ รายชื่อ คัดเกรด A+ ฟรี
+                            ค้นชื่อพร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสม
                         </p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" />

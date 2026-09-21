@@ -54,6 +54,7 @@ const BulkAnalysisBanner = dynamic(() => import('@/components/BulkAnalysisBanner
 
 type ClientHomeProps = {
     heroHeadingLevel?: 'h1' | 'h2';
+    surface?: 'home' | 'name-check';
 };
 
 type HomeSectionsData = {
@@ -196,7 +197,8 @@ function HomeResultPreview() {
     );
 }
 
-export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps) {
+export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }: ClientHomeProps) {
+    const isHomeSurface = surface === 'home';
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [day, setDay] = useState('sunday');
@@ -332,7 +334,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
     }, [performAnalysis]);
 
     useEffect(() => {
-        if (result || didFetchHomeSections.current) return;
+        if (!isHomeSurface || result || didFetchHomeSections.current) return;
         didFetchHomeSections.current = true;
 
         const windowWithIdle = window as WindowWithIdleCallback;
@@ -359,7 +361,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                 window.clearTimeout(timeoutId);
             }
         };
-    }, [fetchHomeSections, result]);
+    }, [fetchHomeSections, isHomeSurface, result]);
 
     const handleAnalyzeClick = useCallback(() => {
         if (!name.trim()) return;
@@ -370,8 +372,8 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
         setResult(null);
         setName('');
         setSurname('');
-        window.history.pushState({}, '', '/');
-    }, []);
+        window.history.pushState({}, '', isHomeSurface ? '/' : '/name-check');
+    }, [isHomeSurface]);
 
     useEffect(() => {
         const handleReset = () => {
@@ -388,7 +390,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
         <div className="relative min-h-screen overflow-hidden font-sans bg-[#f8f8fc] text-[#5a5a82] selection:bg-[#f8c24b] selection:text-[#1d1203]">
             <main className="relative z-10 mx-auto flex min-h-[78vh] w-full max-w-[1400px] flex-col items-center px-3 pb-24 pt-2 sm:px-6 sm:pt-10 md:pb-20 md:pt-24 lg:px-12 xl:px-16">
 
-                {!result ? (
+                {!result && isHomeSurface ? (
                     <div className="grid w-full max-w-[1180px] items-start gap-3 lg:grid-cols-[minmax(0,1.06fr)_minmax(420px,0.94fr)] lg:gap-8 xl:gap-12">
                         {/* HeroBanner: no delay — renders immediately for LCP */}
                         <div className="w-full lg:pt-8">
@@ -407,6 +409,20 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                             />
                             <InlineSignupCTA />
                         </div>
+                    </div>
+                ) : !result ? (
+                    <div className="w-full max-w-xl">
+                        <InputForm
+                            name={name}
+                            surname={surname}
+                            day={day}
+                            onNameChange={setName}
+                            onSurnameChange={setSurname}
+                            onDayChange={setDay}
+                            onAnalyze={handleAnalyzeClick}
+                            loading={loading}
+                        />
+                        <InlineSignupCTA />
                     </div>
                 ) : (
                     <div className="w-full max-w-5xl animate-fade-in flex flex-col gap-5 sm:gap-6 md:gap-8">
@@ -475,7 +491,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                 )}
             </main>
 
-            {!result && (
+            {isHomeSurface && !result && (
                 <>
                     <PetNamePromo />
                     <HomeResultPreview />
@@ -539,12 +555,13 @@ export default function ClientHome({ heroHeadingLevel = 'h1' }: ClientHomeProps)
                 </>
             )}
 
-            {/* Footer */}
-            <footer className="relative z-10 w-full px-4 py-6 text-center text-sm text-[#5a5a82]/60">
-                <p>{t('home.footer')}</p>
-            </footer>
+            {isHomeSurface ? (
+                <footer className="relative z-10 w-full px-4 py-6 text-center text-sm text-[#5a5a82]/60">
+                    <p>{t('home.footer')}</p>
+                </footer>
+            ) : null}
 
-            <WelcomeOffer />
+            {isHomeSurface ? <WelcomeOffer /> : null}
         </div>
     );
 }

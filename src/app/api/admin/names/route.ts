@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { createClient as createServiceClient } from '@supabase/supabase-js';
 import { createClient } from '@/utils/supabaseServer';
+import { thaksaConfig, type DayKey } from '@/data/thaksa';
+import { isThaiNameInitial } from '@/data/thaiInitials';
 import {
     analyzeNameRoots,
     buildMeaningBatchPrompt,
@@ -16,6 +18,8 @@ import {
     normalizePronunciationText,
     normalizePronunciationVariants,
 } from '@/lib/thaiPronunciation';
+import { queryAllPublicNames, type PublicNameGender } from '@/lib/publicNames';
+import { buildPublicNamesCsv } from '@/lib/publicNamesCsv';
 
 const PAGE_SIZE = 1000;
 const INSERT_BATCH_SIZE = 500;
@@ -31,6 +35,17 @@ type MeaningImportRecord = {
     meaning?: string;
     gender?: 'male' | 'female' | 'neutral';
 };
+
+function getBangkokDateStamp(date = new Date()): string {
+    const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Bangkok',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).formatToParts(date);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
 
 function revalidatePublicNames() {
     revalidateTag('public-names', 'max');
@@ -220,6 +235,40 @@ export async function GET(req: Request) {
         if ('error' in auth && auth.error) return auth.error;
 
         const { searchParams } = new URL(req.url);
+        if (searchParams.get('view') === 'csv') {
+            const rawDay = searchParams.get('day') ?? 'all';
+            const rawGender = searchParams.get('gender') ?? 'all';
+            const rawInitial = searchParams.get('initial')?.trim() || 'all';
+
+            if (rawDay !== 'all' && !(rawDay in thaksaConfig)) {
+                return NextResponse.json({ success: false, error: 'Invalid day filter' }, { status: 400 });
+            }
+            if (!['all', 'male', 'female', 'neutral'].includes(rawGender)) {
+                return NextResponse.json({ success: false, error: 'Invalid gender filter' }, { status: 400 });
+            }
+            if (rawInitial !== 'all' && !isThaiNameInitial(rawInitial)) {
+                return NextResponse.json({ success: false, error: 'Invalid initial filter' }, { status: 400 });
+            }
+
+            const records = await queryAllPublicNames({
+                day: rawDay as DayKey | 'all',
+                gender: rawGender as PublicNameGender | 'all',
+                initial: rawInitial,
+            });
+            const csv = buildPublicNamesCsv(records);
+            const dateStamp = getBangkokDateStamp();
+            const localizedFilename = `รายชื่อมงคล-search-${dateStamp}.csv`;
+
+            return new NextResponse(csv, {
+                headers: {
+                    'Content-Type': 'text/csv; charset=utf-8',
+                    'Content-Disposition': `attachment; filename="namemongkol-search-${dateStamp}.csv"; filename*=UTF-8''${encodeURIComponent(localizedFilename)}`,
+                    'Cache-Control': 'private, no-store',
+                    'X-Content-Type-Options': 'nosniff',
+                },
+            });
+        }
+
         if (searchParams.get('view') === 'pronunciation-review') {
             const rawStatus = searchParams.get('status');
             const status = PRONUNCIATION_STATUSES.includes(rawStatus as PronunciationStatus)

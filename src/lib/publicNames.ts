@@ -80,6 +80,8 @@ export type PublicNamesQuery = {
     limit?: number;
 };
 
+export type PublicNamesFilterQuery = Pick<PublicNamesQuery, 'day' | 'gender' | 'initial'>;
+
 export type PublicNamesResult = {
     data: PublicNameRecord[];
     total: number;
@@ -297,4 +299,13 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
             ...catalog.quality,
         },
     };
+}
+
+export async function queryAllPublicNames(query: PublicNamesFilterQuery = {}): Promise<PublicNameRecord[]> {
+    const { allNames, catalog } = await fetchPublicNamesDataset();
+    const day = query.day && query.day !== 'all' && DAY_KEYS.includes(query.day) ? query.day : 'all';
+    const gender = query.gender ?? 'all';
+    const initial = query.initial?.trim() || 'all';
+
+    return selectPublicNameCandidates(allNames, catalog, { day, gender, initial });
 }
