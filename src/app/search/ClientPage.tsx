@@ -19,6 +19,11 @@ import {
     createSearchResultCacheKey,
     SearchResultLruCache,
 } from './searchResultCache';
+import {
+    excludeFeaturedNames,
+    reorderFirstPageWithFeatured,
+    sampleRandomIndexes,
+} from './randomizedFirstNames';
 import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 
 
@@ -226,6 +231,17 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
 
 const UNLOCK_COST = 10;
 const UNLOCK_AMOUNT = 20;
+const RANDOM_FIRST_NAMES_COUNT = 10;
+
+function getRandomFloat() {
+    if (typeof globalThis.crypto?.getRandomValues === 'function') {
+        const values = new Uint32Array(1);
+        globalThis.crypto.getRandomValues(values);
+        return values[0] / 0x1_0000_0000;
+    }
+
+    return Math.random();
+}
 
 type PublicStats = {
     totalAnalyses: number;
@@ -304,17 +320,10 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     });
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
+    const latestPromotionId = useRef(0);
+    const featuredNameKeys = useRef<Set<string>>(new Set());
     const prefetchedLetters = useRef<Set<string>>(new Set());
     const backgroundPrefetchStarted = useRef(false);
-
-    const applyNamesResult = useCallback((result: SearchNamesResult) => {
-        setNames(result.data);
-        setTotal(result.total);
-        setTotalPages(result.totalPages);
-        setLoadedPage(result.page);
-        setSummary(result.summary);
-        setVisibleCount(10);
-    }, []);
 
     const requestNamesPage = useCallback(async (
         filters: SearchFilters,
@@ -339,14 +348,66 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         return result;
     }, [resultCache]);
 
+    const promoteFirstNames = useCallback(async (
+        result: SearchNamesResult,
+        filters: SearchFilters,
+    ) => {
+        const featuredIndexes = sampleRandomIndexes(
+            result.total,
+            RANDOM_FIRST_NAMES_COUNT,
+            getRandomFloat,
+        );
+        const resultsByPage = new Map<number, SearchNamesResult>([[result.page, result]]);
+        const pagesToFetch = [...new Set(featuredIndexes.map((index) => Math.floor(index / result.pageSize) + 1))]
+            .filter((page) => !resultsByPage.has(page));
+
+        try {
+            const fetchedPages = await Promise.all(pagesToFetch.map(async (page) => [
+                page,
+                await requestNamesPage(filters, page),
+            ] as const));
+            fetchedPages.forEach(([page, pageResult]) => resultsByPage.set(page, pageResult));
+
+            const featuredNames = featuredIndexes.flatMap((index) => {
+                const page = Math.floor(index / result.pageSize) + 1;
+                const offset = index % result.pageSize;
+                const name = resultsByPage.get(page)?.data[offset];
+                return name ? [name] : [];
+            });
+
+            return {
+                data: reorderFirstPageWithFeatured(result.data, featuredNames),
+                featuredKeys: new Set(featuredNames.map((item) => item.name)),
+            };
+        } catch (error) {
+            console.warn('Unable to randomize the first search names; using canonical order.', error);
+            return { data: result.data, featuredKeys: new Set<string>() };
+        }
+    }, [requestNamesPage]);
+
+    const applyNamesResult = useCallback(async (result: SearchNamesResult, filters: SearchFilters) => {
+        const promotionId = ++latestPromotionId.current;
+        const promoted = await promoteFirstNames(result, filters);
+        if (promotionId !== latestPromotionId.current) return;
+
+        featuredNameKeys.current = promoted.featuredKeys;
+        setNames(promoted.data);
+        setTotal(result.total);
+        setTotalPages(result.totalPages);
+        setLoadedPage(result.page);
+        setSummary(result.summary);
+        setVisibleCount(10);
+    }, [promoteFirstNames]);
+
     const loadFirstPage = useCallback(async (filters: SearchFilters) => {
         activeFilterRequest.current?.abort();
         const requestId = ++latestFilterRequestId.current;
+        latestPromotionId.current += 1;
         const cacheKey = createSearchResultCacheKey(filters, 1);
         const cached = resultCache.get(cacheKey);
 
         if (cached) {
-            applyNamesResult(cached);
+            await applyNamesResult(cached, filters);
             setNamesError(null);
             setIsLoadingNames(false);
             return;
@@ -359,7 +420,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         try {
             const result = await requestNamesPage(filters, 1, controller.signal);
             if (requestId !== latestFilterRequestId.current) return;
-            applyNamesResult(result);
+            await applyNamesResult(result, filters);
         } catch (error) {
             if (error instanceof Error && error.name === 'AbortError') return;
             if (requestId !== latestFilterRequestId.current) return;
@@ -394,8 +455,10 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
 
         if (filters.day !== 'all' || filters.gender !== 'all' || filters.initial !== 'all') {
             void loadFirstPage(filters);
+        } else {
+            void applyNamesResult(initialResult, filters);
         }
-    }, [loadFirstPage]);
+    }, [applyNamesResult, initialResult, loadFirstPage]);
 
     useEffect(() => () => activeFilterRequest.current?.abort(), []);
 
@@ -559,7 +622,10 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                     initial: selectedLetter,
                 }, nextLoadedPage + 1);
                 if (nextResult.data.length === 0) break;
-                availableNames = [...availableNames, ...nextResult.data];
+                availableNames = [
+                    ...availableNames,
+                    ...excludeFeaturedNames(nextResult.data, featuredNameKeys.current),
+                ];
                 nextLoadedPage = nextResult.page;
             }
 
