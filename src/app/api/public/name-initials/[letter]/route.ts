@@ -9,10 +9,11 @@ export function generateStaticParams() {
 }
 
 export async function GET(
-    _request: Request,
+    request: Request,
     { params }: { params: Promise<{ letter: string }> },
 ) {
     const { letter } = await params;
+    const featuredSeed = new URL(request.url).searchParams.get('seed')?.slice(0, 100) || undefined;
 
     if (!isThaiNameInitial(letter)) {
         return NextResponse.json(
@@ -27,6 +28,7 @@ export async function GET(
         initial: letter,
         page: 1,
         limit: 50,
+        featuredSeed,
     });
 
     return NextResponse.json({

@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import {
+    createSeededRandom,
     excludeFeaturedNames,
     reorderFirstPageWithFeatured,
     sampleRandomIndexes,
-} from './randomizedFirstNames';
+    selectSeededRandomItems,
+} from '@/lib/randomizedNameSelection';
 
 describe('randomized first search names', () => {
     it('samples unique indexes from the full result range', () => {
@@ -16,6 +18,17 @@ describe('randomized first search names', () => {
 
     it('limits the sample when fewer than ten names match', () => {
         expect(sampleRandomIndexes(3, 10, () => 0)).toEqual([0, 1, 2]);
+    });
+
+    it('selects the same names for the same seed without duplicates', () => {
+        const names = Array.from({ length: 100 }, (_, index) => ({ name: String(index) }));
+        const first = selectSeededRandomItems(names, 10, 'session-ก');
+        const second = selectSeededRandomItems(names, 10, 'session-ก');
+
+        expect(second).toEqual(first);
+        expect(new Set(first.map((item) => item.name)).size).toBe(10);
+        expect(selectSeededRandomItems(names, 10, 'session-ข')).not.toEqual(first);
+        expect(createSeededRandom('session-ก')()).toBe(createSeededRandom('session-ก')());
     });
 
     it('puts featured names first and keeps all other names in canonical order', () => {

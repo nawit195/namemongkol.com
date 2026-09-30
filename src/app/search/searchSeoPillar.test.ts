@@ -13,7 +13,7 @@ describe('/search SEO pillar content', () => {
 
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
-        expect(pageSource).toContain('queryPublicNames({ page: 1, limit: 50 })');
+        expect(pageSource).toContain('featuredSeed:');
         expect(pageSource).toContain('numberOfItems: initialResult.total');
         expect(pageSource).toContain('initialResult.data.slice(0, 10)');
         expect(pageSource).toContain('<ClientPage initialResult={initialResult} initialStats={aggregate.stats} />');
@@ -27,7 +27,8 @@ describe('/search SEO pillar content', () => {
         expect(clientSource).toContain('bGradeCount > 0');
         expect(clientSource).toContain("{bGradeCount.toLocaleString('th-TH')}");
         expect(clientSource).toContain("initial: selectedLetter");
-        expect(clientSource).toContain('createPublicNamesRequestUrl(filters, page)');
+        expect(clientSource).toContain('createPublicNamesRequestUrl(filters, page, options.featuredSeed)');
+        expect(clientSource).not.toContain('pagesToFetch');
         expect(requestCacheSource).toContain("limit: '50'");
         expect(clientSource).toContain('<NameRow key={`${item.name}-${index}`} {...item} rowIndex={index} />');
         expect(clientSource).toContain('{resultTotal.toLocaleString');

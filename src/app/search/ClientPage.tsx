@@ -22,8 +22,7 @@ import {
 import {
     excludeFeaturedNames,
     reorderFirstPageWithFeatured,
-    sampleRandomIndexes,
-} from './randomizedFirstNames';
+} from '@/lib/randomizedNameSelection';
 import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 
 
@@ -231,16 +230,18 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
 
 const UNLOCK_COST = 10;
 const UNLOCK_AMOUNT = 20;
-const RANDOM_FIRST_NAMES_COUNT = 10;
-
-function getRandomFloat() {
+function createSearchSessionSeed() {
     if (typeof globalThis.crypto?.getRandomValues === 'function') {
         const values = new Uint32Array(1);
         globalThis.crypto.getRandomValues(values);
-        return values[0] / 0x1_0000_0000;
+        return values[0].toString(36);
     }
 
-    return Math.random();
+    return Math.random().toString(36).slice(2);
+}
+
+function createFeaturedSeed(sessionSeed: string, filters: SearchFilters) {
+    return `${sessionSeed}|${filters.day}|${filters.gender}|${filters.initial}`;
 }
 
 type PublicStats = {
@@ -276,6 +277,7 @@ type SearchSummary = {
 
 type SearchNamesResult = {
     data: SearchName[];
+    featuredData?: SearchName[];
     total: number;
     page: number;
     pageSize: number;
@@ -304,7 +306,9 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     // Freemium State
     const [visibleCount, setVisibleCount] = useState(10);
     const [isUnlocking, setIsUnlocking] = useState(false);
-    const [names, setNames] = useState<SearchName[]>(initialResult.data);
+    const [names, setNames] = useState<SearchName[]>(() =>
+        reorderFirstPageWithFeatured(initialResult.data, initialResult.featuredData ?? []),
+    );
     const [total, setTotal] = useState(initialResult.total);
     const [totalPages, setTotalPages] = useState(initialResult.totalPages);
     const [loadedPage, setLoadedPage] = useState(initialResult.page);
@@ -318,26 +322,28 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         cache.set(createSearchResultCacheKey({ day: 'all', gender: 'all', initial: 'all' }, 1), initialResult);
         return cache;
     });
+    const searchSessionSeed = useRef(createSearchSessionSeed());
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
-    const latestPromotionId = useRef(0);
-    const featuredNameKeys = useRef<Set<string>>(new Set());
+    const featuredNameKeys = useRef<Set<string>>(
+        new Set((initialResult.featuredData ?? []).map((item) => item.name)),
+    );
     const prefetchedLetters = useRef<Set<string>>(new Set());
     const backgroundPrefetchStarted = useRef(false);
 
     const requestNamesPage = useCallback(async (
         filters: SearchFilters,
         page: number,
-        signal?: AbortSignal,
+        options: { signal?: AbortSignal; featuredSeed?: string } = {},
     ): Promise<SearchNamesResult> => {
-        const cacheKey = createSearchResultCacheKey(filters, page);
+        const cacheKey = createSearchResultCacheKey(filters, page, options.featuredSeed);
         const cached = resultCache.get(cacheKey);
         if (cached) return cached;
 
-        const requestUrl = createPublicNamesRequestUrl(filters, page);
+        const requestUrl = createPublicNamesRequestUrl(filters, page, options.featuredSeed);
         const response = await fetch(requestUrl, {
             cache: 'force-cache',
-            signal,
+            signal: options.signal,
         });
         const payload = await response.json();
         if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
@@ -348,66 +354,26 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         return result;
     }, [resultCache]);
 
-    const promoteFirstNames = useCallback(async (
-        result: SearchNamesResult,
-        filters: SearchFilters,
-    ) => {
-        const featuredIndexes = sampleRandomIndexes(
-            result.total,
-            RANDOM_FIRST_NAMES_COUNT,
-            getRandomFloat,
-        );
-        const resultsByPage = new Map<number, SearchNamesResult>([[result.page, result]]);
-        const pagesToFetch = [...new Set(featuredIndexes.map((index) => Math.floor(index / result.pageSize) + 1))]
-            .filter((page) => !resultsByPage.has(page));
-
-        try {
-            const fetchedPages = await Promise.all(pagesToFetch.map(async (page) => [
-                page,
-                await requestNamesPage(filters, page),
-            ] as const));
-            fetchedPages.forEach(([page, pageResult]) => resultsByPage.set(page, pageResult));
-
-            const featuredNames = featuredIndexes.flatMap((index) => {
-                const page = Math.floor(index / result.pageSize) + 1;
-                const offset = index % result.pageSize;
-                const name = resultsByPage.get(page)?.data[offset];
-                return name ? [name] : [];
-            });
-
-            return {
-                data: reorderFirstPageWithFeatured(result.data, featuredNames),
-                featuredKeys: new Set(featuredNames.map((item) => item.name)),
-            };
-        } catch (error) {
-            console.warn('Unable to randomize the first search names; using canonical order.', error);
-            return { data: result.data, featuredKeys: new Set<string>() };
-        }
-    }, [requestNamesPage]);
-
-    const applyNamesResult = useCallback(async (result: SearchNamesResult, filters: SearchFilters) => {
-        const promotionId = ++latestPromotionId.current;
-        const promoted = await promoteFirstNames(result, filters);
-        if (promotionId !== latestPromotionId.current) return;
-
-        featuredNameKeys.current = promoted.featuredKeys;
-        setNames(promoted.data);
+    const applyNamesResult = useCallback((result: SearchNamesResult) => {
+        const featuredData = result.featuredData ?? [];
+        featuredNameKeys.current = new Set(featuredData.map((item) => item.name));
+        setNames(reorderFirstPageWithFeatured(result.data, featuredData));
         setTotal(result.total);
         setTotalPages(result.totalPages);
         setLoadedPage(result.page);
         setSummary(result.summary);
         setVisibleCount(10);
-    }, [promoteFirstNames]);
+    }, []);
 
     const loadFirstPage = useCallback(async (filters: SearchFilters) => {
         activeFilterRequest.current?.abort();
         const requestId = ++latestFilterRequestId.current;
-        latestPromotionId.current += 1;
-        const cacheKey = createSearchResultCacheKey(filters, 1);
+        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters);
+        const cacheKey = createSearchResultCacheKey(filters, 1, featuredSeed);
         const cached = resultCache.get(cacheKey);
 
         if (cached) {
-            await applyNamesResult(cached, filters);
+            applyNamesResult(cached);
             setNamesError(null);
             setIsLoadingNames(false);
             return;
@@ -418,9 +384,12 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         setIsLoadingNames(true);
         setNamesError(null);
         try {
-            const result = await requestNamesPage(filters, 1, controller.signal);
+            const result = await requestNamesPage(filters, 1, {
+                signal: controller.signal,
+                featuredSeed,
+            });
             if (requestId !== latestFilterRequestId.current) return;
-            await applyNamesResult(result, filters);
+            applyNamesResult(result);
         } catch (error) {
             if (error instanceof Error && error.name === 'AbortError') return;
             if (requestId !== latestFilterRequestId.current) return;
@@ -456,7 +425,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         if (filters.day !== 'all' || filters.gender !== 'all' || filters.initial !== 'all') {
             void loadFirstPage(filters);
         } else {
-            void applyNamesResult(initialResult, filters);
+            applyNamesResult(initialResult);
         }
     }, [applyNamesResult, initialResult, loadFirstPage]);
 
@@ -532,13 +501,14 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     const prefetchLetter = useCallback((letter: string) => {
         if (letter === 'all' || prefetchedLetters.current.has(letter)) return;
         const filters: SearchFilters = { day: 'all', gender: 'all', initial: letter };
-        const cacheKey = createSearchResultCacheKey(filters, 1);
+        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters);
+        const cacheKey = createSearchResultCacheKey(filters, 1, featuredSeed);
         if (resultCache.get(cacheKey)) {
             prefetchedLetters.current.add(letter);
             return;
         }
         prefetchedLetters.current.add(letter);
-        void requestNamesPage(filters, 1).catch(() => {
+        void requestNamesPage(filters, 1, { featuredSeed }).catch(() => {
             prefetchedLetters.current.delete(letter);
         });
     }, [requestNamesPage, resultCache]);
@@ -582,9 +552,10 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         // Also prefetch with current day/gender combo if they differ from 'all'
         if (selectedDay !== 'all' || selectedGender !== 'all') {
             const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: letter };
-            const cacheKey = createSearchResultCacheKey(filters, 1);
+            const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters);
+            const cacheKey = createSearchResultCacheKey(filters, 1, featuredSeed);
             if (!resultCache.get(cacheKey)) {
-                void requestNamesPage(filters, 1).catch(() => {/* silent */});
+                void requestNamesPage(filters, 1, { featuredSeed }).catch(() => {/* silent */});
             }
         }
     }, [selectedLetter, selectedDay, selectedGender, prefetchLetter, requestNamesPage, resultCache]);

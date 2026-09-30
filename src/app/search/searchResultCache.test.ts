@@ -8,7 +8,9 @@ import {
 describe('search result session cache', () => {
     it('creates a stable key for one filter and page combination', () => {
         expect(createSearchResultCacheKey({ day: 'monday', gender: 'male', initial: 'ก' }, 2))
-            .toBe('pronunciation-evidence-v3|monday|male|ก|2');
+            .toBe('server-randomized-v4|monday|male|ก|2|canonical');
+        expect(createSearchResultCacheKey({ day: 'monday', gender: 'male', initial: 'ก' }, 1, 'session-1'))
+            .toBe('server-randomized-v4|monday|male|ก|1|session-1');
     });
 
     it('returns cached results and refreshes their LRU position', () => {
@@ -26,7 +28,9 @@ describe('search result session cache', () => {
 
     it('uses the pre-rendered endpoint for a first-page initial-only filter', () => {
         expect(createPublicNamesRequestUrl({ day: 'all', gender: 'all', initial: 'ฉ' }, 1))
-            .toBe('/api/public/name-initials/%E0%B8%89?v=pronunciation-evidence-v3');
+            .toBe('/api/public/name-initials/%E0%B8%89?v=server-randomized-v4');
+        expect(createPublicNamesRequestUrl({ day: 'all', gender: 'all', initial: 'ฉ' }, 1, 'session-1'))
+            .toBe('/api/public/name-initials/%E0%B8%89?v=server-randomized-v4&seed=session-1');
     });
 
     it('keeps combined filters and later pages on the dynamic endpoint', () => {

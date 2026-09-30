@@ -58,4 +58,14 @@ describe('free search ช additions', () => {
         const unrelated = await queryPublicNames({ initial: 'ฑ', limit: 50 });
         expect(unrelated.data.some((item) => publicInitialChoNames.some((source) => source.name === item.name))).toBe(false);
     });
+
+    it('returns ten deterministic featured names in the first response', async () => {
+        const first = await queryPublicNames({ initial: 'ช', limit: 15, featuredSeed: 'session-ช' });
+        const second = await queryPublicNames({ initial: 'ช', limit: 15, featuredSeed: 'session-ช' });
+
+        expect(first.featuredData).toHaveLength(10);
+        expect(new Set(first.featuredData.map((item) => item.name)).size).toBe(10);
+        expect(second.featuredData).toEqual(first.featuredData);
+        expect(first.featuredData.every((item) => item.name.startsWith('ช'))).toBe(true);
+    });
 });

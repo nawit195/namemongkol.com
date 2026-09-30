@@ -11,10 +11,12 @@ import { analyzeNameSuitability } from '@/utils/thaksaUtils';
 import { analyzeName, type NameAnalysisResult } from '@/utils/nameAnalysis';
 import { buildPublicNameCatalog, selectPublicNameCandidates } from '@/lib/publicNameCatalog';
 import { mergePublicChoNames } from '@/lib/publicChoNameAdditions';
+import { selectSeededRandomItems } from '@/lib/randomizedNameSelection';
 
 const PAGE_SIZE_DEFAULT = 30;
 const PAGE_SIZE_MAX = 50;
 const DATABASE_PAGE_SIZE = 1000;
+const FEATURED_NAME_COUNT = 10;
 const DAY_KEYS = Object.keys(thaksaConfig) as DayKey[];
 
 type DatabaseNameRow = {
@@ -78,12 +80,14 @@ export type PublicNamesQuery = {
     initial?: string | 'all';
     page?: number;
     limit?: number;
+    featuredSeed?: string;
 };
 
 export type PublicNamesFilterQuery = Pick<PublicNamesQuery, 'day' | 'gender' | 'initial'>;
 
 export type PublicNamesResult = {
     data: PublicNameRecord[];
+    featuredData: PublicNameRecord[];
     total: number;
     page: number;
     pageSize: number;
@@ -289,6 +293,9 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
 
     return {
         data: ordered.slice(start, start + pageSize),
+        featuredData: query.featuredSeed && page === 1
+            ? selectSeededRandomItems(ordered, FEATURED_NAME_COUNT, query.featuredSeed)
+            : [],
         total: ordered.length,
         page,
         pageSize,

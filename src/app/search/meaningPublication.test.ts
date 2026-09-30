@@ -46,7 +46,7 @@ describe('public name meaning publication', () => {
         expect(publicNames).toContain('using existing pronunciation data');
         expect(publicNames).toContain("readRows('with-status')");
         expect(publicNames).toContain("readRows('with-pronunciation')");
-        expect(page).toContain('queryPublicNames({ page: 1, limit: 50 })');
+        expect(page).toContain('featuredSeed:');
         expect(page).toContain('initialResult={initialResult}');
         expect(client).toContain('อ่านว่า {displayPronunciation}');
         expect(client).toContain('รอยืนยันการอ่าน');

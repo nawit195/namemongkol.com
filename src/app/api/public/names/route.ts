@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
             initial: params.get('initial') ?? 'all',
             page: Number.isFinite(page) ? page : 1,
             limit: Number.isFinite(limit) ? limit : 30,
+            featuredSeed: params.get('seed')?.slice(0, 100) || undefined,
         });
 
         return NextResponse.json({

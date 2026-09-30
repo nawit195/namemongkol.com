@@ -1,9 +1,22 @@
-export type SearchNameLike = { name: string };
+export type NameLike = { name: string };
 
-/**
- * Selects unique positions without shuffling the source collection itself.
- * The random source is injectable so the ordering behavior stays testable.
- */
+export function createSeededRandom(seed: string): () => number {
+    let state = 2166136261;
+    for (let index = 0; index < seed.length; index += 1) {
+        state ^= seed.charCodeAt(index);
+        state = Math.imul(state, 16777619);
+    }
+
+    return () => {
+        state += 0x6D2B79F5;
+        let value = state;
+        value = Math.imul(value ^ (value >>> 15), value | 1);
+        value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+        return ((value ^ (value >>> 14)) >>> 0) / 0x1_0000_0000;
+    };
+}
+
+/** Selects unique positions without shuffling the source collection itself. */
 export function sampleRandomIndexes(
     total: number,
     count: number,
@@ -23,10 +36,13 @@ export function sampleRandomIndexes(
     return indexes.slice(0, sampleSize);
 }
 
-/**
- * Places the sampled names first and leaves every other name in canonical order.
- */
-export function reorderFirstPageWithFeatured<T extends SearchNameLike>(
+export function selectSeededRandomItems<T>(items: T[], count: number, seed: string): T[] {
+    return sampleRandomIndexes(items.length, count, createSeededRandom(seed))
+        .map((index) => items[index]);
+}
+
+/** Places the sampled names first and leaves every other name in canonical order. */
+export function reorderFirstPageWithFeatured<T extends NameLike>(
     canonicalFirstPage: T[],
     featuredNames: T[],
 ): T[] {
@@ -43,7 +59,7 @@ export function reorderFirstPageWithFeatured<T extends SearchNameLike>(
     ];
 }
 
-export function excludeFeaturedNames<T extends SearchNameLike>(
+export function excludeFeaturedNames<T extends NameLike>(
     names: T[],
     featuredKeys: ReadonlySet<string>,
 ): T[] {

@@ -4,30 +4,42 @@ export type SearchFilterState = {
     initial: string;
 };
 
-const SEARCH_DATA_VERSION = 'pronunciation-evidence-v3';
+const SEARCH_DATA_VERSION = 'server-randomized-v4';
 
-export function createSearchResultCacheKey(filters: SearchFilterState, page: number): string {
-    return `${SEARCH_DATA_VERSION}|${filters.day}|${filters.gender}|${filters.initial}|${page}`;
+export function createSearchResultCacheKey(
+    filters: SearchFilterState,
+    page: number,
+    featuredSeed?: string,
+): string {
+    return `${SEARCH_DATA_VERSION}|${filters.day}|${filters.gender}|${filters.initial}|${page}|${featuredSeed ?? 'canonical'}`;
 }
 
-export function createPublicNamesRequestUrl(filters: SearchFilterState, page: number): string {
+export function createPublicNamesRequestUrl(
+    filters: SearchFilterState,
+    page: number,
+    featuredSeed?: string,
+): string {
     const isStaticInitialRequest = page === 1
         && filters.day === 'all'
         && filters.gender === 'all'
         && filters.initial !== 'all';
 
     if (isStaticInitialRequest) {
-        return `/api/public/name-initials/${encodeURIComponent(filters.initial)}?v=${SEARCH_DATA_VERSION}`;
+        const params = new URLSearchParams({ v: SEARCH_DATA_VERSION });
+        if (featuredSeed) params.set('seed', featuredSeed);
+        return `/api/public/name-initials/${encodeURIComponent(filters.initial)}?${params.toString()}`;
     }
 
-    return `/api/public/names?${new URLSearchParams({
+    const params = new URLSearchParams({
         v: SEARCH_DATA_VERSION,
         day: filters.day,
         gender: filters.gender,
         initial: filters.initial,
         page: String(page),
         limit: '50',
-    }).toString()}`;
+    });
+    if (featuredSeed) params.set('seed', featuredSeed);
+    return `/api/public/names?${params.toString()}`;
 }
 
 export class SearchResultLruCache<T> {

@@ -78,7 +78,11 @@ const birthdayDayLinks = [
 export default async function SearchPage() {
     const [aggregate, initialResult] = await Promise.all([
         fetchPublicAggregateStats(),
-        queryPublicNames({ page: 1, limit: 50 }),
+        queryPublicNames({
+            page: 1,
+            limit: 50,
+            featuredSeed: 'search-landing',
+        }),
     ]);
     const liveNamesCount = initialResult.total;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);

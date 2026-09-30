@@ -12,7 +12,7 @@ describe('search SSR and birthday landing pages', () => {
         const dataSource = readSource('src/lib/publicNames.ts');
         const catalogSource = readSource('src/lib/publicNameCatalog.ts');
 
-        for (const parameter of ['day', 'gender', 'initial', 'page', 'limit']) {
+        for (const parameter of ['day', 'gender', 'initial', 'page', 'limit', 'seed']) {
             expect(routeSource).toContain(`params.get('${parameter}')`);
         }
         expect(dataSource).toContain('totalPages');
@@ -22,6 +22,7 @@ describe('search SSR and birthday landing pages', () => {
         expect(dataSource).toContain('withMeaning');
         expect(dataSource).toContain('latestCreatedAt');
         expect(dataSource).toContain('selectPublicNameCandidates');
+        expect(dataSource).toContain('selectSeededRandomItems');
         expect(catalogSource).toContain('sortSearchNamesByNewest(filtered)');
         expect(catalogSource).toContain('buckets.reduce');
         expect(routeSource).toContain('...result');
