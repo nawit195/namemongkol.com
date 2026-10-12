@@ -6,6 +6,17 @@ const root = process.cwd();
 const readSource = (filePath: string) => readFileSync(path.join(root, filePath), 'utf8');
 
 describe('search SSR and birthday landing pages', () => {
+    test('hydrates compact previews for instant initial-only filtering', () => {
+        const pageSource = readSource('src/app/search/page.tsx');
+        const clientSource = readSource('src/app/search/ClientPage.tsx');
+
+        expect(pageSource).toContain('buildLetterPreviewLookup');
+        expect(pageSource).toContain('initialLetterPreviews={initialLetterPreviews}');
+        expect(clientSource).toContain('getImmediateLetterResult');
+        expect(clientSource).toContain('applyLetterPreview');
+        expect(clientSource).not.toContain('backgroundPrefetchStarted');
+    });
+
     test('serves paginated and filterable public names', () => {
         const routeSource = readSource('src/app/api/public/names/route.ts');
         const staticInitialRoute = readSource('src/app/api/public/name-initials/[letter]/route.ts');

@@ -1,16 +1,25 @@
 import { Metadata } from 'next';
+import { unstable_cache } from 'next/cache';
 import Link from 'next/link';
 import ClientPage from './ClientPage';
 import { fetchPublicAggregateStats } from '@/lib/publicStats';
 import { getLiveNameCountLabel } from '@/lib/nameCounts';
 import { queryPublicNames } from '@/lib/publicNames';
 import { siteUrl } from '@/lib/seo';
+import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
+import { buildLetterPreviewLookup } from './letterPreviews';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 const searchPageTitle = 'ค้นหาชื่อมงคล พร้อมคำอ่าน ความหมาย และเลขศาสตร์ | NameMongkol';
 const searchPageDescription = 'ค้นหาชื่อมงคลจากฐานข้อมูลที่อัปเดตต่อเนื่อง พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสม สำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ ใช้งานฟรี';
 
 export const revalidate = 600;
+
+const getPreviewSeedBucket = unstable_cache(
+    async () => Math.floor(Date.now() / (revalidate * 1000)),
+    ['search-letter-preview-seed-v1'],
+    { revalidate },
+);
 
 export const metadata: Metadata = {
     title: { absolute: searchPageTitle },
@@ -76,13 +85,20 @@ const birthdayDayLinks = [
 ] as const;
 
 export default async function SearchPage() {
-    const [aggregate, initialResult] = await Promise.all([
+    const previewSeedBucket = await getPreviewSeedBucket();
+    const [aggregate, initialResult, initialLetterPreviews] = await Promise.all([
         fetchPublicAggregateStats(),
         queryPublicNames({
             page: 1,
             limit: 50,
             featuredSeed: 'search-landing',
         }),
+        buildLetterPreviewLookup(THAI_NAME_INITIALS, (letter) => queryPublicNames({
+            initial: letter,
+            page: 1,
+            limit: 1,
+            featuredSeed: `search-letter-preview-v1-${previewSeedBucket}-${letter}`,
+        })),
     ]);
     const liveNamesCount = initialResult.total;
     const liveNamesLabel = getLiveNameCountLabel(liveNamesCount);
@@ -184,7 +200,11 @@ export default async function SearchPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <ClientPage initialResult={initialResult} initialStats={aggregate.stats} />
+            <ClientPage
+                initialResult={initialResult}
+                initialStats={aggregate.stats}
+                initialLetterPreviews={initialLetterPreviews}
+            />
             <section id="auspicious-name-pillar" className="w-full bg-[#f8f8fc] px-4 pb-12 pt-12 text-[#1a1a3e]">
                 <div className="mx-auto max-w-5xl">
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Auspicious Name Guide</p>

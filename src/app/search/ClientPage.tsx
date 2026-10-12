@@ -20,10 +20,14 @@ import {
     SearchResultLruCache,
 } from './searchResultCache';
 import {
-    excludeFeaturedNames,
     reorderFirstPageWithFeatured,
 } from '@/lib/randomizedNameSelection';
-import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
+import { THAI_NAME_INITIALS, type ThaiNameInitial } from '@/data/thaiInitials';
+import {
+    getImmediateLetterResult,
+    mergeUniqueNames,
+    type LetterPreviewResult,
+} from './letterPreviews';
 
 
 const getDayBadgeProps = (d: string) => {
@@ -294,9 +298,10 @@ type SearchFilters = {
 type SearchPageProps = {
     initialResult: SearchNamesResult;
     initialStats: PublicStats;
+    initialLetterPreviews: Record<ThaiNameInitial, LetterPreviewResult<SearchName, SearchSummary>>;
 };
 
-export default function SearchPage({ initialResult, initialStats }: SearchPageProps) {
+export default function SearchPage({ initialResult, initialStats, initialLetterPreviews }: SearchPageProps) {
     const router = useRouter();
     const { t } = useLanguage();
     const [selectedDay, setSelectedDay] = useState<DayKey | 'all'>('all');
@@ -318,18 +323,14 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     const [filtersReady, setFiltersReady] = useState(false);
     const [publicStats, setPublicStats] = useState<PublicStats>(initialStats);
     const [resultCache] = useState(() => {
-        const cache = new SearchResultLruCache<SearchNamesResult>(30);
+        const cache = new SearchResultLruCache<SearchNamesResult>(THAI_NAME_INITIALS.length + 16);
         cache.set(createSearchResultCacheKey({ day: 'all', gender: 'all', initial: 'all' }, 1), initialResult);
         return cache;
     });
     const searchSessionSeed = useRef(createSearchSessionSeed());
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
-    const featuredNameKeys = useRef<Set<string>>(
-        new Set((initialResult.featuredData ?? []).map((item) => item.name)),
-    );
     const prefetchedLetters = useRef<Set<string>>(new Set());
-    const backgroundPrefetchStarted = useRef(false);
 
     const requestNamesPage = useCallback(async (
         filters: SearchFilters,
@@ -356,12 +357,20 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
 
     const applyNamesResult = useCallback((result: SearchNamesResult) => {
         const featuredData = result.featuredData ?? [];
-        featuredNameKeys.current = new Set(featuredData.map((item) => item.name));
         setNames(reorderFirstPageWithFeatured(result.data, featuredData));
         setTotal(result.total);
         setTotalPages(result.totalPages);
         setLoadedPage(result.page);
         setSummary(result.summary);
+        setVisibleCount(10);
+    }, []);
+
+    const applyLetterPreview = useCallback((preview: LetterPreviewResult<SearchName, SearchSummary>) => {
+        setNames(preview.data);
+        setTotal(preview.total);
+        setTotalPages(preview.totalPages);
+        setLoadedPage(0);
+        setSummary(preview.summary);
         setVisibleCount(10);
     }, []);
 
@@ -422,12 +431,15 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         setSelectedLetter(filters.initial);
         setFiltersReady(true);
 
-        if (filters.day !== 'all' || filters.gender !== 'all' || filters.initial !== 'all') {
+        const immediateResult = getImmediateLetterResult(filters, initialLetterPreviews, initialResult);
+        if (!immediateResult) {
             void loadFirstPage(filters);
+        } else if ('page' in immediateResult) {
+            applyNamesResult(immediateResult);
         } else {
-            applyNamesResult(initialResult);
+            applyLetterPreview(immediateResult);
         }
-    }, [applyNamesResult, initialResult, loadFirstPage]);
+    }, [applyLetterPreview, applyNamesResult, initialLetterPreviews, initialResult, loadFirstPage]);
 
     useEffect(() => () => activeFilterRequest.current?.abort(), []);
 
@@ -501,49 +513,16 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
     const prefetchLetter = useCallback((letter: string) => {
         if (letter === 'all' || prefetchedLetters.current.has(letter)) return;
         const filters: SearchFilters = { day: 'all', gender: 'all', initial: letter };
-        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters);
-        const cacheKey = createSearchResultCacheKey(filters, 1, featuredSeed);
+        const cacheKey = createSearchResultCacheKey(filters, 1);
         if (resultCache.get(cacheKey)) {
             prefetchedLetters.current.add(letter);
             return;
         }
         prefetchedLetters.current.add(letter);
-        void requestNamesPage(filters, 1, { featuredSeed }).catch(() => {
+        void requestNamesPage(filters, 1).catch(() => {
             prefetchedLetters.current.delete(letter);
         });
     }, [requestNamesPage, resultCache]);
-
-    // Background prefetch: after page load, silently prefetch all static letter endpoints
-    useEffect(() => {
-        if (backgroundPrefetchStarted.current) return;
-        backgroundPrefetchStarted.current = true;
-
-        const letters = [...THAI_NAME_INITIALS];
-        let index = 0;
-
-        function prefetchNext() {
-            if (index >= letters.length) return;
-            const letter = letters[index++];
-            prefetchLetter(letter);
-            // Stagger prefetches to avoid saturating the network
-            if (typeof requestIdleCallback === 'function') {
-                requestIdleCallback(prefetchNext, { timeout: 3000 });
-            } else {
-                setTimeout(prefetchNext, 150);
-            }
-        }
-
-        // Delay the first prefetch so it doesn't compete with initial page interactivity
-        const timer = setTimeout(() => {
-            if (typeof requestIdleCallback === 'function') {
-                requestIdleCallback(prefetchNext, { timeout: 5000 });
-            } else {
-                prefetchNext();
-            }
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, [prefetchLetter]);
 
     const handleLetterHover = useCallback((letter: string) => {
         if (letter === selectedLetter) return;
@@ -564,7 +543,26 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
         if (letter === selectedLetter && !namesError) return;
         setSelectedLetter(letter);
         setVisibleCount(10);
-        void loadFirstPage({ day: selectedDay, gender: selectedGender, initial: letter });
+        const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: letter };
+        const immediateResult = getImmediateLetterResult(filters, initialLetterPreviews, initialResult);
+
+        if (!immediateResult) {
+            void loadFirstPage(filters);
+            return;
+        }
+
+        activeFilterRequest.current?.abort();
+        activeFilterRequest.current = null;
+        latestFilterRequestId.current += 1;
+        setNamesError(null);
+        setIsLoadingNames(false);
+
+        if ('page' in immediateResult) {
+            applyNamesResult(immediateResult);
+        } else {
+            applyLetterPreview(immediateResult);
+            prefetchLetter(letter);
+        }
     };
 
     const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -593,10 +591,7 @@ export default function SearchPage({ initialResult, initialStats }: SearchPagePr
                     initial: selectedLetter,
                 }, nextLoadedPage + 1);
                 if (nextResult.data.length === 0) break;
-                availableNames = [
-                    ...availableNames,
-                    ...excludeFeaturedNames(nextResult.data, featuredNameKeys.current),
-                ];
+                availableNames = mergeUniqueNames(availableNames, nextResult.data);
                 nextLoadedPage = nextResult.page;
             }
 

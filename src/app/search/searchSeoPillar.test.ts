@@ -16,7 +16,7 @@ describe('/search SEO pillar content', () => {
         expect(pageSource).toContain('featuredSeed:');
         expect(pageSource).toContain('numberOfItems: initialResult.total');
         expect(pageSource).toContain('initialResult.data.slice(0, 10)');
-        expect(pageSource).toContain('<ClientPage initialResult={initialResult} initialStats={aggregate.stats} />');
+        expect(pageSource).toContain('initialLetterPreviews={initialLetterPreviews}');
         expect(pageSource).not.toContain('fetchAllPublicNames()');
         expect(pageSource).not.toContain('numberOfItems: 5000');
 
