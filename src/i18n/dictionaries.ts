@@ -126,7 +126,7 @@ const dictionaries: Record<SupportedLanguage, TranslationDict> = {
             articles: 'บทความ',
             search: 'ค้นหาชื่อมงคล',
             premiumSearch: 'คัดสรรชื่อมงคล',
-            premiumAnalysis: 'ออกแบบชื่อมงคล',
+            premiumAnalysis: 'คัดชื่อให้เหมาะกับนามสกุล',
             wallpapers: 'วอลเปเปอร์มงคล',
             history: 'ประวัติการใช้งาน',
             bulkNameFilter: 'ระบบคัดกรองชื่อ',

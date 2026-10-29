@@ -16,6 +16,7 @@ import { supabase } from '@/utils/supabase';
 import { generatePremiumNames, PremiumResult, FocusTopic, getAstrologicalDay } from '@/utils/premiumAnalysisUtils';
 import { formatThaiBirthDate, ThaiDateResult } from '@/utils/thaiDateUtils';
 import { calculateEffectiveCredits } from '@/utils/credits';
+import { consumePremiumSurnamePrefill } from '@/utils/premiumAnalysisPrefill';
 import { SearchableSelect } from '@/components/SearchableSelect';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 
@@ -97,6 +98,13 @@ export default function PremiumAnalysisPage() {
 
     // Derived state for display input to allow typing
     const [isUnknownTime, setIsUnknownTime] = useState(false);
+
+    useEffect(() => {
+        const prefilledSurname = consumePremiumSurnamePrefill(window.sessionStorage);
+        if (prefilledSurname) {
+            setSurname(prefilledSurname);
+        }
+    }, []);
 
     // Sync Dropdowns -> birthDate
     useEffect(() => {
@@ -215,36 +223,36 @@ export default function PremiumAnalysisPage() {
 
     const focusStyles: Record<FocusTopic, { card: string; active: string; icon: string; iconActive: string; titleActive: string }> = {
         WEALTH: {
-            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
-            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
+            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
             icon: 'bg-[#eeebf8] text-[#6f6299]',
             iconActive: 'bg-[#e8c87e] text-[#51370d]',
             titleActive: 'text-[#1a1a3e]',
         },
         JOB: {
-            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
-            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
+            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
             icon: 'bg-[#eeebf8] text-[#6f6299]',
             iconActive: 'bg-[#e8c87e] text-[#51370d]',
             titleActive: 'text-[#1a1a3e]',
         },
         HEALTH: {
-            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
-            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
+            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
             icon: 'bg-[#eeebf8] text-[#6f6299]',
             iconActive: 'bg-[#e8c87e] text-[#51370d]',
             titleActive: 'text-[#1a1a3e]',
         },
         LOVE: {
-            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
-            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
+            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
             icon: 'bg-[#eeebf8] text-[#6f6299]',
             iconActive: 'bg-[#e8c87e] text-[#51370d]',
             titleActive: 'text-[#1a1a3e]',
         },
         PATRON: {
-            card: 'border-[#ddddf0] bg-[#fafafd] text-[#1a1a3e]',
-            active: 'border-[#c9933a] bg-[#fff9eb] ring-2 ring-[#e8c87e]/45',
+            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
+            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
             icon: 'bg-[#eeebf8] text-[#6f6299]',
             iconActive: 'bg-[#e8c87e] text-[#51370d]',
             titleActive: 'text-[#1a1a3e]',
@@ -627,40 +635,44 @@ export default function PremiumAnalysisPage() {
     const formContent = (
         <div className="relative mx-auto max-w-6xl overflow-visible px-0 sm:px-2 md:px-4">
 
-            <div className="mb-7 flex flex-col gap-4 border-b border-[#e6e3ee] pb-6 sm:flex-row sm:items-center sm:justify-between md:mb-9">
-                <div className="flex min-w-0 items-center gap-3">
-                    <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border ${isProfileReady ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-[#e8c87e] bg-[#fff8e8] text-[#8a611b]'}`}>
-                        {isProfileReady ? <CheckCircle2 size={20} /> : <User size={20} />}
+            <div className="mb-8 flex flex-col gap-6 border-b border-[#e4dfd4] pb-7 lg:flex-row lg:items-end lg:justify-between">
+                <div className="flex min-w-0 items-start gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1a1a3e] text-[#f1cf78] shadow-[0_8px_20px_rgba(26,26,62,0.16)]">
+                        <Sparkles size={22} />
                     </span>
                     <div className="min-w-0">
-                        <p className="text-sm font-extrabold text-[#1a1a3e]">
-                            {isProfileReady ? 'ข้อมูลพร้อมสำหรับการวิเคราะห์' : 'เตรียมข้อมูลสำหรับคัดชื่อ'}
-                        </p>
-                        <p className="mt-0.5 text-xs leading-5 text-[#686885]">
-                            กรอกข้อมูลส่วนตัวให้ครบ แล้วเลือกเป้าหมายที่ต้องการเน้นหนึ่งด้าน
+                        <p className="text-xs font-bold tracking-[0.14em] text-[#9b6c20]">PERSONAL NAME SELECTION</p>
+                        <h2 className="mt-1 text-xl font-extrabold leading-snug text-[#1a1a3e] sm:text-2xl">
+                            คัดชื่อมงคลที่เหมาะกับนามสกุลคุณ
+                        </h2>
+                        <p className="mt-1 text-sm leading-6 text-[#5a5a82]">
+                            ระบุข้อมูลการเกิดและสิ่งที่อยากส่งเสริม เพื่อรับชื่อที่คัดเฉพาะคุณพร้อมเหตุผลประกอบ
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center gap-3 sm:min-w-52">
-                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#eceaf3]" aria-hidden="true">
+                <div className="rounded-xl border border-[#e5dfd4] bg-[#faf8f4] px-4 py-3 lg:min-w-56" role="status" aria-live="polite">
+                    <div className="mb-2 flex items-center justify-between gap-3 text-xs font-bold">
+                        <span className="text-[#5a5a82]">ข้อมูลสำหรับเริ่มคัดชื่อ</span>
+                        <span className="text-[#8a611b]">{completedProfileSteps} จาก 3 ครบแล้ว</span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-[#e8e3dc]" aria-hidden="true">
                         <div
-                            className="h-full rounded-full bg-[#c9933a] transition-[width] duration-200 motion-reduce:transition-none"
+                            className="h-full rounded-full bg-[#bd8b32] transition-[width] duration-200 motion-reduce:transition-none"
                             style={{ width: `${(completedProfileSteps / 3) * 100}%` }}
                         />
                     </div>
-                    <span className="shrink-0 text-xs font-bold text-[#686885]">{completedProfileSteps}/3 พร้อม</span>
                 </div>
             </div>
 
-            <div className="relative z-10 grid grid-cols-1 gap-9 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+            <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
 
                 {/* Left Column: Personal Inputs (User Data) */}
                 <section className="space-y-5 lg:col-span-5 md:space-y-6" aria-labelledby="premium-profile-heading">
 
                     <div className="mb-3 flex items-start gap-3 text-[#1a1a3e]">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1a1a3e] text-sm font-black text-[#f8f8fc]">1</span>
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d6b56a] bg-[#fff8e7] text-sm font-black text-[#805815]">1</span>
                         <div>
-                            <h3 id="premium-profile-heading" className="text-lg font-extrabold md:text-xl">ข้อมูลสำหรับคำนวณ</h3>
+                            <h3 id="premium-profile-heading" className="text-lg font-extrabold md:text-xl">เริ่มจากตัวคุณ</h3>
                             <p className="mt-1 text-sm leading-6 text-[#686885]">ใช้คำนวณวันเกิด ลัคนา และความเหมาะสมกับนามสกุล</p>
                         </div>
                     </div>
@@ -678,7 +690,7 @@ export default function PremiumAnalysisPage() {
                                 value={surname}
                                 onChange={(e) => setSurname(e.target.value)}
                                 placeholder="กรอกนามสกุลของท่าน"
-                                className="w-full rounded-lg border border-[#d9d6e6] bg-[#fbfaff] py-3.5 pl-11 pr-4 text-base font-medium text-[#1a1a3e] shadow-[0_2px_8px_rgba(26,26,62,0.04)] transition-[border-color,box-shadow] placeholder:font-normal placeholder:text-[#9290a8] focus:border-[#b98228] focus:outline-none focus:ring-4 focus:ring-[#e8c87e]/25 md:pl-12 md:pr-5"
+                                className="w-full min-h-14 rounded-xl border border-[#d8d2df] bg-[#fefdfc] py-3.5 pl-11 pr-4 text-base font-medium text-[#1a1a3e] shadow-[0_3px_12px_rgba(26,26,62,0.05)] transition-[border-color,box-shadow] placeholder:font-normal placeholder:text-[#9290a8] focus:border-[#b98228] focus:outline-none focus:ring-4 focus:ring-[#e8c87e]/25 md:pl-12 md:pr-5"
                             />
                         </div>
                     </div>
@@ -822,14 +834,14 @@ export default function PremiumAnalysisPage() {
                 {/* Right Column: Focus Selection (Grid Cards) */}
                 <section className="flex h-full flex-col lg:col-span-7" aria-labelledby="premium-focus-heading">
                     <div className="mb-5 flex items-start gap-3 text-[#1a1a3e] md:mb-6">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1a1a3e] text-sm font-black text-[#f8f8fc]">2</span>
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d6b56a] bg-[#fff8e7] text-sm font-black text-[#805815]">2</span>
                         <div>
-                            <h3 id="premium-focus-heading" className="text-lg font-extrabold md:text-xl">คุณอยากให้ชื่อใหม่ส่งเสริมด้านใด</h3>
+                            <h3 id="premium-focus-heading" className="text-lg font-extrabold md:text-xl">อยากให้ชื่อใหม่ส่งเสริมด้านใด</h3>
                             <p className="mt-1 text-sm leading-6 text-[#686885]">เลือกหนึ่งเป้าหมาย ระบบจะนำไปใช้จัดลำดับชื่อที่เหมาะกับคุณ</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4">
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-3">
                         {focusOptions.map((option) => {
                             const isActive = focus === option.key;
                             const styles = focusStyles[option.key];
@@ -839,7 +851,7 @@ export default function PremiumAnalysisPage() {
                                     key={option.key}
                                     onClick={() => setFocus(option.key)}
                                     aria-pressed={isActive}
-                                    className={`group relative min-h-[88px] overflow-hidden rounded-lg border p-4 transition-[border-color,background-color,box-shadow] duration-200 flex items-center gap-3 md:gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2
+                                    className={`group relative min-h-[96px] overflow-hidden rounded-xl border p-4 shadow-[0_3px_12px_rgba(26,26,62,0.035)] transition-[border-color,background-color,box-shadow,transform] duration-200 flex items-center gap-3 hover:-translate-y-0.5 hover:shadow-[0_9px_22px_rgba(26,26,62,0.1)] md:gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 motion-reduce:transform-none
                                         ${isActive
                                             ? styles.active
                                             : styles.card
@@ -882,26 +894,27 @@ export default function PremiumAnalysisPage() {
             </div>
 
             {/* Bottom Action Area */}
-            <div className="relative z-10 mt-8 border-t border-[#e6e3ee] pt-6 md:mt-10 md:pt-8">
+            <div className="relative z-10 mt-9 border-t border-[#e4dfd4] pt-7 md:mt-12 md:pt-9">
                 <div className="flex flex-col items-center justify-center space-y-4">
                     <button
                         type="button"
                         onClick={() => handleAnalyze(false)}
                         disabled={isLoading}
                         data-track="premiumAnalysis.form.analyze"
-                        className="group relative mx-auto w-full overflow-hidden rounded-lg border border-[#252544] bg-[#17172f] shadow-[0_12px_28px_rgba(26,26,62,0.16)] transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#202043] hover:shadow-[0_16px_34px_rgba(26,26,62,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 md:max-w-4xl motion-reduce:transform-none"
+                        className="group relative mx-auto w-full overflow-hidden rounded-2xl border border-[#39405a] bg-[#171a34] shadow-[0_18px_36px_rgba(26,26,62,0.18)] transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#202443] hover:shadow-[0_22px_42px_rgba(26,26,62,0.23)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 md:max-w-4xl motion-reduce:transform-none"
                     >
-                        <div className="relative flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-5 md:px-7">
+                        <div className="relative flex flex-col gap-5 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-6 md:px-8">
                             <div className="flex min-w-0 items-center gap-3.5 sm:gap-5">
                                 <div className="shrink-0 rounded-lg bg-[#f1cf78] p-2.5 text-[#47300c] md:p-3">
                                     {isLoading ? <span className="block animate-spin"><RefreshCw className="h-5 w-5 md:h-6 md:w-6" /></span> : <Sparkles className="h-5 w-5 md:h-6 md:w-6" />}
                                 </div>
                                 <div className="min-w-0 text-left leading-tight">
-                                    <h3 className="text-base font-black leading-tight text-[#fbfaff] sm:text-lg">เริ่มคัดชื่อมงคลที่เหมาะกับคุณ</h3>
-                                    <p className="mt-1 text-xs font-medium leading-5 text-[#c8c5d8] md:text-sm">รับรายชื่อ 20 ชื่อ พร้อมคะแนนและเหตุผลประกอบ</p>
+                                    <span className="text-[11px] font-bold tracking-[0.14em] text-[#f1cf78]">ผลลัพธ์เฉพาะคุณ</span>
+                                    <h3 className="mt-1 text-base font-black leading-tight text-[#fbfaff] sm:text-lg">เริ่มคัดชื่อที่เหมาะกับนามสกุล</h3>
+                                    <p className="mt-1 text-sm font-medium leading-5 text-[#d7d4e1]">รับ 20 รายชื่อ พร้อมคะแนนและเหตุผลที่คัดเลือก</p>
                                 </div>
                             </div>
-                            <div className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 self-start rounded-lg border border-[#dbb75c] bg-[#f1cf78] px-4 py-2 text-[#302006] sm:w-auto sm:self-auto md:px-5">
+                            <div className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 self-start rounded-xl bg-[#f1cf78] px-5 py-3 text-[#302006] shadow-[0_5px_18px_rgba(241,207,120,0.18)] sm:w-auto sm:self-auto md:px-6">
                                 <span className="text-center text-sm font-extrabold leading-tight">
                                     {userTier === 'vvip'
                                         ? `ใช้ ${PREMIUM_ANALYSIS_COST} เครดิต`

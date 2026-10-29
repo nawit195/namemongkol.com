@@ -32,6 +32,7 @@ import { useLanguage } from '@/components/LanguageProvider';
 import { WelcomeOffer } from '@/components/WelcomeOffer';
 import { InlineSignupCTA } from '@/components/InlineSignupCTA';
 import { SaveResultCTA } from '@/components/SaveResultCTA';
+import { SurnameNameRecommendationCTA } from '@/components/SurnameNameRecommendationCTA';
 import type { WallpaperShowcaseStat } from '@/components/WallpaperShowcase';
 import type { ArticleSectionItem } from '@/components/ArticleSection';
 
@@ -454,6 +455,10 @@ export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }
                         />
 
                         {result.thaksa && <ThaksaTable thaksa={result.thaksa} day={day} />}
+
+                        {result.surname.trim() ? (
+                            <SurnameNameRecommendationCTA surname={result.surname} />
+                        ) : null}
 
                         <SaveResultCTA />
 
