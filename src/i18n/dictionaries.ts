@@ -120,6 +120,7 @@ const dictionaries: Record<SupportedLanguage, TranslationDict> = {
         },
         sidebar: {
             analyzeName: 'วิเคราะห์ชื่อ',
+            compareNames: 'เปรียบเทียบชื่อฟรี',
             phoneAnalysis: 'วิเคราะห์เบอร์โทร',
             palmAnalysis: 'วิเคราะห์ลายมือ',
             reviews: 'รีวิวจากทางบ้าน',
@@ -465,6 +466,7 @@ const dictionaries: Record<SupportedLanguage, TranslationDict> = {
         },
         sidebar: {
             analyzeName: 'Name Analysis',
+            compareNames: 'Compare Names Free',
             phoneAnalysis: 'Phone Analysis',
             palmAnalysis: 'Palm Analysis',
             reviews: 'Reviews',
@@ -838,6 +840,7 @@ const dictionaries: Record<SupportedLanguage, TranslationDict> = {
         },
         sidebar: {
             analyzeName: '姓名分析',
+            compareNames: '免費比較姓名',
             phoneAnalysis: '手機號碼分析',
             palmAnalysis: '手相分析',
             reviews: '用戶評價',

@@ -130,6 +130,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
     const baseMenuItems: MenuItem[] = [
         { key: 'analyze', nameKey: 'sidebar.analyzeName', icon: Home, iconImage: '/icon/วิเคราะห์ชื่อ.png', iconPadding: 'p-2.5', path: '/' },
+        { key: 'compare-names', nameKey: 'sidebar.compareNames', icon: ClipboardList, iconImage: '/icon/compare.png', iconPadding: 'p-2.5', path: '/compare-names' },
         { key: 'search', nameKey: 'sidebar.search', icon: Search, iconImage: '/icon/ค้นหาชื่อมงคล.png', iconPadding: 'p-2.5', path: '/search' },
         { key: 'premium-search', nameKey: 'sidebar.premiumSearch', icon: Sparkles, iconImage: '/icon/คัดสรรชื่อมงคล.png', iconPadding: 'p-2', path: '/premium-search' },
         { key: 'premium-analysis', nameKey: 'sidebar.premiumAnalysis', icon: Crown, iconImage: '/icon/ออกแบบชื่อมงคล.png', path: '/premium-analysis' },
