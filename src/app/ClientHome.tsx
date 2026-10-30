@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { CheckCircle2, ChevronRight, Layers3, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRightLeft, CheckCircle2, ChevronRight, Layers3, ShieldCheck, Sparkles } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { saveAnalysisResult } from '@/services/analysisService';
 import { checkNirunName } from '@/app/actions/checkNirunName';
@@ -438,6 +438,14 @@ export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }
 
                         {/* Summary first on mobile */}
                         <ResultHeader result={result} />
+
+                        <Link prefetch={false}
+                            href={`/compare-names?${new URLSearchParams({ name: result.name, surname: result.surname, day })}`}
+                            className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm font-semibold text-amber-950 hover:bg-amber-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600"
+                        >
+                            <span className="flex items-center gap-2"><ArrowRightLeft className="h-5 w-5 shrink-0" aria-hidden="true" /> มีชื่ออื่นในใจ? เปรียบเทียบกับชื่อนี้ฟรี</span>
+                            <ChevronRight className="h-5 w-5 shrink-0" aria-hidden="true" />
+                        </Link>
 
                         {/* Main score first */}
                         <div className={`grid grid-cols-1 ${result.surname ? 'sm:grid-cols-2' : 'max-w-xl mx-auto'} gap-3 sm:gap-4`}>
