@@ -14,7 +14,12 @@
 .breadcrumb { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8125rem; color: var(--muted); margin-bottom: 38px; }
 .breadcrumb a:hover { text-decoration: underline; }
 .hero { max-width: 760px; margin-bottom: 36px; }
+.heroMeta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .eyebrow { font-size: 0.75rem; font-weight: 750; letter-spacing: 0.1em; color: oklch(0.48 0.09 77); margin: 0 0 12px; }
+.heroMeta .eyebrow { margin: 0; }
+.viewStats { display: inline-flex; align-items: center; gap: 4px; min-height: 25px; padding: 3px 9px; border: 1px solid var(--border); border-radius: 999px; background: oklch(0.99 0.005 280); color: var(--muted); font-size: 0.6875rem; line-height: 1; white-space: nowrap; }
+.viewStats svg { color: oklch(0.5 0.1 77); }
+.viewStats strong { color: var(--ink); font-family: var(--font-geist-mono), monospace; font-size: 0.75rem; }
 .hero h1 { font-size: 2.75rem; line-height: 1.4; font-weight: 800; letter-spacing: -0.035em; margin: 0; }
 .hero h1 span { color: oklch(0.5 0.1 77); }
 .intro { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-top: 18px; max-width: 65ch; }
@@ -121,23 +126,39 @@
 .pageFooter > span { flex-basis: 100%; font-size: 0.8125rem; }
 @media (max-width: 767px) {
   .page { padding: 23px 16px 100px; }
-  .breadcrumb { margin-bottom: 25px; }
-  .hero { margin-bottom: 27px; }
-  .hero h1 { font-size: 2rem; line-height: 1.5; }
-  .intro { font-size: 0.9375rem; margin-top: 12px; }
+  .breadcrumb { gap: 7px; margin-bottom: 14px; font-size: 0.75rem; }
+  .hero { margin-bottom: 18px; }
+  .heroMeta { gap: 8px; margin-bottom: 6px; }
+  .hero .eyebrow { font-size: 0.6875rem; }
+  .viewStats { min-height: 23px; padding: 2px 7px; }
+  .hero h1 { font-size: 1.75rem; line-height: 1.38; letter-spacing: -0.025em; }
+  .hero h1 br { display: none; }
+  .hero h1 span::before { content: ' '; }
+  .intro { font-size: 0.875rem; line-height: 1.7; margin-top: 8px; }
   .desktopBreak { display: none; }
-  .form { border-radius: 18px; padding: 20px 16px; }
-  .formHeading { align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-  .formHeading p { font-size: 0.8125rem; }
-  .count { margin-left: 25px; margin-top: 2px; }
-  .nameGrid { grid-template-columns: 1fr; gap: 11px; margin-top: 16px; }
-  .addName { margin-top: 7px; min-height: 46px; }
+  .form { border-radius: 16px; padding: 16px 14px; }
+  .formHeading { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 4px 8px; }
+  .formHeading > div { min-width: 0; }
+  .formHeading h2, .sharedHeading h2 { font-size: 1rem; line-height: 1.45; }
+  .formHeading p { font-size: 0.8125rem; line-height: 1.55; margin-top: 2px; }
+  .step { margin-top: 2px; }
+  .count { align-self: start; margin: 3px 0 0; font-size: 0.75rem; }
+  .nameGrid { grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+  .labelRow { min-height: 28px; margin-bottom: 4px; }
+  .remove { width: 32px; height: 32px; }
+  .form input, .form select { min-height: 46px; padding: 10px 12px; font-size: 0.9375rem; }
+  .searchInput > svg { top: 14px; }
+  .searchInput input { padding-left: 38px; }
+  .addName { min-height: 44px; margin-top: 4px; font-size: 0.875rem; }
+  .formHint { margin-top: 8px; font-size: 0.75rem; line-height: 1.65; }
   .popup { width: 100%; max-width: 100%; }
-  .sharedFields { grid-template-columns: 1fr; gap: 16px; }
-  .sharedFields label { margin-bottom: 8px; }
-  .sharedHeading { margin-top: 21px; padding-top: 20px; }
-  .primary { margin-top: 2px; width: 100%; }
-  .formFooter { margin-top: 17px; font-size: 0.75rem; }
+  .sharedHeading { gap: 8px; margin-top: 14px; padding-top: 14px; margin-bottom: 11px; }
+  .sharedFields { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+  .sharedFields > div { min-width: 0; }
+  .sharedFields label { margin-bottom: 5px; font-size: 0.8125rem; white-space: nowrap; }
+  .sharedFields input, .sharedFields select { font-size: 0.875rem; }
+  .primary { grid-column: 1 / -1; min-height: 46px; margin-top: 0; width: 100%; }
+  .formFooter { margin-top: 12px; font-size: 0.75rem; line-height: 1.55; }
   .results { padding-top: 15px; }
   .resultHeading { display: block; margin-bottom: 14px; }
   .resultHeading h2 { font-size: 1.375rem; line-height: 1.45; }
