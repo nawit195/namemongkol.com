@@ -1,22 +1,8 @@
 import { thaksaConfig, DayKey } from '../data/thaksa';
 import { calculateScore } from './calculateScore';
-import { premiumNamesRaw } from '../data/premiumNamesRaw';
-import { mergePremiumNameSources, PremiumNameData } from './premiumDataParser';
-import { premiumInitialChoNames, premiumInitialChoNamesRaw } from '../data/premiumInitialChoNames';
+import type { PremiumNameData } from './premiumDataParser';
 import { AUSPICIOUS_SUMS } from './gradeResult';
-
-// Cache parsed names
-let cachedParsedNames: PremiumNameData[] | null = null;
-
-const getParsedNames = () => {
-    if (!cachedParsedNames) {
-        cachedParsedNames = mergePremiumNameSources(
-            [premiumNamesRaw, premiumInitialChoNamesRaw].join('\n'),
-            premiumInitialChoNames,
-        );
-    }
-    return cachedParsedNames;
-};
+import { fallbackPremiumNameCatalog } from '@/lib/premiumNameCatalog';
 
 // Focus Topics
 export type FocusTopic = 'WEALTH' | 'JOB' | 'HEALTH' | 'LOVE' | 'PATRON';
@@ -207,9 +193,10 @@ export const generatePremiumNames = (
     dayKey: DayKey,
     focus: FocusTopic,
     limit: number = 20,
-    excludedNames: string[] = []
+    excludedNames: string[] = [],
+    catalog: PremiumNameData[] = fallbackPremiumNameCatalog,
 ): PremiumResult[] => {
-    const allNames = getParsedNames();
+    const allNames = catalog;
     const dayConfig = thaksaConfig[dayKey];
     const surnameScore = calculateScore(surname);
 

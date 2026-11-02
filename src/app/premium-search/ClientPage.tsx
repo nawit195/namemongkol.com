@@ -2,8 +2,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, Coins, CheckCircle2 } from 'lucide-react';
-import { premiumSearchNameDetails, premiumSearchNamesRaw } from '@/data/premiumSearchNames';
-import { mergePremiumNameSources, type PremiumNameDetailInput } from '@/utils/premiumDataParser';
 import { supabase } from '@/utils/supabase';
 import { getPrediction } from '@/utils/getPrediction';
 import { useRouter } from 'next/navigation';
@@ -28,6 +26,7 @@ import PremiumAlphabetBar from './components/PremiumAlphabetBar';
 import PremiumSEOSection from './components/PremiumSEOSection';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { trackEvent } from '@/lib/analytics';
+import { usePremiumNameCatalog } from '@/hooks/usePremiumNameCatalog';
 
 interface ScoreDropdownProps {
     value: string;
@@ -150,30 +149,7 @@ export default function ClientPage() {
         { value: 'เสาร์', label: t('pages.premiumSearch.days.saturday') },
     ]), [t]);
 
-    const [allNames, setAllNames] = useState(() => (
-        mergePremiumNameSources(premiumSearchNamesRaw, premiumSearchNameDetails)
-    ));
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const fetchPremiumNames = async () => {
-            try {
-                const response = await fetch('/api/public/premium-names', { signal: controller.signal });
-                if (!response.ok) return;
-                const payload = await response.json() as { success?: boolean; data?: PremiumNameDetailInput[] };
-                const details = Array.isArray(payload.data) ? payload.data : [];
-                if (!payload.success || details.length === 0) return;
-                setAllNames(mergePremiumNameSources(premiumSearchNamesRaw, premiumSearchNameDetails, details));
-            } catch (err) {
-                if (!(err instanceof DOMException && err.name === 'AbortError')) {
-                    console.error('Error fetching public premium names:', err);
-                }
-            }
-        };
-
-        void fetchPremiumNames();
-        return () => controller.abort();
-    }, []);
+    const { names: allNames } = usePremiumNameCatalog();
 
     const filteredNames = useMemo(() => {
         return filterPremiumNames(allNames, { selectedDay, selectedGender, targetScore, leadingCharType });

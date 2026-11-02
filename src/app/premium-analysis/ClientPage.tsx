@@ -19,6 +19,7 @@ import { calculateEffectiveCredits } from '@/utils/credits';
 import { consumePremiumSurnamePrefill } from '@/utils/premiumAnalysisPrefill';
 import { SearchableSelect } from '@/components/SearchableSelect';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
+import { usePremiumNameCatalog } from '@/hooks/usePremiumNameCatalog';
 
 const CertificateGenerator = dynamic(
     () => import('@/components/CertificateGenerator').then((m) => m.CertificateGenerator),
@@ -70,6 +71,7 @@ const YEARS = Array.from({ length: END_BE - START_BE + 1 }, (_, i) => {
 
 export default function PremiumAnalysisPage() {
     const router = useRouter();
+    const { names: premiumNameCatalog, loading: isPremiumNameCatalogLoading } = usePremiumNameCatalog();
     // Form State
     const [surname, setSurname] = useState('');
     const [birthDate, setBirthDate] = useState('');
@@ -208,8 +210,6 @@ export default function PremiumAnalysisPage() {
         birthDate.length > 0,
         isUnknownTime || birthTime.length > 0,
     ].filter(Boolean).length;
-    const isProfileReady = completedProfileSteps === 3;
-
     // Sync birthDate state back to dropdowns if set externally (optional, but good for robust sync)
     // For now, simpler to just let dropdowns drive the state.
 
@@ -399,7 +399,14 @@ export default function PremiumAnalysisPage() {
             setDateDetails(formatThaiBirthDate(birthDate));
 
             const excludedNames = isNewBatch ? shownNames : [];
-            const generatedResults = generatePremiumNames(surname, dayKey, focus, 20, excludedNames);
+            const generatedResults = generatePremiumNames(
+                surname,
+                dayKey,
+                focus,
+                20,
+                excludedNames,
+                premiumNameCatalog,
+            );
 
             try {
                 await supabase.rpc('cleanup_analysis_history_by_tier');
@@ -608,7 +615,7 @@ export default function PremiumAnalysisPage() {
                     <div className="col-span-full pt-4 md:pt-8 flex justify-center pb-12">
                         <button
                             onClick={() => handleAnalyze(true)}
-                            disabled={isLoading}
+                            disabled={isLoading || isPremiumNameCatalogLoading}
                             data-track="premiumAnalysis.results.reroll"
                             className="group relative inline-flex w-full sm:w-auto items-center justify-center gap-3 md:gap-4 px-4 sm:px-8 md:px-10 py-4 md:py-5 bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-lg shadow-black/40 transition-all hover:-translate-y-1 hover:shadow-amber-500/10 overflow-hidden"
                         >
@@ -899,18 +906,20 @@ export default function PremiumAnalysisPage() {
                     <button
                         type="button"
                         onClick={() => handleAnalyze(false)}
-                        disabled={isLoading}
+                        disabled={isLoading || isPremiumNameCatalogLoading}
                         data-track="premiumAnalysis.form.analyze"
                         className="group relative mx-auto w-full overflow-hidden rounded-2xl border border-[#39405a] bg-[#171a34] shadow-[0_18px_36px_rgba(26,26,62,0.18)] transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#202443] hover:shadow-[0_22px_42px_rgba(26,26,62,0.23)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 md:max-w-4xl motion-reduce:transform-none"
                     >
                         <div className="relative flex flex-col gap-5 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-6 md:px-8">
                             <div className="flex min-w-0 items-center gap-3.5 sm:gap-5">
                                 <div className="shrink-0 rounded-lg bg-[#f1cf78] p-2.5 text-[#47300c] md:p-3">
-                                    {isLoading ? <span className="block animate-spin"><RefreshCw className="h-5 w-5 md:h-6 md:w-6" /></span> : <Sparkles className="h-5 w-5 md:h-6 md:w-6" />}
+                                    {isLoading || isPremiumNameCatalogLoading ? <span className="block animate-spin"><RefreshCw className="h-5 w-5 md:h-6 md:w-6" /></span> : <Sparkles className="h-5 w-5 md:h-6 md:w-6" />}
                                 </div>
                                 <div className="min-w-0 text-left leading-tight">
                                     <span className="text-[11px] font-bold tracking-[0.14em] text-[#f1cf78]">ผลลัพธ์เฉพาะคุณ</span>
-                                    <h3 className="mt-1 text-base font-black leading-tight text-[#fbfaff] sm:text-lg">เริ่มคัดชื่อที่เหมาะกับนามสกุล</h3>
+                                    <h3 className="mt-1 text-base font-black leading-tight text-[#fbfaff] sm:text-lg">
+                                        {isPremiumNameCatalogLoading ? 'กำลังเตรียมฐานรายชื่อ...' : 'เริ่มคัดชื่อที่เหมาะกับนามสกุล'}
+                                    </h3>
                                     <p className="mt-1 text-sm font-medium leading-5 text-[#d7d4e1]">รับ 20 รายชื่อ พร้อมคะแนนและเหตุผลที่คัดเลือก</p>
                                 </div>
                             </div>

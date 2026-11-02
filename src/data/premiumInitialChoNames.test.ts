@@ -84,7 +84,7 @@ describe('curated Premium ช collection', () => {
             .some((item) => item.name === 'ชิณคัณ')).toBe(false);
     });
 
-    it('leaves the shared base unchanged and keeps ฑ additions search-only', () => {
+    it('leaves the shared base unchanged and includes ฑ additions in both premium tools', () => {
         const base = new Set(parsePremiumNames(premiumNamesRaw).map((item) => item.name));
         const seed = fs.readFileSync('scripts/seed-premium-names.sql', 'utf8');
         for (const row of source) {
@@ -96,7 +96,7 @@ describe('curated Premium ช collection', () => {
         )));
         for (const row of premiumInitialThoNames) {
             expect(byName.get(row.name)).toMatchObject({ meaning: row.meaning });
-            expect(analysisNames.has(row.name)).toBe(false);
+            expect(analysisNames.has(row.name)).toBe(true);
         }
     });
 });

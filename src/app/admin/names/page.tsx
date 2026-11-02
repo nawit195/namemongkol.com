@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import Link from 'next/link';
 import { Save, RefreshCw, FileText, AlertTriangle, Copy, Plus, Replace, Database, Crown, Download } from 'lucide-react';
 import { thaksaConfig, type DayKey } from '@/data/thaksa';
 import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 import MeaningReviewPanel from './MeaningReviewPanel';
 import PronunciationReviewPanel from './PronunciationReviewPanel';
 
-type DataSource = 'db' | 'premium';
 type SaveMode = 'append' | 'replace';
 type AdminSection = 'names' | 'meanings' | 'pronunciations';
 type ExportGender = 'all' | 'male' | 'female' | 'neutral';
@@ -35,7 +35,6 @@ interface SaveStats {
 }
 
 export default function AdminNamesPage() {
-    const [dataSource, setDataSource] = useState<DataSource>('db');
     const [names, setNames] = useState<string[]>([]);
     const [totalCount, setTotalCount] = useState(0);
     const [rawInput, setRawInput] = useState('');
@@ -49,7 +48,7 @@ export default function AdminNamesPage() {
     const [exportInitial, setExportInitial] = useState<string>('all');
     const [isExporting, setIsExporting] = useState(false);
 
-    const apiEndpoint = dataSource === 'db' ? '/api/admin/names' : '/api/admin/premium-names';
+    const apiEndpoint = '/api/admin/names';
 
     // Pre-validate: parse rawInput to show preview counts
     const preview = useMemo(() => {
@@ -94,17 +93,6 @@ export default function AdminNamesPage() {
         fetchNames();
     }, [fetchNames]);
 
-    // Switch data source
-    const switchSource = (source: DataSource) => {
-        if (source === dataSource) return;
-        setDataSource(source);
-        setSaveMode('append');
-        setRawInput('');
-        setLastStats(null);
-        setNames([]);
-        setTotalCount(0);
-    };
-
     const handleSave = async () => {
         const Swal = (await import('sweetalert2')).default;
 
@@ -127,7 +115,7 @@ export default function AdminNamesPage() {
         if (newNames.length === 0) return;
 
         // Replace mode (DB only): require confirmation
-        if (dataSource === 'db' && saveMode === 'replace') {
+        if (saveMode === 'replace') {
             const confirm = await Swal.fire({
                 title: '⚠️ ยืนยันเขียนทับ?',
                 html: `<p class="text-red-300">โหมด <strong>Replace</strong> จะ<strong>ลบรายชื่อเดิมทั้งหมด</strong>แล้วแทนที่ด้วยรายชื่อใหม่ ${preview.unique.toLocaleString()} ชื่อ</p><p class="text-slate-400 mt-2">การกระทำนี้ย้อนกลับไม่ได้!</p>`,
@@ -145,11 +133,7 @@ export default function AdminNamesPage() {
         setIsSaving(true);
         setLastStats(null);
         try {
-            const body: Record<string, unknown> = { names: newNames };
-            if (dataSource === 'db') {
-                body.mode = saveMode;
-                body.records = records;
-            }
+            const body: Record<string, unknown> = { names: newNames, mode: saveMode, records };
 
             const res = await fetch(apiEndpoint, {
                 method: 'POST',
@@ -260,8 +244,6 @@ export default function AdminNamesPage() {
         }
     };
 
-    const isPremium = dataSource === 'premium';
-
     return (
         <div className="p-4 md:p-8">
             <div className="max-w-5xl mx-auto space-y-6">
@@ -269,19 +251,14 @@ export default function AdminNamesPage() {
                 <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div>
                         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            {isPremium ? <Crown className="text-amber-400" /> : <FileText className="text-amber-500" />}
-                            {isPremium ? 'จัดการรายชื่อ Premium' : 'จัดการรายชื่อมงคล'}
+                            <FileText className="text-amber-500" />
+                            จัดการรายชื่อมงคล
                         </h1>
-                        <p className="text-slate-400 mt-2">
-                            {isPremium
-                                ? 'เพิ่มรายชื่อใหม่ลงไฟล์ premiumNamesRaw.ts (ข้ามชื่อซ้ำอัตโนมัติ)'
-                                : 'เพิ่ม ลบ หรือแก้ไขรายชื่อในระบบ (ค้นหาทั่วไป)'
-                            }
-                        </p>
+                        <p className="text-slate-400 mt-2">เพิ่ม ลบ หรือแก้ไขรายชื่อในระบบ (ค้นหาทั่วไป)</p>
                     </div>
-                    <div className={`flex items-center gap-4 px-4 py-2 rounded-xl border ${isPremium ? 'bg-amber-900/20 border-amber-500/20' : 'bg-slate-800/50 border-white/10'}`}>
+                    <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-slate-800/50 px-4 py-2">
                         <span className="text-sm text-slate-400">จำนวนทั้งหมด</span>
-                        <span className={`text-2xl font-bold ${isPremium ? 'text-amber-400' : 'text-emerald-400'}`}>{totalCount.toLocaleString()}</span>
+                        <span className="text-2xl font-bold text-emerald-400">{totalCount.toLocaleString()}</span>
                         <span className="text-sm text-slate-400">ชื่อ</span>
                     </div>
                 </header>
@@ -300,7 +277,7 @@ export default function AdminNamesPage() {
                         type="button"
                         role="tab"
                         aria-selected={adminSection === 'meanings'}
-                        onClick={() => { setDataSource('db'); setAdminSection('meanings'); }}
+                        onClick={() => setAdminSection('meanings')}
                         className={`min-h-11 border-b-2 px-4 text-sm font-bold transition-colors ${adminSection === 'meanings' ? 'border-amber-400 text-amber-300' : 'border-transparent text-slate-400 hover:text-white'}`}
                     >
                         ตรวจความหมาย
@@ -309,7 +286,7 @@ export default function AdminNamesPage() {
                         type="button"
                         role="tab"
                         aria-selected={adminSection === 'pronunciations'}
-                        onClick={() => { setDataSource('db'); setAdminSection('pronunciations'); }}
+                        onClick={() => setAdminSection('pronunciations')}
                         className={`min-h-11 border-b-2 px-4 text-sm font-bold transition-colors ${adminSection === 'pronunciations' ? 'border-amber-400 text-amber-300' : 'border-transparent text-slate-400 hover:text-white'}`}
                     >
                         ตรวจคำอ่าน
@@ -392,34 +369,24 @@ export default function AdminNamesPage() {
                     </div>
                 </section>
 
-                {/* Data Source Toggle */}
+                {/* Data source navigation */}
                 <div className="flex items-center gap-3">
-                    <span className="text-sm text-slate-400 font-medium">แหล่งข้อมูล:</span>
-                    <button
-                        onClick={() => switchSource('db')}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${dataSource === 'db'
-                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
-                            : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
-                            }`}
-                    >
+                    <span className="text-sm text-slate-400 font-medium">ฐานข้อมูล:</span>
+                    <span className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-900/30">
                         <Database size={16} />
                         DB รายชื่อทั่วไป
-                    </button>
-                    <button
-                        onClick={() => switchSource('premium')}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${dataSource === 'premium'
-                            ? 'bg-amber-600 text-white shadow-lg shadow-amber-900/30'
-                            : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
-                            }`}
+                    </span>
+                    <Link
+                        href="/admin/premium-names"
+                        className="flex items-center gap-2 rounded-lg bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-amber-400"
                     >
                         <Crown size={16} />
-                        รายชื่อ Premium
-                    </button>
+                        ไปจัดการรายชื่อ Premium
+                    </Link>
                 </div>
 
-                {/* Mode Toggle — DB only */}
-                {dataSource === 'db' && (
-                    <div className="flex items-center gap-3">
+                {/* Mode Toggle */}
+                <div className="flex items-center gap-3">
                         <span className="text-sm text-slate-400 font-medium">โหมดบันทึก:</span>
                         <button
                             onClick={() => { setSaveMode('append'); setLastStats(null); setRawInput(''); }}
@@ -441,41 +408,35 @@ export default function AdminNamesPage() {
                             <Replace size={16} />
                             Replace (เขียนทับ)
                         </button>
-                    </div>
-                )}
+                </div>
 
                 {/* Preview Stats */}
                 {rawInput.trim().length > 0 && (
-                    <div className={`flex items-center gap-4 px-4 py-3 rounded-xl border text-sm ${isPremium ? 'bg-amber-900/10 border-amber-500/10' : 'bg-slate-800/50 border-white/10'}`}>
+                    <div className="flex items-center gap-4 rounded-xl border border-white/10 bg-slate-800/50 px-4 py-3 text-sm">
                         <span className="text-slate-400">Preview:</span>
                         <span className="text-white font-semibold">{preview.total.toLocaleString()} รายชื่อ</span>
                         <span className="text-slate-500">→</span>
-                        <span className={`font-semibold ${isPremium ? 'text-amber-400' : 'text-emerald-400'}`}>{preview.unique.toLocaleString()} ไม่ซ้ำ</span>
+                        <span className="font-semibold text-emerald-400">{preview.unique.toLocaleString()} ไม่ซ้ำ</span>
                         {preview.duplicatesInPayload > 0 && (
                             <span className="text-amber-400">(ซ้ำใน input {preview.duplicatesInPayload})</span>
                         )}
                         <span className="text-slate-500 ml-auto">
-                            {isPremium
-                                ? '* ชื่อที่ซ้ำกับ premiumNamesRaw.ts จะถูกข้ามอัตโนมัติ'
-                                : saveMode === 'append'
-                                    ? '* ชื่อที่ซ้ำกับ DB จะถูกข้ามอัตโนมัติ'
-                                    : ''
-                            }
+                            {saveMode === 'append' ? '* ชื่อที่ซ้ำกับ DB จะถูกข้ามอัตโนมัติ' : ''}
                         </span>
                     </div>
                 )}
 
                 {/* Last Save Result */}
                 {lastStats && (
-                    <div className={`rounded-xl p-4 text-sm ${isPremium ? 'bg-amber-500/10 border border-amber-500/20' : 'bg-emerald-500/10 border border-emerald-500/20'}`}>
-                        <h4 className={`font-bold mb-2 ${isPremium ? 'text-amber-300' : 'text-emerald-300'}`}>ผลการบันทึกล่าสุด</h4>
+                    <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm">
+                        <h4 className="mb-2 font-bold text-emerald-300">ผลการบันทึกล่าสุด</h4>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                             <div className="bg-black/20 rounded-lg p-2 text-center">
                                 <div className="text-lg font-bold text-white">{lastStats.received.toLocaleString()}</div>
                                 <div className="text-xs text-slate-400">รับเข้ามา</div>
                             </div>
                             <div className="bg-black/20 rounded-lg p-2 text-center">
-                                <div className={`text-lg font-bold ${isPremium ? 'text-amber-400' : 'text-emerald-400'}`}>{lastStats.inserted.toLocaleString()}</div>
+                                <div className="text-lg font-bold text-emerald-400">{lastStats.inserted.toLocaleString()}</div>
                                 <div className="text-xs text-slate-400">เพิ่มสำเร็จ</div>
                             </div>
                             <div className="bg-black/20 rounded-lg p-2 text-center">
@@ -491,13 +452,10 @@ export default function AdminNamesPage() {
                 )}
 
                 {/* Editor Section */}
-                <div className={`border rounded-2xl p-6 shadow-xl ${isPremium ? 'bg-amber-950/20 border-amber-500/20' : 'bg-slate-900/50 border-white/10'}`}>
+                <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 shadow-xl">
                     <div className="flex justify-between items-center mb-4">
                         <label className="text-sm font-bold text-slate-300 uppercase tracking-wider">
-                            {isPremium
-                                ? 'วางรายชื่อ Premium ใหม่ที่ต้องการเพิ่ม'
-                                : saveMode === 'append' ? 'วางรายชื่อใหม่ที่ต้องการเพิ่ม' : 'รายชื่อทั้งหมด (แก้ไขได้เลย)'
-                            }
+                            {saveMode === 'append' ? 'วางรายชื่อใหม่ที่ต้องการเพิ่ม' : 'รายชื่อทั้งหมด (แก้ไขได้เลย)'}
                         </label>
                         <div className="flex gap-2">
                             <button
@@ -519,29 +477,22 @@ export default function AdminNamesPage() {
                     </div>
 
                     <div className="relative">
-                        {!isPremium ? (
-                            <p className="mb-3 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs leading-5 text-sky-200">
-                                นำเข้าได้ทั้งแบบชื่ออย่างเดียว, <strong>ชื่อ | ความหมาย | เพศ</strong> หรือ <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral คำอ่านที่ระบุจะเผยแพร่เมื่อรูปแบบผ่านการตรวจ ส่วนรายการที่ยังไม่มีคำอ่านจะเข้าคิวรอตรวจ
-                            </p>
-                        ) : null}
+                        <p className="mb-3 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs leading-5 text-sky-200">
+                            นำเข้าได้ทั้งแบบชื่ออย่างเดียว, <strong>ชื่อ | ความหมาย | เพศ</strong> หรือ <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> โดยเพศใช้ male, female หรือ neutral คำอ่านที่ระบุจะเผยแพร่เมื่อรูปแบบผ่านการตรวจ ส่วนรายการที่ยังไม่มีคำอ่านจะเข้าคิวรอตรวจ
+                        </p>
                         <textarea
                             value={rawInput}
                             onChange={(e) => setRawInput(e.target.value)}
-                            className={`w-full h-[60vh] bg-black/40 border rounded-xl p-4 text-slate-300 font-mono text-sm leading-relaxed focus:outline-none transition-all resize-none custom-scrollbar ${isPremium
-                                ? 'border-amber-700/50 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50'
-                                : 'border-slate-700 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50'
-                                }`}
-                            placeholder={isPremium
-                                ? 'วางรายชื่อ Premium ใหม่ที่นี่... (คั่นด้วย , หรือขึ้นบรรทัดใหม่)\nระบบจะข้ามชื่อที่ซ้ำกับ premiumNamesRaw.ts อัตโนมัติ'
-                                : saveMode === 'append'
-                                    ? 'วางรายชื่อใหม่ที่ต้องการเพิ่มที่นี่... (คั่นด้วย , หรือขึ้นบรรทัดใหม่)\nระบบจะข้ามชื่อที่มีอยู่แล้วโดยอัตโนมัติ'
-                                    : 'วางรายชื่อที่นี่... (คั่นด้วยเครื่องหมายจุลภาค , หรือขึ้นบรรทัดใหม่)'
+                            className="custom-scrollbar h-[60vh] w-full resize-none rounded-xl border border-slate-700 bg-black/40 p-4 font-mono text-sm leading-relaxed text-slate-300 outline-none transition-all focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50"
+                            placeholder={saveMode === 'append'
+                                ? 'วางรายชื่อใหม่ที่ต้องการเพิ่มที่นี่... (คั่นด้วย , หรือขึ้นบรรทัดใหม่)\nระบบจะข้ามชื่อที่มีอยู่แล้วโดยอัตโนมัติ'
+                                : 'วางรายชื่อที่นี่... (คั่นด้วยเครื่องหมายจุลภาค , หรือขึ้นบรรทัดใหม่)'
                             }
                         />
                         {isLoading && (
                             <div className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center rounded-xl z-10">
                                 <div className="flex flex-col items-center gap-3">
-                                    <div className={`animate-spin ${isPremium ? 'text-amber-400' : 'text-amber-500'}`}>
+                                    <div className="animate-spin text-amber-500">
                                         <RefreshCw size={32} />
                                     </div>
                                     <span className="text-slate-300 font-medium">กำลังโหลดข้อมูล...</span>
@@ -554,22 +505,18 @@ export default function AdminNamesPage() {
                         <div className="flex items-center gap-2 text-xs text-slate-500">
                             <AlertTriangle size={14} className="text-amber-500" />
                             <span>
-                                {isPremium
-                                    ? 'ระบบจะเพิ่มเฉพาะชื่อใหม่ที่ยังไม่มีใน premiumNamesRaw.ts'
-                                    : saveMode === 'append'
-                                        ? 'ระบบจะเพิ่มเฉพาะชื่อใหม่ที่ยังไม่มีในฐานข้อมูล'
-                                        : '⚠️ โหมด Replace จะลบรายชื่อเดิมทั้งหมดแล้วแทนที่!'
+                                {saveMode === 'append'
+                                    ? 'ระบบจะเพิ่มเฉพาะชื่อใหม่ที่ยังไม่มีในฐานข้อมูล'
+                                    : '⚠️ โหมด Replace จะลบรายชื่อเดิมทั้งหมดแล้วแทนที่!'
                                 }
                             </span>
                         </div>
                         <button
                             onClick={handleSave}
                             disabled={isSaving || isLoading || rawInput.trim().length === 0}
-                            className={`flex items-center gap-2 px-8 py-3 font-bold rounded-xl shadow-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed ${isPremium
-                                ? 'bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white shadow-amber-900/20'
-                                : saveMode === 'replace'
-                                    ? 'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-red-900/20'
-                                    : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-900/20'
+                            className={`flex items-center gap-2 rounded-xl px-8 py-3 font-bold text-white shadow-lg transition-all hover:scale-105 active:scale-95 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-70 ${saveMode === 'replace'
+                                ? 'bg-gradient-to-r from-red-600 to-rose-600 shadow-red-900/20 hover:from-red-500 hover:to-rose-500'
+                                : 'bg-gradient-to-r from-emerald-600 to-teal-600 shadow-emerald-900/20 hover:from-emerald-500 hover:to-teal-500'
                                 }`}
                         >
                             {isSaving ? (
@@ -581,10 +528,7 @@ export default function AdminNamesPage() {
                                 <>
                                     <Save size={20} />
                                     <span>
-                                        {isPremium
-                                            ? 'เพิ่มรายชื่อ Premium'
-                                            : saveMode === 'append' ? 'เพิ่มรายชื่อ' : 'เขียนทับทั้งหมด'
-                                        }
+                                        {saveMode === 'append' ? 'เพิ่มรายชื่อ' : 'เขียนทับทั้งหมด'}
                                     </span>
                                 </>
                             )}
@@ -593,28 +537,19 @@ export default function AdminNamesPage() {
                 </div>
 
                 {/* Instruction */}
-                <div className={`rounded-xl p-4 flex gap-4 ${isPremium ? 'bg-amber-500/5 border border-amber-500/10' : 'bg-amber-500/5 border border-amber-500/10'}`}>
-                    <div className={`p-2 rounded-lg h-fit ${isPremium ? 'bg-amber-500/10 text-amber-400' : 'bg-amber-500/10 text-amber-500'}`}>
+                <div className="flex gap-4 rounded-xl border border-amber-500/10 bg-amber-500/5 p-4">
+                    <div className="h-fit rounded-lg bg-amber-500/10 p-2 text-amber-500">
                         <AlertTriangle size={20} />
                     </div>
                     <div>
                         <h3 className="font-bold text-amber-200 mb-1">คำแนะนำการใช้งาน</h3>
-                        {isPremium ? (
-                            <ul className="text-sm text-slate-400 space-y-1 list-disc list-inside">
-                                <li>วางรายชื่อใหม่ ระบบจะเพิ่มเฉพาะชื่อที่ยังไม่มีใน premiumNamesRaw.ts</li>
-                                <li>ชื่อจะถูกเรียงลำดับตัวอักษรไทยอัตโนมัติหลังบันทึก</li>
-                                <li>ข้อมูลจะถูกเขียนลงไฟล์ <code className="text-amber-300">src/data/premiumNamesRaw.ts</code> โดยตรง</li>
-                                <li>ใช้เครื่องหมาย <strong>จุลภาค (,)</strong> หรือ <strong>การขึ้นบรรทัดใหม่</strong> เพื่อแยกแต่ละชื่อ</li>
-                            </ul>
-                        ) : (
-                            <ul className="text-sm text-slate-400 space-y-1 list-disc list-inside">
-                                <li><strong>Append (เพิ่มต่อ)</strong>: วางเฉพาะชื่อใหม่ ระบบจะข้ามชื่อที่มีอยู่แล้วอัตโนมัติ</li>
-                                <li>รูปแบบพร้อมคำอ่าน: <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> หรือใช้รูปแบบเดิม <strong>ชื่อ | ความหมาย | เพศ</strong></li>
-                                <li><strong>Replace (เขียนทับ)</strong>: แทนที่รายชื่อทั้งหมดในฐานข้อมูล — ใช้ด้วยความระวัง!</li>
-                                <li>ใช้เครื่องหมาย <strong>จุลภาค (,)</strong> หรือ <strong>การขึ้นบรรทัดใหม่</strong> เพื่อแยกแต่ละชื่อออกจากกัน</li>
-                                <li>ระบบจะ trim ช่องว่าง และลบชื่อซ้ำใน payload ให้โดยอัตโนมัติ</li>
-                            </ul>
-                        )}
+                        <ul className="list-inside list-disc space-y-1 text-sm text-slate-400">
+                            <li><strong>Append (เพิ่มต่อ)</strong>: วางเฉพาะชื่อใหม่ ระบบจะข้ามชื่อที่มีอยู่แล้วอัตโนมัติ</li>
+                            <li>รูปแบบพร้อมคำอ่าน: <strong>ชื่อ | คำอ่าน | ความหมาย | เพศ</strong> หรือใช้รูปแบบเดิม <strong>ชื่อ | ความหมาย | เพศ</strong></li>
+                            <li><strong>Replace (เขียนทับ)</strong>: แทนที่รายชื่อทั้งหมดในฐานข้อมูล — ใช้ด้วยความระวัง!</li>
+                            <li>ใช้เครื่องหมาย <strong>จุลภาค (,)</strong> หรือ <strong>การขึ้นบรรทัดใหม่</strong> เพื่อแยกแต่ละชื่อออกจากกัน</li>
+                            <li>ระบบจะ trim ช่องว่าง และลบชื่อซ้ำใน payload ให้โดยอัตโนมัติ</li>
+                        </ul>
                     </div>
                 </div>
                 </>}
