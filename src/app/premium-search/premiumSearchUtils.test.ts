@@ -5,6 +5,7 @@ import {
     getFirstConsonant,
     getUniquePremiumScores,
     groupPremiumNamesByLetter,
+    PREMIUM_FREE_PREVIEW_COUNT,
     type PremiumSearchFilters,
 } from './premiumSearchUtils';
 import type { PremiumNameData } from '@/utils/premiumDataParser';
@@ -24,6 +25,10 @@ const baseFilters: PremiumSearchFilters = {
 };
 
 describe('premium search helpers', () => {
+    it('shows six premium names before requiring an unlock', () => {
+        expect(PREMIUM_FREE_PREVIEW_COUNT).toBe(6);
+    });
+
     it('handles Thai leading vowels when finding the first consonant', () => {
         expect(getFirstConsonant('เก่ง')).toBe('ก');
     });

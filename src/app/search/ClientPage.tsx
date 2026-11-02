@@ -26,6 +26,7 @@ import { THAI_NAME_INITIALS, type ThaiNameInitial } from '@/data/thaiInitials';
 import {
     getImmediateLetterResult,
     mergeUniqueNames,
+    prioritizeUnseenNames,
     type LetterPreviewResult,
 } from './letterPreviews';
 
@@ -244,8 +245,8 @@ function createSearchSessionSeed() {
     return Math.random().toString(36).slice(2);
 }
 
-function createFeaturedSeed(sessionSeed: string, filters: SearchFilters) {
-    return `${sessionSeed}|${filters.day}|${filters.gender}|${filters.initial}`;
+function createFeaturedSeed(sessionSeed: string, filters: SearchFilters, rotation = 0) {
+    return `${sessionSeed}|${filters.day}|${filters.gender}|${filters.initial}|rotation-${rotation}`;
 }
 
 type PublicStats = {
@@ -328,6 +329,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         return cache;
     });
     const searchSessionSeed = useRef(createSearchSessionSeed());
+    const featuredRotation = useRef(0);
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
     const prefetchedLetters = useRef<Set<string>>(new Set());
@@ -355,9 +357,13 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         return result;
     }, [resultCache]);
 
-    const applyNamesResult = useCallback((result: SearchNamesResult) => {
+    const applyNamesResult = useCallback((
+        result: SearchNamesResult,
+        previousVisibleNames: readonly string[] = [],
+    ) => {
         const featuredData = result.featuredData ?? [];
-        setNames(reorderFirstPageWithFeatured(result.data, featuredData));
+        const orderedNames = reorderFirstPageWithFeatured(result.data, featuredData);
+        setNames(prioritizeUnseenNames(orderedNames, previousVisibleNames));
         setTotal(result.total);
         setTotalPages(result.totalPages);
         setLoadedPage(result.page);
@@ -374,10 +380,14 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         setVisibleCount(10);
     }, []);
 
-    const loadFirstPage = useCallback(async (filters: SearchFilters) => {
+    const loadFirstPage = useCallback(async (
+        filters: SearchFilters,
+        options: { rotate?: boolean; previousVisibleNames?: readonly string[] } = {},
+    ) => {
         activeFilterRequest.current?.abort();
         const requestId = ++latestFilterRequestId.current;
-        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters);
+        const rotation = options.rotate ? ++featuredRotation.current : 0;
+        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters, rotation);
         const cacheKey = createSearchResultCacheKey(filters, 1, featuredSeed);
         const cached = resultCache.get(cacheKey);
 
@@ -398,7 +408,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                 featuredSeed,
             });
             if (requestId !== latestFilterRequestId.current) return;
-            applyNamesResult(result);
+            applyNamesResult(result, options.previousVisibleNames);
         } catch (error) {
             if (error instanceof Error && error.name === 'AbortError') return;
             if (requestId !== latestFilterRequestId.current) return;
@@ -540,14 +550,26 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     }, [selectedLetter, selectedDay, selectedGender, prefetchLetter, requestNamesPage, resultCache]);
 
     const handleLetterChange = (letter: string) => {
-        if (letter === selectedLetter && !namesError) return;
+        if (letter === selectedLetter && !namesError) {
+            if (letter !== 'all' && !isLoadingNames) {
+                void loadFirstPage({
+                    day: selectedDay,
+                    gender: selectedGender,
+                    initial: letter,
+                }, {
+                    rotate: true,
+                    previousVisibleNames: names.slice(0, 10).map((item) => item.name),
+                });
+            }
+            return;
+        }
         setSelectedLetter(letter);
         setVisibleCount(10);
         const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: letter };
         const immediateResult = getImmediateLetterResult(filters, initialLetterPreviews, initialResult);
 
         if (!immediateResult) {
-            void loadFirstPage(filters);
+            void loadFirstPage(filters, { rotate: letter !== 'all' });
             return;
         }
 
@@ -561,8 +583,24 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
             applyNamesResult(immediateResult);
         } else {
             applyLetterPreview(immediateResult);
-            prefetchLetter(letter);
+            void loadFirstPage(filters, {
+                rotate: true,
+                previousVisibleNames: immediateResult.data.map((item) => item.name),
+            });
         }
+    };
+
+    const handleRotateLetterNames = () => {
+        if (selectedLetter === 'all' || isLoadingNames) return;
+
+        void loadFirstPage({
+            day: selectedDay,
+            gender: selectedGender,
+            initial: selectedLetter,
+        }, {
+            rotate: true,
+            previousVisibleNames: names.slice(0, 10).map((item) => item.name),
+        });
     };
 
     const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -893,12 +931,25 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             <Type className="w-3.5 h-3.5 md:w-4 md:h-4" />
                             <span>กรองตามตัวอักษรแรก</span>
                             {selectedLetter !== 'all' && (
-                                <button
-                                    onClick={() => handleLetterChange('all')}
-                                    className="ml-auto text-xs text-amber-700 hover:text-amber-800 transition-colors"
-                                >
-                                    ล้างตัวกรอง
-                                </button>
+                                <div className="ml-auto flex items-center gap-2">
+                                    <button
+                                        type="button"
+                                        onClick={handleRotateLetterNames}
+                                        disabled={isLoadingNames}
+                                        className="inline-flex min-h-8 items-center gap-1 rounded-lg border border-amber-300 bg-amber-50 px-2.5 font-semibold text-amber-800 transition-colors hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 disabled:cursor-wait disabled:opacity-60"
+                                        aria-label={`เปลี่ยนรายชื่อขึ้นต้นด้วย ${selectedLetter} อีก 10 ชื่อ`}
+                                    >
+                                        <RotateCw className={`h-3.5 w-3.5 ${isLoadingNames ? 'animate-spin' : ''}`} aria-hidden="true" />
+                                        เปลี่ยน 10 ชื่อ
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => handleLetterChange('all')}
+                                        className="min-h-8 text-xs text-amber-700 transition-colors hover:text-amber-900 focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                                    >
+                                        ล้างตัวกรอง
+                                    </button>
+                                </div>
                             )}
                         </div>
                         <div className="flex flex-wrap gap-1 md:gap-1.5">
@@ -915,8 +966,13 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             {THAI_NAME_INITIALS.map((letter) => (
                                 <button
                                     key={letter}
+                                    type="button"
                                     onClick={() => handleLetterChange(letter)}
                                     onPointerEnter={() => handleLetterHover(letter)}
+                                    aria-pressed={selectedLetter === letter}
+                                    aria-label={selectedLetter === letter
+                                        ? `เปลี่ยนรายชื่อขึ้นต้นด้วย ${letter} อีก 10 ชื่อ`
+                                        : `แสดงรายชื่อขึ้นต้นด้วย ${letter}`}
                                     className={`w-7 h-7 md:w-9 md:h-9 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center justify-center ${
                                         selectedLetter === letter
                                             ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg shadow-amber-500/20 scale-110'

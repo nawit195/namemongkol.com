@@ -7,6 +7,7 @@ import {
     ChevronLeft,
     ChevronRight,
     Crown,
+    Download,
     FileUp,
     Pencil,
     Plus,
@@ -23,6 +24,19 @@ import type {
 } from '@/lib/adminPremiumNames';
 
 const PAGE_SIZE = 30;
+
+function getDownloadFilename(contentDisposition: string | null) {
+    if (!contentDisposition) return null;
+    const utf8Filename = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+    if (utf8Filename) {
+        try {
+            return decodeURIComponent(utf8Filename);
+        } catch {
+            return null;
+        }
+    }
+    return contentDisposition.match(/filename="([^"]+)"/i)?.[1] ?? null;
+}
 
 type EditorValue = {
     record?: PremiumAdminRecord;
@@ -231,6 +245,7 @@ export default function AdminPremiumNamesPage() {
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
+    const [isExporting, setIsExporting] = useState(false);
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
     const [editor, setEditor] = useState<EditorValue | null>(null);
@@ -348,6 +363,38 @@ export default function AdminPremiumNamesPage() {
         setShowImport(false);
     };
 
+    const downloadCsv = async () => {
+        if (isExporting) return;
+        setIsExporting(true);
+        setError('');
+        try {
+            const params = new URLSearchParams({
+                view: 'csv',
+                ...(query ? { q: query } : {}),
+            });
+            const response = await fetch(`/api/admin/premium-names?${params}`, { cache: 'no-store' });
+            if (!response.ok) {
+                const payload = await response.json().catch(() => null) as { error?: string } | null;
+                throw new Error(payload?.error || 'สร้างไฟล์ CSV ไม่สำเร็จ');
+            }
+
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = getDownloadFilename(response.headers.get('Content-Disposition'))
+                ?? `premium-names-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        } catch (downloadError) {
+            setError(downloadError instanceof Error ? downloadError.message : 'สร้างไฟล์ CSV ไม่สำเร็จ');
+        } finally {
+            setIsExporting(false);
+        }
+    };
+
     const removeRecord = async (record: PremiumAdminRecord) => {
         const confirmed = window.confirm(`นำ “${record.name}” ออกจาก Premium ใช่หรือไม่?\n\nคำอ่าน ความหมาย และข้อมูลชื่อหลักจะยังคงอยู่`);
         if (!confirmed) return;
@@ -375,6 +422,10 @@ export default function AdminPremiumNamesPage() {
                     <Link href="/admin/names" className="inline-flex min-h-11 items-center justify-center rounded-lg border border-slate-600 px-4 text-sm font-bold text-slate-200 transition-colors hover:border-slate-400 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-400">
                         ไปจัดการข้อมูลชื่อหลัก
                     </Link>
+                    <button type="button" onClick={() => void downloadCsv()} disabled={isExporting} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-emerald-500/40 px-4 text-sm font-bold text-emerald-300 transition-colors hover:bg-emerald-500/10 focus:outline-none focus:ring-2 focus:ring-emerald-400 disabled:cursor-not-allowed disabled:opacity-50">
+                        {isExporting ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+                        {isExporting ? 'กำลังสร้าง CSV...' : 'ดาวน์โหลด CSV'}
+                    </button>
                     <button type="button" onClick={() => setShowImport((current) => !current)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-amber-500/40 px-4 text-sm font-bold text-amber-300 transition-colors hover:bg-amber-500/10 focus:outline-none focus:ring-2 focus:ring-amber-400">
                         <FileUp className="h-4 w-4" /> นำเข้าหลายชื่อ
                     </button>

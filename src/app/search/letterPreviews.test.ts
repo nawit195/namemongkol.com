@@ -5,6 +5,7 @@ import {
     createLetterPreviewResult,
     getImmediateLetterResult,
     mergeUniqueNames,
+    prioritizeUnseenNames,
     shouldUseLetterPreview,
 } from './letterPreviews';
 
@@ -109,6 +110,29 @@ describe('instant initial-letter previews', () => {
             { name: 'กมล' },
             { name: 'กวี' },
             { name: 'กฤต' },
+        ]);
+    });
+
+    it('puts other names before the ten names shown in the previous rotation', () => {
+        const names = Array.from({ length: 25 }, (_, index) => ({ name: `name-${index + 1}` }));
+        const previousNames = names.slice(0, 10).map((item) => item.name);
+
+        const prioritized = prioritizeUnseenNames(names, previousNames);
+
+        expect(prioritized.slice(0, 10).map((item) => item.name)).toEqual(
+            names.slice(10, 20).map((item) => item.name),
+        );
+        expect(prioritized).toHaveLength(names.length);
+        expect(new Set(prioritized.map((item) => item.name)).size).toBe(names.length);
+    });
+
+    it('keeps the available names when an initial has fewer than ten alternatives', () => {
+        const names = [{ name: 'กนก' }, { name: 'กมล' }, { name: 'กวี' }];
+
+        expect(prioritizeUnseenNames(names, ['กนก', 'กมล'])).toEqual([
+            { name: 'กวี' },
+            { name: 'กนก' },
+            { name: 'กมล' },
         ]);
     });
 });

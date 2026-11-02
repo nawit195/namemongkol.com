@@ -81,3 +81,29 @@ export function mergeUniqueNames<TName extends { name: string }>(
 
     return merged;
 }
+
+/**
+ * Moves names that were not in the previous visible set to the front.
+ * This keeps each 10-name rotation feeling fresh while retaining all names
+ * returned by the API for pagination and unlock flows.
+ */
+export function prioritizeUnseenNames<TName extends { name: string }>(
+    names: TName[],
+    previousVisibleNames: readonly string[],
+): TName[] {
+    if (previousVisibleNames.length === 0) return names;
+
+    const previousNames = new Set(previousVisibleNames);
+    const unseen: TName[] = [];
+    const seen: TName[] = [];
+
+    for (const item of names) {
+        if (previousNames.has(item.name)) {
+            seen.push(item);
+        } else {
+            unseen.push(item);
+        }
+    }
+
+    return [...unseen, ...seen];
+}

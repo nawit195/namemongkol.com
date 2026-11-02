@@ -11,6 +11,7 @@ import {
     type PremiumAdminInput,
     type PremiumSharedDetailRow,
 } from '@/lib/adminPremiumNames';
+import { buildPremiumNamesCsv } from '@/lib/premiumNamesCsv';
 import { createClient } from '@/utils/supabaseServer';
 
 export const dynamic = 'force-dynamic';
@@ -67,6 +68,48 @@ function escapeLikePattern(value: string) {
     return value.replace(/[\\%_]/g, (character) => `\\${character}`);
 }
 
+function getBangkokDateStamp(date = new Date()) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Bangkok',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).formatToParts(date);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
+
+async function fetchSharedDetails(supabase: ServerClient, names: string[]) {
+    const details: PremiumSharedDetailRow[] = [];
+    for (let index = 0; index < names.length; index += INSERT_BATCH_SIZE) {
+        const result = await supabase
+            .from('auspicious_names')
+            .select('name, gender, pronunciation, pronunciation_draft, pronunciation_status, meaning, meaning_draft, meaning_status, publication_status')
+            .in('name', names.slice(index, index + INSERT_BATCH_SIZE));
+        if (result.error) throw result.error;
+        details.push(...((result.data ?? []) as PremiumSharedDetailRow[]));
+    }
+    return details;
+}
+
+async function fetchAllPremiumMembershipRows(supabase: ServerClient, search: string) {
+    const memberships: Array<{ id: number | string; name: string; created_at?: string | null }> = [];
+    for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
+        let query = supabase
+            .from('premium_names')
+            .select('id, name, created_at')
+            .order('name', { ascending: true })
+            .range(from, from + DATABASE_PAGE_SIZE - 1);
+        if (search) query = query.ilike('name', `%${escapeLikePattern(search)}%`);
+        const { data, error } = await query;
+        if (error) throw error;
+        const batch = data ?? [];
+        memberships.push(...batch);
+        if (batch.length < DATABASE_PAGE_SIZE) break;
+    }
+    return memberships;
+}
+
 async function fetchAllPremiumNames(supabase: ServerClient) {
     const names: string[] = [];
     for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
@@ -106,15 +149,7 @@ async function fetchAdminRecords(supabase: ServerClient, request: Request) {
     const { data: memberships, count, error } = await membershipQuery;
     if (error) throw error;
     const names = (memberships ?? []).map((row) => row.name);
-    let details: PremiumSharedDetailRow[] = [];
-    if (names.length > 0) {
-        const detailResult = await supabase
-            .from('auspicious_names')
-            .select('name, gender, pronunciation, pronunciation_draft, pronunciation_status, meaning, meaning_draft, meaning_status, publication_status')
-            .in('name', names);
-        if (detailResult.error) throw detailResult.error;
-        details = (detailResult.data ?? []) as PremiumSharedDetailRow[];
-    }
+    const details = names.length > 0 ? await fetchSharedDetails(supabase, names) : [];
 
     return NextResponse.json({
         success: true,
@@ -191,6 +226,24 @@ export async function GET(request: Request) {
         if (authError) return authError;
 
         const { searchParams } = new URL(request.url);
+        if (searchParams.get('view') === 'csv') {
+            const search = normalizePremiumName(searchParams.get('q')).slice(0, 100);
+            const memberships = await fetchAllPremiumMembershipRows(supabase, search);
+            const names = memberships.map((row) => row.name);
+            const details = names.length > 0 ? await fetchSharedDetails(supabase, names) : [];
+            const csv = buildPremiumNamesCsv(buildPremiumAdminRecords(memberships, details));
+            const dateStamp = getBangkokDateStamp();
+            const localizedFilename = `รายชื่อ-premium-${dateStamp}.csv`;
+
+            return new NextResponse(csv, {
+                headers: {
+                    'Content-Type': 'text/csv; charset=utf-8',
+                    'Content-Disposition': `attachment; filename="premium-names-${dateStamp}.csv"; filename*=UTF-8''${encodeURIComponent(localizedFilename)}`,
+                    'Cache-Control': 'private, no-store',
+                    'X-Content-Type-Options': 'nosniff',
+                },
+            });
+        }
         if (searchParams.get('view') === 'records') return fetchAdminRecords(supabase, request);
 
         const names = await fetchAllPremiumNames(supabase);

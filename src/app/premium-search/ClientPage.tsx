@@ -11,6 +11,7 @@ import {
     getAvailablePremiumLetters,
     getUniquePremiumScores,
     groupPremiumNamesByLetter,
+    PREMIUM_FREE_PREVIEW_COUNT,
     type LeadingCharType,
 } from './premiumSearchUtils';
 import {
@@ -499,7 +500,11 @@ export default function ClientPage() {
 
                                             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
                                                 {visibleNames.map((item, index) => (
-                                                    <PremiumNameCard key={item.name + index} item={item} isUnlocked={isFullyUnlocked || index < 3} />
+                                                    <PremiumNameCard
+                                                        key={item.name + index}
+                                                        item={item}
+                                                        isUnlocked={isFullyUnlocked || index < PREMIUM_FREE_PREVIEW_COUNT}
+                                                    />
                                                 ))}
                                             </div>
 

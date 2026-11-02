@@ -5,6 +5,8 @@ import type { PremiumNameData } from '@/utils/premiumDataParser';
 export type LeadingCharType = 'Any' | 'Dech' | 'Si';
 export type GenderFilter = 'all' | 'male' | 'female' | 'neutral' | string;
 
+export const PREMIUM_FREE_PREVIEW_COUNT = 6;
+
 export const THAI_DAY_TO_KEY: Record<string, DayKey> = {
     'อาทิตย์': 'sunday',
     'จันทร์': 'monday',
