@@ -85,6 +85,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/privacy',
         '/reviews',
         '/search',
+        '/names',
         '/names/girls',
         '/names/girls/by-birthday',
         '/names/girls/english-names',

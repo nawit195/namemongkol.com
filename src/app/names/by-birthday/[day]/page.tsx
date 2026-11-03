@@ -227,6 +227,7 @@ export default async function BirthdayOverviewPage({ params }: { params: Promise
                 <div className="mx-auto max-w-5xl">
                     <h2 className="text-2xl font-bold">ชื่อมงคลตามวันเกิดอื่น</h2>
                     <div className="mt-5 flex flex-wrap gap-2">
+                        <Link prefetch={false} href="/names" className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-400">ตั้งชื่อลูก พร้อมความหมาย</Link>
                         {DAYS.filter((item) => item !== day).map((item) => (
                             <Link prefetch={false} key={item} href={`/names/by-birthday/${item}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-400 hover:bg-amber-50">ชื่อมงคลคนเกิด{DAY_LABELS[item]}</Link>
                         ))}

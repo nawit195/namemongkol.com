@@ -75,6 +75,7 @@ export const articleAnswerProfiles: Record<string, ArticleAnswerProfile> = {
         sources: namingSources,
         reviewedAt: '2026-07-15',
         clusterLinks: [
+            { href: '/names', label: 'คู่มือเลือกชื่อลูกพร้อมความหมาย' },
             { href: '/names/boys/by-birthday', label: 'ชื่อลูกชายตามวันเกิด' },
             { href: '/names/girls/by-birthday', label: 'ชื่อลูกสาวตามวันเกิด' },
         ],

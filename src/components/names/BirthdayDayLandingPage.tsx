@@ -205,6 +205,7 @@ export async function BirthdayDayLandingPage({ gender, day }: { gender: Birthday
                 <div className="mx-auto max-w-5xl">
                     <h2 className="text-2xl font-bold">ดูชื่อมงคลวันเกิดอื่น</h2>
                     <div className="mt-5 flex flex-wrap gap-2">
+                        <Link prefetch={false} href="/names" className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-amber-400">ตั้งชื่อลูก พร้อมความหมาย</Link>
                         {BIRTHDAY_DAY_KEYS.filter((key) => key !== day).map((key) => (
                             <Link prefetch={false} key={key} href={`/names/${gender}/by-birthday/${key}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-amber-400 hover:bg-amber-50">
                                 {dayLabels[key]}

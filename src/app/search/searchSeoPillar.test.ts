@@ -14,7 +14,7 @@ describe('/search SEO pillar content', () => {
         expect(pageSource).toContain('fetchPublicAggregateStats');
         expect(pageSource).toContain('liveNamesLabel');
         expect(pageSource).toContain('featuredSeed:');
-        expect(pageSource).toContain('numberOfItems: initialResult.total');
+        expect(pageSource).toContain('numberOfItems: Math.min(initialResult.data.length, 10)');
         expect(pageSource).toContain('initialResult.data.slice(0, 10)');
         expect(pageSource).toContain('initialLetterPreviews={initialLetterPreviews}');
         expect(pageSource).not.toContain('fetchAllPublicNames()');
@@ -40,7 +40,7 @@ describe('/search SEO pillar content', () => {
     test('targets ชื่อมงคล as the primary search landing page', () => {
         const pageSource = readSource('src/app/search/page.tsx');
 
-        expect(pageSource).toContain('ค้นหาชื่อมงคล พร้อมคำอ่าน ความหมาย และเลขศาสตร์');
+        expect(pageSource).toContain('ตั้งชื่อมงคล ค้นหาชื่อพร้อมความหมายและเลขศาสตร์');
         expect(pageSource).toContain('title: { absolute: searchPageTitle }');
         expect(pageSource).toContain('รายชื่อมงคล');
         expect(pageSource).toContain('ตั้งชื่อลูก');
