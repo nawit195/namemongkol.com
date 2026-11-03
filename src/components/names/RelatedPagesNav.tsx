@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 export function RelatedPagesNav({ currentPath }: { currentPath: string }) {
     const links = [
+        { path: '/names', label: 'ตั้งชื่อลูก พร้อมความหมาย' },
         { path: '/names/by-birthday/monday', label: 'ชื่อมงคลคนเกิดวันจันทร์' },
         { path: '/names/girls', label: 'ตั้งชื่อลูกสาว' },
         { path: '/names/boys', label: 'ตั้งชื่อลูกชาย' },

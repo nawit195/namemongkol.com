@@ -56,15 +56,16 @@ const featureItems = [
 ];
 
 const internalLinks = [
-    { href: '/name-analysis', label: 'วิเคราะห์ชื่อมงคล' },
+    { href: '/name-check', label: 'วิเคราะห์ชื่อและนามสกุลฟรี' },
     { href: '/premium-analysis', label: 'วิเคราะห์ชื่อแบบ Premium' },
-    { href: '/name-analysis', label: 'คัดกรองชื่อมงคล' },
+    { href: '/name-analysis', label: 'เปรียบเทียบและคัดกรองหลายชื่อ' },
+    { href: '/names', label: 'แนวทางตั้งชื่อลูก' },
     { href: '/reviews', label: 'รีวิวจากผู้ใช้งานจริง' },
     { href: '/articles', label: 'บทความตั้งชื่อมงคล' },
 ];
 
 export const metadata: Metadata = {
-    title: seoTitle,
+    title: { absolute: seoTitle },
     alternates: { canonical: `${baseUrl}/name-generator` },
     description: seoDescription,
     keywords: [
@@ -326,7 +327,7 @@ export default function NameGeneratorPage() {
                             </h2>
                             <p className="mt-3 text-sm leading-7">
                                 หลังจากได้รายชื่อที่สนใจแล้ว แนะนำให้นำชื่อไปตรวจสอบเพิ่มเติมผ่านระบบ{' '}
-                                <Link prefetch={false} href="/name-analysis" className="font-extrabold text-[#a67828] underline-offset-4 hover:underline">
+                                <Link prefetch={false} href="/name-check" className="font-extrabold text-[#a67828] underline-offset-4 hover:underline">
                                     วิเคราะห์ชื่อมงคล
                                 </Link>{' '}
                                 เพื่อดูรายละเอียดเชิงลึก เช่น ผลรวมชื่อ ความหมายโดยรวม ความเหมาะสมของชื่อและนามสกุล รวมถึงแนวทางการเลือกชื่อที่เหมาะกับตัวคุณมากที่สุด

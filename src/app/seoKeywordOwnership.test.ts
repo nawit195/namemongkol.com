@@ -16,9 +16,9 @@ describe('conservative SEO keyword ownership', () => {
         expect(home).toContain("const pageTitle = 'NameMongkol | ค้นหาและวิเคราะห์ชื่อมงคลตามวันเกิด'");
         expect(homeHero).toContain("titlePrefix: 'วิเคราะห์'");
         expect(homeHero).toContain("titleHighlight: 'ชื่อมงคล'");
-        expect(nameCheck).toContain("title: 'วิเคราะห์ชื่อ นามสกุล ฟรี | ถอดอักษรเป็นเลขศาสตร์ เช็กคู่เลขในชื่อ | NameMongkol'");
+        expect(nameCheck).toContain("title: { absolute: 'วิเคราะห์ชื่อ นามสกุล ฟรี เช็กเลขศาสตร์และทักษา | NameMongkol' }");
         expect(nameCheck).toContain("canonical: `${siteUrl.replace(/\\/$/, '')}/name-check`");
-        expect(search).toContain("const searchPageTitle = 'ค้นหาชื่อมงคล พร้อมคำอ่าน ความหมาย และเลขศาสตร์ | NameMongkol'");
+        expect(search).toContain("const searchPageTitle = 'ตั้งชื่อมงคล ค้นหาชื่อพร้อมความหมายและเลขศาสตร์ | NameMongkol'");
         expect(nameAnalysis).toContain("title: 'เปรียบเทียบชื่อหลายชื่อ จัดเกรดและส่งออกผล | NameMongkol'");
     });
 

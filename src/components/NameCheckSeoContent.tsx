@@ -1,7 +1,21 @@
 import Link from 'next/link';
 import { nameCheckFaqItems, nameCheckHowTo } from '@/data/nameCheckSeo';
+import { calculateScore } from '@/utils/calculateScore';
+import { analyzePairs } from '@/utils/analyzePairs';
+import { analyzeThaksa } from '@/utils/analyzeThaksa';
+import { getCharValue } from '@/data/numerologyLookup';
 
 export function NameCheckSeoContent() {
+    const exampleName = 'กานต์';
+    const exampleSurname = 'ใจดี';
+    const letters = Array.from(exampleName).flatMap((char) => {
+        const value = getCharValue(char);
+        return value === undefined ? [] : [{ char, value }];
+    });
+    const nameScore = calculateScore(exampleName);
+    const surnameScore = calculateScore(exampleSurname);
+    const pairs = analyzePairs(exampleName);
+    const thaksa = analyzeThaksa(exampleName, 'sunday', exampleSurname);
     return (
         <section className="relative z-10 w-full max-w-5xl mx-auto px-4 pb-16 md:pb-24">
             <div className="rounded-[2rem] border border-[#ddddf0] bg-white p-6 sm:p-8 md:p-10 shadow-sm">
@@ -13,11 +27,23 @@ export function NameCheckSeoContent() {
                         วิเคราะห์ชื่อ คืออะไร และทำไมคนค้นหาชื่อนี้ถึงต้องเช็กทั้งชื่อกับนามสกุลพร้อมกัน
                     </h2>
                     <p className="mt-4 text-sm leading-7 text-[#5a5a82] sm:text-base">
-                        การวิเคราะห์ชื่อที่แม่นขึ้นไม่ได้ดูแค่ชื่อจริงอย่างเดียว แต่ต้องดูผลรวมเลขศาสตร์ของชื่อและนามสกุล,
-                        อักษรกาลกิณีตามวันเกิด, พลังพื้นดวงจากอายตนะ 6 และความสมพงศ์ระหว่างชื่อกับนามสกุลในนิรันดร์ศาสตร์
-                        หน้านี้จึงถูกออกแบบมาเพื่อคนที่ต้องการรู้ผลทันทีว่าชื่อปัจจุบันส่งเสริมหรือฉุดพลังชีวิตด้านงาน เงิน ความรัก และภาพลักษณ์หรือไม่
+                        วิเคราะห์ชื่อคือการนำตัวสะกดมาแปลงเป็นค่าตัวเลขและอ่านผลตามหลักที่เลือกใช้ ที่ NameMongkol
+                        คุณสามารถตรวจทั้งชื่อและนามสกุล ดูผลรวม คู่เลข และอักษรตามวันเกิดได้ในหน้าเดียว
+                        การแปลผลเลขศาสตร์ ทักษา อายตนะ 6 และนิรันดร์ศาสตร์เป็นการตีความตามความเชื่อ
+                        ควรพิจารณาร่วมกับความหมายทางภาษา เสียงอ่าน และการใช้งานจริง โดยผลวิเคราะห์ไม่รับประกันเหตุการณ์ในชีวิต
                     </p>
                 </div>
+
+                <section aria-labelledby="name-check-example" className="mt-10 rounded-2xl border border-[#ddddf0] bg-[#f8f8fc] p-5 sm:p-7">
+                    <h2 id="name-check-example" className="text-xl font-bold sm:text-2xl">ตัวอย่างวิเคราะห์ชื่อและนามสกุลทีละขั้น</h2>
+                    <p className="mt-3 text-sm leading-7 text-[#5a5a82]">ตัวอย่างสมมติ “{exampleName} {exampleSurname}” เกิดวันอาทิตย์ ใช้ฟังก์ชันคำนวณเดียวกับเครื่องมือด้านบน ไม่ใช่ข้อมูลผู้ใช้จริง</p>
+                    <dl className="mt-5 space-y-4 text-sm leading-7">
+                        <div><dt className="font-bold">1. ถอดอักษรและหาผลรวม</dt><dd className="mt-1 text-[#5a5a82]">{letters.map(({ char, value }) => `${char} = ${value}`).join(', ')} รวมชื่อได้ {nameScore} นามสกุลได้ {surnameScore} รวมชื่อและนามสกุลได้ {nameScore + surnameScore} ระบบนับเฉพาะอักขระที่มีค่าในตาราง</dd></div>
+                        <div><dt className="font-bold">2. ดูคู่เลขของอักษรที่อยู่ติดกัน</dt><dd className="mt-1 text-[#5a5a82]">คู่เลขในชื่อ: {pairs.map((pair) => pair.pair).join(', ')} เป็นการจับค่าตัวอักษรที่คำนวณได้ตามลำดับ ไม่ใช่การแยกหลักของผลรวม และระบบวิเคราะห์คู่เลขของนามสกุลแยกต่างหาก</dd></div>
+                        <div><dt className="font-bold">3. ตรวจทักษาตามวันเกิด</dt><dd className="mt-1 text-[#5a5a82]">เมื่อเลือกวันอาทิตย์ อักษรกาลกิณีในชื่อตามตารางที่ระบบใช้: {thaksa?.kaliChars.join(', ') || 'ไม่พบ'} ส่วนนี้เปลี่ยนตามวันเกิด แม้ผลรวมเลขศาสตร์ของตัวสะกดเดิมจะเท่าเดิม</dd></div>
+                    </dl>
+                    <p className="mt-5 text-sm leading-7 text-[#5a5a82]">ตรวจตารางค่าอักษร หลักทักษา และข้อจำกัดได้ที่ <Link href="/methodology" className="font-semibold underline underline-offset-4">วิธีคำนวณและนโยบายบรรณาธิการ</Link> · จัดทำโดย <Link href="/about" className="underline underline-offset-4">ทีมงาน NameMongkol</Link></p>
+                </section>
 
                 <div id="name-check-method" className="mt-10 rounded-3xl border border-amber-100 bg-amber-50/50 p-6 sm:p-7">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Detailed Numerology</p>
@@ -88,6 +114,7 @@ export function NameCheckSeoContent() {
                         </ul>
 
                         <div className="mt-6 space-y-3 text-sm">
+                            <Link prefetch={false} href="/names" className="block rounded-2xl border border-[#ddddf0] px-4 py-3 text-[#1a1a3e] hover:bg-amber-50">ตั้งชื่อลูก พร้อมความหมายและขั้นตอนเลือกชื่อ</Link>
                             <Link prefetch={false} href="/search" className="block rounded-2xl border border-[#ddddf0] bg-white px-4 py-3 text-[#1a1a3e] transition-colors hover:bg-amber-50 hover:border-amber-200">
                                 ค้นหาชื่อมงคล 5,000+ ชื่อ หากต้องการเริ่มจากรายชื่อแนะนำ
                             </Link>

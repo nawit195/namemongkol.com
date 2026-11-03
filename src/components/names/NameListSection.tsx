@@ -139,6 +139,7 @@ export function NameListSection({ names, genderLabel }: NameListSectionProps) {
                                 <div className="mt-4 pt-4 border-t border-slate-100">
                                     <Link prefetch={false} 
                                         href={`/name-check?name=${encodeURIComponent(name.name)}`}
+                                        data-track="funnel.search.name_analyze"
                                         className="block w-full rounded-xl bg-slate-900 px-4 py-2 text-center text-sm font-bold text-white transition-colors hover:bg-slate-800"
                                     >
                                         วิเคราะห์ชื่อนี้

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import ClientHome from './ClientHome';
 import { ogImageUrl, siteUrl } from '@/lib/seo';
@@ -32,7 +33,7 @@ const brandServices = [
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: pageTitle,
+    title: { absolute: pageTitle },
     description: pageDescription,
     keywords: [
       'NameMongkol',
@@ -169,6 +170,13 @@ export default async function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ClientHome heroHeadingLevel="h1" />
+      <section className="bg-[#f8f8fc] px-4 py-10 text-[#1a1a3e]">
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-2xl font-bold">กำลังตั้งชื่อลูก เริ่มเลือกชื่อที่นี่</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[#5a5a82]">ดูชื่อลูกชาย ลูกสาว ชื่อเล่น และชื่อภาษาอังกฤษ พร้อมความหมายและแนวทางเลือกชื่อ ก่อนนำไปวิเคราะห์ร่วมกับนามสกุล</p>
+          <Link prefetch={false} href="/names" className="mt-5 inline-flex rounded-xl bg-[#0f172a] px-5 py-3 font-semibold text-slate-100 hover:bg-[#1e293b]">ตั้งชื่อลูก พร้อมความหมาย →</Link>
+        </div>
+      </section>
     </>
   );
 }

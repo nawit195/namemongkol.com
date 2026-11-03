@@ -841,7 +841,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                         <span>ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง</span>
                                     </div>
                                     <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
-                                        ค้นหาชื่อมงคล พร้อมคำอ่านและความหมาย
+                                        ตั้งชื่อมงคล พร้อมความหมายและเลขศาสตร์
                                     </h1>
                                     <p className="mx-auto mb-4 max-w-[65ch] px-2 text-sm leading-relaxed text-slate-700 sm:text-base md:mb-6">
                                         ค้นหาชื่อสำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสมจากฐานข้อมูลที่อัปเดตต่อเนื่อง
