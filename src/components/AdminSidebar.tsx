@@ -21,6 +21,7 @@ export const AdminSidebar = () => {
     const menuItems = [
         { name: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
         { name: 'จัดการรายชื่อ', icon: FileText, path: '/admin/names' },
+        { name: 'รายชื่อที่เคยวิเคราะห์', icon: FileText, path: '/admin/analysis-results' },
         { name: 'รายชื่อ Premium', icon: Crown, path: '/admin/premium-names' },
         { name: 'ชื่อสัตว์เลี้ยง', icon: PawPrint, path: '/admin/pet-names' },
         { name: 'จัดการผู้ใช้งาน', icon: Users, path: '/admin/users' },
@@ -65,7 +66,7 @@ export const AdminSidebar = () => {
                     </div>
 
                     {/* Menu */}
-                    <nav className="space-y-1 flex-1">
+                    <nav aria-label="เมนูผู้ดูแลระบบ" className="min-h-0 flex-1 space-y-1 overflow-y-auto">
                         {menuItems.map((item) => {
                             const isActive = pathname === item.path;
                             return (

@@ -159,7 +159,7 @@ export async function proxy(request: NextRequest) {
     // Protected API Routes
     if (request.nextUrl.pathname.startsWith('/api/admin')) {
         if (!user) {
-            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers: { 'Cache-Control': 'private, no-store' } });
         }
     }
 
