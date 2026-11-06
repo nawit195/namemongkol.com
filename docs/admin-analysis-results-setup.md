@@ -1,6 +1,6 @@
 # รายชื่อที่เคยวิเคราะห์
 
-หน้า `/admin/analysis-results` แสดงชื่อจริงไม่ซ้ำจาก `analysis_results` พร้อมค้นหา แบ่งหน้าละ 50 ชื่อ และดาวน์โหลด CSV ตามคำค้น โดยไม่ส่งออกนามสกุลหรือคะแนน
+หน้า `/admin/analysis-results` แสดงชื่อจริงไม่ซ้ำจาก `analysis_results` พร้อมผลรวมชื่อและเกรด ค้นหา แบ่งหน้าละ 50 ชื่อ และดาวน์โหลด CSV ตามคำค้น โดยไม่ส่งออกนามสกุล
 
 ## ติดตั้งฐานข้อมูล
 
@@ -15,16 +15,18 @@ Migration เพิ่มเพียง RPC `public.admin_analysis_result_names
 
 ## รูปแบบ API
 
-`GET /api/admin/analysis-results?search=ณัฐ&page=1` คืน `{ success, names, total, page, pageSize, totalPages }` โดย `total` เป็นจำนวนชื่อไม่ซ้ำที่ตรงคำค้น ส่วน `format=csv` ส่งออกชื่อทั้งหมดที่ตรงคำค้นจาก snapshot เดียวในฐานข้อมูล ไม่ติดข้อจำกัด 1,000 แถวของ REST row results
+`GET /api/admin/analysis-results?search=ณัฐ&page=1` คืน `{ success, names, rows, total, page, pageSize, totalPages }` โดย `rows` มี `{ name, nameScore, grade }` และยังคง `names: string[]` เดิมไว้ ส่วน `total` เป็นจำนวนชื่อไม่ซ้ำที่ตรงคำค้น และ `format=csv` ส่งออกชื่อทั้งหมดที่ตรงคำค้นจาก snapshot เดียวในฐานข้อมูล ไม่ติดข้อจำกัด 1,000 แถวของ REST row results
+
+เซิร์ฟเวอร์คำนวณใหม่จากชื่อจริงด้วย `calculateScore(name)`, `analyzePairs(name)` และ `calculateGrade(score, pairs)` เหมือนหน้าวิเคราะห์ ไม่ใช้คะแนนที่บันทึกไว้และไม่รวมนามสกุล ตารางและ CSV ใช้ตัวคำนวณเดียวกัน การเพิ่มผลรวมและเกรดไม่ต้องติดตั้ง migration เพิ่มจาก RPC เดิม
 
 ตัดช่องว่างธรรมดาหัวท้ายชื่อ ข้ามชื่อว่าง รวมเฉพาะชื่อที่สะกดตรงกัน และคงตัวพิมพ์เดิม การค้นหาเป็นข้อความบางส่วนแบบไม่สนตัวพิมพ์สำหรับอักษรที่ฐานข้อมูลรองรับ `%` และ `_` เป็นข้อความปกติ ไม่ใช่ wildcard รายชื่อเรียงด้วย collation `C` เพื่อให้ลำดับระหว่างหน้าคงที่
 
-CSV มีคอลัมน์เดียว `ชื่อ` ใช้ UTF-8 BOM, CRLF, escape เครื่องหมายคำพูด และป้องกันค่าเริ่มต้น `=`, `+`, `-`, `@` ถูกเปิดเป็นสูตรใน spreadsheet
+CSV มีคอลัมน์ `ชื่อ`, `ผลรวมชื่อ`, `เกรด` ใช้ UTF-8 BOM, CRLF, escape เครื่องหมายคำพูด และป้องกันค่าเริ่มต้น `=`, `+`, `-`, `@` ถูกเปิดเป็นสูตรใน spreadsheet
 
 ## ตรวจสอบ
 
 ```powershell
-npm run test -- src/lib/adminAnalysisResults.test.ts src/app/api/admin/analysis-results/route.test.ts src/app/admin/analysis-results/AnalysisResultsView.test.ts
+npm run test -- src/lib/adminAnalysisResults.test.ts src/lib/adminAnalysisResultsScoring.test.ts src/app/api/admin/analysis-results/route.test.ts src/app/admin/analysis-results/AnalysisResultsView.test.ts
 ```
 
 ทดสอบ SQL จริงใน PostgreSQL แบบฝังตัวด้วยข้อมูลจำลอง โดยติดตั้ง dependency ในโฟลเดอร์ชั่วคราว ไม่เพิ่ม dependency เข้าโปรเจกต์:
@@ -46,3 +48,11 @@ node scripts/test-admin-analysis-result-names.mjs (Join-Path $analysisSqlTestRoo
 - PostgreSQL แบบฝังตัวผ่านกรณีชื่อซ้ำ ช่องว่าง 1,506 ชื่อ การแบ่งหน้า ค้นหาภาษาไทย/อักขระ `%_` การส่งออกทั้งหมด สิทธิ์เรียก RPC และ migration ที่รันซ้ำได้
 - ทดสอบ UI ด้วยหน้าแยกและข้อมูลจำลอง โดยใช้ component/controller เดียวกับหน้าแอดมินจริง ไม่ข้ามการตรวจสิทธิ์ของแอป: หน้าละ 50 ชื่อ ค้นหาแล้วกลับหน้าแรก รีเฟรช สถานะไม่พบชื่อ และข้อผิดพลาดการตั้งค่า
 - ตรวจไฟล์ CSV ที่ดาวน์โหลดจากหน้าสองว่ามีข้อมูลจำลองครบ 126 ชื่อ และ CSV จากคำค้นมีเพียง 1 ชื่อ พร้อม BOM; ตรวจขนาดหน้าจอ 1280 และ 390 พิกเซล ไม่พบเนื้อหาล้นแนวนอน
+
+## เพิ่มผลรวมชื่อและเกรด 6 พฤศจิกายน 2569
+
+- Vitest ผ่าน 52 ไฟล์ / 273 tests ครอบคลุมชื่อไทย สระ/วรรณยุกต์ ภาษาอังกฤษ เกรด A+/A/B/C และคู่เลขเสียที่ต้องได้ C แม้ผลรวมดี
+- JSON และ CSV ให้คะแนนตรงกัน; CSV ส่งออก 1,501 ชื่อได้ครบ พร้อมการ escape และป้องกันสูตรเดิม; การตรวจสิทธิ์ 401/403 ยังผ่าน
+- Production build ผ่าน; ESLint มี 0 errors และ 46 warnings เดิม
+- ตรวจ HTML ที่ render จาก component จริงร่วมกับ CSS ของ production build ด้วยข้อมูลจำลองที่ขนาด 320, 390 และ 1280 พิกเซล: ตารางครบ 4 คอลัมน์ ไม่มีเนื้อหาล้นแนวนอน และสถานะโหลด/ไม่มีข้อมูลครอบคลุมทั้ง 4 คอลัมน์
+- การตรวจหน้าจอรอบนี้ใช้ HTML จำลอง จึงไม่ได้ทดสอบการคลิกค้นหา/แบ่งหน้ากับบัญชีแอดมินจริงซ้ำ

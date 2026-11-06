@@ -4,7 +4,7 @@ import { describe, expect, test, vi } from 'vitest';
 import { AnalysisResultsView, type AnalysisResultsViewProps } from './AnalysisResultsView';
 
 const base: AnalysisResultsViewProps = {
-    data: { names: ['กานต์', '<script>test</script>'], total: 105 }, search: '', page: 2,
+    data: { rows: [{ name: 'กานต์', nameScore: 19, grade: 'C' }, { name: '<script>test</script>', nameScore: 24, grade: 'A+' }], total: 105 }, search: '', page: 2,
     loading: false, error: null, accessDenied: null, exporting: false, exportError: null,
     onSearchChange: vi.fn(), onRefresh: vi.fn(), onPageChange: vi.fn(), onExport: vi.fn(),
 };
@@ -21,11 +21,19 @@ describe('admin analyzed names view', () => {
         expect(html).toContain('52');
         expect(html).toContain('หน้า 2 / 3');
         expect(html).toContain('CSV รวมชื่อทั้งหมดที่ตรงคำค้น');
+        expect(html.match(/scope="col"/g)).toHaveLength(4);
+        expect(html).toContain('ผลรวมชื่อ');
+        expect(html).toContain('เกรด');
+        expect(html).toContain('>19</td>');
+        expect(html).toContain('>C</span>');
+        expect(html).toContain('>A+</span>');
+        expect(html).toContain('ไม่รวมคะแนนนามสกุล');
     });
     test('distinguishes loading, empty search, empty table and setup failure', () => {
         expect(render({ loading: true, data: null })).toContain('กำลังโหลดรายชื่อ');
-        expect(render({ data: { names: [], total: 0 }, page: 1 })).toContain('ยังไม่มีรายชื่อ');
-        expect(render({ data: { names: [], total: 0 }, page: 1, search: 'ไม่มี' })).toContain('ไม่พบชื่อที่ตรงกับคำค้น');
+        expect(render({ loading: true, data: null })).toContain('colSpan="4"');
+        expect(render({ data: { rows: [], total: 0 }, page: 1 })).toContain('ยังไม่มีรายชื่อ');
+        expect(render({ data: { rows: [], total: 0 }, page: 1, search: 'ไม่มี' })).toContain('ไม่พบชื่อที่ตรงกับคำค้น');
         const html = render({ data: null, error: 'กรุณาติดตั้ง SQL migration ก่อนใช้งาน' });
         expect(html).toContain('role="alert"');
         expect(html).toContain('กรุณาติดตั้ง SQL migration');

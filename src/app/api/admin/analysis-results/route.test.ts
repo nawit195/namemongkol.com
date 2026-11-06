@@ -9,6 +9,8 @@ vi.mock('@/utils/supabaseServer', () => ({
 }));
 vi.mock('@supabase/supabase-js', () => ({ createClient: mocks.createService }));
 import { GET } from './route';
+import { buildAnalyzedNameRows } from '@/lib/adminAnalysisResultsScoring';
+import { buildAnalyzedNamesCsv } from '@/lib/adminAnalysisResults';
 
 const request = (query = '') => new Request(`http://localhost/api/admin/analysis-results${query}`);
 beforeEach(() => {
@@ -49,7 +51,7 @@ describe('admin analyzed names API', () => {
         const response = await GET(request(`?page=2&search=${encodeURIComponent('ณัฐ')}`));
         expect(mocks.rpc).toHaveBeenCalledWith('admin_analysis_result_names', { p_search: 'ณัฐ', p_page: 2, p_page_size: 50, p_export: false });
         expect(response.headers.get('Cache-Control')).toBe('private, no-store');
-        expect(await response.json()).toEqual({ success: true, names: ['ณัฐ'], total: 2501, page: 2, pageSize: 50, totalPages: 51 });
+        expect(await response.json()).toEqual({ success: true, names: ['ณัฐ'], rows: buildAnalyzedNameRows(['ณัฐ']), total: 2501, page: 2, pageSize: 50, totalPages: 51 });
     });
     test('exports more than 1000 names in one snapshot for the current search, ignoring pagination', async () => {
         const names = Array.from({ length: 1501 }, (_, index) => `ชื่อ${index}`);
@@ -64,6 +66,16 @@ describe('admin analyzed names API', () => {
         expect(csv).toContain('"ชื่อ1500"');
         expect(csv.split('\r\n')).toHaveLength(1503);
         expect(csv).not.toContain('test-service-secret');
+        expect(csv).toBe(buildAnalyzedNamesCsv(buildAnalyzedNameRows(names)).replace(/^\uFEFF/, ''));
+    });
+    test('uses the same freshly calculated first-name values in JSON and CSV', async () => {
+        const names = ['กานต์', 'ปัญญา', 'Alice', 'ชื่อ,"พิเศษ'];
+        mocks.rpc.mockResolvedValue({ data: { names, total: names.length, nameScore: 999, surname: 'private' }, error: null });
+        const json = await (await GET(request())).json();
+        expect(json.rows).toEqual(buildAnalyzedNameRows(names));
+        const bytes = await (await GET(request('?format=csv'))).arrayBuffer();
+        expect(new TextDecoder('utf-8', { ignoreBOM: true }).decode(bytes)).toBe(buildAnalyzedNamesCsv(json.rows));
+        expect(JSON.stringify(json)).not.toContain('private');
     });
     test('does not silently export a truncated result', async () => {
         mocks.rpc.mockResolvedValue({ data: { names: ['กานต์'], total: 1501 }, error: null });

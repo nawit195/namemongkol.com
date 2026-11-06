@@ -1,6 +1,7 @@
 import { createClient as createServiceClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabaseServer';
+import { buildAnalyzedNameRows } from '@/lib/adminAnalysisResultsScoring';
 import {
     ANALYSIS_NAMES_PAGE_SIZE, analysisNamesDownloadFilename, buildAnalyzedNamesCsv,
     parseAnalysisNamesQuery, parseAnalysisNamesResult,
@@ -44,10 +45,11 @@ export async function GET(request: Request) {
         }
         const result = parseAnalysisNamesResult(data);
         if (!result) return failure(503, 'ข้อมูลรายชื่อที่ได้รับไม่ถูกต้อง กรุณาลองใหม่');
+        const rows = buildAnalyzedNameRows(result.names);
 
         if (query.exportCsv) {
             if (result.names.length !== result.total) return failure(503, 'ข้อมูลส่งออกไม่ครบ กรุณาลองใหม่');
-            return new NextResponse(buildAnalyzedNamesCsv(result.names), {
+            return new NextResponse(buildAnalyzedNamesCsv(rows), {
                 headers: {
                     ...PRIVATE_HEADERS,
                     'Content-Type': 'text/csv; charset=utf-8',
@@ -57,7 +59,7 @@ export async function GET(request: Request) {
             });
         }
         return NextResponse.json({
-            success: true, ...result, page: query.page, pageSize: ANALYSIS_NAMES_PAGE_SIZE,
+            success: true, ...result, rows, page: query.page, pageSize: ANALYSIS_NAMES_PAGE_SIZE,
             totalPages: Math.max(1, Math.ceil(result.total / ANALYSIS_NAMES_PAGE_SIZE)),
         }, { headers: PRIVATE_HEADERS });
     } catch {

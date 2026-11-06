@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import {
-    ANALYSIS_NAMES_PAGE_SIZE, analysisNamesDownloadFilename, parseAnalysisNamesResult,
-    type AnalysisNamesResult,
+    ANALYSIS_NAMES_PAGE_SIZE, analysisNamesDownloadFilename, parseAnalysisNamesTableResult,
+    type AnalysisNamesTableResult,
 } from '@/lib/adminAnalysisResults';
 import { AnalysisResultsView } from './AnalysisResultsView';
 
@@ -23,7 +23,7 @@ export default function AdminAnalysisResultsPage() {
     const [searchInput, setSearchInput] = useState('');
     const [query, setQuery] = useState({ search: '', page: 1 });
     const [refreshVersion, setRefreshVersion] = useState(0);
-    const [data, setData] = useState<AnalysisNamesResult | null>(null);
+    const [data, setData] = useState<AnalysisNamesTableResult | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [accessDenied, setAccessDenied] = useState<'unauthorized' | 'forbidden' | null>(null);
@@ -58,7 +58,7 @@ export default function AdminAnalysisResultsPage() {
                     setError(message);
                     return;
                 }
-                const result = parseAnalysisNamesResult(await response.json());
+                const result = parseAnalysisNamesTableResult(await response.json());
                 if (controller.signal.aborted) return;
                 if (!result) throw new Error('Invalid names response');
                 const lastPage = Math.max(1, Math.ceil(result.total / ANALYSIS_NAMES_PAGE_SIZE));

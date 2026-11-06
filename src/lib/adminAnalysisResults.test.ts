@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { analysisNamesDownloadFilename, buildAnalyzedNamesCsv, parseAnalysisNamesQuery, parseAnalysisNamesResult } from './adminAnalysisResults';
+import { analysisNamesDownloadFilename, buildAnalyzedNamesCsv, parseAnalysisNamesQuery, parseAnalysisNamesResult, parseAnalysisNamesTableResult } from './adminAnalysisResults';
 
 describe('analyzed names query and export', () => {
     test('uses page one by default and treats Thai and wildcard text as literal search input', () => {
@@ -21,10 +21,18 @@ describe('analyzed names query and export', () => {
             expect(parseAnalysisNamesResult(value)).toBeNull();
         }
     });
-    test('exports Thai as one-column CSV with BOM, CRLF, escaping and formula protection', () => {
-        const csv = buildAnalyzedNamesCsv(['กานต์', 'ชื่อ,ทดสอบ', 'ชื่อ"ทดสอบ', 'ชื่อ\nใหม่', '=2+2', ' \t@SUM(1)', '+123', '-123']);
-        expect(csv).toBe('\uFEFF"ชื่อ"\r\n"กานต์"\r\n"ชื่อ,ทดสอบ"\r\n"ชื่อ""ทดสอบ"\r\n"ชื่อ\nใหม่"\r\n"\'=2+2"\r\n"\' \t@SUM(1)"\r\n"\'+123"\r\n"\'-123"\r\n');
-        expect(buildAnalyzedNamesCsv([])).toBe('\uFEFF"ชื่อ"\r\n');
+    test('exports three-column CSV with BOM, CRLF, escaping and formula protection', () => {
+        const csv = buildAnalyzedNamesCsv(['กานต์', 'ชื่อ,ทดสอบ', 'ชื่อ"ทดสอบ', 'ชื่อ\nใหม่', '=2+2', ' \t@SUM(1)', '+123', '-123'].map(name => ({ name, nameScore: 19, grade: 'C' })));
+        expect(csv).toBe('\uFEFF"ชื่อ","ผลรวมชื่อ","เกรด"\r\n"กานต์","19","C"\r\n"ชื่อ,ทดสอบ","19","C"\r\n"ชื่อ""ทดสอบ","19","C"\r\n"ชื่อ\nใหม่","19","C"\r\n"\'=2+2","19","C"\r\n"\' \t@SUM(1)","19","C"\r\n"\'+123","19","C"\r\n"\'-123","19","C"\r\n');
+        expect(buildAnalyzedNamesCsv([])).toBe('\uFEFF"ชื่อ","ผลรวมชื่อ","เกรด"\r\n');
+    });
+    test('validates scored rows and whitelists fields before rendering', () => {
+        const row = { name: 'กานต์', nameScore: 19, grade: 'C', surname: 'private' };
+        const result = { names: ['กานต์'], total: 1, rows: [row] };
+        expect(parseAnalysisNamesTableResult(result)).toEqual({ total: 1, rows: [{ name: 'กานต์', nameScore: 19, grade: 'C' }] });
+        for (const rows of [[], [{ ...row, name: 'อื่น' }], [{ ...row, nameScore: -1 }], [{ ...row, nameScore: 1.5 }], [{ ...row, grade: 'D' }]]) {
+            expect(parseAnalysisNamesTableResult({ ...result, rows })).toBeNull();
+        }
     });
     test('dates filenames in Bangkok time', () => {
         expect(analysisNamesDownloadFilename(new Date('2026-11-04T18:00:00Z'))).toBe('analyzed-names-2026-11-05.csv');

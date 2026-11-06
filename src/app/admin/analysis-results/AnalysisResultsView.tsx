@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Download, RefreshCw, Search } from 'lucide-react';
-import { ANALYSIS_NAMES_MAX_SEARCH_LENGTH, ANALYSIS_NAMES_PAGE_SIZE, type AnalysisNamesResult } from '@/lib/adminAnalysisResults';
+import { ANALYSIS_NAMES_MAX_SEARCH_LENGTH, ANALYSIS_NAMES_PAGE_SIZE, type AnalysisNamesTableResult } from '@/lib/adminAnalysisResults';
+
+const gradeStyles = {
+    'A+': 'bg-emerald-500 text-white border-emerald-400',
+    A: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+    B: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    C: 'bg-rose-500/20 text-rose-400 border-rose-500/30',
+};
 
 export type AnalysisResultsViewProps = {
-    data: AnalysisNamesResult | null;
+    data: AnalysisNamesTableResult | null;
     search: string;
     page: number;
     loading: boolean;
@@ -20,8 +27,8 @@ export type AnalysisResultsViewProps = {
 export function AnalysisResultsView(props: AnalysisResultsViewProps) {
     const { data, search, page, loading, error, accessDenied, exporting, exportError } = props;
     const totalPages = Math.max(1, Math.ceil((data?.total ?? 0) / ANALYSIS_NAMES_PAGE_SIZE));
-    const first = data?.names.length ? (page - 1) * ANALYSIS_NAMES_PAGE_SIZE + 1 : 0;
-    const last = data?.names.length ? first + data.names.length - 1 : 0;
+    const first = data?.rows.length ? (page - 1) * ANALYSIS_NAMES_PAGE_SIZE + 1 : 0;
+    const last = data?.rows.length ? first + data.rows.length - 1 : 0;
 
     return (
         <div className="space-y-6 p-4 pt-20 text-slate-200 sm:p-6 sm:pt-20 lg:p-8">
@@ -29,6 +36,7 @@ export function AnalysisResultsView(props: AnalysisResultsViewProps) {
                 <div className="max-w-2xl">
                     <h1 className="text-2xl font-bold leading-snug text-slate-100 md:text-3xl">รายชื่อที่เคยวิเคราะห์</h1>
                     <p className="mt-2 text-sm leading-7 text-slate-400">รวมชื่อจริงที่เคยบันทึกผลวิเคราะห์ แสดงชื่อเดียวต่อหนึ่งรายการ เพื่อค้นหาและนำรายชื่อไปใช้งานต่อ</p>
+                    <p className="mt-1 text-sm leading-7 text-slate-400">ผลรวมชื่อและเกรดคำนวณจากชื่อจริง ด้วยสูตรปัจจุบันของระบบ ไม่รวมคะแนนนามสกุล</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                     <button type="button" onClick={props.onRefresh} disabled={loading} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-700 disabled:cursor-wait disabled:opacity-50">
@@ -51,7 +59,7 @@ export function AnalysisResultsView(props: AnalysisResultsViewProps) {
                     </div>
                     <p className="text-sm text-slate-400" aria-live="polite">{search.trim() ? 'ชื่อไม่ซ้ำที่ตรงคำค้น' : 'ชื่อไม่ซ้ำทั้งหมด'} <strong className="ml-2 text-2xl font-bold tabular-nums text-emerald-300">{data ? data.total.toLocaleString('th-TH') : '—'}</strong> ชื่อ</p>
                 </div>
-                <p className="mt-4 text-xs leading-6 text-slate-400">CSV รวมชื่อทั้งหมดที่ตรงคำค้น ไม่จำกัดเฉพาะหน้านี้ และมีเฉพาะชื่อจริง</p>
+                <p className="mt-4 text-xs leading-6 text-slate-400">CSV รวมชื่อทั้งหมดที่ตรงคำค้น ไม่จำกัดเฉพาะหน้านี้ พร้อมผลรวมชื่อและเกรดของชื่อจริง</p>
             </section>
 
             {exportError && <p role="alert" className="rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-sm leading-7 text-red-200">{exportError}</p>}
@@ -67,11 +75,11 @@ export function AnalysisResultsView(props: AnalysisResultsViewProps) {
                 <section aria-label="รายชื่อไม่ซ้ำ" aria-busy={loading} className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
                     <table className="w-full table-fixed text-left text-sm">
                         <caption className="sr-only">รายชื่อจริงไม่ซ้ำที่เคยวิเคราะห์ หน้าละ 50 ชื่อ</caption>
-                        <thead className="border-b border-slate-700 bg-slate-800 text-slate-300"><tr><th scope="col" className="w-20 px-4 py-4 sm:w-28 sm:px-6">ลำดับ</th><th scope="col" className="px-4 py-4 sm:px-6">ชื่อ</th></tr></thead>
+                        <thead className="border-b border-slate-700 bg-slate-800 text-slate-300"><tr><th scope="col" className="w-12 px-2 py-4 sm:w-20 sm:px-6">ลำดับ</th><th scope="col" className="px-2 py-4 sm:px-6">ชื่อ</th><th scope="col" className="w-20 px-2 py-4 text-center sm:w-32 sm:px-6">ผลรวมชื่อ</th><th scope="col" className="w-16 px-2 py-4 text-center sm:w-24 sm:px-6">เกรด</th></tr></thead>
                         <tbody className="divide-y divide-slate-800">
-                            {loading ? <tr><td colSpan={2} role="status" className="px-6 py-16 text-center text-slate-400">กำลังโหลดรายชื่อ…</td></tr>
-                                : !data?.names.length ? <tr><td colSpan={2} className="px-6 py-16 text-center leading-7 text-slate-400">{search.trim() ? 'ไม่พบชื่อที่ตรงกับคำค้น ลองค้นหาด้วยคำอื่น' : 'ยังไม่มีรายชื่อที่เคยบันทึกผลวิเคราะห์'}</td></tr>
-                                    : data.names.map((name, index) => <tr key={name} className="hover:bg-slate-800/50"><td className="px-4 py-4 tabular-nums text-slate-400 sm:px-6">{(first + index).toLocaleString('th-TH')}</td><td className="whitespace-pre-wrap break-all px-4 py-4 font-medium text-slate-100 sm:px-6">{name}</td></tr>)}
+                            {loading ? <tr><td colSpan={4} role="status" className="px-6 py-16 text-center text-slate-400">กำลังโหลดรายชื่อ…</td></tr>
+                                : !data?.rows.length ? <tr><td colSpan={4} className="px-6 py-16 text-center leading-7 text-slate-400">{search.trim() ? 'ไม่พบชื่อที่ตรงกับคำค้น ลองค้นหาด้วยคำอื่น' : 'ยังไม่มีรายชื่อที่เคยบันทึกผลวิเคราะห์'}</td></tr>
+                                    : data.rows.map(({ name, nameScore, grade }, index) => <tr key={name} className="hover:bg-slate-800/50"><td className="px-2 py-4 tabular-nums text-slate-400 sm:px-6">{(first + index).toLocaleString('th-TH')}</td><td className="whitespace-pre-wrap break-all px-2 py-4 font-medium text-slate-100 sm:px-6">{name}</td><td className="px-2 py-4 text-center font-semibold tabular-nums text-slate-100 sm:px-6">{nameScore.toLocaleString('th-TH')}</td><td className="px-2 py-4 text-center sm:px-6"><span className={`inline-flex min-w-9 justify-center rounded-lg border px-2 py-1 text-xs font-bold ${gradeStyles[grade]}`}>{grade}</span></td></tr>)}
                         </tbody>
                     </table>
                     <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-700 px-4 py-4 sm:px-6">
