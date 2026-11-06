@@ -6,7 +6,7 @@ import { CompareNamesViewStats } from './CompareNamesViewStats';
 import styles from './comparison.module.css';
 
 const title = 'เปรียบเทียบชื่อมงคลฟรี 2–5 ชื่อ | NameMongkol';
-const description = 'เปรียบเทียบชื่อจริง 2–5 ชื่อกับนามสกุลและวันเกิดเดียวกัน ค้นหาชื่อหรือพิมพ์เอง ดูเกรด เลขศาสตร์ คู่เลข กาลกิณี และอายตนะข้างกัน ฟรี ไม่ต้องสมัคร';
+const description = 'เปรียบเทียบชื่อจริง 2–5 ชื่อกับนามสกุลและวันเกิดเดียวกัน ดูเกรด เลขศาสตร์ คู่เลข กาลกิณี และอายตนะในตารางฟรี ไม่ต้องสมัคร พร้อมรายงานสรุปเสริม 5 เครดิต';
 export const metadata: Metadata = {
   title: { absolute: title }, description,
   alternates: { canonical: canonicalUrl('/compare-names') },

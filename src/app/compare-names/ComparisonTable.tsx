@@ -5,7 +5,7 @@ import styles from './comparison.module.css';
 
 const gradeStyle = { 'A+': styles.gradeGood, A: styles.gradeGood, B: styles.gradeNeutral, C: styles.gradeCaution };
 
-export function ComparisonTable({ rows }: { rows: NameComparison[] }) {
+export function ComparisonTable({ rows, includeDetailLinks = true }: { rows: NameComparison[]; includeDetailLinks?: boolean }) {
   const hasSurname = !!rows[0]?.surname;
   const metrics: { label: string; detail?: string; render: (row: NameComparison) => React.ReactNode }[] = [
     { label: 'เกรดเลขศาสตร์', detail: hasSurname ? 'ชื่อและนามสกุลร่วมกัน' : 'จากชื่อจริง', render: row => <span className={`${styles.grade} ${gradeStyle[row.grade]}`}>{row.grade}</span> },
@@ -25,7 +25,7 @@ export function ComparisonTable({ rows }: { rows: NameComparison[] }) {
         <thead><tr><th scope="col" className={styles.corner}>ข้อมูลเปรียบเทียบ</th>{rows.map(row => <th scope="col" key={row.inputIndex}><span className={styles.columnLabel}>ชื่อที่ {row.inputIndex + 1}</span><span className={styles.columnName}>{row.name}</span></th>)}</tr></thead>
         <tbody>
           {metrics.map(metric => <tr key={metric.label}><th scope="row">{metric.label}{metric.detail && <span className={styles.metricDetail}>{metric.detail}</span>}</th>{rows.map(row => <td key={row.inputIndex}>{metric.render(row)}</td>)}</tr>)}
-          <tr><th scope="row">อ่านผลต่อ</th>{rows.map(row => <td key={row.inputIndex}><Link prefetch={false} href={analysisDetailHref(row)} className={styles.detailLink}>ดูผลวิเคราะห์ละเอียด <ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only">ของ {row.name}</span></Link></td>)}</tr>
+          {includeDetailLinks && <tr><th scope="row">อ่านผลต่อ</th>{rows.map(row => <td key={row.inputIndex}><Link prefetch={false} href={analysisDetailHref(row)} className={styles.detailLink}>ดูผลวิเคราะห์ละเอียด <ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only">ของ {row.name}</span></Link></td>)}</tr>}
         </tbody>
       </table>
     </div>

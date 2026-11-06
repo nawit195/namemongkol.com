@@ -7,6 +7,9 @@ import { thaksaConfig } from '@/data/thaksaConfig';
 import { compareNames, sortComparisons, validateComparison, type ComparisonOrder, type NameComparison } from '@/lib/nameComparison';
 import { NameInput } from './NameInput';
 import { ComparisonTable } from './ComparisonTable';
+import { ComparisonReports, COMPARISON_DRAFT_KEY } from './ComparisonReports';
+import { comparisonInputSchema } from '@/lib/comparisonReport';
+import { trackEvent } from '@/lib/analytics';
 import styles from './comparison.module.css';
 
 type NameSlot = { id: number; value: string };
@@ -28,6 +31,19 @@ export default function CompareNamesClient() {
   // Prefill from the individual analysis entry, after hydration, without making this page dynamic.
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
+      try {
+        const draft = sessionStorage.getItem(COMPARISON_DRAFT_KEY);
+        if (draft) {
+          sessionStorage.removeItem(COMPARISON_DRAFT_KEY);
+          const parsed = comparisonInputSchema.safeParse(JSON.parse(draft));
+          if (parsed.success) {
+            setNames(parsed.data.names.map((value, id) => ({ id, value })));
+            nextId.current = parsed.data.names.length;
+            setSurname(parsed.data.surname); setDay(parsed.data.day);
+            return;
+          }
+        }
+      } catch { /* A blocked or invalid draft must never prevent free comparisons. */ }
       const params = new URLSearchParams(window.location.search);
       const name = params.get('name');
       if (name) setNames([{ id: 0, value: name.slice(0, 100) }, { id: 1, value: '' }]);
@@ -48,6 +64,7 @@ export default function CompareNamesClient() {
       return;
     }
     setResult(compareNames(names.map(item => item.value), surname, day));
+    void trackEvent('compare_names.analyze_success', { metadata: { count: names.length } });
     setHasCompared(true);
     requestAnimationFrame(() => {
       resultRef.current?.focus({ preventScroll: true });
@@ -80,7 +97,7 @@ export default function CompareNamesClient() {
           <div><label htmlFor="compare-day">วันเกิด</label><select id="compare-day" value={day} aria-invalid={attempted && !!errors.day} aria-describedby={attempted && errors.day ? 'day-error' : undefined} onChange={event => { setDay(event.target.value); invalidate(); }}><option value="" disabled>เลือกวันเกิด</option>{Object.entries(thaksaConfig).map(([key, config]) => <option key={key} value={key}>{config.name}</option>)}</select>{attempted && errors.day && <p id="day-error" className={styles.error}>{errors.day}</p>}</div>
           <button type="submit" className={styles.primary}><ArrowRightLeft size={19} aria-hidden="true" /> เปรียบเทียบชื่อ</button>
         </div>
-        <div className={styles.formFooter}><ShieldCheck size={16} aria-hidden="true" /><span>ใช้ฟรี ไม่ต้องสมัคร และไม่บันทึกชุดเปรียบเทียบ</span></div>
+        <div className={styles.formFooter}><ShieldCheck size={16} aria-hidden="true" /><span>ตารางเปรียบเทียบฟรี ไม่ต้องสมัคร · บันทึกรายงานสรุปเป็นบริการเสริม 5 เครดิต</span></div>
         {attempted && !errors.valid && <p role="alert" className={styles.error}>{errors.form || 'ตรวจสอบข้อมูลที่ระบุไว้ก่อนเปรียบเทียบอีกครั้ง'}</p>}
       </form>
 
@@ -93,6 +110,7 @@ export default function CompareNamesClient() {
         <ComparisonTable rows={sorted} />
         <p className={styles.tableNote}>คู่เลขนับแยกในชื่อและนามสกุล ไม่สร้างคู่เลขข้ามรอยต่อ ผลลัพธ์เป็นข้อมูลประกอบการพิจารณาตามศาสตร์ความเชื่อ <Link href="/methodology">อ่านหลักการคำนวณ</Link></p>
       </section> : <section className={styles.empty} aria-label="สิ่งที่จะได้รับจากการเปรียบเทียบ"><ArrowRightLeft size={27} aria-hidden="true" /><h2>ไม่ต้องจำผลทีละชื่อ</h2><p>กรอกชื่อที่สนใจ แล้วดูเลขศาสตร์ คู่เลข กาลกิณี และอายตนะเคียงข้างกัน</p><div><span><Check size={15} aria-hidden="true" /> สูตรเดียวกับหน้าวิเคราะห์ชื่อ</span><span><Check size={15} aria-hidden="true" /> ดูผลละเอียดต่อได้ทุกชื่อ</span></div></section>}
+      <ComparisonReports rows={result} />
     </>
   );
 }
