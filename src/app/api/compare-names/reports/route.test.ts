@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-const mocks = vi.hoisted(() => ({ user: { id: 'owner' } as { id: string } | null, rpc: vi.fn(), from: vi.fn(), service: true, history: { data: [], count: 0, error: null } as Record<string, unknown>, profile: { data: { credits: 10 }, error: null }, saved: { data: null, error: null } as Record<string, unknown>, eq: vi.fn() }));
+const mocks = vi.hoisted(() => ({ user: { id: 'owner' } as { id: string } | null, rpc: vi.fn(), from: vi.fn(), service: true, history: { data: [], count: 0, error: null } as Record<string, unknown>, profile: { data: { credits: 10 }, error: null }, saved: { data: null, error: null } as Record<string, unknown>, access: {data:null,error:null} as Record<string,unknown>, eq: vi.fn() }));
 vi.mock('@/lib/comparisonReportServer', async importOriginal => {
     const actual = await importOriginal<typeof import('@/lib/comparisonReportServer')>();
     return { ...actual, reportAuth: vi.fn(async () => ({ user: mocks.user, client: { from: mocks.from } })), reportService: vi.fn(() => mocks.service ? { rpc: mocks.rpc } : null) };
@@ -11,14 +11,16 @@ const input = { names: ['ปัญญา', 'กานต์'], surname: '', day:
 const request = (body: unknown = input, query = '') => new Request(`https://example.test/api/compare-names/reports${query}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
 beforeEach(() => {
     vi.clearAllMocks(); mocks.user = { id: 'owner' }; mocks.service = true;
-    mocks.history = { data: [], count: 0, error: null }; mocks.saved = { data: null, error: null }; mocks.profile = { data: { credits: 10 }, error: null };
+    mocks.access={data:null,error:null}; mocks.history = { data: [], count: 0, error: null }; mocks.saved = { data: null, error: null }; mocks.profile = { data: { credits: 10 }, error: null };
     mocks.from.mockImplementation((table: string) => {
-        const chain = { select: vi.fn(() => chain), eq: mocks.eq.mockImplementation(() => chain), order: vi.fn(() => chain), range: vi.fn(async () => mocks.history), maybeSingle: vi.fn(async () => table === 'user_profiles' ? mocks.profile : mocks.saved) };
+        const chain = { select: vi.fn(() => chain), eq: mocks.eq.mockImplementation(() => chain), order: vi.fn(() => chain), range: vi.fn(async () => mocks.history), maybeSingle: vi.fn(async () => table === 'user_profiles' ? mocks.profile : table === 'comparison_access' ? mocks.access : mocks.saved) };
         return chain;
     });
     mocks.rpc.mockResolvedValue({ data: { status: 'unlocked', remaining_credits: 5, report: { id: 'saved', snapshot: buildComparisonSnapshot(input) } }, error: null });
 });
 describe('comparison report API', () => {
+    test('does not let a new 5-credit report bypass extended comparison access',async()=>{const extended={...input,names:['ปัญญา','กานต์','ศิริ','ณัฐ']};expect((await POST(request(extended))).status).toBe(402);expect(mocks.rpc).not.toHaveBeenCalled();mocks.access={data:{id:'paid-access'},error:null};expect((await POST(request(extended))).status).toBe(200);});
+    test('keeps previously purchased extended reports readable without retroactive charging',async()=>{mocks.saved={data:{id:'old-report'},error:null};mocks.access={data:null,error:{code:'42P01'}};expect((await POST(request({...input,names:['ปัญญา','กานต์','ศิริ','ณัฐ']},'?preview=1'))).status).toBe(200);expect(mocks.rpc).not.toHaveBeenCalled();});
     test('requires real authentication for history, quote, purchase and individual reports', async () => {
         mocks.user = null;
         for (const response of [await GET(new Request('https://example.test/api/compare-names/reports')), await POST(request()), await POST(request(input, '?preview=1')), await getReport(new Request('https://example.test'), { params: Promise.resolve({ id: 'bad' }) })]) {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
 import { MessageCircle, X, Facebook } from 'lucide-react';
 
 const contacts = [
@@ -19,6 +20,8 @@ const contacts = [
 ];
 
 export const FloatingContactFAB = () => {
+    const pathname = usePathname();
+    const naming = pathname.startsWith('/names');
     const [isOpen, setIsOpen] = useState(false);
 
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -43,7 +46,7 @@ export const FloatingContactFAB = () => {
                 />
             )}
 
-            <div className="fixed left-4 bottom-[4.5rem] lg:left-6 lg:bottom-8 z-[55] flex flex-col items-start gap-2">
+            <div className={`fixed left-4 ${naming ? 'bottom-40' : 'bottom-[4.5rem]'} lg:left-6 lg:bottom-8 z-[55] flex flex-col items-start gap-2`}>
                 {/* Sub-buttons — icon-only pills */}
                 {contacts.map((item, i) => (
                     <a

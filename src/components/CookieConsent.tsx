@@ -7,11 +7,13 @@ import { Cookie } from 'lucide-react';
 export default function CookieConsent() {
     const [isVisible, setIsVisible] = useState(() => {
         if (typeof window === 'undefined') return false;
-        return !localStorage.getItem('cookieConsent');
+        try { return !localStorage.getItem('cookieConsent'); }
+        catch { return true; }
     });
 
     const handleAccept = () => {
-        localStorage.setItem('cookieConsent', 'true');
+        try { localStorage.setItem('cookieConsent', 'true'); }
+        catch { /* Acknowledge for this page even when persistence is unavailable. */ }
         setIsVisible(false);
         window.dispatchEvent(new Event('cookieConsentAccepted'));
     };

@@ -24,6 +24,7 @@ export const AdminSidebar = () => {
         { name: 'รายชื่อที่เคยวิเคราะห์', icon: FileText, path: '/admin/analysis-results' },
         { name: 'รายชื่อ Premium', icon: Crown, path: '/admin/premium-names' },
         { name: 'ชื่อสัตว์เลี้ยง', icon: PawPrint, path: '/admin/pet-names' },
+        { name: 'สมาชิกที่กลับมาใช้งาน', icon: Users, path: '/admin/returning-members' },
         { name: 'จัดการผู้ใช้งาน', icon: Users, path: '/admin/users' },
         { name: 'จัดการแพ็กเกจ', icon: CreditCard, path: '/admin/pricing' },
         { name: 'จัดการวอลเปเปอร์', icon: Image, path: '/admin/wallpapers' },

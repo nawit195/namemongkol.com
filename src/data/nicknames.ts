@@ -1,4 +1,7 @@
+import { newNicknames } from './nameDiscoveryAdditions';
 export interface Nickname {
+    sourceUrl?: string;
+    origin?: string;
     name: string;
     style: 'thai' | 'inter' | 'cute' | 'cool';
     gender: 'male' | 'female' | 'unisex';
@@ -35,4 +38,5 @@ export const nicknames: Nickname[] = [
     { name: 'ดรีม', style: 'inter', gender: 'unisex', meaning: 'ความฝัน', examples: ['ดารินทร์', 'ดนุพล'] },
     { name: 'พาย', style: 'cute', gender: 'unisex', meaning: 'ขนมพาย', examples: ['พชร', 'พิมผกา'] },
     { name: 'สกาย', style: 'inter', gender: 'unisex', meaning: 'ท้องฟ้า', examples: ['สิรภพ', 'สุวิมล'] }
+    ,...newNicknames
 ];
