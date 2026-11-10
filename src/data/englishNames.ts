@@ -1,4 +1,6 @@
+import { newEnglishNames } from './nameDiscoveryAdditions';
 export interface EnglishName {
+    sourceUrl?: string;
     name: string;
     thai: string;
     meaning: string;
@@ -48,4 +50,5 @@ export const englishNames: EnglishName[] = [
     { name: 'Morgan', thai: 'มอร์แกน', meaning: 'ผู้มาจากทะเล', gender: 'unisex', style: 'classic', origin: 'Welsh' },
     { name: 'Quinn', thai: 'ควินน์', meaning: 'ฉลาดหลักแหลม', gender: 'unisex', style: 'unique', origin: 'Irish' },
     { name: 'Riley', thai: 'ไรลีย์', meaning: 'กล้าหาญ', gender: 'unisex', style: 'modern', origin: 'Irish' }
+    ,...newEnglishNames
 ];

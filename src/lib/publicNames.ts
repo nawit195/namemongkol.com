@@ -12,6 +12,7 @@ import { analyzeName, type NameAnalysisResult } from '@/utils/nameAnalysis';
 import { buildPublicNameCatalog, selectPublicNameCandidates } from '@/lib/publicNameCatalog';
 import { mergePublicChoNames } from '@/lib/publicChoNameAdditions';
 import { selectSeededRandomItems } from '@/lib/randomizedNameSelection';
+import { prepareReviewedNames, editorialNameKeys } from '@/lib/reviewedNames';
 
 const PAGE_SIZE_DEFAULT = 30;
 const PAGE_SIZE_MAX = 50;
@@ -75,6 +76,9 @@ export type PublicNamesSummary = {
 };
 
 export type PublicNamesQuery = {
+    reviewedOnly?: boolean;
+    discoveryOnly?: boolean;
+    search?: string;
     day?: DayKey | 'all';
     gender?: PublicNameGender | 'all';
     initial?: string | 'all';
@@ -194,11 +198,11 @@ async function readRows(mode: NameQueryMode) {
     return { rows, error: null };
 }
 
-async function loadAllPublicNames(): Promise<PublicNameRecord[]> {
+async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[]> {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    if (!supabaseUrl || !supabaseKey) return createFallbackNames();
+    if (!supabaseUrl || !supabaseKey) return strictRead ? [] : createFallbackNames();
 
     let result = await readRows('with-publication');
     if (result.error && /publication_status/i.test(result.error.message ?? '')) {
@@ -224,12 +228,13 @@ async function loadAllPublicNames(): Promise<PublicNameRecord[]> {
 
     if (result.error) {
         console.error('Public names database query failed:', result.error);
+        if (strictRead) throw new Error('Cannot safely load reviewed public names. Please retry.');
         return createFallbackNames();
     }
 
     const rows = result.rows;
 
-    if (rows.length === 0) return createFallbackNames();
+    if (rows.length === 0) return strictRead ? [] : createFallbackNames();
 
     const records: PublicNameRecord[] = rows
         .filter((row) => row.publication_status !== 'hidden')
@@ -277,15 +282,32 @@ const fetchPublicNamesDataset = cache(async () => {
     };
 });
 
+// Database rows remain in bounded Next cache entries. Share the prepared catalog in
+// memory for ten minutes so pagination does not recalculate the entire collection,
+// without exceeding the Next Data Cache per-entry size limit.
+let reviewedDataset: { expires: number; promise: Promise<PublicNameRecord[]> } | undefined;
+export const fetchReviewedNamesDataset = cache(async (discoveryOnly: boolean) => {
+    if (!reviewedDataset || reviewedDataset.expires <= Date.now()) {
+        const promise = fetchAllPublicNames(true).then(prepareReviewedNames);
+        reviewedDataset = { expires: Date.now() + 600_000, promise };
+        promise.catch(() => { if (reviewedDataset?.promise === promise) reviewedDataset = undefined; });
+    }
+    const reviewed = await reviewedDataset.promise;
+    const allNames = discoveryOnly ? reviewed.filter(item => item.gender === 'neutral' && !editorialNameKeys.has(item.name.normalize('NFC').trim().toLowerCase())) : reviewed;
+    return { allNames, catalog: buildPublicNameCatalog(allNames, DAY_KEYS) };
+});
+
 export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<PublicNamesResult> {
-    const { allNames, catalog } = await fetchPublicNamesDataset();
+    const { allNames, catalog } = query.reviewedOnly ? await fetchReviewedNamesDataset(!!query.discoveryOnly) : await fetchPublicNamesDataset();
     const day = query.day && query.day !== 'all' && DAY_KEYS.includes(query.day) ? query.day : 'all';
     const gender = query.gender ?? 'all';
     const initial = query.initial?.trim() || 'all';
     const page = Math.max(1, Math.floor(query.page ?? 1));
     const pageSize = Math.min(PAGE_SIZE_MAX, Math.max(1, Math.floor(query.limit ?? PAGE_SIZE_DEFAULT)));
 
-    const ordered = selectPublicNameCandidates(allNames, catalog, { day, gender, initial });
+    const candidates = selectPublicNameCandidates(allNames, catalog, { day, gender, initial });
+    const search = query.reviewedOnly ? query.search?.normalize('NFC').trim().toLowerCase().slice(0, 100) : '';
+    const ordered = search ? candidates.filter(item => item.name.toLowerCase().includes(search) || item.meaning?.toLowerCase().includes(search)) : candidates;
     const start = (page - 1) * pageSize;
     const grades: PublicNamesSummary['grades'] = { 'A+': 0, A: 0, B: 0, C: 0 };
 

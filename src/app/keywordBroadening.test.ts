@@ -12,12 +12,12 @@ describe('keyword broadening architecture', () => {
         const config = readSource('next.config.ts');
 
         for (const day of ['sunday', 'monday', 'tuesday', 'wednesday', 'wednesday_night', 'thursday', 'friday', 'saturday']) {
-            expect(overview).toContain(`'${day}'`);
+            expect(genderPage).toContain(`'${day}'`);
         }
-        expect(overview).toContain('ชื่อมงคลคนเกิด${dayLabel} 2569');
-        expect(overview).toContain("'@type': 'ItemList'");
-        expect(overview).toContain("'@type': 'FAQPage'");
-        expect(genderPage).toContain('/names/by-birthday/${day}');
+        expect(overview).toContain('BIRTHDAY_DAY_KEYS.map');
+        expect(readSource('src/components/names/NameBrowser.tsx')).toContain("'@type': 'ItemList'");
+        expect(readSource('src/components/names/NamingGuide.tsx')).toContain("'@type': 'FAQPage'");
+        expect(overview).toContain('/names/by-birthday/${day}');
         expect(config).toContain("source: '/names/girls/by-birthday/monday'");
         expect(config).toContain("destination: '/articles/monday-girl-names-2569-no-sara'");
     });

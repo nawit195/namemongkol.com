@@ -1,3 +1,4 @@
+import { comparisonCost } from '@/lib/comparisonPricing';
 import { buildComparisonSnapshot, comparisonInputSchema, COMPARISON_REPORT_COST, COMPARISON_REPORT_PAGE_SIZE } from '@/lib/comparisonReport';
 import { reportAuth, reportDatabaseFailure, reportFailure, reportFingerprint, reportResponse, reportService } from '@/lib/comparisonReportServer';
 import { calculateEffectiveCredits } from '@/utils/credits';
@@ -33,6 +34,19 @@ export async function POST(request: Request) {
         if (!parsed.success) return reportFailure(400, 'กรอกชื่อไม่ซ้ำ 2–5 ชื่อและเลือกวันเกิดให้ถูกต้อง');
         const service = reportService();
         if (!service) return reportFailure(503, 'ระบบรายงานยังไม่ได้ตั้งค่า ตารางฟรียังใช้ได้', 'CONFIGURATION_REQUIRED');
+        if (comparisonCost(parsed.data.names.length)) {
+            // A report purchase must not bypass the 4–5-name comparison charge.
+            // Previously purchased reports remain readable without retroactive charges.
+            const [access, saved] = await Promise.all([
+                client.from('comparison_access').select('id').eq('user_id', user.id).eq('fingerprint', reportFingerprint(parsed.data)).maybeSingle(),
+                client.from('comparison_reports').select('id').eq('user_id', user.id).eq('fingerprint', reportFingerprint(parsed.data)).maybeSingle(),
+            ]);
+            if (saved.error) return reportDatabaseFailure(saved.error);
+            if (!saved.data) {
+                if (access.error) return reportDatabaseFailure(access.error);
+                if (!access.data) return reportFailure(402, 'กรุณาปลดล็อกการเปรียบเทียบ 4–5 ชื่อด้วย 10 เครดิตก่อน รายงานสรุปเป็นบริการแยก 5 เครดิต', 'COMPARISON_ACCESS_REQUIRED');
+            }
+        }
         if (new URL(request.url).searchParams.get('preview') === '1') {
             const [existing, balance] = await Promise.all([
                 client.from('comparison_reports').select('id, created_at, credits_spent, snapshot').eq('user_id', user.id).eq('fingerprint', reportFingerprint(parsed.data)).maybeSingle(),

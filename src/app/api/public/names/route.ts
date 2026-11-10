@@ -19,6 +19,9 @@ export async function GET(request: NextRequest) {
         const page = Number.parseInt(params.get('page') ?? '1', 10);
         const limit = Number.parseInt(params.get('limit') ?? '30', 10);
         const result = await queryPublicNames({
+            reviewedOnly: params.get('reviewed') === '1',
+            discoveryOnly: params.get('reviewed') === '1' && params.get('discovery') === '1',
+            search: params.get('reviewed') === '1' ? params.get('q')?.slice(0, 100) : undefined,
             day,
             gender,
             initial: params.get('initial') ?? 'all',

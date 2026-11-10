@@ -59,5 +59,5 @@ export function selectBabyNameExamples(records: readonly PublicNameRecord[]): Pu
     return ['male', 'female'].flatMap((gender) => eligible
         .filter((item) => item.gender === gender)
         .sort((a, b) => a.name.localeCompare(b.name, 'th'))
-        .slice(0, 6));
+        .slice(0, 12));
 }

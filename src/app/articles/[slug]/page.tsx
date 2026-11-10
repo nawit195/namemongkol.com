@@ -1,3 +1,4 @@
+import { NamingNavigation } from '@/components/names/NamingShell';
 
 import Link from 'next/link';
 import Script from 'next/script';
@@ -962,6 +963,7 @@ export default async function ArticlePage({ params }: Props) {
 
             <main className="w-full max-w-[1400px] px-4 pb-8 relative z-10 pt-28 md:pt-32">
                 <div className={isWideMediaArticle ? "mx-auto max-w-[1040px]" : "max-w-3xl mx-auto"}>
+                    {article.slug === 'monday-girl-names-2569-no-sara' && <NamingNavigation backHref="/names/girls/by-birthday" backLabel="กลับไปเลือกวันเกิดลูกสาว" crumbs={[{href:'/names',label:'ตั้งชื่อลูก'},{href:'/names/girls',label:'ตั้งชื่อลูกสาว'}]} current="วันจันทร์"/>}
                     {/* Breadcrumb Navigation */}
                     <nav className="mb-6 text-sm text-[#5a5a82]" aria-label="Breadcrumb">
                         <ol className="flex items-center gap-2 flex-wrap">

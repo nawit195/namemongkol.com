@@ -54,7 +54,7 @@ export function ComparisonReports({ rows }: { rows: NameComparison[] | null }) {
             }
             const body = await readResponse(response);
             if (!controller.signal.aborted) { setSignedIn(true); setHistory(body.reports); setTotal(body.total); setBalance(body.remainingCredits); setAvailable(body.available); }
-        }).catch(() => { if (!controller.signal.aborted) setHistoryError('ระบบรายงานยังไม่พร้อม หรือติดต่อไม่ได้ ตารางเปรียบเทียบฟรียังใช้ได้'); })
+        }).catch(() => { if (!controller.signal.aborted) setHistoryError('ระบบรายงานยังไม่พร้อม หรือติดต่อไม่ได้ การเปรียบเทียบ 2–3 ชื่อฟรียังใช้ได้'); })
             .finally(() => { if (!controller.signal.aborted) setLoading(false); });
         return () => controller.abort();
     }, [page, reload]);
@@ -168,7 +168,7 @@ export function ComparisonReports({ rows }: { rows: NameComparison[] | null }) {
             <details className={styles.reportExample}><summary>ดูตัวอย่างสิ่งที่จะได้รับ</summary><p>เช่น “ชื่อ ก ได้เกรดสูงสุด แต่พบกาลกิณีในชื่อ ส่วนชื่อ ข ไม่มีกาลกิณี แต่เกรดต่ำกว่า” รายงานจะแสดงทั้งสองเกณฑ์แยกกัน ไม่ฟันธงแทนคุณ</p></details>
             <button type="button" className={styles.reportPrimary} disabled={busy || loading || !!historyError || (signedIn === true && !available)} onClick={preview}>{busy ? 'กำลังตรวจสอบ…' : 'บันทึกและเปิดรายงานสรุป · 5 เครดิต'}</button>
             <p className={styles.reportMeta}>ชุดเดิมเปิดซ้ำและดาวน์โหลดได้ตลอด ไม่หักเพิ่ม · {balance !== null ? `เครดิตคงเหลือ ${balance}` : 'เข้าสู่ระบบเมื่อเปิดรายงาน'} · ยืนยันก่อนหักเครดิต</p>
-            {!loading && signedIn === true && !available && <p className={styles.reportMeta}>บริการบันทึกรายงานยังไม่พร้อม ตารางเปรียบเทียบฟรียังใช้ได้ตามปกติ</p>}
+            {!loading && signedIn === true && !available && <p className={styles.reportMeta}>บริการบันทึกรายงานยังไม่พร้อม การเปรียบเทียบ 2–3 ชื่อฟรียังใช้ได้ตามปกติ</p>}
         </section>}
 
         {error && !quote && <p role="alert" className={styles.reportWarning}>{error}</p>}
@@ -183,7 +183,7 @@ export function ComparisonReports({ rows }: { rows: NameComparison[] | null }) {
             <h2 id="report-history-title"><History size={21} aria-hidden="true" /> รายงานของฉัน</h2>
             {loading ? <p role="status">กำลังโหลดรายงาน…</p> : historyError ? <div><p role="alert">{historyError}</p><button type="button" onClick={() => setReload(value => value + 1)}>ลองใหม่</button></div>
                 : signedIn === false ? <p>รายงานที่ซื้อจะผูกกับบัญชีของคุณ <button type="button" onClick={() => login()}>เข้าสู่ระบบเพื่อดูรายงาน</button></p>
-                    : !history.length ? <p>ยังไม่มีรายงานที่บันทึกไว้ เปรียบเทียบฟรีก่อน แล้วเลือกเปิดรายงานเมื่อพร้อม</p>
+                    : !history.length ? <p>ยังไม่มีรายงานที่บันทึกไว้ เปรียบเทียบชื่อก่อน แล้วเลือกเปิดรายงานเมื่อพร้อม</p>
                         : <><ul>{history.map(item => <li key={item.id}><div><strong>{item.input.names.join(' · ')}</strong><p>{item.input.surname ? `นามสกุล ${item.input.surname} · ` : ''}{new Date(item.created_at).toLocaleDateString('th-TH', { timeZone: 'Asia/Bangkok' })} · {item.credits_spent} เครดิต</p></div><button type="button" disabled={busy} onClick={() => openSaved(item.id)}>เปิดรายงาน<span className="sr-only"> {item.input.names.join(' ')}</span></button></li>)}</ul><nav aria-label="หน้าประวัติรายงาน" className={styles.reportPagination}><button type="button" disabled={page <= 1 || loading} onClick={() => setPage(value => value - 1)}>ก่อนหน้า</button><span>หน้า {page} / {Math.max(1, Math.ceil(total / 20))}</span><button type="button" disabled={page * 20 >= total || loading} onClick={() => setPage(value => value + 1)}>ถัดไป</button></nav></>}
         </section>
 

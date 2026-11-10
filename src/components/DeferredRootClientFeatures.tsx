@@ -5,6 +5,11 @@ import dynamic from 'next/dynamic';
 import { Analytics } from '@vercel/analytics/next';
 import type { User } from '@supabase/supabase-js';
 
+const MemberActivityTracker = dynamic(
+    () => import('@/components/MemberActivityTracker').then(mod => mod.MemberActivityTracker),
+    { ssr: false },
+);
+
 const AnalyticsProvider = dynamic(
     () => import('@/components/AnalyticsProvider').then((mod) => mod.AnalyticsProvider),
     { ssr: false },
@@ -92,6 +97,7 @@ export function DeferredRootClientFeatures({ isProduction }: DeferredRootClientF
             <FloatingContactFAB />
             {isProduction ? <Analytics /> : null}
             <AnalyticsProvider />
+            <MemberActivityTracker user={user} />
             <WelcomeCreditModal user={user} />
         </>
     );

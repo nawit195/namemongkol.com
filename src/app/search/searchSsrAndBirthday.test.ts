@@ -65,9 +65,9 @@ describe('search SSR and birthday landing pages', () => {
         expect(boysRoute).toContain('generateStaticParams');
         expect(girlsRoute).toContain('generateStaticParams');
         expect(landing).toContain("'wednesday_night'");
-        expect(landing).toContain('ItemList');
-        expect(landing).toContain('FAQPage');
-        expect(landing).toContain('queryPublicNames');
+        expect(readSource('src/components/names/NameBrowser.tsx')).toContain('ItemList');
+        expect(readSource('src/components/names/NamingGuide.tsx')).toContain('FAQPage');
+        expect(readSource('src/components/names/NamesCategoryPage.tsx')).toContain('queryPublicNames');
     });
 
     test('adds birthday pages and methodology to the sitemap', () => {

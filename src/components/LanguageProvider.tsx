@@ -18,8 +18,10 @@ const DEFAULT_LANG: SupportedLanguage = "th";
 function detectInitialLanguage(): SupportedLanguage {
     if (typeof window === "undefined") return DEFAULT_LANG;
 
-    const stored = window.localStorage.getItem(STORAGE_KEY) as SupportedLanguage | null;
-    if (stored && supportedLanguages.some(l => l.code === stored)) return stored;
+    try {
+        const stored = window.localStorage.getItem(STORAGE_KEY) as SupportedLanguage | null;
+        if (stored && supportedLanguages.some(l => l.code === stored)) return stored;
+    } catch { /* Storage may be disabled; language selection still works in memory. */ }
 
     const browserLang = navigator.language?.toLowerCase() ?? "";
     if (browserLang.startsWith("th")) return "th";
@@ -34,7 +36,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         if (!mounted) return;
         document.documentElement.lang = language;
-        window.localStorage.setItem(STORAGE_KEY, language);
+        try { window.localStorage.setItem(STORAGE_KEY, language); }
+        catch { /* A blocked preference store must not break public pages. */ }
     }, [language, mounted]);
 
     const dictionary = useMemo(() => getDictionary(language), [language]);
