@@ -41,7 +41,7 @@ describe('public name meaning publication', () => {
         expect(publicNames).toContain('meaning_status');
         expect(publicNames).toContain("row.pronunciation_status === 'rejected'");
         expect(publicNames).toContain('publishedPronunciation || draftPronunciation');
-        expect(publicNames).toContain('public-auspicious-name-page-v17-english');
+        expect(publicNames).toContain('public-auspicious-name-page-v19-editorial-corrections');
         expect(publicNames).toContain('fetchPublicNamesDataset = cache');
         expect(publicNames).toContain('using existing pronunciation data');
         expect(publicNames).toContain("readRows('with-status')");
@@ -50,7 +50,7 @@ describe('public name meaning publication', () => {
         expect(page).toContain('initialResult={initialResult}');
         expect(client).toContain('อ่านว่า {displayPronunciation}');
         expect(client).toContain('รอยืนยันการอ่าน');
-        expect(client).toContain('รอตรวจสอบคำอ่าน');
+        expect(client).toContain('ยังไม่มีคำอ่าน');
         expect(client).toContain('คำอ่าน</th>');
         expect(client).toContain('colSpan={7}');
         expect(client).not.toContain('colSpan={5}');

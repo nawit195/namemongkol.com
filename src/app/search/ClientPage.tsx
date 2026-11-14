@@ -14,6 +14,7 @@ import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { trackEvent } from '@/lib/analytics';
+import { englishNameExplanation, englishNameStatusLabel } from '@/lib/englishNameDisplay';
 import {
     createPublicNamesRequestUrl,
     createSearchResultCacheKey,
@@ -43,8 +44,14 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-export function NameRow({ name, englishName, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
+export function SearchDataSourceNotice({ dataSource }: { dataSource?: 'database' | 'fallback' }) {
+    if (dataSource !== 'fallback') return null;
+    return <p role="status" className="mx-auto mb-4 max-w-3xl rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm leading-relaxed text-amber-900">กำลังแสดงรายชื่อสำรอง เนื่องจากเชื่อมต่อฐานข้อมูลไม่ได้ จำนวนที่เห็นยังไม่ใช่รายชื่อทั้งหมด กรุณาลองโหลดหน้าใหม่อีกครั้ง</p>;
+}
+
+export function NameRow({ name, englishName, englishNameStatus, englishNameSource, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const visibleEnglishName = englishNameStatus === 'rejected' ? undefined : englishName;
     const suitability = useMemo(() => {
         const suitable = suitableDays.map((day) => thaksaConfig[day].name);
         const suitableSet = new Set(suitableDays);
@@ -87,7 +94,7 @@ export function NameRow({ name, englishName, pronunciation, pronunciationVariant
                             </span>
                         ) : null}
                     </div>
-                    <span lang="en" className="mt-1 block break-words text-sm leading-5 text-[#5a5a82] lg:hidden">{englishName || '—'}</span>
+                    <span lang="en" className="mt-1 block break-all text-sm leading-5 text-[#5a5a82] lg:hidden">{visibleEnglishName || '—'}</span>
                     {displayPronunciation ? (
                         <span className="mt-1 block text-xs font-medium leading-5 text-[#5a5a82] lg:hidden">
                             อ่านว่า {displayPronunciation}
@@ -96,10 +103,12 @@ export function NameRow({ name, englishName, pronunciation, pronunciationVariant
                     ) : null}
                 </td>
 
-                <td lang="en" className="hidden max-w-48 break-words px-3 py-[18px] text-sm leading-6 text-[#5a5a82] lg:table-cell">{englishName || '—'}</td>
+                <td className="hidden max-w-48 break-all px-3 py-[18px] text-sm leading-6 text-[#5a5a82] lg:table-cell">
+                    <span lang="en" className="break-all">{visibleEnglishName || '—'}</span>
+                </td>
                 {/* Column 2: Pronunciation (Desktop Only) */}
                 <td className="hidden px-3 py-[18px] text-sm font-medium leading-6 text-[#5a5a82] lg:table-cell">
-                    <span>{displayPronunciation || <span className="font-normal italic text-slate-500">รอตรวจสอบคำอ่าน</span>}</span>
+                    <span>{displayPronunciation || <span className="font-normal italic text-slate-500">ยังไม่มีคำอ่าน</span>}</span>
                     {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? (
                         <span className="ml-2 inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-800">รอยืนยันการอ่าน</span>
                     ) : null}
@@ -167,13 +176,13 @@ export function NameRow({ name, englishName, pronunciation, pronunciationVariant
 
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="w-24 flex-shrink-0 font-semibold text-slate-700">ชื่อภาษาอังกฤษ</span>
-                                <div><span lang="en" className="break-words text-slate-950">{englishName || '—'}</span><p className="mt-1 text-xs leading-5 text-slate-600">{englishName ? 'ตัวเลือกการสะกดตามข้อมูลต้นทาง ควรยืนยันก่อนใช้ในเอกสาร' : 'ยังไม่มีข้อมูล'}</p></div>
+                                <div className="min-w-0"><span lang="en" className="break-all text-slate-950">{visibleEnglishName || '—'}</span>{englishNameStatus === 'approved' || englishNameStatus === 'rejected' ? <span className="ml-2 text-xs font-medium text-amber-800">{englishNameStatusLabel(englishNameStatus)}</span> : null}<p className="mt-1 text-xs leading-5 text-slate-600">{englishNameExplanation(visibleEnglishName, englishNameStatus, englishNameSource)}</p></div>
                             </div>
                             {/* Pronunciation */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="w-24 flex-shrink-0 font-semibold text-slate-700">คำอ่าน</span>
                                 <span className={displayPronunciation ? 'font-medium text-slate-950' : 'italic text-slate-600'}>
-                                    {displayPronunciation || 'รอตรวจสอบคำอ่าน'}
+                                    {displayPronunciation || 'ยังไม่มีคำอ่าน'}
                                     {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? ' · รอยืนยันการอ่าน' : ''}
                                 </span>
                             </div>
@@ -268,6 +277,8 @@ type PublicStats = {
 type SearchName = {
     name: string;
     englishName?: string;
+    englishNameStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
+    englishNameSource?: string;
     gender: 'male' | 'female' | 'neutral';
     pronunciation?: string;
     pronunciationVariants?: string[];
@@ -288,6 +299,7 @@ type SearchSummary = {
 };
 
 type SearchNamesResult = {
+    dataSource?: 'database' | 'fallback';
     data: SearchName[];
     featuredData?: SearchName[];
     total: number;
@@ -326,6 +338,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const [totalPages, setTotalPages] = useState(initialResult.totalPages);
     const [loadedPage, setLoadedPage] = useState(initialResult.page);
     const [summary, setSummary] = useState<SearchSummary>(initialResult.summary);
+    const [dataSource, setDataSource] = useState(initialResult.dataSource);
     const [isLoadingNames, setIsLoadingNames] = useState(false);
     const [namesError, setNamesError] = useState<string | null>(null);
     const [filtersReady, setFiltersReady] = useState(false);
@@ -375,6 +388,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         setTotalPages(result.totalPages);
         setLoadedPage(result.page);
         setSummary(result.summary);
+        setDataSource(result.dataSource);
         setVisibleCount(10);
     }, []);
 
@@ -384,6 +398,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         setTotalPages(preview.totalPages);
         setLoadedPage(0);
         setSummary(preview.summary);
+        setDataSource(preview.dataSource);
         setVisibleCount(10);
     }, []);
 
@@ -839,13 +854,13 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
                                         <ReviewBadge rating={publicStats?.avgRating} count={publicStats?.reviewCount} />
                                         <UserStatsBadge users={publicStats?.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
-                                        <UserStatsBadge users={liveNameCount} label="ชื่อในฐานข้อมูลล่าสุด" suffix="ชื่อ" />
+                                        <UserStatsBadge users={liveNameCount} label={initialResult.dataSource === 'fallback' ? 'รายชื่อสำรอง' : 'ชื่อในฐานข้อมูลล่าสุด'} suffix="ชื่อ" />
                                     </div>
                                 </div>
                                 <div className="mb-5 text-center md:mb-12">
                                     <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-100/70 px-3 py-1 text-xs text-amber-800 md:mb-4 md:text-sm">
                                         <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                                        <span>ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง</span>
+                                        <span>{initialResult.dataSource === 'fallback' ? 'รายชื่อสำรองชั่วคราว' : 'ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง'}</span>
                                     </div>
                                     <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
                                         ตั้งชื่อมงคล พร้อมความหมายและเลขศาสตร์
@@ -853,9 +868,10 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     <p className="mx-auto mb-4 max-w-[65ch] px-2 text-sm leading-relaxed text-slate-700 sm:text-base md:mb-6">
                                         ค้นหาชื่อสำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสมจากฐานข้อมูลที่อัปเดตต่อเนื่อง
                                     </p>
+                                    <SearchDataSourceNotice dataSource={dataSource} />
                                     <dl className="mx-auto mb-5 grid max-w-3xl grid-cols-2 overflow-hidden rounded-xl border border-slate-200 bg-white/90 text-left shadow-sm md:grid-cols-4">
                                         {[
-                                            ['ชื่อทั้งหมด', initialResult.total.toLocaleString('th-TH')],
+                                            [initialResult.dataSource === 'fallback' ? 'รายชื่อสำรอง' : 'ชื่อทั้งหมด', initialResult.total.toLocaleString('th-TH')],
                                             ['มีคำอ่าน', initialResult.summary.withPronunciation.toLocaleString('th-TH')],
                                             ['มีความหมาย', initialResult.summary.withMeaning.toLocaleString('th-TH')],
                                             ['อัปเดตล่าสุด', latestNamesUpdate],

@@ -10,8 +10,19 @@ import { mergePublicChoNames } from './publicChoNameAdditions';
 import { queryPublicNames } from './publicNames';
 import { analyzeName } from '@/utils/nameAnalysis';
 import { premiumSearchNamesRaw } from '@/data/premiumSearchNames';
+import { romanizeReading } from '../../scripts/lib/thai-romanization.mjs';
 
 describe('free search ช additions', () => {
+    it('covers all supplemental names with pending spelling suggestions from their supplied readings', () => {
+        for (const item of mergePublicChoNames([])) {
+            expect(item.englishName).toBe(romanizeReading(item.pronunciation).englishName);
+            expect(item.englishNameStatus).toBe('pending');
+        }
+        const local = mergePublicChoNames([])[0];
+        expect(mergePublicChoNames([{ ...local, englishName: 'OWNER-SPELLING' }])[0].englishName).toBe('OWNER-SPELLING');
+        expect(mergePublicChoNames([{ ...local, englishName: undefined, pronunciation: 'different' }])[0].englishName).toBeUndefined();
+        expect(mergePublicChoNames([{ ...local, englishName: undefined, pronunciationStatus: 'rejected' }])[0].englishName).toBeUndefined();
+    });
     it('includes exactly 30 unique names with supplied readings and meanings, score 25 and grade B', () => {
         const records = mergePublicChoNames([]);
         expect(records).toHaveLength(30);

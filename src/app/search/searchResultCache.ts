@@ -4,7 +4,7 @@ export type SearchFilterState = {
     initial: string;
 };
 
-const SEARCH_DATA_VERSION = 'server-randomized-v5-english';
+const SEARCH_DATA_VERSION = 'server-randomized-v6-english-review';
 
 export function createSearchResultCacheKey(
     filters: SearchFilterState,

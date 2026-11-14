@@ -34,6 +34,21 @@ const entries: [string, string, string, DayKey[]][] = [
     ['ชัณริหา', 'ชัน-ริ-หา', 'มีปัญญา รุ่งเรือง และเข้มแข็ง', ['tuesday', 'saturday', 'wednesday_night']],
 ];
 
-export const publicInitialChoNames = entries.map(([name, pronunciation, meaning, suitableDays]) => ({
+// Suggested RTGS spellings follow the supplied syllabic readings; they are not
+// document spellings or approved linguistic reviews.
+const englishSuggestions = [
+    'CHINKHINA', 'CHINKHINA', 'CHINKHIMA', 'CHINKHIHA', 'CHINRIMA', 'CHINRIHA',
+    'CHINTHINA', 'CHINTHINA', 'CHINTHIMA', 'CHINTHIHA',
+    'CHINRANA', 'CHINRANA', 'CHINRAMA', 'CHINRAHA',
+    'CHINRINA', 'CHINRINA', 'CHINRIMA', 'CHINRIHA',
+    'CHIMKHINA', 'CHIMKHINA', 'CHIMKHIMA', 'CHIMKHIHA',
+    'CHIMTHINA', 'CHIMTHINA', 'CHIMTHIMA', 'CHIMTHIHA',
+    'CHANRINA', 'CHANRINA', 'CHANRIMA', 'CHANRIHA',
+];
+
+export const publicInitialChoNames = entries.map(([name, pronunciation, meaning, suitableDays], index) => ({
     name, pronunciation, meaning, suitableDays,
+    englishName: englishSuggestions[index],
+    englishNameStatus: 'pending' as const,
+    englishNameSource: 'rtgs-reading-v1',
 }));

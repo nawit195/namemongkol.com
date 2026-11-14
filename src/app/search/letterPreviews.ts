@@ -5,6 +5,7 @@ type PreviewFilterState = {
 };
 
 type PreviewSource<TName, TSummary> = {
+    dataSource?: 'database' | 'fallback';
     data: TName[];
     featuredData?: TName[];
     total: number;
@@ -12,6 +13,7 @@ type PreviewSource<TName, TSummary> = {
 };
 
 export type LetterPreviewResult<TName, TSummary> = {
+    dataSource?: 'database' | 'fallback';
     data: TName[];
     total: number;
     totalPages: number;
@@ -27,6 +29,7 @@ export function createLetterPreviewResult<TName, TSummary>(
     const previewNames = result.featuredData?.length ? result.featuredData : result.data;
 
     return {
+        ...(result.dataSource ? { dataSource: result.dataSource } : {}),
         data: previewNames.slice(0, PREVIEW_SIZE),
         total: result.total,
         totalPages: Math.max(1, Math.ceil(result.total / SEARCH_PAGE_SIZE)),

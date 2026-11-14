@@ -63,7 +63,7 @@ const DETAIL_COLUMNS: Record<DetailQueryMode, string> = {
 
 function getSupabaseClient() {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
     if (!supabaseUrl || !supabaseKey) return null;
     return createClient(supabaseUrl, supabaseKey, { auth: { persistSession: false } });
 }
@@ -107,7 +107,7 @@ const fetchAuspiciousNameDetailPage = unstable_cache(
             ? { rows: [], error: toQueryError(error) }
             : { rows: (data ?? []) as unknown as AuspiciousNameDetailRow[], error: null };
     },
-    ['public-premium-name-detail-page-v2-english'],
+    ['public-premium-name-detail-page-v3-editorial-corrections'],
     { revalidate: 600, tags: ['premium-names', 'public-names'] },
 );
 

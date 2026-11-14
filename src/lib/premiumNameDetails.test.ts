@@ -66,7 +66,7 @@ describe('public premium name details', () => {
         const source = fs.readFileSync(path.join(process.cwd(), 'src/lib/premiumNameDetails.ts'), 'utf8');
         expect(source).toContain("['public-premium-name-list-page-v2-details']");
         expect(source).toContain("tags: ['premium-names']");
-        expect(source).toContain("['public-premium-name-detail-page-v2-english']");
+        expect(source).toContain("['public-premium-name-detail-page-v3-editorial-corrections']");
         expect(source).toContain("tags: ['premium-names', 'public-names']");
         expect(source).toContain('revalidate: 600');
         expect(source).toContain('.range(from, from + DATABASE_PAGE_SIZE - 1)');
