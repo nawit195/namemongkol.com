@@ -43,7 +43,7 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
+export function NameRow({ name, englishName, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const suitability = useMemo(() => {
         const suitable = suitableDays.map((day) => thaksaConfig[day].name);
@@ -87,6 +87,7 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
                             </span>
                         ) : null}
                     </div>
+                    <span lang="en" className="mt-1 block break-words text-sm leading-5 text-[#5a5a82] lg:hidden">{englishName || '—'}</span>
                     {displayPronunciation ? (
                         <span className="mt-1 block text-xs font-medium leading-5 text-[#5a5a82] lg:hidden">
                             อ่านว่า {displayPronunciation}
@@ -95,6 +96,7 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
                     ) : null}
                 </td>
 
+                <td lang="en" className="hidden max-w-48 break-words px-3 py-[18px] text-sm leading-6 text-[#5a5a82] lg:table-cell">{englishName || '—'}</td>
                 {/* Column 2: Pronunciation (Desktop Only) */}
                 <td className="hidden px-3 py-[18px] text-sm font-medium leading-6 text-[#5a5a82] lg:table-cell">
                     <span>{displayPronunciation || <span className="font-normal italic text-slate-500">รอตรวจสอบคำอ่าน</span>}</span>
@@ -160,9 +162,13 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
             {/* Expanded Details Row */}
             {isExpanded && (
                 <tr className="animate-fade-in border-b border-[#ddd8ee] bg-[#eeebf8]">
-                    <td colSpan={6} className="p-0">
+                    <td colSpan={7} className="p-0">
                         <div className="grid gap-4 bg-[#fafafd] px-5 py-5 text-sm md:px-6">
 
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                <span className="w-24 flex-shrink-0 font-semibold text-slate-700">ชื่อภาษาอังกฤษ</span>
+                                <div><span lang="en" className="break-words text-slate-950">{englishName || '—'}</span><p className="mt-1 text-xs leading-5 text-slate-600">{englishName ? 'ตัวเลือกการสะกดตามข้อมูลต้นทาง ควรยืนยันก่อนใช้ในเอกสาร' : 'ยังไม่มีข้อมูล'}</p></div>
+                            </div>
                             {/* Pronunciation */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="w-24 flex-shrink-0 font-semibold text-slate-700">คำอ่าน</span>
@@ -261,6 +267,7 @@ type PublicStats = {
 
 type SearchName = {
     name: string;
+    englishName?: string;
     gender: 'male' | 'female' | 'neutral';
     pronunciation?: string;
     pronunciationVariants?: string[];
@@ -1093,6 +1100,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                         <thead>
                             <tr className="border-b-2 border-amber-300/70 bg-[linear-gradient(90deg,#f8f8fc_0%,#f3f3f9_52%,#e8ecf2_100%)] text-[#1a1a3e]">
                                 <th className="px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.name')}</th>
+                                <th className="hidden px-3 py-4 text-left text-sm font-semibold tracking-wide lg:table-cell">ชื่อภาษาอังกฤษ</th>
                                 <th className="hidden px-3 py-4 text-left text-sm font-semibold uppercase tracking-wide lg:table-cell">คำอ่าน</th>
                                 <th className="px-2 py-4 font-semibold text-sm tracking-wide uppercase text-left">ความหมาย</th>
                                 <th className="hidden md:table-cell px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.day')}</th>
@@ -1104,7 +1112,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             {isLoadingNames && names.length === 0 ? (
                                 Array.from({ length: 5 }, (_, index) => (
                                     <tr key={`loading-${index}`} className="border-b border-[#eeeef6] bg-white/80">
-                                        <td colSpan={6} className="px-4 py-4">
+                                        <td colSpan={7} className="px-4 py-4">
                                             <div className="h-10 animate-pulse rounded-lg bg-slate-200/80" />
                                         </td>
                                     </tr>
@@ -1118,7 +1126,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     {/* Teaser row: show count of hidden A+ names to drive upgrade */}
                                     {hiddenAplusCount > 0 && (
                                         <tr className="border-t border-amber-200/90 bg-[linear-gradient(90deg,#fff8e7_0%,#f6f3fb_52%,#eeebf8_100%)]">
-                                            <td colSpan={6} className="px-4 py-3.5 text-center">
+                                            <td colSpan={7} className="px-4 py-3.5 text-center">
                                                 <Link prefetch={false}
                                                     href="/premium-search"
                                                     className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
@@ -1133,7 +1141,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     {/* Locked State / Load More Button */}
                                     {visibleCount < total && (
                                         <tr className="bg-[linear-gradient(145deg,#fafafd_0%,#f3f3f9_58%,#eeebf8_100%)]">
-                                            <td colSpan={6} className="relative h-28 overflow-hidden p-0">
+                                            <td colSpan={7} className="relative h-28 overflow-hidden p-0">
                                                 {/* Blurred content (fake rows) */}
                                                 <div className="pointer-events-none absolute inset-0 flex h-full w-full select-none flex-col gap-3 p-4 opacity-35 blur-sm">
                                                     <div className="h-9 w-full rounded-xl bg-white/80"></div>
@@ -1165,7 +1173,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                 </>
                             ) : (
                                 <tr>
-                                    <td colSpan={6} className="px-8 py-16 text-center text-slate-500">
+                                    <td colSpan={7} className="px-8 py-16 text-center text-slate-500">
                                         <div className="flex flex-col items-center gap-3">
                                             <Sparkles className="w-8 h-8 opacity-20" />
                                             <span>{t('pages.search.empty')}</span>

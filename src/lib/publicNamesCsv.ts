@@ -1,7 +1,7 @@
 import { thaksaConfig } from '@/data/thaksa';
 import type { PublicNameRecord } from '@/lib/publicNames';
 
-const CSV_HEADERS = ['ชื่อมงคล', 'คำอ่าน', 'ความหมาย', 'วัน', 'ผลรวมเลขศาสตร์'] as const;
+const CSV_HEADERS = ['ชื่อมงคล', 'ชื่อภาษาอังกฤษ', 'คำอ่าน', 'ความหมาย', 'วัน', 'ผลรวมเลขศาสตร์'] as const;
 const SPREADSHEET_FORMULA_PREFIX = /^[\t\r\n ]*[=+\-@]/;
 
 function protectSpreadsheetCell(value: string): string {
@@ -28,6 +28,7 @@ export function buildPublicNamesCsv(records: readonly PublicNameRecord[]): strin
 
         return [
             record.name,
+            record.englishName ?? '',
             pronunciation,
             getPublicNameDisplayMeaning(record.meaning),
             days,

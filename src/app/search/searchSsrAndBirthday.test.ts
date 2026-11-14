@@ -47,7 +47,7 @@ describe('search SSR and birthday landing pages', () => {
 
         expect(dataSource).toContain('const DATABASE_PAGE_SIZE = 1000;');
         expect(dataSource).toContain('const fetchPublicNameRowsPage = unstable_cache(');
-        expect(dataSource).toContain("['public-auspicious-name-page-v16']");
+        expect(dataSource).toContain("['public-auspicious-name-page-v17-english']");
         expect(dataSource).toContain("{ revalidate: 600, tags: ['public-names'] }");
         expect(dataSource).toContain('export const fetchAllPublicNames = cache(loadAllPublicNames);');
         expect(dataSource).toContain('const fetchPublicNamesDataset = cache(async () =>');

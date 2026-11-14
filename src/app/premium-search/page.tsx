@@ -2,13 +2,11 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
 import ClientPage from './ClientPage';
-import { premiumSearchNamesRaw } from '@/data/premiumSearchNames';
-import { countRawNameLines } from '@/lib/nameCounts';
+import { fetchPremiumPublishedCount } from '@/lib/premiumNameDetails';
 import { siteUrl } from '@/lib/seo';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
-const premiumNamesCount = countRawNameLines(premiumSearchNamesRaw);
-const premiumNamesCountLabel = premiumNamesCount.toLocaleString('th-TH');
+export const revalidate = 600;
 
 export const metadata: Metadata = {
     title: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม | NameMongkol',
@@ -36,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 // Enhanced JSON-LD Schema for SEO
-const jsonLd = {
+const createJsonLd = (count: number | null) => ({
     '@context': 'https://schema.org',
     '@graph': [
         {
@@ -65,7 +63,7 @@ const jsonLd = {
                 'description': '15 เครดิตต่อการค้นหา 1 ครั้ง'
             },
             'featureList': [
-                `ฐานข้อมูลชื่อมงคล ${premiumNamesCountLabel} ชื่อที่คัดสรรแล้ว`,
+                count === null ? 'ฐานข้อมูลชื่อมงคลที่คัดสรรแล้ว' : `ฐานข้อมูลชื่อมงคล ${count.toLocaleString('th-TH')} ชื่อที่คัดสรรแล้ว`,
                 'ระบบคัดกรองอักษรกาลกิณีตามวันเกิดที่เลือก',
                 'เลือกอักษรนำตามทักษา (วรรคเดช/วรรคศรี)',
                 'กรองตามผลรวมเลขศาสตร์ เกรด A+ เท่านั้น',
@@ -92,7 +90,7 @@ const jsonLd = {
             ],
         },
     ]
-};
+});
 
 // FAQ Schema for SEO
 const faqJsonLd = {
@@ -126,7 +124,8 @@ const faqJsonLd = {
     ]
 };
 
-export default function PremiumSearchPage() {
+export default async function PremiumSearchPage() {
+    const jsonLd = createJsonLd(await fetchPremiumPublishedCount());
     return (
         <>
             <Script

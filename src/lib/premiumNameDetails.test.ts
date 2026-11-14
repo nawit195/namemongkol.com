@@ -64,9 +64,9 @@ describe('public premium name details', () => {
 
     it('caches only database pages with the expected TTL and invalidation tags', () => {
         const source = fs.readFileSync(path.join(process.cwd(), 'src/lib/premiumNameDetails.ts'), 'utf8');
-        expect(source).toContain("['public-premium-name-list-page-v1']");
+        expect(source).toContain("['public-premium-name-list-page-v2-details']");
         expect(source).toContain("tags: ['premium-names']");
-        expect(source).toContain("['public-premium-name-detail-page-v1']");
+        expect(source).toContain("['public-premium-name-detail-page-v2-english']");
         expect(source).toContain("tags: ['premium-names', 'public-names']");
         expect(source).toContain('revalidate: 600');
         expect(source).toContain('.range(from, from + DATABASE_PAGE_SIZE - 1)');

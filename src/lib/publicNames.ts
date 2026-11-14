@@ -1,4 +1,5 @@
 import 'server-only';
+import { missingNameColumn, nameColumns } from './nameQueryCompatibility';
 
 import { cache } from 'react';
 import { unstable_cache } from 'next/cache';
@@ -22,6 +23,7 @@ const DAY_KEYS = Object.keys(thaksaConfig) as DayKey[];
 
 type DatabaseNameRow = {
     name: string;
+    english_name?: string | null;
     gender: string | null;
     pronunciation?: string | null;
     pronunciation_draft?: string | null;
@@ -33,7 +35,7 @@ type DatabaseNameRow = {
     created_at: string | null;
 };
 
-type NameQueryMode = 'with-publication' | 'with-evidence' | 'with-review-state' | 'with-status' | 'with-pronunciation' | 'legacy';
+type NameQueryMode = 'with-publication' | 'with-evidence' | 'with-review-state' | 'with-status' | 'with-meaning-status' | 'with-pronunciation' | 'legacy';
 
 type DatabaseQueryError = {
     message: string;
@@ -47,6 +49,7 @@ const DATABASE_COLUMNS: Record<NameQueryMode, string> = {
     'with-evidence': 'name, gender, pronunciation, pronunciation_draft, pronunciation_variants, pronunciation_status, meaning, meaning_status, created_at',
     'with-review-state': 'name, gender, pronunciation, pronunciation_draft, pronunciation_status, meaning, created_at',
     'with-status': 'name, gender, pronunciation, pronunciation_status, meaning, created_at',
+    'with-meaning-status': 'name, gender, pronunciation, meaning, meaning_status, created_at',
     'with-pronunciation': 'name, gender, pronunciation, meaning, created_at',
     legacy: 'name, gender, meaning, created_at',
 };
@@ -56,6 +59,7 @@ export type PublicNameReviewStatus = 'pending' | 'draft' | 'approved' | 'rejecte
 
 export type PublicNameRecord = {
     name: string;
+    englishName?: string;
     gender: PublicNameGender;
     pronunciation?: string;
     pronunciationVariants?: string[];
@@ -140,7 +144,7 @@ function createFallbackNames(): PublicNameRecord[] {
 }
 
 const fetchPublicNameRowsPage = unstable_cache(
-    async (mode: NameQueryMode, from: number): Promise<{
+    async (mode: NameQueryMode, from: number, withEnglish: boolean, excluded: string[]): Promise<{
         rows: DatabaseNameRow[];
         error: DatabaseQueryError | null;
     }> => {
@@ -159,7 +163,7 @@ const fetchPublicNameRowsPage = unstable_cache(
         });
         const { data, error } = await supabase
             .from('auspicious_names')
-            .select(DATABASE_COLUMNS[mode])
+            .select(nameColumns(DATABASE_COLUMNS[mode] + (withEnglish ? ", english_name" : ""), excluded))
             .order('name', { ascending: true })
             .range(from, from + DATABASE_PAGE_SIZE - 1);
 
@@ -180,15 +184,19 @@ const fetchPublicNameRowsPage = unstable_cache(
             error: null,
         };
     },
-    ['public-auspicious-name-page-v16'],
+    ['public-auspicious-name-page-v17-english'],
     { revalidate: 600, tags: ['public-names'] },
 );
 
-async function readRows(mode: NameQueryMode) {
+async function readRows(mode: NameQueryMode, withEnglish = true, excluded: string[] = []): Promise<{ rows: DatabaseNameRow[]; error: DatabaseQueryError | null }> {
     const rows: DatabaseNameRow[] = [];
 
     for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
-        const result = await fetchPublicNameRowsPage(mode, from);
+        const result = await fetchPublicNameRowsPage(mode, from, withEnglish, excluded);
+        if (result.error) {
+            const missing = missingNameColumn(result.error, excluded);
+            if (missing) return readRows(mode, withEnglish, [...excluded, missing]);
+        }
         if (result.error) return { rows: [] as DatabaseNameRow[], error: result.error };
         if (result.rows.length === 0) break;
         rows.push(...result.rows);
@@ -219,6 +227,9 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
     }
     if (result.error && /pronunciation_status/i.test(result.error.message ?? '')) {
         console.warn('Public names pronunciation status is not available yet; using existing pronunciation data.');
+        result = await readRows('with-meaning-status');
+    }
+    if (result.error && /meaning_status/i.test(result.error.message ?? '')) {
         result = await readRows('with-pronunciation');
     }
     if (result.error && /pronunciation/i.test(result.error.message ?? '')) {
@@ -248,7 +259,7 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
             const pronunciationVariants = row.pronunciation_status === 'rejected'
                 ? []
                 : (row.pronunciation_variants ?? []).map((value) => value.trim()).filter(Boolean);
-            const meaning = row.meaning?.trim();
+            const meaning = row.meaning_status === 'rejected' ? undefined : row.meaning?.trim();
             const suitability = analyzeNameSuitability(name);
             const suitableDays = DAY_KEYS.filter((day) =>
                 suitability.suitable.includes(thaksaConfig[day].name),
@@ -256,6 +267,7 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
 
             return {
                 name,
+                englishName: row.english_name?.trim() || undefined,
                 gender: normalizeGender(row.gender),
                 pronunciation: pronunciation || undefined,
                 pronunciationVariants,

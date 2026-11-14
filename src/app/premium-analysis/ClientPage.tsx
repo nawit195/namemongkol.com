@@ -1,5 +1,6 @@
 'use client';
 
+import { PremiumAnalysisNameDetails } from './PremiumAnalysisNameDetails';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
@@ -570,9 +571,7 @@ export default function PremiumAnalysisPage() {
                                 <h3 className="mb-2 text-3xl font-black text-white">
                                     {result.name}
                                 </h3>
-                                <p className="mb-6 text-sm leading-7 text-slate-300">
-                                    {result.meaning}
-                                </p>
+                                <PremiumAnalysisNameDetails result={result} />
 
                                 <div className="space-y-3 mb-6">
                                     {result.notes.map((note, i) => (

@@ -5,7 +5,7 @@ import { Shield, Star, Zap, CheckCircle2, XCircle, Sparkles, HelpCircle, Chevron
 import Link from 'next/link';
 
 interface PremiumSEOSectionProps {
-    allNamesLength: number;
+    allNamesLength: number | null;
     freeNamesCount?: number;
 }
 
@@ -56,7 +56,7 @@ export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }
         { feature: 'คัดกรองอักษรกาลกิณี', free: true, pro: true },
         { feature: 'เลือกอักษรนำ (วรรคเดช/ศรี)', free: false, pro: true },
         { feature: 'เกรดของผลรวมเลขศาสตร์', free: 'คละเกรด', pro: 'เกรด A+ เท่านั้น', highlightPro: true },
-        { feature: 'จำนวนชื่อในฐานข้อมูล', free: freeNamesLabel, pro: `${allNamesLength.toLocaleString('th-TH')} (คัดพิเศษ)`, highlightPro: true },
+        { feature: 'จำนวนชื่อในฐานข้อมูล', free: freeNamesLabel, pro: allNamesLength === null ? 'ฐานรายชื่อคัดสรร' : `${allNamesLength.toLocaleString('th-TH')} (คัดพิเศษ)`, highlightPro: true },
         { feature: 'กรองตามเพศ', free: false, pro: true },
         { feature: 'คุณภาพความหมาย', free: 'ปานกลาง', pro: 'คัดสรรพิเศษ', highlightPro: true },
     ];

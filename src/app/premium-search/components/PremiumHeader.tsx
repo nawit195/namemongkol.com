@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 
 interface PremiumHeaderProps {
-    totalNames: number;
+    totalNames: number | null;
     filteredCount: number;
     availableLettersCount: number;
     credits: number | null;
@@ -14,7 +14,7 @@ interface PremiumHeaderProps {
 
 export default function PremiumHeader({ totalNames, filteredCount, availableLettersCount, credits }: PremiumHeaderProps) {
     const { t } = useLanguage();
-    const totalNamesLabel = totalNames.toLocaleString('th-TH');
+    const totalNamesLabel = totalNames === null ? '—' : totalNames.toLocaleString('th-TH');
     const filteredNamesLabel = filteredCount.toLocaleString('th-TH');
     const availableLettersLabel = availableLettersCount.toLocaleString('th-TH');
 
@@ -36,7 +36,7 @@ export default function PremiumHeader({ totalNames, filteredCount, availableLett
                         {t('pages.premiumSearch.headerTitle')}
                     </h1>
                     <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5a82] sm:text-base">
-                        {t('pages.premiumSearch.headerDesc').replace('{count}', totalNamesLabel)}
+                        {totalNames === null ? 'คัดชื่อมงคลตามวันเกิดและเงื่อนไขที่คุณเลือก' : t('pages.premiumSearch.headerDesc').replace('{count}', totalNamesLabel)}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#40506f]">
                         <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">คัดตามวันเกิด</span>

@@ -23,6 +23,7 @@ import {
 // Import New Sub-components
 import PremiumHeader from './components/PremiumHeader';
 import PremiumNameCard from './components/PremiumNameCard';
+import cardStyles from './components/PremiumNameCard.module.css';
 import PremiumAlphabetBar from './components/PremiumAlphabetBar';
 import PremiumSEOSection from './components/PremiumSEOSection';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
@@ -150,7 +151,7 @@ export default function ClientPage() {
         { value: 'เสาร์', label: t('pages.premiumSearch.days.saturday') },
     ]), [t]);
 
-    const { names: allNames } = usePremiumNameCatalog();
+    const { names: allNames, publishedCount } = usePremiumNameCatalog();
 
     const filteredNames = useMemo(() => {
         return filterPremiumNames(allNames, { selectedDay, selectedGender, targetScore, leadingCharType });
@@ -221,7 +222,14 @@ export default function ClientPage() {
         fetchPublicStats();
     }, []);
 
+    const unlockInProgress = useRef(false);
+    const [unlockError, setUnlockError] = useState('');
     const performUnlock = async (letter: string, amount: number) => {
+        if (unlockInProgress.current) return;
+        unlockInProgress.current = true;
+        setIsLoading(true);
+        setUnlockError('');
+        try {
         const Swal = (await import('sweetalert2')).default;
         const { data: { user } } = await supabase.auth.getUser();
         
@@ -296,14 +304,19 @@ export default function ClientPage() {
             setUnlockedCounts(prev => ({ ...prev, [letter]: (prev[letter] || 0) + 20 }));
 
             const unlockedNames = groupedByLetter.get(letter)?.slice(0, (unlockedCounts[letter] || 0) + 20) || [];
-            await savePremiumUnlockHistoryIfEligible({
-                userId: user.id,
-                selectedDay,
-                targetScore,
-                leadingCharType,
-                selectedLetter,
-                unlockedNames,
-            });
+            try {
+                await savePremiumUnlockHistoryIfEligible({
+                    userId: user.id,
+                    selectedDay,
+                    targetScore,
+                    leadingCharType,
+                    selectedLetter: letter,
+                    unlockedNames,
+                });
+            } catch (historyError) {
+                console.warn('Premium unlock history could not be saved:', historyError);
+                setUnlockError('ปลดล็อกสำเร็จแล้ว แต่บันทึกประวัติไม่สำเร็จ รายชื่อเปิดให้ดูแล้ว ไม่ต้องปลดล็อกซ้ำ');
+            }
             void trackEvent('funnel.premium.unlock_success', {
                 metadata: { amount },
             });
@@ -320,6 +333,13 @@ export default function ClientPage() {
         } finally {
             setIsLoading(false);
         }
+        } catch (error) {
+            console.error('Unable to prepare premium unlock:', error);
+            setUnlockError('ไม่สามารถเตรียมการปลดล็อกได้ กรุณาลองใหม่อีกครั้ง');
+        } finally {
+            unlockInProgress.current = false;
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -334,7 +354,7 @@ export default function ClientPage() {
             <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-7 sm:px-6 sm:pt-28">
                 <div className="space-y-7 sm:space-y-10">
                     <PremiumHeader 
-                        totalNames={allNames.length} 
+                        totalNames={publishedCount}
                         filteredCount={filteredNames.length} 
                         availableLettersCount={availableLetters.length} 
                         credits={userCredits} 
@@ -462,6 +482,7 @@ export default function ClientPage() {
                                         <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5 font-mono text-xs font-bold text-[#40506f]">{groupedByLetter.get(selectedLetter)?.length ?? 0} ชื่อ</span>
                                     </div>
                                 ) : null}
+                                {unlockError ? <p role="alert" className={cardStyles.unlockError}>{unlockError}</p> : null}
                                 {selectedLetter && (() => {
                                     const namesForLetter = groupedByLetter.get(selectedLetter) || [];
                                     const unlockedCount = unlockedCounts[selectedLetter] || 0;
@@ -469,10 +490,11 @@ export default function ClientPage() {
                                     const displayCount = isFullyUnlocked ? unlockedCount : 20;
                                     const visibleNames = namesForLetter.slice(0, displayCount);
                                     const hasMore = namesForLetter.length > displayCount;
+                                    const needsUnlock = !isFullyUnlocked && namesForLetter.length > PREMIUM_FREE_PREVIEW_COUNT;
 
                                     return (
                                         <>
-                                            {!isFullyUnlocked && (
+                                            {needsUnlock && (
                                                 <div className="relative mb-5 overflow-hidden rounded-2xl border border-slate-700 bg-[#172033] p-5 text-center shadow-[0_10px_26px_rgba(15,23,42,0.16)] sm:p-7">
                                                     <div className="relative flex flex-col items-center">
                                                         <div className="mb-4">
@@ -498,16 +520,23 @@ export default function ClientPage() {
                                                 </div>
                                             )}
 
-                                            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+                                            <div className={cardStyles.resultsGrid}>
                                                 {visibleNames.map((item, index) => (
                                                     <PremiumNameCard
                                                         key={item.name + index}
                                                         item={item}
                                                         isUnlocked={isFullyUnlocked || index < PREMIUM_FREE_PREVIEW_COUNT}
+                                                        onUnlock={() => { void performUnlock(selectedLetter, 15); }}
+                                                        isUnlocking={isLoading}
+                                                        unlockGroup={selectedLetter}
                                                     />
                                                 ))}
                                             </div>
 
+                                            {needsUnlock ? <div className={cardStyles.unlockPanel}>
+                                                <div><h3>เปิดดูรายชื่อในชุดนี้</h3><p>หมวด “{selectedLetter}” · สูงสุด 20 รายชื่อ · 15 เครดิต</p><p className={cardStyles.unlockNote}>ตรวจสอบเครดิตและยืนยันก่อนปลดล็อก</p>{unlockError ? <p className={cardStyles.unlockError}>{unlockError}</p> : null}</div>
+                                                <button type="button" disabled={isLoading} onClick={() => { void performUnlock(selectedLetter, 15); }}><Lock size={16} aria-hidden="true" />{isLoading ? 'กำลังดำเนินการ…' : 'ปลดล็อก · 15 เครดิต'}</button>
+                                            </div> : null}
                                             {isFullyUnlocked && hasMore && (
                                                 <div className="mt-8 border-t border-[#ddddf0] pt-6 text-center">
                                                     <button
@@ -554,7 +583,7 @@ export default function ClientPage() {
                         </div>
                     )}
 
-                    <PremiumSEOSection allNamesLength={allNames.length} freeNamesCount={freeNamesCount} />
+                    <PremiumSEOSection allNamesLength={publishedCount} freeNamesCount={freeNamesCount} />
 
                 </div>
             </main>

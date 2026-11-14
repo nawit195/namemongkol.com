@@ -71,6 +71,9 @@ describe('premium name enrichment and cards', () => {
         expect(missing).toContain('กำลังจัดทำความหมาย');
         expect(locked).toContain('aria-hidden="true"');
         expect(locked).toContain('ปลดล็อกเพื่อดูชื่อ');
-        expect(locked).toContain('blur-sm');
+        expect(locked).toContain('inert=\"\"');
+        expect(locked).not.toContain('/name-check?');
+        expect(approved).toContain('/name-check?name=');
+        expect(approved).toContain('<details');
     });
 });

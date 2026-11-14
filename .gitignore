@@ -55,3 +55,8 @@ supabase/.temp/
 next-env.d.ts
 
 .vercel
+
+# Local import snapshots and database before-values
+/scratch/filtered-names-import/
+
+/scratch/premium-aplus-import/
