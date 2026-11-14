@@ -70,3 +70,18 @@ export class SearchResultLruCache<T> {
         return this.entries.size;
     }
 }
+
+/** A foreground click can reuse an in-flight prefetch for the same result. */
+export class SearchRequestDeduplicator<T> {
+    private readonly pending = new Map<string, { request: Promise<T>; signal?: AbortSignal }>();
+
+    run(key: string, load: () => Promise<T>, signal?: AbortSignal): Promise<T> {
+        const existing = this.pending.get(key);
+        if (existing && !existing.signal?.aborted) return existing.request;
+        const request = Promise.resolve().then(load);
+        this.pending.set(key, { request, signal });
+        const clear = () => { if (this.pending.get(key)?.request === request) this.pending.delete(key); };
+        void request.then(clear, clear);
+        return request;
+    }
+}

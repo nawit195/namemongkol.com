@@ -22,6 +22,7 @@ const FEATURED_NAME_COUNT = 10;
 const DAY_KEYS = Object.keys(thaksaConfig) as DayKey[];
 
 type DatabaseNameRow = {
+    calculated?: Pick<PublicNameRecord, 'numerology' | 'suitableDays' | 'grade'>;
     name: string;
     english_name?: string | null;
     english_name_draft?: string | null;
@@ -150,10 +151,20 @@ function createFallbackNames(): PublicNameRecord[] {
     return mergePublicChoNames([...girls, ...boys]).sort((a, b) => a.name.localeCompare(b.name, 'th'));
 }
 
+function calculatePublicNameValues(name: string): Pick<PublicNameRecord, 'numerology' | 'suitableDays' | 'grade'> {
+    const suitability = analyzeNameSuitability(name);
+    return {
+        numerology: calculateScore(name),
+        suitableDays: DAY_KEYS.filter(day => suitability.suitable.includes(thaksaConfig[day].name)),
+        grade: analyzeName(name)?.grade ?? 'C',
+    };
+}
+
 const fetchPublicNameRowsPage = unstable_cache(
     async (mode: NameQueryMode, from: number, withEnglish: boolean, excluded: string[]): Promise<{
         rows: DatabaseNameRow[];
         error: DatabaseQueryError | null;
+        totalRows?: number | null;
     }> => {
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
@@ -168,9 +179,9 @@ const fetchPublicNameRowsPage = unstable_cache(
         const supabase = createClient(supabaseUrl, supabaseKey, {
             auth: { persistSession: false },
         });
-        const { data, error } = await supabase
+        const { data, error, count } = await supabase
             .from('auspicious_names')
-            .select(nameColumns(DATABASE_COLUMNS[mode] + (withEnglish ? ', english_name, english_name_draft, english_name_status, english_name_source, english_name_reading' : ''), excluded))
+            .select(nameColumns(DATABASE_COLUMNS[mode] + (withEnglish ? ', english_name, english_name_draft, english_name_status, english_name_source, english_name_reading' : ''), excluded), from === 0 ? { count: 'exact' } : undefined)
             .order('name', { ascending: true })
             .range(from, from + DATABASE_PAGE_SIZE - 1);
 
@@ -187,27 +198,43 @@ const fetchPublicNameRowsPage = unstable_cache(
         }
 
         return {
-            rows: (data ?? []) as unknown as DatabaseNameRow[],
+            // Keep computed values in bounded, tag-invalidated page entries.
+            // A new rotation seed must not recalculate the entire catalog.
+            rows: ((data ?? []) as unknown as DatabaseNameRow[]).map(row => ({
+                ...row,
+                calculated: calculatePublicNameValues(stripInvisible(row.name)),
+            })),
             error: null,
+            totalRows: count,
         };
     },
-    ['public-auspicious-name-page-v19-editorial-corrections'],
+    ['public-auspicious-name-page-v20-prepared-pages'],
     { revalidate: 600, tags: ['public-names'] },
 );
 
 async function readRows(mode: NameQueryMode, withEnglish = true, excluded: string[] = []): Promise<{ rows: DatabaseNameRow[]; error: DatabaseQueryError | null }> {
     const rows: DatabaseNameRow[] = [];
-
-    for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
-        const result = await fetchPublicNameRowsPage(mode, from, withEnglish, excluded);
-        if (result.error) {
-            const missing = missingNameColumn(result.error, excluded);
-            if (missing) return readRows(mode, withEnglish, [...excluded, missing]);
+    let next = 0;
+    let totalRows: number | undefined;
+    while (true) {
+        // Discover the schema/count with page one, then read at most four
+        // independent pages together. Legacy responses without a count still work.
+        const offsets = totalRows === undefined ? [next]
+            : Array.from({ length: 4 }, (_, index) => next + index * DATABASE_PAGE_SIZE).filter(from => from < totalRows!);
+        if (offsets.length === 0) break;
+        const results = await Promise.all(offsets.map(from => fetchPublicNameRowsPage(mode, from, withEnglish, excluded)));
+        for (const result of results) {
+            if (result.error) {
+                const missing = missingNameColumn(result.error, excluded);
+                if (missing) return readRows(mode, withEnglish, [...excluded, missing]);
+                return { rows: [], error: result.error };
+            }
+            rows.push(...result.rows);
         }
-        if (result.error) return { rows: [] as DatabaseNameRow[], error: result.error };
-        if (result.rows.length === 0) break;
-        rows.push(...result.rows);
-        if (result.rows.length < DATABASE_PAGE_SIZE) break;
+        const first = results[0];
+        if (next === 0 && typeof first.totalRows === 'number' && Number.isFinite(first.totalRows) && first.totalRows >= first.rows.length) totalRows = first.totalRows;
+        next = offsets[offsets.length - 1] + DATABASE_PAGE_SIZE;
+        if (totalRows === undefined && results[results.length - 1].rows.length < DATABASE_PAGE_SIZE) break;
     }
 
     return { rows, error: null };
@@ -288,10 +315,7 @@ async function loadPublicNamesWithSource(strictRead = false): Promise<LoadedPubl
                 : useDraftMetadata ? storedEnglishStatus ?? (draftEnglish ? 'pending' : undefined) : undefined;
             const englishName = row.english_name_status === 'rejected' || englishIsStale
                 ? undefined : storedEnglish || draftEnglish || undefined;
-            const suitability = analyzeNameSuitability(name);
-            const suitableDays = DAY_KEYS.filter((day) =>
-                suitability.suitable.includes(thaksaConfig[day].name),
-            );
+            const calculated = row.calculated ?? calculatePublicNameValues(name);
 
             return {
                 name,
@@ -305,9 +329,7 @@ async function loadPublicNamesWithSource(strictRead = false): Promise<LoadedPubl
                 meaning: meaning || undefined,
                 meaningStatus: normalizeReviewStatus(row.meaning_status),
                 createdAt: row.created_at || undefined,
-                numerology: calculateScore(name),
-                suitableDays,
-                grade: analyzeName(name)?.grade ?? 'C',
+                ...calculated,
             };
         })
         .filter((row) => row.name);

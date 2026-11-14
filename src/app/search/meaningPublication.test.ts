@@ -41,7 +41,7 @@ describe('public name meaning publication', () => {
         expect(publicNames).toContain('meaning_status');
         expect(publicNames).toContain("row.pronunciation_status === 'rejected'");
         expect(publicNames).toContain('publishedPronunciation || draftPronunciation');
-        expect(publicNames).toContain('public-auspicious-name-page-v19-editorial-corrections');
+        expect(publicNames).toContain('public-auspicious-name-page-v20-prepared-pages');
         expect(publicNames).toContain('fetchPublicNamesDataset = cache');
         expect(publicNames).toContain('using existing pronunciation data');
         expect(publicNames).toContain("readRows('with-status')");

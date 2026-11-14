@@ -19,6 +19,7 @@ import {
     createPublicNamesRequestUrl,
     createSearchResultCacheKey,
     SearchResultLruCache,
+    SearchRequestDeduplicator,
 } from './searchResultCache';
 import {
     reorderFirstPageWithFeatured,
@@ -353,6 +354,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
     const prefetchedLetters = useRef<Set<string>>(new Set());
+    const [pendingPages] = useState(() => new SearchRequestDeduplicator<SearchNamesResult>());
 
     const requestNamesPage = useCallback(async (
         filters: SearchFilters,
@@ -363,19 +365,21 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         const cached = resultCache.get(cacheKey);
         if (cached) return cached;
 
-        const requestUrl = createPublicNamesRequestUrl(filters, page, options.featuredSeed);
-        const response = await fetch(requestUrl, {
-            cache: 'force-cache',
-            signal: options.signal,
-        });
-        const payload = await response.json();
-        if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
-            throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
-        }
-        const result = payload as SearchNamesResult;
-        resultCache.set(cacheKey, result);
-        return result;
-    }, [resultCache]);
+        return pendingPages.run(cacheKey, async () => {
+            const requestUrl = createPublicNamesRequestUrl(filters, page, options.featuredSeed);
+            const response = await fetch(requestUrl, {
+                cache: 'force-cache',
+                signal: options.signal,
+            });
+            const payload = await response.json();
+            if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
+                throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
+            }
+            const result = payload as SearchNamesResult;
+            resultCache.set(cacheKey, result);
+            return result;
+        }, options.signal);
+    }, [pendingPages, resultCache]);
 
     const applyNamesResult = useCallback((
         result: SearchNamesResult,
@@ -414,7 +418,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         const cached = resultCache.get(cacheKey);
 
         if (cached) {
-            applyNamesResult(cached);
+            applyNamesResult(cached, options.previousVisibleNames);
             setNamesError(null);
             setIsLoadingNames(false);
             return;
@@ -474,6 +478,15 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     }, [applyLetterPreview, applyNamesResult, initialLetterPreviews, initialResult, loadFirstPage]);
 
     useEffect(() => () => activeFilterRequest.current?.abort(), []);
+
+    // Prepare only the next rotation for the currently selected filters.
+    // This never applies results or changes the free/paid visible-name limit.
+    useEffect(() => {
+        if (!filtersReady || selectedLetter === 'all' || isLoadingNames || total === 0) return;
+        const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: selectedLetter };
+        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters, featuredRotation.current + 1);
+        void requestNamesPage(filters, 1, { featuredSeed }).catch(() => { /* Foreground requests retain their normal retry/error UI. */ });
+    }, [filtersReady, selectedDay, selectedGender, selectedLetter, isLoadingNames, names, total, requestNamesPage]);
 
     useEffect(() => {
         if (!filtersReady) return;
@@ -605,10 +618,6 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
             applyNamesResult(immediateResult);
         } else {
             applyLetterPreview(immediateResult);
-            void loadFirstPage(filters, {
-                rotate: true,
-                previousVisibleNames: immediateResult.data.map((item) => item.name),
-            });
         }
     };
 
