@@ -3,10 +3,12 @@ import Link from 'next/link';
 
 import ClientHome from './ClientHome';
 import { ogImageUrl, siteUrl } from '@/lib/seo';
+import { namingBrandDescription, namingScienceNames, namingContentUpdatedAt } from '@/data/namingApproach';
+import { NamingApproachSummary } from '@/components/NamingApproachSummary';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 const pageTitle = 'NameMongkol | ค้นหาและวิเคราะห์ชื่อมงคลตามวันเกิด';
-const pageDescription = 'ศูนย์รวมเครื่องมือค้นหาชื่อมงคล วิเคราะห์ชื่อกับนามสกุล ตั้งชื่อลูก และเปลี่ยนชื่อ พร้อมคำอธิบายวิธีคำนวณและข้อจำกัดที่ตรวจสอบได้';
+const pageDescription = `${namingBrandDescription} พร้อมฐานรายชื่อพรีเมียมที่ทีมงานคัดกรองล่วงหน้าตามทั้ง 4 ศาสตร์`;
 const homeOgImage = ogImageUrl({
   variant: 'default',
   title: 'NameMongkol ศูนย์รวมเครื่องมือชื่อมงคล',
@@ -82,6 +84,8 @@ export default async function Page() {
         '@id': `${baseUrl}/#organization`,
         'name': 'NameMongkol',
         'alternateName': 'เนมมงคล',
+        'description': namingBrandDescription,
+        'knowsAbout': namingScienceNames,
         'url': baseUrl,
         'logo': {
           '@type': 'ImageObject',
@@ -123,7 +127,7 @@ export default async function Page() {
         'description': pageDescription,
         'inLanguage': 'th-TH',
         'isAccessibleForFree': true,
-        'dateModified': '2026-05-25',
+        'dateModified': namingContentUpdatedAt,
         'primaryImageOfPage': {
           '@type': 'ImageObject',
           'url': homeOgImage,
@@ -170,6 +174,7 @@ export default async function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ClientHome heroHeadingLevel="h1" />
+      <NamingApproachSummary />
       <section className="bg-[#f8f8fc] px-4 py-10 text-[#1a1a3e]">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold">กำลังตั้งชื่อลูก เริ่มเลือกชื่อที่นี่</h2>

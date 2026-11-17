@@ -151,7 +151,7 @@ export default function ClientPage() {
         { value: 'เสาร์', label: t('pages.premiumSearch.days.saturday') },
     ]), [t]);
 
-    const { names: allNames, publishedCount } = usePremiumNameCatalog();
+    const { names: allNames, publishedCount, latestAddedAt } = usePremiumNameCatalog();
 
     const filteredNames = useMemo(() => {
         return filterPremiumNames(allNames, { selectedDay, selectedGender, targetScore, leadingCharType });
@@ -355,6 +355,7 @@ export default function ClientPage() {
                 <div className="space-y-7 sm:space-y-10">
                     <PremiumHeader 
                         totalNames={publishedCount}
+                        latestAddedAt={latestAddedAt}
                         filteredCount={filteredNames.length} 
                         availableLettersCount={availableLetters.length} 
                         credits={userCredits} 

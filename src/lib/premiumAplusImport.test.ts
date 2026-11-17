@@ -16,6 +16,18 @@ import PremiumHeader from '@/app/premium-search/components/PremiumHeader';
 import PremiumSEOSection from '@/app/premium-search/components/PremiumSEOSection';
 
 describe('premium A+ import and English details', () => {
+    it('shows the catalog date in Bangkok time and never invents a date for unavailable metadata', () => {
+        const props = { totalNames: 7050, filteredCount: 20, availableLettersCount: 40, credits: null };
+        const html = renderToStaticMarkup(createElement(PremiumHeader, { ...props, latestAddedAt: '2026-11-16T18:30:00Z' }));
+        expect(html).toContain('อัปเดตรายชื่อล่าสุด');
+        expect(html).toContain('17 พ.ย. 2569');
+        expect(html).toMatch(/datetime="2026-11-16T18:30:00.000Z"/i);
+        for (const latestAddedAt of [undefined, null, 'invalid']) {
+            const missing = renderToStaticMarkup(createElement(PremiumHeader, { ...props, latestAddedAt }));
+            expect(missing).not.toContain('<time');
+            expect(missing).toContain('อัปเดตรายชื่อล่าสุด');
+        }
+    });
     it('does not advertise a fallback count when the remote count is unavailable', () => {
         const header = renderToStaticMarkup(createElement(PremiumHeader, { totalNames: null, filteredCount: 0, availableLettersCount: 0, credits: null }));
         expect(header).toContain('คัดชื่อมงคลตามวันเกิดและเงื่อนไขที่คุณเลือก');
@@ -61,7 +73,7 @@ describe('premium A+ import and English details', () => {
         const analysisHtml = renderToStaticMarkup(createElement(PremiumAnalysisNameDetails, { result: after[0] }));
         expect(searchHtml).toContain('EXAMPLE-NAME');
         expect(analysisHtml).toContain('EXAMPLE-NAME');
-        expect(analysisHtml).toContain('รอตรวจสอบ');
+        expect(analysisHtml).not.toContain('รอตรวจสอบ');
         const oldHtml = renderToStaticMarkup(createElement(PremiumAnalysisNameDetails, { result: { meaning: 'ข้อมูลประวัติเดิม' } }));
         expect(oldHtml).toContain('ข้อมูลประวัติเดิม');
         expect(oldHtml).toContain('ยังไม่มีข้อมูล');

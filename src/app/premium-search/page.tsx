@@ -1,21 +1,22 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
 import ClientPage from './ClientPage';
 import { fetchPremiumPublishedCount } from '@/lib/premiumNameDetails';
 import { siteUrl } from '@/lib/seo';
+import { namingBrandDescription, premiumCurationDescription, namingScienceNames, premiumSearchDescription } from '@/data/namingApproach';
+import { NamingApproachSummary, NamingApproachFaq } from '@/components/NamingApproachSummary';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-    title: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม | NameMongkol',
-    description: 'คัดชื่อเสริมดวงสำหรับเปลี่ยนชื่อมงคลแบบจริงจัง กรองด้วยวรรคเดช วรรคศรี ทักษา เลขศาสตร์ และอักษรกาลกิณี จากฐานข้อมูลชื่อคัดพิเศษ',
+    title: { absolute: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม | NameMongkol' },
+    description: premiumSearchDescription,
     keywords: ['เปลี่ยนชื่อมงคล', 'เปลี่ยนชื่อเสริมดวง', 'คัดชื่อเสริมดวง', 'ชื่อมงคลพรีเมียม', 'คัดเลือกชื่อมงคล Pro', 'วรรคเดช', 'วรรคศรี', 'ผลรวมเลขศาสตร์', 'อักษรนำ', 'ชื่อมงคลขั้นสูง', 'ตัวกรองชื่อ', 'ชื่อคัดพิเศษ'],
 
     openGraph: {
         title: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม',
-        description: 'คัดชื่อเสริมดวงสำหรับเปลี่ยนชื่อมงคล กรองด้วยวรรคเดช วรรคศรี ทักษา และเลขศาสตร์',
+        description: premiumSearchDescription,
         url: `${baseUrl}/premium-search`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวง | NameMongkol',
-        description: 'คัดชื่อเสริมดวงสำหรับเปลี่ยนชื่อมงคล กรองด้วยวรรคเดช วรรคศรี ทักษา และเลขศาสตร์',
+        description: premiumSearchDescription,
         images: [`${baseUrl}/api/og?variant=default&title=เปลี่ยนชื่อมงคล%20Pro`],
     },
     alternates: {
@@ -42,8 +43,9 @@ const createJsonLd = (count: number | null) => ({
             '@id': `${baseUrl}/premium-search#webpage`,
             'url': `${baseUrl}/premium-search`,
             'name': 'เปลี่ยนชื่อมงคล Pro คัดชื่อเสริมดวงจากฐานข้อมูลพรีเมียม | NameMongkol',
-            'description': 'คัดชื่อเสริมดวงสำหรับเปลี่ยนชื่อมงคลแบบจริงจัง กรองด้วยวรรคเดช วรรคศรี ทักษา เลขศาสตร์ และอักษรกาลกิณี',
+            'description': premiumSearchDescription,
             'inLanguage': 'th-TH',
+            'about': namingScienceNames.map(name => ({ '@type': 'Thing', name })),
             'isPartOf': { '@id': `${baseUrl}/#website` },
             'mainEntity': { '@id': `${baseUrl}/premium-search#software` },
         },
@@ -52,23 +54,19 @@ const createJsonLd = (count: number | null) => ({
             '@id': `${baseUrl}/premium-search#software`,
             'name': 'NameMongkol Premium Search - เปลี่ยนชื่อมงคล Pro',
             'alternateName': 'คัดชื่อเสริมดวง Pro',
-            'description': 'โปรแกรมคัดชื่อเสริมดวงสำหรับเปลี่ยนชื่อมงคลแบบจริงจัง ผ่านการคัดกรอง 3 ชั้น: ทักษา เลขศาสตร์ และความหมาย',
+            'description': premiumSearchDescription,
             'applicationCategory': 'LifestyleApplication',
             'operatingSystem': 'Web',
             'url': `${baseUrl}/premium-search`,
-            'offers': {
-                '@type': 'Offer',
-                'price': '15',
-                'priceCurrency': 'THB',
-                'description': '15 เครดิตต่อการค้นหา 1 ครั้ง'
-            },
             'featureList': [
+                namingBrandDescription,
+                premiumCurationDescription,
                 count === null ? 'ฐานข้อมูลชื่อมงคลที่คัดสรรแล้ว' : `ฐานข้อมูลชื่อมงคล ${count.toLocaleString('th-TH')} ชื่อที่คัดสรรแล้ว`,
                 'ระบบคัดกรองอักษรกาลกิณีตามวันเกิดที่เลือก',
                 'เลือกอักษรนำตามทักษา (วรรคเดช/วรรคศรี)',
-                'กรองตามผลรวมเลขศาสตร์ เกรด A+ เท่านั้น',
+                'เลือกผลรวมเลขศาสตร์ที่สนใจ',
                 'กรองตามวันเกิดและเพศ',
-                'ชื่อมีความหมายดี ไพเราะ ทันสมัย'
+                'รายละเอียดชื่อจากข้อมูลต้นทางเมื่อมีข้อมูล'
             ]
         },
         {
@@ -92,53 +90,18 @@ const createJsonLd = (count: number | null) => ({
     ]
 });
 
-// FAQ Schema for SEO
-const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': [
-        {
-            '@type': 'Question',
-            'name': 'เปลี่ยนชื่อมงคล Pro ต่างจากค้นหาทั่วไปอย่างไร?',
-            'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'ระบบเปลี่ยนชื่อมงคล Pro ใช้ ฐานข้อมูลชื่อคัดกรอง ที่ผ่านการคัดกรอง 3 ชั้น: 1) คัดตามหลักทักษา ไม่มีอักษรกาลกิณี 2) คัดเฉพาะผลรวมเลขศาสตร์ระดับ A+ 3) ความหมายดี ไพเราะ ทันสมัย และสามารถเลือกอักษรนำวรรคเดช/ศรี ได้'
-            }
-        },
-        {
-            '@type': 'Question',
-            'name': 'วรรคเดชและวรรคศรีคืออะไร?',
-            'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'วรรคเดช คืออักษรนำที่ส่งเสริมเรื่องอำนาจบารมี การเลื่อนขั้นเลื่อนตำแหน่ง เหมาะกับผู้ต้องการความก้าวหน้าในหน้าที่การงาน ส่วนวรรคศรี คืออักษรนำที่ส่งเสริมเรื่องโชคลาภ เสน่ห์ความรัก เหมาะกับผู้ต้องการดึงดูดความโชคดีและเสน่ห์'
-            }
-        },
-        {
-            '@type': 'Question',
-            'name': 'เปลี่ยนชื่อมงคล Pro ใช้กี่เครดิต?',
-            'acceptedAnswer': {
-                '@type': 'Answer',
-                'text': 'การคัดชื่อในระบบเปลี่ยนชื่อมงคล Pro ใช้ 15 เครดิตต่อ 1 ครั้ง โดยระบบจะสุ่มแสดงผล 20 รายชื่อจากฐานข้อมูลที่ตรงตามเงื่อนไขที่คุณเลือก'
-            }
-        }
-    ]
-};
-
 export default async function PremiumSearchPage() {
     const jsonLd = createJsonLd(await fetchPremiumPublishedCount());
     return (
         <>
-            <Script
+            <script
                 id="premium-search-json-ld"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <Script
-                id="premium-search-faq-json-ld"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-            />
             <ClientPage />
+            <NamingApproachSummary premium />
+            <NamingApproachFaq />
             <section
                 className="relative mt-12 overflow-hidden border-t border-amber-100/70 bg-[#f8f8fc] px-4 pb-24 pt-16"
             >

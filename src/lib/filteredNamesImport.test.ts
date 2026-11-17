@@ -37,4 +37,10 @@ describe('filtered A-B names import', () => {
         expect(sql).toContain('Import snapshot changed');
         expect(sql).toContain('COMMIT;');
     });
+    it('does not replace explicitly approved or rejected English spellings', () => {
+        for (const english_name_status of ['approved', 'rejected']) {
+            const plan = planImport([item], [{ name: item.name, pronunciation: item.pronunciation, meaning: item.meaning, english_name: null, english_name_status }]);
+            expect(plan.changes).toHaveLength(0);
+        }
+    });
 });

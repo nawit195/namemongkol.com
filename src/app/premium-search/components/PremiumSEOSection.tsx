@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Shield, Star, Zap, CheckCircle2, XCircle, Sparkles, HelpCircle, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import { premiumCurationDescription } from '@/data/namingApproach';
 
 interface PremiumSEOSectionProps {
     allNamesLength: number | null;
@@ -12,22 +13,22 @@ interface PremiumSEOSectionProps {
 const featureCards = [
     {
         icon: Shield,
-        title: 'ชั้นที่ 1: คัดตามหลักทักษา',
+        title: 'ตัวกรองทักษาตามวันเกิด',
         desc: 'ตรวจอักษรนำและคัดชื่อที่ไม่มีอักษรกาลกิณีตามวันเกิดและเงื่อนไขที่เลือก',
         card: 'border-emerald-200 bg-gradient-to-br from-emerald-50 via-teal-50/70 to-white',
         iconBox: 'border-emerald-200 bg-white text-emerald-600',
     },
     {
         icon: Star,
-        title: 'ชั้นที่ 2: คัดตามเลขศาสตร์',
-        desc: 'คัดเฉพาะผลรวมเลขศาสตร์ระดับ A+ เช่น 14, 15, 24, 36, 45 ที่ส่งเสริมดวงชะตาอย่างแท้จริง',
+        title: 'ตัวเลือกผลรวมเลขศาสตร์',
+        desc: 'เลือกผลรวมชื่อที่สนใจจากค่าที่ระบบคำนวณ และนำชื่อที่เลือกไปตรวจผลรวมร่วมกับนามสกุลอีกครั้ง',
         card: 'border-amber-200 bg-gradient-to-br from-amber-50 via-yellow-50/70 to-white',
         iconBox: 'border-amber-200 bg-white text-amber-600',
     },
     {
         icon: Zap,
-        title: 'ชั้นที่ 3: ความหมายดี',
-        desc: 'ความหมายดี ไพเราะ ไม่เชย เหมาะกับยุคสมัย เรียกชื่อแล้วดูดี มีความหมายเป็นสิริมงคล',
+        title: 'รายละเอียดประกอบการเลือก',
+        desc: 'ดูคำอ่าน ความหมาย และชื่อภาษาอังกฤษตามข้อมูลต้นทางเมื่อมีข้อมูล เพื่อช่วยพิจารณาเสียงเรียกและการนำไปใช้จริง',
         card: 'border-violet-200 bg-gradient-to-br from-violet-50 via-purple-50/70 to-white',
         iconBox: 'border-violet-200 bg-white text-violet-600',
     },
@@ -40,7 +41,7 @@ export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }
     const faqs = [
         {
             q: 'เปลี่ยนชื่อมงคล Pro ต่างจากค้นหาทั่วไปอย่างไร?',
-            a: 'ระบบ Pro ใช้ฐานข้อมูลชื่อคัดกรองที่ผ่าน 3 ชั้น: ทักษา, เลขศาสตร์ระดับ A+, และความหมายที่เหมาะกับการใช้งานจริง พร้อมตัวเลือกอักษรนำวรรคเดชหรือวรรคศรี',
+            a: `${premiumCurationDescription} ส่วนหน้าเครื่องมือมีตัวเลือกวันเกิด อักษรนำ และผลรวมเลขศาสตร์ตามเงื่อนไขที่เลือก`,
         },
         {
             q: 'วรรคเดชและวรรคศรีคืออะไร?',
@@ -55,10 +56,10 @@ export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }
     const comparisons = [
         { feature: 'คัดกรองอักษรกาลกิณี', free: true, pro: true },
         { feature: 'เลือกอักษรนำ (วรรคเดช/ศรี)', free: false, pro: true },
-        { feature: 'เกรดของผลรวมเลขศาสตร์', free: 'คละเกรด', pro: 'เกรด A+ เท่านั้น', highlightPro: true },
+        { feature: 'ผลรวมเลขศาสตร์', free: 'ค้นหาตามตัวกรอง', pro: 'เลือกผลรวมที่สนใจ', highlightPro: true },
         { feature: 'จำนวนชื่อในฐานข้อมูล', free: freeNamesLabel, pro: allNamesLength === null ? 'ฐานรายชื่อคัดสรร' : `${allNamesLength.toLocaleString('th-TH')} (คัดพิเศษ)`, highlightPro: true },
         { feature: 'กรองตามเพศ', free: false, pro: true },
-        { feature: 'คุณภาพความหมาย', free: 'ปานกลาง', pro: 'คัดสรรพิเศษ', highlightPro: true },
+        { feature: 'การคัดรายชื่อล่วงหน้าครบ 4 ศาสตร์', free: 'ตามเกณฑ์ของบริการฟรี', pro: 'ทีมงานคัดก่อนนำเข้าฐาน', highlightPro: true },
     ];
 
     return (
@@ -71,7 +72,7 @@ export default function PremiumSEOSection({ allNamesLength, freeNamesCount = 0 }
                     ทำไมต้อง <span className="text-emerald-700">&quot;เปลี่ยนชื่อมงคล Pro&quot;</span>?
                 </h2>
                 <p className="mx-auto mb-12 max-w-3xl text-center text-lg leading-relaxed text-[#5a5a82] md:text-xl">
-                    ระบบ Pro แตกต่างจากการตั้งชื่อทั่วไป เพราะใช้ <strong className="font-semibold text-emerald-700">ฐานข้อมูลชื่อคัดกรอง</strong> ที่ผ่านการคัดมาแล้ว 3 ชั้น
+                    {premiumCurationDescription} ตัวเลือกด้านล่างเป็นการกรองขณะใช้งานต่อจากการคัดฐานรายชื่อล่วงหน้า
                 </p>
 
                 <div className="grid gap-6 md:grid-cols-3">

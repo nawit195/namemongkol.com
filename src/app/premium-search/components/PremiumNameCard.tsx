@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, BadgeCheck, CalendarDays, ChevronDown, Clock3, LockKeyhole, UsersRound } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, CalendarDays, ChevronDown, LockKeyhole, UsersRound } from 'lucide-react';
 import type { PremiumNameData } from '@/utils/premiumDataParser';
 import { useLanguage } from '@/components/LanguageProvider';
 import styles from './PremiumNameCard.module.css';
@@ -38,7 +38,7 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
         && reviewStatuses.every(status => status === 'approved');
     const previewPairs = item.scoreBreakdown.slice(0, 4);
     const remainingPairs = item.scoreBreakdown.length - previewPairs.length;
-    const reviewLabel = pending ? 'ข้อมูลเบื้องต้น · รอตรวจสอบ' : approved ? 'ตรวจสอบแล้ว' : 'ข้อมูลตามต้นทาง';
+    const reviewLabel = pending ? null : approved ? 'ตรวจสอบแล้ว' : 'ข้อมูลตามต้นทาง';
 
     return (
         <article className={styles.card} data-locked={!isUnlocked || undefined}>
@@ -56,9 +56,9 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
                         {!item.englishName && !hasPronunciation ? <span className={styles.missing}>คำอ่านอยู่ระหว่างจัดทำ</span> : null}
                     </p>
                     <p className={`${styles.meaning} ${hasMeaning ? '' : styles.missing}`}>{item.meaning || 'กำลังจัดทำรายละเอียดชื่อ'}</p>
-                    <div className={styles.review}>
-                        {hasDetails ? <span title={reviewLabel}>{approved ? <BadgeCheck size={12} aria-hidden="true" /> : pending ? <Clock3 size={12} aria-hidden="true" /> : null}{reviewLabel}</span> : null}
-                    </div>
+                    {hasDetails && reviewLabel ? <div className={styles.review}>
+                        <span title={reviewLabel}>{approved ? <BadgeCheck size={12} aria-hidden="true" /> : null}{reviewLabel}</span>
+                    </div> : null}
                 </header>
 
                 <div className={styles.facts}>
@@ -91,7 +91,7 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
                                 <div><dt>คำอ่าน</dt><dd>{item.pronunciation || 'กำลังจัดทำคำอ่าน'}</dd>{item.pronunciationVariants?.length ? <dd className={styles.note}>อ่านได้อีกแบบ: {item.pronunciationVariants.join(', ')}</dd> : null}</div>
                                 <div><dt>ความหมาย</dt><dd>{item.meaning || 'กำลังจัดทำความหมาย'}</dd></div>
                                 <div><dt>หมวดชื่อ</dt><dd>{GENDERS[item.gender]}</dd></div>
-                                <div><dt>สถานะข้อมูลภาษา</dt><dd className={styles.note}>{hasDetails ? reviewLabel : 'อยู่ระหว่างจัดทำ'}</dd></div>
+                                {!pending ? <div><dt>สถานะข้อมูลภาษา</dt><dd className={styles.note}>{hasDetails ? reviewLabel : 'อยู่ระหว่างจัดทำ'}</dd></div> : null}
                                 <div><dt>คู่เลขทั้งหมด</dt><dd className={styles.allPairs}>{item.scoreBreakdown.length ? item.scoreBreakdown.map((pair, index) => <span key={`${pair}-${index}`}>{pair}</span>) : 'ยังไม่มีข้อมูล'}</dd></div>
                             </dl>
                         </div>

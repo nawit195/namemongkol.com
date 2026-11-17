@@ -1,5 +1,7 @@
 'use client';
 
+import { premiumCurationDescription } from '@/data/namingApproach';
+
 import { PremiumAnalysisNameDetails } from './PremiumAnalysisNameDetails';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -526,7 +528,7 @@ export default function PremiumAnalysisPage() {
                     ชื่อมงคลสำหรับนามสกุล <span className="text-white font-bold underline decoration-amber-500/50 underline-offset-4 px-1">&quot;{surname}&quot;</span>
                 </p>
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">
-                    รายชื่อเหล่านี้ถูกคัดสรรจากศาสตร์ทักษาปกรณ์และเลขศาสตร์ชั้นสูง โดยคำนวณจากวันเดือนปีเกิดและเวลาเกิดของท่านโดยเฉพาะ
+                    {premiumCurationDescription} ผลรายการนี้คัดตามวันทางโหราศาสตร์ นามสกุล และเป้าหมายที่เลือก
                 </p>
                 <div className="mt-4 flex items-center justify-center gap-2">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border bg-amber-500/15 text-amber-300 border-amber-500/25">
@@ -679,7 +681,7 @@ export default function PremiumAnalysisPage() {
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d6b56a] bg-[#fff8e7] text-sm font-black text-[#805815]">1</span>
                         <div>
                             <h3 id="premium-profile-heading" className="text-lg font-extrabold md:text-xl">เริ่มจากตัวคุณ</h3>
-                            <p className="mt-1 text-sm leading-6 text-[#686885]">ใช้คำนวณวันเกิด ลัคนา และความเหมาะสมกับนามสกุล</p>
+                            <p className="mt-1 text-sm leading-6 text-[#686885]">ใช้กำหนดวันทางโหราศาสตร์และคัดชื่อร่วมกับนามสกุล</p>
                         </div>
                     </div>
 
@@ -756,7 +758,7 @@ export default function PremiumAnalysisPage() {
                                         <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 p-3 bg-slate-900/90 backdrop-blur-xl border border-amber-500/20 rounded-xl text-xs text-slate-300 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-50 shadow-2xl">
                                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-slate-900 border-r border-b border-amber-500/20 rotate-45"></div>
                                             <p className="leading-relaxed">
-                                                <strong className="text-amber-400">การระบุเวลาเกิด</strong> จะช่วยให้คำนวณลัคนาราศีได้แม่นยำขึ้น หากไม่ทราบให้เลือก &quot;ไม่ทราบเวลา&quot;
+                                                <strong className="text-amber-400">การระบุเวลาเกิด</strong> ใช้ประกอบการกำหนดวันทางโหราศาสตร์ของระบบ หากไม่ทราบให้เลือก &quot;ไม่ทราบเวลา&quot;
                                             </p>
                                         </div>
                                     </div>
@@ -970,7 +972,7 @@ export default function PremiumAnalysisPage() {
                         <p className="mx-auto max-w-[68ch] text-base leading-8 text-[#5a5a82] md:text-lg md:leading-9">
                             เจาะลึกชะตาชีวิตด้วย <strong className="text-amber-700 font-bold">ทักษาปกรณ์</strong> และ <strong className="text-amber-700 font-bold">เลขศาสตร์ชั้นสูง</strong>
                             <br className="hidden md:block" />
-                            พร้อมคำนวณ <strong className="text-amber-700 font-bold">ลัคนาราศี</strong> จาก <strong className="text-amber-700 font-bold">เวลาตกฟาก</strong> เพื่อค้นหาชื่อที่ส่งเสริมดวงชะตาของท่านอย่างแท้จริง
+                            จากฐานรายชื่อที่ทีมงานคัดล่วงหน้าครบ 4 ศาสตร์ ใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์ แล้วตรวจชื่อร่วมกับนามสกุล
                         </p>
                     </header>
 
@@ -994,7 +996,7 @@ export default function PremiumAnalysisPage() {
                                 </h2>
                                 <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
                                     <p className="text-base leading-8 text-[#5a5a82] md:text-lg">
-                                        การวิเคราะห์ชื่อทั่วไปดูเพียงแค่ <span className="font-semibold text-[#1a1a3e]">ผลรวมเลขศาสตร์</span> แต่ <strong className="font-extrabold text-[#a67828]">การวิเคราะห์ชื่อมงคลขั้นสูง</strong> ของเรานำ <strong className="font-extrabold text-[#1a1a3e]">&quot;เวลาตกฟาก&quot;</strong> มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร
+                                        {premiumCurationDescription} บริการนี้คัดจากฐานดังกล่าวตามวันทางโหราศาสตร์ ผลรวมชื่อกับนามสกุล และเป้าหมายที่เลือก
                                     </p>
                                 </div>
                                 
@@ -1004,7 +1006,7 @@ export default function PremiumAnalysisPage() {
                                                 <Clock className="h-5 w-5 text-[#6f6299]" />
                                             </div>
                                             <h3 className="mb-2 text-lg font-bold text-[#1a1a3e]">เวลาตกฟาก</h3>
-                                            <p className="text-sm leading-7 text-[#5a5a82]">คำนวณลัคนาราศีจริง ไม่ใช่แค่ราศีตามวันเกิด</p>
+                                            <p className="text-sm leading-7 text-[#5a5a82]">ใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์ตามเกณฑ์ของระบบ</p>
                                         </div>
                                         <div className="p-5 md:px-7 md:py-6">
                                             <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#eeebf8]">
@@ -1122,7 +1124,7 @@ export default function PremiumAnalysisPage() {
                                                 <td className="text-center py-4 px-4"><CheckCircle2 className="w-5 h-5 text-emerald-400 mx-auto" /></td>
                                             </tr>
                                             <tr className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-[#eeeef6] px-4 py-4 md:table-row md:px-0 md:py-0">
-                                                <td className="text-[#5a5a82] md:px-5 md:py-4">วิเคราะห์ร่วมกับเวลาเกิด (ลัคนาราศี)</td>
+                                                <td className="text-[#5a5a82] md:px-5 md:py-4">ใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์</td>
                                                 <td className="text-center py-4 px-4"><XCircle className="w-5 h-5 text-red-400 mx-auto" /></td>
                                                 <td className="text-center text-sm font-semibold text-[#a67828] md:px-5 md:py-4">ใช้เวลาเกิดประกอบ</td>
                                             </tr>
@@ -1210,7 +1212,7 @@ export default function PremiumAnalysisPage() {
                                             Q: การวิเคราะห์ชื่อมงคลขั้นสูงต่างจากการวิเคราะห์ทั่วไปอย่างไร?
                                         </summary>
                                         <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
-                                            A: การ<strong className="text-[#1a1a3e]">วิเคราะห์ชื่อมงคลขั้นสูง</strong>นำ &quot;เวลาตกฟาก&quot; มาคำนวณหาลัคนาราศีที่แท้จริง เพื่อดูว่าชื่อส่งผลต่อดวงกำเนิดของคุณในมุมลึกอย่างไร นอกจากนี้ยังสามารถเลือกเน้นเจาะลึกเฉพาะด้านที่ต้องการได้ เช่น <Link prefetch={false} href="/name-analysis" className="font-semibold text-[#a67828] underline underline-offset-4">การเงิน การงาน หรือความรัก</Link>
+                                            A: {premiumCurationDescription} ผู้ใช้เลือกวันเกิด นามสกุล และเป้าหมายประกอบการคัดรายชื่อ เช่น <Link prefetch={false} href="/name-analysis" className="font-semibold text-[#a67828] underline underline-offset-4">การเงิน การงาน หรือความรัก</Link>
                                         </p>
                                     </details>
 
@@ -1219,7 +1221,7 @@ export default function PremiumAnalysisPage() {
                                             Q: ทำไมต้องระบุเวลาเกิด?
                                         </summary>
                                         <p className="mt-4 border-t border-[#eeeef6] pt-4 text-base leading-8 text-[#5a5a82]">
-                                            A: การระบุเวลาเกิดจะช่วยให้คำนวณลัคนาราศีได้แม่นยำขึ้น ซึ่งมีผลต่อการวิเคราะห์ว่าอักษรและตัวเลขในชื่อจะส่งผลอย่างไรกับดวงชะตาเฉพาะบุคคลของคุณ หากไม่ทราบเวลาเกิดสามารถเลือก &quot;ไม่ทราบเวลา&quot; ได้
+                                            A: ระบบใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์ โดยมีเกณฑ์เปลี่ยนวันเวลา 06:00 น. และแยกพุธกลางวันกับกลางคืน หากไม่ทราบเวลาเกิดสามารถเลือก &quot;ไม่ทราบเวลา&quot; ได้
                                         </p>
                                     </details>
 

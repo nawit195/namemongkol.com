@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BadgeCheck, Coins, Search, ShieldCheck, Type } from 'lucide-react';
+import { BadgeCheck, CalendarDays, Coins, Search, ShieldCheck, Type } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
 
@@ -10,13 +10,18 @@ interface PremiumHeaderProps {
     filteredCount: number;
     availableLettersCount: number;
     credits: number | null;
+    latestAddedAt?: string | null;
 }
 
-export default function PremiumHeader({ totalNames, filteredCount, availableLettersCount, credits }: PremiumHeaderProps) {
+export default function PremiumHeader({ totalNames, filteredCount, availableLettersCount, credits, latestAddedAt }: PremiumHeaderProps) {
     const { t } = useLanguage();
     const totalNamesLabel = totalNames === null ? '—' : totalNames.toLocaleString('th-TH');
     const filteredNamesLabel = filteredCount.toLocaleString('th-TH');
     const availableLettersLabel = availableLettersCount.toLocaleString('th-TH');
+    const updatedDate = latestAddedAt && Number.isFinite(Date.parse(latestAddedAt)) ? new Date(latestAddedAt) : null;
+    const updatedLabel = updatedDate ? new Intl.DateTimeFormat('th-TH', {
+        day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Asia/Bangkok',
+    }).format(updatedDate) : '—';
 
     const quickStats = [
         { label: 'ชื่อที่ผ่านการคัด', value: totalNamesLabel, icon: BadgeCheck },
@@ -40,7 +45,7 @@ export default function PremiumHeader({ totalNames, filteredCount, availableLett
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#40506f]">
                         <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">คัดตามวันเกิด</span>
-                        <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">ผลรวม Grade A+</span>
+                        <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">เลือกผลรวมเลขศาสตร์</span>
                         <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5">อักษรเดชและศรี</span>
                     </div>
                     <p className="mt-4 text-sm font-semibold text-emerald-700">
@@ -76,6 +81,11 @@ export default function PremiumHeader({ totalNames, filteredCount, availableLett
                     </div>
                 ))}
             </div>
+            <p className="mt-3 flex flex-wrap items-center justify-end gap-x-2 gap-y-1 text-sm leading-6 text-[#5a5a82]" title="วันที่เพิ่มข้อมูลรายชื่อพรีเมียมล่าสุด">
+                <CalendarDays aria-hidden="true" className="h-4 w-4 shrink-0 text-amber-600" />
+                <span>อัปเดตรายชื่อล่าสุด</span>
+                {updatedDate ? <time dateTime={updatedDate.toISOString()} className="font-semibold text-[#1a1a3e]">{updatedLabel}</time> : <span>{updatedLabel}</span>}
+            </p>
         </header>
     );
 }

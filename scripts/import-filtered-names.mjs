@@ -27,7 +27,8 @@ export function planImport(records, existing) {
         const patch = {};
         for (const [source, column, status] of [['pronunciation', 'pronunciation', 'pronunciation_status'], ['meaning', 'meaning', 'meaning_status'], ['englishName', 'english_name', null]]) {
             if (!item[source]) continue;
-            const state = status && before?.[status];
+            const reviewColumn = status || (column === 'english_name' ? 'english_name_status' : null);
+            const state = reviewColumn && before?.[reviewColumn];
             if (before && (!blank(before[column]) || state === 'approved' || state === 'rejected' || (status && !blank(before[`${column}_draft`])))) {
                 if (before[column] !== item[source]) conflicts.push({ name: item.name, field: column, reason: 'preserve-existing-or-review' });
                 continue;

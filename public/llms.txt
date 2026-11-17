@@ -1,12 +1,31 @@
 # NameMongkol
 
-Last updated: 2026-06-12
+Last updated: 2026-11-17
 Canonical site: https://www.namemongkol.com
 Primary language: Thai (th-TH)
 
-> NameMongkol คือเว็บไซต์ภาษาไทยสำหรับวิเคราะห์ชื่อมงคล ตั้งชื่อลูก วิเคราะห์เลขศาสตร์ ทักษาปกรณ์ อายตนะ เบอร์มงคล และวอลเปเปอร์เสริมดวง
+> NameMongkol ผสาน 4 ศาสตร์ ได้แก่ เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์ ในการวิเคราะห์และคัดสรรชื่อ
 
 > Thai-language auspicious naming and numerology platform for name analysis, baby naming, lucky phone numbers, and spiritual wallpapers.
+
+## Four Naming Sciences And Premium Curation
+
+1. เลขศาสตร์ (Numerology): letter values, name/surname sums, and adjacent number pairs.
+2. ทักษาปกรณ์ (Thaksa Pakorn): letter groups by the selected birth day.
+3. อายตนะ 6 (Ayatana 6): a separate traditional interpretation of the calculated Ayatana value.
+4. นิรันดร์ศาสตร์ (Nirun Sastra): part of the team's advance curation; the analysis badge checks membership in the system's reference name list, not a new name-surname compatibility formula.
+
+ฐานรายชื่อพรีเมียมของ NameMongkol รวบรวมและคัดกรองล่วงหน้าโดยทีมงานตามหลักทั้ง 4 ศาสตร์ก่อนนำเข้าระบบ เพื่อให้ผู้ใช้เริ่มเลือกจากรายชื่อที่ผ่านการคัดสรรแล้ว
+
+This advance four-science curation is described by the NameMongkol team and applies only to the premium catalog shared by Pro and Premium Analysis. It is not a claim about every name in the free search or baby-name catalogs. No independent certification or numerical pass thresholds are asserted here.
+
+Pipeline: team curation before import → premium catalog → user-selected filters → personal checks with birth day and surname. The runtime filters do not recompute the entire advance curation. A curated first name does not guarantee suitability for every surname or birth day. Linguistic review of readings/meanings is a separate process.
+
+- Methodology and curation policy: https://www.namemongkol.com/methodology#premium-curation
+- Team and website information: https://www.namemongkol.com/about
+- Pro catalog: https://www.namemongkol.com/premium-search
+- Premium Analysis: https://www.namemongkol.com/premium-analysis
+- Personal name-surname check: https://www.namemongkol.com/name-check
 
 ## Brand Entity
 
@@ -20,7 +39,7 @@ Primary language: Thai (th-TH)
 
 ## Core Tools
 
-- https://www.namemongkol.com/name-check - Free Thai name analysis using numerology, Thaksa Pakorn, Ayatana 6, and Shadow Power.
+- https://www.namemongkol.com/name-check - Free Thai name analysis with numerology, Thaksa Pakorn, Ayatana 6, and a Nirun Sastra reference-list check.
 - https://www.namemongkol.com/name-analysis - Compare and analyze multiple names for auspicious naming decisions.
 - https://www.namemongkol.com/phone-analysis - Lucky phone number analysis for career, money, love, and protection.
 - https://www.namemongkol.com/wallpapers - Auspicious mobile wallpapers by weekday, zodiac, wealth, love, work, and luck.

@@ -217,3 +217,18 @@ export async function fetchPremiumPublishedCount(): Promise<number | null> {
     try { return (await fetchPublicPremiumNameDetails()).length; }
     catch { return null; }
 }
+
+// The catalog has no updated_at column. Report its latest addition, never the request time.
+export const fetchPremiumLatestAddedAt = unstable_cache(async (): Promise<string | null> => {
+    const supabase = getSupabaseClient();
+    if (!supabase) return null;
+    try {
+        const { data, error } = await supabase.from('premium_names')
+            .select('created_at').order('created_at', { ascending: false, nullsFirst: false }).limit(1);
+        const value = data?.[0]?.created_at;
+        return !error && typeof value === 'string' && Number.isFinite(Date.parse(value))
+            ? new Date(value).toISOString() : null;
+    } catch {
+        return null;
+    }
+}, ['premium-catalog-latest-added-v1'], { revalidate: 600, tags: ['premium-names'] });

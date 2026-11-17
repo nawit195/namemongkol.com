@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { namingSciences } from '@/data/namingApproach';
 import {
     ArrowRight,
     BookOpen,
@@ -61,28 +62,8 @@ const services = [
     },
 ];
 
-const principles = [
-    {
-        title: 'เลขศาสตร์',
-        description: 'พิจารณาค่าตัวอักษร ผลรวมชื่อและนามสกุล เพื่อดูภาพรวมของพลังตัวเลข',
-        icon: Star,
-    },
-    {
-        title: 'ทักษาปกรณ์',
-        description: 'เทียบวันเกิดกับอักษรกลุ่มเดช ศรี มนตรี และกาลกิณี เพื่อดูความกลมกลืนของชื่อ',
-        icon: Calendar,
-    },
-    {
-        title: 'อายตนะ 6',
-        description: 'อ่านความสัมพันธ์ของเสียง ตัวอักษร และความรู้สึกที่ชื่อส่งต่อผู้เรียกและผู้ฟัง',
-        icon: HeartHandshake,
-    },
-    {
-        title: 'คำอธิบายด้วย AI',
-        description: 'ช่วยสรุปผลให้อ่านง่าย เป็นกลาง และเชื่อมโยงข้อมูลหลายมิติให้นำไปตัดสินใจต่อได้',
-        icon: ShieldCheck,
-    },
-];
+const principleIcons = [Star, Calendar, HeartHandshake, ShieldCheck];
+const principles = namingSciences.map((science, index) => ({ title: science.name, description: science.description, icon: principleIcons[index] }));
 
 const trustLinks = [
     { label: 'วิธีคำนวณและข้อจำกัด', href: '/methodology', icon: ShieldCheck },
