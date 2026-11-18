@@ -328,6 +328,45 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const [selectedDay, setSelectedDay] = useState<DayKey | 'all'>('all');
     const [selectedGender, setSelectedGender] = useState<'all' | 'male' | 'female' | 'neutral'>('all');
     const [selectedLetter, setSelectedLetter] = useState<string>('all');
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        let active = true;
+        let requestId = 0;
+        let refreshTimer: number | undefined;
+
+        const refreshAdminRole = async () => {
+            const currentRequest = ++requestId;
+            try {
+                const { data: { user }, error } = await supabase.auth.getUser();
+                if (!active || currentRequest !== requestId || error || !user) return;
+                const { data: profile, error: profileError } = await supabase
+                    .from('user_profiles').select('role').eq('id', user.id).maybeSingle();
+                if (active && currentRequest === requestId) {
+                    setIsAdmin(!profileError && profile?.role === 'admin');
+                }
+            } catch {
+                // Keep admin controls hidden when the session or profile cannot be verified.
+            }
+        };
+
+        void refreshAdminRole();
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+            if (event === 'INITIAL_SESSION') return;
+            requestId += 1;
+            setIsAdmin(false);
+            window.clearTimeout(refreshTimer);
+            // Query outside the auth callback to avoid waiting on the auth client's lock.
+            refreshTimer = window.setTimeout(() => { void refreshAdminRole(); }, 0);
+        });
+
+        return () => {
+            active = false;
+            requestId += 1;
+            window.clearTimeout(refreshTimer);
+            subscription.unsubscribe();
+        };
+    }, []);
 
     // Freemium State
     const [visibleCount, setVisibleCount] = useState(10);
@@ -586,7 +625,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
 
     const handleLetterChange = (letter: string) => {
         if (letter === selectedLetter && !namesError) {
-            if (letter !== 'all' && !isLoadingNames) {
+            if (isAdmin && letter !== 'all' && !isLoadingNames) {
                 void loadFirstPage({
                     day: selectedDay,
                     gender: selectedGender,
@@ -622,7 +661,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     };
 
     const handleRotateLetterNames = () => {
-        if (selectedLetter === 'all' || isLoadingNames) return;
+        if (!isAdmin || selectedLetter === 'all' || isLoadingNames) return;
 
         void loadFirstPage({
             day: selectedDay,
@@ -964,7 +1003,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             <span>กรองตามตัวอักษรแรก</span>
                             {selectedLetter !== 'all' && (
                                 <div className="ml-auto flex items-center gap-2">
-                                    <button
+                                    {isAdmin && <button
                                         type="button"
                                         onClick={handleRotateLetterNames}
                                         disabled={isLoadingNames}
@@ -973,7 +1012,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     >
                                         <RotateCw className={`h-3.5 w-3.5 ${isLoadingNames ? 'animate-spin' : ''}`} aria-hidden="true" />
                                         เปลี่ยน 10 ชื่อ
-                                    </button>
+                                    </button>}
                                     <button
                                         type="button"
                                         onClick={() => handleLetterChange('all')}
@@ -1002,7 +1041,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     onClick={() => handleLetterChange(letter)}
                                     onPointerEnter={() => handleLetterHover(letter)}
                                     aria-pressed={selectedLetter === letter}
-                                    aria-label={selectedLetter === letter
+                                    aria-label={isAdmin && selectedLetter === letter
                                         ? `เปลี่ยนรายชื่อขึ้นต้นด้วย ${letter} อีก 10 ชื่อ`
                                         : `แสดงรายชื่อขึ้นต้นด้วย ${letter}`}
                                     className={`w-7 h-7 md:w-9 md:h-9 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center justify-center ${
