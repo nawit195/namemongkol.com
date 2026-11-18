@@ -1,4 +1,5 @@
 import 'server-only';
+import { missingNameColumn, nameColumns } from './nameQueryCompatibility';
 
 import { cache } from 'react';
 import { unstable_cache } from 'next/cache';
@@ -21,7 +22,13 @@ const FEATURED_NAME_COUNT = 10;
 const DAY_KEYS = Object.keys(thaksaConfig) as DayKey[];
 
 type DatabaseNameRow = {
+    calculated?: Pick<PublicNameRecord, 'numerology' | 'suitableDays' | 'grade'>;
     name: string;
+    english_name?: string | null;
+    english_name_draft?: string | null;
+    english_name_status?: string | null;
+    english_name_source?: string | null;
+    english_name_reading?: string | null;
     gender: string | null;
     pronunciation?: string | null;
     pronunciation_draft?: string | null;
@@ -33,7 +40,7 @@ type DatabaseNameRow = {
     created_at: string | null;
 };
 
-type NameQueryMode = 'with-publication' | 'with-evidence' | 'with-review-state' | 'with-status' | 'with-pronunciation' | 'legacy';
+type NameQueryMode = 'with-publication' | 'with-evidence' | 'with-review-state' | 'with-status' | 'with-meaning-status' | 'with-pronunciation' | 'legacy';
 
 type DatabaseQueryError = {
     message: string;
@@ -47,6 +54,7 @@ const DATABASE_COLUMNS: Record<NameQueryMode, string> = {
     'with-evidence': 'name, gender, pronunciation, pronunciation_draft, pronunciation_variants, pronunciation_status, meaning, meaning_status, created_at',
     'with-review-state': 'name, gender, pronunciation, pronunciation_draft, pronunciation_status, meaning, created_at',
     'with-status': 'name, gender, pronunciation, pronunciation_status, meaning, created_at',
+    'with-meaning-status': 'name, gender, pronunciation, meaning, meaning_status, created_at',
     'with-pronunciation': 'name, gender, pronunciation, meaning, created_at',
     legacy: 'name, gender, meaning, created_at',
 };
@@ -56,6 +64,9 @@ export type PublicNameReviewStatus = 'pending' | 'draft' | 'approved' | 'rejecte
 
 export type PublicNameRecord = {
     name: string;
+    englishName?: string;
+    englishNameStatus?: PublicNameReviewStatus;
+    englishNameSource?: string;
     gender: PublicNameGender;
     pronunciation?: string;
     pronunciationVariants?: string[];
@@ -90,6 +101,7 @@ export type PublicNamesQuery = {
 export type PublicNamesFilterQuery = Pick<PublicNamesQuery, 'day' | 'gender' | 'initial'>;
 
 export type PublicNamesResult = {
+    dataSource?: 'database' | 'fallback';
     data: PublicNameRecord[];
     featuredData: PublicNameRecord[];
     total: number;
@@ -139,13 +151,23 @@ function createFallbackNames(): PublicNameRecord[] {
     return mergePublicChoNames([...girls, ...boys]).sort((a, b) => a.name.localeCompare(b.name, 'th'));
 }
 
+function calculatePublicNameValues(name: string): Pick<PublicNameRecord, 'numerology' | 'suitableDays' | 'grade'> {
+    const suitability = analyzeNameSuitability(name);
+    return {
+        numerology: calculateScore(name),
+        suitableDays: DAY_KEYS.filter(day => suitability.suitable.includes(thaksaConfig[day].name)),
+        grade: analyzeName(name)?.grade ?? 'C',
+    };
+}
+
 const fetchPublicNameRowsPage = unstable_cache(
-    async (mode: NameQueryMode, from: number): Promise<{
+    async (mode: NameQueryMode, from: number, withEnglish: boolean, excluded: string[]): Promise<{
         rows: DatabaseNameRow[];
         error: DatabaseQueryError | null;
+        totalRows?: number | null;
     }> => {
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
         if (!supabaseUrl || !supabaseKey) {
             return {
@@ -157,9 +179,9 @@ const fetchPublicNameRowsPage = unstable_cache(
         const supabase = createClient(supabaseUrl, supabaseKey, {
             auth: { persistSession: false },
         });
-        const { data, error } = await supabase
+        const { data, error, count } = await supabase
             .from('auspicious_names')
-            .select(DATABASE_COLUMNS[mode])
+            .select(nameColumns(DATABASE_COLUMNS[mode] + (withEnglish ? ', english_name, english_name_draft, english_name_status, english_name_source, english_name_reading' : ''), excluded), from === 0 ? { count: 'exact' } : undefined)
             .order('name', { ascending: true })
             .range(from, from + DATABASE_PAGE_SIZE - 1);
 
@@ -176,33 +198,55 @@ const fetchPublicNameRowsPage = unstable_cache(
         }
 
         return {
-            rows: (data ?? []) as unknown as DatabaseNameRow[],
+            // Keep computed values in bounded, tag-invalidated page entries.
+            // A new rotation seed must not recalculate the entire catalog.
+            rows: ((data ?? []) as unknown as DatabaseNameRow[]).map(row => ({
+                ...row,
+                calculated: calculatePublicNameValues(stripInvisible(row.name)),
+            })),
             error: null,
+            totalRows: count,
         };
     },
-    ['public-auspicious-name-page-v16'],
+    ['public-auspicious-name-page-v20-prepared-pages'],
     { revalidate: 600, tags: ['public-names'] },
 );
 
-async function readRows(mode: NameQueryMode) {
+async function readRows(mode: NameQueryMode, withEnglish = true, excluded: string[] = []): Promise<{ rows: DatabaseNameRow[]; error: DatabaseQueryError | null }> {
     const rows: DatabaseNameRow[] = [];
-
-    for (let from = 0; ; from += DATABASE_PAGE_SIZE) {
-        const result = await fetchPublicNameRowsPage(mode, from);
-        if (result.error) return { rows: [] as DatabaseNameRow[], error: result.error };
-        if (result.rows.length === 0) break;
-        rows.push(...result.rows);
-        if (result.rows.length < DATABASE_PAGE_SIZE) break;
+    let next = 0;
+    let totalRows: number | undefined;
+    while (true) {
+        // Discover the schema/count with page one, then read at most four
+        // independent pages together. Legacy responses without a count still work.
+        const offsets = totalRows === undefined ? [next]
+            : Array.from({ length: 4 }, (_, index) => next + index * DATABASE_PAGE_SIZE).filter(from => from < totalRows!);
+        if (offsets.length === 0) break;
+        const results = await Promise.all(offsets.map(from => fetchPublicNameRowsPage(mode, from, withEnglish, excluded)));
+        for (const result of results) {
+            if (result.error) {
+                const missing = missingNameColumn(result.error, excluded);
+                if (missing) return readRows(mode, withEnglish, [...excluded, missing]);
+                return { rows: [], error: result.error };
+            }
+            rows.push(...result.rows);
+        }
+        const first = results[0];
+        if (next === 0 && typeof first.totalRows === 'number' && Number.isFinite(first.totalRows) && first.totalRows >= first.rows.length) totalRows = first.totalRows;
+        next = offsets[offsets.length - 1] + DATABASE_PAGE_SIZE;
+        if (totalRows === undefined && results[results.length - 1].rows.length < DATABASE_PAGE_SIZE) break;
     }
 
     return { rows, error: null };
 }
 
-async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[]> {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+type LoadedPublicNames = { allNames: PublicNameRecord[]; dataSource: 'database' | 'fallback' };
 
-    if (!supabaseUrl || !supabaseKey) return strictRead ? [] : createFallbackNames();
+async function loadPublicNamesWithSource(strictRead = false): Promise<LoadedPublicNames> {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
+
+    if (!supabaseUrl || !supabaseKey) return { allNames: strictRead ? [] : createFallbackNames(), dataSource: 'fallback' };
 
     let result = await readRows('with-publication');
     if (result.error && /publication_status/i.test(result.error.message ?? '')) {
@@ -219,6 +263,9 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
     }
     if (result.error && /pronunciation_status/i.test(result.error.message ?? '')) {
         console.warn('Public names pronunciation status is not available yet; using existing pronunciation data.');
+        result = await readRows('with-meaning-status');
+    }
+    if (result.error && /meaning_status/i.test(result.error.message ?? '')) {
         result = await readRows('with-pronunciation');
     }
     if (result.error && /pronunciation/i.test(result.error.message ?? '')) {
@@ -229,12 +276,12 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
     if (result.error) {
         console.error('Public names database query failed:', result.error);
         if (strictRead) throw new Error('Cannot safely load reviewed public names. Please retry.');
-        return createFallbackNames();
+        return { allNames: createFallbackNames(), dataSource: 'fallback' };
     }
 
     const rows = result.rows;
 
-    if (rows.length === 0) return strictRead ? [] : createFallbackNames();
+    if (rows.length === 0) return { allNames: strictRead ? [] : createFallbackNames(), dataSource: 'fallback' };
 
     const records: PublicNameRecord[] = rows
         .filter((row) => row.publication_status !== 'hidden')
@@ -248,14 +295,33 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
             const pronunciationVariants = row.pronunciation_status === 'rejected'
                 ? []
                 : (row.pronunciation_variants ?? []).map((value) => value.trim()).filter(Boolean);
-            const meaning = row.meaning?.trim();
-            const suitability = analyzeNameSuitability(name);
-            const suitableDays = DAY_KEYS.filter((day) =>
-                suitability.suitable.includes(thaksaConfig[day].name),
+            const meaning = row.meaning_status === 'rejected' ? undefined : row.meaning?.trim();
+            const storedEnglish = row.english_name?.trim();
+            const draftEnglish = row.english_name_draft?.trim();
+            const storedEnglishStatus = normalizeReviewStatus(row.english_name_status);
+            // Existing source spellings win over suggestions. Draft metadata
+            // must not relabel a source spelling filled by another editor.
+            const useDraftMetadata = !storedEnglish || storedEnglishStatus === 'approved' || storedEnglishStatus === 'rejected';
+            const englishNameSource = useDraftMetadata ? row.english_name_source?.trim() || undefined : undefined;
+            const generatedEnglish = englishNameSource === 'rtgs-reading-v1';
+            // A suggested spelling belongs to its recorded reading. Hide it if
+            // an editor changes/rejects that reading until it is regenerated.
+            const englishIsStale = !storedEnglish && generatedEnglish && (
+                !row.english_name_reading?.trim()
+                || !pronunciation?.trim()
+                || row.english_name_reading.normalize('NFC').trim() !== pronunciation.normalize('NFC').trim()
             );
+            const englishNameStatus: PublicNameReviewStatus | undefined = storedEnglishStatus === 'rejected' ? 'rejected' : englishIsStale ? 'pending'
+                : useDraftMetadata ? storedEnglishStatus ?? (draftEnglish ? 'pending' : undefined) : undefined;
+            const englishName = row.english_name_status === 'rejected' || englishIsStale
+                ? undefined : storedEnglish || draftEnglish || undefined;
+            const calculated = row.calculated ?? calculatePublicNameValues(name);
 
             return {
                 name,
+                englishName,
+                englishNameStatus,
+                englishNameSource,
                 gender: normalizeGender(row.gender),
                 pronunciation: pronunciation || undefined,
                 pronunciationVariants,
@@ -263,21 +329,27 @@ async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[
                 meaning: meaning || undefined,
                 meaningStatus: normalizeReviewStatus(row.meaning_status),
                 createdAt: row.created_at || undefined,
-                numerology: calculateScore(name),
-                suitableDays,
-                grade: analyzeName(name)?.grade ?? 'C',
+                ...calculated,
             };
         })
         .filter((row) => row.name);
-    return mergePublicChoNames(records, rows.filter((row) => row.publication_status === 'hidden').map((row) => row.name));
+    return {
+        allNames: mergePublicChoNames(records, rows.filter((row) => row.publication_status === 'hidden').map((row) => row.name)),
+        dataSource: 'database',
+    };
 }
 
+const fetchPublicNamesWithSource = cache(loadPublicNamesWithSource);
+async function loadAllPublicNames(strictRead = false): Promise<PublicNameRecord[]> {
+    return (await fetchPublicNamesWithSource(strictRead)).allNames;
+}
 export const fetchAllPublicNames = cache(loadAllPublicNames);
 
 const fetchPublicNamesDataset = cache(async () => {
-    const allNames = await fetchAllPublicNames();
+    const { allNames, dataSource } = await fetchPublicNamesWithSource(false);
     return {
         allNames,
+        dataSource,
         catalog: buildPublicNameCatalog(allNames, DAY_KEYS),
     };
 });
@@ -285,20 +357,23 @@ const fetchPublicNamesDataset = cache(async () => {
 // Database rows remain in bounded Next cache entries. Share the prepared catalog in
 // memory for ten minutes so pagination does not recalculate the entire collection,
 // without exceeding the Next Data Cache per-entry size limit.
-let reviewedDataset: { expires: number; promise: Promise<PublicNameRecord[]> } | undefined;
+let reviewedDataset: { expires: number; promise: Promise<LoadedPublicNames> } | undefined;
 export const fetchReviewedNamesDataset = cache(async (discoveryOnly: boolean) => {
     if (!reviewedDataset || reviewedDataset.expires <= Date.now()) {
-        const promise = fetchAllPublicNames(true).then(prepareReviewedNames);
+        const promise = fetchPublicNamesWithSource(true).then(({ allNames, dataSource }) => ({ allNames: prepareReviewedNames(allNames), dataSource }));
         reviewedDataset = { expires: Date.now() + 600_000, promise };
-        promise.catch(() => { if (reviewedDataset?.promise === promise) reviewedDataset = undefined; });
+        promise.then(
+            ({ dataSource }) => { if (dataSource === 'fallback' && reviewedDataset?.promise === promise) reviewedDataset = undefined; },
+            () => { if (reviewedDataset?.promise === promise) reviewedDataset = undefined; },
+        );
     }
-    const reviewed = await reviewedDataset.promise;
+    const { allNames: reviewed, dataSource } = await reviewedDataset.promise;
     const allNames = discoveryOnly ? reviewed.filter(item => item.gender === 'neutral' && !editorialNameKeys.has(item.name.normalize('NFC').trim().toLowerCase())) : reviewed;
-    return { allNames, catalog: buildPublicNameCatalog(allNames, DAY_KEYS) };
+    return { allNames, dataSource, catalog: buildPublicNameCatalog(allNames, DAY_KEYS) };
 });
 
 export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<PublicNamesResult> {
-    const { allNames, catalog } = query.reviewedOnly ? await fetchReviewedNamesDataset(!!query.discoveryOnly) : await fetchPublicNamesDataset();
+    const { allNames, catalog, dataSource } = query.reviewedOnly ? await fetchReviewedNamesDataset(!!query.discoveryOnly) : await fetchPublicNamesDataset();
     const day = query.day && query.day !== 'all' && DAY_KEYS.includes(query.day) ? query.day : 'all';
     const gender = query.gender ?? 'all';
     const initial = query.initial?.trim() || 'all';
@@ -314,6 +389,7 @@ export async function queryPublicNames(query: PublicNamesQuery = {}): Promise<Pu
     for (const item of ordered) grades[item.grade] += 1;
 
     return {
+        dataSource,
         data: ordered.slice(start, start + pageSize),
         featuredData: query.featuredSeed && page === 1
             ? selectSeededRandomItems(ordered, FEATURED_NAME_COUNT, query.featuredSeed)

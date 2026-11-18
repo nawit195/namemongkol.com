@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Book, Calculator, Calendar, Heart, Infinity as InfinityIcon, Sparkles, ChevronDown, ChevronUp, Table } from 'lucide-react';
+import { Book, Calculator, Calendar, Heart, Infinity as InfinityIcon, Table } from 'lucide-react';
 import Image from 'next/image';
 import { thaksaConfig } from '@/data/thaksaConfig';
 import { DayKey } from '@/types';
 import { useLanguage } from './LanguageProvider';
 import { ImageEnlargeModal } from './ImageEnlargeModal';
+import Link from 'next/link';
+import { namingSciences, personalNameCheckNote } from '@/data/namingApproach';
 
 type ScienceType = 'numerology' | 'thaksa' | 'ayatana' | 'nirun';
 
@@ -281,69 +283,13 @@ export const KnowledgeSection: React.FC = () => {
                     )}
 
                     {/* Nirun Content */}
-                    {activeTab === 'nirun' && (
-                        <div className="animate-fade-in space-y-8">
-                            <div className="flex items-start gap-6">
-                                <div className="hidden md:flex shrink-0 w-16 h-16 rounded-2xl bg-blue-50 items-center justify-center">
-                                    <InfinityIcon className="w-8 h-8 text-blue-500" />
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-2xl font-bold text-[#1a1a3e]">นิรันดร์ศาสตร์ (Nirun Sastra) คืออะไร?</h3>
-                                    <p className="text-[#5a5a82] leading-relaxed text-lg">
-                                        นี่คือ <strong>&quot;หัวใจสำคัญ&quot;</strong> ที่ขาดไม่ได้ นิรันดร์ศาสตร์คือการคำนวณหาความสมดุลระหว่างชื่อต้นและนามสกุล ไม่ใช่แค่ชื่อดี หรือนามสกุลดี แต่ทั้งสองต้อง <strong>&quot;เกื้อหนุนกัน&quot;</strong> เพื่อสร้างความมงคลที่ยั่งยืน
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="grid md:grid-cols-2 gap-8 items-center">
-                                <div className="space-y-6">
-                                    <div className="bg-[#f8f8fc] p-6 rounded-2xl border border-[#ddddf0]">
-                                        <h4 className="text-blue-600 font-bold mb-4">หลักการคำนวณความสมดุล</h4>
-                                        <ul className="space-y-4">
-                                            <li className="flex gap-3">
-                                                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">1</div>
-                                                <p className="text-sm text-[#5a5a82]">นำ <strong>ผลรวมชื่อ</strong> มาคำนวณหากำลังดาว</p>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">2</div>
-                                                <p className="text-sm text-[#5a5a82]">นำ <strong>ผลรวมนามสกุล</strong> มาคำนวณหากำลังดาว</p>
-                                            </li>
-                                            <li className="flex gap-3">
-                                                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">3</div>
-                                                <p className="text-sm text-[#5a5a82]">นำกำลังดาวทั้งสองมาเปรียบเทียบความสัมพันธ์ (เป็นมิตร, ศัตรู, หรือกลางๆ)</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 italic text-[#5a5a82] text-sm">
-                                        &quot;ต่อให้ชื่อดี 100% แต่ถ้านามสกุลเป็นศัตรูกัน ชีวิตจะขึ้นๆ ลงๆ ไม่สุดสักทาง นิรันดร์ศาสตร์จึงเข้ามาแก้จุดบอดนี้&quot;
-                                    </div>
-                                </div>
-
-                                <div className="relative">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-purple-50 rounded-full blur-3xl"></div>
-                                    <div className="relative bg-white p-6 rounded-3xl border border-[#ddddf0] text-center space-y-4 shadow-sm">
-                                        <div className="flex justify-center items-center gap-4">
-                                            <div className="text-center">
-                                                <div className="text-sm text-[#5a5a82] mb-1">ชื่อ</div>
-                                                <div className="w-16 h-16 rounded-2xl bg-[#f8f8fc] flex items-center justify-center text-2xl font-bold text-[#1a1a3e] border border-[#ddddf0]">63</div>
-                                            </div>
-                                            <InfinityIcon className="text-blue-500 animate-pulse" size={24} />
-                                            <div className="text-center">
-                                                <div className="text-sm text-[#5a5a82] mb-1">สกุล</div>
-                                                <div className="w-16 h-16 rounded-2xl bg-[#f8f8fc] flex items-center justify-center text-2xl font-bold text-[#1a1a3e] border border-[#ddddf0]">42</div>
-                                            </div>
-                                        </div>
-                                        <div className="pt-4 border-t border-[#ddddf0]">
-                                            <div className="text-emerald-600 font-bold text-lg mb-1">สมพงศ์กัน (Excellent)</div>
-                                            <p className="text-xs text-[#5a5a82]">
-                                                ผลรวมเป็นคู่มิตรที่เกื้อหนุนกัน<br />ส่งเสริมความก้าวหน้าอย่างยั่งยืน
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+                    {activeTab === 'nirun' && <div className="space-y-5 text-[#5a5a82]">
+                        <h3 className="text-2xl font-bold text-[#1a1a3e]">นิรันดร์ศาสตร์ใน NameMongkol</h3>
+                        <p className="max-w-[70ch] leading-8">{namingSciences[3].description}</p>
+                        <p className="max-w-[70ch] leading-8">เครื่องหมายนี้เป็นการตรวจชุดรายชื่ออ้างอิง ไม่ใช่คะแนนคำนวณความสมพงศ์ระหว่างชื่อและนามสกุลขึ้นใหม่</p>
+                        <p className="max-w-[70ch] leading-8">{personalNameCheckNote}</p>
+                        <Link href="/methodology#premium-curation" className="inline-flex min-h-11 items-center font-semibold text-amber-800 underline underline-offset-4">อ่านวิธีคัดรายชื่อและขอบเขตผลวิเคราะห์</Link>
+                    </div>}
 
                 </div>
             </div>

@@ -87,6 +87,10 @@ export const getAstrologicalDay = (date: Date, timeStr: string): DayKey => {
 
 export interface PremiumResult {
     name: string;
+    englishName?: string;
+    pronunciation?: string;
+    pronunciationStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
+    meaningStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
     meaning: string;
     totalScore: number;
     grade: 'A+' | 'A' | 'B' | 'C' | 'F';
@@ -265,7 +269,11 @@ export const generatePremiumNames = (
 
         results.push({
             name: data.name,
-            meaning: data.meaning || data.scoreBreakdown.join(' '),
+            englishName: data.englishName,
+            pronunciation: data.pronunciation,
+            pronunciationStatus: data.pronunciationStatus,
+            meaningStatus: data.meaningStatus,
+            meaning: data.meaning || 'ยังไม่มีข้อมูลความหมาย',
             totalScore: totalSum,
             grade,
             notes

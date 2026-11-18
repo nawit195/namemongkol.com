@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
+import React from 'react';
 import Link from 'next/link';
 import { siteUrl } from '@/lib/seo';
 import { charValues } from '@/data/numerology';
+import { namingSciences, namingScienceNames, namingBrandDescription, premiumCurationDescription, personalNameCheckNote, namingContentUpdatedAt } from '@/data/namingApproach';
+import { NamingApproachFaq } from '@/components/NamingApproachSummary';
 
 const canonical = `${siteUrl}/methodology`;
 
 export const metadata: Metadata = {
     title: { absolute: 'วิธีคำนวณวิเคราะห์ชื่อและข้อจำกัดของผลลัพธ์ | NameMongkol' },
-    description: 'อธิบายวิธีถอดอักษรเป็นเลขศาสตร์ ตรวจทักษาปกรณ์ อายตนะ 6 และความสัมพันธ์ชื่อกับนามสกุล พร้อมข้อจำกัดและแนวทางใช้ผลวิเคราะห์อย่างเหมาะสม',
+    description: `${namingBrandDescription} พร้อมวิธีคัดฐานรายชื่อพรีเมียมล่วงหน้าโดยทีมงานและข้อจำกัดของผลลัพธ์`,
     alternates: { canonical },
     openGraph: {
         title: 'วิธีคำนวณและข้อจำกัดของ NameMongkol',
@@ -33,7 +36,7 @@ const steps = [
     },
     {
         title: '4. ตรวจชื่อร่วมกับนามสกุล',
-        body: 'ผลรวมของชื่ออย่างเดียวไม่ใช่ข้อสรุปสุดท้าย ระบบจึงตรวจผลรวม คู่เลข และความสัมพันธ์เมื่อใช้ร่วมกับนามสกุล',
+        body: 'ระบบคำนวณผลรวมชื่อและนามสกุล อ่านคู่เลขของแต่ละส่วน และแสดงผลทักษากับอายตนะตามข้อมูลที่กรอก ส่วนเครื่องหมายนิรันดร์ศาสตร์ตรวจจากชุดรายชื่ออ้างอิง ไม่ใช่สูตรคำนวณความสมพงศ์ขึ้นใหม่',
     },
     {
         title: '5. สรุปผลจากหลายมิติ',
@@ -79,7 +82,9 @@ export default function MethodologyPage() {
         inLanguage: 'th-TH',
         isPartOf: { '@id': `${siteUrl}/#website` },
         publisher: { '@id': `${siteUrl}/#organization` },
-        dateModified: '2026-07-15',
+        dateModified: namingContentUpdatedAt,
+        author: { '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'NameMongkol' },
+        about: namingScienceNames.map(name => ({ '@type': 'Thing', name })),
         citation: references.map((reference) => reference.href),
     };
 
@@ -90,8 +95,28 @@ export default function MethodologyPage() {
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-700">Transparency</p>
                 <h1 className="mt-3 text-3xl font-extrabold leading-tight sm:text-5xl">วิธีคำนวณวิเคราะห์ชื่อและข้อจำกัดของผลลัพธ์</h1>
                 <p className="mt-6 max-w-[70ch] text-base leading-8 text-[#5a5a82] sm:text-lg">
-                    NameMongkol จัดผลวิเคราะห์ให้ตรวจสอบที่มาได้เป็นขั้นตอน ผู้ใช้จึงเห็นว่าคะแนนและคำอธิบายเกิดจากข้อมูลใด และควรนำผลไปใช้อย่างไรโดยไม่ตีความเกินขอบเขต
+                    {namingBrandDescription} หน้านี้อธิบายการคัดชื่อก่อนนำเข้าฐานและการตรวจชื่อของผู้ใช้แยกกัน เพื่อให้ตรวจสอบวิธีทำงานและขอบเขตของผลได้
                 </p>
+                <p className="mt-4 text-sm leading-7 text-[#5a5a82]">จัดทำโดย <Link href="/about" className="underline underline-offset-4">ทีมงาน NameMongkol</Link> · ปรับปรุงเนื้อหา <time dateTime={namingContentUpdatedAt}>17 พฤศจิกายน 2569</time></p>
+
+                <section className="mt-12" aria-labelledby="four-sciences-title">
+                    <h2 id="four-sciences-title" className="text-2xl font-bold">4 ศาสตร์ที่ใช้ใน NameMongkol</h2>
+                    <dl className="mt-5 divide-y divide-[#ddddf0] border-y border-[#ddddf0]">
+                        {namingSciences.map((science, index) => <div key={science.name} className="py-5"><dt className="text-lg font-bold">{index + 1}. {science.name}</dt><dd className="mt-2 max-w-[70ch] leading-8 text-[#5a5a82]">{science.description}</dd></div>)}
+                    </dl>
+                </section>
+                <section id="premium-curation" className="mt-12 scroll-mt-28" aria-labelledby="premium-curation-title">
+                    <h2 id="premium-curation-title" className="text-2xl font-bold">การคัดฐานรายชื่อพรีเมียมก่อนนำเข้า</h2>
+                    <p className="mt-4 max-w-[70ch] leading-8 text-[#5a5a82]">{premiumCurationDescription} ข้อมูลกระบวนการนี้จัดทำจากคำชี้แจงของทีมงานผู้ดูแลฐานรายชื่อ</p>
+                    <ol className="mt-5 list-decimal space-y-3 pl-6 leading-8 text-[#5a5a82]">
+                        <li>ทีมงานรวบรวมและคัดรายชื่อโดยพิจารณาเลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์ล่วงหน้า</li>
+                        <li>นำรายชื่อที่คัดไว้เข้าฐานพรีเมียม พร้อมรายละเอียดตามข้อมูลต้นทาง</li>
+                        <li>ผู้ใช้เลือกชื่อผ่านบริการ Pro หรือ Premium Analysis ตามวันเกิดและเงื่อนไขของแต่ละเครื่องมือ</li>
+                        <li>นำชื่อที่สนใจไปวิเคราะห์ร่วมกับนามสกุลก่อนตัดสินใจใช้จริง</li>
+                    </ol>
+                    <p className="mt-4 max-w-[70ch] leading-8 text-[#5a5a82]">{personalNameCheckNote} ข้อความว่าคัดครบ 4 ศาสตร์ใช้เฉพาะฐานพรีเมียม ไม่ครอบคลุมทุกรายชื่อในฐานฟรี</p>
+                    <p className="mt-4 max-w-[70ch] leading-8 text-[#5a5a82]">หน้าเครื่องมือกรองจากข้อมูลและเงื่อนไขที่แสดง ไม่ได้คำนวณการคัดล่วงหน้าของทีมงานใหม่ทั้งหมดในทุกคำขอ การคัดตามศาสตร์การตั้งชื่อกับการตรวจคำอ่านและความหมายทางภาษาเป็นคนละกระบวนการ</p>
+                </section>
 
                 <section className="mt-12" aria-labelledby="calculation-title">
                     <h2 id="calculation-title" className="text-2xl font-bold">ขั้นตอนที่ระบบใช้</h2>
@@ -155,7 +180,7 @@ export default function MethodologyPage() {
 
                 <section className="mt-12" aria-labelledby="sources-title">
                     <h2 id="sources-title" className="text-2xl font-bold">แหล่งความรู้และการตรวจสอบ</h2>
-                    <p className="mt-4 max-w-[70ch] leading-7 text-[#5a5a82]">แนวคิดทักษาปกรณ์ เลขศาสตร์ไทย และอายตนะ 6 เป็นศาสตร์ความเชื่อ ส่วนความหมายภาษาและข้อกำหนดทางทะเบียนตรวจเทียบกับแหล่งข้อมูลทางการดังต่อไปนี้</p>
+                    <p className="mt-4 max-w-[70ch] leading-7 text-[#5a5a82]">เลขศาสตร์ ทักษาปกรณ์ อายตนะ 6 และนิรันดร์ศาสตร์เป็นศาสตร์ความเชื่อ แหล่งข้อมูลทางการต่อไปนี้ใช้ตรวจเรื่องภาษาและทะเบียนชื่อ ไม่ใช่หลักฐานยืนยันผลตามศาสตร์ความเชื่อหรือการคัดของทีมงาน</p>
                     <ul className="mt-5 space-y-3">
                         {references.map((reference) => (
                             <li key={reference.href} className="rounded-xl border border-[#ddddf0] bg-white p-4">
@@ -180,7 +205,7 @@ export default function MethodologyPage() {
                         <p className="mt-4 text-sm leading-7 text-[#5a5a82]">
                             หากพบตาราง ความหมาย หรือข้อความที่ควรแก้ไข โปรดส่ง URL พร้อมจุดที่พบและแหล่งอ้างอิงผ่านหน้า <Link prefetch={false} href="/about" className="font-semibold text-amber-700 hover:underline">เกี่ยวกับ NameMongkol</Link> ทีมงานจะตรวจเทียบข้อมูล โค้ด และหน้าแสดงผลก่อนบันทึกวันที่แก้ไขจริง
                         </p>
-                        <p className="mt-3 text-xs text-[#8e8eaa]">เวอร์ชันข้อมูล: 2026.07.15 · ตรวจล่าสุด 15 กรกฎาคม 2569</p>
+                        <p className="mt-3 text-xs text-[#8e8eaa]">เวอร์ชันเนื้อหา: {namingContentUpdatedAt} · ปรับปรุงคำอธิบาย 4 ศาสตร์และการคัดฐานพรีเมียม</p>
                     </div>
                 </section>
 
@@ -192,6 +217,7 @@ export default function MethodologyPage() {
                         <Link prefetch={false} href="/premium-search" data-track="seo.methodology.premium" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-amber-500 px-5 py-3 font-bold text-slate-950 hover:bg-amber-400">ดูการคัดชื่อ Premium</Link>
                     </div>
                 </section>
+                <NamingApproachFaq />
             </article>
         </main>
     );

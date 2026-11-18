@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { fetchPublicPremiumNameDetails } from '@/lib/premiumNameDetails';
+import { fetchPublicPremiumNameDetails, fetchPremiumLatestAddedAt } from '@/lib/premiumNameDetails';
 
 const CACHE_SECONDS = 600;
 
@@ -7,8 +7,8 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
-        const data = await fetchPublicPremiumNameDetails();
-        return NextResponse.json({ success: true, data, total: data.length }, {
+        const [data, latestAddedAt] = await Promise.all([fetchPublicPremiumNameDetails(), fetchPremiumLatestAddedAt()]);
+        return NextResponse.json({ success: true, data, total: data.length, latestAddedAt }, {
             headers: {
                 'Cache-Control': `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=2592000`,
             },

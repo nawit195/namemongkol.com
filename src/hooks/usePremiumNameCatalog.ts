@@ -7,11 +7,15 @@ import type { PremiumNameData, PremiumNameDetailInput } from '@/utils/premiumDat
 type PremiumNameCatalogState = {
     names: PremiumNameData[];
     loading: boolean;
+    publishedCount: number | null;
+    latestAddedAt: string | null;
 };
 
 export function usePremiumNameCatalog(): PremiumNameCatalogState {
     const [names, setNames] = useState<PremiumNameData[]>([]);
     const [loading, setLoading] = useState(true);
+    const [publishedCount, setPublishedCount] = useState<number | null>(null);
+    const [latestAddedAt, setLatestAddedAt] = useState<string | null>(null);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -29,9 +33,12 @@ export function usePremiumNameCatalog(): PremiumNameCatalogState {
                 const payload = await response.json() as {
                     success?: boolean;
                     data?: PremiumNameDetailInput[];
+                    latestAddedAt?: string | null;
                 };
                 const details = Array.isArray(payload.data) ? payload.data : [];
                 if (active) {
+                    setPublishedCount(payload.success ? details.length : null);
+                    setLatestAddedAt(payload.success && typeof payload.latestAddedAt === 'string' ? payload.latestAddedAt : null);
                     setNames(payload.success ? buildPremiumNameCatalog(details) : fallbackPremiumNameCatalog);
                 }
             } catch (error) {
@@ -53,5 +60,5 @@ export function usePremiumNameCatalog(): PremiumNameCatalogState {
         };
     }, []);
 
-    return { names, loading };
+    return { names, loading, publishedCount, latestAddedAt };
 }

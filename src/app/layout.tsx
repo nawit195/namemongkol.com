@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { namingBrandDescription, namingScienceNames } from '@/data/namingApproach';
 import { Geist, Geist_Mono, Noto_Sans_Thai } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google';
 import { unstable_cache } from 'next/cache';
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     default: "NameMongkol | วิเคราะห์ชื่อ ตั้งชื่อมงคล และตรวจพลังชื่อ",
     template: "%s | NameMongkol",
   },
-  description: "NameMongkol ให้บริการวิเคราะห์ชื่อ นามสกุล เบอร์โทร ลายมือ ออร่า และวอลเปเปอร์มงคล ด้วยหลักเลขศาสตร์ ทักษา อายตนะ 6 และ AI",
+  description: namingBrandDescription,
   keywords: [
     "NameMongkol",
     "วิเคราะห์ชื่อ",
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: 'NameMongkol',
     title: 'NameMongkol - วิเคราะห์ชื่อ ตั้งชื่อมงคล และตรวจพลังชื่อ',
-    description: 'วิเคราะห์ชื่อ นามสกุล เบอร์โทร ลายมือ ออร่า และวอลเปเปอร์มงคล ด้วยหลักเลขศาสตร์ ทักษา อายตนะ 6 และ AI',
+    description: namingBrandDescription,
     images: [
       {
         url: `${siteUrl}/api/og?variant=default`,
@@ -115,7 +116,8 @@ const jsonLd = {
       url: siteUrl,
       name: 'NameMongkol',
       alternateName: 'เนมมงคล',
-      description: 'แพลตฟอร์มวิเคราะห์ชื่อมงคล เบอร์โทร ลายมือ ออร่า วอลเปเปอร์ และบทความความรู้ด้านชื่อมงคล',
+      description: namingBrandDescription,
+      about: namingScienceNames.map(name => ({ '@type': 'Thing', name })),
       inLanguage: 'th-TH',
       publisher: {
         '@id': `${siteUrl}/#organization`,
@@ -135,6 +137,8 @@ const jsonLd = {
       name: 'NameMongkol',
       alternateName: 'เนมมงคล',
       url: siteUrl,
+      description: namingBrandDescription,
+      knowsAbout: namingScienceNames,
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/icon-512.png`,

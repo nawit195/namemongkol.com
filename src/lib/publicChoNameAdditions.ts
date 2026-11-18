@@ -24,6 +24,13 @@ export function mergePublicChoNames(names: PublicNameRecord[], hiddenNames: stri
         const existing = byName.get(key);
         byName.set(key, existing ? {
             ...existing,
+            ...(existing.englishName || existing.englishNameStatus === 'rejected' || existing.pronunciationStatus === 'rejected'
+                || (existing.pronunciation && existing.pronunciation !== item.pronunciation)
+                ? {} : {
+                    englishName: item.englishName,
+                    englishNameStatus: item.englishNameStatus,
+                    englishNameSource: item.englishNameSource,
+                }),
             // Keep reviewed values/rejections, filling only missing unreviewed details.
             pronunciation: existing.pronunciationStatus === 'rejected' ? undefined : existing.pronunciation?.trim() || item.pronunciation,
             pronunciationStatus: existing.pronunciationStatus === 'rejected' || existing.pronunciation?.trim()

@@ -50,7 +50,8 @@ describe('premium name enrichment and cards', () => {
             meaningStatus: 'draft',
         }, true);
 
-        expect(html).toContain('ข้อมูลเบื้องต้น · รอตรวจสอบ');
+        expect(html).not.toContain('ข้อมูลเบื้องต้น');
+        expect(html).not.toContain('รอตรวจสอบ');
         expect(html).toContain('กาน-นะ');
         expect(html).toContain('เป็นที่รัก');
     });
@@ -71,6 +72,9 @@ describe('premium name enrichment and cards', () => {
         expect(missing).toContain('กำลังจัดทำความหมาย');
         expect(locked).toContain('aria-hidden="true"');
         expect(locked).toContain('ปลดล็อกเพื่อดูชื่อ');
-        expect(locked).toContain('blur-sm');
+        expect(locked).toContain('inert=\"\"');
+        expect(locked).not.toContain('/name-check?');
+        expect(approved).toContain('/name-check?name=');
+        expect(approved).toContain('<details');
     });
 });

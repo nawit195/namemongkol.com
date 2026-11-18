@@ -14,10 +14,12 @@ import { thaksaConfig, DayKey } from '@/data/thaksa';
 import { useLanguage } from '@/components/LanguageProvider';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
 import { trackEvent } from '@/lib/analytics';
+import { englishNameExplanation, englishNameStatusLabel } from '@/lib/englishNameDisplay';
 import {
     createPublicNamesRequestUrl,
     createSearchResultCacheKey,
     SearchResultLruCache,
+    SearchRequestDeduplicator,
 } from './searchResultCache';
 import {
     reorderFirstPageWithFeatured,
@@ -43,8 +45,14 @@ const getDayBadgeProps = (d: string) => {
     return { label: d, className: 'bg-slate-100 text-slate-700 border border-slate-200' };
 };
 
-function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
+export function SearchDataSourceNotice({ dataSource }: { dataSource?: 'database' | 'fallback' }) {
+    if (dataSource !== 'fallback') return null;
+    return <p role="status" className="mx-auto mb-4 max-w-3xl rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-left text-sm leading-relaxed text-amber-900">กำลังแสดงรายชื่อสำรอง เนื่องจากเชื่อมต่อฐานข้อมูลไม่ได้ จำนวนที่เห็นยังไม่ใช่รายชื่อทั้งหมด กรุณาลองโหลดหน้าใหม่อีกครั้ง</p>;
+}
+
+export function NameRow({ name, englishName, englishNameStatus, englishNameSource, pronunciation, pronunciationVariants = [], pronunciationStatus, meaning, meaningStatus, createdAt, numerology, suitableDays, rowIndex }: SearchName & { rowIndex: number }) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const visibleEnglishName = englishNameStatus === 'rejected' ? undefined : englishName;
     const suitability = useMemo(() => {
         const suitable = suitableDays.map((day) => thaksaConfig[day].name);
         const suitableSet = new Set(suitableDays);
@@ -87,6 +95,7 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
                             </span>
                         ) : null}
                     </div>
+                    <span lang="en" className="mt-1 block break-all text-sm leading-5 text-[#5a5a82] lg:hidden">{visibleEnglishName || '—'}</span>
                     {displayPronunciation ? (
                         <span className="mt-1 block text-xs font-medium leading-5 text-[#5a5a82] lg:hidden">
                             อ่านว่า {displayPronunciation}
@@ -95,9 +104,12 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
                     ) : null}
                 </td>
 
+                <td className="hidden max-w-48 break-all px-3 py-[18px] text-sm leading-6 text-[#5a5a82] lg:table-cell">
+                    <span lang="en" className="break-all">{visibleEnglishName || '—'}</span>
+                </td>
                 {/* Column 2: Pronunciation (Desktop Only) */}
                 <td className="hidden px-3 py-[18px] text-sm font-medium leading-6 text-[#5a5a82] lg:table-cell">
-                    <span>{displayPronunciation || <span className="font-normal italic text-slate-500">รอตรวจสอบคำอ่าน</span>}</span>
+                    <span>{displayPronunciation || <span className="font-normal italic text-slate-500">ยังไม่มีคำอ่าน</span>}</span>
                     {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? (
                         <span className="ml-2 inline-flex rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-800">รอยืนยันการอ่าน</span>
                     ) : null}
@@ -160,14 +172,18 @@ function NameRow({ name, pronunciation, pronunciationVariants = [], pronunciatio
             {/* Expanded Details Row */}
             {isExpanded && (
                 <tr className="animate-fade-in border-b border-[#ddd8ee] bg-[#eeebf8]">
-                    <td colSpan={6} className="p-0">
+                    <td colSpan={7} className="p-0">
                         <div className="grid gap-4 bg-[#fafafd] px-5 py-5 text-sm md:px-6">
 
+                            <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
+                                <span className="w-24 flex-shrink-0 font-semibold text-slate-700">ชื่อภาษาอังกฤษ</span>
+                                <div className="min-w-0"><span lang="en" className="break-all text-slate-950">{visibleEnglishName || '—'}</span>{englishNameStatus === 'approved' || englishNameStatus === 'rejected' ? <span className="ml-2 text-xs font-medium text-amber-800">{englishNameStatusLabel(englishNameStatus)}</span> : null}<p className="mt-1 text-xs leading-5 text-slate-600">{englishNameExplanation(visibleEnglishName, englishNameStatus, englishNameSource)}</p></div>
+                            </div>
                             {/* Pronunciation */}
                             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-4">
                                 <span className="w-24 flex-shrink-0 font-semibold text-slate-700">คำอ่าน</span>
                                 <span className={displayPronunciation ? 'font-medium text-slate-950' : 'italic text-slate-600'}>
-                                    {displayPronunciation || 'รอตรวจสอบคำอ่าน'}
+                                    {displayPronunciation || 'ยังไม่มีคำอ่าน'}
                                     {displayPronunciation && pronunciationStatus && pronunciationStatus !== 'approved' ? ' · รอยืนยันการอ่าน' : ''}
                                 </span>
                             </div>
@@ -261,6 +277,9 @@ type PublicStats = {
 
 type SearchName = {
     name: string;
+    englishName?: string;
+    englishNameStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
+    englishNameSource?: string;
     gender: 'male' | 'female' | 'neutral';
     pronunciation?: string;
     pronunciationVariants?: string[];
@@ -281,6 +300,7 @@ type SearchSummary = {
 };
 
 type SearchNamesResult = {
+    dataSource?: 'database' | 'fallback';
     data: SearchName[];
     featuredData?: SearchName[];
     total: number;
@@ -308,6 +328,45 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const [selectedDay, setSelectedDay] = useState<DayKey | 'all'>('all');
     const [selectedGender, setSelectedGender] = useState<'all' | 'male' | 'female' | 'neutral'>('all');
     const [selectedLetter, setSelectedLetter] = useState<string>('all');
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        let active = true;
+        let requestId = 0;
+        let refreshTimer: number | undefined;
+
+        const refreshAdminRole = async () => {
+            const currentRequest = ++requestId;
+            try {
+                const { data: { user }, error } = await supabase.auth.getUser();
+                if (!active || currentRequest !== requestId || error || !user) return;
+                const { data: profile, error: profileError } = await supabase
+                    .from('user_profiles').select('role').eq('id', user.id).maybeSingle();
+                if (active && currentRequest === requestId) {
+                    setIsAdmin(!profileError && profile?.role === 'admin');
+                }
+            } catch {
+                // Keep admin controls hidden when the session or profile cannot be verified.
+            }
+        };
+
+        void refreshAdminRole();
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+            if (event === 'INITIAL_SESSION') return;
+            requestId += 1;
+            setIsAdmin(false);
+            window.clearTimeout(refreshTimer);
+            // Query outside the auth callback to avoid waiting on the auth client's lock.
+            refreshTimer = window.setTimeout(() => { void refreshAdminRole(); }, 0);
+        });
+
+        return () => {
+            active = false;
+            requestId += 1;
+            window.clearTimeout(refreshTimer);
+            subscription.unsubscribe();
+        };
+    }, []);
 
     // Freemium State
     const [visibleCount, setVisibleCount] = useState(10);
@@ -319,6 +378,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const [totalPages, setTotalPages] = useState(initialResult.totalPages);
     const [loadedPage, setLoadedPage] = useState(initialResult.page);
     const [summary, setSummary] = useState<SearchSummary>(initialResult.summary);
+    const [dataSource, setDataSource] = useState(initialResult.dataSource);
     const [isLoadingNames, setIsLoadingNames] = useState(false);
     const [namesError, setNamesError] = useState<string | null>(null);
     const [filtersReady, setFiltersReady] = useState(false);
@@ -333,6 +393,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     const activeFilterRequest = useRef<AbortController | null>(null);
     const latestFilterRequestId = useRef(0);
     const prefetchedLetters = useRef<Set<string>>(new Set());
+    const [pendingPages] = useState(() => new SearchRequestDeduplicator<SearchNamesResult>());
 
     const requestNamesPage = useCallback(async (
         filters: SearchFilters,
@@ -343,19 +404,21 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         const cached = resultCache.get(cacheKey);
         if (cached) return cached;
 
-        const requestUrl = createPublicNamesRequestUrl(filters, page, options.featuredSeed);
-        const response = await fetch(requestUrl, {
-            cache: 'force-cache',
-            signal: options.signal,
-        });
-        const payload = await response.json();
-        if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
-            throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
-        }
-        const result = payload as SearchNamesResult;
-        resultCache.set(cacheKey, result);
-        return result;
-    }, [resultCache]);
+        return pendingPages.run(cacheKey, async () => {
+            const requestUrl = createPublicNamesRequestUrl(filters, page, options.featuredSeed);
+            const response = await fetch(requestUrl, {
+                cache: 'force-cache',
+                signal: options.signal,
+            });
+            const payload = await response.json();
+            if (!response.ok || !payload?.success || !Array.isArray(payload.data)) {
+                throw new Error('ไม่สามารถโหลดรายชื่อจากฐานข้อมูลได้');
+            }
+            const result = payload as SearchNamesResult;
+            resultCache.set(cacheKey, result);
+            return result;
+        }, options.signal);
+    }, [pendingPages, resultCache]);
 
     const applyNamesResult = useCallback((
         result: SearchNamesResult,
@@ -368,6 +431,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         setTotalPages(result.totalPages);
         setLoadedPage(result.page);
         setSummary(result.summary);
+        setDataSource(result.dataSource);
         setVisibleCount(10);
     }, []);
 
@@ -377,6 +441,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         setTotalPages(preview.totalPages);
         setLoadedPage(0);
         setSummary(preview.summary);
+        setDataSource(preview.dataSource);
         setVisibleCount(10);
     }, []);
 
@@ -392,7 +457,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
         const cached = resultCache.get(cacheKey);
 
         if (cached) {
-            applyNamesResult(cached);
+            applyNamesResult(cached, options.previousVisibleNames);
             setNamesError(null);
             setIsLoadingNames(false);
             return;
@@ -452,6 +517,15 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
     }, [applyLetterPreview, applyNamesResult, initialLetterPreviews, initialResult, loadFirstPage]);
 
     useEffect(() => () => activeFilterRequest.current?.abort(), []);
+
+    // Prepare only the next rotation for the currently selected filters.
+    // This never applies results or changes the free/paid visible-name limit.
+    useEffect(() => {
+        if (!filtersReady || selectedLetter === 'all' || isLoadingNames || total === 0) return;
+        const filters: SearchFilters = { day: selectedDay, gender: selectedGender, initial: selectedLetter };
+        const featuredSeed = createFeaturedSeed(searchSessionSeed.current, filters, featuredRotation.current + 1);
+        void requestNamesPage(filters, 1, { featuredSeed }).catch(() => { /* Foreground requests retain their normal retry/error UI. */ });
+    }, [filtersReady, selectedDay, selectedGender, selectedLetter, isLoadingNames, names, total, requestNamesPage]);
 
     useEffect(() => {
         if (!filtersReady) return;
@@ -551,7 +625,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
 
     const handleLetterChange = (letter: string) => {
         if (letter === selectedLetter && !namesError) {
-            if (letter !== 'all' && !isLoadingNames) {
+            if (isAdmin && letter !== 'all' && !isLoadingNames) {
                 void loadFirstPage({
                     day: selectedDay,
                     gender: selectedGender,
@@ -583,15 +657,11 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
             applyNamesResult(immediateResult);
         } else {
             applyLetterPreview(immediateResult);
-            void loadFirstPage(filters, {
-                rotate: true,
-                previousVisibleNames: immediateResult.data.map((item) => item.name),
-            });
         }
     };
 
     const handleRotateLetterNames = () => {
-        if (selectedLetter === 'all' || isLoadingNames) return;
+        if (!isAdmin || selectedLetter === 'all' || isLoadingNames) return;
 
         void loadFirstPage({
             day: selectedDay,
@@ -832,13 +902,13 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
                                         <ReviewBadge rating={publicStats?.avgRating} count={publicStats?.reviewCount} />
                                         <UserStatsBadge users={publicStats?.weeklyAnalyses} label="มีผู้ค้นหาสัปดาห์นี้แล้ว" />
-                                        <UserStatsBadge users={liveNameCount} label="ชื่อในฐานข้อมูลล่าสุด" suffix="ชื่อ" />
+                                        <UserStatsBadge users={liveNameCount} label={initialResult.dataSource === 'fallback' ? 'รายชื่อสำรอง' : 'ชื่อในฐานข้อมูลล่าสุด'} suffix="ชื่อ" />
                                     </div>
                                 </div>
                                 <div className="mb-5 text-center md:mb-12">
                                     <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-100/70 px-3 py-1 text-xs text-amber-800 md:mb-4 md:text-sm">
                                         <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                                        <span>ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง</span>
+                                        <span>{initialResult.dataSource === 'fallback' ? 'รายชื่อสำรองชั่วคราว' : 'ฐานข้อมูลชื่อมงคลที่อัปเดตต่อเนื่อง'}</span>
                                     </div>
                                     <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
                                         ตั้งชื่อมงคล พร้อมความหมายและเลขศาสตร์
@@ -846,9 +916,10 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     <p className="mx-auto mb-4 max-w-[65ch] px-2 text-sm leading-relaxed text-slate-700 sm:text-base md:mb-6">
                                         ค้นหาชื่อสำหรับตั้งชื่อลูกหรือเปลี่ยนชื่อ พร้อมคำอ่าน ความหมาย ผลรวมเลขศาสตร์ และวันเกิดที่เหมาะสมจากฐานข้อมูลที่อัปเดตต่อเนื่อง
                                     </p>
+                                    <SearchDataSourceNotice dataSource={dataSource} />
                                     <dl className="mx-auto mb-5 grid max-w-3xl grid-cols-2 overflow-hidden rounded-xl border border-slate-200 bg-white/90 text-left shadow-sm md:grid-cols-4">
                                         {[
-                                            ['ชื่อทั้งหมด', initialResult.total.toLocaleString('th-TH')],
+                                            [initialResult.dataSource === 'fallback' ? 'รายชื่อสำรอง' : 'ชื่อทั้งหมด', initialResult.total.toLocaleString('th-TH')],
                                             ['มีคำอ่าน', initialResult.summary.withPronunciation.toLocaleString('th-TH')],
                                             ['มีความหมาย', initialResult.summary.withMeaning.toLocaleString('th-TH')],
                                             ['อัปเดตล่าสุด', latestNamesUpdate],
@@ -932,7 +1003,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             <span>กรองตามตัวอักษรแรก</span>
                             {selectedLetter !== 'all' && (
                                 <div className="ml-auto flex items-center gap-2">
-                                    <button
+                                    {isAdmin && <button
                                         type="button"
                                         onClick={handleRotateLetterNames}
                                         disabled={isLoadingNames}
@@ -941,7 +1012,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     >
                                         <RotateCw className={`h-3.5 w-3.5 ${isLoadingNames ? 'animate-spin' : ''}`} aria-hidden="true" />
                                         เปลี่ยน 10 ชื่อ
-                                    </button>
+                                    </button>}
                                     <button
                                         type="button"
                                         onClick={() => handleLetterChange('all')}
@@ -970,7 +1041,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     onClick={() => handleLetterChange(letter)}
                                     onPointerEnter={() => handleLetterHover(letter)}
                                     aria-pressed={selectedLetter === letter}
-                                    aria-label={selectedLetter === letter
+                                    aria-label={isAdmin && selectedLetter === letter
                                         ? `เปลี่ยนรายชื่อขึ้นต้นด้วย ${letter} อีก 10 ชื่อ`
                                         : `แสดงรายชื่อขึ้นต้นด้วย ${letter}`}
                                     className={`w-7 h-7 md:w-9 md:h-9 rounded-lg text-xs md:text-sm font-medium transition-all flex items-center justify-center ${
@@ -1093,6 +1164,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                         <thead>
                             <tr className="border-b-2 border-amber-300/70 bg-[linear-gradient(90deg,#f8f8fc_0%,#f3f3f9_52%,#e8ecf2_100%)] text-[#1a1a3e]">
                                 <th className="px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.name')}</th>
+                                <th className="hidden px-3 py-4 text-left text-sm font-semibold tracking-wide lg:table-cell">ชื่อภาษาอังกฤษ</th>
                                 <th className="hidden px-3 py-4 text-left text-sm font-semibold uppercase tracking-wide lg:table-cell">คำอ่าน</th>
                                 <th className="px-2 py-4 font-semibold text-sm tracking-wide uppercase text-left">ความหมาย</th>
                                 <th className="hidden md:table-cell px-4 py-4 font-semibold text-sm tracking-wide uppercase text-left">{t('pages.search.table.day')}</th>
@@ -1104,7 +1176,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                             {isLoadingNames && names.length === 0 ? (
                                 Array.from({ length: 5 }, (_, index) => (
                                     <tr key={`loading-${index}`} className="border-b border-[#eeeef6] bg-white/80">
-                                        <td colSpan={6} className="px-4 py-4">
+                                        <td colSpan={7} className="px-4 py-4">
                                             <div className="h-10 animate-pulse rounded-lg bg-slate-200/80" />
                                         </td>
                                     </tr>
@@ -1118,7 +1190,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     {/* Teaser row: show count of hidden A+ names to drive upgrade */}
                                     {hiddenAplusCount > 0 && (
                                         <tr className="border-t border-amber-200/90 bg-[linear-gradient(90deg,#fff8e7_0%,#f6f3fb_52%,#eeebf8_100%)]">
-                                            <td colSpan={6} className="px-4 py-3.5 text-center">
+                                            <td colSpan={7} className="px-4 py-3.5 text-center">
                                                 <Link prefetch={false}
                                                     href="/premium-search"
                                                     className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition-colors hover:text-amber-950"
@@ -1133,7 +1205,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                     {/* Locked State / Load More Button */}
                                     {visibleCount < total && (
                                         <tr className="bg-[linear-gradient(145deg,#fafafd_0%,#f3f3f9_58%,#eeebf8_100%)]">
-                                            <td colSpan={6} className="relative h-28 overflow-hidden p-0">
+                                            <td colSpan={7} className="relative h-28 overflow-hidden p-0">
                                                 {/* Blurred content (fake rows) */}
                                                 <div className="pointer-events-none absolute inset-0 flex h-full w-full select-none flex-col gap-3 p-4 opacity-35 blur-sm">
                                                     <div className="h-9 w-full rounded-xl bg-white/80"></div>
@@ -1165,7 +1237,7 @@ export default function SearchPage({ initialResult, initialStats, initialLetterP
                                 </>
                             ) : (
                                 <tr>
-                                    <td colSpan={6} className="px-8 py-16 text-center text-slate-500">
+                                    <td colSpan={7} className="px-8 py-16 text-center text-slate-500">
                                         <div className="flex flex-col items-center gap-3">
                                             <Sparkles className="w-8 h-8 opacity-20" />
                                             <span>{t('pages.search.empty')}</span>

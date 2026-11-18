@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+import { planImport } from './import-filtered-names.mjs';
+import { buildPublicWorkbookImportSql } from './lib/public-workbook-import.mjs';
+const { PGlite } = createRequire(import.meta.url)(path.resolve(process.argv[2]));
+const db = new PGlite();
+await db.exec("CREATE TABLE auspicious_names(id uuid PRIMARY KEY DEFAULT gen_random_uuid(), name text UNIQUE NOT NULL, gender text DEFAULT 'neutral', pronunciation text, meaning text, meaning_status text DEFAULT 'pending', meaning_source text, english_name text, english_name_source text);");
+const source = JSON.parse(fs.readFileSync('scripts/data/filtered-names-ab-2026-11-17.json', 'utf8')).records;
+const first = planImport(source, []);
+for (const change of first.changes) {
+    change.patch.meaning_source = 'xlsx:test-workbook:A-B:checksum';
+    change.patch.english_name_source = 'xlsx:test-workbook:A-B:checksum';
+}
+await db.exec(buildPublicWorkbookImportSql(first));
+let rows = (await db.query('SELECT * FROM auspicious_names')).rows;
+assert.equal(rows.length, 7606);
+assert(rows.every(row => row.gender === 'neutral' && row.meaning_status === 'pending'));
+assert(rows.every(row => row.meaning_source === 'xlsx:test-workbook:A-B:checksum' && row.english_name_source === 'xlsx:test-workbook:A-B:checksum'));
+assert.equal(planImport(source, rows).changes.length, 0);
+const row = rows[0];
+await db.query('UPDATE auspicious_names SET english_name=NULL WHERE id=$1', [row.id]);
+rows = (await db.query('SELECT * FROM auspicious_names')).rows;
+const stale = planImport([...source, { name: 'ชื่อตรวจสอบธุรกรรม', meaning: "ข้อมูล 'ทดสอบ' $workbook_import_guard$" }], rows);
+await db.query("UPDATE auspicious_names SET meaning='เปลี่ยนระหว่างเตรียม' WHERE id=$1", [row.id]);
+await assert.rejects(db.exec(buildPublicWorkbookImportSql(stale)), /snapshot changed/);
+await db.exec('ROLLBACK;');
+assert.equal((await db.query('SELECT count(*) n FROM auspicious_names')).rows[0].n, 7606);
+assert.equal((await db.query('SELECT english_name FROM auspicious_names WHERE id=$1', [row.id])).rows[0].english_name, null);
+rows = (await db.query('SELECT * FROM auspicious_names')).rows;
+const fresh = planImport([...source, { name: 'ชื่อตรวจสอบธุรกรรม', meaning: "ข้อมูล 'ทดสอบ' $workbook_import_guard$" }], rows);
+await db.exec(buildPublicWorkbookImportSql(fresh));
+assert.equal((await db.query('SELECT count(*) n FROM auspicious_names')).rows[0].n, 7607);
+assert.equal((await db.query('SELECT meaning FROM auspicious_names WHERE name=$1', ['ชื่อตรวจสอบธุรกรรม'])).rows[0].meaning, "ข้อมูล 'ทดสอบ' $workbook_import_guard$");
+await db.close();
+console.log('PASS: 7606 unique names, defaults, repeat import, stale snapshot rollback, quoted and delimiter text');

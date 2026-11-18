@@ -9,6 +9,7 @@ export interface PremiumNameData {
     suitableDays: string[];
     scoreBreakdown: string[];
     gender: Gender;
+    englishName?: string;
     pronunciation?: string;
     pronunciationVariants?: string[];
     pronunciationStatus?: 'pending' | 'draft' | 'approved' | 'rejected';
@@ -18,7 +19,7 @@ export interface PremiumNameData {
 
 export type PremiumNameDetailInput = Pick<
     PremiumNameData,
-    'name' | 'pronunciation' | 'pronunciationVariants' | 'pronunciationStatus' | 'meaning' | 'meaningStatus'
+    'name' | 'englishName' | 'pronunciation' | 'pronunciationVariants' | 'pronunciationStatus' | 'meaning' | 'meaningStatus'
 >;
 
 const SHORT_DAY_NAMES: Record<DayKey, string> = {
@@ -101,6 +102,7 @@ export const mergePremiumNameDetails = (
     for (const detail of details) {
         const name = detail.name.normalize('NFC').trim();
         const merged = { ...detailsByName.get(name), name };
+        if (detail.englishName?.trim()) merged.englishName = detail.englishName.trim();
         if (detail.pronunciationStatus === 'rejected') {
             merged.pronunciation = undefined;
             merged.pronunciationVariants = [];
@@ -124,6 +126,7 @@ export const mergePremiumNameDetails = (
         if (!detail) return item;
         return {
             ...item,
+            englishName: detail.englishName,
             pronunciation: detail.pronunciation,
             pronunciationVariants: detail.pronunciationVariants ?? [],
             pronunciationStatus: detail.pronunciationStatus,

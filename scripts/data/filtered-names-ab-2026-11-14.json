@@ -1,0 +1,7035 @@
+{
+  "sourceFile": "รายชื่อคัดกรอง (1).xlsx",
+  "sha256": "99eda3a4f17b718ab0645a64e18c41f4362dd28fac4516ad096cf9395987127c",
+  "sheet": "A-B",
+  "corrections": [
+    {
+      "row": 554,
+      "from": "์NIRAPHAT",
+      "to": "NIRAPHAT"
+    }
+  ],
+  "records": [
+    {
+      "row": 2,
+      "name": "อชิรสิทธิ์",
+      "pronunciation": "อะ-ชิ-ระ-สิด",
+      "meaning": "มีความสำเร็จอย่างรวดเร็ว",
+      "englishName": "A-CHIRASIT"
+    },
+    {
+      "row": 3,
+      "name": "สิริวิมล",
+      "pronunciation": "สิ-ริ-วิ-มน",
+      "meaning": "ผู้มีความบริสุทธิ์เป็นมิ่งขวัญ",
+      "englishName": "SIRIWIMON"
+    },
+    {
+      "row": 4,
+      "name": "อภิสิทธิ์",
+      "pronunciation": "อะ-พิ-สิด",
+      "meaning": "มีความสำเร็จดีเลิศ",
+      "englishName": "A-PHISIT"
+    },
+    {
+      "row": 5,
+      "name": "อดิสรณ์",
+      "pronunciation": "อะ-ดิ-สอน",
+      "meaning": "ผู้เป็นที่พึ่งที่ดียิ่ง",
+      "englishName": "ADISON"
+    },
+    {
+      "row": 6,
+      "name": "อภิศรณ์",
+      "pronunciation": "อะ-พิ-สอน",
+      "meaning": "ผู้มีที่พึ่งที่วิเศษ",
+      "englishName": "APHISON"
+    },
+    {
+      "row": 7,
+      "name": "อักษรจัญจ์",
+      "pronunciation": "อัก-สอ-ระ-จัน",
+      "meaning": "คล่องเชิงเขียน",
+      "englishName": "AKSORAJAN"
+    },
+    {
+      "row": 8,
+      "name": "อนันต์ยศ",
+      "pronunciation": "อะ-นัน-ยด",
+      "meaning": "มียศ หรือชื่อเสียงหาที่สุดมิได้",
+      "englishName": "ANANYOT"
+    },
+    {
+      "row": 9,
+      "name": "อจลวิชญ์",
+      "pronunciation": "อะ-จะ-ละ-วิด",
+      "meaning": "มีความรู้ไม่หวั่นไหว",
+      "englishName": "AJALAWIT"
+    },
+    {
+      "row": 10,
+      "name": "อภิวรรธน์",
+      "pronunciation": "อะ-พิ-วัด",
+      "meaning": "มีความเจริญยิ่ง",
+      "englishName": "APHIWAT"
+    },
+    {
+      "row": 11,
+      "name": "อัจจันต์",
+      "pronunciation": "อัด-จัน",
+      "meaning": "ยิ่งนัก",
+      "englishName": "ATJAN"
+    },
+    {
+      "row": 12,
+      "name": "อกนิษฐ์",
+      "pronunciation": "อะ-กะ-นิด",
+      "meaning": "ใหญ่สุด สูงสุด",
+      "englishName": "AKANIT"
+    },
+    {
+      "row": 13,
+      "name": "อมรินทร์",
+      "pronunciation": "อะ-มะ-ริน",
+      "meaning": "พระอินทร์",
+      "englishName": "AMARIN"
+    },
+    {
+      "row": 14,
+      "name": "อวิโรทธ์",
+      "pronunciation": "อะ-วิ-โรด",
+      "meaning": "ความไม่ประพฤติผิด",
+      "englishName": "AWIROT"
+    },
+    {
+      "row": 15,
+      "name": "อณิษฐ์",
+      "pronunciation": "อะ-นิด",
+      "meaning": "เล็กที่สุด",
+      "englishName": "ANIT"
+    },
+    {
+      "row": 16,
+      "name": "อริญชย์",
+      "pronunciation": "อะ-ริน",
+      "meaning": "ผู้ชนะศัตรู",
+      "englishName": "ARIN"
+    },
+    {
+      "row": 17,
+      "name": "หริรักษ์",
+      "pronunciation": "หะ-ริ-รัก",
+      "meaning": "พระนารายณ์",
+      "englishName": "HARIRAK"
+    },
+    {
+      "row": 18,
+      "name": "อภินันท์",
+      "pronunciation": "อะ-พิ-นัน",
+      "meaning": "ความยินดียิ่ง",
+      "englishName": "APHINAN"
+    },
+    {
+      "row": 19,
+      "name": "อมลณัฐ",
+      "pronunciation": "อะ-มน-นัด",
+      "meaning": "นักปราชญ์ผู้ไร้มลทิน",
+      "englishName": "AMONNAT"
+    },
+    {
+      "row": 20,
+      "name": "อรรถนนท์",
+      "pronunciation": "อัด-ถะ-นน",
+      "meaning": "ผู้ยินดีในประโยชน์",
+      "englishName": "ATTHANON"
+    },
+    {
+      "row": 21,
+      "name": "อนุรักษ์",
+      "pronunciation": "อะ-นุ-รัก",
+      "meaning": "ผู้รักษาไว้ให้คงเดิม",
+      "englishName": "ANURAK"
+    },
+    {
+      "row": 22,
+      "name": "อภินัทธ์",
+      "pronunciation": "อะ-พิ-นัด",
+      "meaning": "ผูกพันยิ่ง เป็นที่รักที่ผูกพันอย่างยิ่ง",
+      "englishName": "APHINAT"
+    },
+    {
+      "row": 23,
+      "name": "อรรจน์",
+      "pronunciation": "อัด",
+      "meaning": "เครื่องบูชา",
+      "englishName": "AT"
+    },
+    {
+      "row": 24,
+      "name": "อักษรจัณ",
+      "pronunciation": "อัก-สอน-จัน",
+      "meaning": "คล่องเชิงเขียน",
+      "englishName": "AKSORNJAN"
+    },
+    {
+      "row": 25,
+      "name": "อคิราห์",
+      "pronunciation": "อะ-คิ-รา",
+      "meaning": "แสงอาทิตย์ สวยเด่น",
+      "englishName": "AKIRA"
+    },
+    {
+      "row": 26,
+      "name": "อดิษฐ์",
+      "pronunciation": "อะ-ดิด",
+      "meaning": "ผู้เหนือกว่าผู้อื่น",
+      "englishName": "ADIT"
+    },
+    {
+      "row": 27,
+      "name": "อภิธรม์",
+      "pronunciation": "อะ-พิ-ทอน",
+      "meaning": "ผู้มีธรรมขั้นสูง",
+      "englishName": "APHITHORN"
+    },
+    {
+      "row": 28,
+      "name": "อภิรักษ์",
+      "pronunciation": "อะ-พิ-รัก",
+      "meaning": "รักษาไว้อย่างยิ่งใหญ่",
+      "englishName": "APHIRAK"
+    },
+    {
+      "row": 29,
+      "name": "อภิรัชต์",
+      "pronunciation": "อะ-พิ-รัด",
+      "meaning": "ผู้มีเงินมาก",
+      "englishName": "APHIRAT"
+    },
+    {
+      "row": 30,
+      "name": "หัฏฐกร",
+      "pronunciation": "หัด-ถะ-กอน",
+      "meaning": "ผู้สร้างความยินดี",
+      "englishName": "HATTHAKON"
+    },
+    {
+      "row": 31,
+      "name": "อนันต์",
+      "pronunciation": "อะ-นัน",
+      "meaning": "ไม่มีวันสิ้นสุด",
+      "englishName": "A-NAN"
+    },
+    {
+      "row": 32,
+      "name": "อรรธกรรณ",
+      "pronunciation": "อัด-ทะ-กัน",
+      "meaning": "รัศมีวงกลม",
+      "englishName": "ATTHAKAN"
+    },
+    {
+      "row": 33,
+      "name": "อิษฏ์",
+      "pronunciation": "อิด",
+      "meaning": "การบูชา",
+      "englishName": "IT"
+    },
+    {
+      "row": 34,
+      "name": "หัฏฐะ",
+      "pronunciation": "หัด-ถะ",
+      "meaning": "ความสบายใจ , กลุ่มดาวฤกษ์รูปศีรษะช้าง",
+      "englishName": "HADTA"
+    },
+    {
+      "row": 35,
+      "name": "อัครัฐ",
+      "pronunciation": "อัก-คะ-รัด",
+      "meaning": "ผู้อยู่ในประเทศอันดีเลิศ",
+      "englishName": "AKKHARAT"
+    },
+    {
+      "row": 36,
+      "name": "อัษฎาวุธ",
+      "pronunciation": "อัด-สะ-ดา-วุด",
+      "meaning": "อาวุธ 8 อย่าง",
+      "englishName": "ATSADAWUT"
+    },
+    {
+      "row": 37,
+      "name": "อานันท์",
+      "pronunciation": "อา-นัด",
+      "meaning": "ความเพลิดเพลินยินดี",
+      "englishName": "ARNAN"
+    },
+    {
+      "row": 38,
+      "name": "อณิษฐา",
+      "pronunciation": "อะ-นิด-ถา",
+      "meaning": "เล็กที่สุด",
+      "englishName": "ANITTHA"
+    },
+    {
+      "row": 39,
+      "name": "อัณณ์",
+      "pronunciation": "อัน",
+      "meaning": "แม่น้ำ ตัวหนังสือ",
+      "englishName": "AN"
+    },
+    {
+      "row": 40,
+      "name": "อันน์",
+      "pronunciation": "อัน",
+      "meaning": "ข้าว",
+      "englishName": "AN"
+    },
+    {
+      "row": 41,
+      "name": "อารักษ์",
+      "pronunciation": "อา-รัก",
+      "meaning": "ผู้ได้รับการความคุ้มครองทั่ว",
+      "englishName": "AHLAK"
+    },
+    {
+      "row": 42,
+      "name": "อารัทธ์",
+      "pronunciation": "อา-รัด",
+      "meaning": "เริ่มต้นแล้ว",
+      "englishName": "ARRAT"
+    },
+    {
+      "row": 43,
+      "name": "อิชย์",
+      "pronunciation": "อิด",
+      "meaning": "การบูชาครู",
+      "englishName": "IT"
+    },
+    {
+      "row": 44,
+      "name": "อิฏฐา",
+      "pronunciation": "อิด-ถา",
+      "meaning": "น่ารัก",
+      "englishName": "ITTHA"
+    },
+    {
+      "row": 45,
+      "name": "หฤษฏ์",
+      "pronunciation": "หะ-ริด",
+      "meaning": "เป็นที่น่าชื่นชม",
+      "englishName": "HARID"
+    },
+    {
+      "row": 46,
+      "name": "อนลัส",
+      "pronunciation": "อะ-นะ-ลัด",
+      "meaning": "ผู้ไม่เกียจคร้าน",
+      "englishName": "ANALAT"
+    },
+    {
+      "row": 47,
+      "name": "อนาวิล",
+      "pronunciation": "อะ-นา-วิน",
+      "meaning": "ไม่เศร้าหมอง ผ่องใส",
+      "englishName": "ANAWIN"
+    },
+    {
+      "row": 48,
+      "name": "อัคริมา",
+      "pronunciation": "อัก-คริ-มา",
+      "meaning": "เป็นใหญ่",
+      "englishName": "AKKRIMA"
+    },
+    {
+      "row": 49,
+      "name": "อัศรี",
+      "pronunciation": "อัด-สะ-รี",
+      "meaning": "คมกระบี่",
+      "englishName": "ATSAREE"
+    },
+    {
+      "row": 50,
+      "name": "อุณหิส",
+      "pronunciation": "อุด-นะ-หิด",
+      "meaning": "มงกุฎ",
+      "englishName": "UDNAHID"
+    },
+    {
+      "row": 51,
+      "name": "หัฎฐะ",
+      "pronunciation": "หัด-ถะ",
+      "meaning": "ความสบายใจ",
+      "englishName": "HADTA"
+    },
+    {
+      "row": 52,
+      "name": "อังควรา",
+      "pronunciation": "อัง-คะ-วะ-รา",
+      "meaning": "มีสรรพางคังดงาม งามทั้งสรรพางค์",
+      "englishName": "ANGKAWARA"
+    },
+    {
+      "row": 53,
+      "name": "อานนท์",
+      "pronunciation": "อา-นน",
+      "meaning": "ความเพลิดเพลิน",
+      "englishName": "ARNON"
+    },
+    {
+      "row": 54,
+      "name": "อรณัส",
+      "pronunciation": "ออ-ระ-นัด",
+      "meaning": "คลื่น ลำธาร",
+      "englishName": "ORRANAT"
+    },
+    {
+      "row": 55,
+      "name": "อรรถวิท",
+      "pronunciation": "อัด-ถะ-วิด",
+      "meaning": "ผู้รู้ข้อความ ผู้รู้หลักการ",
+      "englishName": "ATTHAWIT"
+    },
+    {
+      "row": 56,
+      "name": "หรรษธร",
+      "pronunciation": "หัน-สะ-ทอน",
+      "meaning": "ผู้มีความสุขความเบิกบาน",
+      "englishName": "HANSATHON"
+    },
+    {
+      "row": 57,
+      "name": "อภิษฐา",
+      "pronunciation": "อะ-พิด-ถา",
+      "meaning": "เป็นที่รักยิ่ง เป็นที่ปรารถนายิ่ง",
+      "englishName": "APHITTHA"
+    },
+    {
+      "row": 58,
+      "name": "อรรจกร",
+      "pronunciation": "อัด-จะ-กอน",
+      "meaning": "ให้ความเคารพนับถือ",
+      "englishName": "ATJAKORN"
+    },
+    {
+      "row": 59,
+      "name": "อัคคี",
+      "pronunciation": "อัก-คี",
+      "meaning": "ชื่อเทพเจ้าแห่งไฟ",
+      "englishName": "AKKEE"
+    },
+    {
+      "row": 60,
+      "name": "อัญชัน",
+      "pronunciation": "อัน-ชัน",
+      "meaning": "ชื่อไม้เถาชนิดหนึ่ง มีดอกขาว สีม่วง สีแดง",
+      "englishName": "ANCHAN"
+    },
+    {
+      "row": 61,
+      "name": "อัฐมา",
+      "pronunciation": "อัด-ทะ-มา",
+      "meaning": "ที่ 8",
+      "englishName": "ATTHAMA"
+    },
+    {
+      "row": 62,
+      "name": "อิฎฐา",
+      "pronunciation": "อิด-ถา",
+      "meaning": "น่าปรารถนา",
+      "englishName": "ITTHA"
+    },
+    {
+      "row": 63,
+      "name": "อิสระ",
+      "pronunciation": "อิด-สะ-หระ",
+      "meaning": "ผู้เป็นใหญ่ในตน",
+      "englishName": "ITSARA"
+    },
+    {
+      "row": 64,
+      "name": "อุษมัน",
+      "pronunciation": "อุด-สะ-มัน",
+      "meaning": "ไออุ่น",
+      "englishName": "UTSAMAN"
+    },
+    {
+      "row": 65,
+      "name": "อธิคม",
+      "pronunciation": "อะ-ทิ-คม",
+      "meaning": "ผู้มีความสำเร็จดียิ่ง",
+      "englishName": "A-THIKOM"
+    },
+    {
+      "row": 66,
+      "name": "อนวัช",
+      "pronunciation": "อะ-นะ-วัด",
+      "meaning": "ผู้ไม่มีที่ติ ไม่มีข้อเสียหาย",
+      "englishName": "ANAWAT"
+    },
+    {
+      "row": 67,
+      "name": "อนุวิท",
+      "pronunciation": "อะ-นุ-วิด",
+      "meaning": "รู้แจ้ง รู้ทะลุ ปรุโปร่ง",
+      "englishName": "ANUWIT"
+    },
+    {
+      "row": 68,
+      "name": "อภิชัจ",
+      "pronunciation": "อะ-พิ-ชัด",
+      "meaning": "มีชาติสูง",
+      "englishName": "APHICHAT"
+    },
+    {
+      "row": 69,
+      "name": "อภิสรา",
+      "pronunciation": "อะ-พิด-สะ-รา",
+      "meaning": "เป็นใหญ่ยิ่ง หรือก้าวไปข้างหน้า",
+      "englishName": "APHITSARA"
+    },
+    {
+      "row": 70,
+      "name": "อัคภัค",
+      "pronunciation": "อัก-คะ-พัก",
+      "meaning": "ความเจริญที่ยอดเยี่ยม",
+      "englishName": "AKKAPAK"
+    },
+    {
+      "row": 71,
+      "name": "อาจหาญ",
+      "pronunciation": "อาด-หาน",
+      "meaning": "กล้าหาญ",
+      "englishName": "ARTHARN"
+    },
+    {
+      "row": 72,
+      "name": "หรรษกร",
+      "pronunciation": "หัน-สะ-กอน",
+      "meaning": "ผู้สร้างความรื่นเริงยินดี",
+      "englishName": "HANSAKORN"
+    },
+    {
+      "row": 73,
+      "name": "หริณะ",
+      "pronunciation": "หะ-หริ-นะ",
+      "meaning": "กระต่าย , สีขมิ้น",
+      "englishName": "HARHINA"
+    },
+    {
+      "row": 74,
+      "name": "อดิรุจ",
+      "pronunciation": "อะ-ดิ-รุด",
+      "meaning": "ผู้สง่างามยิ่ง",
+      "englishName": "ADIRUT"
+    },
+    {
+      "row": 75,
+      "name": "อดิศร",
+      "pronunciation": "อะ-ดิ-สอน",
+      "meaning": "ผู้เป็นใหญ่ยิ่ง",
+      "englishName": "ADISON"
+    },
+    {
+      "row": 76,
+      "name": "อภิรุจ",
+      "pronunciation": "อะ-พิ-รุด",
+      "meaning": "รุ่งเรืองอย่างยิ่ง",
+      "englishName": "APHIRUT"
+    },
+    {
+      "row": 77,
+      "name": "อังคณา",
+      "pronunciation": "อัง-คะ-นา",
+      "meaning": "ผู้หญิง",
+      "englishName": "ANGKHANA"
+    },
+    {
+      "row": 78,
+      "name": "อินทัช",
+      "pronunciation": "อิด-ทัด",
+      "meaning": "ผู้เกิดมาเพื่อความยิ่งใหญ่",
+      "englishName": "INTHAT"
+    },
+    {
+      "row": 79,
+      "name": "หิรัญ",
+      "pronunciation": "หิ-รัน",
+      "meaning": "เงิน",
+      "englishName": "HIRAN"
+    },
+    {
+      "row": 80,
+      "name": "องอาจ",
+      "pronunciation": "อง-อาด",
+      "meaning": "ผู้กล้าหาญ",
+      "englishName": "ONGARJ"
+    },
+    {
+      "row": 81,
+      "name": "อณิมา",
+      "pronunciation": "อะ-นิ-มา",
+      "meaning": "เล็ก",
+      "englishName": "ANIMA"
+    },
+    {
+      "row": 82,
+      "name": "อธิศ",
+      "pronunciation": "อะ-ทิด",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "ATHIT"
+    },
+    {
+      "row": 83,
+      "name": "อภิราม",
+      "pronunciation": "อะ-พิ-ราม",
+      "meaning": "น่ายินดียิ่ง",
+      "englishName": "APHIRARM"
+    },
+    {
+      "row": 84,
+      "name": "อรณิช",
+      "pronunciation": "ออ-ระ-นิด",
+      "meaning": "สตรีผู้บริสุทธิ์",
+      "englishName": "ORRANIT"
+    },
+    {
+      "row": 85,
+      "name": "อาจอง",
+      "pronunciation": "อาด-อง",
+      "meaning": "กล้าหาญ, สง่างาม",
+      "englishName": "ARJ-ONG"
+    },
+    {
+      "row": 86,
+      "name": "อานัน",
+      "pronunciation": "อา-นัน",
+      "meaning": "หน้าปาก",
+      "englishName": "ARNAN"
+    },
+    {
+      "row": 87,
+      "name": "อิศร",
+      "pronunciation": "อิด",
+      "meaning": "ความเป็นใหญ่",
+      "englishName": "IT"
+    },
+    {
+      "row": 88,
+      "name": "อชิระ",
+      "pronunciation": "อะ-ชิ-ระ",
+      "meaning": "คล่องแคล่ว , ว่องไว",
+      "englishName": "ACHIRA"
+    },
+    {
+      "row": 89,
+      "name": "อภิธาร",
+      "pronunciation": "อะ-พิ-ทาน",
+      "meaning": "ทรงไว้อย่างยิ่งใหญ่",
+      "englishName": "APHITHARN"
+    },
+    {
+      "row": 90,
+      "name": "อัษฎา",
+      "pronunciation": "อัด-สะ-ดา",
+      "meaning": "8 อย่าง",
+      "englishName": "ATSADA"
+    },
+    {
+      "row": 91,
+      "name": "อาคิรา",
+      "pronunciation": "อา-คิ-รา",
+      "meaning": "พระอาทิตย์",
+      "englishName": "AKIRA"
+    },
+    {
+      "row": 92,
+      "name": "อิษฎา",
+      "pronunciation": "อิด-สะ-ดา",
+      "meaning": "น่าปรารถนา",
+      "englishName": "ITSADA"
+    },
+    {
+      "row": 93,
+      "name": "เอกนฤน",
+      "pronunciation": "เอก-นะ-ริน",
+      "meaning": "คนดีเยี่ยมคนเดียวเท่านั้น",
+      "englishName": "EK-NARIN"
+    },
+    {
+      "row": 94,
+      "name": "โอฬาร",
+      "pronunciation": "โอ-ลาน",
+      "meaning": "ยิ่งใหญ่",
+      "englishName": "O-LARN"
+    },
+    {
+      "row": 95,
+      "name": "หรรษา",
+      "pronunciation": "หัน-สา",
+      "meaning": "รื่นเริงยินดี",
+      "englishName": "HUNSA"
+    },
+    {
+      "row": 96,
+      "name": "หริณ",
+      "pronunciation": "หะ-ริน",
+      "meaning": "กระต่าย สีขมิ้น",
+      "englishName": "HARIN"
+    },
+    {
+      "row": 97,
+      "name": "อจล",
+      "pronunciation": "อะ-จน",
+      "meaning": "ไม่หวั่นไหว",
+      "englishName": "A-JON"
+    },
+    {
+      "row": 98,
+      "name": "อวัช",
+      "pronunciation": "อะ-วัด",
+      "meaning": "ไม่มีโทษ ไม่มีที่ติ",
+      "englishName": "AWAT"
+    },
+    {
+      "row": 99,
+      "name": "หิริ",
+      "pronunciation": "หิ-ริ",
+      "meaning": "ผู้มีความละอายต่อบาป",
+      "englishName": "HIRI"
+    },
+    {
+      "row": 100,
+      "name": "อนล",
+      "pronunciation": "อะ-นน",
+      "meaning": "ไฟ อัคนีเทพ",
+      "englishName": "A-NON"
+    },
+    {
+      "row": 101,
+      "name": "อมล",
+      "pronunciation": "อะ-มน",
+      "meaning": "ไม่มีมลทิน หรือผู้บริสุทธิ์",
+      "englishName": "AMON"
+    },
+    {
+      "row": 102,
+      "name": "อานิก",
+      "pronunciation": "อา-นิก",
+      "meaning": "เอ็นดูรักใคร่",
+      "englishName": "ANIK"
+    },
+    {
+      "row": 103,
+      "name": "อดิรถ",
+      "pronunciation": "อะ-ดิ-รด",
+      "meaning": "นักรบเด่น จอมทัพ",
+      "englishName": "ADIROT"
+    },
+    {
+      "row": 104,
+      "name": "อธิป",
+      "pronunciation": "อะ-ทิบ",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "A-THITHIB"
+    },
+    {
+      "row": 105,
+      "name": "อนณ",
+      "pronunciation": "อะ-นน",
+      "meaning": "ผู้ไม่มีหนี้",
+      "englishName": "A-NON"
+    },
+    {
+      "row": 106,
+      "name": "อภิกร",
+      "pronunciation": "อะ-พิ-กอน",
+      "meaning": "ผู้รุ่งเรืองยิ่ง",
+      "englishName": "A-PHIKORN"
+    },
+    {
+      "row": 107,
+      "name": "อำมร",
+      "pronunciation": "อำ-มอน",
+      "meaning": "เทวดา",
+      "englishName": "UM-MON"
+    },
+    {
+      "row": 108,
+      "name": "อุรุ",
+      "pronunciation": "อุ-รุ",
+      "meaning": "ประเสริฐ , เลิศ",
+      "englishName": "URU"
+    },
+    {
+      "row": 109,
+      "name": "หาญ",
+      "pronunciation": "หาน",
+      "meaning": "กล้า",
+      "englishName": "HARN"
+    },
+    {
+      "row": 110,
+      "name": "วิรุฬห์สิทธิ์",
+      "pronunciation": "วิ-รุน-สิด",
+      "meaning": "ผู้มีความสำเร็จความเจริญ",
+      "englishName": "WIROONSIT"
+    },
+    {
+      "row": 111,
+      "name": "ศิธัญณัฏฐ์",
+      "pronunciation": "สิ-ทัน-ยะ-นัด",
+      "meaning": "นักปราชญ์ผู้เป็นเลิศ",
+      "englishName": "SITHANYANAT"
+    },
+    {
+      "row": 112,
+      "name": "สรัณณัฏฐ์",
+      "pronunciation": "สะ-รัน-นัด",
+      "meaning": "นักปราชญ์ผู้เป็นที่พึ่ง",
+      "englishName": "SARANNAT"
+    },
+    {
+      "row": 113,
+      "name": "ศิริวรรธน์",
+      "pronunciation": "สิ-หริ-วัด",
+      "meaning": "มีความสุขความเจริญ",
+      "englishName": "SIRIWAT"
+    },
+    {
+      "row": 114,
+      "name": "สรรค์ยชญ์",
+      "pronunciation": "สัน-ยด",
+      "meaning": "สร้างให้คนยกย่อง",
+      "englishName": "SANYOD"
+    },
+    {
+      "row": 115,
+      "name": "สรัลวัจน์",
+      "pronunciation": "สะ-รัน-วัด",
+      "meaning": "ผู้รักษาคำพูด",
+      "englishName": "SARUNWAT"
+    },
+    {
+      "row": 116,
+      "name": "สัณหวัจน์",
+      "pronunciation": "สัน-หะ-วัด",
+      "meaning": "ผู้มีถ้อยคำที่สุภาพนุ่มนวล",
+      "englishName": "SANHAWAT"
+    },
+    {
+      "row": 117,
+      "name": "สิริวรรธน์",
+      "pronunciation": "สิ-หริ-วัด",
+      "meaning": "ผู้เจริญยิ่ง",
+      "englishName": "SIRIWAT"
+    },
+    {
+      "row": 118,
+      "name": "วิรุฬห์สิน",
+      "pronunciation": "วิ-รุน-สิน",
+      "meaning": "เจริญด้วยทรัพย์สิน",
+      "englishName": "WIROONSIN"
+    },
+    {
+      "row": 119,
+      "name": "ศรัทธาลักษณ์",
+      "pronunciation": "สัด-ทา-ลัก",
+      "meaning": "ผู้มีลักษณะน่าเลื่อมใส",
+      "englishName": "SADTHALAK"
+    },
+    {
+      "row": 120,
+      "name": "สรรค์ธนัฐ",
+      "pronunciation": "สัน-ทะ-นัด",
+      "meaning": "ผู้สร้างความมั่นคง",
+      "englishName": "SANTHANAT"
+    },
+    {
+      "row": 121,
+      "name": "วิธิสรรค์",
+      "pronunciation": "วิ-ทิ-สัน",
+      "meaning": "ผู้สร้างสรรค์วิธีการที่ดี",
+      "englishName": "WITISON"
+    },
+    {
+      "row": 122,
+      "name": "ศักรนันทน์",
+      "pronunciation": "สัก-กระ-นัน",
+      "meaning": "โอรสของพระอินทร์",
+      "englishName": "SAKKRANAN"
+    },
+    {
+      "row": 123,
+      "name": "สธนะศรณ์",
+      "pronunciation": "สะ-ทะ-นะ-สอน",
+      "meaning": "เป็นที่พึ่งที่มั่งคั่ง",
+      "englishName": "SATHANASORN"
+    },
+    {
+      "row": 124,
+      "name": "สรัลวัชต์",
+      "pronunciation": "สะ-รัน-วัด",
+      "meaning": "ผู้มีเงินที่ชื่อตรง",
+      "englishName": "SARUNWAT"
+    },
+    {
+      "row": 125,
+      "name": "สิทธิเจตน์",
+      "pronunciation": "สิด-ทิ-เจด",
+      "meaning": "ผู้ประสบความสำเร็จด้วยความคิด,คิดในสิ่งที่ประสบความสำเร็จ",
+      "englishName": "SITTHICHET"
+    },
+    {
+      "row": 126,
+      "name": "สิทธิวิชญ์",
+      "pronunciation": "สิด-ทิ-วิด",
+      "meaning": "นักปราชญ์ผู้มีความสำเร็จ",
+      "englishName": "SITTHIWIT"
+    },
+    {
+      "row": 127,
+      "name": "สิปปวิชฐ์",
+      "pronunciation": "สิบ-ปะ-วิด",
+      "meaning": "เชี่ยวชาญในศิลปะ",
+      "englishName": "SIPPAWIT"
+    },
+    {
+      "row": 128,
+      "name": "ศิรสิทธิ์",
+      "pronunciation": "สิ-ระ-สิด",
+      "meaning": "มีความสำเร็จอันยอดเยี่ยม",
+      "englishName": "SIRASIT"
+    },
+    {
+      "row": 129,
+      "name": "สริลักษณ์",
+      "pronunciation": "สิ-หริ-ลัก",
+      "meaning": "ผู้ที่มีลักษณะที่งดงาม",
+      "englishName": "SIRILUCK"
+    },
+    {
+      "row": 130,
+      "name": "สิรสิทธิ์",
+      "pronunciation": "สิ-ระ-สิด",
+      "meaning": "มีความสำเร็จที่ดีเลิศ",
+      "englishName": "SIRASIT"
+    },
+    {
+      "row": 131,
+      "name": "สรรค์ธนัท",
+      "pronunciation": "สัน-ทะ-นัด",
+      "meaning": "ผู้สร้างความร่ำรวย",
+      "englishName": "SANTHANAT"
+    },
+    {
+      "row": 132,
+      "name": "วัชรสรณ์",
+      "pronunciation": "วัด-ชะ-ระ-สอน",
+      "meaning": "ผู้เป็นที่พึ่งที่แข็งแกร่ง",
+      "englishName": "WATCHARASON"
+    },
+    {
+      "row": 133,
+      "name": "ศิริกันต์",
+      "pronunciation": "สิ-หริ-กัน",
+      "meaning": "ผู้เป็นมิ่งขวัญและน่ารัก",
+      "englishName": "SIRIKAN"
+    },
+    {
+      "row": 134,
+      "name": "ศิริธรณ์",
+      "pronunciation": "สิ-หริ-ทอน",
+      "meaning": "มิ่งขวัญในแผ่นดิน",
+      "englishName": "SIRITHORN"
+    },
+    {
+      "row": 135,
+      "name": "ศิริรักษ์",
+      "pronunciation": "สิ-หริ-รัก",
+      "meaning": "ผู้รักษาความดี",
+      "englishName": "SIRIRAK"
+    },
+    {
+      "row": 136,
+      "name": "สธนวิชญ์",
+      "pronunciation": "สะ-ทะ-นะ-วิด",
+      "meaning": "ผู้รู้และร่ำรวย",
+      "englishName": "SATHANAWIT"
+    },
+    {
+      "row": 137,
+      "name": "สัจจณัฐ",
+      "pronunciation": "สัด-จะ-นัด",
+      "meaning": "ผู้ฉลาดอย่างซื่อสัตย์",
+      "englishName": "SATCHANAT"
+    },
+    {
+      "row": 138,
+      "name": "สัจนันท์",
+      "pronunciation": "สัด-จะ-นัด",
+      "meaning": "ผู้มีความสุขความจริงใจ",
+      "englishName": "SADJANAN"
+    },
+    {
+      "row": 139,
+      "name": "วัชริศร์",
+      "pronunciation": "วัด-ชะ-ริด",
+      "meaning": "เจ้าแห่งเพชร",
+      "englishName": "WATCHALIT"
+    },
+    {
+      "row": 140,
+      "name": "วิปัศย์",
+      "pronunciation": "วิ-ปัด",
+      "meaning": "มีความรู้ , รู้แจ้ง",
+      "englishName": "WIPHAT"
+    },
+    {
+      "row": 141,
+      "name": "ศรัทธาธรรศ",
+      "pronunciation": "สัด-ทา-ทัด",
+      "meaning": "ผู้มีความกล้าผู้คนนับถือ",
+      "englishName": "SATTHATHAT"
+    },
+    {
+      "row": 142,
+      "name": "ศิรวัชร์",
+      "pronunciation": "สิ-ระ-วัด",
+      "meaning": "ผู้แข็งแกร่งเป็นเลิศ",
+      "englishName": "SIRAWAT"
+    },
+    {
+      "row": 143,
+      "name": "สรรวัชญ์",
+      "pronunciation": "สัน-วัด",
+      "meaning": "ผู้ฉลาดรอบรู้อย่างยิ่ง",
+      "englishName": "SANWAT"
+    },
+    {
+      "row": 144,
+      "name": "สรลักษณ์",
+      "pronunciation": "สอ-ระ-ลัก",
+      "meaning": "ผู้มีลักษณะดีเลิศ",
+      "englishName": "SORRALAK"
+    },
+    {
+      "row": 145,
+      "name": "สิทธินนท์",
+      "pronunciation": "สิด-ทิ-นน",
+      "meaning": "ผู้ยินดีในความสำเร็จ",
+      "englishName": "SITTHINON"
+    },
+    {
+      "row": 146,
+      "name": "สิปปวิชญ์",
+      "pronunciation": "สิบ-ปะ-วิด",
+      "meaning": "ผู้รอบรู้ในศิลปะ",
+      "englishName": "SIPPAWIT"
+    },
+    {
+      "row": 147,
+      "name": "สิรวัชร์",
+      "pronunciation": "สิ-ระ-วัด",
+      "meaning": "แข็งแกร่งเป็นยอด",
+      "englishName": "SIRAWAT"
+    },
+    {
+      "row": 148,
+      "name": "สิรวิชญ์",
+      "pronunciation": "สิ-ระ-วิด",
+      "meaning": "นักปราชญ์ผู้เป็นยอด",
+      "englishName": "SIRAWIT"
+    },
+    {
+      "row": 149,
+      "name": "ศิริธรรม",
+      "pronunciation": "สิ-หริ-ทำ",
+      "meaning": "มีความดีเป็นมงคล",
+      "englishName": "SIRITHUM"
+    },
+    {
+      "row": 150,
+      "name": "ศิลป์ธร",
+      "pronunciation": "สิน-ทอน",
+      "meaning": "ผู้มีศิลปะ",
+      "englishName": "SINTHON"
+    },
+    {
+      "row": 151,
+      "name": "ศิวกรณ์",
+      "pronunciation": "สิ-วะ-กอน",
+      "meaning": "ผู้มีการกระทำอันหมดจด",
+      "englishName": "SIWAKON"
+    },
+    {
+      "row": 152,
+      "name": "สธนะวัชร",
+      "pronunciation": "สะ-ทะ-นะ-วัด",
+      "meaning": "ร่ำรวยด้วยเพชร",
+      "englishName": "SATHANAWAT"
+    },
+    {
+      "row": 153,
+      "name": "สรปรัชญ์",
+      "pronunciation": "สอ-ระ-ปรัด",
+      "meaning": "ผู้มีปัญญาเป็นเลิศ",
+      "englishName": "SORRAPRAD"
+    },
+    {
+      "row": 154,
+      "name": "สรภัสร์",
+      "pronunciation": "สอ-ระ-พัด",
+      "meaning": "ผู้เจริญแกล้วกล้า",
+      "englishName": "SORRAPHAT"
+    },
+    {
+      "row": 155,
+      "name": "สรรค์ธร",
+      "pronunciation": "สัน-ทอน",
+      "meaning": "ผู้สร้าง",
+      "englishName": "SANTHON"
+    },
+    {
+      "row": 156,
+      "name": "สรวัชญ์",
+      "pronunciation": "สอ-ระ-วัด",
+      "meaning": "ผู้รู้สาระพัด",
+      "englishName": "SORAWAT"
+    },
+    {
+      "row": 157,
+      "name": "สรวัชร์",
+      "pronunciation": "สอ-ระ-วัด",
+      "meaning": "ผู้แข็งแกร่งแกล้วกล้า",
+      "englishName": "SORAWAT"
+    },
+    {
+      "row": 158,
+      "name": "สรวิชญ์",
+      "pronunciation": "สอ-ระ-วิด",
+      "meaning": "นักปราชญ์ผู้เป็นเลิศ",
+      "englishName": "SORAWIT"
+    },
+    {
+      "row": 159,
+      "name": "สัจธรรศ",
+      "pronunciation": "สัด-จะ-ทัด",
+      "meaning": "เป็นผู้กล้าและซื่อสัตย์",
+      "englishName": "SADJATHAD"
+    },
+    {
+      "row": 160,
+      "name": "สันต์ธร",
+      "pronunciation": "สัน-ทอน",
+      "meaning": "ผู้ชอบความสงบ",
+      "englishName": "SANTHON"
+    },
+    {
+      "row": 161,
+      "name": "สิริรัฐ",
+      "pronunciation": "สิ-ริ-รัด",
+      "meaning": "เป็นมิ่งขวัญแห่งบ้านเมือง",
+      "englishName": "SIRIRAT"
+    },
+    {
+      "row": 162,
+      "name": "ศิรธน",
+      "pronunciation": "สิ-ระ-ทะ-นะ",
+      "meaning": "ผู้มั่งคั่งที่สุด",
+      "englishName": "SIRATHANA"
+    },
+    {
+      "row": 163,
+      "name": "ศิริภร",
+      "pronunciation": "สิ-หริ-พอน",
+      "meaning": "ผู้ประเสริฐค้ำจุน",
+      "englishName": "SIRIPORN"
+    },
+    {
+      "row": 164,
+      "name": "ศิวดล",
+      "pronunciation": "สิ-วะ-ดน",
+      "meaning": "บันดาลให้มีความสุข",
+      "englishName": "SIWADON"
+    },
+    {
+      "row": 165,
+      "name": "ศิษฎิ",
+      "pronunciation": "สิด-สะ-ดิ",
+      "meaning": "การสอน, การชี้นำ",
+      "englishName": "SIDSADI"
+    },
+    {
+      "row": 166,
+      "name": "สธนธร",
+      "pronunciation": "สะ-ทะ-นะ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งความร่ำรวย",
+      "englishName": "SATHANATHON"
+    },
+    {
+      "row": 167,
+      "name": "สรสิช",
+      "pronunciation": "สอ-ระ-สิด",
+      "meaning": "เกิดในสระ ดอกบัว",
+      "englishName": "SORRASIT"
+    },
+    {
+      "row": 168,
+      "name": "สังวรา",
+      "pronunciation": "สัง-วะ-รา",
+      "meaning": "ระมัดระวัง ควบคุมตนเองได้",
+      "englishName": "SANGWARA"
+    },
+    {
+      "row": 169,
+      "name": "สัจจา",
+      "pronunciation": "สัด-จา",
+      "meaning": "ซื่อสัตย์, ความจริงใจ",
+      "englishName": "SATCHA"
+    },
+    {
+      "row": 170,
+      "name": "สิราธร",
+      "pronunciation": "สิ-รา-ทอน",
+      "meaning": "ผู้ดำรงความเป็นยอด",
+      "englishName": "SIRATHON"
+    },
+    {
+      "row": 171,
+      "name": "ศรัญ",
+      "pronunciation": "สะ-รัน",
+      "meaning": "ความรู้ในเรื่องศร, ผู้มีปัญญาฉลาดเฉียบแหลม",
+      "englishName": "SARAN"
+    },
+    {
+      "row": 172,
+      "name": "ศิระ",
+      "pronunciation": "สิ-ระ",
+      "meaning": "ยอด , หัว",
+      "englishName": "SIRA"
+    },
+    {
+      "row": 173,
+      "name": "ศิริ",
+      "pronunciation": "สิ-หริ",
+      "meaning": "ศรี, มิ่งขวัญ, มงคล",
+      "englishName": "SIRI"
+    },
+    {
+      "row": 174,
+      "name": "สรชัช",
+      "pronunciation": "สอ-ระ-ชัด",
+      "meaning": "นักรบผู้วิเศษ",
+      "englishName": "SORRACHAT"
+    },
+    {
+      "row": 175,
+      "name": "สรธร",
+      "pronunciation": "สอ-ระ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งความกล้า",
+      "englishName": "SORATHON"
+    },
+    {
+      "row": 176,
+      "name": "วิรุฬห์ศิลป์",
+      "pronunciation": "วิ-รุน-สิน",
+      "meaning": "ผู้เจริญด้านศิลปะ",
+      "englishName": "WIRUNSIN"
+    },
+    {
+      "row": 177,
+      "name": "วัณณุวรรธน์",
+      "pronunciation": "วัน-นุ-วัด",
+      "meaning": "ทางแห่งความเจริญ",
+      "englishName": "WANNUWAT"
+    },
+    {
+      "row": 178,
+      "name": "สรณ์สรรค์",
+      "pronunciation": "สอน-สัน",
+      "meaning": "พึงระลึกถึงสิ่งที่สร้างใหม่",
+      "englishName": "SORNSAN"
+    },
+    {
+      "row": 179,
+      "name": "สัณห์สิรี",
+      "pronunciation": "สัน-สิ-รี",
+      "meaning": "ผู้นิ่มนวลและเป็นมิ่งขวัญ",
+      "englishName": "SANSIREE"
+    },
+    {
+      "row": 180,
+      "name": "วิวิธวินท์",
+      "pronunciation": "วิ-วิด-ทะ-วิน",
+      "meaning": "ได้สิ่งแปลกๆ ได้รับอยู่เสมอ",
+      "englishName": "WIWITTHAWIN"
+    },
+    {
+      "row": 181,
+      "name": "สัณห์สิริ",
+      "pronunciation": "สัน-สิ-หริ",
+      "meaning": "ผู้นิ่มนวลและเป็นมิ่งขวัญ",
+      "englishName": "SANSIRI"
+    },
+    {
+      "row": 182,
+      "name": "ศิริโรจน์",
+      "pronunciation": "สิ-หริ-โรด",
+      "meaning": "ผู้รุ่งเรืองอย่างราบรื่นดี",
+      "englishName": "SIRIROJ"
+    },
+    {
+      "row": 183,
+      "name": "วิศิษฎิ์",
+      "pronunciation": "วิ-สิด",
+      "meaning": "เลิศ ยอดเยี่ยม",
+      "englishName": "WISIT"
+    },
+    {
+      "row": 184,
+      "name": "วัชรินทร์",
+      "pronunciation": "วัด-ชะ-ริน",
+      "meaning": "เจ้าแห่งเพชร",
+      "englishName": "WATCHARIN"
+    },
+    {
+      "row": 185,
+      "name": "วิจักษณ์",
+      "pronunciation": "วิ-จัก",
+      "meaning": "ฉลาดเชี่ยวชาญ",
+      "englishName": "WICHAK"
+    },
+    {
+      "row": 186,
+      "name": "วิธวินท์",
+      "pronunciation": "วิด-ทะ-วิน",
+      "meaning": "ได้สิ่งแปลกๆ มีลาภเสมอ",
+      "englishName": "WITTHAWIN"
+    },
+    {
+      "row": 187,
+      "name": "ศักรินทร์",
+      "pronunciation": "สัก-กะ-ริน",
+      "meaning": "พระอินทร์ผู้เป็นใหญ่",
+      "englishName": "SAKKARIN"
+    },
+    {
+      "row": 188,
+      "name": "ศิวรักษ์",
+      "pronunciation": "สิ-วะ-รัก",
+      "meaning": "ผู้มีลักษณะอันหมดจดจากกิเลศ",
+      "englishName": "SIWARAK"
+    },
+    {
+      "row": 189,
+      "name": "สิรธีร์",
+      "pronunciation": "สิ-ระ-ที",
+      "meaning": "นักปราชญ์ชั้นยอด",
+      "englishName": "SIRATHEE"
+    },
+    {
+      "row": 190,
+      "name": "วิโรจน์",
+      "pronunciation": "วิ-โลด",
+      "meaning": "สว่าง",
+      "englishName": "WIROJ"
+    },
+    {
+      "row": 191,
+      "name": "วิรัญจ์",
+      "pronunciation": "วิ-รัน",
+      "meaning": "ชื่อของพรหม",
+      "englishName": "WIRAN"
+    },
+    {
+      "row": 192,
+      "name": "สินมนัส",
+      "pronunciation": "สิน-มะ-นัด",
+      "meaning": "ผู้มีใจเป็นทรัพย์",
+      "englishName": "SINMANAT"
+    },
+    {
+      "row": 193,
+      "name": "วัจน์กร",
+      "pronunciation": "วัด-จะ-กอน",
+      "meaning": "เชื่อฟังในสิ่งที่ถูกที่ควรและดีงาม",
+      "englishName": "WATCHAGON"
+    },
+    {
+      "row": 194,
+      "name": "ศิขรินธาร",
+      "pronunciation": "สิ-คริน-ทาน",
+      "meaning": "ภูเขาที่มีสายน้ำ, สายน้ำจากขุนเขา",
+      "englishName": "SIKHRINTHAN"
+    },
+    {
+      "row": 195,
+      "name": "วิรุฬห์",
+      "pronunciation": "วิ-รุน",
+      "meaning": "เจริญ งอกงาม",
+      "englishName": "WIROON"
+    },
+    {
+      "row": 196,
+      "name": "ศิรัสธร",
+      "pronunciation": "สิ-รัด-สะ-ทอน",
+      "meaning": "คอ",
+      "englishName": "SIRATSATHORN"
+    },
+    {
+      "row": 197,
+      "name": "สินิทธ์",
+      "pronunciation": "สิ-นิด",
+      "meaning": "สนิทชิดเชื้อ",
+      "englishName": "SINIT"
+    },
+    {
+      "row": 198,
+      "name": "วรินทร์",
+      "pronunciation": "วะ-ริน",
+      "meaning": "ผู้ประเสริฐและเป็นใหญ่",
+      "englishName": "WARIN"
+    },
+    {
+      "row": 199,
+      "name": "วิกรานต์",
+      "pronunciation": "วิ-กราน",
+      "meaning": "ผู้กล้าหาญ",
+      "englishName": "WIKRARN"
+    },
+    {
+      "row": 200,
+      "name": "ศิรณัฐ",
+      "pronunciation": "สิ-ระ-นัด",
+      "meaning": "เป็นยอดนักปราชญ์",
+      "englishName": "SIRANAT"
+    },
+    {
+      "row": 201,
+      "name": "สัณหวัช",
+      "pronunciation": "สัน-หะ-วัด",
+      "meaning": "ผู้มีคำพูดที่สุภาพนุ่มนวล",
+      "englishName": "SANHAWAT"
+    },
+    {
+      "row": 202,
+      "name": "วริทธิ์",
+      "pronunciation": "วะ-ริด",
+      "meaning": "ความสำเร็จอันประเสริฐ",
+      "englishName": "WARIT"
+    },
+    {
+      "row": 203,
+      "name": "สัณหรส",
+      "pronunciation": "สัน-หะ-รด",
+      "meaning": "มีรสนิยมละเมียดละไม",
+      "englishName": "SANHAROT"
+    },
+    {
+      "row": 204,
+      "name": "สินธุธี",
+      "pronunciation": "สิน-ทุ-ที",
+      "meaning": "ผู้เปี่ยมด้วยแม่น้ำ มหาสมุทรและปัญญา ความคิด ความเข้าใจ",
+      "englishName": "SINTHUTHI"
+    },
+    {
+      "row": 205,
+      "name": "วรัญญ์",
+      "pronunciation": "วะ-รัน",
+      "meaning": "ผู้มีความรู้อันประเสริฐ",
+      "englishName": "WARAN"
+    },
+    {
+      "row": 206,
+      "name": "วรานนท์",
+      "pronunciation": "วะ-รา-นน",
+      "meaning": "มีความยินดีในสิ่งประเสริฐ",
+      "englishName": "WARANON"
+    },
+    {
+      "row": 207,
+      "name": "วิจักษณา",
+      "pronunciation": "วิ-จัก-สะ-นา",
+      "meaning": "ผู้มีสติปัญญาฉลาดเชี่ยวชาญ",
+      "englishName": "WICHAKSANA"
+    },
+    {
+      "row": 208,
+      "name": "สรรเพชญ",
+      "pronunciation": "สัน-เพ็ด",
+      "meaning": "ผู้รู้หมด",
+      "englishName": "SANPET"
+    },
+    {
+      "row": 209,
+      "name": "สรรเพชร",
+      "pronunciation": "สัน-เพ็ด",
+      "meaning": "ผู้รู้ทั้งปวง",
+      "englishName": "SANPHET"
+    },
+    {
+      "row": 210,
+      "name": "สันธิลา",
+      "pronunciation": "สัน-ทิ-ลา",
+      "meaning": "แม่น้ำ",
+      "englishName": "SANTHILA"
+    },
+    {
+      "row": 211,
+      "name": "วัจน์",
+      "pronunciation": "วัด",
+      "meaning": "คำพูด ถ้อยคำ",
+      "englishName": "WAT"
+    },
+    {
+      "row": 212,
+      "name": "สิทธิโชค",
+      "pronunciation": "สิด-ทิ-โชก",
+      "meaning": "ฤกษ์ยามที่จะนำความสำเร็จมาให้",
+      "englishName": "SITTHICHOKE"
+    },
+    {
+      "row": 213,
+      "name": "วรัชญ์",
+      "pronunciation": "วะ-รัด",
+      "meaning": "ผู้รู้สิ่งที่ประเสริฐ",
+      "englishName": "WARAT"
+    },
+    {
+      "row": 214,
+      "name": "วิดรณ์",
+      "pronunciation": "วิ-ดอน",
+      "meaning": "ข้ามพ้นความทุกข์",
+      "englishName": "WIDORN"
+    },
+    {
+      "row": 215,
+      "name": "ศิษฎ์",
+      "pronunciation": "สิด",
+      "meaning": "ผู้มีปัญญา ผู้ใฝ่เรียน",
+      "englishName": "SID"
+    },
+    {
+      "row": 216,
+      "name": "สัทธรรม",
+      "pronunciation": "สัด-ทะ-ทำ",
+      "meaning": "ธรรมของคนดี",
+      "englishName": "SATTATHUM"
+    },
+    {
+      "row": 217,
+      "name": "สิทธิ์",
+      "pronunciation": "สิด",
+      "meaning": "ผู้สำเร็จ ผู้มีชื่อเสียง",
+      "englishName": "SIT"
+    },
+    {
+      "row": 218,
+      "name": "วิทวัส",
+      "pronunciation": "วิ-ทะ-วัด",
+      "meaning": "ผู้ฉลาด",
+      "englishName": "WITHAWAT"
+    },
+    {
+      "row": 219,
+      "name": "วิโรษณา",
+      "pronunciation": "วิ-โร-สะ-นา",
+      "meaning": "ไม่มีความโกรธ",
+      "englishName": "WIROSANA"
+    },
+    {
+      "row": 220,
+      "name": "ศรัณธร",
+      "pronunciation": "สะ-รัน-ทอน",
+      "meaning": "ผู้มีที่พึ่ง",
+      "englishName": "SARANTHORN"
+    },
+    {
+      "row": 221,
+      "name": "ศิวัส",
+      "pronunciation": "สิ-วัด",
+      "meaning": "ผู้เจริญงอกงามดี",
+      "englishName": "SIWAT"
+    },
+    {
+      "row": 222,
+      "name": "สรวิศ",
+      "pronunciation": "สอ-ระ-วิด",
+      "meaning": "มีอำนาจเหนือคนทั้งปวง",
+      "englishName": "SORRAWIT"
+    },
+    {
+      "row": 223,
+      "name": "สันต์",
+      "pronunciation": "สัน",
+      "meaning": "สงบ เงียบ",
+      "englishName": "SAN"
+    },
+    {
+      "row": 224,
+      "name": "วรินธร",
+      "pronunciation": "วะ-ริน-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งความดีงาม",
+      "englishName": "WARINTHORN"
+    },
+    {
+      "row": 225,
+      "name": "วัชริศ",
+      "pronunciation": "วัด-ชะ-ริด",
+      "meaning": "เจ้าแห่งเพชร เจ้าแห่งสายฟ้า",
+      "englishName": "WATCHARIT"
+    },
+    {
+      "row": 226,
+      "name": "วิเชษฐ",
+      "pronunciation": "วิ-เชด",
+      "meaning": "ผู้เจริญอย่างวิเศษ",
+      "englishName": "WICHET"
+    },
+    {
+      "row": 227,
+      "name": "วิญญ์",
+      "pronunciation": "วิน",
+      "meaning": "ผู้รู้แจ้ง นักปราชญ์",
+      "englishName": "WIN"
+    },
+    {
+      "row": 228,
+      "name": "วิศรมา",
+      "pronunciation": "วิ-สะ-ระ-มา",
+      "meaning": "สงบ พักผ่อน",
+      "englishName": "WISARAMA"
+    },
+    {
+      "row": 229,
+      "name": "ศราวิน",
+      "pronunciation": "สะ-รา-วิน",
+      "meaning": "ผู้ฟัง สาวกที่ดีของพระศาสดา",
+      "englishName": "SARAWIN"
+    },
+    {
+      "row": 230,
+      "name": "ศิรภัส",
+      "pronunciation": "สิ-ระ-พัด",
+      "meaning": "มีรัศมีเหนือศีรษะ",
+      "englishName": "SIRAPHAT"
+    },
+    {
+      "row": 231,
+      "name": "สัจจะ",
+      "pronunciation": "สัด-จะ",
+      "meaning": "ความจริง ความสัตย์",
+      "englishName": "SATJA"
+    },
+    {
+      "row": 232,
+      "name": "วัชรบูล",
+      "pronunciation": "วัด-ชะ-ระ-บูน",
+      "meaning": "ผู้เต็มไปด้วยเพชร",
+      "englishName": "WATCHARABOON"
+    },
+    {
+      "row": 233,
+      "name": "วิศรม",
+      "pronunciation": "วิ-สม",
+      "meaning": "สงบ พักผ่อน",
+      "englishName": "WISOM"
+    },
+    {
+      "row": 234,
+      "name": "เวธน์",
+      "pronunciation": "เวด",
+      "meaning": "ปัญญาเฉียบแหลม",
+      "englishName": "WETH"
+    },
+    {
+      "row": 235,
+      "name": "ศิวเวท",
+      "pronunciation": "สิ-วะ-เวด",
+      "meaning": "มนตร์สรรเสริญ",
+      "englishName": "SIWAWET"
+    },
+    {
+      "row": 236,
+      "name": "สังวาล",
+      "pronunciation": "สัง-วาน",
+      "meaning": "สร้อยคอ",
+      "englishName": "SANGWAN"
+    },
+    {
+      "row": 237,
+      "name": "สิขเรศ",
+      "pronunciation": "สิ-ขะ-เรด",
+      "meaning": "ภูเขา",
+      "englishName": "SIKHARED"
+    },
+    {
+      "row": 238,
+      "name": "วัทน์",
+      "pronunciation": "วัด",
+      "meaning": "การพูด ใบหน้า",
+      "englishName": "WAT"
+    },
+    {
+      "row": 239,
+      "name": "วิชญ์",
+      "pronunciation": "วิด",
+      "meaning": "ผู้รู้ นักปราชญ์",
+      "englishName": "WIT"
+    },
+    {
+      "row": 240,
+      "name": "วินิจ",
+      "pronunciation": "วิ-นิด",
+      "meaning": "ตรวจตรา, พิจารณา",
+      "englishName": "WINIJ"
+    },
+    {
+      "row": 241,
+      "name": "ไวทิน",
+      "pronunciation": "ไว-ทิน",
+      "meaning": "ผู้รู้",
+      "englishName": "WAITHIN"
+    },
+    {
+      "row": 242,
+      "name": "ศัจธร",
+      "pronunciation": "สัด-จะ-ทอน",
+      "meaning": "ทรงไว้ซึ่งคำสรรเสริญ",
+      "englishName": "SATJATHORN"
+    },
+    {
+      "row": 243,
+      "name": "สรณ์",
+      "pronunciation": "สอน",
+      "meaning": "ที่พึ่ง ที่ระลึก",
+      "englishName": "SORN"
+    },
+    {
+      "row": 244,
+      "name": "สัญจร",
+      "pronunciation": "สัน-จอน",
+      "meaning": "ผ่านไป",
+      "englishName": "SANCHON"
+    },
+    {
+      "row": 245,
+      "name": "สัญญาณ",
+      "pronunciation": "สัน-ยาน",
+      "meaning": "รหัส",
+      "englishName": "SANYAN"
+    },
+    {
+      "row": 246,
+      "name": "สิรภัทร",
+      "pronunciation": "สิ-ระ-พัด",
+      "meaning": "มีความเจริญเป็นที่รัก",
+      "englishName": "SIRAPHAT"
+    },
+    {
+      "row": 247,
+      "name": "สิริมา",
+      "pronunciation": "สิ-หริ-มา",
+      "meaning": "นางผู้ทรงความงาม",
+      "englishName": "SIRIMA"
+    },
+    {
+      "row": 248,
+      "name": "วัชรดล",
+      "pronunciation": "วัด-ชะ-ระ-ดน",
+      "meaning": "ดลบันดาลให้มีความแข็งแรง",
+      "englishName": "WATCHARADON"
+    },
+    {
+      "row": 249,
+      "name": "วัลลภ",
+      "pronunciation": "วัน-ลบ",
+      "meaning": "คนโปรด",
+      "englishName": "WANLOP"
+    },
+    {
+      "row": 250,
+      "name": "วาริธร",
+      "pronunciation": "วา-ริ-ทอน",
+      "meaning": "เมฆ",
+      "englishName": "WAREETHORN"
+    },
+    {
+      "row": 251,
+      "name": "ศราวุธ",
+      "pronunciation": "สะ-รา-วุด",
+      "meaning": "ผู้มีศรเป็นอาวุธ",
+      "englishName": "SARAWUT"
+    },
+    {
+      "row": 252,
+      "name": "ศิรชัช",
+      "pronunciation": "สิ-ระ-ชัด",
+      "meaning": "นักรบผู้ยอดเยี่ยม",
+      "englishName": "SIRACHAT"
+    },
+    {
+      "row": 253,
+      "name": "ศิวัช",
+      "pronunciation": "สิ-วัด",
+      "meaning": "ผู้ก่อให้เกิดความสุข",
+      "englishName": "SIWAT"
+    },
+    {
+      "row": 254,
+      "name": "สรธัญ",
+      "pronunciation": "สอ-ระ-ทัน",
+      "meaning": "ผู้เจริญดีเลิศ",
+      "englishName": "SORATHUN"
+    },
+    {
+      "row": 255,
+      "name": "สราวุธ",
+      "pronunciation": "สะ-รา-วุด",
+      "meaning": "มีลูกศรเป็นอาวุธ",
+      "englishName": "SARAWUT"
+    },
+    {
+      "row": 256,
+      "name": "สังวร",
+      "pronunciation": "สัง-วอน",
+      "meaning": "การสำรวม",
+      "englishName": "SANGWON"
+    },
+    {
+      "row": 257,
+      "name": "สันทนา",
+      "pronunciation": "สัน-ทะ-นา",
+      "meaning": "การเปรียบเทียบ",
+      "englishName": "SANTHANA"
+    },
+    {
+      "row": 258,
+      "name": "วิรชัช",
+      "pronunciation": "วิ-ระ-ชัด",
+      "meaning": "นักรบผู้กล้าหาญ",
+      "englishName": "WIRACHAT"
+    },
+    {
+      "row": 259,
+      "name": "ศราวร",
+      "pronunciation": "สะ-รา-วอน",
+      "meaning": "เครื่องกำบัง, โล่",
+      "englishName": "SARAWON"
+    },
+    {
+      "row": 260,
+      "name": "ศักรัช",
+      "pronunciation": "สัก-กะ-รัด",
+      "meaning": "ผู้กำเนิดจากพระอินทร์",
+      "englishName": "SAKKARAD"
+    },
+    {
+      "row": 261,
+      "name": "ศัจกร",
+      "pronunciation": "สัด-จะ-กอน",
+      "meaning": "ผู้สร้างความเข้มแข็ง",
+      "englishName": "SATCHAKON"
+    },
+    {
+      "row": 262,
+      "name": "ศิวกร",
+      "pronunciation": "สิ-วะ-กอน",
+      "meaning": "ผู้สร้างสิ่งประเสริฐ",
+      "englishName": "SIWAKORN"
+    },
+    {
+      "row": 263,
+      "name": "สังคม",
+      "pronunciation": "สัง-คม",
+      "meaning": "การพบปะ",
+      "englishName": "SANGKHOM"
+    },
+    {
+      "row": 264,
+      "name": "สิงคาร",
+      "pronunciation": "สิง-คาน",
+      "meaning": "สิ่งที่ทำให้เกิดความรัก",
+      "englishName": "SINGKHARN"
+    },
+    {
+      "row": 265,
+      "name": "วริศ",
+      "pronunciation": "วะ-ริด",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "WARIT"
+    },
+    {
+      "row": 266,
+      "name": "เวคิน",
+      "pronunciation": "เว-คิน",
+      "meaning": "ผู้มีความเร็ว",
+      "englishName": "WEKHIN"
+    },
+    {
+      "row": 267,
+      "name": "ศรราม",
+      "pronunciation": "สอน-ราม",
+      "meaning": "อาวุธประจำกายของพระราม",
+      "englishName": "SORNRAM"
+    },
+    {
+      "row": 268,
+      "name": "สรเลข",
+      "pronunciation": "สอ-ระ-เลก",
+      "meaning": "ตำแหน่งหัวเมืองในสมัยโบรณ (ผู้เป็นใหญ่ในถิ่นนั้น)",
+      "englishName": "SORRALAK"
+    },
+    {
+      "row": 269,
+      "name": "สินธุ",
+      "pronunciation": "สิน-ทุ",
+      "meaning": "ลำน้ำ, แม่น้ำ",
+      "englishName": "SINDU"
+    },
+    {
+      "row": 270,
+      "name": "วโรดม",
+      "pronunciation": "วะ-โร-ดม",
+      "meaning": "ประเสริฐสุด",
+      "englishName": "WARODOM"
+    },
+    {
+      "row": 271,
+      "name": "วัชระ",
+      "pronunciation": "วัด-ชะ-ระ",
+      "meaning": "ผู้เป็นดั่งเพชร",
+      "englishName": "WATCHARA"
+    },
+    {
+      "row": 272,
+      "name": "วิกรม",
+      "pronunciation": "วิ-กรม",
+      "meaning": "ความพากเพียร , ความห้าวหาญ",
+      "englishName": "WIKROM"
+    },
+    {
+      "row": 273,
+      "name": "วิชญะ",
+      "pronunciation": "วิด-ชะ-ยะ",
+      "meaning": "ผู้รู้",
+      "englishName": "WIDCHAYA"
+    },
+    {
+      "row": 274,
+      "name": "วิญญู",
+      "pronunciation": "วิน-ยู",
+      "meaning": "ผู้รู้แจ้ง",
+      "englishName": "WINYU"
+    },
+    {
+      "row": 275,
+      "name": "วิธาน",
+      "pronunciation": "วิ-ทาน",
+      "meaning": "ระเบียบ , กฎเกณฑ์",
+      "englishName": "WITHAN"
+    },
+    {
+      "row": 276,
+      "name": "วิมน",
+      "pronunciation": "วิ-มน",
+      "meaning": "ผู้มีใจบริสุทธิ์",
+      "englishName": "WIMON"
+    },
+    {
+      "row": 277,
+      "name": "วิรัช",
+      "pronunciation": "วิ-รัด",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "WIRAT"
+    },
+    {
+      "row": 278,
+      "name": "วิษณุ",
+      "pronunciation": "วิด-สะ-นุ",
+      "meaning": "พระนารายณ์",
+      "englishName": "WITSANU"
+    },
+    {
+      "row": 279,
+      "name": "เวทวรา",
+      "pronunciation": "เวด-วะ-รา",
+      "meaning": "ผู้มีความรู้ที่ประเสริฐ",
+      "englishName": "WATWARA"
+    },
+    {
+      "row": 280,
+      "name": "เวทิศ",
+      "pronunciation": "เว-ทิด",
+      "meaning": "ผู้คงแก่เรียน",
+      "englishName": "WETHIT"
+    },
+    {
+      "row": 281,
+      "name": "สธนะ",
+      "pronunciation": "สะ-ทะ-นะ",
+      "meaning": "ผู้ร่ำรวย , ผู้มั่งคั่ง",
+      "englishName": "SATANA"
+    },
+    {
+      "row": 282,
+      "name": "สรภัค",
+      "pronunciation": "สอ-ระ-พัก",
+      "meaning": "มีโชคที่ดีเลิศ",
+      "englishName": "SORRAPHAK"
+    },
+    {
+      "row": 283,
+      "name": "วริษ",
+      "pronunciation": "วะ-ริด",
+      "meaning": "ฝน",
+      "englishName": "WARIT"
+    },
+    {
+      "row": 284,
+      "name": "วลัช",
+      "pronunciation": "วะ-ลัด",
+      "meaning": "ปลา",
+      "englishName": "WALAT"
+    },
+    {
+      "row": 285,
+      "name": "ศิลา",
+      "pronunciation": "สิ-ลา",
+      "meaning": "หิน",
+      "englishName": "SILA"
+    },
+    {
+      "row": 286,
+      "name": "วาริช",
+      "pronunciation": "วา-ลิด",
+      "meaning": "ผู้เกิดจากน้ำ",
+      "englishName": "WARISH"
+    },
+    {
+      "row": 287,
+      "name": "ศิกษก",
+      "pronunciation": "สิก-สะ-กะ",
+      "meaning": "ผู้สอน ผู้รู้",
+      "englishName": "SIKSAKA"
+    },
+    {
+      "row": 288,
+      "name": "ศิขร",
+      "pronunciation": "สิ-ขอน",
+      "meaning": "ยอดเขา",
+      "englishName": "SIKHON"
+    },
+    {
+      "row": 289,
+      "name": "สรัช",
+      "pronunciation": "สะ-รัด",
+      "meaning": "เกิดในสระ ดอกบัว",
+      "englishName": "SARAT"
+    },
+    {
+      "row": 290,
+      "name": "สิขร",
+      "pronunciation": "สิ-ขอน",
+      "meaning": "ยอดเขา",
+      "englishName": "SIKHORN"
+    },
+    {
+      "row": 291,
+      "name": "สิทธา",
+      "pronunciation": "สิด-ทา",
+      "meaning": "ผู้สำเร็จแล้ว ผู้มีชื่อเสียง",
+      "englishName": "SITTHA"
+    },
+    {
+      "row": 292,
+      "name": "วรุณ",
+      "pronunciation": "วะ-รุน",
+      "meaning": "เทวดาแห่งฝน, เทพแห่งฝน, พระพิรุณ",
+      "englishName": "WAROON"
+    },
+    {
+      "row": 293,
+      "name": "วิธู",
+      "pronunciation": "วิ-ทู",
+      "meaning": "พระจันทร์",
+      "englishName": "WITOO"
+    },
+    {
+      "row": 294,
+      "name": "ศักร",
+      "pronunciation": "สัก-กะ-ระ",
+      "meaning": "ผู้มีฤทธิ์",
+      "englishName": "SAKKARA"
+    },
+    {
+      "row": 295,
+      "name": "ศิรา",
+      "pronunciation": "สิ-รา",
+      "meaning": "น้ำ ลำธาร",
+      "englishName": "SIRA"
+    },
+    {
+      "row": 296,
+      "name": "วฤธ",
+      "pronunciation": "วะ-ริด",
+      "meaning": "เพิ่มพูนอย่างเข้มแข็ง",
+      "englishName": "WARIT"
+    },
+    {
+      "row": 297,
+      "name": "ษมา",
+      "pronunciation": "สะ-มา",
+      "meaning": "การยกโทษให้",
+      "englishName": "SAMA"
+    },
+    {
+      "row": 298,
+      "name": "มนต์สิทธิ์",
+      "pronunciation": "มน-สิด",
+      "meaning": "ที่ปรึกษา",
+      "englishName": "MONSIT"
+    },
+    {
+      "row": 299,
+      "name": "ภัสร์สรณ์",
+      "pronunciation": "พัด-สอน",
+      "meaning": "มีที่พึ่งที่เจริญ",
+      "englishName": "PHATSORN"
+    },
+    {
+      "row": 300,
+      "name": "รุจรวิศร์",
+      "pronunciation": "รุด-ระ-วิด",
+      "meaning": "ผู้รุ่งเรืองและยิ่งใหญ่",
+      "englishName": "RUTRAWIT"
+    },
+    {
+      "row": 301,
+      "name": "ยชญ์ชวิศ",
+      "pronunciation": "ยด-ชะ-วิด",
+      "meaning": "ผู้มีเกียรติและเป็นใหญ่",
+      "englishName": "YODCCHAWIT"
+    },
+    {
+      "row": 302,
+      "name": "ยชญ์ศิริ",
+      "pronunciation": "ยด-สิ-หริ",
+      "meaning": "ผู้มีเกียรติที่ดีงาม",
+      "englishName": "YOTSIRI"
+    },
+    {
+      "row": 303,
+      "name": "ยศรินทร์",
+      "pronunciation": "ยด-สะ-ริน",
+      "meaning": "ผู้ยิ่งใหญ่มีอำนาจ",
+      "englishName": "YOSSARIN"
+    },
+    {
+      "row": 304,
+      "name": "รักนริศร์",
+      "pronunciation": "รัก-นะ-ริด",
+      "meaning": "ผู้ชื่นชอบความยิ่งใหญ่",
+      "englishName": "RAKNARID"
+    },
+    {
+      "row": 305,
+      "name": "รัฐสรณ์",
+      "pronunciation": "รัด-ถะ-สอน",
+      "meaning": "ผู้เป็นที่พึ่งของคนในแว่นแคว้น",
+      "englishName": "RADTHASON"
+    },
+    {
+      "row": 306,
+      "name": "มนต์สิริ",
+      "pronunciation": "มน-สิ-หริ",
+      "meaning": "ผู้มีปัญญาเป็นเลิศ",
+      "englishName": "MONSIRI"
+    },
+    {
+      "row": 307,
+      "name": "รัฐธีร์",
+      "pronunciation": "รัด-ที",
+      "meaning": "นักปราชญ์ของบ้านเมือง",
+      "englishName": "RATTHEE"
+    },
+    {
+      "row": 308,
+      "name": "เลิศรักษ์",
+      "pronunciation": "เลิด-พัน",
+      "meaning": "รักษาความเป็นเลิศ",
+      "englishName": "LERDRAK"
+    },
+    {
+      "row": 309,
+      "name": "วชิรสรณ์",
+      "pronunciation": "วะ-ชิ-ระ-สอน",
+      "meaning": "มีเพชรเป็นที่พึ่ง",
+      "englishName": "WACHIRASORN"
+    },
+    {
+      "row": 310,
+      "name": "ลัทธสิทธ์",
+      "pronunciation": "ลัด-ทะ-สิด",
+      "meaning": "ได้รับแล้วซึ่งความสำเร็จ",
+      "englishName": "LADTASID"
+    },
+    {
+      "row": 311,
+      "name": "ยศธน",
+      "pronunciation": "ยด-ทะ-นะ",
+      "meaning": "ผู้มีเกียรติและร่ำรวย",
+      "englishName": "YOTTHANA"
+    },
+    {
+      "row": 312,
+      "name": "ลักษณ์วรินทร์",
+      "pronunciation": "ลัก-วะ-ริน",
+      "meaning": "ลักษณะของผู้เป็นใหญ่",
+      "englishName": "LAKWARIN"
+    },
+    {
+      "row": 313,
+      "name": "มธุมิศร์",
+      "pronunciation": "มะ-ทุ-มิด",
+      "meaning": "เจือรสหวาน",
+      "englishName": "MATHUMID"
+    },
+    {
+      "row": 314,
+      "name": "มุจรินทร์",
+      "pronunciation": "มุ-จะ-ริน",
+      "meaning": "ต้นจิก",
+      "englishName": "MUCHARIN"
+    },
+    {
+      "row": 315,
+      "name": "รวินท์ภัทร",
+      "pronunciation": "ระ-วิน-พัด",
+      "meaning": "เจริญดั่งดอกบัว",
+      "englishName": "RAWINPHAT"
+    },
+    {
+      "row": 316,
+      "name": "รวินันท์",
+      "pronunciation": "ระ-วิ-นัน",
+      "meaning": "เป็นที่ยินดีดุจพระอาทิตย์",
+      "englishName": "RAWINAN"
+    },
+    {
+      "row": 317,
+      "name": "ไรวินท์",
+      "pronunciation": "ไร-วิน",
+      "meaning": "ผู้มีทรัพย์",
+      "englishName": "RAIWIN"
+    },
+    {
+      "row": 318,
+      "name": "วชิรญาณ์",
+      "pronunciation": "วะ-ชิ-ระ-ยา",
+      "meaning": "มีความรู้เฉียบคมดุจเพชร",
+      "englishName": "WACHIRAYA"
+    },
+    {
+      "row": 319,
+      "name": "วรปรัชญ์",
+      "pronunciation": "วอ-ระ-ปรัด",
+      "meaning": "นักปราชญ์ผู้ประเสริฐ",
+      "englishName": "WORAPRAT"
+    },
+    {
+      "row": 320,
+      "name": "ภัทรนันท์",
+      "pronunciation": "พัด-ทระ-นัน",
+      "meaning": "ผู้มีกำเนิดดีงาม",
+      "englishName": "PHATTRANAN"
+    },
+    {
+      "row": 321,
+      "name": "มุนินทร์",
+      "pronunciation": "มุ-นิน",
+      "meaning": "จอมนักปราชญ์",
+      "englishName": "MUNIN"
+    },
+    {
+      "row": 322,
+      "name": "ลักษมณ์",
+      "pronunciation": "ลัก",
+      "meaning": "ชื่อน้ององค์หนึ่งของพระราม ในเรื่องรามเกียรติ์",
+      "englishName": "LUCK"
+    },
+    {
+      "row": 323,
+      "name": "ภัคนันท์",
+      "pronunciation": "พัก-คะ-นัน",
+      "meaning": "ผู้ยินดีในโชคและสิริมงคล",
+      "englishName": "PHAKKHANAN"
+    },
+    {
+      "row": 324,
+      "name": "รฐนนท์",
+      "pronunciation": "ระ-ถะ-นน",
+      "meaning": "เป็นที่ยินดีของบ้านเมือง",
+      "englishName": "RATHANON"
+    },
+    {
+      "row": 325,
+      "name": "รวินทร์",
+      "pronunciation": "ระ-วิน",
+      "meaning": "ผู้ยิ่งใหญ่ดั่งพระอาทิตย์",
+      "englishName": "RAWIN"
+    },
+    {
+      "row": 326,
+      "name": "โรจภัทร์",
+      "pronunciation": "โรด-จะ-พัด",
+      "meaning": "ความรุ่งเรืองที่ประเสริฐ",
+      "englishName": "RODJAPAT"
+    },
+    {
+      "row": 327,
+      "name": "มนต์ธัช",
+      "pronunciation": "มน-ทัด",
+      "meaning": "มีมนต์เป็นเครื่องหมายแห่งชัยชนะ",
+      "englishName": "MONTHAT"
+    },
+    {
+      "row": 328,
+      "name": "รังรักษ์",
+      "pronunciation": "รัง-รัก",
+      "meaning": "การสร้างความคุ้มครอง",
+      "englishName": "RANGRAK"
+    },
+    {
+      "row": 329,
+      "name": "วนันต์",
+      "pronunciation": "วะ-นัน",
+      "meaning": "แนวป่า ชายป่า",
+      "englishName": "WANAN"
+    },
+    {
+      "row": 330,
+      "name": "วรกันต์",
+      "pronunciation": "วอ-ระ-กัน",
+      "meaning": "ประเสริฐและน่ารัก",
+      "englishName": "WORRAKAN"
+    },
+    {
+      "row": 331,
+      "name": "มโนธรรม",
+      "pronunciation": "มะ-โน-ทำ",
+      "meaning": "ผู้มีธรรมในใจ",
+      "englishName": "MANOTHAM"
+    },
+    {
+      "row": 332,
+      "name": "มัณฑน์",
+      "pronunciation": "มัน",
+      "meaning": "การตกแต่ง, การประดับ",
+      "englishName": "MUN"
+    },
+    {
+      "row": 333,
+      "name": "วนาวรรณ",
+      "pronunciation": "วะ-นา-วัน",
+      "meaning": "ป่าไม้ที่สวยงาม",
+      "englishName": "WANAWAN"
+    },
+    {
+      "row": 334,
+      "name": "ภัทรจาริน",
+      "pronunciation": "พัด-ทระ-จา-ริน",
+      "meaning": "มีความประพฤติดี",
+      "englishName": "PHATTRAJARIN"
+    },
+    {
+      "row": 335,
+      "name": "มนต์ธร",
+      "pronunciation": "มน-ทอน",
+      "meaning": "ทรงไว้ซึ่งมนต์ความขลัง",
+      "englishName": "MONTHORN"
+    },
+    {
+      "row": 336,
+      "name": "โลจน์",
+      "pronunciation": "โลด",
+      "meaning": "ดวงตา",
+      "englishName": "LOAD"
+    },
+    {
+      "row": 337,
+      "name": "วรวิบูล",
+      "pronunciation": "วอ-ระ-วิ-บูน",
+      "meaning": "เต็มไปด้วยความดีงาม",
+      "englishName": "WORRAWIBOON"
+    },
+    {
+      "row": 338,
+      "name": "ภัคนนท์",
+      "pronunciation": "พัก-คะ-นน",
+      "meaning": "ผู้ยินดีในเกียรติ",
+      "englishName": "PAKKANON"
+    },
+    {
+      "row": 339,
+      "name": "ยสินทร",
+      "pronunciation": "ยะ-สิน-ทอน",
+      "meaning": "เป็นใหญ่ด้วยยศ มียศ",
+      "englishName": "YASINTHORN"
+    },
+    {
+      "row": 340,
+      "name": "รชตนนท์",
+      "pronunciation": "ระ-ชะ-ตะ-นัน",
+      "meaning": "ผู้ชื่นชอบและยินดีในเงิน",
+      "englishName": "RACHATANAN"
+    },
+    {
+      "row": 341,
+      "name": "รวินท์",
+      "pronunciation": "ระ-วิน",
+      "meaning": "ดอกบัว",
+      "englishName": "RAWIN"
+    },
+    {
+      "row": 342,
+      "name": "ละอองคำ",
+      "pronunciation": "ละ-ออง-คำ",
+      "meaning": "ผงทอง",
+      "englishName": "LA-ONGKHAM"
+    },
+    {
+      "row": 343,
+      "name": "ลักษณ์",
+      "pronunciation": "ลัก",
+      "meaning": "จดหมาย",
+      "englishName": "LAK"
+    },
+    {
+      "row": 344,
+      "name": "ลักษมิกร",
+      "pronunciation": "ลัก-สะ-มิ-กอน",
+      "meaning": "ลงชาดสีแดง",
+      "englishName": "LUCKSAMIKORN"
+    },
+    {
+      "row": 345,
+      "name": "ลัคนทิน",
+      "pronunciation": "ลัก-คะ-นะ-ทิน",
+      "meaning": "วันเป็นมงคล",
+      "englishName": "LUCKKANATHIN"
+    },
+    {
+      "row": 346,
+      "name": "วนาธรรม",
+      "pronunciation": "วะ-นา-วัด",
+      "meaning": "ป่าที่สวยงาม",
+      "englishName": "WANAWAN"
+    },
+    {
+      "row": 347,
+      "name": "วรรณธนา",
+      "pronunciation": "วัน-ทะ-นา",
+      "meaning": "ผู้มีความงามเป็นทรัพย์",
+      "englishName": "WANTHANA"
+    },
+    {
+      "row": 348,
+      "name": "วรรณธัช",
+      "pronunciation": "วัน-นะ-ทัด",
+      "meaning": "เด่นทางหนังสือ",
+      "englishName": "WANNATHAT"
+    },
+    {
+      "row": 349,
+      "name": "ภัทรวรรธ",
+      "pronunciation": "พัด-ทระ-วัด",
+      "meaning": "เจริญด้วยสิริมงคล",
+      "englishName": "PHATTRAWAT"
+    },
+    {
+      "row": 350,
+      "name": "ยศธนะ",
+      "pronunciation": "ยด-ทะ-นะ",
+      "meaning": "เกียรติยศเป็นทรัพย์",
+      "englishName": "YOTTHANA"
+    },
+    {
+      "row": 351,
+      "name": "รวิษฏา",
+      "pronunciation": "ระ-วิด-สะ-ดา",
+      "meaning": "เป็นที่รักของพระอาทิตย์",
+      "englishName": "RAWITSADA"
+    },
+    {
+      "row": 352,
+      "name": "โรจน์",
+      "pronunciation": "โรด",
+      "meaning": "รุ่งเรือง",
+      "englishName": "ROJ"
+    },
+    {
+      "row": 353,
+      "name": "วชิราวุธ",
+      "pronunciation": "วะ-ชิ-รา-วุด",
+      "meaning": "พระอินทร์",
+      "englishName": "WACHIRAWUT"
+    },
+    {
+      "row": 354,
+      "name": "ร่มธรรม",
+      "pronunciation": "ร่ม-ทำ",
+      "meaning": "ผู้อยู่ในร่มเงาแห่งพระธรรม",
+      "englishName": "ROMTHAM"
+    },
+    {
+      "row": 355,
+      "name": "วรรธนะ",
+      "pronunciation": "วัน-ทะ-นะ",
+      "meaning": "ความเจริญ, รุ่งเรือง",
+      "englishName": "WANTHANA"
+    },
+    {
+      "row": 356,
+      "name": "ภวินท์",
+      "pronunciation": "พะ-วิน",
+      "meaning": "เจ้าแห่งภพ เป็นใหญ่ในโลก",
+      "englishName": "PHAWIN"
+    },
+    {
+      "row": 357,
+      "name": "มัญชรี",
+      "pronunciation": "มัน-ชะ-รี",
+      "meaning": "ก้านดอกไม้",
+      "englishName": "MANCHAREE"
+    },
+    {
+      "row": 358,
+      "name": "วรรษชล",
+      "pronunciation": "วัน-สะ-ชน",
+      "meaning": "น้ำฝน",
+      "englishName": "WANSACHON"
+    },
+    {
+      "row": 359,
+      "name": "วรรษธร",
+      "pronunciation": "วัด-สะ-ทอน",
+      "meaning": "มีฝน, เกิดเมฆ",
+      "englishName": "WATSATHORN"
+    },
+    {
+      "row": 360,
+      "name": "ยงยศ",
+      "pronunciation": "ยง-ยด",
+      "meaning": "มีความยั่งยืนในยศ",
+      "englishName": "YONGYOT"
+    },
+    {
+      "row": 361,
+      "name": "ยศยง",
+      "pronunciation": "ยด-สะ-ยง",
+      "meaning": "ผู้มียศศักดิ์",
+      "englishName": "YODSAYONG"
+    },
+    {
+      "row": 362,
+      "name": "รัชวิน",
+      "pronunciation": "รัด-ชะ-วิน",
+      "meaning": "ผู้ได้รับทรัพย์สมบัติ",
+      "englishName": "RATCHAWIN"
+    },
+    {
+      "row": 363,
+      "name": "รุจน์",
+      "pronunciation": "รุด",
+      "meaning": "สว่างไสว",
+      "englishName": "RUJ"
+    },
+    {
+      "row": 364,
+      "name": "วรงค์",
+      "pronunciation": "วะ-รง",
+      "meaning": "ส่วนที่ประเสริฐที่สุด ศีรษะ",
+      "englishName": "WARONG"
+    },
+    {
+      "row": 365,
+      "name": "วรบรรณ",
+      "pronunciation": "วอ-ระ-บัน",
+      "meaning": "ประเสริฐด้านหนังสือ ผู้ฉลาด",
+      "englishName": "WORRABAN"
+    },
+    {
+      "row": 366,
+      "name": "วรรณณา",
+      "pronunciation": "วัน-นา",
+      "meaning": "หนังสือ, การเขียน",
+      "englishName": "WANNA"
+    },
+    {
+      "row": 367,
+      "name": "มนธกัญ",
+      "pronunciation": "มน-ทะ-กัน",
+      "meaning": "ดาวพระเสาร์อันเป็นที่รัก",
+      "englishName": "MONTHAKAN"
+    },
+    {
+      "row": 368,
+      "name": "มัณฑนา",
+      "pronunciation": "มัน-ทะ-นา",
+      "meaning": "การตกแต่ง",
+      "englishName": "MANTHANA"
+    },
+    {
+      "row": 369,
+      "name": "ยชญ์",
+      "pronunciation": "ยด",
+      "meaning": "การบูชา การให้เกียรติ",
+      "englishName": "YOT"
+    },
+    {
+      "row": 370,
+      "name": "ยศธร",
+      "pronunciation": "ยด-สะ-ทอน",
+      "meaning": "รักษาชื่อเสียงไว้",
+      "englishName": "YOTSATHON"
+    },
+    {
+      "row": 371,
+      "name": "ยศธิ",
+      "pronunciation": "ยด-ทิ",
+      "meaning": "ผู้เปี่ยมด้วยเกียรติ ชื่อเสียงและการตั้งไว้ ขุมทรัพย์ ปัญญาในรูปศัพท์เฉพาะ",
+      "englishName": "YOTTHI"
+    },
+    {
+      "row": 372,
+      "name": "รสรัญ",
+      "pronunciation": "รด-สะ-รัน",
+      "meaning": "ผู้มีปัญญา",
+      "englishName": "RODSARUN"
+    },
+    {
+      "row": 373,
+      "name": "ลภัศรา",
+      "pronunciation": "ละ-พัด-สะ-รา",
+      "meaning": "เจ้าแห่งทรัพย์",
+      "englishName": "LAPHATSARA"
+    },
+    {
+      "row": 374,
+      "name": "ภัทราวุธ",
+      "pronunciation": "พัด-ทรา-วุด",
+      "meaning": "ผู้มีอาวุธอันประเสริฐ",
+      "englishName": "PHATTRAWUT"
+    },
+    {
+      "row": 375,
+      "name": "วรวัช",
+      "pronunciation": "วอ-ระ-วัด",
+      "meaning": "มีความรู้อันประเสริฐ",
+      "englishName": "WORRAWAT"
+    },
+    {
+      "row": 376,
+      "name": "วรวิช",
+      "pronunciation": "วอ-ระ-วิด",
+      "meaning": "ผู้มีวิชาความรู้เป็นเลิศ",
+      "englishName": "WORRAWIT"
+    },
+    {
+      "row": 377,
+      "name": "มนัส",
+      "pronunciation": "มะ-นัด",
+      "meaning": "ใจ",
+      "englishName": "MANAT"
+    },
+    {
+      "row": 378,
+      "name": "มหิดล",
+      "pronunciation": "มะ-หิ-ดน",
+      "meaning": "พื้นดิน",
+      "englishName": "MAHIDON"
+    },
+    {
+      "row": 379,
+      "name": "รวิศ",
+      "pronunciation": "ระ-วิด",
+      "meaning": "ผู้ยิ่งใหญ่ดุจดังพระอาทิตย์",
+      "englishName": "RAWIT"
+    },
+    {
+      "row": 380,
+      "name": "วจนะ",
+      "pronunciation": "วะ-จะ-นะ",
+      "meaning": "คำพูด , ถ้อยคำ",
+      "englishName": "WACHANA"
+    },
+    {
+      "row": 381,
+      "name": "วทัญญู",
+      "pronunciation": "วะ-ทัน-ยู",
+      "meaning": "ผู้เอื้อเฟื้อเผื่อแผ่ , ใจบุญ",
+      "englishName": "WATHANYU"
+    },
+    {
+      "row": 382,
+      "name": "วรกิจ",
+      "pronunciation": "วอ-ระ-กิด",
+      "meaning": "การกระทำอันประเสริฐ",
+      "englishName": "WORAKIT"
+    },
+    {
+      "row": 383,
+      "name": "ภวัฐ",
+      "pronunciation": "พะ-วัด",
+      "meaning": "ดำรงอยู่บนพื้นพิภพ",
+      "englishName": "PHAWAT"
+    },
+    {
+      "row": 384,
+      "name": "ภัทรโชค",
+      "pronunciation": "พัด-ทระ-โชก",
+      "meaning": "ผู้เจริญด้วยโชค",
+      "englishName": "PHADTRACHOK"
+    },
+    {
+      "row": 385,
+      "name": "ภัทรเวช",
+      "pronunciation": "พัด-ทระ-เวด",
+      "meaning": "แพทย์ที่เจริญ",
+      "englishName": "PHADTRAVET"
+    },
+    {
+      "row": 386,
+      "name": "มกรธัช",
+      "pronunciation": "มะ-กะ-ระ-ทัด",
+      "meaning": "ผู้เด่นดัง , ผู้โดดเด่น",
+      "englishName": "MAKARATHAT"
+    },
+    {
+      "row": 387,
+      "name": "มลธน",
+      "pronunciation": "มน-ทะ-นะ",
+      "meaning": "ผู้มีทรัพย์",
+      "englishName": "MONTHANA"
+    },
+    {
+      "row": 388,
+      "name": "รจนกร",
+      "pronunciation": "รด-จะ-นะ-กอน",
+      "meaning": "ผู้เรียบเรียงเรื่อง",
+      "englishName": "ROTJANAKORN"
+    },
+    {
+      "row": 389,
+      "name": "ระบิล",
+      "pronunciation": "ระ-บิน",
+      "meaning": "เรื่อง ความ",
+      "englishName": "RABIN"
+    },
+    {
+      "row": 390,
+      "name": "รามิล",
+      "pronunciation": "รา-มิน",
+      "meaning": "ชื่อกามเทพ",
+      "englishName": "RAMIL"
+    },
+    {
+      "row": 391,
+      "name": "รุจิกร",
+      "pronunciation": "รุ-จิ-กอน",
+      "meaning": "ผู้สร้างความรุ่งเรือง",
+      "englishName": "RUJIKORN"
+    },
+    {
+      "row": 392,
+      "name": "ลภณธร",
+      "pronunciation": "ละ-พน-ทอน",
+      "meaning": "ผู้มีทรัพย์",
+      "englishName": "LAPHONTHORN"
+    },
+    {
+      "row": 393,
+      "name": "วชิระ",
+      "pronunciation": "วะ-ชิ-ระ",
+      "meaning": "เพชร",
+      "englishName": "WACHIRA"
+    },
+    {
+      "row": 394,
+      "name": "วรโชค",
+      "pronunciation": "วอ-ระ-โชก",
+      "meaning": "ผู้มีโชคที่ดีเลิศ",
+      "englishName": "WORACHOK"
+    },
+    {
+      "row": 395,
+      "name": "วรณัท",
+      "pronunciation": "วอ-ระ-นั",
+      "meaning": "ผู้มีความรู้ดี",
+      "englishName": "WORANAT"
+    },
+    {
+      "row": 396,
+      "name": "วรนน",
+      "pronunciation": "วอ-ระ-นน",
+      "meaning": "มีใจประเสริฐ",
+      "englishName": "WORRANON"
+    },
+    {
+      "row": 397,
+      "name": "วรนิด",
+      "pronunciation": "วอ-ระ-นิด",
+      "meaning": "คำแนะนำที่ดี",
+      "englishName": "WORANIT"
+    },
+    {
+      "row": 398,
+      "name": "วรเวช",
+      "pronunciation": "วอ-ระ-เวด",
+      "meaning": "หมอผู้ประเสริฐ",
+      "englishName": "WORAVET"
+    },
+    {
+      "row": 399,
+      "name": "ภวิศ",
+      "pronunciation": "พะ-วิด",
+      "meaning": "ผู้เป็นใหญ่ในโลก",
+      "englishName": "PHAWIT"
+    },
+    {
+      "row": 400,
+      "name": "ภัทรธร",
+      "pronunciation": "พัด-ทระ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งสิริมงคล",
+      "englishName": "PHATTRADTHRON"
+    },
+    {
+      "row": 401,
+      "name": "โภคิน",
+      "pronunciation": "โพ-คิน",
+      "meaning": "ผู้มีสมบัติ",
+      "englishName": "PHOKIN"
+    },
+    {
+      "row": 402,
+      "name": "รงรอง",
+      "pronunciation": "รง-รอง",
+      "meaning": "งดงาม รุ่งเรือง",
+      "englishName": "RONGRONG"
+    },
+    {
+      "row": 403,
+      "name": "รัษฎา",
+      "pronunciation": "รัด-สะ-ดา",
+      "meaning": "รายได้ของแผ่นดิน",
+      "englishName": "RATSADA"
+    },
+    {
+      "row": 404,
+      "name": "รินคำ",
+      "pronunciation": "ริน-คำ",
+      "meaning": "ทองริน",
+      "englishName": "RINKHAM"
+    },
+    {
+      "row": 405,
+      "name": "ลภัส",
+      "pronunciation": "ละ-พัด",
+      "meaning": "สมบัติ",
+      "englishName": "LAPHAT"
+    },
+    {
+      "row": 406,
+      "name": "วรรษ",
+      "pronunciation": "วัด",
+      "meaning": "ฝน, ฤดูฝน",
+      "englishName": "WAT"
+    },
+    {
+      "row": 407,
+      "name": "ภวิล",
+      "pronunciation": "พะ-วิน",
+      "meaning": "ความเป็นอยู่ ดำรงอยู่ตลอดกาล",
+      "englishName": "PHAWIN"
+    },
+    {
+      "row": 408,
+      "name": "ภัทรภณ",
+      "pronunciation": "พัด-ทระ-พน",
+      "meaning": "พูดแต่สิ่งที่ดี",
+      "englishName": "PHATTRAPON"
+    },
+    {
+      "row": 409,
+      "name": "รดิศ",
+      "pronunciation": "ระ-ดิด",
+      "meaning": "กามเทพ , ความรัก",
+      "englishName": "RADIT"
+    },
+    {
+      "row": 410,
+      "name": "ลำนำ",
+      "pronunciation": "ลำ-นำ",
+      "meaning": "บทเพลงที่มีทำนอง",
+      "englishName": "LUMNUM"
+    },
+    {
+      "row": 411,
+      "name": "รุจา",
+      "pronunciation": "รุ-จา",
+      "meaning": "แสงสว่าง",
+      "englishName": "RUJA"
+    },
+    {
+      "row": 412,
+      "name": "ลภณ",
+      "pronunciation": "ละ-พน",
+      "meaning": "การได้รับโชคลาภ",
+      "englishName": "LAPON"
+    },
+    {
+      "row": 413,
+      "name": "ลภน",
+      "pronunciation": "ละ-พน",
+      "meaning": "การได้ลาภ",
+      "englishName": "LAPHON"
+    },
+    {
+      "row": 414,
+      "name": "รุจ",
+      "pronunciation": "รุด",
+      "meaning": "รุ่งเรือง, เจริญ",
+      "englishName": "RUT"
+    },
+    {
+      "row": 415,
+      "name": "วรถ",
+      "pronunciation": "วะ-รด",
+      "meaning": "ไม้ค้ำ",
+      "englishName": "WAROT"
+    },
+    {
+      "row": 416,
+      "name": "วรท",
+      "pronunciation": "วะ-รด",
+      "meaning": "ผู้ได้รับพรที่ดี",
+      "englishName": "WOROT"
+    },
+    {
+      "row": 417,
+      "name": "ภมร",
+      "pronunciation": "พะ-มอน",
+      "meaning": "ผึ้ง, แมลงภู่",
+      "englishName": "PHAMON"
+    },
+    {
+      "row": 418,
+      "name": "ภัทร",
+      "pronunciation": "พัด",
+      "meaning": "ดีงาม , เจริญ , มงคล",
+      "englishName": "PHAT"
+    },
+    {
+      "row": 419,
+      "name": "มรก",
+      "pronunciation": "มะ-กอน",
+      "meaning": "มังกร",
+      "englishName": "MAGON"
+    },
+    {
+      "row": 420,
+      "name": "วร",
+      "pronunciation": "วะ-ระ",
+      "meaning": "ประเสริฐ",
+      "englishName": "WARA"
+    },
+    {
+      "row": 421,
+      "name": "ปรุฬห์ศิลป์",
+      "pronunciation": "ปะ-รุน-สิน",
+      "meaning": "เจริญด้วยศิลปะ",
+      "englishName": "PAROONSIN"
+    },
+    {
+      "row": 422,
+      "name": "ไพสิษฐ์",
+      "pronunciation": "ไพ-สิด",
+      "meaning": "ผู้ประเสริฐสุด",
+      "englishName": "PAISID"
+    },
+    {
+      "row": 423,
+      "name": "พีรวิชญ์",
+      "pronunciation": "พี-ระ-วิด",
+      "meaning": "นักปราชญ์ผู้มีความเพียร",
+      "englishName": "PHIRAWIT"
+    },
+    {
+      "row": 424,
+      "name": "ปวรสิทธิ์",
+      "pronunciation": "ปะ-วอน-สิด",
+      "meaning": "ผู้มีความสำเร็จอันประเสริฐ",
+      "englishName": "PAWORNSIT"
+    },
+    {
+      "row": 425,
+      "name": "พสิษฐ์",
+      "pronunciation": "พะ-สิด",
+      "meaning": "ผู้ที่ดีที่สุด , ร่ำรวยที่สุด",
+      "englishName": "PASID"
+    },
+    {
+      "row": 426,
+      "name": "พีรกันต์",
+      "pronunciation": "พี-ระ-กัน",
+      "meaning": "ผู้กล้าน่ารัก",
+      "englishName": "PHIRAKAN"
+    },
+    {
+      "row": 427,
+      "name": "พีรบูรณ์",
+      "pronunciation": "พี-ระ-บูน",
+      "meaning": "ความสมบูรณ์ของผู้กล้า",
+      "englishName": "PHIRABUN"
+    },
+    {
+      "row": 428,
+      "name": "ปวริศร์",
+      "pronunciation": "ปะ-วะ-ริด",
+      "meaning": "ผู้ประเสริฐและยิ่งใหญ่",
+      "englishName": "PAWARIT"
+    },
+    {
+      "row": 429,
+      "name": "พีรธรรม",
+      "pronunciation": "พี-ระ-ทำ",
+      "meaning": "ธรรมของผู้มีความเพียร",
+      "englishName": "PHIRATHAM"
+    },
+    {
+      "row": 430,
+      "name": "พีรวัศ",
+      "pronunciation": "พี-ระ-วัด",
+      "meaning": "อำนาจของผู้กล้า",
+      "englishName": "PHEERAWAT"
+    },
+    {
+      "row": 431,
+      "name": "พีรวัส",
+      "pronunciation": "พี-ระ-วัด",
+      "meaning": "อำนาจของวีรบุรุษ",
+      "englishName": "PHEERAWAT"
+    },
+    {
+      "row": 432,
+      "name": "พศธน",
+      "pronunciation": "พด-สะ-ทน",
+      "meaning": "ผู้มีทรัพย์และอำนาจ",
+      "englishName": "POJSATORN"
+    },
+    {
+      "row": 433,
+      "name": "พีรกร",
+      "pronunciation": "พี-ระ-กอน",
+      "meaning": "ผู้กล้าหาญ",
+      "englishName": "PHIRAKON"
+    },
+    {
+      "row": 434,
+      "name": "ปวรปรัชญ์",
+      "pronunciation": "ปะ-วอน-ปรัด",
+      "meaning": "นักปราชญ์ผู้ประเสริฐยิ่ง",
+      "englishName": "PAWORNPRACH"
+    },
+    {
+      "row": 435,
+      "name": "พีรณัฐ",
+      "pronunciation": "พี-ระ-นัด",
+      "meaning": "ปราชญ์ผู้กล้าหาญ",
+      "englishName": "PHEERANAT"
+    },
+    {
+      "row": 436,
+      "name": "ไพสิฐ",
+      "pronunciation": "ไพ-สิด",
+      "meaning": "ประเสริฐ",
+      "englishName": "PAISID"
+    },
+    {
+      "row": 437,
+      "name": "ปัณณวรรธ",
+      "pronunciation": "ปัน-นะ-วัด",
+      "meaning": "ผู้เจริญด้วยทรัพย์สมบัติ",
+      "englishName": "PANNAWAT"
+    },
+    {
+      "row": 438,
+      "name": "ปิ่นนมัส",
+      "pronunciation": "ปิ่น-นะ-มัด",
+      "meaning": "ยอดของดวงใจ",
+      "englishName": "PINNAMAT"
+    },
+    {
+      "row": 439,
+      "name": "ปิ่นมนัส",
+      "pronunciation": "ปิ่น-มะ-นัด",
+      "meaning": "จอมใจ , ดวงใจ",
+      "englishName": "PINMANAT"
+    },
+    {
+      "row": 440,
+      "name": "ปัณฑ์ธร",
+      "pronunciation": "ปัน-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งปัญญา",
+      "englishName": "PANTHORN"
+    },
+    {
+      "row": 441,
+      "name": "พีรณัช",
+      "pronunciation": "พี-ระ-นัด",
+      "meaning": "นักปราชญ์",
+      "englishName": "PHIRANAT"
+    },
+    {
+      "row": 442,
+      "name": "ปัฐน์",
+      "pronunciation": "ปัด",
+      "meaning": "การอ่านการพูด",
+      "englishName": "PAT"
+    },
+    {
+      "row": 443,
+      "name": "พีโชบล",
+      "pronunciation": "พี-โช-บน",
+      "meaning": "พืชบัว หน่อบัว",
+      "englishName": "PHEECHOBON"
+    },
+    {
+      "row": 444,
+      "name": "พีรธัช",
+      "pronunciation": "พี-ระ-ทัด",
+      "meaning": "ผู้เป็นธงชัยแห่งผู้กล้าหาญ",
+      "englishName": "PHEERATHAT"
+    },
+    {
+      "row": 445,
+      "name": "ปวริศร",
+      "pronunciation": "ปะ-วะ-ริด-สอน",
+      "meaning": "ผู้ประเสริฐและเป็นใหญ่",
+      "englishName": "PAWARITSORN"
+    },
+    {
+      "row": 446,
+      "name": "ปวินท์",
+      "pronunciation": "ปะ-วิน",
+      "meaning": "ได้รับ ประสบ",
+      "englishName": "PAWIN"
+    },
+    {
+      "row": 447,
+      "name": "ปองธรรม",
+      "pronunciation": "ปอง-ทำ",
+      "meaning": "ปรารถนาคุณความดี",
+      "englishName": "PONGTHUM"
+    },
+    {
+      "row": 448,
+      "name": "พบธรรม",
+      "pronunciation": "พบ-ทำ",
+      "meaning": "พบคุณความดี",
+      "englishName": "PHOPTHAM"
+    },
+    {
+      "row": 449,
+      "name": "พีรธร",
+      "pronunciation": "พี-ระ-ทอน",
+      "meaning": "ทรงไว้ซึ่งความกล้า ทรงไว้ซึ่งความเพียร",
+      "englishName": "PHEERATHORN"
+    },
+    {
+      "row": 450,
+      "name": "ปรุฬห์",
+      "pronunciation": "ปะ-รุน",
+      "meaning": "ผู้งอกงาม เจริญ",
+      "englishName": "PARUN"
+    },
+    {
+      "row": 451,
+      "name": "ปัญญาวุธ",
+      "pronunciation": "ปัน-ยา-วุด",
+      "meaning": "ผู้มีปัญญาเป็นอาวุธ",
+      "englishName": "PANYAWUT"
+    },
+    {
+      "row": 452,
+      "name": "ปัณณ์",
+      "pronunciation": "ปัน",
+      "meaning": "หนังสือ",
+      "englishName": "PAN"
+    },
+    {
+      "row": 453,
+      "name": "เปรมกมล",
+      "pronunciation": "เปรม-กะ-มน",
+      "meaning": "พอใจ, สุขใจ",
+      "englishName": "PREMKAMON"
+    },
+    {
+      "row": 454,
+      "name": "เปรมใจ",
+      "pronunciation": "เปรม-ใจ",
+      "meaning": "ปลื้มใจ",
+      "englishName": "PREMCHAI"
+    },
+    {
+      "row": 455,
+      "name": "พีรัช",
+      "pronunciation": "พี-รัด",
+      "meaning": "ลูกชายของผู้กล้าหาญ หรือลูกของผู้กล้า",
+      "englishName": "PHEERAT"
+    },
+    {
+      "row": 456,
+      "name": "ปวริศ",
+      "pronunciation": "ปะ-วะ-ริด",
+      "meaning": "ผู้ประเสริฐและยิ่งใหญ่",
+      "englishName": "PAWARIT"
+    },
+    {
+      "row": 457,
+      "name": "พศธร",
+      "pronunciation": "พด-สะ-ทอน",
+      "meaning": "ผู้ดำรงอยู่ในอำนาจ",
+      "englishName": "PADSATHORN"
+    },
+    {
+      "row": 458,
+      "name": "พสธร",
+      "pronunciation": "พะ-สะ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งอำนาจ",
+      "englishName": "PHASATHORN"
+    },
+    {
+      "row": 459,
+      "name": "พีระ",
+      "pronunciation": "พี-ระ",
+      "meaning": "ผู้กล้าหาญ",
+      "englishName": "PEERA"
+    },
+    {
+      "row": 460,
+      "name": "ภควรรษ",
+      "pronunciation": "พะ-คะ-วัด",
+      "meaning": "ผู้ที่มีแต่คนรัก และมีแต่โชคลาภ",
+      "englishName": "PHAKHAWAT"
+    },
+    {
+      "row": 461,
+      "name": "ปูรณ์",
+      "pronunciation": "ปูน",
+      "meaning": "ผู้เต็มเปี่ยม ผู้สมบูรณ์",
+      "englishName": "POON"
+    },
+    {
+      "row": 462,
+      "name": "ปวเรศ",
+      "pronunciation": "ปะ-วะ-เรด",
+      "meaning": "ผู้ประเสริฐและยิ่งใหญ่",
+      "englishName": "PAWARET"
+    },
+    {
+      "row": 463,
+      "name": "ปัทม์",
+      "pronunciation": "ปัด",
+      "meaning": "ชื่อบัวหลวงพันธุ์หนึ่งดอกสีแดง",
+      "englishName": "PAD"
+    },
+    {
+      "row": 464,
+      "name": "ปองคุณ",
+      "pronunciation": "ปอง-คุน",
+      "meaning": "ผู้มุ่งหวังในสิ่งที่ดีงาม",
+      "englishName": "PHONGKHUN"
+    },
+    {
+      "row": 465,
+      "name": "ปักษิน",
+      "pronunciation": "ปัก-สิน",
+      "meaning": "นก",
+      "englishName": "PAKSIN"
+    },
+    {
+      "row": 466,
+      "name": "ปัณภัค",
+      "pronunciation": "ปัน-นะ-พัก",
+      "meaning": "ผู้เจริญด้วยหนังสือ",
+      "englishName": "PANNAPAK"
+    },
+    {
+      "row": 467,
+      "name": "พชระ",
+      "pronunciation": "พะ-ชะ-ระ",
+      "meaning": "เพชร",
+      "englishName": "PACHARA"
+    },
+    {
+      "row": 468,
+      "name": "ปวัน",
+      "pronunciation": "ปะ-วัน",
+      "meaning": "ผู้บริสุทธิ์",
+      "englishName": "PAWAN"
+    },
+    {
+      "row": 469,
+      "name": "ปวิธ",
+      "pronunciation": "ปะ-วิด",
+      "meaning": "ผู้สร้าง ผู้กำหนด",
+      "englishName": "PAWIT"
+    },
+    {
+      "row": 470,
+      "name": "ปัญจ",
+      "pronunciation": "ปัน-จะ",
+      "meaning": "ห้า",
+      "englishName": "PANJA"
+    },
+    {
+      "row": 471,
+      "name": "ปวรา",
+      "pronunciation": "ปะ-วะ-รา",
+      "meaning": "ผู้ประเสริฐ ผู้ล้ำเลิศ",
+      "englishName": "PAWARA"
+    },
+    {
+      "row": 472,
+      "name": "ปวร",
+      "pronunciation": "ปะ-วอน",
+      "meaning": "ผู้ประเสริฐ",
+      "englishName": "PAWORN"
+    },
+    {
+      "row": 473,
+      "name": "ภณ",
+      "pronunciation": "พน",
+      "meaning": "พูดหรือกล่าว",
+      "englishName": "PHON"
+    },
+    {
+      "row": 474,
+      "name": "บูรณ์วิสิษฐ์",
+      "pronunciation": "บูน-วิ-สิด",
+      "meaning": "ผู้สมบูรณ์เป็นเลิศ",
+      "englishName": "BUNWISIT"
+    },
+    {
+      "row": 475,
+      "name": "บูรณ์รวิศร์",
+      "pronunciation": "บูน-ระ-วิด",
+      "meaning": "ผู้เปี่ยมด้วยความยิ่งใหญ่",
+      "englishName": "BUNRAWIT"
+    },
+    {
+      "row": 476,
+      "name": "ธัญวิสิษฏ์",
+      "pronunciation": "ทัน-วิ-สิด",
+      "meaning": "ยอดเยี่ยมเป็นเลิศ",
+      "englishName": "THANWISIT"
+    },
+    {
+      "row": 477,
+      "name": "ธัญญ์รภัสร์",
+      "pronunciation": "ทัน-ระ-พัด",
+      "meaning": "ผู้มีรัศมีอันรุ่งเรือง",
+      "englishName": "THANRAPHAT"
+    },
+    {
+      "row": 478,
+      "name": "นิจจารีย์",
+      "pronunciation": "นิด-จา-รี",
+      "meaning": "ผู้ประเสริฐเป็นนิตย์ประเสริฐเสมอ",
+      "englishName": "NITCHAREE"
+    },
+    {
+      "row": 479,
+      "name": "นันท์มนัส",
+      "pronunciation": "นัน-มะ-นัด",
+      "meaning": "จิตใจที่มีความรื่นเริงยินดี",
+      "englishName": "NANMANAT"
+    },
+    {
+      "row": 480,
+      "name": "ปรรณวิสิฐ",
+      "pronunciation": "ปัน-วิ-สิด",
+      "meaning": "ผู้เป็นเลิศในเรื่องหนังสือ",
+      "englishName": "PANWISIT"
+    },
+    {
+      "row": 481,
+      "name": "ธีรสิทธิ์",
+      "pronunciation": "ที-ระ-สิด",
+      "meaning": "ผู้สำเร็จได้ด้วยความฉลาด",
+      "englishName": "THIRASIT"
+    },
+    {
+      "row": 482,
+      "name": "ธรรศยชญ์",
+      "pronunciation": "ทัด-สะ-ยด",
+      "meaning": "มีความกล้าที่คนยกย่อง",
+      "englishName": "THADSAYOS"
+    },
+    {
+      "row": 483,
+      "name": "นิธิสรณ์",
+      "pronunciation": "นิ-ทิ-สอน",
+      "meaning": "ผู้เป็นที่พึ่งดั่งขุมทรัพย์",
+      "englishName": "NITHISON"
+    },
+    {
+      "row": 484,
+      "name": "ธรรศธรณ์",
+      "pronunciation": "ทัด-ทอน",
+      "meaning": "ผู้กล้าหาญของแผ่นดิน",
+      "englishName": "THADTHORN"
+    },
+    {
+      "row": 485,
+      "name": "ธัญสิทธิ์",
+      "pronunciation": "ทัน-ยะ-สิด",
+      "meaning": "ผู้มีความสำเร็จทีดีเลิศ",
+      "englishName": "THANYASIT"
+    },
+    {
+      "row": 486,
+      "name": "นนท์รวิศ",
+      "pronunciation": "นน-ระ-วิด",
+      "meaning": "ยินดีที่เป็นใหญ่",
+      "englishName": "NONRAWIT"
+    },
+    {
+      "row": 487,
+      "name": "นริศร์ธร",
+      "pronunciation": "นะ-ริด-ทอน",
+      "meaning": "ผู้ดำรงความเป็นใหญ่",
+      "englishName": "NARITTHON"
+    },
+    {
+      "row": 488,
+      "name": "บวรสิทธิ์",
+      "pronunciation": "บอ-วอน-สิด",
+      "meaning": "ผู้มีความสำเร็จดีเลิศ",
+      "englishName": "BAWONSIT"
+    },
+    {
+      "row": 489,
+      "name": "ธีรวัชร์",
+      "pronunciation": "ที-ระ-วัด",
+      "meaning": "นักปราชญ์ผู้แข็งแกร่ง",
+      "englishName": "THIRAWAT"
+    },
+    {
+      "row": 490,
+      "name": "ธรรศธรรม",
+      "pronunciation": "ทัด-ทำ",
+      "meaning": "ผู้กล้าที่มีคุณธรรม",
+      "englishName": "THATTHAM"
+    },
+    {
+      "row": 491,
+      "name": "ปรัชญาธรรศ",
+      "pronunciation": "ปรัด-ชะ-ยา-ทัด",
+      "meaning": "ผู้รู้ผู้กล้าหาญ",
+      "englishName": "PRATCHAYATHAT"
+    },
+    {
+      "row": 492,
+      "name": "ธีร์",
+      "pronunciation": "ที",
+      "meaning": "นักปราชญ์",
+      "englishName": "THI"
+    },
+    {
+      "row": 493,
+      "name": "นริศร",
+      "pronunciation": "นะ-ริด-สอน",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "NARIDSORN"
+    },
+    {
+      "row": 494,
+      "name": "นิธิศ",
+      "pronunciation": "นิ-ทิด",
+      "meaning": "เจ้าแห่งขุมทรัพย์",
+      "englishName": "NITHIT"
+    },
+    {
+      "row": 495,
+      "name": "ธรรศ",
+      "pronunciation": "ทัด",
+      "meaning": "ความกล้าหาญ , ความอลังการ",
+      "englishName": "THAT"
+    },
+    {
+      "row": 496,
+      "name": "ธีระ",
+      "pronunciation": "ที-ระ",
+      "meaning": "นักปราชญ์",
+      "englishName": "THEERA"
+    },
+    {
+      "row": 497,
+      "name": "นนทิวรรธน์",
+      "pronunciation": "นน-ทิ-วัด",
+      "meaning": "ยินดีในทรัพย์",
+      "englishName": "NONTHIWAT"
+    },
+    {
+      "row": 498,
+      "name": "ธีรโรจน์",
+      "pronunciation": "ที-ระ-โรด",
+      "meaning": "ความรุ่งเรืองของนักปราชญ์",
+      "englishName": "THEERAROJ"
+    },
+    {
+      "row": 499,
+      "name": "ธีรศิลป์",
+      "pronunciation": "ที-ระ-สิน",
+      "meaning": "นักปราชญ์ผู้มีศิลปะ",
+      "englishName": "TEERASIL"
+    },
+    {
+      "row": 500,
+      "name": "ธีรนันท์",
+      "pronunciation": "ที-ระ-นัน",
+      "meaning": "ผู้มีความยินดีในความรู้",
+      "englishName": "THEERANAN"
+    },
+    {
+      "row": 501,
+      "name": "ธีริศร์",
+      "pronunciation": "ที-ริด",
+      "meaning": "นักปราชญ์ผู้ยิ่งใหญ่",
+      "englishName": "THEERID"
+    },
+    {
+      "row": 502,
+      "name": "นัทธวัชร์",
+      "pronunciation": "นัด-ทะ-วัด",
+      "meaning": "ผู้ผูกพันแน่นแฟ้นดุจเพชร",
+      "englishName": "NATHAWAT"
+    },
+    {
+      "row": 503,
+      "name": "ธีรเจตต์",
+      "pronunciation": "ที-ระ-เจด",
+      "meaning": "ผู้มีจิตใจที่มั่นคง",
+      "englishName": "THIRACHET"
+    },
+    {
+      "row": 504,
+      "name": "ธีรมนต์",
+      "pronunciation": "ที-ระ-มน",
+      "meaning": "มนต์ของนักปราชญ์",
+      "englishName": "THEERAMON"
+    },
+    {
+      "row": 505,
+      "name": "นิรวิทธ์",
+      "pronunciation": "นิ-ระ-วิด",
+      "meaning": "แทงทะลุ มีปัญญาเจาะลึก",
+      "englishName": "NIRAWIT"
+    },
+    {
+      "row": 506,
+      "name": "บวรวิชญ์",
+      "pronunciation": "บอ-วอน-วิด",
+      "meaning": "ผู้ฉลาดล้ำเลิศ",
+      "englishName": "BOWORNWIT"
+    },
+    {
+      "row": 507,
+      "name": "ประดิษฐ์",
+      "pronunciation": "ประ-ดิด",
+      "meaning": "ผู้คิดค้น, ผู้สร้าง",
+      "englishName": "PRADID"
+    },
+    {
+      "row": 508,
+      "name": "ธีร์วรา",
+      "pronunciation": "ที-วะ-รา",
+      "meaning": "ผู้ประเสริฐด้วยความรู้",
+      "englishName": "THEEWARA"
+    },
+    {
+      "row": 509,
+      "name": "นราวิชญ์",
+      "pronunciation": "นะ-รา-วิด",
+      "meaning": "คนที่เป็นปราชญ์",
+      "englishName": "NARAWIT"
+    },
+    {
+      "row": 510,
+      "name": "นิทธันต์",
+      "pronunciation": "นิด-ทัน",
+      "meaning": "ผู้ขจัดมลทิน ขจัดความชั่ว",
+      "englishName": "NITTHAN"
+    },
+    {
+      "row": 511,
+      "name": "บรรณนนท์",
+      "pronunciation": "บัน-นะ-นน",
+      "meaning": "ผู้ยินดีในตัวอักษร",
+      "englishName": "BANNANON"
+    },
+    {
+      "row": 512,
+      "name": "ประเจตน์",
+      "pronunciation": "ประ-เจด",
+      "meaning": "ผู้มีความคิดอันพิจารณาแล้ว",
+      "englishName": "PRACHET"
+    },
+    {
+      "row": 513,
+      "name": "ธรรมรัฐ",
+      "pronunciation": "ทำ-มะ-รัด",
+      "meaning": "แว่นแคว้นแห่งธรรม",
+      "englishName": "DHARMARAT"
+    },
+    {
+      "row": 514,
+      "name": "ธัญธรณ์",
+      "pronunciation": "ทัน-ยะ-ทอน",
+      "meaning": "ทรงไว้ซึ่งความโชคดี",
+      "englishName": "THANYATHORN"
+    },
+    {
+      "row": 515,
+      "name": "ธัญบูรณ์",
+      "pronunciation": "ทัน-ยะ-บูน",
+      "meaning": "พร้อมด้วยโชคลาภ",
+      "englishName": "THANYABOON"
+    },
+    {
+      "row": 516,
+      "name": "นรสรณ์",
+      "pronunciation": "นอ-ระ-สอน",
+      "meaning": "ผู้เป็นที่พึ่งได้",
+      "englishName": "NARASORN"
+    },
+    {
+      "row": 517,
+      "name": "ปรมินทร์",
+      "pronunciation": "ปอ-ระ-มิน",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "PORAMIN"
+    },
+    {
+      "row": 518,
+      "name": "ประคัลภ์",
+      "pronunciation": "ประ-คัน",
+      "meaning": "ความกล้า สามารถ",
+      "englishName": "PRAKAN"
+    },
+    {
+      "row": 519,
+      "name": "ธวัชธรรม",
+      "pronunciation": "ทะ-วัด-ทำ",
+      "meaning": "ธงแห่งคุณธรรม",
+      "englishName": "THAWATTHAM"
+    },
+    {
+      "row": 520,
+      "name": "ธานินทร์",
+      "pronunciation": "ทา-นิด",
+      "meaning": "ผู้ครองแผ่นดิน , ผู้เป็นใหญ่ในนคร",
+      "englishName": "THANIN"
+    },
+    {
+      "row": 521,
+      "name": "ธีริทธ์",
+      "pronunciation": "ที-ริด",
+      "meaning": "นักปราชญ์ผู้มีความสำเร็จ",
+      "englishName": "THEERIT"
+    },
+    {
+      "row": 522,
+      "name": "นรธีร์",
+      "pronunciation": "นอ-ระ-ที",
+      "meaning": "คนผู้เป็นนักปราชญ์",
+      "englishName": "NORRATHEE"
+    },
+    {
+      "row": 523,
+      "name": "เบญจรงค์",
+      "pronunciation": "เบน-จะ-รง",
+      "meaning": "แม่สีทั้งห้า คือ ดำ แดง ขาว เขียว เหลือง",
+      "englishName": "BENJARONG"
+    },
+    {
+      "row": 524,
+      "name": "ธารินทร์",
+      "pronunciation": "ทา-ริน",
+      "meaning": "เจ้าแห่งการสร้าง",
+      "englishName": "THARIN"
+    },
+    {
+      "row": 525,
+      "name": "ธีรธรรม",
+      "pronunciation": "ที-ระ-ทำ",
+      "meaning": "นักปราชญ์ผู้มีคุณธรรม",
+      "englishName": "THIRATHAM"
+    },
+    {
+      "row": 526,
+      "name": "ธุวานนท์",
+      "pronunciation": "ทุ-วา-นน",
+      "meaning": "ผู้มีความสุข",
+      "englishName": "THUWANON"
+    },
+    {
+      "row": 527,
+      "name": "นลินกมล",
+      "pronunciation": "นะ-ลิน-กะ-มน",
+      "meaning": "หัวใจและดอกบัว",
+      "englishName": "NALINKAMON"
+    },
+    {
+      "row": 528,
+      "name": "นันท์ธร",
+      "pronunciation": "นัด-ทอน",
+      "meaning": "ทรงไว้ซึ่งความรื่นเริงยินดี",
+      "englishName": "NANTHARN"
+    },
+    {
+      "row": 529,
+      "name": "นิธิชวดล",
+      "pronunciation": "นิ-ทิ-ชะ-วะ-ดน",
+      "meaning": "บันดาลขุมทรัพย์ให้เป็นไปโดยเร็ว",
+      "englishName": "NITICHAWADON"
+    },
+    {
+      "row": 530,
+      "name": "บริบูรณ์",
+      "pronunciation": "บอ-ริ-บูน",
+      "meaning": "ผู้มีความครบถ้วน",
+      "englishName": "BORIBUN"
+    },
+    {
+      "row": 531,
+      "name": "บริรักษ์",
+      "pronunciation": "บอ-ริ-รัก",
+      "meaning": "ดูแล, รักษา",
+      "englishName": "BORIRAK"
+    },
+    {
+      "row": 532,
+      "name": "ประมณฑ์",
+      "pronunciation": "ประ-มน",
+      "meaning": "ผ่องใส",
+      "englishName": "PRAMON"
+    },
+    {
+      "row": 533,
+      "name": "ธีรวัชร",
+      "pronunciation": "ที-ระ-วัด",
+      "meaning": "เพชรของนักปราชญ์",
+      "englishName": "THEERAWAT"
+    },
+    {
+      "row": 534,
+      "name": "ธุวนนท์",
+      "pronunciation": "ทุ-วะ-นน",
+      "meaning": "ความสนุกสนานรื่นเริงที่มั่นคง",
+      "englishName": "TUWANON"
+    },
+    {
+      "row": 535,
+      "name": "นิทธนต์",
+      "pronunciation": "นิด-ทน",
+      "meaning": "ผู้กำจัดมลทิน , ผู้ขจัดความชั่ว",
+      "englishName": "NITTHON"
+    },
+    {
+      "row": 536,
+      "name": "นิษฐ์",
+      "pronunciation": "นิด",
+      "meaning": "สำเร็จ",
+      "englishName": "NIT"
+    },
+    {
+      "row": 537,
+      "name": "บรรณวัชร",
+      "pronunciation": "บัน-นะ-วัด",
+      "meaning": "เพรชคือหนังสือ",
+      "englishName": "BANNAWAT"
+    },
+    {
+      "row": 538,
+      "name": "บัญญรัฐ",
+      "pronunciation": "บัน-ยะ-รัด",
+      "meaning": "กฎเกณฑ์ของนักปราชญ์",
+      "englishName": "BANYARAT"
+    },
+    {
+      "row": 539,
+      "name": "ปธานินท์",
+      "pronunciation": "ปะ-ทา-นิน",
+      "meaning": "ผู้มีความพากเพียร",
+      "englishName": "PATANIN"
+    },
+    {
+      "row": 540,
+      "name": "ปรรณวัชร",
+      "pronunciation": "ปัน-นะ-วัด",
+      "meaning": "หนังสือเปรียบดังเพชร",
+      "englishName": "PANNAWAT"
+    },
+    {
+      "row": 541,
+      "name": "ประมนัส",
+      "pronunciation": "ประ-มะ-นัด",
+      "meaning": "มีความปราโมทย์",
+      "englishName": "PRAMANAT"
+    },
+    {
+      "row": 542,
+      "name": "บัวณัฐ",
+      "pronunciation": "บัว-นัด",
+      "meaning": "ดอกบัวของนักปราชญ์",
+      "englishName": "BUANAT"
+    },
+    {
+      "row": 543,
+      "name": "นันทิวร",
+      "pronunciation": "นัน-ทิ-วอน",
+      "meaning": "มีความเพลิดเพลินอันประเสริฐ",
+      "englishName": "NANTHIWORN"
+    },
+    {
+      "row": 544,
+      "name": "ประดิษฐา",
+      "pronunciation": "ประ-ดิด-ถา",
+      "meaning": "ตั้งมั่น",
+      "englishName": "PRADITTHA"
+    },
+    {
+      "row": 545,
+      "name": "ประทักษ์",
+      "pronunciation": "ประ-ทัก",
+      "meaning": "ขยัน ฉลาด",
+      "englishName": "PRATHAK"
+    },
+    {
+      "row": 546,
+      "name": "ปราณนต์",
+      "pronunciation": "ปรา-นน",
+      "meaning": "ลมอากาศ",
+      "englishName": "PRANON"
+    },
+    {
+      "row": 547,
+      "name": "ปรินทร์",
+      "pronunciation": "ปะ-ริน",
+      "meaning": "เป็นใหญ่กว่าคนอื่น",
+      "englishName": "PARIN"
+    },
+    {
+      "row": 548,
+      "name": "ธาราวรรษ",
+      "pronunciation": "ทา-รา-วัด",
+      "meaning": "ฝนจำนวนมาก",
+      "englishName": "THARAWAT"
+    },
+    {
+      "row": 549,
+      "name": "ธุวธรรม",
+      "pronunciation": "ทุ-วะ-ทำ",
+      "meaning": "ผู้ตั้งมั่นในธรรม",
+      "englishName": "THUWATHAM"
+    },
+    {
+      "row": 550,
+      "name": "นวันธร",
+      "pronunciation": "นะ-วัน-ทอน",
+      "meaning": "ทรงไว้ซึ่งสิ่งใหม่ๆ",
+      "englishName": "NAWANTHORN"
+    },
+    {
+      "row": 551,
+      "name": "นิวิฐ",
+      "pronunciation": "นิ-วิด",
+      "meaning": "ตั้งมั่น ตั้งใจมั่น",
+      "englishName": "NIWIT"
+    },
+    {
+      "row": 552,
+      "name": "ธัชธรรม",
+      "pronunciation": "ทัด-ทำ",
+      "meaning": "มีธรรมเป็นธงชัย",
+      "englishName": "THATTHAM"
+    },
+    {
+      "row": 553,
+      "name": "นัทธิ์",
+      "pronunciation": "นัด",
+      "meaning": "ชะเนาะ",
+      "englishName": "NAT"
+    },
+    {
+      "row": 554,
+      "name": "นิรภัฏ",
+      "pronunciation": "นิ-ระ-พัด",
+      "meaning": "มั่นคง แข็งแรง",
+      "englishName": "NIRAPHAT"
+    },
+    {
+      "row": 555,
+      "name": "นุจลิน",
+      "pronunciation": "นุด-จะ-ลิน",
+      "meaning": "ธูปหอม",
+      "englishName": "NUTCHALIN"
+    },
+    {
+      "row": 556,
+      "name": "บัณณรส",
+      "pronunciation": "บัน-นะ-รด",
+      "meaning": "วันเพ็ญ 15 ค่ำ",
+      "englishName": "BANNAROT"
+    },
+    {
+      "row": 557,
+      "name": "ปฐมฌาน",
+      "pronunciation": "ปะ-ถม-ชาน",
+      "meaning": "ฌานเบื้องต้น มี 4 องค์คือ วิตก วิจาร ปีติ สุข เอกัคตา",
+      "englishName": "PATHOMCHARN"
+    },
+    {
+      "row": 558,
+      "name": "ประณิธิ",
+      "pronunciation": "ประ-นิ-ทิ",
+      "meaning": "การตั้งความปรารถนา",
+      "englishName": "PRANITI"
+    },
+    {
+      "row": 559,
+      "name": "ปริชวัน",
+      "pronunciation": "ปริด-ชะ-วัน",
+      "meaning": "พระจันทร์",
+      "englishName": "PRITCHAWAN"
+    },
+    {
+      "row": 560,
+      "name": "ปริเยศ",
+      "pronunciation": "ปะ-ริ-เยด",
+      "meaning": "ที่รัก",
+      "englishName": "PARIYATE"
+    },
+    {
+      "row": 561,
+      "name": "ธราธรรม",
+      "pronunciation": "ทะ-รา-ทำ",
+      "meaning": "แผ่นดินธรรม",
+      "englishName": "THARATHAM"
+    },
+    {
+      "row": 562,
+      "name": "ธิษณ์",
+      "pronunciation": "ทิด",
+      "meaning": "ฉลาด",
+      "englishName": "THIT"
+    },
+    {
+      "row": 563,
+      "name": "ธีรเจต",
+      "pronunciation": "ที-ระ-เจด",
+      "meaning": "จิตใจมั่นคง",
+      "englishName": "THEERAJET"
+    },
+    {
+      "row": 564,
+      "name": "นันทนัช",
+      "pronunciation": "นัน-ทะ-นัด",
+      "meaning": "เกิดมาเพื่อความสุข",
+      "englishName": "NUNTHANAT"
+    },
+    {
+      "row": 565,
+      "name": "นันทิศ",
+      "pronunciation": "นัน-ทิด",
+      "meaning": "เจ้าแห่งความสุข",
+      "englishName": "NANTHIT"
+    },
+    {
+      "row": 566,
+      "name": "นิจวรา",
+      "pronunciation": "นิด-วะ-รา",
+      "meaning": "ผู้ประเสริฐเสมอ",
+      "englishName": "NIDWARA"
+    },
+    {
+      "row": 567,
+      "name": "นิธิภัค",
+      "pronunciation": "นิ-ทิ-พัก",
+      "meaning": "ผู้โชคดีในขุมทรัพย์",
+      "englishName": "NITIPAK"
+    },
+    {
+      "row": 568,
+      "name": "ปฐพี",
+      "pronunciation": "ปะ-ถะ-พี",
+      "meaning": "แผ่นดิน",
+      "englishName": "PATAPEE"
+    },
+    {
+      "row": 569,
+      "name": "ประนอม",
+      "pronunciation": "ประ-นอม",
+      "meaning": "การทำให้ปรองดอง, อะลุ้มอล่วย",
+      "englishName": "PRANOM"
+    },
+    {
+      "row": 570,
+      "name": "ธีรภัทร",
+      "pronunciation": "ที-ระ-พัด",
+      "meaning": "นักปราชญ์ผู้เจริญ",
+      "englishName": "THEERAPHAT"
+    },
+    {
+      "row": 571,
+      "name": "นิจฉรา",
+      "pronunciation": "นิด-ฉะ-รา",
+      "meaning": "ผู้มีรัศมีเรืองรอง",
+      "englishName": "NITCHARA"
+    },
+    {
+      "row": 572,
+      "name": "นิมมาน",
+      "pronunciation": "นิม-มาน",
+      "meaning": "นฤมิต",
+      "englishName": "NIMMARN"
+    },
+    {
+      "row": 573,
+      "name": "ปฏิญาณ",
+      "pronunciation": "ปะ-ติ-ยาน",
+      "meaning": "คำมั่นสัญญา",
+      "englishName": "PATIYAN"
+    },
+    {
+      "row": 574,
+      "name": "ประวัณ",
+      "pronunciation": "ประ-วัน",
+      "meaning": "มีหิริโอตัปปะ",
+      "englishName": "PRAWAN"
+    },
+    {
+      "row": 575,
+      "name": "ประสพ",
+      "pronunciation": "ประ-สบ",
+      "meaning": "การทำให้เกิดผล",
+      "englishName": "PRASOB"
+    },
+    {
+      "row": 576,
+      "name": "ปริชญ์",
+      "pronunciation": "ปริด",
+      "meaning": "ผู้รอบรู้",
+      "englishName": "PRIT"
+    },
+    {
+      "row": 577,
+      "name": "ธรรมภณ",
+      "pronunciation": "ทำ-มะ-พน",
+      "meaning": "ผู้พูดแต่สิ่งที่ดี",
+      "englishName": "THUMMAPHON"
+    },
+    {
+      "row": 578,
+      "name": "ธารณ์",
+      "pronunciation": "ทาน",
+      "meaning": "ทรงไว้ ค้ำจุนหรือดำรงไว้",
+      "englishName": "THARN"
+    },
+    {
+      "row": 579,
+      "name": "ธุววิช",
+      "pronunciation": "ทุ-วะ-วิด",
+      "meaning": "ผู้มีความรู้ยั่งยืน",
+      "englishName": "THUWAWIT"
+    },
+    {
+      "row": 580,
+      "name": "นภนต์",
+      "pronunciation": "นะ-พน",
+      "meaning": "สุดขอบฟ้า",
+      "englishName": "NOPHON"
+    },
+    {
+      "row": 581,
+      "name": "นิธิมา",
+      "pronunciation": "นิ-ทิ-มา",
+      "meaning": "ผู้มีขุมทรัพย์",
+      "englishName": "NITHIMA"
+    },
+    {
+      "row": 582,
+      "name": "บรรเจิด",
+      "pronunciation": "บัน-เจิด",
+      "meaning": "สูงเด่น",
+      "englishName": "BANCHOET"
+    },
+    {
+      "row": 583,
+      "name": "บิณฑ์",
+      "pronunciation": "บิน",
+      "meaning": "ก้อนข้าว",
+      "englishName": "BIEN"
+    },
+    {
+      "row": 584,
+      "name": "ปฏิรูป",
+      "pronunciation": "ปะ-ติ-รูบ",
+      "meaning": "ทำให้ดีขึ้น",
+      "englishName": "PATIRUP"
+    },
+    {
+      "row": 585,
+      "name": "ธรรมิก",
+      "pronunciation": "ทำ-มิก",
+      "meaning": "ผู้ทรงธรรม",
+      "englishName": "THAMMIK"
+    },
+    {
+      "row": 586,
+      "name": "ธุวนิช",
+      "pronunciation": "ทุ-วะ-นิด",
+      "meaning": "มีความรู้ยั่งยืน",
+      "englishName": "THUWANIT"
+    },
+    {
+      "row": 587,
+      "name": "นนทรี",
+      "pronunciation": "นน-ซี",
+      "meaning": "ผู้มีความยินดี",
+      "englishName": "NONSEE"
+    },
+    {
+      "row": 588,
+      "name": "นิธิกร",
+      "pronunciation": "นิ-ทิ-กอน",
+      "meaning": "ผู้สร้างขุมทรัพย์",
+      "englishName": "NITHIKORN"
+    },
+    {
+      "row": 589,
+      "name": "บวรรัช",
+      "pronunciation": "บอ-วอน-รัด",
+      "meaning": "ผู้มีสมบัติอันประเสริฐ",
+      "englishName": "BORWORNRAT"
+    },
+    {
+      "row": 590,
+      "name": "บูรณ์",
+      "pronunciation": "บูน",
+      "meaning": "เต็ม สมบูรณ์",
+      "englishName": "BOON"
+    },
+    {
+      "row": 591,
+      "name": "บูรณิน",
+      "pronunciation": "บู-ระ-นิน",
+      "meaning": "เดือนเพ็ญ",
+      "englishName": "BURANIN"
+    },
+    {
+      "row": 592,
+      "name": "ธีธัช",
+      "pronunciation": "ที-ทัด",
+      "meaning": "มีปัญญาเป็นธงชัย",
+      "englishName": "THEETHAT"
+    },
+    {
+      "row": 593,
+      "name": "ธีรัช",
+      "pronunciation": "ที-รัด",
+      "meaning": "ผู้มีความฉลาด , ไหวพริบดี",
+      "englishName": "THIRAT"
+    },
+    {
+      "row": 594,
+      "name": "นราวุธ",
+      "pronunciation": "นะ-รา-วุด",
+      "meaning": "อาวุธของคน",
+      "englishName": "NARAWUT"
+    },
+    {
+      "row": 595,
+      "name": "นันทิช",
+      "pronunciation": "นัน-ทิด",
+      "meaning": "เกิดมาเพื่อความสุขความเพลิดเพลิน",
+      "englishName": "NANTHIT"
+    },
+    {
+      "row": 596,
+      "name": "นาวิน",
+      "pronunciation": "",
+      "meaning": "",
+      "englishName": ""
+    },
+    {
+      "row": 597,
+      "name": "นิชคุณ",
+      "pronunciation": "นิด-ชะ-คุน",
+      "meaning": "ผู้มีความดีเป็นของตนเอง",
+      "englishName": "NIDCHAKUN"
+    },
+    {
+      "row": 598,
+      "name": "นิโรธ",
+      "pronunciation": "นิ-โรด",
+      "meaning": "นิพพาน",
+      "englishName": "NIROT"
+    },
+    {
+      "row": 599,
+      "name": "ปธานิน",
+      "pronunciation": "ปะ-ทา-นิน",
+      "meaning": "ผู้มีความเพียรอันยิ่งใหญ่",
+      "englishName": "PATHANIN"
+    },
+    {
+      "row": 600,
+      "name": "ปรวัน",
+      "pronunciation": "ปะ-ระ-วัน",
+      "meaning": "ป่าของผู้อื่น",
+      "englishName": "PARAWAN"
+    },
+    {
+      "row": 601,
+      "name": "ธราวุธ",
+      "pronunciation": "ทะ-รา-วุด",
+      "meaning": "ผู้ทรงไว้ซึ่งอาวุธ",
+      "englishName": "THARAWUT"
+    },
+    {
+      "row": 602,
+      "name": "ธวัล",
+      "pronunciation": "ทะ-วัน",
+      "meaning": "สีขาวนวล",
+      "englishName": "THAWAN"
+    },
+    {
+      "row": 603,
+      "name": "ธาวัน",
+      "pronunciation": "ทา-วัน",
+      "meaning": "วิ่งว่องไว บริสุทธิ์",
+      "englishName": "THAWAN"
+    },
+    {
+      "row": 604,
+      "name": "ธาวิน",
+      "pronunciation": "ทา-วิน",
+      "meaning": "บริสุทธิ์,ว่องไว",
+      "englishName": "THAWIN"
+    },
+    {
+      "row": 605,
+      "name": "นนท์",
+      "pronunciation": "นน",
+      "meaning": "ความยินดี",
+      "englishName": "NON"
+    },
+    {
+      "row": 606,
+      "name": "นราธิป",
+      "pronunciation": "นะ-รา-ทิบ",
+      "meaning": "ผู้เป็นใหญ่ในหมู่ชน",
+      "englishName": "NARATHIP"
+    },
+    {
+      "row": 607,
+      "name": "นราวร",
+      "pronunciation": "นะ-รา-วอน",
+      "meaning": "คนที่ดีงาม",
+      "englishName": "NARAWORN"
+    },
+    {
+      "row": 608,
+      "name": "นริศ",
+      "pronunciation": "นะ-ริด",
+      "meaning": "คนที่เป็นใหญ่",
+      "englishName": "NARID"
+    },
+    {
+      "row": 609,
+      "name": "นวิน",
+      "pronunciation": "นะ-วิน",
+      "meaning": "ใหม่ หนุ่ม สดชื่น",
+      "englishName": "NAWIN"
+    },
+    {
+      "row": 610,
+      "name": "นัจกร",
+      "pronunciation": "นัด-จะ-กอน",
+      "meaning": "ผู้ฟ้อนรำ",
+      "englishName": "NUTJAGON"
+    },
+    {
+      "row": 611,
+      "name": "บรรหาร",
+      "pronunciation": "บัน-หาน",
+      "meaning": "ตรัสสั่ง",
+      "englishName": "BANHAN"
+    },
+    {
+      "row": 612,
+      "name": "บริธาน",
+      "pronunciation": "บอ-ริ-ทาน",
+      "meaning": "เครื่องแต่งตัว",
+      "englishName": "BORITHARN"
+    },
+    {
+      "row": 613,
+      "name": "บวรชัช",
+      "pronunciation": "บอ-วอน-ชัด",
+      "meaning": "นักรบผู้ยอดเยี่ยม",
+      "englishName": "BORWORNCHAT"
+    },
+    {
+      "row": 614,
+      "name": "บัณฑูร",
+      "pronunciation": "บัน-ทูน",
+      "meaning": "คำสั่ง",
+      "englishName": "BANTHUN"
+    },
+    {
+      "row": 615,
+      "name": "ปรมะกร",
+      "pronunciation": "ปะ-ระ-มะ-กอน",
+      "meaning": "เจริญเป็นเลิศ",
+      "englishName": "PARAMAKORN"
+    },
+    {
+      "row": 616,
+      "name": "ปรรณกร",
+      "pronunciation": "ปัน-นะ-กอน",
+      "meaning": "ผู้ก่อให้เกิดความรู้",
+      "englishName": "PANNAKORN"
+    },
+    {
+      "row": 617,
+      "name": "ประคุณ",
+      "pronunciation": "ประ-คุน",
+      "meaning": "ผู้คล่องแคล่ว , ชำนาญ",
+      "englishName": "PRAKUN"
+    },
+    {
+      "row": 618,
+      "name": "ประณม",
+      "pronunciation": "ประ-นม",
+      "meaning": "การไหว้",
+      "englishName": "PRANOM"
+    },
+    {
+      "row": 619,
+      "name": "ประธาน",
+      "pronunciation": "ประ-ทาน",
+      "meaning": "ผู้เป็นใหญ่ในกลุ่มชน",
+      "englishName": "PRATHAN"
+    },
+    {
+      "row": 620,
+      "name": "ปริณญา",
+      "pronunciation": "ปะ-ริน-ยา",
+      "meaning": "ผู้รอบรู้",
+      "englishName": "PARINYA"
+    },
+    {
+      "row": 621,
+      "name": "ปรินทร",
+      "pronunciation": "ปะ-ริน-ทอน",
+      "meaning": "ผู้เป็นใหญ่กว่าผู้อื่น",
+      "englishName": "PARINTHON"
+    },
+    {
+      "row": 622,
+      "name": "นิรภร",
+      "pronunciation": "นิ-ระ-พอน",
+      "meaning": "ฟ้าใส",
+      "englishName": "NIRAPHON"
+    },
+    {
+      "row": 623,
+      "name": "บรรจบ",
+      "pronunciation": "บัน-จบ",
+      "meaning": "จรดถึงกัน",
+      "englishName": "BANCHOP"
+    },
+    {
+      "row": 624,
+      "name": "บริณต",
+      "pronunciation": "บอ-ริ-นด",
+      "meaning": "ทุนทรัพย์ สิ่งที่มุ่งหมาย ผู้นอบน้อม",
+      "englishName": "BORINOT"
+    },
+    {
+      "row": 625,
+      "name": "บังคล",
+      "pronunciation": "บัง-คน",
+      "meaning": "ผู้ให้",
+      "englishName": "BANGKON"
+    },
+    {
+      "row": 626,
+      "name": "บัณดล",
+      "pronunciation": "บัน-ดน",
+      "meaning": "ผู้ทำให้เกิดขึ้น",
+      "englishName": "BANDON"
+    },
+    {
+      "row": 627,
+      "name": "บันดล",
+      "pronunciation": "บัน-ดน",
+      "meaning": "ทำให้บังเกิดขึ้น",
+      "englishName": "BANDON"
+    },
+    {
+      "row": 628,
+      "name": "ประณต",
+      "pronunciation": "ประ-นด",
+      "meaning": "น้อมไหว้",
+      "englishName": "PRANOT"
+    },
+    {
+      "row": 629,
+      "name": "นนทัช",
+      "pronunciation": "นน-ทัด",
+      "meaning": "เกิดมาเพื่อความบันเทิง",
+      "englishName": "NONTHAT"
+    },
+    {
+      "row": 630,
+      "name": "นภัส",
+      "pronunciation": "นะ-พัด",
+      "meaning": "ฟ้า สวรรค์",
+      "englishName": "NAPAT"
+    },
+    {
+      "row": 631,
+      "name": "นภิศ",
+      "pronunciation": "นะพิด",
+      "meaning": "เจ้าแห่งฟ้า",
+      "englishName": "NAPIT"
+    },
+    {
+      "row": 632,
+      "name": "นวัช",
+      "pronunciation": "นะ-วัด",
+      "meaning": "เกิดใหม่",
+      "englishName": "NAWAT"
+    },
+    {
+      "row": 633,
+      "name": "นิธิ",
+      "pronunciation": "นิ-ทิ",
+      "meaning": "ขุมทรัพย์",
+      "englishName": "NITHI"
+    },
+    {
+      "row": 634,
+      "name": "ปฐมา",
+      "pronunciation": "ปะ-ถะ-มา",
+      "meaning": "ที่ 1",
+      "englishName": "PATHAMA"
+    },
+    {
+      "row": 635,
+      "name": "ปรัชญา",
+      "pronunciation": "ปรัด-ชะ-ยา",
+      "meaning": "หลักแห่งความรู้และความจริง",
+      "englishName": "PRADCHAYA"
+    },
+    {
+      "row": 636,
+      "name": "ปริชญา",
+      "pronunciation": "ปะ-ริด-ชะ-ยา",
+      "meaning": "ผู้รอบรู้",
+      "englishName": "PARITCHAYA"
+    },
+    {
+      "row": 637,
+      "name": "ธวัช",
+      "pronunciation": "ทะ-วัด",
+      "meaning": "ธง",
+      "englishName": "THAWAT"
+    },
+    {
+      "row": 638,
+      "name": "นทจร",
+      "pronunciation": "นด-ทะ-จอน",
+      "meaning": "เที่ยวไปในน้ำ",
+      "englishName": "NOTTAJOHN"
+    },
+    {
+      "row": 639,
+      "name": "นภจร",
+      "pronunciation": "นบ-พะ-จอน",
+      "meaning": "ผู้ไปบนฟ้า",
+      "englishName": "NOPPAJON"
+    },
+    {
+      "row": 640,
+      "name": "นฤวร",
+      "pronunciation": "นะ-รึ-วอน",
+      "meaning": "ผู้มีความประเสริฐ",
+      "englishName": "NARUWON"
+    },
+    {
+      "row": 641,
+      "name": "นลัท",
+      "pronunciation": "นะ-ลัด",
+      "meaning": "น้ำผึ้งดอกไม้",
+      "englishName": "NALAD"
+    },
+    {
+      "row": 642,
+      "name": "นวภร",
+      "pronunciation": "นะ-วะ-พอน",
+      "meaning": "ผู้ค้ำจุนผู้ที่ยังใหม่",
+      "englishName": "NAWAPRON"
+    },
+    {
+      "row": 643,
+      "name": "ปคุณา",
+      "pronunciation": "ปะ-คุ-นา",
+      "meaning": "ผู้เชี่ยวชาญ",
+      "englishName": "PAKHUNA"
+    },
+    {
+      "row": 644,
+      "name": "ปคุนา",
+      "pronunciation": "ปะ-คุ-นา",
+      "meaning": "ผู้เชี่ยวชาญ",
+      "englishName": "PAKHUNA"
+    },
+    {
+      "row": 645,
+      "name": "บวร",
+      "pronunciation": "บอ-วอน",
+      "meaning": "ผู้ประเสริฐ",
+      "englishName": "BORWORN"
+    },
+    {
+      "row": 646,
+      "name": "ปคุณ",
+      "pronunciation": "ปะ-คุน",
+      "meaning": "ผู้มีความซื่อตรง ผู้มีความคล่องแคล่ว ชำนาญ",
+      "englishName": "PAKUN"
+    },
+    {
+      "row": 647,
+      "name": "ธำรง",
+      "pronunciation": "ทำ-รง",
+      "meaning": "ทรงไว้ เชิดชูไว้",
+      "englishName": "THAMRONG"
+    },
+    {
+      "row": 648,
+      "name": "นารา",
+      "pronunciation": "นา-รา",
+      "meaning": "รัศมีรุ่งเรือง",
+      "englishName": "NARA"
+    },
+    {
+      "row": 649,
+      "name": "นิช",
+      "pronunciation": "นิด",
+      "meaning": "เป็นของตนเอง นิรันดร",
+      "englishName": "NIT"
+    },
+    {
+      "row": 650,
+      "name": "ปรัก",
+      "pronunciation": "ปะ-รัก",
+      "meaning": "เงิน",
+      "englishName": "PALAK"
+    },
+    {
+      "row": 651,
+      "name": "ธาม",
+      "pronunciation": "ทาม",
+      "meaning": "ยศศักดิ์",
+      "englishName": "THARM"
+    },
+    {
+      "row": 652,
+      "name": "ธารา",
+      "pronunciation": "ทา-รา",
+      "meaning": "สายน้ำ",
+      "englishName": "THARA"
+    },
+    {
+      "row": 653,
+      "name": "ณัฐพสิษฐ์",
+      "pronunciation": "นัด-พะ-สิด",
+      "meaning": "นักปราชญ์ผู้ร่ำรวยที่สุด",
+      "englishName": "NATPASIT"
+    },
+    {
+      "row": 654,
+      "name": "ณัฏฐสิทธิ์",
+      "pronunciation": "นัด-ถะ-สิด",
+      "meaning": "นักปราชญ์ผู้มีความสำเร็จ",
+      "englishName": "NADTHASIT"
+    },
+    {
+      "row": 655,
+      "name": "ฐิรศิลป์",
+      "pronunciation": "ถิ-ระ-สิน",
+      "meaning": "ผู้มีความมั่นคงในวิชาชีพ",
+      "englishName": "THIRASIN"
+    },
+    {
+      "row": 656,
+      "name": "ณฐริศร์",
+      "pronunciation": "นะ-ถะ-ริด",
+      "meaning": "นักปราชญ์ผู้ยิ่งใหญ่",
+      "englishName": "NATHARIS"
+    },
+    {
+      "row": 657,
+      "name": "ณัฐศิวัช",
+      "pronunciation": "นัด-สิ-วัด",
+      "meaning": "นักปราชญ์เกิดจากผู้ยิ่งใหญ่",
+      "englishName": "NATSIWAT"
+    },
+    {
+      "row": 658,
+      "name": "ดนุวัศ",
+      "pronunciation": "ดะ-นุ-วัด",
+      "meaning": "มีอำนาจของตัวเอง",
+      "englishName": "DANUWAT"
+    },
+    {
+      "row": 659,
+      "name": "ธนิสร",
+      "pronunciation": "ทะ-นิ-สอน",
+      "meaning": "เจ้าแห่งทรัพย์",
+      "englishName": "THANISONR"
+    },
+    {
+      "row": 660,
+      "name": "ธรณัส",
+      "pronunciation": "ทอ-ระ-นัด",
+      "meaning": "ผู้เข้มแข็งมีอำนาจ",
+      "englishName": "THORANAT"
+    },
+    {
+      "row": 661,
+      "name": "ธรนัส",
+      "pronunciation": "ทอ-ระ-นัด",
+      "meaning": "ผู้มีอำนาจที่เข้มแข็ง",
+      "englishName": "TORRANAT"
+    },
+    {
+      "row": 662,
+      "name": "ณัฏฐนิษฐ์",
+      "pronunciation": "นัด-ถะ-นิด",
+      "meaning": "นักปราชญ์ผู้มีความมั่นคง",
+      "englishName": "NATTHANIT"
+    },
+    {
+      "row": 663,
+      "name": "ณัฏฐ์ธัญ",
+      "pronunciation": "นัด-ตะ-ทัน",
+      "meaning": "ปราชญ์ผู้มีโชค",
+      "englishName": "NADTATUN"
+    },
+    {
+      "row": 664,
+      "name": "ณัฐสิทธิ์",
+      "pronunciation": "นัด-ถะ-สิด",
+      "meaning": "ความสำเร็จของนักปราชญ์",
+      "englishName": "NATTHASITH"
+    },
+    {
+      "row": 665,
+      "name": "ฐานนันท์",
+      "pronunciation": "ถา-นะ-นัน",
+      "meaning": "ผู้ยินดีในฐานะ",
+      "englishName": "THANANAN"
+    },
+    {
+      "row": 666,
+      "name": "ณัฏฐธัญ",
+      "pronunciation": "นัด-ถะ-ทัน",
+      "meaning": "ปราชญ์ผู้มีโชค",
+      "englishName": "NATTATHUN"
+    },
+    {
+      "row": 667,
+      "name": "ฐานันดร์",
+      "pronunciation": "ถา-นัน",
+      "meaning": "ลำดับในการกำหนดชั้นบุคคล",
+      "englishName": "THANAN"
+    },
+    {
+      "row": 668,
+      "name": "ณัฐนนท์",
+      "pronunciation": "นัด-ถะ-นน",
+      "meaning": "เป็นที่ชื่นชมยินดีของนักปราชญ์",
+      "englishName": "NATTANON"
+    },
+    {
+      "row": 669,
+      "name": "ดวงจันทร์",
+      "pronunciation": "ดวง-จัน",
+      "meaning": "พระจันทร์",
+      "englishName": "DWNGCHAN"
+    },
+    {
+      "row": 670,
+      "name": "ทองจันทร์",
+      "pronunciation": "ทอง-จัน",
+      "meaning": "ดวงเดือนสว่างไสวอร่ามดังทอง",
+      "englishName": "THONGJAN"
+    },
+    {
+      "row": 671,
+      "name": "ณัฐกรณ์",
+      "pronunciation": "นัด-ถะ-กอน",
+      "meaning": "ผู้สร้างความรู้",
+      "englishName": "NATTAKORN"
+    },
+    {
+      "row": 672,
+      "name": "ณัฐนิธิ",
+      "pronunciation": "นัด-นิ-ทิ",
+      "meaning": "ผู้มีขุมทรัพย์คือความรู้",
+      "englishName": "NATNITHI"
+    },
+    {
+      "row": 673,
+      "name": "ณัฐรัฐ",
+      "pronunciation": "นัด-ทะ-รัด",
+      "meaning": "ผู้อยู่บนดินแดนแห่งนักปราชญ์",
+      "englishName": "NATTARAT"
+    },
+    {
+      "row": 674,
+      "name": "ธนิษฐ์",
+      "pronunciation": "ทะ-นิด",
+      "meaning": "ชื่อดาวฤกษ์",
+      "englishName": "THANIT"
+    },
+    {
+      "row": 675,
+      "name": "ธรรมจารี",
+      "pronunciation": "ทำ-จา-รี",
+      "meaning": "ผู้ประพฤติธรรม, ผู้ประพฤติ คุณความดี",
+      "englishName": "DHARMJAREE"
+    },
+    {
+      "row": 676,
+      "name": "ธรรมณัฐ",
+      "pronunciation": "ทำ-มะ-นัด",
+      "meaning": "คำสั่งสอนในพระพุทธศาสนาอันยิ่งใหญ่",
+      "englishName": "THAMMANAT"
+    },
+    {
+      "row": 677,
+      "name": "ณฐนนท์",
+      "pronunciation": "นะ-ถะ-นน",
+      "meaning": "นักปราชญ์ผู้ร่าเริง",
+      "englishName": "NATHANON"
+    },
+    {
+      "row": 678,
+      "name": "ตนิษฐ์",
+      "pronunciation": "ตะ-นิด",
+      "meaning": "เล็ก",
+      "englishName": "TANIT"
+    },
+    {
+      "row": 679,
+      "name": "ถิรเจตน์",
+      "pronunciation": "ถิ-ระ-เจด",
+      "meaning": "มีเจตนามั่นคง",
+      "englishName": "TIRAJET"
+    },
+    {
+      "row": 680,
+      "name": "ธนวัชร์",
+      "pronunciation": "ทะ-นะ-วัด",
+      "meaning": "มีเพชรเป็นสมบัติ",
+      "englishName": "THANAWAT"
+    },
+    {
+      "row": 681,
+      "name": "ธนวิชญ์",
+      "pronunciation": "ทะ-นะวิด",
+      "meaning": "มีความรู้เรื่องทรัพย์",
+      "englishName": "THANAWIT"
+    },
+    {
+      "row": 682,
+      "name": "ธนวินท์",
+      "pronunciation": "ทะ-นะ-วิน",
+      "meaning": "ได้ทรัพย์สิน มีทรัพย์",
+      "englishName": "THANAWIN"
+    },
+    {
+      "row": 683,
+      "name": "ฏารัชญ์",
+      "pronunciation": "ตา-รัด",
+      "meaning": "ผู้มีความรู้เป็นเรือนพัก",
+      "englishName": "TARAT"
+    },
+    {
+      "row": 684,
+      "name": "ณัฐยศ",
+      "pronunciation": "นัด-ถะ-ยด",
+      "meaning": "นักปราชญ์ผู้มีชื่อเสียงเกียรติยศ",
+      "englishName": "NADTAYOD"
+    },
+    {
+      "row": 685,
+      "name": "ตนุนันท์",
+      "pronunciation": "ตะ-นุ-นัน",
+      "meaning": "เป็นผู้น่ายินดี",
+      "englishName": "TANUNAN"
+    },
+    {
+      "row": 686,
+      "name": "ธนนันท์",
+      "pronunciation": "ทะ-นะ-นัน",
+      "meaning": "ผู้ยินดีในทรัพย์",
+      "englishName": "THANANAN"
+    },
+    {
+      "row": 687,
+      "name": "ดนิษฐ์",
+      "pronunciation": "ดะ-นิด",
+      "meaning": "เล็ก",
+      "englishName": "DANIT"
+    },
+    {
+      "row": 688,
+      "name": "ทะเลหลวง",
+      "pronunciation": "ทะ-เล-หลวง",
+      "meaning": "มหาสมุทร",
+      "englishName": "THALELAUNG"
+    },
+    {
+      "row": 689,
+      "name": "ดนุนันท์",
+      "pronunciation": "ดะ-นุ-นัน",
+      "meaning": "มีความสุขความยินดีด้วยตนเอง",
+      "englishName": "DANUNAN"
+    },
+    {
+      "row": 690,
+      "name": "ธนธรณ์",
+      "pronunciation": "ทะ-นะ-ทอน",
+      "meaning": "ทรงไว้ซึ่งทรัพย์",
+      "englishName": "THANATHORN"
+    },
+    {
+      "row": 691,
+      "name": "ณัฐทิศ",
+      "pronunciation": "นัด-ทิด",
+      "meaning": "ทิศของนักปราชญ์",
+      "englishName": "NATTHIT"
+    },
+    {
+      "row": 692,
+      "name": "ณัฐธัญ",
+      "pronunciation": "นัด-ทัน",
+      "meaning": "ปราชญ์ผู้โชคดี",
+      "englishName": "NATTAN"
+    },
+    {
+      "row": 693,
+      "name": "ณัฐปธาน",
+      "pronunciation": "นัด-ปะ-ทาน",
+      "meaning": "นักปราชญ์",
+      "englishName": "NATPATHARN"
+    },
+    {
+      "row": 694,
+      "name": "ดิสรณ์",
+      "pronunciation": "ดิ-สอน",
+      "meaning": "สรณะ 3 ประการ",
+      "englishName": "DISORN"
+    },
+    {
+      "row": 695,
+      "name": "เตชินทร์",
+      "pronunciation": "เต-ชิน",
+      "meaning": "ผู้ยิ่งใหญ่ด้วยอำนาจ",
+      "englishName": "TAESHIN"
+    },
+    {
+      "row": 696,
+      "name": "ทักษนนท์",
+      "pronunciation": "ทัก-สะ-นน",
+      "meaning": "ยินดีในความฉลาด",
+      "englishName": "TAKSANON"
+    },
+    {
+      "row": 697,
+      "name": "ฐานันดร",
+      "pronunciation": "ถา-นัน-ดอน",
+      "meaning": "ตำแหน่ง",
+      "englishName": "THANANDORN"
+    },
+    {
+      "row": 698,
+      "name": "ณรงค์กร",
+      "pronunciation": "นะ-รง-กอน",
+      "meaning": "ผู้ต่อสู้, นักรบ",
+      "englishName": "NARONGKORN"
+    },
+    {
+      "row": 699,
+      "name": "ณัฐกิจ",
+      "pronunciation": "นัด-ถะ-กิด",
+      "meaning": "ผู้มีการงานอันรู้แล้ว, ผู้ฉลาดในหน้าที่",
+      "englishName": "NATTAKIT"
+    },
+    {
+      "row": 700,
+      "name": "ณัฐนิช",
+      "pronunciation": "นัด-ถะ-นิด",
+      "meaning": "ผู้มีความฉลาด",
+      "englishName": "NATTANICH"
+    },
+    {
+      "row": 701,
+      "name": "ดิลกธรรม",
+      "pronunciation": "ดิ-หลก-ทำ",
+      "meaning": "มีคุณธรรม",
+      "englishName": "DILOKTHAM"
+    },
+    {
+      "row": 702,
+      "name": "ณัฐนัด",
+      "pronunciation": "นัด-ถะ-นัด",
+      "meaning": "ปราชญ์, ผู้มีความรอบรู้",
+      "englishName": "NATTANAT"
+    },
+    {
+      "row": 703,
+      "name": "ณัฐรัช",
+      "pronunciation": "นัด-ถะ-รัด",
+      "meaning": "สมบัติของนักปราชญ์",
+      "englishName": "NATTARAT"
+    },
+    {
+      "row": 704,
+      "name": "ณัฐวร",
+      "pronunciation": "นัด-ถะ-วอน",
+      "meaning": "นักปราชญ์ผู้ประเสริฐ",
+      "englishName": "NATTAWORN"
+    },
+    {
+      "row": 705,
+      "name": "ธนกรณ์",
+      "pronunciation": "ทะ-นะ-กอน",
+      "meaning": "ผู้ก่อให้เกิดทรัพย์",
+      "englishName": "TANAKORN"
+    },
+    {
+      "row": 706,
+      "name": "ธนันท์",
+      "pronunciation": "ทะ-นัน",
+      "meaning": "ยินดีในทรัพย์",
+      "englishName": "THANAN"
+    },
+    {
+      "row": 707,
+      "name": "ญาณันธร",
+      "pronunciation": "ยา-นัน-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งความรู้",
+      "englishName": "YANANTHORN"
+    },
+    {
+      "row": 708,
+      "name": "ณัฐภัค",
+      "pronunciation": "นัด-ถะ-พัก",
+      "meaning": "นักปราชญ์ผู้มีเกียรติ",
+      "englishName": "NADTAPAK"
+    },
+    {
+      "row": 709,
+      "name": "ณัฐรณ",
+      "pronunciation": "นัด-ถะ-รน",
+      "meaning": "การรบของนักปราชญ์",
+      "englishName": "NATTARON"
+    },
+    {
+      "row": 710,
+      "name": "ธรรมธัช",
+      "pronunciation": "ทำ-มะ-ทัด",
+      "meaning": "มีธรรมเป็นธง เด่นด้วยธรรม",
+      "englishName": "THAMMATHAT"
+    },
+    {
+      "row": 711,
+      "name": "ฐรัฐ",
+      "pronunciation": "ถะ-รัด",
+      "meaning": "ดินแดนนักปราชญ์",
+      "englishName": "TARAD"
+    },
+    {
+      "row": 712,
+      "name": "ฐานัส",
+      "pronunciation": "ถา-นัด",
+      "meaning": "โดยเร็ว ฉับพลัน รวดเร็ว โดยเหมาะสม",
+      "englishName": "THANAT"
+    },
+    {
+      "row": 713,
+      "name": "ดวงประดับ",
+      "pronunciation": "ดวง-ประ-ดับ",
+      "meaning": "ประดับด้วยวาสนา",
+      "englishName": "DUANGPRADAP"
+    },
+    {
+      "row": 714,
+      "name": "เตชินท์",
+      "pronunciation": "เต-ชิน",
+      "meaning": "เป็นใหญ่ด้วยเดช มีเดชยิ่งใหญ่",
+      "englishName": "TECHIN"
+    },
+    {
+      "row": 715,
+      "name": "ถนอมรัก",
+      "pronunciation": "ถะ-หนอม-รัก",
+      "meaning": "รักษาซึ่งความรัก",
+      "englishName": "TANOMLAK"
+    },
+    {
+      "row": 716,
+      "name": "ต้องใจ",
+      "pronunciation": "ต้อง-ใจ",
+      "meaning": "ถูกใจ",
+      "englishName": "TONGCHAI"
+    },
+    {
+      "row": 717,
+      "name": "ถนิมภัทร",
+      "pronunciation": "ถะ-นิม-พัด",
+      "meaning": "ผู้มีเครื่องประดับอันประเสริฐ",
+      "englishName": "THANIMPHAT"
+    },
+    {
+      "row": 718,
+      "name": "ทรรศิน",
+      "pronunciation": "ทัด-สิน",
+      "meaning": "การสังเกต การรู้เห็น",
+      "englishName": "THASSIN"
+    },
+    {
+      "row": 719,
+      "name": "ธรธรรม",
+      "pronunciation": "ทอ-ระ-ทำ",
+      "meaning": "ผู้ทรงไว้ในความดีงาม",
+      "englishName": "THORRATHAM"
+    },
+    {
+      "row": 720,
+      "name": "ทรงขวัญ",
+      "pronunciation": "ซง-ขวัน",
+      "meaning": "ผู้ทรงไว้ด้วยความเป็นสิริมงคล",
+      "englishName": "SONGKWAN"
+    },
+    {
+      "row": 721,
+      "name": "ธชรัฐ",
+      "pronunciation": "ทะ-ชะ-รัด",
+      "meaning": "เครื่องหมายบอกลักษณะประเทศ",
+      "englishName": "THACHARAT"
+    },
+    {
+      "row": 722,
+      "name": "ธนัชธร",
+      "pronunciation": "ทะ-นัด-ทอน",
+      "meaning": "ผู้มีทรัพย์",
+      "englishName": "THANADTHORN"
+    },
+    {
+      "row": 723,
+      "name": "ธนันดร",
+      "pronunciation": "ทะ-นัน-ดอน",
+      "meaning": "เศรษฐี",
+      "englishName": "THANANDORN"
+    },
+    {
+      "row": 724,
+      "name": "ธนิกธน",
+      "pronunciation": "ทะ-นิก-ทน",
+      "meaning": "เจ้าแห่งทรัพย์",
+      "englishName": "THANIKTHON"
+    },
+    {
+      "row": 725,
+      "name": "ธมลธร",
+      "pronunciation": "ทะ-มน-ทอน",
+      "meaning": "ผู้มีความงดงาม",
+      "englishName": "THAMONTHON"
+    },
+    {
+      "row": 726,
+      "name": "ทรงยศ",
+      "pronunciation": "ซง-ยด",
+      "meaning": "ผู้มีชื่อเสียงความดีงาม",
+      "englishName": "SONGYOD"
+    },
+    {
+      "row": 727,
+      "name": "ธนัญญา",
+      "pronunciation": "ทะ-นัน-ยา",
+      "meaning": "มีความรู้เรื่องทรัพย์",
+      "englishName": "THANANYA"
+    },
+    {
+      "row": 728,
+      "name": "ธรณ์",
+      "pronunciation": "ทอน",
+      "meaning": "ทรงไว้ ความทรงจำ แผ่นดิน",
+      "englishName": "THORN"
+    },
+    {
+      "row": 729,
+      "name": "ญาณาธิป",
+      "pronunciation": "ยา-นา-ทิบ",
+      "meaning": "เป็นใหญ่ด้วยความรู้",
+      "englishName": "YANATHIP"
+    },
+    {
+      "row": 730,
+      "name": "ดวงใจ",
+      "pronunciation": "ดวง-ใจ",
+      "meaning": "ดวงใจ",
+      "englishName": "DUANGCHAI"
+    },
+    {
+      "row": 731,
+      "name": "ฐานกร",
+      "pronunciation": "ถา-นะ-กอน",
+      "meaning": "ผู้มีฐานะและความเจริญ",
+      "englishName": "THANAKORN"
+    },
+    {
+      "row": 732,
+      "name": "ฐานภร",
+      "pronunciation": "ถา-นะ-พอน",
+      "meaning": "เป็นที่พึ่งอันมั่นคง",
+      "englishName": "THANAPHORN"
+    },
+    {
+      "row": 733,
+      "name": "ณฐภณ",
+      "pronunciation": "นะ-ถะ-พน",
+      "meaning": "พูดอย่างปราชญ์",
+      "englishName": "NATHAPHON"
+    },
+    {
+      "row": 734,
+      "name": "ณัทคุณ",
+      "pronunciation": "นัด-ทะ-คุน",
+      "meaning": "ผู้ให้ความรู้มีคุณธรรม",
+      "englishName": "NATTAKUN"
+    },
+    {
+      "row": 735,
+      "name": "ดรงค์",
+      "pronunciation": "ดะ-รง",
+      "meaning": "คลื่น",
+      "englishName": "DARONG"
+    },
+    {
+      "row": 736,
+      "name": "ถิรเจต",
+      "pronunciation": "ถิ-ระ-เจด",
+      "meaning": "ผู้มีใจเด็ดเดี่ยว",
+      "englishName": "THIRAJAT"
+    },
+    {
+      "row": 737,
+      "name": "ทินโชค",
+      "pronunciation": "ทิน-นะ-โชด",
+      "meaning": "ผู้โชคดีทุกวัน",
+      "englishName": "THINNACHOK"
+    },
+    {
+      "row": 738,
+      "name": "ทินภัทร",
+      "pronunciation": "ทิน-นะ-พัด",
+      "meaning": "วันที่มีแต่ความเจริญ",
+      "englishName": "TINNAPHAT"
+    },
+    {
+      "row": 739,
+      "name": "ธนาธิป",
+      "pronunciation": "ทะ-นา-ทิบ",
+      "meaning": "ผู้มีทรัพย์และเป็นใหญ่",
+      "englishName": "THANATHIB"
+    },
+    {
+      "row": 740,
+      "name": "ญานธร",
+      "pronunciation": "ยา-นะ-ทอน",
+      "meaning": "ทรงไว้ซึ่งความรู้",
+      "englishName": "YANATHORN"
+    },
+    {
+      "row": 741,
+      "name": "ณัฐ",
+      "pronunciation": "นัด",
+      "meaning": "ผู้ตั้งอยู่ในความรู้ นักปราชญ์",
+      "englishName": "NAT"
+    },
+    {
+      "row": 742,
+      "name": "เตชัส",
+      "pronunciation": "เต-ชัด",
+      "meaning": "เดช หรืออำนาจ",
+      "englishName": "TECHAT"
+    },
+    {
+      "row": 743,
+      "name": "ธนภัค",
+      "pronunciation": "ทะ-นะ-พัก",
+      "meaning": "ผู้เจริญด้วยทรัพย์",
+      "englishName": "TANAPAK"
+    },
+    {
+      "row": 744,
+      "name": "ธนัน",
+      "pronunciation": "ทะ-นัน",
+      "meaning": "ผู้มีทรัพย์",
+      "englishName": "THANNAN"
+    },
+    {
+      "row": 745,
+      "name": "เตวิข",
+      "pronunciation": "เต-วิด",
+      "meaning": "มีวิชา 3 ประการ มีความรู้พิเศษ 3 ประการ",
+      "englishName": "TEWIT"
+    },
+    {
+      "row": 746,
+      "name": "เตวิช",
+      "pronunciation": "เต-วิด",
+      "meaning": "ผู้มีความรู้ความสามารถเหนือใคร",
+      "englishName": "TEWID"
+    },
+    {
+      "row": 747,
+      "name": "ถนอม",
+      "pronunciation": "ถะ-หนอม",
+      "meaning": "ประคองรักษาไว้",
+      "englishName": "THANOM"
+    },
+    {
+      "row": 748,
+      "name": "ถวิล",
+      "pronunciation": "ถะ-หวิน",
+      "meaning": "คิดถึง",
+      "englishName": "THAWIN"
+    },
+    {
+      "row": 749,
+      "name": "ธนธร",
+      "pronunciation": "ทะ-นะ-ทอน",
+      "meaning": "ผู้รักษาทรัพย์",
+      "englishName": "TANATHORN"
+    },
+    {
+      "row": 750,
+      "name": "ตชัส",
+      "pronunciation": "ตะ-ชัด",
+      "meaning": "ผู้มีอำนาจ",
+      "englishName": "TACHAD"
+    },
+    {
+      "row": 751,
+      "name": "ธนดล",
+      "pronunciation": "ทะ-นะ-ดน",
+      "meaning": "ผู้บันดาลทรัพย์",
+      "englishName": "THANADON"
+    },
+    {
+      "row": 752,
+      "name": "ทวิช",
+      "pronunciation": "ทะ-วิด",
+      "meaning": "นก พราหมณ์",
+      "englishName": "THAWIT"
+    },
+    {
+      "row": 753,
+      "name": "ดิเรก",
+      "pronunciation": "ดิ-เรก",
+      "meaning": "ความรุ่งเรือง",
+      "englishName": "DIREG"
+    },
+    {
+      "row": 754,
+      "name": "ดิลก",
+      "pronunciation": "ดิ-หลก",
+      "meaning": "เลิศ ยอด",
+      "englishName": "DILOK"
+    },
+    {
+      "row": 755,
+      "name": "ณัช",
+      "pronunciation": "นัด",
+      "meaning": "เกิดมาเพื่อความรู้ ผู้ให้เกิดความรู้",
+      "englishName": "NAT"
+    },
+    {
+      "row": 756,
+      "name": "ณิช",
+      "pronunciation": "นิด",
+      "meaning": "ความสะอาดบริสุทธิ์",
+      "englishName": "NICH"
+    },
+    {
+      "row": 757,
+      "name": "ดรุณ",
+      "pronunciation": "ดะ-รุน",
+      "meaning": "เด็กหนุ่ม",
+      "englishName": "DARUN"
+    },
+    {
+      "row": 758,
+      "name": "ถนัด",
+      "pronunciation": "ถะ-หนัด",
+      "meaning": "ความแม่นยำ ความสันทัด",
+      "englishName": "TANAT"
+    },
+    {
+      "row": 759,
+      "name": "ณกร",
+      "pronunciation": "นะ-กอน",
+      "meaning": "ผู้สร้างความรู้",
+      "englishName": "NAKON"
+    },
+    {
+      "row": 760,
+      "name": "ณัท",
+      "pronunciation": "นัด",
+      "meaning": "ให้ซึ่งความรู้",
+      "englishName": "NAT"
+    },
+    {
+      "row": 761,
+      "name": "ถัทธ",
+      "pronunciation": "ถัด",
+      "meaning": "ผู้มีความแข็งแรง",
+      "englishName": "THAT"
+    },
+    {
+      "row": 762,
+      "name": "ธนา",
+      "pronunciation": "ทะ-นา",
+      "meaning": "ทรัพย์สิน",
+      "englishName": "THANA"
+    },
+    {
+      "row": 763,
+      "name": "เชษฐ์วิสิฐ",
+      "pronunciation": "เชด-วิ-สิด",
+      "meaning": "ผู้เป็นใหญ่ที่สุด",
+      "englishName": "CHETWISIT"
+    },
+    {
+      "row": 764,
+      "name": "ชัชวิศิษฏ์",
+      "pronunciation": "ชัด-วิ-สิด",
+      "meaning": "นักรบผู้ยอดเยี่ยม",
+      "englishName": "CHADWISID"
+    },
+    {
+      "row": 765,
+      "name": "จิณณะมนัส",
+      "pronunciation": "จิน-นะ-มะ-นัด",
+      "meaning": "ผู้ปฏิบัติได้ดั่งใจ",
+      "englishName": "CHINNAMANAT"
+    },
+    {
+      "row": 766,
+      "name": "ชิดวริศร์",
+      "pronunciation": "ชิด-วะ-ริด",
+      "meaning": "ผู้เป็นที่รักของผู้เป็นใหญ่",
+      "englishName": "CHITWARIT"
+    },
+    {
+      "row": 767,
+      "name": "ชัชพีร์",
+      "pronunciation": "ชัด-ชะ-พี",
+      "meaning": "นักรบผู้กล้า",
+      "englishName": "CHATCHAPHI"
+    },
+    {
+      "row": 768,
+      "name": "ชวนิศ",
+      "pronunciation": "ชะ-วะ-นิด",
+      "meaning": "เจ้าแห่งความเร็ว",
+      "englishName": "CHAWANIT"
+    },
+    {
+      "row": 769,
+      "name": "ชลธี",
+      "pronunciation": "ชน-ละ-ที",
+      "meaning": "ทะเล",
+      "englishName": "CHONLATHI"
+    },
+    {
+      "row": 770,
+      "name": "ชวิศ",
+      "pronunciation": "ชะ-วิด",
+      "meaning": "เจ้าแห่งเชาวน์ปัญญา",
+      "englishName": "CHAWIT"
+    },
+    {
+      "row": 771,
+      "name": "จันทร์เจริญ",
+      "pronunciation": "จัน-จะ-เริน",
+      "meaning": "ดวงจันทร์ที่งดงาม",
+      "englishName": "CHANCHAROEN"
+    },
+    {
+      "row": 772,
+      "name": "จันทร์ไชย",
+      "pronunciation": "จัน-ไซ",
+      "meaning": "ชัยซนะที่ให้ความร่มเย็น",
+      "englishName": "JANCHAI"
+    },
+    {
+      "row": 773,
+      "name": "ชิณณวรรธน์",
+      "pronunciation": "ชิน-นะ-วัด",
+      "meaning": "อยู่กับความเจริญ",
+      "englishName": "CHINNAWAT"
+    },
+    {
+      "row": 774,
+      "name": "ชวาลณัฎฐ์",
+      "pronunciation": "ชะ-วาน-นัด",
+      "meaning": "ปราชญ์ผู้มีความรุ่งเรือง",
+      "englishName": "CHAWANNAT"
+    },
+    {
+      "row": 775,
+      "name": "แจ่มจันทร์",
+      "pronunciation": "แจ่ม-จัน",
+      "meaning": "พระจันทร์ที่สว่างไสว",
+      "englishName": "CHAEMCHAN"
+    },
+    {
+      "row": 776,
+      "name": "เจริญศิริ",
+      "pronunciation": "จะ-เริน-สิ-ริ",
+      "meaning": "ผู้เจริญด้วยมงคล",
+      "englishName": "CHAROENSIRI"
+    },
+    {
+      "row": 777,
+      "name": "จักรินทร์",
+      "pronunciation": "จัก-กะ-ริน",
+      "meaning": "ผู้เป็นใหญ่ในอาณาจักร",
+      "englishName": "CHAKKARIN"
+    },
+    {
+      "row": 778,
+      "name": "จิรนันท์",
+      "pronunciation": "จิ-ระนัน",
+      "meaning": "มีผู้ชื่นชมยินดี",
+      "englishName": "JIRANAN"
+    },
+    {
+      "row": 779,
+      "name": "จิรันดน์",
+      "pronunciation": "จิ-รัน",
+      "meaning": "ใหม่ อยู่นาน",
+      "englishName": "JIRAN"
+    },
+    {
+      "row": 780,
+      "name": "ฉันทวิชช์",
+      "pronunciation": "ฉัน-ทะ-วิด",
+      "meaning": "ผู้ที่มีความสนใจในวิชาความรู้",
+      "englishName": "CHANTHAWIT"
+    },
+    {
+      "row": 781,
+      "name": "ฉันทิชย์",
+      "pronunciation": "ฉัน-ทิด",
+      "meaning": "ผู้เชี่ยวขาญทางวิชาการ",
+      "englishName": "CHANTHIT"
+    },
+    {
+      "row": 782,
+      "name": "ญาณโรจน์",
+      "pronunciation": "ยา-นะ-โรด",
+      "meaning": "รุ่งเรืองด้วยความรู้",
+      "englishName": "YANAROJ"
+    },
+    {
+      "row": 783,
+      "name": "จิณณธรรม",
+      "pronunciation": "จิน-นะ-ทำ",
+      "meaning": "ประพฤติธรรม",
+      "englishName": "JINNATHAM"
+    },
+    {
+      "row": 784,
+      "name": "เจนณรงค์",
+      "pronunciation": "เจน-นะ-รง",
+      "meaning": "ผู้รอบรู้ในการรบ",
+      "englishName": "CHENNARONG"
+    },
+    {
+      "row": 785,
+      "name": "ชัชรินทร์",
+      "pronunciation": "ชัด-ชะ-ริน",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "CHATCHARIN"
+    },
+    {
+      "row": 786,
+      "name": "ชินวรณ์",
+      "pronunciation": "ชิ-นะ-วอน",
+      "meaning": "กำแพงแห่งชัยชนะ",
+      "englishName": "CHINNAWAN"
+    },
+    {
+      "row": 787,
+      "name": "จิรนนท์",
+      "pronunciation": "จิ-ระ-นน",
+      "meaning": "ผู้เป็นที่รักและมีความผูกพัน",
+      "englishName": "JIRANON"
+    },
+    {
+      "row": 788,
+      "name": "จิราวรรณ",
+      "pronunciation": "จิ-รา-วัน",
+      "meaning": "ผู้เกิดในชนชั้นที่มั่นคง",
+      "englishName": "JIRAWAN"
+    },
+    {
+      "row": 789,
+      "name": "ฌณิศร์",
+      "pronunciation": "ชะ-นิด",
+      "meaning": "ผู้ปกครอง",
+      "englishName": "CHANIT"
+    },
+    {
+      "row": 790,
+      "name": "จรูญธรรม",
+      "pronunciation": "จะ-รูน-ทำ",
+      "meaning": "ผู้มีธรรมอันรุ่งเรือง",
+      "englishName": "CHARUNTHAM"
+    },
+    {
+      "row": 791,
+      "name": "ชัชวิชญ์",
+      "pronunciation": "ชัด-ชะ-วิด",
+      "meaning": "ทหารผู้มีความรอบรู้",
+      "englishName": "CHATCHAWIT"
+    },
+    {
+      "row": 792,
+      "name": "ฉันทวัศ",
+      "pronunciation": "ฉัน-ทะ-วัด",
+      "meaning": "ความพอใจในอำนาจ",
+      "englishName": "CHANTHAWAT"
+    },
+    {
+      "row": 793,
+      "name": "ชวนันท์",
+      "pronunciation": "ชะ-วะ-นัน",
+      "meaning": "ผู้มีไหวพริบปฏิภาณดี",
+      "englishName": "CHAWANAN"
+    },
+    {
+      "row": 794,
+      "name": "ฌรินทร์",
+      "pronunciation": "ชะ-ริน",
+      "meaning": "เจ้าสมุทร",
+      "englishName": "CHARIN"
+    },
+    {
+      "row": 795,
+      "name": "จิราวัชร",
+      "pronunciation": "จิ-รา-วัด",
+      "meaning": "มีความมั่นคงดุจเพร",
+      "englishName": "CHIRAWAT"
+    },
+    {
+      "row": 796,
+      "name": "ชวินทร์",
+      "pronunciation": "ชะ-วิน",
+      "meaning": "มีเชาว์เป็นใหญ่",
+      "englishName": "CHAWIN"
+    },
+    {
+      "row": 797,
+      "name": "จิรสิน",
+      "pronunciation": "จิ-ระ-สิน",
+      "meaning": "มีทรัพย์ตลอดกาลนาน",
+      "englishName": "JIRASIN"
+    },
+    {
+      "row": 798,
+      "name": "เจนธรรม",
+      "pronunciation": "เจน-ทำ",
+      "meaning": "ผู้จัดเจนหรือผู้เชี่ยวชาญในธรรม",
+      "englishName": "JANETHAM"
+    },
+    {
+      "row": 799,
+      "name": "ฌัลล์",
+      "pronunciation": "ชัน",
+      "meaning": "นักต่อสู้ผู้กล้าแกร่ง",
+      "englishName": "CHAN"
+    },
+    {
+      "row": 800,
+      "name": "ฌานภัทร์",
+      "pronunciation": "ชาน-นะ-พัด",
+      "meaning": "สมาธิอันประเสริฐ",
+      "englishName": "CHANNAPHAT"
+    },
+    {
+      "row": 801,
+      "name": "จันทร์",
+      "pronunciation": "จัน",
+      "meaning": "พระจันทร์",
+      "englishName": "CHAN"
+    },
+    {
+      "row": 802,
+      "name": "จันทราริ",
+      "pronunciation": "จัน-ทรา-ริ",
+      "meaning": "ราหู",
+      "englishName": "CHANTRARI"
+    },
+    {
+      "row": 803,
+      "name": "จารุธรรม",
+      "pronunciation": "จา-รุ-ทำ",
+      "meaning": "ผู้มีคุณธรรม",
+      "englishName": "CHARUTHAM"
+    },
+    {
+      "row": 804,
+      "name": "จิณณ์",
+      "pronunciation": "จิน",
+      "meaning": "ผู้ที่ประพฤติดีแล้ว",
+      "englishName": "JIN"
+    },
+    {
+      "row": 805,
+      "name": "จิรวิน",
+      "pronunciation": "จิ-ระ-วิน",
+      "meaning": "ผู้มีอายุยืนยาว",
+      "englishName": "JIRAWIN"
+    },
+    {
+      "row": 806,
+      "name": "เจริญทอง",
+      "pronunciation": "จะ-เริน-ทอง",
+      "meaning": "มากล้นด้วยทองคำ",
+      "englishName": "CHAROENTHONG"
+    },
+    {
+      "row": 807,
+      "name": "ฉกรรจ์",
+      "pronunciation": "ฉะ-กัน",
+      "meaning": "ผู้ที่ห้าวหาญ, แข็งแกร่ง",
+      "englishName": "CHAKAN"
+    },
+    {
+      "row": 808,
+      "name": "ฉลองคุณ",
+      "pronunciation": "ฉะ-หลอง-คุน",
+      "meaning": "ทดแทนบุญคุณ",
+      "englishName": "CHALONGKUN"
+    },
+    {
+      "row": 809,
+      "name": "จักรวาล",
+      "pronunciation": "จัก-กระ-วาน",
+      "meaning": "ปริมณฑล บรรยากาศนอกโลก",
+      "englishName": "JAKKAWAL"
+    },
+    {
+      "row": 810,
+      "name": "จุลจักร",
+      "pronunciation": "จุน-ละ-จัก",
+      "meaning": "อาวุธคือจักรขนาดเล็ก",
+      "englishName": "CHULACHAK"
+    },
+    {
+      "row": 811,
+      "name": "ฉินนรณ",
+      "pronunciation": "ฉิน-นะ-รน",
+      "meaning": "ตัดการรบได้ ไม่ต้องรบคือมีชัยชนะ",
+      "englishName": "CHINNARON"
+    },
+    {
+      "row": 812,
+      "name": "ชินธรรม",
+      "pronunciation": "ชิน-นะ-ทำ",
+      "meaning": "คำสอนของพระมหาวีระ",
+      "englishName": "CHINNATHAM"
+    },
+    {
+      "row": 813,
+      "name": "ซับปัญญา",
+      "pronunciation": "ซับ-ปัน-ยา",
+      "meaning": "รับความรู้ไว้ตลอดเวลา",
+      "englishName": "SAPPANYA"
+    },
+    {
+      "row": 814,
+      "name": "ชญานนท์",
+      "pronunciation": "ชะ-ยา-นน",
+      "meaning": "ยินดีในความรู้",
+      "englishName": "CHAYANON"
+    },
+    {
+      "row": 815,
+      "name": "ชัชชวิศ",
+      "pronunciation": "ชัด-ชะ-วิน",
+      "meaning": "ทหารผู้มีความรอบรู้",
+      "englishName": "CHATCHAWIT"
+    },
+    {
+      "row": 816,
+      "name": "ญาณธรรม",
+      "pronunciation": "ยาน-นะ-ทำ",
+      "meaning": "ธรรมะนำมาซึ่งความรู้",
+      "englishName": "YANNATHAM"
+    },
+    {
+      "row": 817,
+      "name": "จักรวุธ",
+      "pronunciation": "จัก-กระ-วุด",
+      "meaning": "ผู้มีจักรเป็นอาวุธ",
+      "englishName": "JAKKRAWUT"
+    },
+    {
+      "row": 818,
+      "name": "ฉันทิศ",
+      "pronunciation": "ฉัน-ทิด",
+      "meaning": "ยิ่งใหญ่ด้วยความดี",
+      "englishName": "CHANTHIT"
+    },
+    {
+      "row": 819,
+      "name": "ชวัลบูร",
+      "pronunciation": "ชะ-วัน-บูน",
+      "meaning": "เมืองที่เจริญรุ่งเรือง",
+      "englishName": "CHAWANBOON"
+    },
+    {
+      "row": 820,
+      "name": "จักรภัทร",
+      "pronunciation": "จัก-กะ-พัด",
+      "meaning": "ผู้เป็นใหญ่ในแว่นแคว้นพระราชา",
+      "englishName": "JAKKRAPHAT"
+    },
+    {
+      "row": 821,
+      "name": "จันทรกร",
+      "pronunciation": "จัน-ทะ-ระ-กอน",
+      "meaning": "รัศมีของดวงจันทร์",
+      "englishName": "CHANTHARAKON"
+    },
+    {
+      "row": 822,
+      "name": "เจตน์",
+      "pronunciation": "เจด",
+      "meaning": "ความคิด ผู้มีความคิดดี",
+      "englishName": "JET"
+    },
+    {
+      "row": 823,
+      "name": "เจนใจ",
+      "pronunciation": "เจน-ใจ",
+      "meaning": "แม่นยำ",
+      "englishName": "JENJAI"
+    },
+    {
+      "row": 824,
+      "name": "ชลันธร",
+      "pronunciation": "ชะ-ลัน-ทอน",
+      "meaning": "ทะเล , มหาสมุทร",
+      "englishName": "CHALANTORN"
+    },
+    {
+      "row": 825,
+      "name": "จักรธร",
+      "pronunciation": "จัก-กะ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งจักร , พระนารายณ์",
+      "englishName": "CHAKKATHON"
+    },
+    {
+      "row": 826,
+      "name": "จามรี",
+      "pronunciation": "จา-มะ-รี",
+      "meaning": "เนื้อทราย",
+      "englishName": "CHAMARI"
+    },
+    {
+      "row": 827,
+      "name": "เจนภัทร",
+      "pronunciation": "เจน-พัด",
+      "meaning": "ผู้เชี่ยวชาญในความดีงาม",
+      "englishName": "JENPHAT"
+    },
+    {
+      "row": 828,
+      "name": "ชลธิศ",
+      "pronunciation": "ชน-ละ-ทิด",
+      "meaning": "ทะเล , มหาสมุทร",
+      "englishName": "CHONLATHIT"
+    },
+    {
+      "row": 829,
+      "name": "จำรัส",
+      "pronunciation": "จำ-หรัด",
+      "meaning": "แจ่มแจ้ง รุ่งเรือง",
+      "englishName": "JAMRAT"
+    },
+    {
+      "row": 830,
+      "name": "ฉลอม",
+      "pronunciation": "ฉะ-หลอม",
+      "meaning": "เรือชนิดหนึ่ง",
+      "englishName": "CHALOM"
+    },
+    {
+      "row": 831,
+      "name": "ชลันทร",
+      "pronunciation": "ชะ-ลัน-ทอน",
+      "meaning": "ทะเล , มหาสมุทร",
+      "englishName": "CHALANTHON"
+    },
+    {
+      "row": 832,
+      "name": "ชินาธิป",
+      "pronunciation": "ชิ-นา-ทิบ",
+      "meaning": "ผู้ชนะที่ยิ่งใหญ่",
+      "englishName": "CHINATHIP"
+    },
+    {
+      "row": 833,
+      "name": "ญณัฐ",
+      "pronunciation": "ยะ-นัด",
+      "meaning": "ผู้หยั่งรู้",
+      "englishName": "YANAT"
+    },
+    {
+      "row": 834,
+      "name": "จามิกร",
+      "pronunciation": "จา-มิ-กอน",
+      "meaning": "เครื่องทอง",
+      "englishName": "CHAMIKON"
+    },
+    {
+      "row": 835,
+      "name": "จำลอง",
+      "pronunciation": "จำ-ลอง",
+      "meaning": "แทน",
+      "englishName": "CHAMLONG"
+    },
+    {
+      "row": 836,
+      "name": "เจนจบ",
+      "pronunciation": "เจน-จบ",
+      "meaning": "ชำนาญรอบรู้",
+      "englishName": "JANEJOB"
+    },
+    {
+      "row": 837,
+      "name": "ฉันทัช",
+      "pronunciation": "ฉัน-ทัด",
+      "meaning": "ผู้เกิดมาด้วยความพึงพอใจ",
+      "englishName": "CHANTHAT"
+    },
+    {
+      "row": 838,
+      "name": "ชินภัทร",
+      "pronunciation": "ชิน-นะ-พัด",
+      "meaning": "ผู้เจริญด้วยชัยชนะ",
+      "englishName": "CHINNAPHAT"
+    },
+    {
+      "row": 839,
+      "name": "ชินวร",
+      "pronunciation": "ชิน-นะ-วอน",
+      "meaning": "มีชัยที่เป็นเลิศ",
+      "englishName": "CHINNAWON"
+    },
+    {
+      "row": 840,
+      "name": "ญาณณัช",
+      "pronunciation": "ยา-นะ-นัด",
+      "meaning": "ผู้เกิดมาเพื่อความรู้",
+      "englishName": "YANANAT"
+    },
+    {
+      "row": 841,
+      "name": "จุไร",
+      "pronunciation": "จุ-ไร",
+      "meaning": "ผม เป็นคำราชาศัพท์",
+      "englishName": "JURAI"
+    },
+    {
+      "row": 842,
+      "name": "เจตนะ",
+      "pronunciation": "เจ-ตะ-นะ",
+      "meaning": "ผู้มีความตั้งมั่น",
+      "englishName": "JTANA"
+    },
+    {
+      "row": 843,
+      "name": "เจริญ",
+      "pronunciation": "จะ-เริน",
+      "meaning": "เพิ่มพูน, สมบูรณ์",
+      "englishName": "JAROEN"
+    },
+    {
+      "row": 844,
+      "name": "ชัชบวร",
+      "pronunciation": "ชัด-บอ-วอน",
+      "meaning": "นักรบผู้ยอดเยี่ยม",
+      "englishName": "CHADBORWORN"
+    },
+    {
+      "row": 845,
+      "name": "ชัชรัญ",
+      "pronunciation": "ชัด-ชะ-รัน",
+      "meaning": "นักสู้ผู้มีความรู้",
+      "englishName": "CHADCHARAN"
+    },
+    {
+      "row": 846,
+      "name": "ญาณธิป",
+      "pronunciation": "ยา-นะ-ทิบ",
+      "meaning": "ยิ่งใหญ่ในความรู้",
+      "englishName": "YANATIB"
+    },
+    {
+      "row": 847,
+      "name": "ญาณภัทร",
+      "pronunciation": "ยา-นะ-พัด",
+      "meaning": "ผู้งามพร้อมด้วยความรู้",
+      "englishName": "YANAPHAT"
+    },
+    {
+      "row": 848,
+      "name": "จารี",
+      "pronunciation": "จา-รี",
+      "meaning": "ผู้ประพฤติดี",
+      "englishName": "CHARI"
+    },
+    {
+      "row": 849,
+      "name": "เจษฎา",
+      "pronunciation": "เจด-สะ-ดา",
+      "meaning": "ผู้เป็นใหญ่ที่สุด",
+      "englishName": "JETSADA"
+    },
+    {
+      "row": 850,
+      "name": "ชวัล",
+      "pronunciation": "ชะ-วัน",
+      "meaning": "ส่องแสง รุ่งเรือง",
+      "englishName": "CHAWAN"
+    },
+    {
+      "row": 851,
+      "name": "เชษฐา",
+      "pronunciation": "เชด-ถา",
+      "meaning": "ผู้เจริญที่สุด",
+      "englishName": "CHETTHA"
+    },
+    {
+      "row": 852,
+      "name": "ญาณธร",
+      "pronunciation": "ยา-นะ-ทอน",
+      "meaning": "ทรงไว้ซึ่งความรู้",
+      "englishName": "YANATHORN"
+    },
+    {
+      "row": 853,
+      "name": "จำรูญ",
+      "pronunciation": "จำ-รูน",
+      "meaning": "รุ่งเรือง",
+      "englishName": "JAMROON"
+    },
+    {
+      "row": 854,
+      "name": "โจทนา",
+      "pronunciation": "โจ-ทะ-นา",
+      "meaning": "เป็นผู้ที่ถูกกล่าวถึง",
+      "englishName": "JOETANA"
+    },
+    {
+      "row": 855,
+      "name": "ชโนดม",
+      "pronunciation": "ชะ-โน-ดม",
+      "meaning": "คนที่สูงสุด",
+      "englishName": "CHANODOM"
+    },
+    {
+      "row": 856,
+      "name": "ชลธาร",
+      "pronunciation": "ชน-ละ-ทาน",
+      "meaning": "ลำธาร ลำน้ำ แม่น้ำ ทะเลสาบ",
+      "englishName": "CHONLATHAN"
+    },
+    {
+      "row": 857,
+      "name": "ชลัม",
+      "pronunciation": "ชะ-ลัม",
+      "meaning": "เมฆฝน, ทะเล",
+      "englishName": "CHALAM"
+    },
+    {
+      "row": 858,
+      "name": "ชวิน",
+      "pronunciation": "ชะ-วิน",
+      "meaning": "มีความไว มีเชาว์ปัญญา ผู้ปราดเปรื่อง",
+      "englishName": "CHAWIN"
+    },
+    {
+      "row": 859,
+      "name": "จามร",
+      "pronunciation": "จา-มอน",
+      "meaning": "เครื่องใช้สำหรับประดับกระบวน ราชยาน รูปเหมือนพัด",
+      "englishName": "JAMON"
+    },
+    {
+      "row": 860,
+      "name": "จาริก",
+      "pronunciation": "จา-ริก",
+      "meaning": "ผู้เที่ยวไป",
+      "englishName": "CHARIK"
+    },
+    {
+      "row": 861,
+      "name": "ชลธร",
+      "pronunciation": "ชน-ละ-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งน้ำ คือทะเล",
+      "englishName": "CHONLATHORN"
+    },
+    {
+      "row": 862,
+      "name": "ชวาลา",
+      "pronunciation": "ชะ-วา-ลา",
+      "meaning": "ตะเกียงโบราณ",
+      "englishName": "CHAWALA"
+    },
+    {
+      "row": 863,
+      "name": "ชินกร",
+      "pronunciation": "ชิน-นะ-กอน",
+      "meaning": "ผู้มีชัยชนะ",
+      "englishName": "CHINNAKON"
+    },
+    {
+      "row": 864,
+      "name": "ชิษนุ",
+      "pronunciation": "ชิด-สะ-นุ",
+      "meaning": "บุตรของผู้กล้า",
+      "englishName": "CHIDSANU"
+    },
+    {
+      "row": 865,
+      "name": "ญาณัช",
+      "pronunciation": "ยา-นัด",
+      "meaning": "ผู้ให้ความรู้",
+      "englishName": "YANAT"
+    },
+    {
+      "row": 866,
+      "name": "จุฬา",
+      "pronunciation": "จุ-ลา",
+      "meaning": "ปิ่น, ชื่อของว่าชนิดหนึ่ง",
+      "englishName": "CHULA"
+    },
+    {
+      "row": 867,
+      "name": "ชลัท",
+      "pronunciation": "ชะ-ลัด",
+      "meaning": "เมฆ",
+      "englishName": "CHALAT"
+    },
+    {
+      "row": 868,
+      "name": "ชวกร",
+      "pronunciation": "ชะ-วะ-กอน",
+      "meaning": "ผู้มีเชาวน์ปัญญาดี",
+      "englishName": "CHAWAKON"
+    },
+    {
+      "row": 869,
+      "name": "จเร",
+      "pronunciation": "จะ-เร",
+      "meaning": "ผู้เร่งรีบ",
+      "englishName": "JARAY"
+    },
+    {
+      "row": 870,
+      "name": "จารุ",
+      "pronunciation": "จา-รุ",
+      "meaning": "ทองคำ, ความงาม, ความน่ารัก",
+      "englishName": "JARU"
+    },
+    {
+      "row": 871,
+      "name": "เชวง",
+      "pronunciation": "ชะ-เวง",
+      "meaning": "โด่งดัง, รุ่งเรือง",
+      "englishName": "CHAWENG"
+    },
+    {
+      "row": 872,
+      "name": "ฌลา",
+      "pronunciation": "ชะ-ลา",
+      "meaning": "บุตรี, ลูกสาว",
+      "englishName": "CHALA"
+    },
+    {
+      "row": 873,
+      "name": "ฌาน",
+      "pronunciation": "ชาน",
+      "meaning": "การเพ่ง",
+      "englishName": "CHAN"
+    },
+    {
+      "row": 874,
+      "name": "ชเล",
+      "pronunciation": "ชะ-เล",
+      "meaning": "ทะเล",
+      "englishName": "CHALE"
+    },
+    {
+      "row": 875,
+      "name": "คณิศร์พงษ์",
+      "pronunciation": "คะ-นิด-พง",
+      "meaning": "ตระกูลผู้เป็นใหญ่ในหมู่คน",
+      "englishName": "KANITPONG"
+    },
+    {
+      "row": 876,
+      "name": "กันต์ธีร์",
+      "pronunciation": "กัน-ที",
+      "meaning": "นักปราชญ์ผู้น่ารัก",
+      "englishName": "KANTHEE"
+    },
+    {
+      "row": 877,
+      "name": "จรัสพงษ์",
+      "pronunciation": "จะ-หรัด-พง",
+      "meaning": "ผู้สืบเชื้อสายที่รุ่งเรือง",
+      "englishName": "CHARAJPONG"
+    },
+    {
+      "row": 878,
+      "name": "กันต์ธีระ",
+      "pronunciation": "กัน-ที-ระ",
+      "meaning": "นักปราชญ์ผู้เป็นที่รัก",
+      "englishName": "KANTHEERA"
+    },
+    {
+      "row": 879,
+      "name": "ขันธสรณ์",
+      "pronunciation": "ขัน-ทะ-สอน",
+      "meaning": "เป็นที่พึ่งของหมู่คณะ",
+      "englishName": "KHANTHASORN"
+    },
+    {
+      "row": 880,
+      "name": "จรัสไชย",
+      "pronunciation": "จะ-หรัด-ไช",
+      "meaning": "ผู้รุ่งเรืองยิ่ง",
+      "englishName": "CHARATCHAI"
+    },
+    {
+      "row": 881,
+      "name": "จรัสพศ",
+      "pronunciation": "จะ-หรัด-พด",
+      "meaning": "ผู้มีอำนาจและรุ่งเรือง",
+      "englishName": "CHARATPHOT"
+    },
+    {
+      "row": 882,
+      "name": "กรธรรศ",
+      "pronunciation": "กอน-ทัด",
+      "meaning": "ผู้เก่งกล้า และ เจริญ",
+      "englishName": "KORNTAD"
+    },
+    {
+      "row": 883,
+      "name": "เขตต์",
+      "pronunciation": "เขด",
+      "meaning": "เขตแดน, แดนที่กําหนดขีดคั่นไว้",
+      "englishName": "KHET"
+    },
+    {
+      "row": 884,
+      "name": "ไกรสิทธิ์",
+      "pronunciation": "ไกร-สิด",
+      "meaning": "ความสำเร็จอันยิ่งใหญ่",
+      "englishName": "KRAISIT"
+    },
+    {
+      "row": 885,
+      "name": "ไกรวิชญ์",
+      "pronunciation": "ไกร-วิด",
+      "meaning": "นักปราชญ์ผู้เก่งกล้า",
+      "englishName": "KRAIWIT"
+    },
+    {
+      "row": 886,
+      "name": "คิมหันต์",
+      "pronunciation": "คิม-หัน",
+      "meaning": "ฤดูร้อน",
+      "englishName": "KHIMHAN"
+    },
+    {
+      "row": 887,
+      "name": "กันตวิชญ์",
+      "pronunciation": "กัน-ตะ-วิด",
+      "meaning": "ผู้มีความรู้เหมาะสม",
+      "englishName": "KANTAWIT"
+    },
+    {
+      "row": 888,
+      "name": "จรัสธรรม",
+      "pronunciation": "จะ-หรัด-ทำ",
+      "meaning": "ผู้รู้แจ้งในทางธรรม",
+      "englishName": "CHARATTHAM"
+    },
+    {
+      "row": 889,
+      "name": "กณิกนันต์",
+      "pronunciation": "กะ-นิก-นัน",
+      "meaning": "ละเอียดยิ่ง",
+      "englishName": "KANIKNAN"
+    },
+    {
+      "row": 890,
+      "name": "กมลานันท์",
+      "pronunciation": "กะ-มะ-ลา-นัน",
+      "meaning": "ดอกบัวบาน",
+      "englishName": "KAMALANAN"
+    },
+    {
+      "row": 891,
+      "name": "ขวัณนนท์",
+      "pronunciation": "ขวัน-นะ-นน",
+      "meaning": "ผู้ยินดีในความเป็นมงคล",
+      "englishName": "KWANNANON"
+    },
+    {
+      "row": 892,
+      "name": "คุณานันต์",
+      "pronunciation": "คุ-นา-นัน",
+      "meaning": "ผู้มีความดีงามไม่มีที่สิ้นสุด",
+      "englishName": "KUNANAN"
+    },
+    {
+      "row": 893,
+      "name": "กมลขัณฑ์",
+      "pronunciation": "กะ-มน-ขัน",
+      "meaning": "บัว",
+      "englishName": "KAMONKHAN"
+    },
+    {
+      "row": 894,
+      "name": "ไกรสิทธิ",
+      "pronunciation": "ไกร-สิด",
+      "meaning": "ราชสีห์",
+      "englishName": "KRAISIT"
+    },
+    {
+      "row": 895,
+      "name": "คริษฐ์",
+      "pronunciation": "คริด",
+      "meaning": "บุคคลผู้น่านับถือ, ผู้ที่เป็นที่เคารพบูชา",
+      "englishName": "KRIT"
+    },
+    {
+      "row": 896,
+      "name": "จรณินท์",
+      "pronunciation": "จะ-ระ-นิน",
+      "meaning": "เป็นใหญ่ด้วยความประพฤติอันดี",
+      "englishName": "JARANIN"
+    },
+    {
+      "row": 897,
+      "name": "กรณินทร์",
+      "pronunciation": "กอ-ระ-นิน",
+      "meaning": "ผู้ยิ่งใหญ่ในสิ่งที่ทำ",
+      "englishName": "KORANIN"
+    },
+    {
+      "row": 898,
+      "name": "กษิดินทร์",
+      "pronunciation": "กะ-สิ-ดิน",
+      "meaning": "ผู้เป็นใหญ่ในแผ่นดิน",
+      "englishName": "KASIDIN"
+    },
+    {
+      "row": 899,
+      "name": "โกมินทร์",
+      "pronunciation": "โก-มิน",
+      "meaning": "พลอยสีแดง",
+      "englishName": "KOMIN"
+    },
+    {
+      "row": 900,
+      "name": "ครองธรรม",
+      "pronunciation": "ครอง-ทำ",
+      "meaning": "ผู้ดำรงตนอยู่ในศีลธรรม ความดี",
+      "englishName": "KRONGTUM"
+    },
+    {
+      "row": 901,
+      "name": "คลังธรรม",
+      "pronunciation": "คลัง-ทำ",
+      "meaning": "แหล่งธรรมะ",
+      "englishName": "KHANGTHAM"
+    },
+    {
+      "row": 902,
+      "name": "โควินท์",
+      "pronunciation": "โค-วิน",
+      "meaning": "หัวหน้าคนเลี้ยงวัว",
+      "englishName": "KHOWIN"
+    },
+    {
+      "row": 903,
+      "name": "จงเจตน์",
+      "pronunciation": "จง-เจด",
+      "meaning": "ตั้งใจคิด",
+      "englishName": "CHONGCHET"
+    },
+    {
+      "row": 904,
+      "name": "จรินทร์",
+      "pronunciation": "จะ-ริน",
+      "meaning": "ผู้เป็นใหญ่ในคนเดินทาง",
+      "englishName": "JARIN"
+    },
+    {
+      "row": 905,
+      "name": "กลวัชร์",
+      "pronunciation": "กน-ละ-วัด",
+      "meaning": "ดุจดั่งเพชร",
+      "englishName": "KONLAWAT"
+    },
+    {
+      "row": 906,
+      "name": "กัณฑ์ภัทร",
+      "pronunciation": "กัน-พัด",
+      "meaning": "ผู้มีความประเสริฐและเจริญ",
+      "englishName": "KANPHAT"
+    },
+    {
+      "row": 907,
+      "name": "ไกรศรี",
+      "pronunciation": "ไกร-สี",
+      "meaning": "สิงโต",
+      "englishName": "KRAISRI"
+    },
+    {
+      "row": 908,
+      "name": "ไกลวัล",
+      "pronunciation": "ไกร-วัน",
+      "meaning": "ทั่วไป",
+      "englishName": "KRAIWAN"
+    },
+    {
+      "row": 909,
+      "name": "ครองขวัญ",
+      "pronunciation": "ครอง-ขวัน",
+      "meaning": "มีมิ่งขวัญ",
+      "englishName": "KHRONGKHWAN"
+    },
+    {
+      "row": 910,
+      "name": "คีรีธัช",
+      "pronunciation": "คี-รี-ทัด",
+      "meaning": "ผู้บรรลุความสำเร็จด้วยความมั่นคงดุจภูเขา",
+      "englishName": "KHIRITHAT"
+    },
+    {
+      "row": 911,
+      "name": "กริษฐ์",
+      "pronunciation": "กะ-ริด",
+      "meaning": "ผู้สร้างสรรค์ นักสร้างสรรค์",
+      "englishName": "KARIT"
+    },
+    {
+      "row": 912,
+      "name": "ครองยศ",
+      "pronunciation": "ครอง-ยด",
+      "meaning": "ผู้สามารถรักษาเกียรติยศเอาไว้ได้",
+      "englishName": "KHRONGYOT"
+    },
+    {
+      "row": 913,
+      "name": "คุณานนท์",
+      "pronunciation": "คุ-นา-นน",
+      "meaning": "มีคุณความดีมากมาย",
+      "englishName": "KUNANON"
+    },
+    {
+      "row": 914,
+      "name": "กรวิชญ์",
+      "pronunciation": "กอ-ระ-วิด",
+      "meaning": "ความรุ่งเรืองของปราชญ์",
+      "englishName": "KORRAWIT"
+    },
+    {
+      "row": 915,
+      "name": "กรวินท์",
+      "pronunciation": "กอ-ระ-วิน",
+      "meaning": "หยก . ทับทิม",
+      "englishName": "KORAWIN"
+    },
+    {
+      "row": 916,
+      "name": "กวินทร์",
+      "pronunciation": "กะ-วิน",
+      "meaning": "เจ้าแห่งกวี, ผู้เป็นใหญ่ในการเขียน",
+      "englishName": "KAWIN"
+    },
+    {
+      "row": 917,
+      "name": "กัณจน์",
+      "pronunciation": "กัน",
+      "meaning": "ทอง",
+      "englishName": "KAN"
+    },
+    {
+      "row": 918,
+      "name": "กันต์ธร",
+      "pronunciation": "กัน-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งเป็นที่รัก",
+      "englishName": "KANTHORN"
+    },
+    {
+      "row": 919,
+      "name": "คณานนท์",
+      "pronunciation": "คะ-นา-นน",
+      "meaning": "ผู้มีเพื่อนมาก",
+      "englishName": "KHANANON"
+    },
+    {
+      "row": 920,
+      "name": "กมลธรรม",
+      "pronunciation": "กะ-มน-ทำ",
+      "meaning": "ผู้มีใจเป็นคุณธรรม",
+      "englishName": "KAMONTHAM"
+    },
+    {
+      "row": 921,
+      "name": "กรณภัทร์",
+      "pronunciation": "กอน-นะ-พัด",
+      "meaning": "ผู้สร้างความดี",
+      "englishName": "GONNAPAT"
+    },
+    {
+      "row": 922,
+      "name": "กัญจน์",
+      "pronunciation": "กัน",
+      "meaning": "ทอง",
+      "englishName": "KAN"
+    },
+    {
+      "row": 923,
+      "name": "ไกรวิน",
+      "pronunciation": "ไกร-วิน",
+      "meaning": "ดอกบัว",
+      "englishName": "KRAIWIN"
+    },
+    {
+      "row": 924,
+      "name": "คัณฐี",
+      "pronunciation": "คัน-ถี",
+      "meaning": "คัมภีร์ที่อธิบายถึงบาลี",
+      "englishName": "KHANTEE"
+    },
+    {
+      "row": 925,
+      "name": "คุณัชญ์",
+      "pronunciation": "คุ-นัด",
+      "meaning": "ผู้รู้คุณธรรม ผู้รู้ความดี",
+      "englishName": "KHUNAT"
+    },
+    {
+      "row": 926,
+      "name": "กรินทร์",
+      "pronunciation": "กะ-ริน",
+      "meaning": "พญาช้าง, ช้างของพระอินทร์",
+      "englishName": "KARIN"
+    },
+    {
+      "row": 927,
+      "name": "ขวัญขจร",
+      "pronunciation": "ขวัน-ขะ-จอน",
+      "meaning": "สิ่งมงคลที่ฟุ้งไปไกล",
+      "englishName": "KWANKAJON"
+    },
+    {
+      "row": 928,
+      "name": "คณัชญ์",
+      "pronunciation": "คะ-นัด",
+      "meaning": "ผู้ทรงคุณธรรม",
+      "englishName": "KANAT"
+    },
+    {
+      "row": 929,
+      "name": "จรจรัญ",
+      "pronunciation": "จอน-จะ-รัน",
+      "meaning": "เที่ยวไป",
+      "englishName": "CHONCHARAN"
+    },
+    {
+      "row": 930,
+      "name": "ขันธาวาร",
+      "pronunciation": "ขัด-ทา-วาน",
+      "meaning": "กองทัพ",
+      "englishName": "KHANTHAWAN"
+    },
+    {
+      "row": 931,
+      "name": "คุณานุคุณ",
+      "pronunciation": "คุ-นา-นุ-คุน",
+      "meaning": "ผู้มากด้วยความเกื้อหนุน",
+      "englishName": "KUNANUKHUN"
+    },
+    {
+      "row": 932,
+      "name": "จรัณธร",
+      "pronunciation": "จะ-รัน-ทอน",
+      "meaning": "ผู้รักษาไว้ซึ่งความประพฤติ",
+      "englishName": "JARANTHORN"
+    },
+    {
+      "row": 933,
+      "name": "กนต์ธร",
+      "pronunciation": "กน-ทอน",
+      "meaning": "ผู้ทรงไว้ซึ่งสิ่งอันเป็นที่รัก",
+      "englishName": "KONTHORN"
+    },
+    {
+      "row": 934,
+      "name": "กรัณฑ์",
+      "pronunciation": "กะ-รัน",
+      "meaning": "กิจอันพึงทำ",
+      "englishName": "KARAN"
+    },
+    {
+      "row": 935,
+      "name": "กวินท์",
+      "pronunciation": "กะ-วิน",
+      "meaning": "กวีผู้มีความสามารถ",
+      "englishName": "KAWIN"
+    },
+    {
+      "row": 936,
+      "name": "คมธรรม",
+      "pronunciation": "คม-ทำ",
+      "meaning": "ธรรมะที่เฉียบแหลม",
+      "englishName": "KHOMTHAM"
+    },
+    {
+      "row": 937,
+      "name": "ครรลอง",
+      "pronunciation": "คัน-ลอง",
+      "meaning": "แนวทาง,แบบอย่าง",
+      "englishName": "KHANLONG"
+    },
+    {
+      "row": 938,
+      "name": "คิรินทร",
+      "pronunciation": "คิ-ริน-ทอน",
+      "meaning": "เจ้าแห่งภูเขา",
+      "englishName": "KHIRINTHORN"
+    },
+    {
+      "row": 939,
+      "name": "ไกรสร",
+      "pronunciation": "ไก-สอน",
+      "meaning": "ผู้เป็นดั่งราชสีห์",
+      "englishName": "KRAISORN"
+    },
+    {
+      "row": 940,
+      "name": "ขัมน์",
+      "pronunciation": "ขำ",
+      "meaning": "อดทน",
+      "englishName": "KHOM"
+    },
+    {
+      "row": 941,
+      "name": "กรชวัล",
+      "pronunciation": "กอ-ระ-ชะ-วัน",
+      "meaning": "ผู้รุ่งเรืองด้วยรัศมี , มีรัศมีรุ่งเรือง",
+      "englishName": "KORACHAWAN"
+    },
+    {
+      "row": 942,
+      "name": "กลวัชร",
+      "pronunciation": "กน-ละ-วัด",
+      "meaning": "ดุจดั่งเพชร",
+      "englishName": "KONLAWAT"
+    },
+    {
+      "row": 943,
+      "name": "กลวิชร",
+      "pronunciation": "กน-ละ-วิด",
+      "meaning": "ดุจดั่งเพชร",
+      "englishName": "KONLAWIT"
+    },
+    {
+      "row": 944,
+      "name": "ขรรค์",
+      "pronunciation": "ขัน",
+      "meaning": "หอกสั้น",
+      "englishName": "KHAN"
+    },
+    {
+      "row": 945,
+      "name": "คมน์",
+      "pronunciation": "คม",
+      "meaning": "ดำเนินไป",
+      "englishName": "KHOM"
+    },
+    {
+      "row": 946,
+      "name": "คัณภัทร",
+      "pronunciation": "คุน-นะ-พัด",
+      "meaning": "ประเสริฐด้วยความดี",
+      "englishName": "KUNNAPHAT"
+    },
+    {
+      "row": 947,
+      "name": "เคียง",
+      "pronunciation": "เคียง",
+      "meaning": "ใกล้ชิดโดยการเรียง",
+      "englishName": "KHIANG"
+    },
+    {
+      "row": 948,
+      "name": "กมลนัท",
+      "pronunciation": "กะ-มน-นัด",
+      "meaning": "ผู้มีจิตใจเป็นที่ผูกพัน",
+      "englishName": "KAMONNAT"
+    },
+    {
+      "row": 949,
+      "name": "กมลภัทร",
+      "pronunciation": "กะ-มน-พัด",
+      "meaning": "ผู้มีจิตใจดีงาม",
+      "englishName": "KAMONPHAT"
+    },
+    {
+      "row": 950,
+      "name": "กันดิศ",
+      "pronunciation": "กัน-ดิด",
+      "meaning": "เจ้าแห่งความรัก , กามเทพ",
+      "englishName": "KANDIT"
+    },
+    {
+      "row": 951,
+      "name": "คีรี",
+      "pronunciation": "คิ-ริ",
+      "meaning": "ภูเขา",
+      "englishName": "KIREE"
+    },
+    {
+      "row": 952,
+      "name": "คุณาวุธ",
+      "pronunciation": "คุ-นา-วุด",
+      "meaning": "ผู้มีความดีเป็นอาวุธ",
+      "englishName": "KHUNAWUT"
+    },
+    {
+      "row": 953,
+      "name": "กรณิศ",
+      "pronunciation": "กอ-ระ-นิด",
+      "meaning": "ผู้มีอำนาจ , ผู้ทำการใหญ่",
+      "englishName": "KORANIT"
+    },
+    {
+      "row": 954,
+      "name": "กรธวัช",
+      "pronunciation": "กอน-ทะ-วัด",
+      "meaning": "ผู้สร้างธงชัย",
+      "englishName": "KORNTHAWAT"
+    },
+    {
+      "row": 955,
+      "name": "กระบิล",
+      "pronunciation": "กระ-บิน",
+      "meaning": "ระเบียบ,หมู่",
+      "englishName": "KRABIN"
+    },
+    {
+      "row": 956,
+      "name": "กษิดิศ",
+      "pronunciation": "กะ-สิ-ดิด",
+      "meaning": "ผู้เป็นใหญ่ในแผ่นดิน",
+      "englishName": "KASIDIT"
+    },
+    {
+      "row": 957,
+      "name": "กษิดิส",
+      "pronunciation": "กะ-สิ-ดิด",
+      "meaning": "ผู้เป็นใหญ่ในแผ่นดิน",
+      "englishName": "KASIDIT"
+    },
+    {
+      "row": 958,
+      "name": "กัญจนา",
+      "pronunciation": "กัน-จะ-นา",
+      "meaning": "ทองคำ",
+      "englishName": "KANCHANA"
+    },
+    {
+      "row": 959,
+      "name": "คำนวณ",
+      "pronunciation": "คำ-นวน",
+      "meaning": "คิด,ประมาณไว้",
+      "englishName": "KHAMNUAN"
+    },
+    {
+      "row": 960,
+      "name": "คุณาธิป",
+      "pronunciation": "คุ-นา-ทิบ",
+      "meaning": "ผู้เป็นใหญ่",
+      "englishName": "KUNATIB"
+    },
+    {
+      "row": 961,
+      "name": "จรัส",
+      "pronunciation": "จะ-หรัด",
+      "meaning": "เจริญรุ่งเรือง",
+      "englishName": "CHARAT"
+    },
+    {
+      "row": 962,
+      "name": "กรธนัช",
+      "pronunciation": "กอน-ทะ-นัด",
+      "meaning": "ผู้มีการงานอันก่อให้เกิดทรัพย์",
+      "englishName": "KORNTHANAT"
+    },
+    {
+      "row": 963,
+      "name": "กระมล",
+      "pronunciation": "กระ-มน",
+      "meaning": "ดอกบัว",
+      "englishName": "KRAMON"
+    },
+    {
+      "row": 964,
+      "name": "ขจรจบ",
+      "pronunciation": "ขะ-จอน-จบ",
+      "meaning": "ผู้มีชื่อเสียงเลื่องลือ",
+      "englishName": "KHAJORNJOP"
+    },
+    {
+      "row": 965,
+      "name": "ขันทอง",
+      "pronunciation": "ขัน-ทอง",
+      "meaning": "ขันที่ทำจากทองคำ",
+      "englishName": "KHANTHONG"
+    },
+    {
+      "row": 966,
+      "name": "คณาธิป",
+      "pronunciation": "คะ-นา-ทิบ",
+      "meaning": "ผู้เป็นผู้นำ, ผู้ยิ่งใหญ่ในหมู่ผู้คน",
+      "englishName": "KHANATHIP"
+    },
+    {
+      "row": 967,
+      "name": "คณิศ",
+      "pronunciation": "คะ-นิด",
+      "meaning": "ผู้เป็นใหญ่ในหมู่คณะ",
+      "englishName": "KHANIT"
+    },
+    {
+      "row": 968,
+      "name": "คมกริช",
+      "pronunciation": "คม-กริด",
+      "meaning": "คมของกริช อาวุธชนิดหนึ่ง",
+      "englishName": "KHOMKRIT"
+    },
+    {
+      "row": 969,
+      "name": "ครุวาร",
+      "pronunciation": "คะรุ-วาน",
+      "meaning": "วันพฤหัสบดี วันครู",
+      "englishName": "KHARUWAN"
+    },
+    {
+      "row": 970,
+      "name": "จรัล",
+      "pronunciation": "จะ-รัน",
+      "meaning": "เที่ยวป่า",
+      "englishName": "JARAN"
+    },
+    {
+      "row": 971,
+      "name": "กิจจา",
+      "pronunciation": "กิด-จา",
+      "meaning": "เรื่องราว",
+      "englishName": "KITJA"
+    },
+    {
+      "row": 972,
+      "name": "คณิน",
+      "pronunciation": "คะ-นิน",
+      "meaning": "ผู้เป็นใหญ่กว่าคนทั้งหลาย",
+      "englishName": "KHANIN"
+    },
+    {
+      "row": 973,
+      "name": "ฆนาคม",
+      "pronunciation": "คะ-นา-คม",
+      "meaning": "คราวที่เมฆมารวมตัวกัน หมายถึงฤดูฝน",
+      "englishName": "KHANAKHOM"
+    },
+    {
+      "row": 974,
+      "name": "จรัญ",
+      "pronunciation": "จะ-รัน",
+      "meaning": "ผู้ท่องเที่ยวไปอย่างมีสุข",
+      "englishName": "CHARAN"
+    },
+    {
+      "row": 975,
+      "name": "กณิศ",
+      "pronunciation": "กะ-นิด",
+      "meaning": "รวงข้าว",
+      "englishName": "KANIT"
+    },
+    {
+      "row": 976,
+      "name": "กนกวร",
+      "pronunciation": "กะ-หนก-วอน",
+      "meaning": "ประเสริฐดั่งทองคำ",
+      "englishName": "KANOKWON"
+    },
+    {
+      "row": 977,
+      "name": "กนธี",
+      "pronunciation": "กน-ที",
+      "meaning": "ทะเล มหาสมุทร",
+      "englishName": "KONTHEE"
+    },
+    {
+      "row": 978,
+      "name": "กมลกร",
+      "pronunciation": "กะ-มน-กอน",
+      "meaning": "ดั่งดวงใจ",
+      "englishName": "KAMONKON"
+    },
+    {
+      "row": 979,
+      "name": "กรวิช",
+      "pronunciation": "กอ-ระ-วิด",
+      "meaning": "รุ่งเรืองด้วยความรู้",
+      "englishName": "KORAWIT"
+    },
+    {
+      "row": 980,
+      "name": "จรดล",
+      "pronunciation": "จะ-ระ-ดน",
+      "meaning": "เดินเยื้องกราย",
+      "englishName": "CHARADON"
+    },
+    {
+      "row": 981,
+      "name": "จรส",
+      "pronunciation": "จะ-รด",
+      "meaning": "แจ่มแจ้งรุ่งเรือง",
+      "englishName": "JAROD"
+    },
+    {
+      "row": 982,
+      "name": "กรณิช",
+      "pronunciation": "กด-ชะ-นิด",
+      "meaning": "บริสุทธิ์ดั่งดอกบัว",
+      "englishName": "KOTCHANIT"
+    },
+    {
+      "row": 983,
+      "name": "กรวิก",
+      "pronunciation": "กะ-ระ-วิก",
+      "meaning": "นกการเวก",
+      "englishName": "KARAWICK"
+    },
+    {
+      "row": 984,
+      "name": "กวิน",
+      "pronunciation": "กะ-วิน",
+      "meaning": "ดีงาม",
+      "englishName": "KAWIN"
+    },
+    {
+      "row": 985,
+      "name": "กษมล",
+      "pronunciation": "กะ-สะ-มน",
+      "meaning": "ทำลายมลทิน",
+      "englishName": "KASAMON"
+    },
+    {
+      "row": 986,
+      "name": "โกวิท",
+      "pronunciation": "โก-วิด",
+      "meaning": "ผู้มีความชำนาญ รอบรู้",
+      "englishName": "KOWIT"
+    },
+    {
+      "row": 987,
+      "name": "คิริ",
+      "pronunciation": "คิ-ริ",
+      "meaning": "ภูเขา",
+      "englishName": "KHIRI"
+    },
+    {
+      "row": 988,
+      "name": "คุลิก",
+      "pronunciation": "คุ-ลิก",
+      "meaning": "ไข่มุข",
+      "englishName": "KHULIK"
+    },
+    {
+      "row": 989,
+      "name": "จรูญ",
+      "pronunciation": "จะ-รูน",
+      "meaning": "รุ่งเรือง",
+      "englishName": "JAROON"
+    },
+    {
+      "row": 990,
+      "name": "กลมภ",
+      "pronunciation": "กะ-ลม-พะ",
+      "meaning": "ผู้ที่มีหลายอย่างรวมกัน",
+      "englishName": "KALOMPHA"
+    },
+    {
+      "row": 991,
+      "name": "เขษม",
+      "pronunciation": "ขะ-เสม",
+      "meaning": "ความสบายใจ, ความพ้นภัย, ความปลอดภัย",
+      "englishName": "KHASEM"
+    },
+    {
+      "row": 992,
+      "name": "ฆนัท",
+      "pronunciation": "คะ-นัด",
+      "meaning": "สิริมงคล",
+      "englishName": "KHANAT"
+    },
+    {
+      "row": 993,
+      "name": "กนล",
+      "pronunciation": "กะ-นน",
+      "meaning": "แสงเจิดจ้า",
+      "englishName": "KANON"
+    },
+    {
+      "row": 994,
+      "name": "กมล",
+      "pronunciation": "กะ-มน",
+      "meaning": "บัว",
+      "englishName": "KAMON"
+    },
+    {
+      "row": 995,
+      "name": "กรดล",
+      "pronunciation": "กอ-ระ-ดน",
+      "meaning": "ฝ่ามือ",
+      "englishName": "KORADON"
+    },
+    {
+      "row": 996,
+      "name": "กรทัช",
+      "pronunciation": "กอน-ทัด",
+      "meaning": "ผู้ให้ความเจริญ",
+      "englishName": "KORNTHAT"
+    },
+    {
+      "row": 997,
+      "name": "ขจร",
+      "pronunciation": "ขะ-จอน",
+      "meaning": "ฟุ้งไป กระจายไป",
+      "englishName": "KAJORN"
+    },
+    {
+      "row": 998,
+      "name": "กรกฎ",
+      "pronunciation": "กอ-ระ-กด",
+      "meaning": "ปู",
+      "englishName": "KORAKOT"
+    },
+    {
+      "row": 999,
+      "name": "กริช",
+      "pronunciation": "กริด",
+      "meaning": "หลักแหลม",
+      "englishName": "KRIT"
+    },
+    {
+      "row": 1000,
+      "name": "คงคา",
+      "pronunciation": "คง-คา",
+      "meaning": "แม่น้ำ",
+      "englishName": "KHONGKHA"
+    },
+    {
+      "row": 1001,
+      "name": "คำรบ",
+      "pronunciation": "คำ-รบ",
+      "meaning": "ครบถ้วน",
+      "englishName": "KHAMROP"
+    },
+    {
+      "row": 1002,
+      "name": "เคน",
+      "pronunciation": "เคน",
+      "meaning": "มอบถวายให้พระ",
+      "englishName": "KHEN"
+    },
+    {
+      "row": 1003,
+      "name": "กษม",
+      "pronunciation": "กะ-สม",
+      "meaning": "อดทน , แผ่นดิน",
+      "englishName": "KASOM"
+    },
+    {
+      "row": 1004,
+      "name": "กนก",
+      "pronunciation": "กะ-หนก",
+      "meaning": "ทอง",
+      "englishName": "KANOK"
+    }
+  ]
+}

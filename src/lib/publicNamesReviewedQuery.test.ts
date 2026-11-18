@@ -4,6 +4,7 @@ const { range } = vi.hoisted(() => ({
         data: Array.from({ length: 1510 }, (_, i) => ({
             name: `ชื่อทดสอบ${i}`,
             gender: 'neutral',
+            english_name: `NAME-${i}`,
             meaning: i % 3 === 0 ? 'ความสุข' : 'ความรู้',
             meaning_status: i < 1505 ? 'approved' : 'pending',
             pronunciation: 'ร่าง',
@@ -40,6 +41,7 @@ describe('reviewed public names query', () => {
                 limit: 30,
                 page: 2,
             });
+            expect(first.data[0].englishName).toMatch(/^NAME-/);
             expect(first.total).toBe(502);
             expect(second.total).toBe(502);
             expect(first.data).toHaveLength(30);

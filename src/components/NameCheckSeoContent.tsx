@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { namingSciences } from '@/data/namingApproach';
 import { nameCheckFaqItems, nameCheckHowTo } from '@/data/nameCheckSeo';
 import { calculateScore } from '@/utils/calculateScore';
 import { analyzePairs } from '@/utils/analyzePairs';
@@ -96,7 +97,7 @@ export function NameCheckSeoContent() {
                             <div className="rounded-2xl border border-[#ddddf0] bg-white p-5 shadow-sm">
                                 <h3 className="font-semibold text-sky-600">นิรันดร์ศาสตร์</h3>
                                 <p className="mt-2 text-sm leading-6 text-[#5a5a82]">
-                                    ตรวจความสัมพันธ์ระหว่างชื่อกับนามสกุล เพื่อดูว่าทั้งสองส่วนทำงานร่วมกันในทางเสริมหรือหักล้างกัน
+                                    {namingSciences[3].description}
                                 </p>
                             </div>
                         </div>

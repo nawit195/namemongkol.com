@@ -5,6 +5,7 @@ import { Star, Shield, TrendingUp, Sparkles, Infinity as InfinityIcon } from 'lu
 import { useLanguage } from './LanguageProvider';
 import Image from 'next/image';
 import Link from 'next/link';
+import { namingSciences } from '@/data/namingApproach';
 
 export const HomeSeoContent = () => {
     const { t } = useLanguage();
@@ -229,7 +230,7 @@ export const HomeSeoContent = () => {
                             <Sparkles className="w-3.5 h-3.5 text-blue-400" />
                         </h3>
                         <p className="text-[13.5px] sm:text-[14px] text-[#5a5a82] leading-relaxed text-center px-1">
-                            หัวใจสำคัญ! ตรวจสอบความสมพงศ์ระหว่าง &quot;ชื่อต้น&quot; และ &quot;นามสกุล&quot; ให้อยู่ร่วมกันแล้วส่งเสริมกัน ไม่ขัดแย้ง
+                            {namingSciences[3].description}
                         </p>
                     </div>
                 </div>
@@ -258,7 +259,7 @@ export const HomeSeoContent = () => {
                         วิเคราะห์ชื่อ-นามสกุล ฟรี รู้ผลทันที
                     </p>
                     <p className="mt-2 text-sm text-[#5a5a82] leading-relaxed">
-                        ใช้สำหรับเช็กชื่อปัจจุบันว่าผลรวมเลขศาสตร์ กาลกิณี ความสมพงศ์กับนามสกุล และภาพรวม 4 ศาสตร์อยู่ในเกณฑ์ดีหรือไม่
+                        ใช้ตรวจผลรวม คู่เลข กาลกิณี และอายตนะจากข้อมูลที่กรอก พร้อมตรวจว่าชื่ออยู่ในชุดอ้างอิงนิรันดร์ศาสตร์ที่ระบบใช้อยู่หรือไม่
                     </p>
                     <p className="mt-3 text-sm text-sky-600 font-medium">
                         ไปหน้า /name-check →

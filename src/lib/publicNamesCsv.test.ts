@@ -5,6 +5,7 @@ import { buildPublicNamesCsv, getPublicNameDisplayMeaning } from '@/lib/publicNa
 function createRecord(overrides: Partial<PublicNameRecord> = {}): PublicNameRecord {
     return {
         name: 'ชิณคิณา',
+        englishName: 'CHINKHINA',
         gender: 'neutral',
         pronunciation: 'ชิน-คิ-นา',
         pronunciationVariants: ['ชิน-คิ-นา', 'ชิ-นะ-คิ-นา'],
@@ -23,8 +24,8 @@ describe('public names CSV export', () => {
         const csv = buildPublicNamesCsv([createRecord()]);
 
         expect(csv.charCodeAt(0)).toBe(0xfeff);
-        expect(csv).toContain('"ชื่อมงคล","คำอ่าน","ความหมาย","วัน","ผลรวมเลขศาสตร์"');
-        expect(csv).toContain('"ชิณคิณา","ชิน-คิ-นา / ชิ-นะ-คิ-นา","มีปัญญา และมีความรู้"');
+        expect(csv).toContain('"ชื่อมงคล","ชื่อภาษาอังกฤษ","สถานะชื่อภาษาอังกฤษ","คำอ่าน","ความหมาย","วัน","ผลรวมเลขศาสตร์"');
+        expect(csv).toContain('"ชิณคิณา","CHINKHINA","ตามข้อมูลต้นทาง","ชิน-คิ-นา / ชิ-นะ-คิ-นา","มีปัญญา และมีความรู้"');
         expect(csv).toContain('"วันอาทิตย์, วันพุธ (กลางคืน/ราหู), วันศุกร์","25"');
     });
 
@@ -34,8 +35,8 @@ describe('public names CSV export', () => {
             createRecord({ name: 'ชินรินา', pronunciation: 'ชิน-ริ-นา', pronunciationVariants: [], meaning: 'อ่อนโยน และรุ่งเรือง' }),
         ]);
 
-        expect(csv).toContain('"ชิณคิณา","",""');
-        expect(csv).toContain('"ชินรินา","ชิน-ริ-นา","อ่อนโยน และรุ่งเรือง"');
+        expect(csv).toContain('"ชิณคิณา","CHINKHINA","ตามข้อมูลต้นทาง","",""');
+        expect(csv).toContain('"ชินรินา","CHINKHINA","ตามข้อมูลต้นทาง","ชิน-ริ-นา","อ่อนโยน และรุ่งเรือง"');
     });
 
     it('escapes quotes, commas, newlines, and spreadsheet formula prefixes', () => {
@@ -44,12 +45,14 @@ describe('public names CSV export', () => {
                 name: '=HYPERLINK("https://example.com")',
                 pronunciation: 'คำ,อ่าน',
                 pronunciationVariants: [],
+                englishName: '@SUM(1,2)',
                 meaning: 'บรรทัดแรก\n"บรรทัดสอง"',
             }),
         ]);
 
         expect(csv).toContain('"\'=HYPERLINK(""https://example.com"")"');
         expect(csv).toContain('"คำ,อ่าน"');
+        expect(csv).toContain("\"'@SUM(1,2)\"");
         expect(csv).toContain('"บรรทัดแรก\n""บรรทัดสอง"""');
     });
 
@@ -57,5 +60,18 @@ describe('public names CSV export', () => {
         expect(getPublicNameDisplayMeaning('รากศัพท์ = ความหมายที่แสดง')).toBe('ความหมายที่แสดง');
         expect(getPublicNameDisplayMeaning('ความหมายโดยตรง')).toBe('ความหมายโดยตรง');
         expect(getPublicNameDisplayMeaning()).toBe('');
+    });
+
+    it('exports the spelling review status and excludes rejected spellings', () => {
+        const csv = buildPublicNamesCsv([
+            createRecord({ englishName: 'Chinkhina', englishNameStatus: 'pending' }),
+            createRecord({ name: 'ตรวจแล้ว', englishName: 'Approved', englishNameStatus: 'approved' }),
+            createRecord({ name: 'ไม่ผ่าน', englishName: 'RejectedValue', englishNameStatus: 'rejected' }),
+        ]);
+        expect(csv).toContain('"Chinkhina","รอตรวจสอบ"');
+        expect(csv).toContain('"Approved","ตรวจสอบแล้ว"');
+        expect(csv).toContain('"ไม่ผ่าน","","ไม่เผยแพร่"');
+        expect(csv).not.toContain('RejectedValue');
+        expect(buildPublicNamesCsv([createRecord({ englishName: undefined })])).toContain('"ชิณคิณา","","ยังไม่มีข้อมูล"');
     });
 });

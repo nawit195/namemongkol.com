@@ -1,7 +1,8 @@
 import AboutSection from '@/components/AboutSection';
 import { Metadata } from 'next';
-import Script from 'next/script';
 import { siteUrl } from '@/lib/seo';
+import { namingBrandDescription, namingScienceNames, premiumCurationDescription, namingContentUpdatedAt } from '@/data/namingApproach';
+import { NamingApproachSummary } from '@/components/NamingApproachSummary';
 
 const aboutUrl = `${siteUrl}/about`;
 const founderImageUrl = `${siteUrl}/images/about/teacher-nut-namemongkol.webp`;
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     title: {
         absolute: 'เกี่ยวกับ NameMongkol | วิเคราะห์ชื่อ เบอร์ ลายมือ และพลังมงคล',
     },
-    description: 'รู้จัก NameMongkol แพลตฟอร์มวิเคราะห์ชื่อมงคล เบอร์โทร ลายมือ ออร่า วอลเปเปอร์ และบทความ ด้วยหลักเลขศาสตร์ ทักษา อายตนะ 6 และ AI',
+    description: `${namingBrandDescription} และฐานรายชื่อพรีเมียมที่ทีมงานคัดกรองล่วงหน้า`,
     keywords: [
         'เกี่ยวกับ NameMongkol',
         'วิเคราะห์ชื่อมงคล',
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     alternates: { canonical: aboutUrl },
     openGraph: {
         title: 'เกี่ยวกับ NameMongkol | วิเคราะห์ชื่อ เบอร์ ลายมือ และพลังมงคล',
-        description: 'แพลตฟอร์มวิเคราะห์ชื่อมงคลและพลังตัวเลขที่ผสานหลักศาสตร์ไทยกับระบบ AI พร้อมเครื่องมือ บทความ รีวิว และนโยบายความเป็นส่วนตัวที่โปร่งใส',
+        description: `${namingBrandDescription} ${premiumCurationDescription}`,
         url: aboutUrl,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'เกี่ยวกับ NameMongkol | วิเคราะห์ชื่อ เบอร์ ลายมือ และพลังมงคล',
-        description: 'รู้จักแนวทางวิเคราะห์ของ NameMongkol ทั้งชื่อ เบอร์ ลายมือ ออร่า วอลเปเปอร์ บทความ และรีวิว',
+        description: namingBrandDescription,
         images: [`${siteUrl}/api/og?variant=about`],
     },
 };
@@ -76,7 +77,7 @@ const jsonLd = {
                 height: 1354,
                 caption: 'อาจารย์ณัฐ ผู้พัฒนา NameMongkol และผู้จัดทำเนื้อหาเรื่องชื่อมงคล',
             },
-            description: 'แพลตฟอร์มวิเคราะห์ชื่อมงคล เบอร์โทร ลายมือ ออร่า วอลเปเปอร์ และบทความความรู้ด้านชื่อมงคล',
+            description: namingBrandDescription,
             foundingDate: '2024',
             areaServed: {
                 '@type': 'Country',
@@ -87,9 +88,7 @@ const jsonLd = {
                 'https://line.me/ti/p/@namemongkol',
             ],
             knowsAbout: [
-                'เลขศาสตร์',
-                'ทักษาปกรณ์',
-                'อายตนะ 6',
+                ...namingScienceNames,
                 'การตั้งชื่อมงคล',
                 'การวิเคราะห์ชื่อ',
                 'การวิเคราะห์เบอร์โทรศัพท์',
@@ -170,7 +169,7 @@ const jsonLd = {
                     },
                 ],
             },
-            dateModified: '2026-07-08',
+            dateModified: namingContentUpdatedAt,
             publisher: {
                 '@id': `${siteUrl}/#organization`,
             },
@@ -181,12 +180,13 @@ const jsonLd = {
 export default function AboutPage() {
     return (
         <main className="site-grid-surface min-h-screen pb-28">
-            <Script
+            <script
                 id="about-json-ld"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <AboutSection />
+            <NamingApproachSummary />
         </main>
     );
 }
