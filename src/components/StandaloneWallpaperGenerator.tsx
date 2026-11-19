@@ -946,23 +946,23 @@ export default function StandaloneWallpaperGenerator() {
     };
 
     return (
-        <div className="space-y-8">
+        <div className="custom-wallpaper-tool space-y-8 text-slate-900">
             {/* Info Banner */}
             <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-6">
                 <div className="flex items-start gap-4">
-                    <div className="p-3 bg-purple-500/20 rounded-xl">
-                        <Crown className="w-8 h-8 text-purple-400" />
+                    <div className="p-3 bg-purple-100 rounded-xl">
+                        <Crown className="w-8 h-8 text-purple-700" />
                     </div>
                     <div>
-                        <h2 className="text-xl font-bold text-white mb-2">สร้างวอลเปเปอร์ส่วนตัว</h2>
-                        <p className="text-slate-400 text-sm">
+                        <h2 className="text-xl font-bold text-slate-900 mb-2">สร้างวอลเปเปอร์ส่วนตัว</h2>
+                        <p className="text-slate-600 text-sm">
                             ใส่ชื่อของคุณและเลือกวันเกิด เพื่อสร้างวอลเปเปอร์มงคลเฉพาะบุคคล
                             พร้อมยันต์ศักดิ์สิทธิ์ มนตรา และเลขมงคลประจำตัว
                         </p>
                         <div className="flex items-center gap-4 mt-3">
-                            <span className="text-amber-400 font-bold">{WALLPAPER_COST} เครดิต / ภาพ</span>
+                            <span className="text-amber-800 font-bold">{WALLPAPER_COST} เครดิต / ภาพ</span>
                             {user && (
-                                <span className="text-slate-500 text-sm">เครดิตคงเหลือ: {userCredits}</span>
+                                <span className="text-slate-600 text-sm">เครดิตคงเหลือ: {userCredits}</span>
                             )}
                         </div>
                     </div>
@@ -973,10 +973,10 @@ export default function StandaloneWallpaperGenerator() {
             <div className="grid md:grid-cols-2 gap-6">
                 {/* Left - Form */}
                 <div className="space-y-6">
-                    <div className="bg-slate-900/50 border border-white/10 rounded-2xl p-6 space-y-5">
+                    <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-5">
                         {/* Template Selector */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-3">
+                            <label className="block text-sm font-medium text-slate-800 mb-3">
                                 <Palette size={16} className="inline mr-2" />
                                 เลือกรูปแบบ
                             </label>
@@ -984,50 +984,50 @@ export default function StandaloneWallpaperGenerator() {
                                 <button
                                     onClick={() => { setTemplate('birthday'); setIsPremiumUnlocked(false); }}
                                     className={`p-4 rounded-xl border-2 transition-all text-left ${template === 'birthday'
-                                            ? 'border-purple-500 bg-purple-500/10'
-                                            : 'border-white/10 bg-slate-800/50 hover:border-white/20'
+                                            ? 'border-purple-500 bg-purple-50'
+                                            : 'border-slate-200 bg-slate-50 hover:border-slate-400'
                                         }`}
                                 >
                                     <div className="flex items-center gap-2 mb-2">
-                                        <Calendar size={20} className={template === 'birthday' ? 'text-purple-400' : 'text-slate-400'} />
-                                        <span className={`font-semibold ${template === 'birthday' ? 'text-purple-300' : 'text-slate-300'}`}>ตามวันเกิด</span>
+                                        <Calendar size={20} className={template === 'birthday' ? 'text-purple-700' : 'text-slate-600'} />
+                                        <span className={`font-semibold ${template === 'birthday' ? 'text-purple-800' : 'text-slate-800'}`}>ตามวันเกิด</span>
                                     </div>
-                                    <p className="text-xs text-slate-500">วอลเปเปอร์ตามสีและเทพประจำวันเกิด</p>
+                                    <p className="text-xs text-slate-600">วอลเปเปอร์ตามสีและเทพประจำวันเกิด</p>
                                 </button>
                                 <button
                                     onClick={() => { setTemplate('vessavana'); setIsPremiumUnlocked(false); }}
                                     className={`p-4 rounded-xl border-2 transition-all text-left ${template === 'vessavana'
-                                            ? 'border-amber-500 bg-amber-500/10'
-                                            : 'border-white/10 bg-slate-800/50 hover:border-white/20'
+                                            ? 'border-amber-500 bg-amber-50'
+                                            : 'border-slate-200 bg-slate-50 hover:border-slate-400'
                                         }`}
                                 >
                                     <div className="flex items-center gap-2 mb-2">
-                                        <Shield size={20} className={template === 'vessavana' ? 'text-amber-400' : 'text-slate-400'} />
-                                        <span className={`font-semibold ${template === 'vessavana' ? 'text-amber-300' : 'text-slate-300'}`}>ท้าวเวสสุวรรณ</span>
+                                        <Shield size={20} className={template === 'vessavana' ? 'text-amber-800' : 'text-slate-600'} />
+                                        <span className={`font-semibold ${template === 'vessavana' ? 'text-amber-900' : 'text-slate-800'}`}>ท้าวเวสสุวรรณ</span>
                                     </div>
-                                    <p className="text-xs text-slate-500">เสริมโชคลาภ ป้องกันภัย อำนาจบารมี</p>
+                                    <p className="text-xs text-slate-600">เสริมโชคลาภ ป้องกันภัย อำนาจบารมี</p>
                                 </button>
                             </div>
                         </div>
 
                         {/* Name */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                            <label className="block text-sm font-medium text-slate-800 mb-2">
                                 <User size={16} className="inline mr-2" />
-                                ชื่อ <span className="text-red-400">*</span>
+                                ชื่อ <span className="text-red-700">*</span>
                             </label>
                             <input
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="กรอกชื่อ"
-                                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60"
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
                         </div>
 
                         {/* Surname */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                            <label className="block text-sm font-medium text-slate-800 mb-2">
                                 นามสกุล (ไม่บังคับ)
                             </label>
                             <input
@@ -1035,14 +1035,14 @@ export default function StandaloneWallpaperGenerator() {
                                 value={surname}
                                 onChange={(e) => setSurname(e.target.value)}
                                 placeholder="กรอกนามสกุล"
-                                className="w-full px-4 py-3 bg-slate-800 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/60"
+                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
                             />
                         </div>
 
                         {/* Day Selector - Only for birthday template */}
                         {template === 'birthday' && (
                             <div>
-                                <label className="block text-sm font-medium text-slate-300 mb-2">
+                                <label className="block text-sm font-medium text-slate-800 mb-2">
                                     <Calendar size={16} className="inline mr-2" />
                                     วันเกิด
                                 </label>
@@ -1051,12 +1051,13 @@ export default function StandaloneWallpaperGenerator() {
                                         <button
                                             key={key}
                                             onClick={() => setDay(key)}
-                                            className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${day === key
-                                                    ? 'text-white shadow-lg'
-                                                    : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                            className={`flex min-h-11 items-center justify-center gap-1.5 border px-2 py-2 rounded-lg text-sm font-medium transition-all ${day === key
+                                                    ? 'border-purple-600 bg-purple-50 text-purple-900 font-semibold'
+                                                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
                                                 }`}
-                                            style={day === key ? { background: dayThemes[key].gradient } : {}}
+                                            aria-pressed={day === key}
                                         >
+                                            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full" style={{ background: dayThemes[key].gradient }} />
                                             {label}
                                         </button>
                                     ))}
@@ -1067,7 +1068,7 @@ export default function StandaloneWallpaperGenerator() {
                         {/* Vessavana Variant Selector - Only for vessavana template */}
                         {template === 'vessavana' && (
                             <div>
-                                <label className="block text-sm font-medium text-slate-300 mb-2">
+                                <label className="block text-sm font-medium text-slate-800 mb-2">
                                     <Shield size={16} className="inline mr-2" />
                                     เลือกพรที่ต้องการ
                                 </label>
@@ -1077,17 +1078,17 @@ export default function StandaloneWallpaperGenerator() {
                                             key={vTheme.id}
                                             onClick={() => setVessavanaVariant(vTheme.id)}
                                             className={`p-3 rounded-lg text-left transition-all ${vessavanaVariant === vTheme.id
-                                                    ? 'bg-amber-500/20 border-2 border-amber-500'
-                                                    : 'bg-slate-800 border-2 border-transparent hover:bg-slate-700'
+                                                    ? 'bg-amber-50 border-2 border-amber-500'
+                                                    : 'bg-slate-50 border-2 border-transparent hover:bg-slate-100'
                                                 }`}
                                         >
                                             <div className="flex items-center gap-2">
                                                 <span className="text-lg">{vTheme.icon}</span>
-                                                <span className={`font-medium ${vessavanaVariant === vTheme.id ? 'text-amber-300' : 'text-slate-300'}`}>
+                                                <span className={`font-medium ${vessavanaVariant === vTheme.id ? 'text-amber-900' : 'text-slate-800'}`}>
                                                     {vTheme.name}
                                                 </span>
                                             </div>
-                                            <p className="text-xs text-slate-500 mt-1">{vTheme.blessing}</p>
+                                            <p className="text-xs text-slate-600 mt-1">{vTheme.blessing}</p>
                                         </button>
                                     ))}
                                 </div>
@@ -1096,15 +1097,15 @@ export default function StandaloneWallpaperGenerator() {
 
                         {/* Format Toggle */}
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">
+                            <label className="block text-sm font-medium text-slate-800 mb-2">
                                 ขนาดภาพ
                             </label>
                             <div className="flex gap-2">
                                 <button
                                     onClick={() => setFormat('mobile')}
                                     className={`flex-1 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all ${format === 'mobile'
-                                            ? 'bg-purple-500 text-white'
-                                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                            ? 'bg-purple-700 text-white'
+                                            : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
                                         }`}
                                 >
                                     <Smartphone size={18} />
@@ -1113,8 +1114,8 @@ export default function StandaloneWallpaperGenerator() {
                                 <button
                                     onClick={() => setFormat('desktop')}
                                     className={`flex-1 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all ${format === 'desktop'
-                                            ? 'bg-purple-500 text-white'
-                                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                            ? 'bg-purple-700 text-white'
+                                            : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
                                         }`}
                                 >
                                     <Monitor size={18} />
@@ -1130,7 +1131,7 @@ export default function StandaloneWallpaperGenerator() {
                             <button
                                 onClick={handleUnlock}
                                 disabled={!name.trim() || isGenerating}
-                                className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:from-purple-400 hover:to-pink-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-500/20"
+                                className="w-full py-4 bg-gradient-to-r from-purple-700 to-pink-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:from-purple-800 hover:to-pink-800 transition-all disabled:bg-none disabled:bg-slate-200 disabled:text-slate-600 disabled:shadow-none disabled:cursor-not-allowed shadow-lg shadow-purple-500/20"
                             >
                                 {isGenerating ? (
                                     <>
@@ -1148,7 +1149,7 @@ export default function StandaloneWallpaperGenerator() {
                             <button
                                 onClick={() => { void handleDownload(); }}
                                 disabled={isGenerating}
-                                className="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:from-emerald-400 hover:to-teal-400 transition-all disabled:opacity-50 shadow-lg shadow-emerald-500/20"
+                                className="w-full py-4 bg-gradient-to-r from-emerald-700 to-teal-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:from-emerald-800 hover:to-teal-800 transition-all disabled:bg-none disabled:bg-slate-200 disabled:text-slate-600 disabled:shadow-none shadow-lg shadow-emerald-500/20"
                             >
                                 {isGenerating ? (
                                     <>
@@ -1165,8 +1166,8 @@ export default function StandaloneWallpaperGenerator() {
                         )}
 
                         {!user && (
-                            <p className="text-center text-slate-500 text-sm">
-                                <Link prefetch={false} href="/login" className="text-purple-400 hover:underline">เข้าสู่ระบบ</Link> เพื่อสร้างวอลเปเปอร์
+                            <p className="text-center text-slate-600 text-sm">
+                                <Link prefetch={false} href="/login" className="text-purple-700 hover:underline">เข้าสู่ระบบ</Link> เพื่อสร้างวอลเปเปอร์
                             </p>
                         )}
                     </div>
@@ -1174,9 +1175,9 @@ export default function StandaloneWallpaperGenerator() {
 
                 {/* Right - Preview */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-bold text-white">ตัวอย่างวอลเปเปอร์</h3>
+                    <h3 className="text-lg font-bold text-slate-900">ตัวอย่างวอลเปเปอร์</h3>
                     <div
-                        className="relative bg-slate-900/50 border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center"
+                        className="relative bg-white border border-slate-200 rounded-2xl overflow-hidden flex items-center justify-center"
                         style={{
                             aspectRatio: format === 'mobile' ? '9/16' : '16/9',
                             maxHeight: format === 'mobile' ? '70vh' : '50vh'
@@ -1216,7 +1217,7 @@ export default function StandaloneWallpaperGenerator() {
                                 )}
                             </div>
                         ) : (
-                            <div className="text-center text-slate-500 p-8">
+                            <div className="text-center text-slate-600 p-8">
                                 <Sparkles size={48} className="mx-auto mb-4 opacity-50" />
                                 <p>กรอกชื่อเพื่อดูตัวอย่างวอลเปเปอร์</p>
                             </div>

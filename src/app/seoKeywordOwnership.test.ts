@@ -55,7 +55,7 @@ describe('conservative SEO keyword ownership', () => {
         const wallpaperDay = readSource('src/app/wallpapers/day/[day]/page.tsx');
 
         expect(mondayArticle).toContain("metaTitle: 'ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง 2569 รวม 400 ชื่อทันสมัย | NameMongkol'");
-        expect(wallpapers).toContain("title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol'");
+        expect(wallpapers).toContain("title: { absolute: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol' }");
         expect(wallpapers).toContain("canonical: `${siteUrl}/wallpapers`");
         expect(wallpaperDay).toContain('canonical: `${siteUrl}/wallpapers/day/${day}`');
     });

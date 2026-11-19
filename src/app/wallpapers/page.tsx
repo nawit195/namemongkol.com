@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Suspense } from 'react';
 import ClientPage from './ClientPage';
 import { Sparkles, Sun, Moon, Flame, MessageCircle, BookOpen, Heart, Shield, Crown, Star, Zap, Download, ChevronRight, HelpCircle } from 'lucide-react';
 import { siteUrl } from '@/lib/seo';
+import { HORSE_WALLPAPERS } from '@/data/horseWallpapers';
 
 // Inline style for content-visibility sections (avoids Tailwind purge issues)
 const deferredSectionStyle = {
@@ -12,9 +14,9 @@ const deferredSectionStyle = {
 } as React.CSSProperties;
 
 export const metadata: Metadata = {
-    title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol',
+    title: { absolute: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol' },
     alternates: { canonical: `${siteUrl}/wallpapers` },
-    description: 'รวมวอลเปเปอร์สายมูตามวันเกิดฟรี ปี 2569 เลือกตามเป้าหมายด้านการเงิน การงาน ความรัก และกำลังใจ พร้อมคำอธิบายสีและสัญลักษณ์ที่ใช้ในแต่ละภาพ',
+    description: 'เลือกวอลเปเปอร์มงคลตามวันเกิด ราศี และภาพม้า 8 ตัวสำหรับมือถือและคอมพิวเตอร์ ดูภาพตัวอย่างฟรี พร้อมราคาเครดิตก่อนดาวน์โหลด PNG ต้นฉบับ',
     keywords: [
         'วอลเปเปอร์มงคล', 'วอลเปเปอร์เสริมดวง', 'วอลเปเปอร์สายมู',
         'พื้นหลังมงคล', 'ฮวงจุ้ย', 'ดาวน์โหลดวอลเปเปอร์มงคล',
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
         'NameMongkol',
     ],
     openGraph: {
-        title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก',
-        description: 'เลือกวอลเปเปอร์ฟรีตามวันเกิดหรือเป้าหมาย พร้อมคำอธิบายสีและสัญลักษณ์ในภาพ',
+        title: 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว',
+        description: 'ดูตัวอย่างวอลเปเปอร์ตามวันเกิด ราศี และคอลเลกชันม้า 8 ตัว พร้อมราคาเครดิตก่อนดาวน์โหลด',
         url: `${siteUrl}/wallpapers`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
@@ -33,8 +35,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | NameMongkol',
-        description: 'วอลเปเปอร์ฟรีสำหรับการเงิน งาน ความรัก และกำลังใจ เลือกได้ตามวันเกิด',
+        title: 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว | NameMongkol',
+        description: 'ดูภาพตัวอย่างฟรี เลือกภาพตามวันเกิด ราศี หรือม้าแปดตัว พร้อมดูราคาเครดิตก่อนดาวน์โหลด',
         images: [`${siteUrl}/api/og?variant=default&title=วอลเปเปอร์มงคล`],
     },
 };
@@ -45,8 +47,8 @@ const webPageJsonLd = {
     '@type': 'WebPage',
     '@id': `${siteUrl}/wallpapers`,
     'url': `${siteUrl}/wallpapers`,
-    'name': 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก',
-    'description': 'เลือกวอลเปเปอร์ฟรีตามวันเกิดหรือเป้าหมายด้านการเงิน การงาน ความรัก และกำลังใจ พร้อมคำอธิบายสีและสัญลักษณ์ในภาพ',
+    'name': 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว',
+    'description': 'เลือกภาพตัวอย่างตามวันเกิด ราศี และม้าแปดตัว พร้อมดูราคาเครดิตก่อนดาวน์โหลด',
     'inLanguage': 'th-TH',
     'isPartOf': {
         '@type': 'WebSite',
@@ -58,8 +60,8 @@ const webPageJsonLd = {
 const collectionJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569',
-    'description': 'คอลเลกชันวอลเปเปอร์ที่ใช้สีและสัญลักษณ์ตามความเชื่อเรื่องวันเกิด เพื่อเป็นเครื่องเตือนใจด้านการเงิน งาน และความรัก ดาวน์โหลดฟรี',
+    'name': 'วอลเปเปอร์มงคลตามวันเกิด ราศี และม้า 8 ตัว',
+    'description': 'เปิดดูภาพตัวอย่างฟรี พร้อมแจ้งราคาเครดิตของการดาวน์โหลดแต่ละชุดก่อนยืนยัน',
     'url': `${siteUrl}/wallpapers`,
     'inLanguage': 'th-TH',
     'isPartOf': {
@@ -76,10 +78,17 @@ const collectionJsonLd = {
     },
 };
 
+const horseFaq = [
+    { question: 'วอลเปเปอร์ม้า 8 ตัวใช้กี่เครดิต?', answer: 'ภาพม้า 8 ตัวใช้ 15 เครดิตต่อภาพต่อการดาวน์โหลดใหม่ ต้องเข้าสู่ระบบและยืนยันก่อนหักเครดิต แม้เป็นภาพเดิมก็คิดเครดิตเมื่อเริ่มรายการใหม่' },
+    { question: 'หักเครดิตแล้วแต่ดาวน์โหลดขัดข้องทำอย่างไร?', answer: 'กดลองรายการเดิมอีกครั้งภายใน 30 นาที ระบบไม่หักเครดิตเพิ่ม เมื่อหมดเวลาต้องยืนยันเริ่มรายการใหม่ก่อนดาวน์โหลด เก็บหน้านี้ไว้หากเบราว์เซอร์ไม่อนุญาตให้จำรายการ' },
+    { question: 'ภาพม้า 8 ตัวมีขนาดเท่าไร?', answer: 'มี PNG ต้นฉบับสำหรับมือถือ 852 × 1846 พิกเซล และคอมพิวเตอร์ 1672 × 941 พิกเซล ประเภทละ 2 ภาพ การตั้งภาพพื้นหลังอาจต้องปรับให้พอดีกับสัดส่วนหน้าจอของอุปกรณ์' },
+];
+
 const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     'mainEntity': [
+        ...horseFaq.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })),
         {
             '@type': 'Question',
             'name': 'วอลเปเปอร์มงคลช่วยเรื่องอะไร?',
@@ -175,6 +184,25 @@ export default function WallpapersPage() {
             }>
                 <ClientPage />
             </Suspense>
+
+            <section className="mx-auto max-w-5xl px-4 pb-12 text-[#1a1a3e]" aria-labelledby="horse-guide-title">
+                <h2 id="horse-guide-title" className="mb-3 text-2xl font-bold">เลือกภาพม้า 8 ตัวสำหรับหน้าจอของคุณ</h2>
+                <p className="mb-5 max-w-[70ch] text-sm leading-7 text-[#5a5a82]">คอลเลกชันอาชามงคล 8 ตัว มีภาพมือถือและคอมพิวเตอร์รวม 4 ภาพ ใช้ม้า ภูผา และสายน้ำเป็นแรงบันดาลใจตามความเชื่อ เปิดดูภาพตัวอย่างได้ฟรี ดาวน์โหลด PNG ต้นฉบับ 15 เครดิตต่อครั้ง โดยยืนยันก่อนหักเครดิตทุกครั้ง</p>
+                <ul className="grid gap-3 sm:grid-cols-2">
+                    {HORSE_WALLPAPERS.map(product => <li key={product.id}>
+                        <details className="rounded-xl border border-amber-200/70 bg-amber-50/50 p-4">
+                            <summary className="flex min-h-11 cursor-pointer items-center gap-3 text-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600">
+                                <Image src={product.preview} alt={product.alt} width={product.width} height={product.height} unoptimized className="h-24 w-16 shrink-0 rounded-md object-contain" />
+                                <span><strong>{product.name}</strong><span className="mt-2 block text-xs text-[#5a5a82]">{product.device === 'mobile' ? 'มือถือ' : 'คอมพิวเตอร์'} · {product.width} × {product.height} px</span><span className="mt-2 block text-xs text-amber-800">อ่านแนวคิดและความหมาย ↓</span></span>
+                            </summary>
+                            <p className="mt-4 text-sm leading-7 text-[#5a5a82]">{product.description}</p>
+                            <p className="mt-3 text-sm leading-7 text-[#5a5a82]"><strong className="block text-amber-800">ความหมายมงคลตามความเชื่อ</strong>{product.auspiciousMeaning}</p>
+                            <Link prefetch={false} href={`/wallpapers?collection=horses&image=${product.id}`} className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-amber-800 underline">ดูภาพและดาวน์โหลด · 15 เครดิต →</Link>
+                        </details>
+                    </li>)}
+                </ul>
+                <div className="mt-7 divide-y divide-slate-200">{horseFaq.map(faq => <details key={faq.question} className="py-3"><summary className="min-h-11 cursor-pointer py-2 text-sm font-semibold">{faq.question}</summary><p className="max-w-[70ch] pb-2 text-sm leading-7 text-[#5a5a82]">{faq.answer}</p></details>)}</div>
+            </section>
 
             {/* ===== SEO Content Sections (Server-Rendered) ===== */}
             <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-4 pb-28 bg-[#f8f8fc] text-[#5a5a82]">
