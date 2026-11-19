@@ -80,15 +80,15 @@ export default function CustomWallpaperSeoContent() {
             <div className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
 
             <div className="mx-auto w-full max-w-6xl space-y-8 px-4 pb-14 pt-10 sm:px-6 lg:space-y-10 lg:px-8">
-                <div className="rounded-2xl border border-amber-300/20 bg-slate-900/50 p-6 backdrop-blur sm:p-8">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-200">
+                <div className="rounded-2xl border border-amber-300/20 bg-white p-6 backdrop-blur sm:p-8">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/30 bg-amber-400/10 px-3 py-1 text-xs font-semibold text-amber-800">
                         <Sparkles className="h-3.5 w-3.5" />
                         สร้างวอลเปเปอร์มงคล 2569
                     </div>
-                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-white sm:text-3xl">
+                    <h1 className="mt-4 text-2xl font-semibold leading-tight text-slate-900 sm:text-3xl">
                         สร้างวอลเปเปอร์มงคลส่วนตัว ให้ตรงเป้าหมายชีวิตของคุณ
                     </h1>
-                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
                         หน้าเครื่องมือนี้ออกแบบสำหรับคนที่อยากสร้างวอลเปเปอร์มงคลแบบเฉพาะบุคคล ทั้งเรื่องการเงิน การงาน ความรัก และพลังใจในปี 2569
                         โดยยังใช้งานง่ายบนมือถือภายในไม่กี่คลิก
                     </p>
@@ -102,7 +102,7 @@ export default function CustomWallpaperSeoContent() {
                         </Link>
                         <Link prefetch={false}
                             href="/name-check"
-                            className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-slate-400 hover:text-white"
+                            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-800 transition hover:border-slate-500 hover:text-slate-900"
                         >
                             เช็กชื่อก่อนสร้างภาพ
                         </Link>
@@ -113,16 +113,16 @@ export default function CustomWallpaperSeoContent() {
                     {benefits.map((benefit) => (
                         <article
                             key={benefit.title}
-                            className="rounded-xl border border-slate-700/70 bg-slate-900/45 p-5"
+                            className="rounded-xl border border-slate-200 bg-white p-5"
                         >
-                            <h2 className="text-base font-semibold text-white">{benefit.title}</h2>
-                            <p className="mt-2 text-sm leading-relaxed text-slate-300">{benefit.description}</p>
+                            <h2 className="text-base font-semibold text-slate-900">{benefit.title}</h2>
+                            <p className="mt-2 text-sm leading-relaxed text-slate-600">{benefit.description}</p>
                         </article>
                     ))}
                 </div>
 
-                <div className="rounded-2xl border border-cyan-300/25 bg-slate-900/50 p-6 sm:p-8">
-                    <div className="flex items-center gap-2 text-cyan-200">
+                <div className="rounded-2xl border border-cyan-300/25 bg-white p-6 sm:p-8">
+                    <div className="flex items-center gap-2 text-cyan-800">
                         <Wand2 className="h-4 w-4" />
                         <p className="text-sm font-semibold">วิธีสร้างวอลเปเปอร์มงคลแบบสั้นๆ</p>
                     </div>
@@ -130,49 +130,49 @@ export default function CustomWallpaperSeoContent() {
                         {steps.map((step, index) => (
                             <li
                                 key={step}
-                                className="flex gap-3 rounded-lg border border-slate-700/70 bg-slate-950/40 p-3"
+                                className="flex gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3"
                             >
-                                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-semibold text-cyan-200">
+                                <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-semibold text-cyan-800">
                                     {index + 1}
                                 </span>
-                                <p className="text-sm leading-relaxed text-slate-200">{step}</p>
+                                <p className="text-sm leading-relaxed text-slate-800">{step}</p>
                             </li>
                         ))}
                     </ol>
-                    <p className="mt-4 inline-flex items-center gap-2 text-sm text-slate-300">
-                        <Download className="h-4 w-4 text-cyan-200" />
+                    <p className="mt-4 inline-flex items-center gap-2 text-sm text-slate-600">
+                        <Download className="h-4 w-4 text-cyan-800" />
                         เมื่อสร้างเสร็จสามารถดาวน์โหลดและตั้งเป็นวอลเปเปอร์ได้ทันที
                     </p>
                 </div>
 
-                <div className="rounded-2xl border border-slate-700/80 bg-slate-900/50 p-6 sm:p-8">
-                    <h2 className="text-xl font-semibold text-white">คำถามที่พบบ่อย</h2>
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+                    <h2 className="text-xl font-semibold text-slate-900">คำถามที่พบบ่อย</h2>
                     <div className="mt-4 space-y-3">
                         {faqs.map((faq) => (
                             <details
                                 key={faq.question}
-                                className="group rounded-lg border border-slate-700/70 bg-slate-950/40 p-4"
+                                className="group rounded-lg border border-slate-200 bg-slate-50 p-4"
                             >
-                                <summary className="cursor-pointer list-none text-sm font-semibold text-slate-100">
+                                <summary className="cursor-pointer list-none text-sm font-semibold text-slate-800">
                                     {faq.question}
                                 </summary>
-                                <p className="mt-2 text-sm leading-relaxed text-slate-300">{faq.answer}</p>
+                                <p className="mt-2 text-sm leading-relaxed text-slate-600">{faq.answer}</p>
                             </details>
                         ))}
                     </div>
                 </div>
 
-                <nav className="rounded-2xl border border-amber-300/20 bg-slate-900/50 p-6 sm:p-8" aria-label="ลิงก์แนะนำ">
-                    <h2 className="text-xl font-semibold text-white">ลิงก์แนะนำที่เกี่ยวข้อง</h2>
+                <nav className="rounded-2xl border border-amber-300/20 bg-white p-6 sm:p-8" aria-label="ลิงก์แนะนำ">
+                    <h2 className="text-xl font-semibold text-slate-900">ลิงก์แนะนำที่เกี่ยวข้อง</h2>
                     <div className="mt-4 grid gap-3 sm:grid-cols-2">
                         {relatedLinks.map((item) => (
                             <Link prefetch={false}
                                 key={item.href}
                                 href={item.href}
-                                className="group rounded-lg border border-slate-700/80 bg-slate-950/40 p-4 transition hover:border-amber-300/40"
+                                className="group rounded-lg border border-slate-200 bg-slate-50 p-4 transition hover:border-amber-300/40"
                             >
-                                <p className="text-sm font-semibold text-slate-100 group-hover:text-amber-200">{item.title}</p>
-                                <p className="mt-1 text-sm text-slate-400">{item.description}</p>
+                                <p className="text-sm font-semibold text-slate-800 group-hover:text-amber-800">{item.title}</p>
+                                <p className="mt-1 text-sm text-slate-600">{item.description}</p>
                             </Link>
                         ))}
                     </div>

@@ -390,12 +390,12 @@ export default function ClientPage() {
                     </div>
                     
                     <h1 className="mb-3 text-[2rem] font-bold leading-tight tracking-tight text-[#1a1a3e] sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl">
-                        ค้นหาตัวตนด้วย <span className="text-[#c9933a]">ออร่า</span>
+                        ค้นหาตัวตนด้วย <span className="text-amber-800">ออร่า</span>
                         <br className="hidden sm:block" /> และพลังงานจากชื่อ
                     </h1>
                     
                     <p className="mx-auto max-w-[65ch] text-sm leading-relaxed text-[#5a5a82] sm:text-base">
-                        ถอดรหัสความหมายที่ซ่อนอยู่ในตัวอักษร ด้วยระบบ AI ขั้นสูง <br className="hidden md:block"/> ค้นพบ <span className="font-semibold text-[#c9933a]">12 Archetype</span> พลังงานสีมงคล และศาสตร์แห่งตัวตนที่แท้จริงของคุณ
+                        ถอดรหัสความหมายที่ซ่อนอยู่ในตัวอักษร ด้วยระบบ AI ขั้นสูง <br className="hidden md:block"/> ค้นพบ <span className="font-semibold text-amber-800">12 Archetype</span> พลังงานสีมงคล และศาสตร์แห่งตัวตนที่แท้จริงของคุณ
                     </p>
                 </div>
 
@@ -477,14 +477,14 @@ export default function ClientPage() {
 
                             {/* Error */}
                             {error && (
-                                <div className="mt-4 p-4 bg-red-900/40 border border-red-800 rounded-xl text-red-200 text-center text-sm backdrop-blur-sm">
+                                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-center text-sm">
                                     {error === 'QUOTA' ? (
                                         <div className="flex flex-col items-center gap-3">
                                             <p>ระบบมีผู้ใช้งานจำนวนมากในขณะนี้ กรุณารอสักครู่แล้วลองใหม่</p>
                                             <button
                                                 onClick={() => setError('')}
                                                 disabled={cooldown > 0}
-                                                className="px-4 py-2 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
+                                                className="px-4 py-2 bg-amber-800 hover:bg-amber-900 disabled:bg-slate-200 disabled:text-slate-600 disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
                                             >
                                                 {cooldown > 0 ? `รอสักครู่... (${cooldown}วิ)` : 'ลองอีกครั้ง'}
                                             </button>
@@ -501,7 +501,7 @@ export default function ClientPage() {
                             <div className="aura-pricing-row mt-6 flex items-center justify-between text-sm px-1">
                                 <span>ค่าบริการวิเคราะห์</span>
                                 <div className="text-right">
-                                    <span className="font-semibold text-amber-400">{AURA_ANALYSIS_COST} เครดิต</span>
+                                    <span className="font-semibold text-amber-800">{AURA_ANALYSIS_COST} เครดิต</span>
                                     {userCredits !== null && (
                                         <span className="text-slate-500 text-[11px] block mt-0.5">
                                             (คงเหลือ {userCredits} เครดิต)
@@ -514,7 +514,7 @@ export default function ClientPage() {
                             <button
                                 onClick={handleSubmit}
                                 disabled={!name.trim() || cooldown > 0}
-                                className="mt-5 w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-amber-500 text-white font-bold text-base transition-all duration-200 hover:bg-amber-400 shadow-[0_0_24px_rgba(245,158,11,0.22)] hover:shadow-[0_0_32px_rgba(245,158,11,0.30)] hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:bg-slate-800/50 disabled:text-slate-500 disabled:shadow-none border border-amber-400/20 disabled:border-white/5"
+                                className="aura-submit-button mt-5 w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-base transition-all duration-200 disabled:cursor-not-allowed"
                             >
                                 <Sparkles size={18} />
                                 เริ่มวิเคราะห์ออร่าด้วย AI
@@ -535,7 +535,7 @@ export default function ClientPage() {
                                 <Sparkles size={40} className="text-amber-400 animate-spin" style={{ animationDuration: '3s' }} />
                             </div>
                         </div>
-                        <p className="text-lg font-medium text-amber-300 transition-all duration-300 min-h-[28px]">
+                        <p className="text-lg font-medium text-amber-800 transition-all duration-300 min-h-[28px]">
                             {LOADING_MESSAGES[loadingIdx]}
                         </p>
                         <p className="mt-2 text-sm text-slate-500">กรุณารอสักครู่...</p>
@@ -549,7 +549,7 @@ export default function ClientPage() {
                     <div className="animate-fade-in-up">
                         <div
                             ref={resultRef}
-                            className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl overflow-hidden shadow-2xl"
+                            className="rounded-2xl border border-slate-700 bg-slate-900 text-slate-200 overflow-hidden shadow-2xl"
                         >
                             {/* Two-column layout: image + data */}
                             <div className="grid md:grid-cols-2">
@@ -615,7 +615,7 @@ export default function ClientPage() {
                                             <Shield size={18} className="text-amber-400" />
                                             ผลวิเคราะห์ออร่า
                                         </h3>
-                                        <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-bold shadow-lg shadow-amber-500/20">
+                                        <span className="px-3 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 text-sm font-bold shadow-lg shadow-amber-500/20">
                                             {result.score}
                                         </span>
                                     </div>
@@ -855,23 +855,23 @@ export default function ClientPage() {
 
                         {/* Prompt Viewer — outside resultRef so it's excluded from image export */}
                         {imagePrompt && (
-                            <div className="mt-4 rounded-2xl border border-slate-500/20 bg-white/[0.02] backdrop-blur-xl overflow-hidden">
+                            <div className="mt-4 rounded-2xl border border-slate-200 bg-white overflow-hidden">
                                 <button
                                     onClick={() => setShowPrompt((v) => !v)}
-                                    className="w-full flex items-center justify-between px-5 py-3 text-sm text-slate-300 hover:bg-white/5 transition-colors"
+                                    className="w-full flex items-center justify-between px-5 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                                 >
                                     <span className="flex items-center gap-2">
-                                        <Code size={16} className="text-slate-400" />
+                                        <Code size={16} className="text-slate-600" />
                                         ดู Prompt ที่ใช้สร้างภาพ (AI)
                                     </span>
                                     <ChevronDown
                                         size={16}
-                                        className={`text-slate-400 transition-transform duration-200 ${showPrompt ? 'rotate-180' : ''}`}
+                                        className={`text-slate-600 transition-transform duration-200 ${showPrompt ? 'rotate-180' : ''}`}
                                     />
                                 </button>
                                 {showPrompt && (
                                     <div className="px-5 pb-4">
-                                        <pre className="text-xs text-slate-400 bg-slate-900/50 border border-slate-700/30 rounded-xl p-4 whitespace-pre-wrap break-words max-h-40 overflow-y-auto font-mono leading-relaxed">
+                                        <pre className="text-xs text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-4 whitespace-pre-wrap break-words max-h-40 overflow-y-auto font-mono leading-relaxed">
                                             {imagePrompt}
                                         </pre>
                                     </div>
@@ -880,24 +880,24 @@ export default function ClientPage() {
                         )}
 
                         {/* Action Buttons */}
-                        <div className="flex items-center justify-center gap-3 mt-6">
+                        <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
                             <button
                                 onClick={handleDownload}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:border-slate-400 transition-all"
                             >
                                 <Download size={16} />
                                 บันทึกรูป
                             </button>
                             <button
                                 onClick={handleShare}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-medium hover:bg-white/10 hover:border-white/20 transition-all"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:border-slate-400 transition-all"
                             >
                                 <Share2 size={16} />
                                 แชร์
                             </button>
                             <button
                                 onClick={handleReset}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-semibold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-200 text-slate-900 text-sm font-semibold shadow-lg shadow-amber-500/20 hover:bg-amber-300 transition-all"
                             >
                                 <RotateCcw size={16} />
                                 วิเคราะห์ชื่อใหม่

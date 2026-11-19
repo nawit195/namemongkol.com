@@ -10,6 +10,7 @@ import { trackEvent } from '@/lib/analytics';
 import dynamic from 'next/dynamic';
 
 import { Wallpaper } from '@/types';
+import HorseWallpaperCollection from './HorseWallpaperCollection';
 
 const WallpaperDetailPanel = dynamic(() => import('./WallpaperDetailPanel'), { ssr: false });
 
@@ -66,7 +67,7 @@ import {
 } from '@/data/wallpapers';
 
 // Types
-type CategoryType = 'day' | 'zodiac';
+type CategoryType = 'day' | 'zodiac' | 'horses';
 type TabType = 'collection' | 'custom';
 
 export interface WallpaperPageProps {
@@ -82,7 +83,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     // Props from sub-routes take precedence, then fallback to query params for backward compat
     const initialDay = propDay || searchParams.get('day') || 'all';
     const initialTab = propTab || (searchParams.get('tab') as TabType) || 'collection';
-    const initialCat = propCategory || (searchParams.get('zodiac') ? 'zodiac' : undefined);
+    const initialCat = searchParams.get('collection') === 'horses' ? 'horses' : propCategory || (searchParams.get('zodiac') ? 'zodiac' : undefined);
 
     const [activeTab, setActiveTab] = useState<TabType>(initialTab);
     const [selectedDay, setSelectedDay] = useState(initialDay);
@@ -97,6 +98,10 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     const [downloadingId, setDownloadingId] = useState<number | null>(null);
     const [downloadStep, setDownloadStep] = useState<string>('');
     const [trafficSource, setTrafficSource] = useState<string>('unknown');
+
+    useEffect(() => {
+        setSelectedCategory(searchParams.get('collection') === 'horses' ? 'horses' : propCategory || (searchParams.get('zodiac') ? 'zodiac' : 'day'));
+    }, [searchParams, propCategory]);
 
     // Fetch Wallpapers from Supabase
     useEffect(() => {
@@ -212,6 +217,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     const getShareUrl = () => {
         const base = typeof window !== 'undefined' ? window.location.origin : '';
         if (activeTab === 'custom') return `${base}/wallpapers/custom`;
+        if (selectedCategory === 'horses') return `${base}/wallpapers?collection=horses`;
         if (selectedCategory === 'zodiac' && selectedZodiac !== 'all') return `${base}/wallpapers/zodiac/${selectedZodiac}`;
         if (selectedCategory === 'day' && selectedDay !== 'all') return `${base}/wallpapers/day/${selectedDay}`;
         if (selectedCategory === 'zodiac') return `${base}/wallpapers/zodiac`;
@@ -262,6 +268,8 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
             setSelectedCategory(cat);
             if (cat === 'zodiac') {
                 router.push('/wallpapers/zodiac', { scroll: false });
+            } else if (cat === 'horses') {
+                router.push('/wallpapers?collection=horses', { scroll: false });
             } else {
                 router.push('/wallpapers', { scroll: false });
             }
@@ -549,10 +557,10 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                 <div className="flex flex-col gap-2.5 md:gap-4">
                     <div>
                         <h1 className="mb-1.5 text-[1.65rem] font-bold leading-tight text-[#1a1a3e] sm:text-3xl md:mb-2 md:text-5xl">
-                            วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569: การเงิน งาน ความรัก
+                            วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว
                         </h1>
                         <p className="max-w-[70ch] text-sm leading-relaxed text-[#5a5a82] md:text-base">
-                            เลือกภาพตามวันเกิดหรือเป้าหมายที่อยากเตือนใจ พร้อมคำอธิบายสีและสัญลักษณ์ก่อนดาวน์โหลด
+                            เลือกภาพตามวันเกิด ราศี หรือภาพม้าแปดตัวสำหรับมือถือและคอมพิวเตอร์ ดูตัวอย่างและราคาเครดิตก่อนดาวน์โหลด
                         </p>
                     </div>
 
@@ -592,6 +600,13 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                     </div>
                 </div>
 
+                {activeTab === 'collection' && selectedCategory !== 'horses' && (
+                    <button type="button" onClick={() => navigateCategory('horses')} className="flex min-h-16 w-full flex-wrap items-center justify-between gap-2 rounded-2xl border border-amber-200 bg-amber-50 px-5 py-4 text-left text-[#1a1a3e] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-600">
+                        <span><strong className="block text-base">อาชามงคล 8 ตัว</strong><span className="text-sm text-[#5a5a82]">4 ภาพใหม่ สำหรับมือถือและคอมพิวเตอร์</span></span>
+                        <span className="text-sm font-semibold text-amber-800">ดูคอลเลกชัน · 15 เครดิตต่อดาวน์โหลด →</span>
+                    </button>
+                )}
+
                 <div className="relative">
                     {activeTab === 'collection' ? (
                         <div
@@ -600,7 +615,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                         >
                             {/* Category Selector */}
                             <div className="sticky top-[100px] z-30 -mx-3 space-y-2 border-y border-slate-200 bg-[#f8f8fc]/92 px-3 py-2 backdrop-blur-xl md:static md:mx-0 md:space-y-4 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
-                                <div className="grid grid-cols-2 gap-2 sm:flex">
+                                <div className="grid grid-cols-3 gap-2 sm:flex">
                                     <button
                                         onClick={() => navigateCategory('day')}
                                         className={`flex min-h-11 items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm ${
@@ -622,6 +637,9 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                                     >
                                         <Star size={16} />
                                         ราศี
+                                    </button>
+                                    <button type="button" onClick={() => navigateCategory('horses')} aria-pressed={selectedCategory === 'horses'} className={`flex min-h-11 items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold ${selectedCategory === 'horses' ? 'border-amber-400 bg-[#0f172a] text-amber-400' : 'border-[#1e293b] bg-[#0f172a] text-slate-300 hover:text-amber-400'}`}>
+                                        <ImageIcon size={16} />ม้า 8 ตัว
                                     </button>
                                 </div>
 
@@ -672,6 +690,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                                 )}
                             </div>
 
+                            {selectedCategory === 'horses' ? <HorseWallpaperCollection /> : <>
                             {/* Grid */}
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
                                 {(selectedCategory === 'day' ? filteredWallpapers : filteredZodiacWallpapers).map((wp, idx) => {
@@ -781,6 +800,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                                     <p className="text-slate-500 text-sm">ยังไม่มีวอลเปเปอร์ในหมวดนี้</p>
                                 </div>
                             )}
+                            </>}
                         </div>
                     ) : (
                         <div
