@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowDownToLine, Check, Coins, LoaderCircle, Monitor, RotateCcw, Smartphone, X } from 'lucide-react';
 import { HORSE_WALLPAPERS, WALLPAPER_RETRY_MINUTES, type PaidWallpaperProduct } from '@/data/horseWallpapers';
 import { parseWallpaperAttempt, wallpaperAttemptAfterFailure, wallpaperAttemptKey, type WallpaperDownloadAttempt } from '@/lib/paidWallpaper';
+import { WallpaperTimeoutError, withWallpaperTimeout } from '@/lib/wallpaperRequest';
 import { supabase } from '@/utils/supabase';
 import styles from './horse-wallpapers.module.css';
 
@@ -15,8 +16,10 @@ interface Catalog {
     userId: string | null;
     remainingCredits: number | null;
     products: (PaidWallpaperProduct & { available: boolean })[];
+    error?: string;
 }
 const initialCatalog: Catalog = { userId: null, remainingCredits: null, products: HORSE_WALLPAPERS.map(product => ({ ...product, available: false })) };
+const loginPath = (productId: string) => `/login?redirect=${encodeURIComponent(`/wallpapers?collection=horses&image=${productId}`)}`;
 
 export default function HorseWallpaperCollection() {
     const router = useRouter();
@@ -24,6 +27,8 @@ export default function HorseWallpaperCollection() {
     const [filter, setFilter] = useState<Filter>('all');
     const [selected, setSelected] = useState<PaidWallpaperProduct | null>(null);
     const [catalog, setCatalog] = useState<Catalog>(initialCatalog);
+    // Used for login navigation only. Purchases still require the server-verified catalog identity.
+    const [memberId, setMemberId] = useState<string | null | undefined>(undefined);
     const [loading, setLoading] = useState(true);
     const [catalogError, setCatalogError] = useState('');
     const [error, setError] = useState('');
@@ -37,47 +42,75 @@ export default function HorseWallpaperCollection() {
     const identity = useRef<string | null>(null);
     const activeProduct = useRef<string | null>(null);
     const loadController = useRef<AbortController | null>(null);
+    const authIdentity = useRef<string | null | undefined>(undefined);
     const attempts = useRef(new Map<string, WallpaperDownloadAttempt>());
     const trigger = useRef<HTMLElement | null>(null);
+    const downloadIntent = useRef<string | null>(null);
 
-    const refresh = useCallback(async () => {
+    const refresh = useCallback(async (replace = false) => {
+        // Repeated focus events must not keep restarting the timeout.
+        if (loadController.current && !replace) return;
         loadController.current?.abort();
         const controller = new AbortController();
         loadController.current = controller;
         setLoading(true);
         try {
-            const response = await fetch('/api/wallpapers/products', { cache: 'no-store', signal: controller.signal });
-            if (!response.ok) throw new Error('ระบบดาวน์โหลดภาพชุดนี้ยังไม่พร้อม คุณยังเปิดดูภาพตัวอย่างได้');
-            const data: Catalog = await response.json();
-            if (controller.signal.aborted) return;
+            const data = await withWallpaperTimeout(async signal => {
+                const response = await fetch('/api/wallpapers/products', { cache: 'no-store', signal });
+                if (!response.ok) throw new Error('ระบบดาวน์โหลดภาพชุดนี้ยังไม่พร้อม คุณยังเปิดดูภาพตัวอย่างได้');
+                return await response.json() as Catalog;
+            }, 12_000, controller.signal);
+            if (controller.signal.aborted || loadController.current !== controller) return;
             identity.current = data.userId;
+            setMemberId(data.userId);
             setCatalog(data);
-            setCatalogError('');
+            setCatalogError(data.error ?? '');
         } catch (failure) {
-            if (controller.signal.aborted) return;
+            if (controller.signal.aborted || loadController.current !== controller) return;
             identity.current = null;
             setCatalog(initialCatalog);
-            setCatalogError(failure instanceof Error ? failure.message : 'โหลดข้อมูลไม่สำเร็จ');
-        } finally { if (!controller.signal.aborted) setLoading(false); }
+            setCatalogError(failure instanceof WallpaperTimeoutError ? 'ตรวจสอบสิทธิ์นานกว่าปกติ กรุณาลองใหม่ การตรวจสอบสิทธิ์ไม่หักเครดิต' : failure instanceof Error ? failure.message : 'โหลดข้อมูลไม่สำเร็จ');
+        } finally {
+            if (loadController.current === controller) {
+                loadController.current = null;
+                if (!controller.signal.aborted) setLoading(false);
+            }
+        }
     }, []);
 
     useEffect(() => {
         void refresh();
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+        let authRefresh: ReturnType<typeof setTimeout> | undefined;
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            const nextUser = session?.user && !session.user.is_anonymous ? session.user.id : null;
+            setMemberId(nextUser);
+            if (authIdentity.current === nextUser) return;
+            authIdentity.current = nextUser;
+            loadController.current?.abort();
             identity.current = null;
+            setCatalog(initialCatalog);
+            setLoading(true);
             setPending(null);
             setConfirm(false);
             setMessage('');
             setError('');
             // Leave the Auth callback before querying Supabase-dependent routes.
-            setTimeout(() => { void refresh(); }, 0);
+            clearTimeout(authRefresh);
+            authRefresh = setTimeout(() => { void refresh(true); }, 0);
         });
         const onFocus = () => { void refresh(); };
         window.addEventListener('focus', onFocus);
-        return () => { subscription.unsubscribe(); loadController.current?.abort(); window.removeEventListener('focus', onFocus); };
+        return () => { subscription.unsubscribe(); clearTimeout(authRefresh); loadController.current?.abort(); loadController.current = null; window.removeEventListener('focus', onFocus); };
     }, [refresh]);
 
     const selectedId = selected?.id;
+    useEffect(() => {
+        if (memberId === null && selectedId && downloadIntent.current === selectedId) {
+            downloadIntent.current = null;
+            router.push(loginPath(selectedId));
+        }
+    }, [memberId, selectedId, router]);
+
     useEffect(() => {
         const userId = catalog.userId;
         setMessage('');
@@ -107,6 +140,7 @@ export default function HorseWallpaperCollection() {
     }, [selected]);
 
     function close() {
+        downloadIntent.current = null;
         activeProduct.current = null;
         setSelected(null);
         setConfirm(false);
@@ -114,6 +148,12 @@ export default function HorseWallpaperCollection() {
     }
 
     function openProduct(product: PaidWallpaperProduct, element: HTMLElement, purchase = false) {
+        downloadIntent.current = purchase ? product.id : null;
+        if (purchase && memberId === null) {
+            downloadIntent.current = null;
+            router.push(loginPath(product.id));
+            return;
+        }
         trigger.current = element;
         activeProduct.current = product.id;
         setError('');
@@ -144,13 +184,17 @@ export default function HorseWallpaperCollection() {
         setMessage('');
         saveAttempt(attempt);
         try {
-            const response = await fetch('/api/wallpapers/download', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ productId: product.id, requestId: attempt.requestId, action: retry ? 'retry' : 'start' }),
-            });
+            const { response, blob, failure } = await withWallpaperTimeout(async signal => {
+                const response = await fetch('/api/wallpapers/download', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, signal,
+                    body: JSON.stringify({ productId: product.id, requestId: attempt.requestId, action: retry ? 'retry' : 'start' }),
+                });
+                return response.ok
+                    ? { response, blob: await response.blob(), failure: null }
+                    : { response, blob: null, failure: await response.json() };
+            }, 75_000);
             if (!response.ok) {
-                const failure = await response.json();
-                const retained = wallpaperAttemptAfterFailure(attempt, previousAttempt, response.status, failure.code);
+                const retained = wallpaperAttemptAfterFailure(attempt, previousAttempt, response.status, failure?.code);
                 if (retained) {
                     saveAttempt(retained);
                 } else {
@@ -159,13 +203,19 @@ export default function HorseWallpaperCollection() {
                     try { sessionStorage.removeItem(key); } catch { /* Memory still works. */ }
                     if (identity.current === owner && activeProduct.current === product.id) setPending(null);
                 }
-                throw new Error(failure.error || 'ดาวน์โหลดไม่สำเร็จ กรุณาลองรายการเดิมอีกครั้ง');
+                if (response.status === 401 && identity.current === owner) {
+                    identity.current = null;
+                    setMemberId(null);
+                    setCatalog(initialCatalog);
+                    router.push(loginPath(product.id));
+                    return;
+                }
+                throw new Error(failure?.error || 'ดาวน์โหลดไม่สำเร็จ กรุณาลองรายการเดิมอีกครั้ง');
             }
             const expiry = response.headers.get('X-Download-Expires-At');
             if (expiry) saveAttempt({ ...attempt, expiresAt: expiry });
             // Read the entire response before offering a browser save. A broken transfer keeps the retry key.
-            const blob = await response.blob();
-            if (blob.type !== 'image/png' || blob.size !== product.bytes) throw new Error('รับไฟล์ไม่ครบ กรุณาลองดาวน์โหลดรายการเดิมอีกครั้ง');
+            if (!blob || blob.type !== 'image/png' || blob.size !== product.bytes) throw new Error('รับไฟล์ไม่ครบ กรุณาลองดาวน์โหลดรายการเดิมอีกครั้ง');
             if (identity.current !== owner) return;
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
@@ -180,7 +230,7 @@ export default function HorseWallpaperCollection() {
             window.dispatchEvent(new Event('force_credits_update'));
             if (activeProduct.current === product.id) setMessage(response.headers.get('X-Download-Status') === 'retry' ? 'ส่งไฟล์ให้เบราว์เซอร์แล้ว โดยไม่หักเครดิตเพิ่ม' : 'หัก 15 เครดิตและส่งไฟล์ให้เบราว์เซอร์แล้ว');
         } catch (failure) {
-            if (identity.current === owner && activeProduct.current === product.id) setError(failure instanceof Error ? failure.message : 'การเชื่อมต่อขัดข้อง กรุณาลองรายการเดิมอีกครั้ง');
+            if (identity.current === owner && activeProduct.current === product.id) setError(failure instanceof WallpaperTimeoutError ? 'การรับไฟล์ใช้เวลานานกว่าปกติ หากรายการสำเร็จแล้วอาจมีการหักเครดิต กรุณากด “ลองรายการเดิมอีกครั้ง” เพื่อตรวจรายการเดิมโดยไม่หักเพิ่ม' : failure instanceof Error ? failure.message : 'การเชื่อมต่อขัดข้อง กรุณาลองรายการเดิมอีกครั้ง');
         } finally {
             requestLock.current = false;
             setBusy(false);
@@ -243,10 +293,17 @@ export default function HorseWallpaperCollection() {
                             <p className={styles.meaning}><strong>ความหมายมงคลตามความเชื่อ</strong>{selected.auspiciousMeaning}</p>
                             <dl className={styles.specs}><div><dt>ขนาดต้นฉบับ</dt><dd>{selected.width} × {selected.height} px</dd></div><div><dt>ไฟล์ดาวน์โหลด</dt><dd>PNG · {(selected.bytes / 1_000_000).toFixed(2)} MB</dd></div><div><dt>เครดิตต่อครั้ง</dt><dd>15 เครดิต</dd></div></dl>
                             <p className={styles.paymentNote}>หักเครดิตทุกการดาวน์โหลดใหม่ ลองรายการเดิมซ้ำฟรีภายใน 30 นาที</p>
-                            {loading ? <button type="button" className={styles.primary} disabled><LoaderCircle size={16} className="animate-spin" />กำลังตรวจสอบสิทธิ์</button> : !selectedAvailable ? <>
-                                <button type="button" className={styles.primary} disabled aria-describedby="horse-download-unavailable"><ArrowDownToLine size={18} aria-hidden="true" />ดาวน์โหลด · 15 เครดิต</button>
-                                <p id="horse-download-unavailable" role="status" className={styles.paymentNote}>ภาพนี้ยังไม่พร้อมดาวน์โหลด ระบบยังไม่หักเครดิต กรุณาลองใหม่ภายหลัง</p>
-                            </> : !catalog.userId ? <Link className={styles.primary} href={`/login?redirect=${encodeURIComponent(`/wallpapers?collection=horses&image=${selected.id}`)}`}><ArrowDownToLine size={18} aria-hidden="true" />เข้าสู่ระบบเพื่อดาวน์โหลด · 15 เครดิต</Link> : (
+                            {catalogError ? <div className={styles.notice} role="status">{catalogError}<button type="button" onClick={() => { void refresh(); }} disabled={loading}><RotateCcw size={14} />{loading ? 'กำลังตรวจสอบ' : 'ลองตรวจสอบสิทธิ์อีกครั้ง'}</button></div> : null}
+                            {memberId === null ? <>
+                                <Link className={styles.primary} href={loginPath(selected.id)}><ArrowDownToLine size={18} aria-hidden="true" />เข้าสู่ระบบเพื่อดาวน์โหลด · 15 เครดิต</Link>
+                                <p className={styles.paymentNote}>เข้าสู่ระบบแล้วจะกลับมาที่ภาพนี้ เพื่อตรวจเครดิตและยืนยันดาวน์โหลดด้วยตนเอง</p>
+                            </> : loading ? <>
+                                <button type="button" className={styles.primary} disabled><ArrowDownToLine size={18} aria-hidden="true" />ดาวน์โหลด · 15 เครดิต</button>
+                                <p className={`${styles.paymentNote} ${styles.inlineStatus}`} role="status"><LoaderCircle size={16} className="animate-spin" aria-hidden="true" />กำลังตรวจสอบสิทธิ์ กรุณารอสักครู่</p>
+                            </> : !selectedAvailable ? <>
+                                <button type="button" className={styles.primary} disabled aria-describedby={catalogError ? undefined : 'horse-download-unavailable'}><ArrowDownToLine size={18} aria-hidden="true" />ดาวน์โหลด · 15 เครดิต</button>
+                                {!catalogError ? <p id="horse-download-unavailable" role="status" className={styles.paymentNote}>ภาพนี้ยังไม่พร้อมดาวน์โหลด ระบบยังไม่หักเครดิต กรุณาลองใหม่ภายหลัง</p> : null}
+                            </> : !catalog.userId ? <Link className={styles.primary} href={loginPath(selected.id)}><ArrowDownToLine size={18} aria-hidden="true" />เข้าสู่ระบบเพื่อดาวน์โหลด · 15 เครดิต</Link> : (
                                 <>
                                     <p className={styles.balance}>เครดิตคงเหลือ <strong>{catalog.remainingCredits?.toLocaleString('th-TH')}</strong></p>
                                     {confirm ? <div className={styles.confirm}>
