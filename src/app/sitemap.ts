@@ -1,3 +1,4 @@
+import { FINANCE_WALLPAPERS } from '@/data/financeWallpapers';
 import { MetadataRoute } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import { articles as localArticles } from '@/data/articles';
@@ -119,7 +120,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...wallpaperZodiac.map((sign) => ({
             url: `${baseUrl}/wallpapers/zodiac/${sign}`,
         })),
-        { url: `${baseUrl}/wallpapers/intent/finance` },
+        { url: `${baseUrl}/wallpapers/intent/finance`, images: FINANCE_WALLPAPERS.map(product => `${baseUrl}${product.preview}`) },
         { url: `${baseUrl}/wallpapers/intent/love` },
         { url: `${baseUrl}/wallpapers/intent/work` },
     ];

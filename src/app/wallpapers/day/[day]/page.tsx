@@ -1,10 +1,12 @@
 import { Metadata } from 'next';
-import Script from 'next/script';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import ClientPage from '../../ClientPage';
-import { siteUrl } from '@/lib/seo';
+import { siteUrl, ogImageUrl } from '@/lib/seo';
+import { REVIEWED_DAY_WALLPAPERS } from '@/data/wallpaperDayContent';
+import styles from '../../finance-wallpapers.module.css';
 
 const DAY_META: Record<string, { label: string; desc: string; keywords: string[] }> = {
     sunday: {
@@ -50,128 +52,111 @@ const DAY_META: Record<string, { label: string; desc: string; keywords: string[]
 };
 
 const VALID_DAYS = Object.keys(DAY_META);
-
 type Props = { params: Promise<{ day: string }> };
 
 export async function generateStaticParams() {
-    return VALID_DAYS.map((day) => ({ day }));
+    return VALID_DAYS.map(day => ({ day }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { day } = await params;
     const meta = DAY_META[day];
     if (!meta) return {};
-
-    const title = `วอลเปเปอร์มงคล${meta.label} เสริมดวง | NameMongkol`;
+    const content = REVIEWED_DAY_WALLPAPERS[day];
+    const title = content?.title || `วอลเปเปอร์มงคล${meta.label} เสริมดวง | NameMongkol`;
+    const description = content?.metaDescription || meta.desc;
+    const heading = content?.h1 || `วอลเปเปอร์เสริมดวงคนเกิด${meta.label}`;
+    const socialImage = { url: ogImageUrl({ title: heading, subtitle: content ? `${content.meaning} · เลข ${content.code}` : 'ดูภาพและเงื่อนไขก่อนดาวน์โหลด', tag: 'Wallpapers' }), width: 1200, height: 630, alt: `ภาพปก ${heading}` };
     return {
-        title,
-        description: meta.desc,
+        title: { absolute: title }, description,
         keywords: [...meta.keywords, 'วอลเปเปอร์มงคล', 'NameMongkol'],
-        openGraph: {
-            title,
-            description: meta.desc,
-            url: `${siteUrl}/wallpapers/day/${day}`,
-            siteName: 'NameMongkol',
-            locale: 'th_TH',
-            type: 'website',
-            images: [`${siteUrl}/api/og?variant=default&title=${encodeURIComponent(`วอลเปเปอร์มงคล${meta.label}`)}&subtitle=${encodeURIComponent('เสริมดวง')}&tag=Wallpapers`],
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title,
-            description: meta.desc,
-        },
-        alternates: {
-            canonical: `${siteUrl}/wallpapers/day/${day}`,
-        },
+        alternates: { canonical: `${siteUrl}/wallpapers/day/${day}` },
+        openGraph: { title, description, url: `${siteUrl}/wallpapers/day/${day}`, siteName: 'NameMongkol', locale: 'th_TH', type: 'website', images: [socialImage] },
+        twitter: { card: 'summary_large_image', title, description, images: [socialImage] },
     };
 }
 
 export default async function DayWallpapersPage({ params }: Props) {
     const { day } = await params;
     if (!VALID_DAYS.includes(day)) notFound();
-
     const meta = DAY_META[day];
-
+    const content = REVIEWED_DAY_WALLPAPERS[day];
+    const heading = content?.h1 || `วอลเปเปอร์เสริมดวงคนเกิด${meta.label}`;
+    const description = content?.metaDescription || meta.desc;
+    const canonical = `${siteUrl}/wallpapers/day/${day}`;
+    const faqs = [
+        { question: `วอลเปเปอร์${meta.label}ภาพนี้สื่อถึงอะไร?`, answer: content ? `ภาพ${content.name}ใช้โทน${content.palette} สื่อถึง${content.meaning} ${content.audience}` : `เลือกภาพสำหรับคนเกิด${meta.label}โดยอ่านคำอธิบายสีและสัญลักษณ์ แล้วเลือกแบบที่ชอบเพื่อใช้เป็นเครื่องเตือนใจถึงเป้าหมายของคุณ` },
+        { question: `วอลเปเปอร์${meta.label}ดาวน์โหลดฟรีไหม?`, answer: `ภาพประจำ${meta.label}ดาวน์โหลดฟรีหลังเข้าสู่ระบบ ส่วนภาพพิเศษที่แสดงร่วมกันมีราคาเครดิตระบุบนปุ่ม ควรดูเงื่อนไขของภาพที่เลือกก่อนดาวน์โหลด` },
+        { question: `ตั้งวอลเปเปอร์${meta.label}อย่างไรไม่ให้ภาพถูกตัด?`, answer: content?.setupTip || 'หลังบันทึกภาพ ให้เปิดการตั้งค่าภาพพื้นหลังแล้วปรับการซูมและตำแหน่งให้เห็นสัญลักษณ์สำคัญ ตรวจว่านาฬิกาและไอคอนไม่บังภาพก่อนยืนยัน' },
+    ];
     const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'หน้าหลัก', item: siteUrl },
             { '@type': 'ListItem', position: 2, name: 'วอลเปเปอร์มงคล', item: `${siteUrl}/wallpapers` },
-            { '@type': 'ListItem', position: 3, name: `${meta.label}`, item: `${siteUrl}/wallpapers/day/${day}` },
+            { '@type': 'ListItem', position: 3, name: meta.label, item: canonical },
         ],
     };
-
-    const faqJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: [
-            {
-                '@type': 'Question',
-                name: `วอลเปเปอร์มงคล${meta.label}ช่วยเรื่องอะไร?`,
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: `วอลเปเปอร์มงคล${meta.label}เน้นเสริมพลังตามสีมงคลและสัญลักษณ์ประจำวันเกิด ช่วยเพิ่มโฟกัสและกำลังใจด้านการเงิน การงาน และความสัมพันธ์ในชีวิตประจำวัน`,
-                },
-            },
-            {
-                '@type': 'Question',
-                name: `ควรเลือกวอลเปเปอร์${meta.label}แบบไหนให้เหมาะกับเป้าหมาย?`,
-                acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: `หากต้องการเน้นการเงินให้เลือกภาพที่มีสัญลักษณ์เรียกทรัพย์ หากต้องการเน้นงานให้เลือกภาพที่สื่อถึงอำนาจและความมั่นคง และควรตั้งภาพที่มองเห็นบ่อยเพื่อเสริมการย้ำเป้าหมาย`,
-                },
-            },
-        ],
+    const collectionJsonLd = {
+        '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': canonical, url: canonical,
+        name: heading, description, inLanguage: 'th-TH',
+        ...(content ? { primaryImageOfPage: {
+            '@type': 'ImageObject', contentUrl: `${siteUrl}${content.image}`,
+            name: content.name, caption: content.alt, description: content.description,
+            width: content.width, height: content.height, encodingFormat: 'image/webp', creditText: 'NameMongkol',
+        } } : {}),
     };
-
-    return (
-        <>
-            <h1 className="sr-only">{`วอลเปเปอร์มงคล${meta.label} ฟรี เสริมดวงตามวันเกิด`}</h1>
-            <Script
-                id={`wallpapers-day-${day}-breadcrumb`}
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-            />
-            <Script
-                id={`wallpapers-day-${day}-faq`}
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-            />
-            <Suspense>
-                <ClientPage initialCategory="day" initialDay={day} initialTab="collection" />
-            </Suspense>
-            <section className="w-full bg-[#050b14] text-slate-200 px-4 pb-12">
-                <div className="max-w-5xl mx-auto">
-                    <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
-                        {`วอลเปเปอร์มงคล${meta.label} ฟรี เหมาะกับใคร`}
-                    </h2>
-                    <p className="text-slate-300 leading-relaxed mb-6">
-                        {`คอลเลกชันวอลเปเปอร์มงคล${meta.label}ชุดนี้ออกแบบให้สอดคล้องกับสีมงคลประจำวันและสัญลักษณ์เสริมดวงเด่นของวันเกิด ช่วยย้ำเป้าหมายด้านการเงิน การงาน และความรักเมื่อใช้งานเป็นหน้าจอประจำวัน`}
-                    </p>
-                    <p className="text-slate-300 leading-relaxed mb-6">
-                        ต้องการโทนภาพที่เฉพาะกับเป้าหมายของคุณมากขึ้น?{' '}
-                        <Link prefetch={false}
-                            href="/wallpapers/custom"
-                            className="font-medium text-amber-300 hover:text-amber-200 underline decoration-amber-400/50 underline-offset-2"
-                        >
-                            ลองสร้างวอลเปเปอร์มงคลส่วนตัว
-                        </Link>{' '}
-                        เพื่อปรับธีม สี และความหมายให้ตรงกับจังหวะชีวิตของคุณ
-                    </p>
-                    <div className="border-t border-slate-800/50 pt-5">
-                        <h3 className="text-sm font-semibold text-slate-300 mb-3">ค้นหาวอลเปเปอร์ตามจุดประสงค์:</h3>
-                        <div className="flex flex-wrap gap-2">
-                            <Link prefetch={false} href="/wallpapers/intent/finance" className="text-xs bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 px-3 py-1.5 rounded-full text-emerald-300 hover:text-emerald-200 transition-colors">💰 เสริมดวงการเงิน เรียกทรัพย์</Link>
-                            <Link prefetch={false} href="/wallpapers/intent/work" className="text-xs bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 px-3 py-1.5 rounded-full text-amber-300 hover:text-amber-200 transition-colors">📈 เสริมดวงการงาน บารมี</Link>
-                            <Link prefetch={false} href="/wallpapers/intent/love" className="text-xs bg-pink-500/10 hover:bg-pink-500/20 border border-pink-500/20 px-3 py-1.5 rounded-full text-pink-300 hover:text-pink-200 transition-colors">💖 เสริมดวงความรัก เมตตามหานิยม</Link>
-                            <Link prefetch={false} href="/wallpapers/custom" className="text-xs bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 px-3 py-1.5 rounded-full text-cyan-300 hover:text-cyan-200 transition-colors">✨ สร้างวอลเปเปอร์มงคลส่วนตัว</Link>
-                        </div>
+    const faqJsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(faq => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } })) };
+    return <>
+        {[breadcrumbJsonLd, collectionJsonLd, faqJsonLd].map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\u003c') }} />)}
+        <div className={`${styles.page} ${styles.dayIntroPage}`}>
+            <div className={styles.inner}>
+                <header className={styles.header}>
+                    <nav aria-label="เส้นทางหน้าปัจจุบัน" className={styles.breadcrumb}><Link href="/wallpapers">วอลเปเปอร์มงคล</Link><span aria-hidden="true">/</span><span>{meta.label}</span></nav>
+                    <h1>{heading}</h1>
+                    <p className={styles.lead}>{content?.intro || `เลือกภาพพื้นหลังมือถือสำหรับคนเกิด${meta.label} อ่านความหมาย สี และเงื่อนไขดาวน์โหลดก่อนตั้งหน้าจอ`}</p>
+                </header>
+                {content && <section className={styles.dayPreview} aria-labelledby="day-primary-heading">
+                    <figure>
+                        <Link href={`/wallpapers/day/${day}?id=${content.id}`} scroll={false} aria-label={`ดูภาพ ${content.name}`}>
+                            <Image src={content.image} alt={content.alt} width={content.width} height={content.height} sizes="(min-width: 640px) 200px, 112px" preload className={styles.dayPreviewImage} />
+                        </Link>
+                        <figcaption className={styles.spec}>{content.width} × {content.height} px · {content.palette}</figcaption>
+                    </figure>
+                    <div className={styles.dayPreviewBody}>
+                        <h2 id="day-primary-heading">{content.name}</h2>
+                        <Link href={`/wallpapers/day/${day}?id=${content.id}`} scroll={false} className={styles.action}>ดูภาพและดาวน์โหลดฟรี</Link>
+                        <p className={styles.spec}>ภาพประจำวันนี้ดาวน์โหลดฟรีหลังเข้าสู่ระบบ ภาพพิเศษในรายการมีราคาเครดิตแยก</p>
+                        <p className={styles.note}>{content.description}</p>
+                        <p className={styles.note}>{content.audience}</p>
                     </div>
-                </div>
-            </section>
-        </>
-    );
+                </section>}
+            </div>
+        </div>
+        <Suspense fallback={<p className="px-4 py-8 text-slate-600" role="status">กำลังเตรียมรายการวอลเปเปอร์{meta.label}…</p>}>
+            <ClientPage initialCategory="day" initialDay={day} initialTab="collection" embedded />
+        </Suspense>
+        <div className={`${styles.page} ${styles.dayFooter}`}>
+            <div className={styles.inner}>
+                <section className={styles.reading} aria-labelledby="day-setup-heading">
+                    <h2 id="day-setup-heading">วิธีดาวน์โหลดและตั้งวอลเปเปอร์{meta.label}</h2>
+                    <ol>
+                        <li>เลือกภาพและอ่านเงื่อนไขบนปุ่ม ภาพประจำวันดาวน์โหลดฟรีหลังเข้าสู่ระบบ ส่วนภาพพิเศษใช้เครดิตตามที่แจ้ง</li>
+                        <li>กดดาวน์โหลดและบันทึกภาพลงในอุปกรณ์ จากนั้นเปิดการตั้งค่าภาพพื้นหลังของมือถือ</li>
+                        <li>{content?.setupTip || 'เลือกหน้าจอล็อกหรือหน้าจอหลัก แล้วปรับตำแหน่งให้พอดีกับจอและไม่ถูกไอคอนบัง'}</li>
+                    </ol>
+                    <p className={styles.note}>สี สัญลักษณ์ และเลขในภาพใช้ประกอบความเชื่อและสร้างกำลังใจ ไม่ใช่การรับประกันผลด้านการเงิน การงาน หรือความปลอดภัย</p>
+                </section>
+                <section className={styles.reading} aria-labelledby="day-faq-heading">
+                    <h2 id="day-faq-heading">คำถามเกี่ยวกับวอลเปเปอร์{meta.label}</h2>
+                    {faqs.map(faq => <details key={faq.question} className={styles.faq}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
+                </section>
+                <nav aria-label="คอลเลกชันวอลเปเปอร์ที่เกี่ยวข้อง" className={styles.nav}>
+                    <Link href="/wallpapers">วอลเปเปอร์ทุกวันเกิด</Link>
+                    <Link href="/wallpapers/intent/finance">วอลเปเปอร์เสริมดวงการเงิน</Link>
+                    <Link href="/wallpapers/intent/work">วอลเปเปอร์ด้านการงาน</Link>
+                    <Link href="/wallpapers/custom">สร้างวอลเปเปอร์ส่วนตัว</Link>
+                </nav>
+            </div>
+        </div>
+    </>;
 }
-

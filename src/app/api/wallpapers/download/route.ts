@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { HORSE_WALLPAPERS, HORSE_WALLPAPER_COST } from '@/data/horseWallpapers';
+import { PAID_WALLPAPERS } from '@/data/paidWallpapers';
 import { paidWallpaperError, paidWallpaperRequest } from '@/lib/paidWallpaper';
 import { WALLPAPER_ORIGINAL_BUCKET, WALLPAPER_PRIVATE_HEADERS, wallpaperAuth, wallpaperJson, wallpaperService, wallpaperUnavailable } from '@/lib/paidWallpaperServer';
 
@@ -21,11 +21,11 @@ export async function POST(request: Request) {
         const service = wallpaperService();
         if (!service) return wallpaperUnavailable();
         const { productId, requestId, action } = parsed.data;
-        const product = HORSE_WALLPAPERS.find(item => item.id === productId)!;
+        const product = PAID_WALLPAPERS.find(item => item.id === productId)!;
         const { data: asset, error } = await service.from('wallpaper_products').select('id,cost,active,original_path,sha256,bytes').eq('id', productId).maybeSingle();
         if (error) return wallpaperUnavailable();
         if (!asset?.active) return wallpaperJson({ error: 'ภาพนี้ยังไม่พร้อมดาวน์โหลด' }, 404);
-        if (asset.cost !== HORSE_WALLPAPER_COST || asset.bytes !== product.bytes) return wallpaperUnavailable();
+        if (asset.cost !== product.cost || asset.bytes !== product.bytes) return wallpaperUnavailable();
 
         // Read and verify the entire immutable file BEFORE charging. Never fall back to a public original.
         const { data: file, error: fileError } = await service.storage.from(WALLPAPER_ORIGINAL_BUCKET).download(asset.original_path);

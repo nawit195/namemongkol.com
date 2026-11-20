@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+import { assets as financeAssets } from './finance-wallpaper-assets.mjs';
 const require = createRequire(import.meta.url);
 if (!process.argv[2]) throw new Error('Provide the temporary @electric-sql/pglite package path');
 const { PGlite } = require(path.resolve(process.argv[2]));
@@ -11,6 +12,7 @@ const memberB = '10000000-0000-4000-8000-000000000002';
 let sequence = 100;
 const id = () => `10000000-0000-4000-8000-${String(sequence++).padStart(12, '0')}`;
 const hashes = {
+    ...Object.fromEntries(financeAssets.map(asset => [asset.id, asset.sha256])),
     'eight-horses-jade-mist': 'a7825179d4d6efa270deed159acba8bab7e6c91b2ab9cc8393f5763193b7995a',
     'eight-horses-waterfall': '42fafd2566604dbffafec8e24ba3e06cacc9fb52cd4925e3ba97a071e0ae687c',
 };
@@ -36,6 +38,13 @@ try {
     assert.equal((await db.query('SELECT count(*)::int AS n FROM public.wallpaper_products WHERE active')).rows[0].n, 0);
     assert.equal((await db.query('SELECT public FROM storage.buckets')).rows[0].public, false);
     await db.exec('UPDATE public.wallpaper_products SET active=true');
+    const financeMigration = await readFile(new URL('../supabase/migrations/20261120052112_paid_finance_wallpapers.sql', import.meta.url), 'utf8');
+    await db.exec(financeMigration);
+    assert.equal((await db.query("SELECT count(*)::int AS n FROM public.wallpaper_products WHERE active AND id LIKE 'eight-horses-%'")).rows[0].n,4);
+    assert.equal((await db.query("SELECT count(*)::int AS n FROM public.wallpaper_products WHERE NOT active AND id LIKE 'finance-%'")).rows[0].n,4);
+    // Rerunning the catalog migration preserves existing entries and active states.
+    await db.exec(financeMigration);
+    await db.exec("UPDATE public.wallpaper_products SET active=true WHERE id LIKE 'finance-%'");
     const reset = async (purchased, welcome = 0, age = '1 day') => {
         await db.exec(`SELECT set_config('app.bypass_credit_check','true',false)`);
         await db.query(`UPDATE public.user_profiles SET credits=$1,welcome_credits=$2,welcome_credits_granted_at=now()-$3::interval WHERE id=$4`, [purchased,welcome,age,memberA]);
@@ -89,6 +98,22 @@ try {
     await db.exec('RESET ROLE');
     assert.deepEqual(duplicateResults.map(result => result.rows[0].result.status).sort(), ['charged','retry']);
     assert.equal((await db.query('SELECT credits FROM public.user_profiles WHERE id=$1',[memberA])).rows[0].credits,15);
+    for (const asset of financeAssets) {
+        for (const credits of [0,14]) {
+            await reset(credits);
+            assert.equal((await purchase(id(),false,memberA,asset.id)).status,'insufficient_credits');
+        }
+        await reset(15);
+        const receipt = id();
+        assert.equal((await purchase(receipt,false,memberA,asset.id)).status,'charged');
+        assert.equal((await purchase(receipt,true,memberA,asset.id)).status,'retry');
+        assert.equal((await purchase(receipt,true,memberA,product)).status,'request_conflict');
+        assert.equal((await purchase(receipt,true,memberB,asset.id)).status,'attempt_not_found');
+        assert.equal((await db.query('SELECT credits FROM public.user_profiles WHERE id=$1',[memberA])).rows[0].credits,0);
+        assert.equal((await db.query('SELECT count(*)::int AS n FROM public.wallpaper_downloads WHERE user_id=$1 AND request_id=$2',[memberA,receipt])).rows[0].n,1);
+        await db.query("UPDATE public.wallpaper_downloads SET created_at=now()-interval '31 minutes',expires_at=now()-interval '1 minute' WHERE user_id=$1 AND request_id=$2",[memberA,receipt]);
+        assert.equal((await purchase(receipt,true,memberA,asset.id)).status,'expired');
+    }
     await db.exec(`INSERT INTO storage.objects(bucket_id) VALUES ('premium-wallpaper-originals'),('wallpapers')`);
     for (const role of ['anon','authenticated']) {
         await db.exec(`SET ROLE ${role}`);
@@ -99,5 +124,5 @@ try {
         await assert.rejects(db.query(`INSERT INTO storage.objects(bucket_id) VALUES ('premium-wallpaper-originals')`),/row-level security/);
         await db.exec('RESET ROLE');
     }
-    console.log('PASS: private catalog, 0/14/15 credits, idempotency, explicit new downloads, owner isolation, retry expiry, welcome priority/expiry, checksum, rollback, role permissions.');
+    console.log('PASS: horse and finance catalogs, additive migration, 0/14/15 credits, idempotency, explicit new downloads, owner isolation, retry expiry, welcome priority/expiry, checksum, rollback, role permissions.');
 } finally { await db.close(); }

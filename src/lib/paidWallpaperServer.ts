@@ -23,5 +23,5 @@ export function wallpaperService() {
 }
 
 export function wallpaperUnavailable() {
-    return wallpaperJson({ error: 'ระบบดาวน์โหลดภาพม้า 8 ตัวยังไม่พร้อม กรุณาตรวจการตั้งค่าและไฟล์ต้นฉบับ ระบบยังไม่หักเครดิต', code: 'WALLPAPER_NOT_READY' }, 503);
+    return wallpaperJson({ error: 'ระบบดาวน์โหลดภาพชุดนี้ยังไม่พร้อม กรุณาตรวจการตั้งค่าและไฟล์ต้นฉบับ ระบบยังไม่หักเครดิต', code: 'WALLPAPER_NOT_READY' }, 503);
 }
