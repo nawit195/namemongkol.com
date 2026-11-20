@@ -2,6 +2,10 @@ import { createHash } from 'node:crypto';
 import { beforeEach, expect, test, vi } from 'vitest';
 vi.mock('server-only', () => ({}));
 vi.mock('@/utils/supabase', () => ({ supabase: {} }));
+vi.mock('@/data/financeWallpapers', () => ({
+    FINANCE_WALLPAPER_PATH: '/wallpapers/intent/finance',
+    FINANCE_WALLPAPERS: [{ id: 'finance-test', name: 'ต้นไม้ทอง', downloadFilename: 'golden-tree-4289-wallpaper.png', bytes: 11, cost: 15, preview: '/finance-preview.webp', width: 841, height: 1870, device: 'mobile' }],
+}));
 vi.mock('@/data/horseWallpapers', () => ({
     HORSE_WALLPAPER_COST: 15,
     WALLPAPER_RETRY_MINUTES: 30,
@@ -47,6 +51,7 @@ beforeEach(() => {
     state.authError = null;
     state.authWait = null;
     state.asset.active = true;
+    state.asset.id = 'eight-horses-test';
     state.asset.cost = 15;
     state.asset.bytes = 11;
     state.asset.sha256 = createHash('sha256').update('PNG-fixture').digest('hex');
@@ -143,9 +148,35 @@ test('guests can be sent to login even when catalog setup is incomplete; purchas
     expect(response.headers.get('Cache-Control')).toBe('private, no-store');
     expect(await response.json()).toMatchObject({
         userId: null, remainingCredits: null,
-        error: expect.any(String), products: [{ available: false }],
+        error: expect.any(String), products: [expect.objectContaining({ available: false, collection: 'horses' }), expect.objectContaining({ available: false, collection: 'finance' })],
     });
     expect((await POST(request())).status).toBe(401);
+    expect(state.rpc).not.toHaveBeenCalled();
+});
+
+test('finance PNG uses the same verified purchase flow and filename', async () => {
+    state.asset.id = 'finance-test';
+    const response = await POST(request({ ...payload, productId: 'finance-test' }));
+    expect(response.status).toBe(200);
+    expect(response.headers.get('Content-Disposition')).toBe('attachment; filename="golden-tree-4289-wallpaper.png"');
+    expect(response.headers.get('Cache-Control')).toBe('private, no-store');
+    expect(await response.text()).toBe('PNG-fixture');
+    expect(state.rpc.mock.calls[0][1]).toMatchObject({ p_product_id: 'finance-test', p_user_id: 'member-a', p_retry_only: false });
+});
+
+test('availability stays per product when the other collection is not installed', async () => {
+    const body = await (await GET()).json();
+    expect(body.products).toEqual(expect.arrayContaining([
+        expect.objectContaining({ id: 'eight-horses-test', available: true, collection: 'horses' }),
+        expect.objectContaining({ id: 'finance-test', available: false, collection: 'finance' }),
+    ]));
+});
+
+test('unknown products and mismatched finance prices never call the purchase RPC', async () => {
+    expect((await POST(request({ ...payload, productId: 'finance-unknown' }))).status).toBe(400);
+    state.asset.id = 'finance-test';
+    state.asset.cost = 10;
+    expect((await POST(request({ ...payload, productId: 'finance-test' }))).status).toBe(503);
     expect(state.rpc).not.toHaveBeenCalled();
 });
 

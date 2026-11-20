@@ -55,7 +55,11 @@ describe('conservative SEO keyword ownership', () => {
         const wallpaperDay = readSource('src/app/wallpapers/day/[day]/page.tsx');
 
         expect(mondayArticle).toContain("metaTitle: 'ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง 2569 รวม 400 ชื่อทันสมัย | NameMongkol'");
-        expect(wallpapers).toContain("title: { absolute: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol' }");
+        expect(wallpapers).toContain("const pageTitle = 'วอลเปเปอร์มงคลตามวันเกิดและราศี | NameMongkol'");
+        const finance = readSource('src/app/wallpapers/intent/finance/page.tsx');
+        expect(finance).toContain("const title = 'วอลเปเปอร์เสริมดวงการเงิน 4289 | NameMongkol'");
+        expect(finance).toContain('<h1>วอลเปเปอร์เสริมดวงการเงิน</h1>');
+        expect(finance).not.toContain('ดาวน์โหลดฟรี');
         expect(wallpapers).toContain("canonical: `${siteUrl}/wallpapers`");
         expect(wallpaperDay).toContain('canonical: `${siteUrl}/wallpapers/day/${day}`');
     });

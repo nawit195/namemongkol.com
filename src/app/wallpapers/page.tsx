@@ -4,8 +4,11 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 import ClientPage from './ClientPage';
 import { Sparkles, Sun, Moon, Flame, MessageCircle, BookOpen, Heart, Shield, Crown, Star, Zap, Download, ChevronRight, HelpCircle } from 'lucide-react';
-import { siteUrl } from '@/lib/seo';
+import { siteUrl, ogImageUrl } from '@/lib/seo';
+import FinanceWallpaperGallery from './FinanceWallpaperGallery';
+import financeStyles from './finance-wallpapers.module.css';
 import { HORSE_WALLPAPERS } from '@/data/horseWallpapers';
+import { REVIEWED_DAY_WALLPAPERS } from '@/data/wallpaperDayContent';
 
 // Inline style for content-visibility sections (avoids Tailwind purge issues)
 const deferredSectionStyle = {
@@ -13,31 +16,36 @@ const deferredSectionStyle = {
     containIntrinsicSize: 'auto 600px',
 } as React.CSSProperties;
 
+const pageName = 'วอลเปเปอร์มงคลตามวันเกิดและราศี';
+const pageTitle = 'วอลเปเปอร์มงคลตามวันเกิดและราศี | NameMongkol';
+const pageDescription = 'รวมวอลเปเปอร์มงคลตามวันเกิด ราศี การเงิน 4289 และม้า 8 ตัว ดูตัวอย่างฟรี ภาพวันเกิดดาวน์โหลดฟรีหลังเข้าสู่ระบบ พร้อมราคาเครดิตของชุดพิเศษและคำแนะนำตั้งหน้าจอ';
+const socialImage = { url: ogImageUrl({ title: pageName, subtitle: 'เลือกวันเกิด ราศี หรือเป้าหมาย · ดูภาพและเงื่อนไขก่อนดาวน์โหลด', tag: 'Wallpapers' }), width: 1200, height: 630, alt: 'ภาพปกคอลเลกชันวอลเปเปอร์มงคลตามวันเกิดและราศี' };
+
 export const metadata: Metadata = {
-    title: { absolute: 'วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569 | การเงิน งาน ความรัก | NameMongkol' },
+    title: { absolute: pageTitle },
     alternates: { canonical: `${siteUrl}/wallpapers` },
-    description: 'เลือกวอลเปเปอร์มงคลตามวันเกิด ราศี และภาพม้า 8 ตัวสำหรับมือถือและคอมพิวเตอร์ ดูภาพตัวอย่างฟรี พร้อมราคาเครดิตก่อนดาวน์โหลด PNG ต้นฉบับ',
+    description: pageDescription,
     keywords: [
         'วอลเปเปอร์มงคล', 'วอลเปเปอร์เสริมดวง', 'วอลเปเปอร์สายมู',
         'พื้นหลังมงคล', 'ฮวงจุ้ย', 'ดาวน์โหลดวอลเปเปอร์มงคล',
         'วอลเปเปอร์ท้าวเวสสุวรรณ', 'วอลเปเปอร์ตามวันเกิด',
-        'วอลเปเปอร์มงคลฟรี', 'เลขมงคล 4289', 'สีมงคลตามวันเกิด',
+        'ภาพตัวอย่างวอลเปเปอร์มงคล', 'เลขมงคล 4289', 'สีมงคลตามวันเกิด',
         'NameMongkol',
     ],
     openGraph: {
-        title: 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว',
-        description: 'ดูตัวอย่างวอลเปเปอร์ตามวันเกิด ราศี และคอลเลกชันม้า 8 ตัว พร้อมราคาเครดิตก่อนดาวน์โหลด',
+        title: pageTitle,
+        description: pageDescription,
         url: `${siteUrl}/wallpapers`,
         siteName: 'NameMongkol',
         locale: 'th_TH',
         type: 'website',
-        images: [`${siteUrl}/api/og?variant=default&title=วอลเปเปอร์มงคล&subtitle=แจกฟรี%20ดีไซน์เสริมดวง%20การเงิน%20การงาน%20ความรัก%20บารมี&tag=Wallpapers`],
+        images: [socialImage],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว | NameMongkol',
-        description: 'ดูภาพตัวอย่างฟรี เลือกภาพตามวันเกิด ราศี หรือม้าแปดตัว พร้อมดูราคาเครดิตก่อนดาวน์โหลด',
-        images: [`${siteUrl}/api/og?variant=default&title=วอลเปเปอร์มงคล`],
+        title: pageTitle,
+        description: pageDescription,
+        images: [socialImage],
     },
 };
 
@@ -47,8 +55,8 @@ const webPageJsonLd = {
     '@type': 'WebPage',
     '@id': `${siteUrl}/wallpapers`,
     'url': `${siteUrl}/wallpapers`,
-    'name': 'วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว',
-    'description': 'เลือกภาพตัวอย่างตามวันเกิด ราศี และม้าแปดตัว พร้อมดูราคาเครดิตก่อนดาวน์โหลด',
+    'name': pageName,
+    'description': pageDescription,
     'inLanguage': 'th-TH',
     'isPartOf': {
         '@type': 'WebSite',
@@ -60,8 +68,8 @@ const webPageJsonLd = {
 const collectionJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': 'วอลเปเปอร์มงคลตามวันเกิด ราศี และม้า 8 ตัว',
-    'description': 'เปิดดูภาพตัวอย่างฟรี พร้อมแจ้งราคาเครดิตของการดาวน์โหลดแต่ละชุดก่อนยืนยัน',
+    'name': pageName,
+    'description': pageDescription,
     'url': `${siteUrl}/wallpapers`,
     'inLanguage': 'th-TH',
     'isPartOf': {
@@ -71,8 +79,8 @@ const collectionJsonLd = {
     },
     'primaryImageOfPage': {
         '@type': 'ImageObject',
-        'contentUrl': `${siteUrl}/api/og?variant=default&title=วอลเปเปอร์สายมูตามวันเกิด%20ฟรี%202569`,
-        'caption': 'คอลเลกชันวอลเปเปอร์สายมูตามวันเกิดฟรี ปี 2569',
+        'contentUrl': socialImage.url,
+        'caption': pageName,
         'creditText': 'NameMongkol',
         'creator': { '@type': 'Organization', 'name': 'NameMongkol', 'url': siteUrl },
     },
@@ -135,7 +143,10 @@ const dayCollections = [
     { day: 'วันพฤหัสบดี', name: 'พระพุทธรูปทองคำ ปัญญาบารมี เลข 659', color: 'from-orange-500 to-amber-500', textColor: 'text-orange-700', borderColor: 'border-orange-500/30', bgColor: 'bg-orange-500/10', icon: BookOpen, desc: 'พระพุทธรูปทองคำปางสมาธิทรงรัศมีส่องสว่าง วงยันต์อักขระขอมศักดิ์สิทธิ์ คัมภีร์ทองประดับอัญมณี หนูคู่มงคลสื่อถึงความขยัน เลขมงคล 659 เสริมสติปัญญา ผู้ใหญ่อุปถัมภ์ สีมงคลส้ม-ทอง เหมาะสำหรับนักเรียน นักวิจัย ครู อาจารย์ และผู้ที่ต้องการก้าวหน้าทางวิชาการ' },
     { day: 'วันศุกร์', name: 'พระพุทธรูปเรืองแสง ดอกบัวทิพย์ เลข 624', color: 'from-cyan-500 to-blue-500', textColor: 'text-cyan-700', borderColor: 'border-cyan-500/30', bgColor: 'bg-cyan-500/10', icon: Heart, desc: 'พระพุทธรูปปางห้ามญาติทรงรัศมีฟ้าครามเรืองรอง ประทับบนดอกบัวชมพูทิพย์ มณฑลยันต์ฟ้า พระแม่ลักษมี เหรียญทอง อัญมณี และเมฆมงคลจีน เลขมงคล 624 เสริมโชคลาภ ทรัพย์สินพูนทวี ความรัก สีมงคลฟ้า-เขียว เหมาะสำหรับศิลปิน นักออกแบบ และผู้หญิงทำงาน' },
     { day: 'วันเสาร์', name: 'พระนาคปรก เสือคู่นำโชค 招財 เลข 156', color: 'from-purple-500 to-violet-500', textColor: 'text-purple-700', borderColor: 'border-purple-500/30', bgColor: 'bg-purple-500/10', icon: Shield, desc: 'พระพุทธรูปปางนาคปรกทองคำบนพญานาค 7 เศียรสีม่วง วงยันต์โหราศาสตร์ อักษรจีน招財(เรียกทรัพย์) เสือคู่ทองคำผู้พิทักษ์ ช้างมงคล เหรียญทอง เลขมงคล 156 เสริมอำนาจวาสนา ปกป้องคุ้มครอง สีมงคลม่วง-ทอง เหมาะสำหรับผู้พิพากษา ทนายความ และข้าราชการ' },
-];
+].map(item => {
+    const content = Object.values(REVIEWED_DAY_WALLPAPERS).find(content => content?.label === item.day);
+    return content ? { ...item, name: content.name, desc: content.description } : item;
+});
 
 // --- Deity Data ---
 const deityCollections = [
@@ -166,9 +177,18 @@ export default function WallpapersPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
 
+            <div className={financeStyles.page}>
+                <div className={financeStyles.inner}>
+                    <header className={financeStyles.header}>
+                        <h1>{pageName}</h1>
+                        <p className={financeStyles.lead}>เลือกภาพสำหรับมือถือและคอมพิวเตอร์ ทั้งวันเกิด ราศี ม้า 8 ตัว และคอลเลกชันการเงิน 4289 ดูตัวอย่างและราคาเครดิตก่อนดาวน์โหลด</p>
+                    </header>
+                    <FinanceWallpaperGallery />
+                </div>
+            </div>
             {/* ===== Interactive Client Gallery ===== */}
             <Suspense fallback={
-                <div className="site-grid-surface w-full max-w-[1400px] mx-auto px-3 sm:px-4 pt-16 md:pt-32 pb-28 min-h-screen text-[#5a5a82]">
+                <div className="site-grid-surface w-full max-w-[1400px] mx-auto px-3 sm:px-4 pt-2 pb-28 min-h-screen text-[#5a5a82]">
                     <div className="max-w-7xl mx-auto space-y-5 md:space-y-8">
                         <div className="flex flex-col gap-3 md:gap-4">
                             <div className="h-9 md:h-12 w-4/5 md:w-3/4 bg-slate-200 rounded-xl animate-pulse" />
@@ -182,7 +202,7 @@ export default function WallpapersPage() {
                     </div>
                 </div>
             }>
-                <ClientPage />
+                <ClientPage embedded />
             </Suspense>
 
             <section className="mx-auto max-w-5xl px-4 pb-12 text-[#1a1a3e]" aria-labelledby="horse-guide-title">
@@ -266,6 +286,8 @@ export default function WallpapersPage() {
                                 ลัดไปหน้าวอลเปเปอร์รายวันยอดนิยม
                             </p>
                             <div className="flex flex-wrap gap-2">
+                                <Link prefetch={false} href="/wallpapers/day/sunday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400">วอลเปเปอร์วันอาทิตย์ สิงห์ทอง 159</Link>
+                                <Link prefetch={false} href="/wallpapers/day/thursday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400">วอลเปเปอร์วันพฤหัสบดี เลข 659</Link>
                                 <Link prefetch={false} href="/wallpapers/day/monday" className="text-xs bg-[#0f172a] hover:bg-[#1e293b] border border-[#1e293b] hover:border-amber-500/30 px-3 py-1.5 rounded-full text-slate-300 hover:text-amber-400 transition-colors shadow-sm">
                                     วอลเปเปอร์มงคลวันจันทร์ ฟรี
                                 </Link>

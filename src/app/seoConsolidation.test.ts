@@ -73,7 +73,7 @@ describe('SEO consolidation and answer-ready content', () => {
         expect(home).toContain('heroHeadingLevel="h1"');
         expect(homeHero).toContain('id="home-seo-answer"');
         expect(nameAnalysis).toContain('เปรียบเทียบชื่อหลายชื่อ');
-        expect(wallpaper).toContain('วอลเปเปอร์สายมูตามวันเกิด ฟรี 2569');
+        expect(wallpaper).toContain('วอลเปเปอร์มงคลตามวันเกิดและราศี');
         expect(wallpaper).toContain("'@type': 'ImageObject'");
         expect(methodology).toContain('charValues');
         expect(methodology).toContain('นโยบายบรรณาธิการ');

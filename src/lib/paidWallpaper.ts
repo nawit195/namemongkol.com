@@ -1,8 +1,9 @@
 import { z } from 'zod';
-import { HORSE_WALLPAPERS, WALLPAPER_RETRY_MINUTES } from '@/data/horseWallpapers';
+import { PAID_WALLPAPERS } from '@/data/paidWallpapers';
+import { WALLPAPER_RETRY_MINUTES } from '@/data/horseWallpapers';
 
 export const paidWallpaperRequest = z.object({
-    productId: z.enum(HORSE_WALLPAPERS.map(product => product.id) as [string, ...string[]]),
+    productId: z.enum(PAID_WALLPAPERS.map(product => product.id) as [string, ...string[]]),
     requestId: z.uuid(),
     action: z.enum(['start', 'retry']),
 }).strict();

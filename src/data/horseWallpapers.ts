@@ -1,21 +1,8 @@
+import type { PaidWallpaperProduct } from './paidWallpaperTypes';
+export type { PaidWallpaperProduct } from './paidWallpaperTypes';
+
 export const HORSE_WALLPAPER_COST = 15;
 export const WALLPAPER_RETRY_MINUTES = 30;
-
-export interface PaidWallpaperProduct {
-    id: string;
-    name: string;
-    preview: string;
-    device: 'mobile' | 'desktop';
-    width: number;
-    height: number;
-    bytes: number;
-    cost: number;
-    description: string;
-    auspiciousMeaning: string;
-    alt: string;
-    downloadFilename: string;
-    palette: string;
-}
 
 // Public display metadata only. Original files never belong in the public gallery.
 export const HORSE_WALLPAPERS: readonly PaidWallpaperProduct[] = [

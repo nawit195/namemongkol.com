@@ -2,6 +2,7 @@
 
 import React, { useState, Suspense, useEffect, useCallback, startTransition } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Download, Sparkles, Lock, Palette, ImageIcon, Crown, Sun, Star, Share2, Check } from 'lucide-react';
 // Replaced framer-motion with CSS transitions for better PageSpeed (saves ~35KB gzipped)
@@ -71,19 +72,20 @@ type CategoryType = 'day' | 'zodiac' | 'horses';
 type TabType = 'collection' | 'custom';
 
 export interface WallpaperPageProps {
+    embedded?: boolean;
     initialCategory?: CategoryType;
     initialDay?: string;
     initialZodiac?: string;
     initialTab?: TabType;
 }
 
-function WallpapersContent({ initialCategory: propCategory, initialDay: propDay, initialZodiac: propZodiac, initialTab: propTab }: WallpaperPageProps) {
+function WallpapersContent({ initialCategory: propCategory, initialDay: propDay, initialZodiac: propZodiac, initialTab: propTab, embedded = false }: WallpaperPageProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
     // Props from sub-routes take precedence, then fallback to query params for backward compat
     const initialDay = propDay || searchParams.get('day') || 'all';
     const initialTab = propTab || (searchParams.get('tab') as TabType) || 'collection';
-    const initialCat = searchParams.get('collection') === 'horses' ? 'horses' : propCategory || (searchParams.get('zodiac') ? 'zodiac' : undefined);
+    const initialCat = propCategory || (searchParams.get('collection') === 'horses' ? 'horses' : searchParams.get('zodiac') ? 'zodiac' : undefined);
 
     const [activeTab, setActiveTab] = useState<TabType>(initialTab);
     const [selectedDay, setSelectedDay] = useState(initialDay);
@@ -100,7 +102,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     const [trafficSource, setTrafficSource] = useState<string>('unknown');
 
     useEffect(() => {
-        setSelectedCategory(searchParams.get('collection') === 'horses' ? 'horses' : propCategory || (searchParams.get('zodiac') ? 'zodiac' : 'day'));
+        setSelectedCategory(propCategory || (searchParams.get('collection') === 'horses' ? 'horses' : searchParams.get('zodiac') ? 'zodiac' : 'day'));
     }, [searchParams, propCategory]);
 
     // Fetch Wallpapers from Supabase
@@ -550,19 +552,19 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
     };
 
     return (
-        <div className="site-grid-surface min-h-screen w-full max-w-[1400px] mx-auto px-3 pb-36 pt-7 text-slate-800 sm:px-4 md:pb-28 md:pt-32">
+        <div className={`site-grid-surface min-h-screen w-full max-w-[1400px] mx-auto px-3 pb-36 text-slate-800 sm:px-4 md:pb-28 ${embedded ? 'pt-2' : 'pt-7 md:pt-32'}`}>
             <div className="mx-auto max-w-7xl space-y-4 md:space-y-8">
 
                 {/* Header */}
                 <div className="flex flex-col gap-2.5 md:gap-4">
-                    <div>
+                    {!embedded && <div>
                         <h1 className="mb-1.5 text-[1.65rem] font-bold leading-tight text-[#1a1a3e] sm:text-3xl md:mb-2 md:text-5xl">
                             วอลเปเปอร์มงคลตามวันเกิด และม้า 8 ตัว
                         </h1>
                         <p className="max-w-[70ch] text-sm leading-relaxed text-[#5a5a82] md:text-base">
                             เลือกภาพตามวันเกิด ราศี หรือภาพม้าแปดตัวสำหรับมือถือและคอมพิวเตอร์ ดูตัวอย่างและราคาเครดิตก่อนดาวน์โหลด
                         </p>
-                    </div>
+                    </div>}
 
                     {/* Main Tabs + Share */}
                     <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center md:gap-3">
@@ -615,7 +617,7 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                         >
                             {/* Category Selector */}
                             <div className="sticky top-[100px] z-30 -mx-3 space-y-2 border-y border-slate-200 bg-[#f8f8fc]/92 px-3 py-2 backdrop-blur-xl md:static md:mx-0 md:space-y-4 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
-                                <div className="grid grid-cols-3 gap-2 sm:flex">
+                                <div className="grid grid-cols-2 gap-2 sm:flex">
                                     <button
                                         onClick={() => navigateCategory('day')}
                                         className={`flex min-h-11 items-center justify-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-sm ${
@@ -641,8 +643,8 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                                     <button type="button" onClick={() => navigateCategory('horses')} aria-pressed={selectedCategory === 'horses'} className={`flex min-h-11 items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold ${selectedCategory === 'horses' ? 'border-amber-400 bg-[#0f172a] text-amber-400' : 'border-[#1e293b] bg-[#0f172a] text-slate-300 hover:text-amber-400'}`}>
                                         <ImageIcon size={16} />ม้า 8 ตัว
                                     </button>
+                                    <Link href="/wallpapers/intent/finance" className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#1e293b] bg-[#0f172a] px-3 py-2.5 text-sm font-bold text-slate-300 hover:text-amber-400"><Sparkles size={16} />การเงิน</Link>
                                 </div>
-
                                 {/* Day Filter - show when 'day' category is selected */}
                                 {selectedCategory === 'day' && (
                                     <div className="relative">
@@ -723,8 +725,8 @@ function WallpapersContent({ initialCategory: propCategory, initialDay: propDay,
                                             fill
                                             sizes={isFeatured ? "(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 38vw" : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 20vw, 15vw"}
                                             className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
-                                            priority={idx < 4}
-                                            loading={idx < 4 ? 'eager' : 'lazy'}
+                                            priority={!embedded && idx < 4}
+                                            loading={!embedded && idx < 4 ? 'eager' : 'lazy'}
                                             fetchPriority={idx === 0 ? 'high' : 'auto'}
                                             quality={50}
                                         />
