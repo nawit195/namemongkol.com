@@ -580,6 +580,26 @@
         bottom: 160px;
     }
 }
+@media (max-width: 767px) {
+    .compact .favoriteBar {
+        gap: 8px;
+        padding: 5px 12px;
+    }
+    .compact .favoriteBar strong {
+        gap: 5px;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+    }
+    .compact .favoriteBar > button {
+        min-height: 44px;
+        padding: 7px 12px;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+    }
+    .compact .barHint {
+        display: none;
+    }
+}
 @media (min-width: 1024px) and (max-width: 1280px) {
     .categoryGrid,
     .cards {

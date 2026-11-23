@@ -3,12 +3,13 @@
 import { premiumCurationDescription } from '@/data/namingApproach';
 
 import { PremiumAnalysisNameDetails } from './PremiumAnalysisNameDetails';
+import styles from './premiumAnalysis.module.css';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import {
     Sparkles, Clock, User, Target,
-    ChevronRight, ArrowLeft, Star, Crown,
+    ChevronRight, ChevronDown, ArrowLeft, Star, Crown,
     CheckCircle2, AlertCircle, RefreshCw,
     Coins, Briefcase, Activity, Heart, HelpingHand, Check, Mars, Venus,
     ShieldCheck, Info, XCircle, TrendingUp, MessageSquareQuote
@@ -224,44 +225,6 @@ export default function PremiumAnalysisPage() {
         { key: 'PATRON', title: 'อุปถัมภ์', subtitle: 'ผู้ใหญ่เมตตา', icon: <HelpingHand size={20} /> },
     ];
 
-    const focusStyles: Record<FocusTopic, { card: string; active: string; icon: string; iconActive: string; titleActive: string }> = {
-        WEALTH: {
-            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
-            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
-            icon: 'bg-[#eeebf8] text-[#6f6299]',
-            iconActive: 'bg-[#e8c87e] text-[#51370d]',
-            titleActive: 'text-[#1a1a3e]',
-        },
-        JOB: {
-            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
-            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
-            icon: 'bg-[#eeebf8] text-[#6f6299]',
-            iconActive: 'bg-[#e8c87e] text-[#51370d]',
-            titleActive: 'text-[#1a1a3e]',
-        },
-        HEALTH: {
-            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
-            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
-            icon: 'bg-[#eeebf8] text-[#6f6299]',
-            iconActive: 'bg-[#e8c87e] text-[#51370d]',
-            titleActive: 'text-[#1a1a3e]',
-        },
-        LOVE: {
-            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
-            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
-            icon: 'bg-[#eeebf8] text-[#6f6299]',
-            iconActive: 'bg-[#e8c87e] text-[#51370d]',
-            titleActive: 'text-[#1a1a3e]',
-        },
-        PATRON: {
-            card: 'border-[#e2deeb] bg-[#fdfcfe] text-[#1a1a3e]',
-            active: 'border-[#bb862b] bg-[#fff9ec] ring-2 ring-[#e8c87e]/45 shadow-[0_9px_24px_rgba(167,119,34,0.11)]',
-            icon: 'bg-[#eeebf8] text-[#6f6299]',
-            iconActive: 'bg-[#e8c87e] text-[#51370d]',
-            titleActive: 'text-[#1a1a3e]',
-        },
-    };
-
     const handleAnalyze = async (isNewBatch = false) => {
         const { default: Swal } = await import('sweetalert2');
 
@@ -474,10 +437,10 @@ export default function PremiumAnalysisPage() {
     // --- Components ---
 
     const resultsContent = (
-        <div className="space-y-8 text-slate-100 animate-fade-in-up md:space-y-10">
+        <div className="space-y-4 text-slate-100 md:space-y-6">
 
             {/* Header / Actions */}
-            <div className="flex flex-col-reverse items-center justify-between gap-4 rounded-xl border border-slate-700 bg-[#111c31] p-4 md:flex-row">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700 pb-3">
                 <button
                     onClick={handleReset}
                     className="flex min-h-11 items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-slate-300 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
@@ -487,7 +450,7 @@ export default function PremiumAnalysisPage() {
                 </button>
                 <div className="flex items-center gap-3">
                     <span className="text-slate-400 text-sm">ค้นพบ</span>
-                    <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500">
+                    <span className="text-xl font-bold text-amber-200">
                         {results.length}
                     </span>
                     <span className="text-slate-400 text-sm">รายชื่อมงคล</span>
@@ -496,55 +459,34 @@ export default function PremiumAnalysisPage() {
 
             {/* Date Details Box */}
             {dateDetails && (
-                <div className="space-y-4 rounded-2xl border border-slate-700 bg-[#111c31] p-5 text-center md:p-6">
-                    <p className="text-xl font-semibold text-slate-100">
-                        คุณเกิดวัน <span className="text-amber-400 font-bold">{dateDetails.dayOfWeek}</span> ครับ
+                <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-700 bg-[#111c31] px-4 py-3 text-sm">
+                    <p className="font-semibold text-slate-100">
+                        วันเกิด <span className="font-bold text-amber-200">{dateDetails.dayOfWeek}</span>
                     </p>
-                    <div className="inline-block w-full max-w-2xl space-y-2 rounded-xl border border-slate-700 bg-[#0b1426] p-4 text-sm text-slate-300">
-                        <p>สำหรับรายละเอียดเพิ่มเติมของวันที่ {dateDetails.fullSolarDateWithType} มีดังนี้ครับ:</p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-left md:text-center">
-                            <div className="rounded-lg border border-slate-700 bg-slate-800/70 p-3">
-                                <span className="block text-xs text-slate-500 mb-1">ตรงกับวัน</span>
-                                <span className="text-white font-medium">{dateDetails.dayOfWeek}</span>
-                            </div>
-                            <div className="rounded-lg border border-slate-700 bg-slate-800/70 p-3">
-                                <span className="block text-xs text-slate-500 mb-1">วันทางจันทรคติ</span>
-                                <span className="text-amber-200 font-medium">{dateDetails.lunarDate}</span>
-                            </div>
-                        </div>
-                    </div>
+                    <p className="text-slate-300">{dateDetails.fullSolarDateWithType}</p>
+                    <p className="w-full text-xs text-slate-300">จันทรคติ: {dateDetails.lunarDate}</p>
                 </div>
             )}
 
             {/* Recommendation Box */}
-            <div className="relative overflow-hidden rounded-2xl border border-emerald-500/40 bg-[#102a27] p-6 text-center shadow-[0_16px_40px_rgba(2,44,34,0.24)] md:p-8">
-                <div className="absolute inset-x-0 top-0 h-1 bg-emerald-400/70"></div>
-
-                <h3 className="flex items-center justify-center gap-2 text-xl font-bold text-emerald-300">
-                    <ShieldCheck size={24} />
-                    ผลลัพธ์การวิเคราะห์
+            <div className="rounded-xl border border-emerald-500/35 bg-[#102a27] p-4 shadow-[inset_0_1px_0_rgba(167,243,208,0.08),0_8px_20px_rgba(2,44,34,0.16)]">
+                <h3 className="flex items-center gap-2 text-base font-bold text-emerald-200">
+                    <ShieldCheck size={18} aria-hidden="true" />
+                    ชื่อที่เหมาะกับนามสกุล <span className="min-w-0 break-words text-slate-100">{surname}</span>
                 </h3>
-                <p className="mt-3 text-slate-100">
-                    ชื่อมงคลสำหรับนามสกุล <span className="text-white font-bold underline decoration-amber-500/50 underline-offset-4 px-1">&quot;{surname}&quot;</span>
+                <p className="mt-2 text-sm leading-6 text-slate-300">
+                    คัดจากฐานพรีเมียม ตามวันทางโหราศาสตร์ นามสกุล และเป้าหมายที่คุณเลือก
                 </p>
-                <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">
-                    {premiumCurationDescription} ผลรายการนี้คัดตามวันทางโหราศาสตร์ นามสกุล และเป้าหมายที่เลือก
-                </p>
-                <div className="mt-4 flex items-center justify-center gap-2">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border bg-amber-500/15 text-amber-300 border-amber-500/25">
-                        ✦ ชื่อส่วนตัว — ไม่ใช่ผลการค้นหาทั่วไป
-                    </span>
-                </div>
             </div>
 
             {/* Results Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className={`${styles.results} grid grid-cols-1 items-start md:grid-cols-2 xl:grid-cols-3`}>
                 {results.length > 0 ? results.map((result, idx) => {
                     const isPremium = result.grade === 'A+';
                     return (
-                        <div
+                        <article
                             key={idx}
-                            className={`group relative flex min-h-[19rem] flex-col justify-between overflow-hidden rounded-2xl border p-6 transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-2xl
+                            className={`${styles.resultCard} group relative flex min-w-0 flex-col justify-between overflow-hidden border transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 motion-reduce:transform-none
                                 ${isPremium
                                     ? 'border-amber-400/60 bg-[#17233a] shadow-[0_12px_30px_rgba(0,0,0,0.2)] hover:border-amber-300'
                                     : 'border-slate-700 bg-[#131e33] hover:border-slate-500'
@@ -553,21 +495,21 @@ export default function PremiumAnalysisPage() {
                             {/* Decorative Elements for Premium Cards */}
                             {isPremium && (
                                 <>
-                                    <div className="absolute top-4 right-4 text-amber-400">
-                                        <Crown size={24} />
+                                    <div className="absolute top-4 right-4 text-amber-300">
+                                        <Crown size={18} aria-hidden="true" />
                                     </div>
                                 </>
                             )}
 
                             <div>
-                                <div className="flex items-center gap-3 mb-4">
+                                <div className="mb-3 flex flex-wrap items-center gap-2 pr-5">
                                     <div className={`px-3 py-1 rounded-lg text-xs font-bold font-mono border ${isPremium
                                         ? 'bg-amber-950/40 text-amber-300 border-amber-500/30'
                                         : 'border-slate-600 bg-slate-800 text-slate-200'
                                         }`}>
                                         Grade {result.grade}
                                     </div>
-                                    {isPremium && <span className="text-[10px] text-amber-500 uppercase tracking-widest font-bold">เฉพาะสำหรับคุณ</span>}
+                                    <span className="text-xs text-slate-300">ผลรวม {result.totalScore}</span>
                                 </div>
 
                                 <h3 className="mb-2 text-3xl font-black text-white">
@@ -575,19 +517,22 @@ export default function PremiumAnalysisPage() {
                                 </h3>
                                 <PremiumAnalysisNameDetails result={result} />
 
-                                <div className="space-y-3 mb-6">
-                                    {result.notes.map((note, i) => (
-                                        <div key={i} className="flex items-start gap-2.5 text-sm leading-6 text-slate-300">
-                                            <CheckCircle2 size={15} className={`mt-0.5 shrink-0 ${isPremium ? 'text-amber-400' : 'text-emerald-500/70'}`} />
-                                            <span className="opacity-90">{note}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                <details className={styles.resultNotes}>
+                                    <summary>เหตุผลที่คัดชื่อนี้ <ChevronDown size={14} aria-hidden="true" /></summary>
+                                    <div className="space-y-2 pb-2">
+                                        {result.notes.map((note, i) => (
+                                            <div key={i} className="flex items-start gap-2.5 text-sm leading-6 text-slate-300">
+                                                <CheckCircle2 size={15} className={`mt-0.5 shrink-0 ${isPremium ? 'text-amber-400' : 'text-emerald-500/70'}`} />
+                                                <span className="opacity-90">{note}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </details>
                             </div>
 
 
                             {/* ปุ่มออกใบรับรองมงคล */}
-                            <div className="mt-3 border-t border-slate-700 pt-3">
+                            <div className="mt-1">
                                 <CertificateGenerator
                                     name={result.name}
                                     surname={surname}
@@ -601,7 +546,7 @@ export default function PremiumAnalysisPage() {
                                     compact
                                 />
                             </div>
-                        </div>
+                        </article>
                     );
                 }) : (
                     <div className="col-span-full rounded-2xl border border-dashed border-slate-600 bg-[#111c31] py-20 text-center text-slate-300">
@@ -643,46 +588,22 @@ export default function PremiumAnalysisPage() {
     const formContent = (
         <div className="relative mx-auto max-w-6xl overflow-visible px-0 sm:px-2 md:px-4">
 
-            <div className="mb-8 flex flex-col gap-6 border-b border-[#e4dfd4] pb-7 lg:flex-row lg:items-end lg:justify-between">
-                <div className="flex min-w-0 items-start gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#1a1a3e] text-[#f1cf78] shadow-[0_8px_20px_rgba(26,26,62,0.16)]">
-                        <Sparkles size={22} />
-                    </span>
-                    <div className="min-w-0">
-                        <p className="text-xs font-bold tracking-[0.14em] text-[#9b6c20]">PERSONAL NAME SELECTION</p>
-                        <h2 className="mt-1 text-xl font-extrabold leading-snug text-[#1a1a3e] sm:text-2xl">
-                            คัดชื่อมงคลที่เหมาะกับนามสกุลคุณ
-                        </h2>
-                        <p className="mt-1 text-sm leading-6 text-[#5a5a82]">
-                            ระบุข้อมูลการเกิดและสิ่งที่อยากส่งเสริม เพื่อรับชื่อที่คัดเฉพาะคุณพร้อมเหตุผลประกอบ
-                        </p>
-                    </div>
-                </div>
-                <div className="rounded-xl border border-[#e5dfd4] bg-[#faf8f4] px-4 py-3 lg:min-w-56" role="status" aria-live="polite">
-                    <div className="mb-2 flex items-center justify-between gap-3 text-xs font-bold">
-                        <span className="text-[#5a5a82]">ข้อมูลสำหรับเริ่มคัดชื่อ</span>
-                        <span className="text-[#8a611b]">{completedProfileSteps} จาก 3 ครบแล้ว</span>
-                    </div>
-                    <div className="h-1.5 overflow-hidden rounded-full bg-[#e8e3dc]" aria-hidden="true">
-                        <div
-                            className="h-full rounded-full bg-[#bd8b32] transition-[width] duration-200 motion-reduce:transition-none"
-                            style={{ width: `${(completedProfileSteps / 3) * 100}%` }}
-                        />
-                    </div>
+            <div className={styles.formIntro}>
+                <h2>ข้อมูลสำหรับคัดชื่อ</h2>
+                <div className={styles.progress} role="status" aria-live="polite">
+                    <span>ข้อมูลครบ {completedProfileSteps}/3</span>
+                    <div className={styles.progressTrack} aria-hidden="true"><div style={{ width: `${(completedProfileSteps / 3) * 100}%` }} /></div>
                 </div>
             </div>
 
-            <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+            <div className={`${styles.formGrid} relative z-10 grid grid-cols-1 lg:grid-cols-12`}>
 
                 {/* Left Column: Personal Inputs (User Data) */}
-                <section className="space-y-5 lg:col-span-5 md:space-y-6" aria-labelledby="premium-profile-heading">
+                <section className={`${styles.profileCard} lg:col-span-5`} aria-labelledby="premium-profile-heading">
 
-                    <div className="mb-3 flex items-start gap-3 text-[#1a1a3e]">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d6b56a] bg-[#fff8e7] text-sm font-black text-[#805815]">1</span>
-                        <div>
-                            <h3 id="premium-profile-heading" className="text-lg font-extrabold md:text-xl">เริ่มจากตัวคุณ</h3>
-                            <p className="mt-1 text-sm leading-6 text-[#686885]">ใช้กำหนดวันทางโหราศาสตร์และคัดชื่อร่วมกับนามสกุล</p>
-                        </div>
+                    <div className={styles.stepHeading}>
+                        <span className={styles.stepNumber}>1</span>
+                        <h3 id="premium-profile-heading">ข้อมูลส่วนตัว</h3>
                     </div>
 
                     {/* Surname */}
@@ -697,18 +618,19 @@ export default function PremiumAnalysisPage() {
                                 type="text"
                                 value={surname}
                                 onChange={(e) => setSurname(e.target.value)}
-                                placeholder="กรอกนามสกุลของท่าน"
-                                className="w-full min-h-14 rounded-xl border border-[#d8d2df] bg-[#fefdfc] py-3.5 pl-11 pr-4 text-base font-medium text-[#1a1a3e] shadow-[0_3px_12px_rgba(26,26,62,0.05)] transition-[border-color,box-shadow] placeholder:font-normal placeholder:text-[#9290a8] focus:border-[#b98228] focus:outline-none focus:ring-4 focus:ring-[#e8c87e]/25 md:pl-12 md:pr-5"
+                                placeholder="นามสกุลที่ใช้ร่วมกับชื่อใหม่"
+                                autoComplete="family-name"
+                                className={`${styles.surnameInput} w-full rounded-xl border pl-11 pr-4 text-base font-medium text-[#1a1a3e] transition-[border-color,box-shadow] placeholder:font-normal placeholder:text-[#9290a8] focus:border-[#b98228] focus:outline-none focus:ring-4 focus:ring-[#e8c87e]/25`}
                             />
                         </div>
                     </div>
 
                     {/* Birth Date & Time */}
-                    <div className="grid grid-cols-1 gap-5 md:gap-6">
+                    <div className={`${styles.birthFields} grid grid-cols-1`}>
                         {/* Birth Date (Dropdowns) */}
                         <div className="space-y-2 md:space-y-3">
-                            <label className="ml-1 text-sm font-bold text-[#2f2f4f]">วันเกิด</label>
-                            <div className="grid grid-cols-12 gap-2 sm:gap-4">
+                            <p className="ml-1 text-sm font-bold text-[#2f2f4f]">วันเกิด <span className="text-xs font-normal text-[#5a5a82]">(พ.ศ.)</span></p>
+                            <div className={`${styles.dateGrid} grid`}>
                                 {/* Day */}
                                 <div className="col-span-4 sm:col-span-3 relative">
                                     <SearchableSelect
@@ -716,6 +638,7 @@ export default function PremiumAnalysisPage() {
                                         onChange={setSelectedDay}
                                         options={DAYS}
                                         placeholder="วัน"
+                                        ariaLabel="วันเกิด"
                                         searchPlaceholder="ค้นหาวัน..."
                                         variant="light"
                                     />
@@ -726,8 +649,9 @@ export default function PremiumAnalysisPage() {
                                     <SearchableSelect
                                         value={selectedMonth}
                                         onChange={setSelectedMonth}
-                                        options={THAI_MONTHS}
+                                        options={THAI_MONTHS.map(month => ({ value: month, label: month.split(' (')[0] }))}
                                         placeholder="เดือน"
+                                        ariaLabel="เดือนเกิด"
                                         searchPlaceholder="ค้นหาเดือน..."
                                         variant="light"
                                     />
@@ -738,9 +662,10 @@ export default function PremiumAnalysisPage() {
                                     <SearchableSelect
                                         value={selectedYear}
                                         onChange={setSelectedYear}
-                                        options={YEARS.map(y => ({ value: y.val, label: y.label }))}
-                                        placeholder="ปี (พ.ศ.)"
-                                        searchPlaceholder="ค้นหาปี..."
+                                        options={YEARS.map(y => ({ value: y.val, label: y.label.split(' / ')[0] }))}
+                                        placeholder="ปี พ.ศ."
+                                        ariaLabel="ปีเกิด พ.ศ."
+                                        searchPlaceholder="ค้นหาปี พ.ศ...."
                                         variant="light"
                                     />
                                 </div>
@@ -749,21 +674,9 @@ export default function PremiumAnalysisPage() {
 
                         {/* Birth Time */}
                         <div className="space-y-2 md:space-y-3">
-                            <label className="ml-1 flex items-center justify-between text-sm font-bold text-[#2f2f4f]">
-                                <span className="flex items-center gap-2">
-                                    เวลาเกิด
-                                    {/* Tooltip for birth time */}
-                                    <div className="relative group/tooltip">
-                                        <Info size={14} className="cursor-help text-[#9b8ec4] transition-colors hover:text-[#a67828]" />
-                                        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 p-3 bg-slate-900/90 backdrop-blur-xl border border-amber-500/20 rounded-xl text-xs text-slate-300 opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-50 shadow-2xl">
-                                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 bg-slate-900 border-r border-b border-amber-500/20 rotate-45"></div>
-                                            <p className="leading-relaxed">
-                                                <strong className="text-amber-400">การระบุเวลาเกิด</strong> ใช้ประกอบการกำหนดวันทางโหราศาสตร์ของระบบ หากไม่ทราบให้เลือก &quot;ไม่ทราบเวลา&quot;
-                                            </p>
-                                        </div>
-                                    </div>
-                                </span>
-                                <div className="flex items-center gap-2">
+                            <div className={styles.timeHeading}>
+                                <p className="ml-1 text-sm font-bold text-[#2f2f4f]">เวลาเกิด</p>
+                                <label htmlFor="unknownTime" className={styles.unknownTime}>
                                     <input
                                         type="checkbox"
                                         id="unknownTime"
@@ -774,10 +687,10 @@ export default function PremiumAnalysisPage() {
                                         }}
                                         className="rounded border-[#ddddf0] bg-[#fafafd] text-[#c9933a] focus:ring-[#e8c87e]"
                                     />
-                                    <label htmlFor="unknownTime" className="cursor-pointer text-xs text-[#5a5a82] transition-colors hover:text-[#a67828]">ไม่ทราบเวลา</label>
-                                </div>
-                            </label>
-                            <div className={`grid grid-cols-2 gap-3 md:gap-4 ${isUnknownTime ? 'opacity-50 pointer-events-none' : ''}`}>
+                                    ไม่ทราบเวลา
+                                </label>
+                            </div>
+                            <div className={`${styles.timeGrid} grid grid-cols-2 gap-3 md:gap-4 ${isUnknownTime ? 'opacity-50 pointer-events-none' : ''}`}>
                                 {/* Hour */}
                                 <div className="relative">
                                     <SearchableSelect
@@ -786,6 +699,7 @@ export default function PremiumAnalysisPage() {
                                         options={HOURS}
                                         disabled={isUnknownTime}
                                         placeholder="นาฬิกา"
+                                        ariaLabel="ชั่วโมงเกิด"
                                         searchPlaceholder="ค้นหา..."
                                         variant="light"
                                     />
@@ -799,11 +713,13 @@ export default function PremiumAnalysisPage() {
                                         options={MINUTES}
                                         disabled={isUnknownTime}
                                         placeholder="นาที"
+                                        ariaLabel="นาทีเกิด"
                                         searchPlaceholder="ค้นหา..."
                                         variant="light"
                                     />
                                 </div>
                             </div>
+                            <p className={styles.timeHelp}>ใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์</p>
                         </div>
                     </div>
 
@@ -841,52 +757,37 @@ export default function PremiumAnalysisPage() {
 
                 {/* Right Column: Focus Selection (Grid Cards) */}
                 <section className="flex h-full flex-col lg:col-span-7" aria-labelledby="premium-focus-heading">
-                    <div className="mb-5 flex items-start gap-3 text-[#1a1a3e] md:mb-6">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#d6b56a] bg-[#fff8e7] text-sm font-black text-[#805815]">2</span>
-                        <div>
-                            <h3 id="premium-focus-heading" className="text-lg font-extrabold md:text-xl">อยากให้ชื่อใหม่ส่งเสริมด้านใด</h3>
-                            <p className="mt-1 text-sm leading-6 text-[#686885]">เลือกหนึ่งเป้าหมาย ระบบจะนำไปใช้จัดลำดับชื่อที่เหมาะกับคุณ</p>
-                        </div>
+                    <div className={styles.stepHeading}>
+                        <span className={styles.stepNumber}>2</span>
+                        <h3 id="premium-focus-heading">เลือกด้านที่อยากส่งเสริม</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-3">
+                    <div className={styles.focusGrid}>
                         {focusOptions.map((option) => {
                             const isActive = focus === option.key;
-                            const styles = focusStyles[option.key];
                             return (
                                 <button
                                     type="button"
                                     key={option.key}
                                     onClick={() => setFocus(option.key)}
                                     aria-pressed={isActive}
-                                    className={`group relative min-h-[96px] overflow-hidden rounded-xl border p-4 shadow-[0_3px_12px_rgba(26,26,62,0.035)] transition-[border-color,background-color,box-shadow,transform] duration-200 flex items-center gap-3 hover:-translate-y-0.5 hover:shadow-[0_9px_22px_rgba(26,26,62,0.1)] md:gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 motion-reduce:transform-none
-                                        ${isActive
-                                            ? styles.active
-                                            : styles.card
-                                        }`}
+                                    className={`${styles.focusCard} group relative flex items-center hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 motion-reduce:transform-none`}
                                 >
 
                                     {/* Icon Box */}
-                                    <div className={`shrink-0 rounded-lg p-2.5 transition-colors duration-200 md:p-3 ${isActive
-                                        ? styles.iconActive
-                                        : styles.icon
-                                        }`}>
+                                    <div className={styles.focusIcon}>
                                         {React.cloneElement(option.icon as React.ReactElement<{ size: number }>, { size: 24 })}
+                                        {isActive ? <span className={styles.selectedMark}><Check size={11} aria-hidden="true" /></span> : null}
                                     </div>
 
                                     {/* Text Content */}
-                                    <div className="flex-1 text-left z-10">
+                                    <div className={`${styles.focusText} flex-1 text-left z-10`}>
                                         <div className="flex items-center gap-2">
-                                            <h4 className={`text-sm md:text-base font-bold transition-colors ${isActive ? styles.titleActive : 'text-[#2f2f4f] group-hover:text-[#1a1a3e]'}`}>
+                                            <h4 className="font-bold text-[#2f2f4f]">
                                                 {option.title}
                                             </h4>
-                                            {isActive && (
-                                                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#1a1a3e]">
-                                                    <Check size={12} className="h-3 w-3 text-[#f4cf75] stroke-[3px]" />
-                                                </div>
-                                            )}
                                         </div>
-                                        <p className={`mt-1 text-sm leading-relaxed ${isActive ? 'text-[#5a5a82]' : 'text-[#5a5a82]'}`}>
+                                        <p>
                                             {option.subtitle}
                                         </p>
                                     </div>
@@ -894,15 +795,15 @@ export default function PremiumAnalysisPage() {
                             );
                         })}
                     </div>
-                    <div className="mt-4 flex items-start gap-2 rounded-lg border border-[#e3e0ec] bg-[#f8f7fc] px-3.5 py-3 text-xs leading-5 text-[#686885] sm:col-span-2">
+                    <div className={styles.focusHint}>
                         <Info size={16} className="mt-0.5 shrink-0 text-[#8a79b5]" />
-                        <span>เป้าหมายนี้ช่วยจัดอันดับผลลัพธ์เท่านั้น ระบบยังตรวจองค์ประกอบชื่อด้านอื่นให้ครบทุกชื่อ</span>
+                        <span>เลือกได้ 1 ด้านเพื่อจัดอันดับชื่อ โดยยังตรวจองค์ประกอบด้านอื่นครบ</span>
                     </div>
                 </section>
             </div>
 
             {/* Bottom Action Area */}
-            <div className="relative z-10 mt-9 border-t border-[#e4dfd4] pt-7 md:mt-12 md:pt-9">
+            <div className={`${styles.actionArea} relative z-10 border-t border-[#e4dfd4]`}>
                 <div className="flex flex-col items-center justify-center space-y-4">
                     <button
                         type="button"
@@ -911,20 +812,19 @@ export default function PremiumAnalysisPage() {
                         data-track="premiumAnalysis.form.analyze"
                         className="group relative mx-auto w-full overflow-hidden rounded-2xl border border-[#39405a] bg-[#171a34] shadow-[0_18px_36px_rgba(26,26,62,0.18)] transition-[background-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#202443] hover:shadow-[0_22px_42px_rgba(26,26,62,0.23)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9933a] focus-visible:ring-offset-2 active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 md:max-w-4xl motion-reduce:transform-none"
                     >
-                        <div className="relative flex flex-col gap-5 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-6 md:px-8">
+                        <div className={`${styles.actionInner} relative flex items-center justify-between`}>
                             <div className="flex min-w-0 items-center gap-3.5 sm:gap-5">
-                                <div className="shrink-0 rounded-lg bg-[#f1cf78] p-2.5 text-[#47300c] md:p-3">
+                                <div className="hidden shrink-0 rounded-lg bg-[#f1cf78] p-2.5 text-[#47300c] sm:block">
                                     {isLoading || isPremiumNameCatalogLoading ? <span className="block animate-spin"><RefreshCw className="h-5 w-5 md:h-6 md:w-6" /></span> : <Sparkles className="h-5 w-5 md:h-6 md:w-6" />}
                                 </div>
-                                <div className="min-w-0 text-left leading-tight">
-                                    <span className="text-[11px] font-bold tracking-[0.14em] text-[#f1cf78]">ผลลัพธ์เฉพาะคุณ</span>
+                                <div className={`${styles.actionText} min-w-0 text-left leading-tight`}>
                                     <h3 className="mt-1 text-base font-black leading-tight text-[#fbfaff] sm:text-lg">
-                                        {isPremiumNameCatalogLoading ? 'กำลังเตรียมฐานรายชื่อ...' : 'เริ่มคัดชื่อที่เหมาะกับนามสกุล'}
+                                        {isPremiumNameCatalogLoading ? 'กำลังเตรียมรายชื่อ…' : isLoading ? 'กำลังคัดชื่อ…' : 'เริ่มคัดชื่อ'}
                                     </h3>
-                                    <p className="mt-1 text-sm font-medium leading-5 text-[#d7d4e1]">รับ 20 รายชื่อ พร้อมคะแนนและเหตุผลที่คัดเลือก</p>
+                                    <p className="text-[#d7d4e1]">20 รายชื่อ<span className="hidden sm:inline"> พร้อมคะแนนและเหตุผล</span></p>
                                 </div>
                             </div>
-                            <div className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 self-start rounded-xl bg-[#f1cf78] px-5 py-3 text-[#302006] shadow-[0_5px_18px_rgba(241,207,120,0.18)] sm:w-auto sm:self-auto md:px-6">
+                            <div className={`${styles.actionPrice} inline-flex shrink-0 items-center justify-center bg-[#f1cf78] text-[#302006] shadow-[0_5px_18px_rgba(241,207,120,0.18)]`}>
                                 <span className="text-center text-sm font-extrabold leading-tight">
                                     {userTier === 'vvip'
                                         ? `ใช้ ${PREMIUM_ANALYSIS_COST} เครดิต`
@@ -952,36 +852,32 @@ export default function PremiumAnalysisPage() {
     return (
         <SoftYellowGlowBackground className="font-sans overflow-x-hidden selection:bg-amber-500/30">
 
-            <main className="relative min-h-screen w-full px-3 pb-40 text-slate-900 sm:px-4 md:pb-20">
+            <main className={`${styles.page} relative min-h-screen w-full px-4 pb-32 text-slate-900 md:pb-20`}>
                 <div className="relative z-10 mx-auto max-w-7xl px-0 sm:px-6 lg:px-8 space-y-6 md:space-y-8">
 
                     {/* Header Section */}
-                    <header className="space-y-4 pb-5 pt-7 text-center md:pb-7 md:pt-20">
+                    <header className={`${styles.hero} space-y-2`}>
                         <div className="inline-flex items-center gap-2 rounded-full border border-[#e8c87e] bg-[#fff9eb] px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#a67828] md:px-4 md:text-xs">
                             <Crown size={14} />
-                            <span>Professional Naming Analysis</span>
+                            <span>คัดชื่อเฉพาะบุคคล</span>
                         </div>
 
                         <div className="space-y-2">
-                            <h1 className="text-[2rem] font-black leading-tight tracking-tight text-slate-950 sm:text-4xl md:text-6xl">
+                            <h1 className="font-black tracking-tight text-slate-950">
                                 วิเคราะห์ชื่อมงคลขั้นสูง
                             </h1>
-                            <div className="mx-auto h-0.5 w-16 rounded-full bg-[#c9933a]"></div>
                         </div>
 
-                        <p className="mx-auto max-w-[68ch] text-base leading-8 text-[#5a5a82] md:text-lg md:leading-9">
-                            เจาะลึกชะตาชีวิตด้วย <strong className="text-amber-700 font-bold">ทักษาปกรณ์</strong> และ <strong className="text-amber-700 font-bold">เลขศาสตร์ชั้นสูง</strong>
-                            <br className="hidden md:block" />
-                            จากฐานรายชื่อที่ทีมงานคัดล่วงหน้าครบ 4 ศาสตร์ ใช้เวลาเกิดประกอบการกำหนดวันทางโหราศาสตร์ แล้วตรวจชื่อร่วมกับนามสกุล
+                        <p className="text-[#5a5a82]">
+                            เลือกชื่อจากวันเกิด นามสกุล และเป้าหมายที่คุณอยากส่งเสริม
                         </p>
                     </header>
 
                     {/* Main Content Area */}
                     <div className={`relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] border px-4 py-6 shadow-[0_12px_36px_rgba(26,26,62,0.12)] sm:px-6 md:rounded-[2rem] md:px-10 md:py-10 ${hasAnalyzed
                         ? 'border-[#263552] bg-[#0b1220] text-slate-100'
-                        : 'border-[#ddddf0] bg-[#fefeff] text-[#1a1a3e]'
+                        : `${styles.formSurface} text-[#1a1a3e]`
                         }`}>
-                        <div className={`pointer-events-none absolute inset-x-8 top-0 h-px ${hasAnalyzed ? 'bg-amber-400/70' : 'bg-[#e8c87e]'}`}></div>
                         {!hasAnalyzed ? formContent : resultsContent}
                     </div>
 

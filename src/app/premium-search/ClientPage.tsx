@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, Coins, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, CheckCircle2 } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { getPrediction } from '@/utils/getPrediction';
 import { useRouter } from 'next/navigation';
@@ -73,8 +73,10 @@ function ScoreDropdown({ value, onChange, scores, disabled }: ScoreDropdownProps
             <button
                 type="button"
                 disabled={disabled}
+                aria-expanded={open}
+                aria-label={`${t('pages.premiumSearch.filters.scoreLabel')}: ${selectedLabel}`}
                 onClick={() => setOpen(v => !v)}
-                className={`flex w-full items-center justify-between rounded-lg border border-slate-600 bg-slate-800 px-3 py-2.5 text-xs font-semibold text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 sm:text-sm ${open ? 'rounded-b-none border-b-transparent' : ''}`}
+                className={`flex min-h-11 w-full items-center justify-between rounded-lg border border-slate-600 bg-slate-800 px-3 py-2.5 text-sm font-semibold text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 disabled:cursor-not-allowed disabled:opacity-50 sm:px-4 ${open ? 'rounded-b-none border-b-transparent' : ''}`}
             >
                 <span>{selectedLabel}</span>
                 <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 sm:h-4 sm:w-4 ${open ? 'rotate-180 text-amber-200' : ''}`} />
@@ -344,15 +346,8 @@ export default function ClientPage() {
 
     return (
         <SoftYellowGlowBackground className="overflow-x-hidden font-sans text-[#5a5a82] selection:bg-amber-200 selection:text-[#172033]">
-            {/* Floating Mobile Credits */}
-            <div className="hidden">
-                <Coins className="h-4 w-4 text-amber-600" />
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#5a5a82]">เครดิต:</span>
-                <span className="text-sm font-black text-emerald-700">{userCredits !== null ? userCredits : '—'}</span>
-            </div>
-
-            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-7 sm:px-6 sm:pt-28">
-                <div className="space-y-7 sm:space-y-10">
+            <main className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-24 pt-4 sm:px-6 md:pt-28">
+                <div className="space-y-4 md:space-y-10">
                     <PremiumHeader 
                         totalNames={publishedCount}
                         latestAddedAt={latestAddedAt}
@@ -365,40 +360,42 @@ export default function ClientPage() {
                     <section className="relative z-30 rounded-2xl border border-slate-700 bg-[#172033] shadow-[0_10px_26px_rgba(15,23,42,0.16)]">
                         <div className="relative">
                             
-                            <div className="p-4 sm:p-6">
-                                <div className="mb-5 flex items-center justify-between gap-3 border-b border-slate-700 pb-4">
+                            <div className="p-3 md:p-6">
+                                <div className="mb-3 flex items-center justify-between gap-2 border-b border-slate-700 pb-2 md:mb-5 md:gap-3 md:pb-4">
                                     <div>
-                                        <h2 className="flex items-center gap-2.5 text-lg font-bold text-slate-50">
-                                            <SlidersHorizontal className="h-5 w-5 text-amber-300" />
+                                        <h2 className="flex items-center gap-2 text-base font-bold text-slate-50 md:gap-2.5 md:text-lg">
+                                            <SlidersHorizontal className="h-4 w-4 shrink-0 text-amber-300 md:h-5 md:w-5" aria-hidden="true" />
                                             ปรับเงื่อนไขค้นหา
                                         </h2>
-                                        <p className="mt-1.5 text-xs font-medium text-slate-400">
-                                            {activeFilterCount > 0 ? `กำลังใช้ ${activeFilterCount} ตัวกรอง` : 'เริ่มจากวันเกิดก่อนเพื่อเปิดตัวเลือกอักษรนำ'}
+                                        <p className="mt-1 text-xs text-slate-300 md:mt-1.5">
+                                            {activeFilterCount > 0 ? `กำลังใช้ ${activeFilterCount} ตัวกรอง` : 'เลือกวันเกิดเพื่อกรองอักษรนำ'}
                                         </p>
                                     </div>
                                 <button
                                     type="button"
                                     onClick={resetFilters}
                                     disabled={isLoading || activeFilterCount === 0}
-                                    className="flex items-center gap-2 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs font-bold text-slate-200 transition-colors hover:border-amber-300 hover:text-amber-200 disabled:cursor-not-allowed disabled:opacity-40"
+                                    aria-label="ล้างตัวกรอง"
+                                    className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-lg border border-slate-600 bg-slate-800 px-2.5 text-xs font-bold text-slate-200 transition-colors hover:border-amber-300 hover:text-amber-200 disabled:cursor-not-allowed disabled:opacity-40 md:gap-2 md:px-3"
                                 >
                                     <RotateCcw className="h-3.5 w-3.5" />
-                                    ล้างตัวกรอง
+                                    <span className="md:hidden">ล้าง</span><span className="hidden md:inline">ล้างตัวกรอง</span>
                                 </button>
                             </div>
 
                             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 sm:gap-4">
                                 {/* Day Filter */}
                                 <div className="space-y-1.5 sm:space-y-2">
-                                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 sm:text-xs">{t('pages.premiumSearch.filters.dayLabel')}</label>
+                                    <label htmlFor="premium-search-day" className="block text-xs font-medium text-slate-300">{t('pages.premiumSearch.filters.dayLabel')}</label>
                                     <div className="relative">
                                         <select
+                                            id="premium-search-day"
                                             value={selectedDay}
                                             onChange={(e) => {
                                                 setSelectedDay(e.target.value);
                                                 if (e.target.value === 'All') setLeadingCharType('Any');
                                             }}
-                                            className="w-full appearance-none rounded-lg border border-slate-600 bg-slate-800 px-3 py-2.5 text-xs font-medium text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 sm:px-4 sm:text-sm"
+                                            className="min-h-11 w-full appearance-none rounded-lg border border-slate-600 bg-slate-800 pl-3 pr-8 py-2.5 text-sm font-medium text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 sm:pl-4 sm:pr-9"
                                         >
                                             {dayOptions.map(day => <option key={day.value} value={day.value}>{day.label}</option>)}
                                         </select>
@@ -408,18 +405,19 @@ export default function ClientPage() {
 
                                 {/* Score Filter */}
                                 <div className="space-y-1.5 sm:space-y-2">
-                                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 sm:text-xs">{t('pages.premiumSearch.filters.scoreLabel')}</label>
+                                    <p className="text-xs font-medium text-slate-300">{t('pages.premiumSearch.filters.scoreLabel')}</p>
                                     <ScoreDropdown value={targetScore} onChange={setTargetScore} scores={uniqueScores} disabled={isLoading} />
                                 </div>
 
                                 {/* Gender Filter */}
                                 <div className="space-y-1.5 sm:space-y-2">
-                                    <label className="block text-[10px] font-bold uppercase tracking-widest text-slate-400 sm:text-xs">{t('pages.premiumSearch.filters.genderLabel')}</label>
+                                    <label htmlFor="premium-search-gender" className="block text-xs font-medium text-slate-300">{t('pages.premiumSearch.filters.genderLabel')}</label>
                                     <div className="relative">
                                         <select
+                                            id="premium-search-gender"
                                             value={selectedGender}
                                             onChange={(e) => setSelectedGender(e.target.value)}
-                                            className="w-full appearance-none rounded-lg border border-slate-600 bg-slate-800 px-3 py-2.5 text-xs font-medium text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 sm:px-4 sm:text-sm"
+                                            className="min-h-11 w-full appearance-none rounded-lg border border-slate-600 bg-slate-800 pl-3 pr-8 py-2.5 text-sm font-medium text-slate-100 transition-colors focus:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/20 sm:pl-4 sm:pr-9"
                                         >
                                             <option value="all">{t('pages.premiumSearch.filters.genderAll')}</option>
                                             <option value="male">{t('pages.premiumSearch.filters.genderMale')}</option>
@@ -432,11 +430,11 @@ export default function ClientPage() {
 
                                 {/* Leading Char Filter */}
                                 <div className="space-y-1.5 sm:space-y-2">
-                                    <label className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-slate-400 sm:text-xs">
+                                    <p className="flex items-center justify-between text-xs font-medium text-slate-300">
                                         <span className="truncate">{t('pages.premiumSearch.leading.label')}</span>
                                         <span className="ml-1 shrink-0 text-[9px] normal-case text-amber-200/80 sm:text-[10px]">{selectedDay !== 'All' ? `(${selectedDay})` : ''}</span>
-                                    </label>
-                                    <div className="flex h-[38px] gap-1 rounded-lg border border-slate-600 bg-slate-800 p-1 sm:h-[42px]">
+                                    </p>
+                                    <div className="flex min-h-11 gap-1 rounded-lg border border-slate-600 bg-slate-800 p-1">
                                         {(['Dech', 'Si', 'Any'] as LeadingCharType[]).map((type) => {
                                             const isSelected = leadingCharType === type;
                                             const labelMap: Record<LeadingCharType, string> = { Dech: 'เดช', Si: 'ศรี', Any: 'ทั้งหมด' };
@@ -464,7 +462,7 @@ export default function ClientPage() {
                     </section>
 
                     {availableLetters.length > 0 ? (
-                        <div className="space-y-6 xl:grid xl:grid-cols-[15rem_minmax(0,1fr)] xl:items-start xl:gap-8 xl:space-y-0">
+                        <div className="space-y-4 md:space-y-6 xl:grid xl:grid-cols-[15rem_minmax(0,1fr)] xl:items-start xl:gap-8 xl:space-y-0">
                             
                             <PremiumAlphabetBar 
                                 availableLetters={availableLetters}
@@ -475,10 +473,10 @@ export default function ClientPage() {
 
                             <div className="relative">
                                 {selectedLetter ? (
-                                    <div className="mb-5 flex flex-wrap items-end justify-between gap-3 border-b border-[#ddddf0] pb-4">
+                                    <div className="mb-3 flex flex-wrap items-end justify-between gap-3 border-b border-[#ddddf0] pb-3 md:mb-5 md:pb-4">
                                         <div>
                                             <p className="text-xs font-bold text-amber-700">ผลลัพธ์ที่คัดตามเงื่อนไข</p>
-                                            <h2 className="mt-1 text-2xl font-black text-[#1a1a3e]">หมวดอักษร “{selectedLetter}”</h2>
+                                            <h2 className="mt-1 text-xl font-black text-[#1a1a3e] md:text-2xl">หมวดอักษร “{selectedLetter}”</h2>
                                         </div>
                                         <span className="rounded-full border border-[#ddddf0] bg-white px-3 py-1.5 font-mono text-xs font-bold text-[#40506f]">{groupedByLetter.get(selectedLetter)?.length ?? 0} ชื่อ</span>
                                     </div>
@@ -496,23 +494,24 @@ export default function ClientPage() {
                                     return (
                                         <>
                                             {needsUnlock && (
-                                                <div className="relative mb-5 overflow-hidden rounded-2xl border border-slate-700 bg-[#172033] p-5 text-center shadow-[0_10px_26px_rgba(15,23,42,0.16)] sm:p-7">
-                                                    <div className="relative flex flex-col items-center">
-                                                        <div className="mb-4">
+                                                <div className="relative mb-3 overflow-hidden rounded-xl border border-slate-700 bg-[#172033] p-3 text-left md:mb-5 md:rounded-2xl md:p-7 md:text-center md:shadow-[0_10px_26px_rgba(15,23,42,0.16)]">
+                                                    <div className="relative flex flex-col items-stretch md:items-center">
+                                                        <div className="mb-4 hidden md:block">
                                                             <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-400/35 bg-amber-400/10 sm:h-14 sm:w-14">
                                                                 <Lock className="h-6 w-6 text-amber-200" />
                                                             </div>
                                                         </div>
-                                                        <h3 className="mb-2 text-xl font-black tracking-tight text-slate-50 sm:text-2xl">
-                                                            ปลดล็อกหมวดอักษร <span className="text-3xl text-emerald-700 sm:text-4xl">&quot;{selectedLetter}&quot;</span>
+                                                        <h3 className="mb-1 text-sm font-bold text-slate-50 md:mb-2 md:text-2xl md:font-black md:tracking-tight">
+                                                            ปลดล็อกหมวดอักษร <span className="text-amber-200 md:text-4xl">&quot;{selectedLetter}&quot;</span>
                                                         </h3>
-                                                        <p className="mx-auto mb-5 max-w-lg text-xs leading-6 text-slate-300 sm:text-sm">
+                                                        <p className="mb-2 text-xs leading-5 text-slate-300 md:hidden">ชื่อคัดสรรเกรด A+ · สูงสุด 20 ชื่อต่อครั้ง</p>
+                                                        <p className="mx-auto mb-5 hidden max-w-lg text-sm leading-6 text-slate-300 md:block">
                                                             คัดเฉพาะรายชื่อเกรด A+ เสริมมงคลทวีคูณสูงสุด 20 รายชื่อต่อครั้ง (รายชื่ออื่นจะถูกสุ่มเปิดเพื่อความสิริมงคล)
                                                         </p>
                                                         <button
                                                             onClick={() => performUnlock(selectedLetter, 15)}
                                                             disabled={isLoading}
-                                                            className="inline-flex items-center justify-center gap-2 rounded-xl border border-amber-200 bg-amber-300 px-5 py-3 text-sm font-black text-[#172033] transition-colors hover:bg-amber-200 disabled:opacity-70"
+                                                            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-amber-200 bg-amber-300 px-3 py-2 text-sm font-bold text-[#172033] transition-colors hover:bg-amber-200 disabled:opacity-70 md:rounded-xl md:px-5 md:py-3 md:font-black"
                                                         >
                                                             {isLoading ? <span className="animate-spin text-lg sm:text-xl">⏳</span> : <Lock className="w-4 h-4 sm:w-5 sm:h-5" />}
                                                             ปลดล็อกรายชื่อมงคล (15 เครดิต)

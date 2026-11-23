@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, BadgeCheck, CalendarDays, ChevronDown, LockKeyhole, UsersRound } from 'lucide-react';
+import { ArrowUpRight, BadgeCheck, CalendarDays, LockKeyhole, UsersRound } from 'lucide-react';
 import type { PremiumNameData } from '@/utils/premiumDataParser';
 import { useLanguage } from '@/components/LanguageProvider';
+import { FavoriteButton } from '@/components/names/NamingProvider';
 import styles from './PremiumNameCard.module.css';
 
 interface NameCardProps {
@@ -36,8 +37,6 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
     const pending = reviewStatuses.some(status => status === 'pending' || status === 'draft');
     const approved = hasPronunciation && hasMeaning && reviewStatuses.length === 2
         && reviewStatuses.every(status => status === 'approved');
-    const previewPairs = item.scoreBreakdown.slice(0, 4);
-    const remainingPairs = item.scoreBreakdown.length - previewPairs.length;
     const reviewLabel = pending ? null : approved ? 'ตรวจสอบแล้ว' : 'ข้อมูลตามต้นทาง';
 
     return (
@@ -53,9 +52,10 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
                         {item.englishName ? <span lang="en"><span className={styles.srOnly}>ชื่อภาษาอังกฤษ </span>{item.englishName}</span> : null}
                         {item.englishName && hasPronunciation ? <span aria-hidden="true"> · </span> : null}
                         {hasPronunciation ? <span><span className={styles.srOnly}>อ่านว่า </span>{item.pronunciation}</span> : null}
-                        {!item.englishName && !hasPronunciation ? <span className={styles.missing}>คำอ่านอยู่ระหว่างจัดทำ</span> : null}
+                        {!item.englishName && !hasPronunciation ? <span className={styles.missing}>กำลังจัดทำคำอ่าน</span> : null}
                     </p>
-                    <p className={`${styles.meaning} ${hasMeaning ? '' : styles.missing}`}>{item.meaning || 'กำลังจัดทำรายละเอียดชื่อ'}</p>
+                    {item.pronunciationVariants?.length ? <p className={styles.reading}>อ่านได้อีกแบบ: {item.pronunciationVariants.join(', ')}</p> : null}
+                    <p className={`${styles.meaning} ${hasMeaning ? '' : styles.missing}`}>{item.meaning || 'กำลังจัดทำความหมาย'}</p>
                     {hasDetails && reviewLabel ? <div className={styles.review}>
                         <span title={reviewLabel}>{approved ? <BadgeCheck size={12} aria-hidden="true" /> : null}{reviewLabel}</span>
                     </div> : null}
@@ -72,30 +72,17 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
                             }) : <span className={styles.missing}>ยังไม่มีข้อมูลวันเกิด</span>}
                         </div>
                     </section>
-                    <div className={styles.pairs} aria-label="ตัวอย่างคู่เลข">
+                    <div className={styles.pairs} aria-label="คู่เลขทั้งหมด">
                         <span className={styles.label}>คู่เลข</span>
-                        <div className={styles.pairValues}>{previewPairs.map((pair, index) => <span key={`${pair}-${index}`}>{pair}</span>)}
-                            {remainingPairs > 0 ? <span className={styles.morePairs}>+{remainingPairs}<span className={styles.srOnly}> คู่ ดูทั้งหมดในรายละเอียด</span></span> : null}
-                            {!previewPairs.length ? <span className={styles.missing}>ยังไม่มีข้อมูล</span> : null}
+                        <div className={styles.pairValues}>{item.scoreBreakdown.map((pair, index) => <span key={`${pair}-${index}`}>{pair}</span>)}
+                            {!item.scoreBreakdown.length ? <span className={styles.missing}>ยังไม่มีข้อมูล</span> : null}
                         </div>
                     </div>
                 </div>
 
                 {isUnlocked ? <footer className={styles.actions}>
                     <Link prefetch={false} href={`/name-check?${new URLSearchParams({ name: item.name })}`} className={styles.analyze} aria-label={`วิเคราะห์ชื่อ ${item.name}`}>วิเคราะห์ชื่อ<ArrowUpRight size={15} aria-hidden="true" /></Link>
-                    <details className={styles.details}>
-                        <summary aria-label={`รายละเอียดชื่อ ${item.name}`}><span className={styles.whenClosed}>รายละเอียด</span><span className={styles.whenOpen}>ย่อรายละเอียด</span><ChevronDown size={15} aria-hidden="true" /></summary>
-                        <div className={styles.extra}>
-                            <dl>
-                                <div><dt>ชื่อภาษาอังกฤษ</dt><dd lang="en">{item.englishName || '—'}</dd><dd className={styles.note}>{item.englishName ? 'ตัวเลือกการสะกดตามต้นทาง ควรยืนยันก่อนใช้ในเอกสาร' : 'ยังไม่มีข้อมูล'}</dd></div>
-                                <div><dt>คำอ่าน</dt><dd>{item.pronunciation || 'กำลังจัดทำคำอ่าน'}</dd>{item.pronunciationVariants?.length ? <dd className={styles.note}>อ่านได้อีกแบบ: {item.pronunciationVariants.join(', ')}</dd> : null}</div>
-                                <div><dt>ความหมาย</dt><dd>{item.meaning || 'กำลังจัดทำความหมาย'}</dd></div>
-                                <div><dt>หมวดชื่อ</dt><dd>{GENDERS[item.gender]}</dd></div>
-                                {!pending ? <div><dt>สถานะข้อมูลภาษา</dt><dd className={styles.note}>{hasDetails ? reviewLabel : 'อยู่ระหว่างจัดทำ'}</dd></div> : null}
-                                <div><dt>คู่เลขทั้งหมด</dt><dd className={styles.allPairs}>{item.scoreBreakdown.length ? item.scoreBreakdown.map((pair, index) => <span key={`${pair}-${index}`}>{pair}</span>) : 'ยังไม่มีข้อมูล'}</dd></div>
-                            </dl>
-                        </div>
-                    </details>
+                    <FavoriteButton name={item.name} kind="thai" />
                 </footer> : null}
             </div>
         </article>
