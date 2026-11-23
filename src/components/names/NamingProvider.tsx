@@ -36,7 +36,7 @@ export const trackNaming = (event: string, kind: string, count?: number) =>
         metadata: { kind, ...(count !== undefined ? { count } : {}) },
     });
 
-export function NamingProvider({ children }: { children: ReactNode }) {
+export function NamingProvider({ children, compact = false }: { children: ReactNode; compact?: boolean }) {
     const router = useRouter();
     const [items, setItems] = useState<FavoriteName[]>([]);
     const [message, setMessage] = useState('');
@@ -268,7 +268,7 @@ export function NamingProvider({ children }: { children: ReactNode }) {
     }
     return (
         <Context.Provider value={{ items, toggle }}>
-            <div className={styles.scope}>
+            <div className={`${styles.scope}${compact ? ` ${styles.compact}` : ''}`}>
                 {children}
                 <div className={styles.favoriteBar}>
                     <div>
@@ -280,8 +280,8 @@ export function NamingProvider({ children }: { children: ReactNode }) {
                             เลือกไว้ก่อน ค่อยคุยกันในครอบครัว
                         </span>
                     </div>
-                    <button type="button" onClick={openFavorites}>
-                        {signedIn ? 'เปิดรายการ' : 'เข้าสู่ระบบเพื่อเก็บชื่อ'}
+                    <button type="button" onClick={openFavorites} aria-label={signedIn ? 'เปิดรายการชื่อที่ชอบ' : 'เข้าสู่ระบบเพื่อเก็บชื่อ'}>
+                        {signedIn ? 'เปิดรายการ' : compact ? <><span className="md:hidden">เข้าสู่ระบบ</span><span className="hidden md:inline">เข้าสู่ระบบเพื่อเก็บชื่อ</span></> : 'เข้าสู่ระบบเพื่อเก็บชื่อ'}
                     </button>
                 </div>
                 <p

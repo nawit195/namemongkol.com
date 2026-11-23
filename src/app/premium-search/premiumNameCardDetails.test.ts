@@ -5,8 +5,11 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('@/components/LanguageProvider', () => ({
     useLanguage: () => ({ t: (key: string) => key }),
 }));
+vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn() }) }));
+vi.mock('@/utils/supabase', () => ({ supabase: {} }));
 
 import PremiumNameCard from './components/PremiumNameCard';
+import PremiumSearchLayout from './layout';
 import { mergePremiumNameDetails, parsePremiumNames, type PremiumNameData } from '@/utils/premiumDataParser';
 
 const baseName: PremiumNameData = {
@@ -18,7 +21,9 @@ const baseName: PremiumNameData = {
 };
 
 const renderCard = (item: PremiumNameData, isUnlocked: boolean) => renderToStaticMarkup(
-    createElement(PremiumNameCard, { item, isUnlocked }),
+    createElement(PremiumSearchLayout, null,
+        createElement(PremiumNameCard, { item, isUnlocked }),
+    ),
 );
 
 describe('premium name enrichment and cards', () => {
@@ -75,6 +80,9 @@ describe('premium name enrichment and cards', () => {
         expect(locked).toContain('inert=\"\"');
         expect(locked).not.toContain('/name-check?');
         expect(approved).toContain('/name-check?name=');
-        expect(approved).toContain('<details');
+        expect(approved).toContain('aria-label="เก็บ กานต์ ไว้ในชื่อที่ชอบ"');
+        expect(approved).toContain('aria-pressed="false"');
+        expect(locked).not.toContain('aria-label="เก็บ กานต์ ไว้ในชื่อที่ชอบ"');
+        expect(approved).not.toContain('<details');
     });
 });
