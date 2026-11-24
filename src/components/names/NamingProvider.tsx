@@ -29,6 +29,7 @@ import styles from './naming.module.css';
 type FavoriteContext = {
     items: FavoriteName[];
     toggle: (item: FavoriteName) => void;
+    open: () => void;
 };
 const Context = createContext<FavoriteContext | null>(null);
 export const trackNaming = (event: string, kind: string, count?: number) =>
@@ -36,7 +37,7 @@ export const trackNaming = (event: string, kind: string, count?: number) =>
         metadata: { kind, ...(count !== undefined ? { count } : {}) },
     });
 
-export function NamingProvider({ children, compact = false }: { children: ReactNode; compact?: boolean }) {
+export function NamingProvider({ children, compact = false, showFavoriteBar = true }: { children: ReactNode; compact?: boolean; showFavoriteBar?: boolean }) {
     const router = useRouter();
     const [items, setItems] = useState<FavoriteName[]>([]);
     const [message, setMessage] = useState('');
@@ -192,7 +193,7 @@ export function NamingProvider({ children, compact = false }: { children: ReactN
             }
         }
         window.location.assign(
-            `/login?redirect=${encodeURIComponent(window.location.pathname)}`,
+            `/login?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`,
         );
         return null;
     }
@@ -267,10 +268,10 @@ export function NamingProvider({ children, compact = false }: { children: ReactN
         router.push('/compare-names');
     }
     return (
-        <Context.Provider value={{ items, toggle }}>
-            <div className={`${styles.scope}${compact ? ` ${styles.compact}` : ''}`}>
+        <Context.Provider value={{ items, toggle, open: openFavorites }}>
+            <div className={`${styles.scope}${compact ? ` ${styles.compact}` : ''}${!showFavoriteBar ? ` ${styles.withoutFavoriteBar}` : ''}`}>
                 {children}
-                <div className={styles.favoriteBar}>
+                {showFavoriteBar && <div className={styles.favoriteBar}>
                     <div>
                         <strong>
                             <Heart size={18} aria-hidden="true" /> ชื่อที่ชอบ{' '}
@@ -283,7 +284,7 @@ export function NamingProvider({ children, compact = false }: { children: ReactN
                     <button type="button" onClick={openFavorites} aria-label={signedIn ? 'เปิดรายการชื่อที่ชอบ' : 'เข้าสู่ระบบเพื่อเก็บชื่อ'}>
                         {signedIn ? 'เปิดรายการ' : compact ? <><span className="md:hidden">เข้าสู่ระบบ</span><span className="hidden md:inline">เข้าสู่ระบบเพื่อเก็บชื่อ</span></> : 'เข้าสู่ระบบเพื่อเก็บชื่อ'}
                     </button>
-                </div>
+                </div>}
                 <p
                     role="status"
                     aria-live="polite"
@@ -418,4 +419,10 @@ export function FavoriteButton({ name, kind }: FavoriteName) {
             {pressed ? 'เก็บแล้ว' : 'เก็บชื่อ'}
         </button>
     );
+}
+
+export function FavoriteListButton({ className }: { className?: string }) {
+    const context = useContext(Context);
+    if (!context) return null;
+    return <button type="button" className={className} onClick={context.open} aria-haspopup="dialog"><Heart size={16} aria-hidden="true" />ชื่อที่เก็บ <span>{context.items.length}</span></button>;
 }

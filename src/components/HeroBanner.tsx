@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, BadgeCheck, BarChart3, Languages, Star, Target, Zap, Sparkle } from 'lucide-react';
 import { useLanguage } from './LanguageProvider';
 import {
-    LIVE_STATS_FETCH_INIT,
+    fetchSharedLiveStats,
     STATS_IDLE_DELAY_MS,
     STATS_POLL_MS,
     formatRealtimeCount,
@@ -151,15 +151,13 @@ const HeroSocialProof = () => {
         let timeoutId: number | null = null;
         let idleId: number | null = null;
         let intervalId: number | null = null;
+        let nextRefreshAt = 0;
 
         const loadStats = async () => {
+            if (document.visibilityState === 'hidden' || Date.now() < nextRefreshAt) return;
+            nextRefreshAt = Date.now() + STATS_POLL_MS;
             try {
-                const response = await fetch('/api/live-stats', LIVE_STATS_FETCH_INIT);
-                if (!response.ok) {
-                    return;
-                }
-
-                const data = await response.json() as LiveStatsResponse;
+                const data: LiveStatsResponse = await fetchSharedLiveStats();
                 const totalAnalyses = data.totals?.analyses ?? data.stats?.totalAnalyses;
                 const totalUsers = data.totals?.members ?? data.stats?.totalUsers;
                 const nextAnalysisCount = formatRealtimeCount(totalAnalyses);
@@ -210,8 +208,10 @@ const HeroSocialProof = () => {
         };
 
         scheduleStats();
+        document.addEventListener('visibilitychange', loadStats);
 
         return () => {
+            document.removeEventListener('visibilitychange', loadStats);
             isMounted = false;
             if (timeoutId !== null) window.clearTimeout(timeoutId);
             if (idleId !== null && 'cancelIdleCallback' in window) window.cancelIdleCallback(idleId);

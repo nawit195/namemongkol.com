@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { premiumNamesRaw } from '@/data/premiumNamesRaw';
 import { countRawNameLines } from '@/lib/nameCounts';
+import { unstable_cache } from 'next/cache';
 
 export const PUBLIC_STATS_REVALIDATE_SECONDS = 120;
 
@@ -203,3 +204,14 @@ export async function fetchPublicAggregateStats(): Promise<PublicAggregateStats>
         ts: now.toISOString(),
     };
 }
+
+// Both public stats endpoints expose the same aggregate. Share one tagged
+// cache entry so a refresh does not run the same database work twice.
+export const getCachedPublicAggregateStats = unstable_cache(
+    fetchPublicAggregateStats,
+    ['public-aggregate-stats:v4'],
+    {
+        revalidate: PUBLIC_STATS_REVALIDATE_SECONDS,
+        tags: ['public-stats', 'public-live-stats'],
+    },
+);

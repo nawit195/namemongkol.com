@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, Lock, Search, RotateCcw, SlidersHorizontal, CheckCircle2 } from 'lucide-react';
@@ -357,6 +358,7 @@ export default function ClientPage() {
                     />
 
                     {/* Ultra Premium Filter Panel */}
+                    <p className="text-sm text-slate-600">กำลังเลือกชื่อเล่น? <Link prefetch={false} href="/nicknames?group=aplus" className="inline-flex min-h-11 items-center font-bold text-amber-800 underline underline-offset-4">ดูชื่อเล่นมงคลเกรด A+</Link></p>
                     <section className="relative z-30 rounded-2xl border border-slate-700 bg-[#172033] shadow-[0_10px_26px_rgba(15,23,42,0.16)]">
                         <div className="relative">
                             

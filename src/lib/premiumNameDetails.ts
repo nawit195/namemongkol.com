@@ -213,8 +213,16 @@ export async function fetchPublicPremiumNameDetails(): Promise<PublicPremiumName
     return buildPublicPremiumNameDetails(premiumResult.rows, detailRows);
 }
 
+// Cache the scalar rather than a second copy of the multi-megabyte catalog.
+// Both tags matter: shared editorial changes can hide a premium name too.
+const getCachedPremiumPublishedCount = unstable_cache(
+    async () => (await fetchPublicPremiumNameDetails()).length,
+    ['premium-published-count-v1'],
+    { revalidate: 600, tags: ['premium-names', 'public-names'] },
+);
+
 export async function fetchPremiumPublishedCount(): Promise<number | null> {
-    try { return (await fetchPublicPremiumNameDetails()).length; }
+    try { return await getCachedPremiumPublishedCount(); }
     catch { return null; }
 }
 

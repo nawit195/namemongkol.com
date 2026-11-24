@@ -3,7 +3,9 @@ import { fetchPublicPremiumNameDetails, fetchPremiumLatestAddedAt } from '@/lib/
 
 const CACHE_SECONDS = 600;
 
-export const dynamic = 'force-dynamic';
+// This response is public and identical for every visitor. Cache the completed
+// response and allow the tagged database page caches to work on a cache miss.
+export const revalidate = 600;
 
 export async function GET() {
     try {
@@ -15,6 +17,9 @@ export async function GET() {
         });
     } catch (error) {
         console.error('Failed to fetch public premium names:', error);
-        return NextResponse.json({ success: false, data: [], total: 0 }, { status: 500 });
+        return NextResponse.json({ success: false, data: [], total: 0 }, {
+            status: 500,
+            headers: { 'Cache-Control': 'no-store' },
+        });
     }
 }

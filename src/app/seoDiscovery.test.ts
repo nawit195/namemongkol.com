@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import robots, {
@@ -6,13 +6,40 @@ import robots, {
     RETRIEVAL_CRAWLERS,
     TRAINING_CRAWLERS,
 } from './robots';
-import { dedupeSitemapEntries } from './sitemap';
+import sitemap, { dedupeSitemapEntries } from './sitemap';
+import { siteUrl } from '@/lib/seo';
 import { ARTICLE_REDIRECTS, isRedirectedArticleSlug } from '@/lib/articleRedirects';
 
 const root = process.cwd();
 const readSource = (filePath: string) => readFileSync(path.join(root, filePath), 'utf8');
 
 describe('SEO discovery surfaces', () => {
+    test('includes the nickname canonical once without private or filtered URLs', async () => {
+        vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', '');
+        try {
+            const entries = await sitemap();
+            expect(entries.filter(entry => entry.url === `${siteUrl}/nicknames`)).toHaveLength(1);
+            expect(entries.every(entry => !new URL(entry.url).search)).toBe(true);
+            expect(entries.every(entry => !PRIVATE_CRAWL_PATHS.some(prefix =>
+                new URL(entry.url).pathname === prefix ||
+                new URL(entry.url).pathname.startsWith(`${prefix}/`),
+            ))).toBe(true);
+        } finally {
+            vi.unstubAllEnvs();
+        }
+    });
+
+    test('allows nickname discovery while keeping nickname APIs out of crawling', () => {
+        const rules = robots().rules;
+        const ruleList = Array.isArray(rules) ? rules : [rules];
+        for (const rule of ruleList.filter(rule => rule.userAgent === '*' ||
+            (Array.isArray(rule.userAgent) && rule.userAgent.includes('OAI-SearchBot')))) {
+            const blocked = Array.isArray(rule.disallow) ? rule.disallow : [rule.disallow];
+            expect(blocked.some(prefix => prefix && '/nicknames'.startsWith(prefix))).toBe(false);
+            expect(blocked.some(prefix => prefix && '/api/nicknames/unlock'.startsWith(prefix))).toBe(true);
+        }
+    });
+
     test('keeps private routes closed for generic and retrieval crawlers', () => {
         const rules = robots().rules;
         const ruleList = Array.isArray(rules) ? rules : [rules];

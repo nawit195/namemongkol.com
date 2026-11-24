@@ -7,6 +7,7 @@
     background: oklch(0.985 0.009 78);
     padding-bottom: 150px;
 }
+.withoutFavoriteBar { padding-bottom: 32px; }
 .page {
     max-width: 1120px;
     margin: auto;

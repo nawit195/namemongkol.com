@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, MessageCircle, Hand, Wand2, PawPrint } from 'lucide-react';
+import { Home, Search, Info, Sparkles, LogIn, LogOut, User as UserIcon, ClipboardList, Crown, Zap, History as HistoryIcon, Settings, Image as ImageIcon, BookOpen, Smartphone, MessageCircle, Hand, Wand2, PawPrint, Smile } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
 import { User } from '@supabase/supabase-js';
 import { LineOAButton } from './LineOAButton';
@@ -132,6 +132,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         { key: 'analyze', nameKey: 'sidebar.analyzeName', icon: Home, iconImage: '/icon/วิเคราะห์ชื่อ.png', iconPadding: 'p-2.5', path: '/' },
         { key: 'compare-names', nameKey: 'sidebar.compareNames', icon: ClipboardList, iconImage: '/icon/compare.png', iconPadding: 'p-2.5', path: '/compare-names' },
         { key: 'search', nameKey: 'sidebar.search', icon: Search, iconImage: '/icon/ค้นหาชื่อมงคล.png', iconPadding: 'p-2.5', path: '/search' },
+        { key: 'nicknames', nameKey: 'sidebar.nicknames', icon: Smile, iconImage: '/icon/nickname.png', iconPadding: 'p-2.5', path: '/nicknames' },
         { key: 'premium-search', nameKey: 'sidebar.premiumSearch', icon: Sparkles, iconImage: '/icon/คัดสรรชื่อมงคล.png', iconPadding: 'p-2', path: '/premium-search' },
         { key: 'premium-analysis', nameKey: 'sidebar.premiumAnalysis', icon: Crown, iconImage: '/icon/ออกแบบชื่อมงคล.png', path: '/premium-analysis' },
         { key: 'name-analysis', nameKey: 'sidebar.bulkNameFilter', icon: ClipboardList, iconImage: '/icon/ระบบคัดกรองชื่อ.png', iconPadding: 'p-2.5', path: '/name-analysis' },

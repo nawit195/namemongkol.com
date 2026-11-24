@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Package, Bitcoin, Zap, ShieldCheck, CheckCircle2, Upload } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createPromptPayCheckoutSession, verifyPromptPayTransaction } from '@/app/actions/stripe';
@@ -40,6 +41,8 @@ interface TopUpPageProps {
 
 export default function TopUpPage({ gateway, promptpayNumber }: TopUpPageProps) {
     const searchParams = useSearchParams();
+    const nicknameReturn = searchParams.get('returnTo');
+    const safeNicknameReturn = nicknameReturn && (nicknameReturn === '/nicknames' || nicknameReturn.startsWith('/nicknames?')) ? nicknameReturn : null;
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const [tiers, setTiers] = useState<PricingTier[]>([]);
@@ -191,6 +194,11 @@ export default function TopUpPage({ gateway, promptpayNumber }: TopUpPageProps) 
                 </div>
 
                 <div className="relative z-10 max-w-5xl space-y-5 md:space-y-12 pt-0 md:pt-8">
+                    {safeNicknameReturn && (
+                        <Link prefetch={false} href={safeNicknameReturn} className="inline-flex min-h-11 items-center rounded-lg border border-slate-200 bg-slate-50 px-4 text-sm font-bold text-slate-700">
+                            กลับไปเลือกชื่อเล่นมงคล
+                        </Link>
+                    )}
                     {/* Header */}
                     <div className="text-center space-y-2 md:space-y-4">
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-[#1e293b] bg-[#0f172a] text-emerald-400 text-xs md:text-sm font-medium shadow-sm">
