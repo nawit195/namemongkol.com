@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { BookOpen, Crown, Hand, Home, ImageIcon, Search, Smartphone, Sparkles } from 'lucide-react';
+import { BookOpen, Crown, Hand, Home, ImageIcon, Search, Smartphone, Sparkles, Smile } from 'lucide-react';
 
 export const MobileSecondaryNav = () => {
     const pathname = usePathname();
@@ -14,6 +14,7 @@ export const MobileSecondaryNav = () => {
         { name: 'เปรียบเทียบชื่อฟรี', shortName: 'เทียบชื่อ', icon: Home, iconImage: '/icon/compare.png', path: '/compare-names' },
         { name: 'บทความ', shortName: 'บทความ', icon: BookOpen, iconImage: '/icon/บทความ.png', path: '/articles' },
         { name: 'ค้นหาชื่อมงคล', shortName: 'ค้นชื่อ', icon: Search, iconImage: '/icon/ค้นหาชื่อมงคล.png', path: '/search' },
+        { name: 'ชื่อเล่นมงคล', shortName: 'ชื่อเล่น', icon: Smile, iconImage: '/icon/nickname.png', path: '/nicknames' },
         { name: 'ตั้งชื่อลูกพร้อมความหมาย', shortName: 'ชื่อลูก', icon: Search, iconImage: '/icon/mother-day.png', path: '/names' },
         { name: 'คัดสรรชื่อมงคล', shortName: 'Pro', icon: Sparkles, iconImage: '/icon/คัดสรรชื่อมงคล.png', path: '/premium-search' },
         { name: 'ออกแบบชื่อมงคล', shortName: 'Premium', icon: Crown, iconImage: '/icon/ออกแบบชื่อมงคล.png', path: '/premium-analysis' },

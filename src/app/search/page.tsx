@@ -291,6 +291,7 @@ export default async function SearchPage() {
                             <Link prefetch={false} href="/names/girls/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อเล่นลูกสาว
                             </Link>
+                            <Link prefetch={false} href="/nicknames" className="rounded-xl border border-amber-200 bg-amber-50 px-5 py-3 font-medium text-amber-800 transition-colors hover:bg-amber-100">ชื่อเล่นมงคลตามวันเกิด</Link>
                             <Link prefetch={false} href="/names/boys/nicknames" className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 font-medium text-slate-700 transition-colors hover:bg-slate-100">
                                 ชื่อเล่นลูกชาย
                             </Link>
