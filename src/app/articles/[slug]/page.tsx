@@ -1,4 +1,6 @@
 import { NamingNavigation } from '@/components/names/NamingShell';
+import { NamingArticleJourney } from '@/components/names/NamingArticleJourney';
+import { getArticleNamingJourney } from '@/lib/articleNamingJourney';
 
 import Link from 'next/link';
 import Script from 'next/script';
@@ -582,7 +584,7 @@ function ArticleEnhancementBlock({ article }: { article: Article }) {
                 </figure>
             </div>
 
-            <div className="mt-6 border-t border-slate-200 pt-5">
+            {getArticleNamingJourney(article.slug) ? <NamingArticleJourney slug={article.slug} /> : <div className="mt-6 border-t border-slate-200 pt-5">
                 <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#1a1a3e]">
                     <Link2 className="h-4 w-4 text-amber-600" />
                     อ่านแล้วต่อยอดได้ทันที
@@ -599,7 +601,7 @@ function ArticleEnhancementBlock({ article }: { article: Article }) {
                         </Link>
                     ))}
                 </div>
-            </div>
+            </div>}
         </section>
     );
 }
@@ -917,7 +919,11 @@ export default async function ArticlePage({ params }: Props) {
                         },
                         "datePublished": datePublishedIso,
                         "dateModified": dateModifiedIso,
-                        "author": [{
+                        "author": [article.author === 'ทีมงาน NameMongkol' ? {
+                            "@type": "Organization",
+                            "name": article.author,
+                            "url": `${baseUrl}/about`,
+                        } : {
                             "@type": "Person",
                             "name": article.author,
                             "url": `${baseUrl}/about`,

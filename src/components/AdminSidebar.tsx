@@ -33,6 +33,8 @@ export const AdminSidebar = () => {
         { name: 'จัดการรีวิว', icon: MessageCircle, path: '/admin/reviews' },
         { name: 'รายการแจ้งโอน', icon: Receipt, path: '/admin/slips' },
         { name: 'Analytics', icon: BarChart3, path: '/admin/analytics' },
+        { name: 'ผู้เข้าชมรายวัน', icon: BarChart3, path: '/admin/page-traffic' },
+        { name: 'Google Search Console', icon: BarChart3, path: '/admin/search-console' },
     ];
 
     return (

@@ -206,6 +206,15 @@ export async function NamesCategoryPage({
                 ])}
             />
             {mode === 'nicknames' && <p className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm leading-7 text-slate-700">เลือกชื่อเล่นตามวันเกิด ผลรวม และเกรดได้ใน <Link prefetch={false} href={`/nicknames?gender=${gender === 'boys' ? 'male' : 'female'}`} className="font-bold text-amber-800 underline underline-offset-4">ชื่อเล่นมงคลเกรด A, B และ A+</Link></p>}
+            {mode === 'nicknames' && (
+                <p className="mb-6 text-sm leading-7 text-slate-700">
+                    ถ้าชอบเลือกจากความหมาย ลองดู{' '}
+                    <Link prefetch={false} href="/nicknames/meaning/light" className="inline-flex min-h-11 items-center font-semibold text-amber-800 underline underline-offset-4">ชื่อเล่นสื่อถึงแสงสว่าง</Link>{' '}
+                    <Link prefetch={false} href="/nicknames/meaning/happiness" className="inline-flex min-h-11 items-center font-semibold text-amber-800 underline underline-offset-4">ชื่อเล่นสื่อถึงความสุข</Link>{' '}
+                    หรือ{' '}
+                    <Link prefetch={false} href="/nicknames/unisex" className="inline-flex min-h-11 items-center font-semibold text-amber-800 underline underline-offset-4">ชื่อเล่นใช้ได้ทุกเพศ</Link>
+                </p>
+            )}
             {mode === 'given' ? (
                 <>
                     <EditorialNames gender={gender} />

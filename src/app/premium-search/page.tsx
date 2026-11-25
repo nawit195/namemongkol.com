@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import ClientPage from './ClientPage';
+import { NamingIntentLinks } from '@/components/names/NamingIntentLinks';
 import { fetchPremiumPublishedCount } from '@/lib/premiumNameDetails';
 import { siteUrl } from '@/lib/seo';
 import { namingBrandDescription, premiumCurationDescription, namingScienceNames, premiumSearchDescription } from '@/data/namingApproach';
@@ -156,6 +157,7 @@ export default async function PremiumSearchPage() {
                             </Link>
                         </div>
                     </div>
+                    <NamingIntentLinks context="premium" />
                 </div>
             </section>
         </>

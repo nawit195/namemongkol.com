@@ -4,52 +4,10 @@ import { createClient } from '@supabase/supabase-js';
 import { articles as localArticles } from '@/data/articles';
 import { siteUrl } from '@/lib/seo';
 import { isRedirectedArticleSlug } from '@/lib/articleRedirects';
+import { getPublishedNicknameCollections } from '@/lib/nicknameCollections';
+import { getMeaningDiscoveryNames } from '@/lib/nameMeaningCatalog';
 
 export const revalidate = 86400;
-
-const popularNames = [
-    'ภูมิพัฒน์',
-    'ธนกร',
-    'ปภาวรินทร์',
-    'ณัฐชา',
-    'พิชญา',
-    'กานต์พงศ์',
-    'สิรภพ',
-    'อภิชญา',
-    'พิมพ์ชนก',
-    'ชนิดาภา',
-    'กิตติภัทร',
-    'วรินทร',
-    'ภัคพล',
-    'ธนัช',
-    'นภัสสร',
-    'ปุณยวีร์',
-    'ณิชา',
-    'ชนมน',
-    'กฤษณ์',
-    'ศุภกร',
-    'ธีรภัทร',
-    'ปัณณวิชญ์',
-    'พิชญธิดา',
-    'กรวิชญ์',
-    'ณัฐกฤตา',
-    'ปวริศา',
-    'จิรัชญา',
-    'วีรภัทร',
-    'ธัญชนก',
-    'พิมพ์มาดา',
-    'ณฐพร',
-    'กัญญาณัฐ',
-    'ภูริพัฒน์',
-    'ชญาดา',
-    'ปัณฑิตา',
-    'กมลลักษณ์',
-    'อัครวินท์',
-    'พัชรพร',
-    'ธนภูมิ',
-    'สุพิชฌาย์',
-    'นันท์นภัส',
-];
 
 const toDate = (value: string | Date | null | undefined) => {
     if (!value) return undefined;
@@ -70,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const routes = [
         '',
         '/name-check',
+        '/meaning',
         '/compare-names',
         '/about',
         '/methodology',
@@ -106,8 +65,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${baseUrl}${path}`,
     }));
 
-    const meaningUrls: MetadataRoute.Sitemap = popularNames.map((name) => ({
-        url: `${baseUrl}/meaning/${encodeURIComponent(name)}`,
+    const meaningUrls: MetadataRoute.Sitemap = (await getMeaningDiscoveryNames()).map((entry) => ({
+        url: `${baseUrl}${entry.path}`,
     }));
 
     const wallpaperDays = ['sunday', 'monday', 'tuesday', 'wednesday', 'wednesday_night', 'thursday', 'friday', 'saturday'];
@@ -171,6 +130,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return dedupeSitemapEntries([
         ...staticUrls,
+        ...getPublishedNicknameCollections().map(collection => ({ url: `${baseUrl}${collection.path}` })),
         ...meaningUrls,
         ...wallpaperCategoryUrls,
         ...namingOverviewUrls,

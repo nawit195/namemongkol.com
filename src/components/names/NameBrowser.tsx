@@ -4,10 +4,12 @@ import { useEffect, useMemo, useState } from 'react';
 import type { PublicNameRecord } from '@/lib/publicNames';
 import type { DayKey } from '@/types';
 import { namingBirthdayLinks } from '@/data/babyNaming';
+import { meaningDiscoverySeeds } from '@/data/meaningDiscovery';
 import { FavoriteButton, trackNaming } from './NamingProvider';
 import styles from './naming.module.css';
 
 import { publicNameChoice, type NameChoice } from '@/lib/nameChoices';
+const meaningDiscoveryNames = new Set(meaningDiscoverySeeds.map(name => name.normalize('NFC')));
 const firstLetter = (name: string) =>
     name.match(/[ก-ฮA-Za-z]/u)?.[0].toUpperCase() ?? '';
 const styleLabels: Record<string, string> = {
@@ -279,7 +281,16 @@ export function NameBrowser({
                         key={`${item.kind}:${item.name}`}
                         className={styles.card}
                     >
-                        <h3>{item.name}</h3>
+                        <h3>{item.kind === 'thai' && meaningDiscoveryNames.has(item.name.normalize('NFC')) ? (
+                            <Link
+                                prefetch={false}
+                                href={`/meaning/${encodeURIComponent(item.name.normalize('NFC'))}`}
+                                className={styles.meaningLink}
+                            >
+                                {item.name}
+                                <span className="sr-only"> อ่านความหมายของชื่อ</span>
+                            </Link>
+                        ) : item.name}</h3>
                         {item.pronunciation && (
                             <p className={styles.meta}>
                                 คำอ่าน: {item.pronunciation}
