@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { NamingIntentLinks } from '@/components/names/NamingIntentLinks';
 import { namingSciences } from '@/data/namingApproach';
 import { nameCheckFaqItems, nameCheckHowTo } from '@/data/nameCheckSeo';
 import { calculateScore } from '@/utils/calculateScore';
@@ -140,6 +141,7 @@ export function NameCheckSeoContent() {
                         ))}
                     </div>
                 </div>
+                <NamingIntentLinks context="analysis" />
             </div>
         </section>
     );

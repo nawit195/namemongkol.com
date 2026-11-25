@@ -18,10 +18,12 @@ import {
     namingBreadcrumbSchema,
 } from '@/components/names/NamingShell';
 import { NamingGuide } from '@/components/names/NamingGuide';
+import { NamingIntentLinks } from '@/components/names/NamingIntentLinks';
 import { NameBrowser } from '@/components/names/NameBrowser';
 import styles from '@/components/names/naming.module.css';
 export const revalidate = 600;
 const pageUrl = `${siteUrl}/names`;
+const shareImage = `${siteUrl}/api/og?${new URLSearchParams({ variant: 'default', title: 'ตั้งชื่อลูกพร้อมความหมาย', subtitle: 'เลือกชื่อลูกชาย ลูกสาว และไอเดียชื่อเล่น', tag: 'Baby Names' })}`;
 
 export const metadata: Metadata = {
     title: { absolute: babyNamingTitle },
@@ -33,11 +35,14 @@ export const metadata: Metadata = {
         url: pageUrl,
         locale: 'th_TH',
         type: 'website',
+        siteName: 'NameMongkol',
+        images: [{ url: shareImage, width: 1200, height: 630, alt: 'ตั้งชื่อลูกพร้อมความหมายที่ NameMongkol' }],
     },
     twitter: {
         card: 'summary_large_image',
         title: babyNamingTitle,
         description: babyNamingDescription,
+        images: [shareImage],
     },
 };
 
@@ -99,6 +104,7 @@ export default async function BabyNamesPage() {
                 </Link>
             </div>
             <NamingGuide />
+            <NamingIntentLinks context="baby" />
             <NamingNextStep />
         </NamingShell>
     );

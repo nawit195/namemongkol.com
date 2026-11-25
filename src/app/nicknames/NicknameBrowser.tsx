@@ -16,7 +16,6 @@ import {
     X,
 } from 'lucide-react';
 import { supabase } from '@/utils/supabase';
-import { FavoriteListButton } from '@/components/names/NamingProvider';
 import {
     DEFAULT_NICKNAME_FILTERS,
     NICKNAME_DAYS,
@@ -313,22 +312,7 @@ export default function NicknameBrowser({
     }
 
     return (
-        <main className={styles.page}>
-            <nav className={styles.breadcrumbs} aria-label="เส้นทางหน้า">
-                <Link prefetch={false} href="/search">
-                    ค้นหาชื่อมงคล
-                </Link>
-                <span aria-hidden="true">/</span>
-                <span>ชื่อเล่นมงคล</span>
-            </nav>
-            <header className={styles.header}>
-                <div>
-                    <p className={styles.eyebrow}>เลือกเสียงเรียกที่ชอบ</p>
-                    <h1>ชื่อเล่นมงคล</h1>
-                    <p>เลือกจากความหมาย วันเกิด และเลขศาสตร์</p>
-                </div>
-                <FavoriteListButton className={styles.favoritesTrigger} />
-            </header>
+        <>
             <div
                 className={styles.tabs}
                 role="group"
@@ -882,6 +866,6 @@ export default function NicknameBrowser({
                     </Link>
                 </div>
             </footer>
-        </main>
+        </>
     );
 }

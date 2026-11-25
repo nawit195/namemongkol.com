@@ -1,0 +1,18 @@
+.journey { margin-top: 24px; padding-top: 22px; border-top: 1px solid oklch(0.86 0.02 275); color: oklch(0.27 0.045 275); }
+.journey h2 { font-size: 18px; font-weight: 750; line-height: 1.65; }
+.intro { max-width: 75ch; margin: 8px 0 18px; font-size: 14px; line-height: 1.9; color: oklch(0.45 0.025 275); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
+.steps li { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.number { color: oklch(0.47 0.065 75); font-size: 13px; font-weight: 700; }
+.journey a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: oklch(0.68 0.08 78); }
+.steps a { font-size: 14px; font-weight: 700; line-height: 1.9; }
+.steps p { margin-top: 5px; font-size: 14px; line-height: 1.9; color: oklch(0.45 0.025 275); }
+.journey a:hover { color: oklch(0.4 0.08 70); }
+.journey a:focus-visible { outline: 2px solid oklch(0.5 0.1 75); outline-offset: 4px; border-radius: 2px; }
+.related { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 18px; font-size: 14px; line-height: 1.9; }
+.related span { color: oklch(0.45 0.025 275); }
+@media (max-width: 700px) {
+    .steps { grid-template-columns: 1fr; gap: 16px; }
+    .journey a { display: inline-flex; align-items: center; min-height: 44px; }
+    .steps p { margin-top: 0; }
+}

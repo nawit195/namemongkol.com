@@ -109,6 +109,52 @@
     font-variant-numeric: tabular-nums;
     color: var(--nk-muted);
 }
+.collectionNav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 20px;
+}
+.collectionNav a,
+.collectionReturn a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    color: oklch(0.43 0.075 70);
+    font-size: 13px;
+    text-decoration: none;
+}
+.collectionNav a {
+    padding: 7px 12px;
+    border: 1px solid oklch(0.88 0.035 80);
+    border-radius: 10px;
+    background: oklch(0.985 0.012 80);
+}
+.collectionPage .header { align-items: flex-start; flex-wrap: wrap; }
+.collectionPage .header > div { flex: 1 1 440px; }
+.collectionPage .header h1 { font-size: 26px; max-width: 28ch; }
+.collectionPage .header p:not(.eyebrow) { display: block; }
+.collectionIntro { max-width: 72ch; line-height: 1.9; margin: 18px 0; }
+.collectionGuide { border-block: 1px solid var(--nk-card-line); padding: 18px 0; margin-bottom: 24px; max-width: 76ch; }
+.collectionGuide h2, .collectionAnswer h2 { font-size: 17px; font-weight: 750; margin-bottom: 8px; }
+.collectionGuide p, .collectionAnswer p { line-height: 1.9; margin-top: 8px; }
+.collectionGuide p:last-child { color: var(--nk-muted); font-size: 12px; }
+.collectionEntry { min-width: 0; }
+.collectionReason { padding: 10px 4px 4px; color: var(--nk-muted); font-size: 12px; line-height: 1.8; }
+.collectionReason strong { font-weight: 650; color: var(--nk-ink); }
+.collectionAnswer { max-width: 76ch; margin: 32px 0 20px; padding-top: 22px; border-top: 1px solid var(--nk-card-line); }
+.collectionReturn { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; }
+.nicknameSeo { margin-top: 32px; color: var(--nk-ink); }
+.nicknameSeo h2 { font-size: 20px; font-weight: 750; margin-bottom: 16px; }
+.nicknameSeo h3 { font-size: 15px; font-weight: 700; margin: 18px 0 6px; }
+.nicknameSeo p { max-width: 75ch; font-size: 14px; line-height: 1.9; color: oklch(0.47 0.025 275); }
+@media (min-width: 768px) {
+    .collectionPage .header h1 { font-size: 34px; }
+}
+@media (max-width: 359px) {
+    .collectionPage .header { flex-wrap: wrap; }
+}
 .tabs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -739,6 +785,7 @@
     .cardActions > .analyzeButton:hover {
         border-color: var(--nk-action-hover);
         background: var(--nk-action-hover);
+        color: oklch(0.985 0.005 80);
     }
     .cardActions > button:hover {
         border-color: var(--nk-gold-line);

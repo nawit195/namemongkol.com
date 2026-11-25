@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import { siteUrl } from '@/lib/seo';
 
 const privacyUrl = `${siteUrl}/privacy`;
-const lastUpdated = '2 มิถุนายน 2569';
-const dateModified = '2026-06-02';
+const lastUpdated = '24 พฤศจิกายน 2569';
+const dateModified = '2026-11-24';
 
 export const metadata: Metadata = {
     title: {
@@ -232,6 +232,11 @@ export default function PrivacyPage() {
                             <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-6">
                                 <Cookie className="mb-4 text-cyan-300" size={28} />
                                 <h2 className="text-xl font-bold text-white">4. Cookies และ Analytics</h2>
+                                <p className="mt-3 text-slate-300 leading-relaxed">
+                                    สถิติผู้เข้าชมรายหน้าใช้เส้นทางของหน้าและตัวระบุสุ่มที่เก็บในเบราว์เซอร์ เพื่อแยกจำนวนครั้งที่เปิดหน้ากับผู้เข้าชมไม่ซ้ำต่อวัน
+                                    ฝั่งระบบเก็บเฉพาะค่าที่แปลงด้วยรหัสลับแยกตามวัน และแสดงรายงานรวมแก่ผู้ดูแล
+                                    ตัวนับนี้ไม่บันทึก IP อีเมล ข้อมูลในแบบฟอร์ม หรือพารามิเตอร์ค้นหาใน URL และเคารพการตั้งค่า Do Not Track และ Global Privacy Control
+                                </p>
                                 <p className="mt-3 text-slate-300 leading-relaxed">
                                     เราใช้คุกกี้ที่จำเป็นสำหรับ session การเข้าสู่ระบบ การตั้งค่าภาษา และความปลอดภัย
                                     รวมถึง analytics/pixel ที่เปิดใช้งานใน production เพื่อวัดการใช้งานและปรับปรุงเว็บไซต์

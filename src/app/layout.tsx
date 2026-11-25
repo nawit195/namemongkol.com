@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from 'react';
+import { PageViewTracker } from '@/components/PageViewTracker';
 import { namingBrandDescription, namingScienceNames } from '@/data/namingApproach';
 import { Geist, Geist_Mono, Noto_Sans_Thai } from "next/font/google";
 import { GoogleTagManager } from '@next/third-parties/google';
@@ -215,6 +217,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
+            <Suspense fallback={null}><PageViewTracker /></Suspense>
             {isProduction ? <GoogleTagManager gtmId={gtmId} /> : null}
 
             {isProduction && facebookPixelId && (

@@ -9,6 +9,16 @@ export type ArticleTopicCluster = {
 
 export const topicClusters: ReadonlyArray<ArticleTopicCluster> = [
     {
+        title: 'ตัดสินใจเลือกชื่ออย่างเข้าใจ',
+        description: 'แยกความหมายทางภาษาออกจากผลรวม แล้วเลือกชื่อที่เจ้าของชื่อและครอบครัวพอใจ',
+        links: [
+            { href: '/articles/real-name-nickname-numerology', label: 'ชื่อจริงกับชื่อเล่นต้องมีผลรวมเหมือนกันไหม' },
+            { href: '/articles/name-meaning-vs-numerology', label: 'ชื่อความหมายดี แต่ผลรวมไม่ตรง ควรเลือกอย่างไร' },
+            { href: '/meaning', label: 'อ่านความหมายชื่อและสถานะคำอ่าน' },
+            { href: '/name-check', label: 'ทดลองวิเคราะห์ชื่อร่วมกับนามสกุล' },
+        ],
+    },
+    {
         title: 'เริ่มต้นตั้งชื่อลูก',
         description: 'เหมาะสำหรับพ่อแม่ที่ต้องการชื่อจริง ความหมายดี และไม่ชนอักษรกาลกิณี',
         links: [

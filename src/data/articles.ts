@@ -19,6 +19,7 @@ import { articleFreeNameAnalysisNumerologyGuide } from './article-free-name-anal
 import { articleChangeNameChecklistNumerologyThaksaAyatana } from './article-change-name-checklist-numerology-thaksa-ayatana';
 import { articlePetNames } from './article-pet-names';
 import { articleLuckyNamesGradeA2569 } from './article-lucky-names-grade-a-2569';
+import { namingDecisionGuides } from './article-naming-decision-guides';
 
 export interface FaqItem {
     question: string;
@@ -71,6 +72,7 @@ export interface Article {
 }
 
 const articleEntries: Article[] = [
+    ...namingDecisionGuides,
     articleLuckyNamesGradeA2569,
     articlePetNames,
     articleWhatIsNameAnalysis,

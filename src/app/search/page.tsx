@@ -8,6 +8,7 @@ import { queryPublicNames } from '@/lib/publicNames';
 import { siteUrl } from '@/lib/seo';
 import { THAI_NAME_INITIALS } from '@/data/thaiInitials';
 import { buildLetterPreviewLookup } from './letterPreviews';
+import { NamingIntentLinks } from '@/components/names/NamingIntentLinks';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 const searchPageTitle = 'ตั้งชื่อมงคล ค้นหาชื่อพร้อมความหมายและเลขศาสตร์ | NameMongkol';
@@ -221,6 +222,7 @@ export default async function SearchPage() {
                             </div>
                         ))}
                     </dl>
+                    <NamingIntentLinks context="search" />
                     <p className="mt-4 max-w-3xl text-sm leading-6 text-slate-600">
                         หมายเหตุ: ชื่อเฉพาะบางชื่ออาจอ่านได้มากกว่าหนึ่งแบบตามเจตนาของผู้ตั้งชื่อ ควรตรวจเสียงอ่านกับครอบครัวหรือเจ้าของชื่ออีกครั้ง ดูหลักการคำนวณและแหล่งข้อมูลได้ที่{' '}
                         <Link prefetch={false} href="/methodology" className="font-semibold text-amber-800 underline decoration-amber-300 underline-offset-4 hover:text-amber-950">
