@@ -100,7 +100,7 @@ const getCachedDbArticles = unstable_cache(
     { revalidate: 86400, tags: ['articles'] }
 );
 
-const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569']);
+const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569', 'monday-girl-names-2569-no-sara', '100-auspicious-women-names-2026']);
 
 async function getArticles() {
     const dbArticles = await getCachedDbArticles();

@@ -1,0 +1,30 @@
+.filter { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid oklch(88% .025 285); border-radius: 1rem; background: oklch(98% .009 285); color: oklch(28% .045 285); }
+.heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+.heading h2 { font-size: 1.15rem; font-weight: 700; margin: 0; }
+.heading span, .note { font-size: .875rem; color: oklch(44% .035 285); line-height: 1.8; }
+.fields { display: grid; grid-template-columns: 1.5fr 1fr; gap: .75rem; }
+.fields label { display: grid; gap: .375rem; font-size: .875rem; font-weight: 600; }
+.fields input, .fields select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid oklch(80% .03 285); border-radius: .65rem; padding: .65rem; background: oklch(99% .004 285); font: inherit; color: inherit; }
+.fields :focus-visible, .status button:focus-visible { outline: 2px solid oklch(58% .13 75); outline-offset: 3px; }
+.check { display: flex; align-items: flex-start; gap: .625rem; margin: 1rem 0; font-size: .875rem; line-height: 1.8; }
+.check input { width: 1.125rem; height: 1.125rem; margin-top: .2rem; flex-shrink: 0; }
+.status { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; }
+.status p { font-size: .875rem; margin: .75rem 0; }
+.status button { min-height: 44px; padding: .5rem .75rem; border-radius: .5rem; text-decoration: underline; cursor: pointer; }
+.status button:disabled { opacity: .5; cursor: default; }
+.note { margin: .5rem 0 0; }
+.content :global([hidden]) { display: none !important; }
+.content :global(.name-table-analysis) { display: block; padding: .5rem 0; font-size: .875rem; font-weight: 500; }
+.content :global(.name-table-pending) { font-size: .875rem; color: oklch(45% .025 285); }
+@media (max-width: 640px) {
+    .fields { grid-template-columns: 1fr; }
+    .filter { padding: 1rem; }
+    .content :global(table[data-name-table]) { width: 100%; min-width: 0; }
+    .content :global(table[data-name-table] thead) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .content :global(table[data-name-table] tbody) { display: block; }
+    .content :global([data-name-row]) { display: grid; grid-template-columns: 1fr 1fr; padding: .75rem; border-bottom: 1px solid oklch(90% .015 285); }
+    .content :global([data-name-row] td) { display: block; width: auto; padding: .25rem; overflow-wrap: anywhere; font-size: .875rem; }
+    .content :global([data-name-field="name"]), .content :global([data-name-field="meaning"]) { grid-column: 1 / -1; }
+    .content :global([data-name-field="name"]) { font-size: 1.125rem; }
+    .content :global([data-name-field="number"]) { display: none; }
+}

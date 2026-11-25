@@ -54,12 +54,18 @@ describe('conservative SEO keyword ownership', () => {
         const wallpapers = readSource('src/app/wallpapers/page.tsx');
         const wallpaperDay = readSource('src/app/wallpapers/day/[day]/page.tsx');
 
-        expect(mondayArticle).toContain("metaTitle: 'ชื่อมงคล คนเกิดวันจันทร์ ผู้หญิง 2569 รวม 400 ชื่อทันสมัย | NameMongkol'");
+        expect(mondayArticle).toContain("metaTitle: 'ชื่อมงคลคนเกิดวันจันทร์ ผู้หญิง 2569 พร้อมความหมายและตัวกรอง'");
+        expect(mondayArticle).toContain("slug: 'monday-girl-names-2569-no-sara'");
+        expect(mondayArticle).not.toContain('ปลอดสระกาลกิณี 100%');
         expect(wallpapers).toContain("const pageTitle = 'วอลเปเปอร์มงคลตามวันเกิดและราศี | NameMongkol'");
         const finance = readSource('src/app/wallpapers/intent/finance/page.tsx');
         expect(finance).toContain("const title = 'วอลเปเปอร์เสริมดวงการเงิน 4289 | NameMongkol'");
         expect(finance).toContain('<h1>วอลเปเปอร์เสริมดวงการเงิน</h1>');
-        expect(finance).not.toContain('ดาวน์โหลดฟรี');
+        const financeDescription = finance.match(/const description = '([^']+)'/)?.[1];
+        expect(financeDescription).toBeTruthy();
+        expect(financeDescription).not.toContain('ดาวน์โหลดฟรี');
+        expect(finance).toContain('ดาวน์โหลด PNG เต็มขนาดใช้ 15 เครดิตต่อภาพ');
+        expect(finance).toContain('href="/wallpapers/day/wednesday"');
         expect(wallpapers).toContain("canonical: `${siteUrl}/wallpapers`");
         expect(wallpaperDay).toContain('canonical: `${siteUrl}/wallpapers/day/${day}`');
     });

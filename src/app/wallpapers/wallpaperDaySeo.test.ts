@@ -16,7 +16,7 @@ import { REVIEWED_DAY_WALLPAPERS } from '@/data/wallpaperDayContent';
 import { INITIAL_WALLPAPERS, buildWallpaperAlt } from '@/data/wallpapers';
 
 describe('wallpaper search intent and server-rendered content', () => {
-    for (const day of ['saturday', 'sunday', 'thursday']) {
+    for (const day of ['saturday', 'sunday', 'thursday', 'tuesday']) {
         test(`${day} has a unique day heading, truthful download terms, visible FAQ and a matching real image`, async () => {
             const content = REVIEWED_DAY_WALLPAPERS[day]!;
             const params = Promise.resolve({ day });

@@ -19,6 +19,15 @@ export function SearchConsolePreview({ preview, busy, onConfirm }: { preview: Gs
             <th scope="row" className={styles.rowKey}>{file.name}<small className={styles.dimensionLabel}>{kindLabels[file.kind]}</small></th><td>{count(file.rows)}</td><td>{count(file.summary.clicks)}</td><td>{count(file.summary.impressions)}</td><td>{file.summary.impressions ? `${decimal(file.summary.ctr)}%` : '—'}</td><td>{file.summary.impressions ? decimal(file.summary.position) : '—'}</td>
         </tr>)}</tbody></table></div>
         <p className={styles.notes}>ตรวจช่วงวันที่ ตัวกรอง และชนิดไฟล์อีกครั้งก่อนยืนยัน ชุดที่นำเข้าจะถูกบันทึกเป็นเวอร์ชันแยก และไฟล์เดิมที่ส่งซ้ำจะเปิดรายงานเดิม</p>
+        {preview.review && <section className={styles.notice} aria-label="ประเด็นทบทวน SEO จากข้อมูลนำเข้า">
+            <h3>ประเด็นทบทวน SEO จากชุดนี้</h3>
+            {preview.review.periods.map(period => <p key={period.days}>{period.days} วันล่าสุด ({period.currentFrom} ถึง {period.currentTo}, PT): {count(period.currentClicks)} คลิก เทียบ {count(period.previousClicks)} คลิกช่วง {period.previousFrom} ถึง {period.previousTo} ({signedPercent(period.change)})</p>)}
+            {!preview.review.periods.length && <p>ยังไม่มีข้อมูล Chart ครบสองช่วงสำหรับเปรียบเทียบ 28 หรือ 56 วัน</p>}
+            {preview.review.topTwoShare !== null && <p>สองหน้าแรกมี {decimal(preview.review.topTwoShare)}% ของคลิกในชีตหน้า ({count(preview.review.topTwoClicks)} / {count(preview.review.pageClicks)})</p>}
+            {preview.review.queryClicks > 0 && <p>คำค้นที่ไม่พบชื่อแบรนด์: {count(preview.review.nonBrandClicks)} จาก {count(preview.review.queryClicks)} คลิกในชีตคำค้น เป็นการจำแนกข้อความเบื้องต้นและอาจไม่ครอบคลุมทุกคำค้น</p>}
+            {preview.review.opportunities.length > 0 && <ul>{preview.review.opportunities.map(row => <li key={row.query}>{row.query}: {count(row.impressions)} การแสดงผล · CTR {decimal(row.ctr)}% · อันดับ {decimal(row.position)}</li>)}</ul>}
+            <p>รายการนี้ช่วยเลือกสิ่งที่จะตรวจต่อ ไม่ระบุว่าคำค้นใดมาจากหน้าใด และไม่ยืนยันผลของการเปลี่ยนแปลงเว็บไซต์</p>
+        </section>}
         <button type="button" className={styles.primary} disabled={busy} onClick={onConfirm}>{busy ? 'กำลังยืนยันนำเข้า…' : 'ยืนยันนำเข้า'}</button>
     </section>;
 }

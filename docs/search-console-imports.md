@@ -1,8 +1,14 @@
-# Search Console CSV reports
+# Search Console CSV and XLSX reports
 
 Open `/admin/search-console`. This is an administrator-only report, independent of the site's Bangkok-time first-party page-view counter. CSV data stays private in Supabase; do not commit real exports, query terms or raw files to Git.
 
 ## Supported v1 imports
+
+The upload form also accepts a standard Google Web Search `.xlsx` export. The administrator-only, same-origin `/api/admin/search-console/workbook` endpoint streams at most 3 MiB, checks actual ZIP inflation limits, rejects formulas/macros/external workbook links and oversized sparse coordinates, and reads workbook values only on the server. It returns a no-write conversion to the existing strict CSV normalization flow. Parsing does not import data automatically.
+
+Thai and English Chart, Queries and Pages sheets remain separate. The Chart's actual daily dates prefill the PT reporting interval; the user must verify property, country, device and other filters. Relative filter labels such as “last 3 months” do not determine the dates. Country, Device and Search Appearance sheets are listed as auxiliary sheets, explicitly excluded from imported totals; their raw rows are not persisted. Images workbooks are rejected rather than mislabeled as Web. CSV support, deduplication and hash-confirmed persistence remain unchanged.
+
+The no-write preview additionally summarizes complete adjacent 28/56-day Chart periods, the top two pages' share of **imported page clicks**, and a basic text-based non-brand query breakdown. Missing daily coverage prevents that period comparison. These descriptive cards neither join separate dimensions nor establish causality. See [the 2027 operating plan](seo-2027-delivery.md) for deployment-aligned review and editorial gates.
 
 Use Google **Web Search** exports with daily PT dates. Select one CSV per dimension, up to four dimensions and 20,000 normalized rows in one import. The UTF-8 JSON request, including metadata and quoted CSV text, must fit within 3 MiB.
 

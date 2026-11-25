@@ -63,9 +63,9 @@ export function parseGscCsv(csv: string): string[][] {
 }
 const header = (value: string) => value.toLowerCase().normalize('NFC').replace(/[\s_\-./()]/g, '');
 const aliases = {
-    query: ['query', 'queries', 'topqueries', 'searchquery', 'คำค้นหา', 'คำค้นหายอดนิยม'],
-    path: ['page', 'pages', 'toppages', 'url', 'landingpage', 'หน้า', 'หน้าเว็บ', 'หน้าเว็บยอดนิยม'],
-    date: ['date', 'วันที่'], clicks: ['clicks', 'click', 'คลิก', 'จำนวนคลิก'],
+    query: ['query', 'queries', 'topqueries', 'searchquery', 'คำค้นหา', 'คำค้นหายอดนิยม', 'ข้อความค้นหายอดนิยม'],
+    path: ['page', 'pages', 'toppages', 'url', 'landingpage', 'หน้า', 'หน้าเว็บ', 'หน้าเว็บยอดนิยม', 'เพจยอดนิยม'],
+    date: ['date', 'วันที่'], clicks: ['clicks', 'click', 'คลิก', 'จำนวนคลิก', 'การคลิก'],
     impressions: ['impressions', 'impression', 'การแสดงผล', 'จำนวนการแสดงผล'],
     ctr: ['ctr', 'clickthroughrate', 'อัตราการคลิกผ่าน'],
     position: ['position', 'avgposition', 'averageposition', 'อันดับ', 'อันดับเฉลี่ย', 'ตำแหน่ง', 'ตำแหน่งเฉลี่ย'],

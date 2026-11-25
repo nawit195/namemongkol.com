@@ -47,8 +47,20 @@ export const gscPreviewSchema = z.object({
     scope: gscScopeSchema, kinds, rowCount: count, contentHash: z.string().regex(/^[a-f0-9]{64}$/),
     files: z.array(z.object({ name: z.string(), kind: z.enum(GSC_FILE_KINDS), rows: count, summary })).min(1).max(4),
     warnings: z.array(z.string()),
+    review: z.object({
+        periods: z.array(z.object({ days: z.number(), currentFrom: isoDay, currentTo: isoDay, previousFrom: isoDay, previousTo: isoDay, currentClicks: count, previousClicks: count, change: z.number().nullable() })),
+        pageClicks: count, topTwoClicks: count, topTwoShare: metric.nullable(), queryClicks: count, nonBrandClicks: count,
+        opportunities: z.array(z.object({ query: z.string(), clicks: count, impressions: count, ctr: metric, position: metric })),
+    }).optional(),
 });
 export type GscPreview = z.infer<typeof gscPreviewSchema>;
+export const gscWorkbookResponseSchema = z.object({ success: z.literal(true), workbook: z.object({
+    files: z.array(z.object({ name: z.string(), kind: z.enum(GSC_FILE_KINDS), csv: z.string() })).min(1).max(4),
+    from: isoDay, to: isoDay, searchType: z.literal('web'),
+    sheets: z.array(z.object({ name: z.string(), kind: z.enum(GSC_FILE_KINDS).nullable(), rows: count })).max(12),
+    filters: z.array(z.object({ label: z.string(), value: z.string() })), warnings: z.array(z.string()),
+}) });
+export type GscWorkbook = z.infer<typeof gscWorkbookResponseSchema>['workbook'];
 export const gscPreviewResponseSchema = z.object({ success: z.literal(true), preview: gscPreviewSchema });
 export const gscReportSchema = z.object({
     id: z.uuid(), createdAt: z.string().datetime({ offset: true }), scope: gscScopeSchema,

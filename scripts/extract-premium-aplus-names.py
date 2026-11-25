@@ -1,11 +1,13 @@
 """Read only sheet A+; run with bundled Python (openpyxl). Never modifies Excel."""
-import sys, json, hashlib, unicodedata
+import sys, json, hashlib, unicodedata, re
 from pathlib import Path
 import openpyxl
 
 source, output = map(Path, sys.argv[1:3])
 workbook = openpyxl.load_workbook(source, read_only=True, data_only=True)
 sheet = workbook['A+']
+if sheet.max_row is None or sheet.max_column is None:
+    sheet.calculate_dimension(force=True)
 headers = [c.value for c in sheet[1]]
 required = ['รายชื่อ', 'คำอ่าน', 'ความหมาย', 'ชื่อภาษาอังกฤษ']
 assert all(headers.count(label) == 1 for label in required), 'Unexpected or ambiguous headers'
@@ -22,7 +24,7 @@ for row, values in enumerate(sheet.iter_rows(min_row=2, values_only=True), 2):
     if name == 'ขันธ์' and english == 'ขันธ์':
         corrections.append({'row': row, 'from': english, 'to': '', 'reason': 'Thai text in English column'})
         english = ''
-    if english and not all(ord(c) < 128 for c in english):
+    if english and not re.fullmatch(r"[A-Za-z][A-Za-z .'-]*", english):
         invalid_fields.append({'row': row, 'name': name, 'field': 'englishName', 'value': english})
         english = ''
     item = dict(row=row, name=name, pronunciation=pronunciation, meaning=meaning, englishName=english)

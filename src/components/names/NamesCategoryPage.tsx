@@ -215,6 +215,11 @@ export async function NamesCategoryPage({
                     <Link prefetch={false} href="/nicknames/unisex" className="inline-flex min-h-11 items-center font-semibold text-amber-800 underline underline-offset-4">ชื่อเล่นใช้ได้ทุกเพศ</Link>
                 </p>
             )}
+            {mode === 'given' && gender === 'boys' && <section className={styles.section}>
+                <h2>เริ่มเลือกชื่อลูกชายจากความหมายและเสียงเรียก</h2>
+                <p>ลองเลือกชื่อที่ชอบ 3–5 ชื่อจากรายการด้านล่าง อ่านคู่กับนามสกุล แล้วเปรียบเทียบคำอ่านและความหมาย หากครอบครัวใช้วันเกิดประกอบ เลือกวันเกิดจริงเพื่อดูรายชื่อที่ผ่านตัวกรองอักษรของระบบ</p>
+                <p><Link href="/names/boys/by-birthday/monday">ชื่อลูกชายวันจันทร์</Link> · <Link href="/names/boys/by-birthday/wednesday_night">ชื่อลูกชายวันพุธกลางคืน</Link> · <Link href="/meaning">ตรวจความหมายชื่อจริง</Link></p>
+            </section>}
             {mode === 'given' ? (
                 <>
                     <EditorialNames gender={gender} />
@@ -306,6 +311,11 @@ export async function NamesBirthdayPage({
                     <Link href="/methodology">อ่านวิธีคำนวณและข้อจำกัด</Link>
                 </p>
             </section>
+            {gender === 'girls' && (day === 'thursday' || day === 'saturday') && <section className={styles.section}>
+                <h2>เลือกชื่อลูกสาว{label}ให้เรียกง่ายและตรงความหมายที่ชอบ</h2>
+                <p>{day === 'thursday' ? 'ตัวกรองวันพฤหัสบดีของระบบตรวจกลุ่ม ฎ ฏ ฐ ฑ ฒ ณ ในชื่อจริง ควรดูตัวสะกดทั้งชื่อ ไม่พิจารณาเฉพาะอักษรนำ' : 'ตัวกรองวันเสาร์ของระบบตรวจกลุ่ม ด ต ถ ท ธ น ในชื่อจริง ชื่อที่ชอบอาจมีอักษรกลุ่มนี้อยู่กลางหรือท้ายคำ จึงควรตรวจทั้งชื่อ'}</p>
+                <p>เริ่มจากความหมายและเสียงที่ครอบครัวชอบ แล้วดูรายชื่อด้านล่าง คำอ่านชื่อเฉพาะอาจมีหลายแบบ ควรตรวจข้อมูลก่อนนำไปใช้ในเอกสาร และอ่านคู่กับนามสกุลจริง</p>
+            </section>}
             {gender ? (
                 <EditorialNames gender={gender} day={day} />
             ) : (
