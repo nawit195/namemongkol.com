@@ -1,6 +1,10 @@
 import { NamingNavigation } from '@/components/names/NamingShell';
 import { NamingArticleJourney } from '@/components/names/NamingArticleJourney';
 import { getArticleNamingJourney } from '@/lib/articleNamingJourney';
+import { ArticleNameFilter } from '@/components/names/ArticleNameFilter';
+import nameTableStyles from '@/components/names/article-name-filter.module.css';
+import { articleAbsoluteTitle, prepareNameArticleTables, NAME_TABLE_ARTICLES } from '@/lib/articleNameTables';
+import { getMeaningDiscoveryEntries } from '@/lib/nameMeaningCatalog';
 
 import Link from 'next/link';
 import Script from 'next/script';
@@ -34,6 +38,7 @@ import {
 } from '@/data/palmistry-seo-config';
 
 const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set([
+    ...NAME_TABLE_ARTICLES,
     'boy-names-wednesday-night-2569',
     'lucky-names-for-2026-grade-a-plus',
 ]);
@@ -649,7 +654,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     return {
-        title: article.metaTitle || article.title,
+        title: { absolute: articleAbsoluteTitle(article.metaTitle || article.title) },
         description: article.metaDescription || article.excerpt,
         keywords: article.keywords,
         alternates: { canonical: `${baseUrl}/articles/${slug}` },
@@ -727,11 +732,13 @@ export default async function ArticlePage({ params }: Props) {
     const effectiveToc = enhancedArticleContent.toc;
     const effectiveFaqItems = article.faqItems && article.faqItems.length > 0 ? article.faqItems : getFallbackFaqItems(article);
     const articleWithEffectiveEnhancements = { ...article, toc: effectiveToc, faqItems: effectiveFaqItems };
-    const articleContentHtml = normalizeArticleContentHtml(
+    const normalizedArticleHtml = normalizeArticleContentHtml(
         enhancedArticleContent.content,
         article,
         !LOCAL_PRIORITY_ARTICLE_SLUGS.has(article.slug)
     );
+    const nameTables = await prepareNameArticleTables(normalizedArticleHtml, slug, getMeaningDiscoveryEntries);
+    const articleContentHtml = nameTables.html;
 
     // ── Reading time estimate ──
     const plainText = enhancedArticleContent.content.replace(/<[^>]*>/g, '');
@@ -1038,6 +1045,7 @@ export default async function ArticlePage({ params }: Props) {
                     </div>
 
                     {/* Table of Contents — enhanced with numbered sections for long articles */}
+                    {nameTables.total > 0 && <ArticleNameFilter groups={nameTables.groups} total={nameTables.total} unique={nameTables.unique} suitable={nameTables.suitable} monday={slug === NAME_TABLE_ARTICLES[0]} />}
                     {effectiveToc && effectiveToc.length > 0 && (
                         <nav className="bg-gradient-to-br from-[#f0f0f8] to-[#e8e8f4] rounded-2xl p-6 mb-10 border border-slate-200 shadow-md" aria-label="สารบัญบทความ">
                             <h2 className="text-lg font-bold text-[#1a1a3e] mb-5 flex items-center gap-2">
@@ -1067,7 +1075,7 @@ export default async function ArticlePage({ params }: Props) {
                         </nav>
                     )}
 
-                    <ArticleEnhancementBlock article={articleWithEffectiveEnhancements} />
+                    {nameTables.total === 0 && <ArticleEnhancementBlock article={articleWithEffectiveEnhancements} />}
 
                     {/* Content */}
                     {/* Content */}
@@ -1075,8 +1083,9 @@ export default async function ArticlePage({ params }: Props) {
                         <p className="lead rounded-2xl border border-amber-500/30 bg-amber-50 p-5 text-xl font-medium text-[#1a1a3e] shadow-sm leading-relaxed">
                             {article.excerpt}
                         </p>
-                        <div dangerouslySetInnerHTML={{ __html: articleContentHtml }} />
+                        <div id={nameTables.total ? 'article-name-tables' : undefined} className={nameTables.total ? nameTableStyles.content : undefined} dangerouslySetInnerHTML={{ __html: articleContentHtml }} />
                     </article>
+                    {nameTables.total > 0 && <NamingArticleJourney slug={article.slug} />}
 
                     {/* Aura Vibe Widget — Mid-Article (คั่นระหว่างเนื้อหากับ FAQ) */}
                     <AuraVibeWidget />

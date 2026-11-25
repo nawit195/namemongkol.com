@@ -70,6 +70,14 @@ export default function FinanceWallpapersIntentPage() {
                 <Link href="/wallpapers?collection=horses">ม้า 8 ตัว</Link>
                 <Link href={FINANCE_WALLPAPER_PATH} aria-current="page">การเงิน</Link>
             </nav>
+            <section className={styles.reading} aria-labelledby="finance-download-terms">
+                <h2 id="finance-download-terms">เลือกแบบฟรีหรือคอลเลกชัน 4289</h2>
+                <p>คอลเลกชัน 4289 ด้านล่างดูตัวอย่างฟรี ดาวน์โหลด PNG เต็มขนาดใช้ 15 เครดิตต่อภาพ หากต้องการภาพประจำวันแบบฟรี เลือกดูภาพวันพุธกลางวันหรือวันศุกร์ แล้วอ่านเงื่อนไขของภาพก่อนดาวน์โหลด</p>
+                <nav className={styles.nav} aria-label="ภาพประจำวันแบบฟรี">
+                    <Link href="/wallpapers/day/wednesday">ภาพวันพุธกลางวัน · ดาวน์โหลดฟรีหลังเข้าสู่ระบบ</Link>
+                    <Link href="/wallpapers/day/friday">ภาพวันศุกร์ · ดาวน์โหลดฟรีหลังเข้าสู่ระบบ</Link>
+                </nav>
+            </section>
             <FinanceWallpaperGallery detailed />
             <Suspense fallback={null}><PaidWallpaperCollection collection="finance" showGallery={false} /></Suspense>
             <section className={styles.reading} aria-labelledby="finance-meaning-heading">

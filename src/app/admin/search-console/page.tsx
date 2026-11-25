@@ -8,6 +8,7 @@ import {
     gscImportListSchema, gscImportResultSchema, gscReportResponseSchema, gscPreviewResponseSchema,
     gscScopeSchema, inferGscFileKind, kindLabels, mergeImportHistory, defaultGscView, gscReportParams, GSC_SORTS, sortLabels,
     type GscFileKind, type GscImport, type GscReport, type GscScope, type GscPreview, type GscView, type GscSort,
+    gscWorkbookResponseSchema, type GscWorkbook,
 } from './searchConsoleUi';
 import { SearchConsolePreview, SearchConsoleReport } from './SearchConsoleReport';
 import styles from './searchConsole.module.css';
@@ -42,6 +43,10 @@ export default function SearchConsolePage() {
     const [showImport, setShowImport] = useState(false);
     const [scope, setScope] = useState<GscScope>(() => defaultGscScope());
     const [files, setFiles] = useState<UploadFile[]>([{ id: 0, kind: 'queries', file: null }]);
+    const [uploadFormat, setUploadFormat] = useState<'csv' | 'xlsx'>('csv');
+    const [workbook, setWorkbook] = useState<GscWorkbook | null>(null);
+    const [readingWorkbook, setReadingWorkbook] = useState(false);
+    const workbookVersion = useRef(0);
     const nextFileId = useRef(1);
     const [scopeConfirmed, setScopeConfirmed] = useState(false);
     const [uploading, setUploading] = useState(false);
@@ -50,7 +55,7 @@ export default function SearchConsolePage() {
     const [uploadError, setUploadError] = useState('');
     const [uploadMessage, setUploadMessage] = useState('');
     const requestKey = JSON.stringify({ ...selection, version: reportVersion });
-    const uploadBusy = uploading || validating;
+    const uploadBusy = uploading || validating || readingWorkbook;
     const report = loaded?.key === requestKey ? loaded.report : null;
     const currentImport = imports.find(item => item.id === selection.id);
     const currentScope = currentImport?.scope ?? report?.scope;
@@ -166,6 +171,26 @@ export default function SearchConsolePage() {
             setFiles(previous => [...previous, { id, kind, file: null }]); setScopeConfirmed(false); setValidated(null);
         }
     }
+    async function chooseWorkbook(file: File | null) {
+        const version = ++workbookVersion.current;
+        setWorkbook(null); setValidated(null); setScopeConfirmed(false); setUploadError('');
+        if (!file) return;
+        if (!/\.xlsx$/i.test(file.name) || file.size > MAX_UPLOAD_BYTES) { setUploadError('เลือกไฟล์ .xlsx ขนาดไม่เกิน 3 MiB'); return; }
+        setReadingWorkbook(true);
+        try {
+            const response = await fetch('/api/admin/search-console/workbook', { method: 'POST', body: file, cache: 'no-store', signal: AbortSignal.timeout(45_000) });
+            const body = await response.json();
+            if (version !== workbookVersion.current) return;
+            if (response.status === 401 || response.status === 403) { setDenied(true); setImports([]); setLoaded(null); }
+            if (!response.ok) throw new Error(body.error || 'อ่านไฟล์ XLSX ไม่สำเร็จ');
+            const parsed = gscWorkbookResponseSchema.safeParse(body);
+            if (!parsed.success) throw new Error('รูปแบบข้อมูล XLSX ไม่ถูกต้อง');
+            setWorkbook(parsed.data.workbook);
+            setScope(previous => ({ ...previous, from: parsed.data.workbook.from, to: parsed.data.workbook.to }));
+        } catch (failure) {
+            if (version === workbookVersion.current) setUploadError(failure instanceof Error && failure.name !== 'TimeoutError' ? failure.message : 'อ่าน XLSX ไม่สำเร็จ กรุณาลองใหม่');
+        } finally { if (version === workbookVersion.current) setReadingWorkbook(false); }
+    }
     async function validateUpload(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (uploadBusy) return;
@@ -174,12 +199,16 @@ export default function SearchConsolePage() {
         const parsedScope = gscScopeSchema.safeParse({ ...scope, country, filters: scope.filters.normalize('NFC').trim() });
         if (!parsedScope.success || scope.from > scope.to) { setUploadError('ตรวจช่วงวันที่ ประเทศ และตัวกรองให้ถูกต้อง'); return; }
         if (!scopeConfirmed) { setUploadError('กรุณายืนยันว่าช่วงวันที่และตัวกรองตรงกับไฟล์ส่งออก'); return; }
-        if (files.some(item => !item.file)) { setUploadError('เลือกไฟล์ CSV ให้ครบทุกแถว หรือเอาแถวที่ไม่ใช้ออก'); return; }
-        if (new Set(files.map(item => item.kind)).size !== files.length) { setUploadError('นำเข้าได้มิติละหนึ่งไฟล์ต่อชุด กรุณาตรวจชนิดไฟล์'); return; }
-        if (files.reduce((sum, item) => sum + (item.file?.size ?? 0), 0) > MAX_UPLOAD_BYTES) { setUploadError('ขนาดไฟล์รวมต้องไม่เกิน 3 MiB'); return; }
+        if (uploadFormat === 'xlsx' && !workbook) { setUploadError('เลือกและอ่านไฟล์ XLSX ให้สำเร็จก่อน'); return; }
+        if (uploadFormat === 'xlsx' && workbook && (parsedScope.data.from !== workbook.from || parsedScope.data.to !== workbook.to)) { setUploadError('ช่วงวันที่ของ XLSX ต้องตรงกับชีต Chart หากต้องการช่วงอื่น กรุณาส่งออกไฟล์ใหม่'); return; }
+        if (uploadFormat === 'csv') {
+            if (files.some(item => !item.file)) { setUploadError('เลือกไฟล์ CSV ให้ครบทุกแถว หรือเอาแถวที่ไม่ใช้ออก'); return; }
+            if (new Set(files.map(item => item.kind)).size !== files.length) { setUploadError('นำเข้าได้มิติละหนึ่งไฟล์ต่อชุด กรุณาตรวจชนิดไฟล์'); return; }
+            if (files.reduce((sum, item) => sum + (item.file?.size ?? 0), 0) > MAX_UPLOAD_BYTES) { setUploadError('ขนาดไฟล์รวมต้องไม่เกิน 3 MiB'); return; }
+        }
         setValidating(true);
         try {
-            const payload = { scope: parsedScope.data, files: await Promise.all(files.map(async item => ({ name: item.file!.name, kind: item.kind, csv: await item.file!.text() }))) };
+            const payload = { scope: parsedScope.data, files: uploadFormat === 'xlsx' ? workbook!.files : await Promise.all(files.map(async item => ({ name: item.file!.name, kind: item.kind, csv: await item.file!.text() }))) };
             const body = JSON.stringify(payload);
             if (new TextEncoder().encode(body).byteLength > MAX_UPLOAD_BYTES) throw new Error('ข้อมูลรวมหลังเข้ารหัสเกิน 3 MiB กรุณาแบ่งชุดไฟล์ให้เล็กลง');
             const response = await fetch('/api/admin/search-console?validate=1', {
@@ -217,6 +246,7 @@ export default function SearchConsolePage() {
             setQueryDraft(''); setHistoryVersion(previous => previous + 1);
             setUploadMessage(parsed.data.duplicate ? 'พบชุดข้อมูลนี้อยู่แล้ว เปิดรายงานเดิมให้แล้ว' : 'นำเข้าและบันทึกรายงานชุดใหม่แล้ว');
             setFiles([{ id: nextFileId.current++, kind: 'queries', file: null }]);
+            setWorkbook(null);
             setScopeConfirmed(false); setShowImport(false); setValidated(null);
         } catch (failure) {
             setUploadError(failure instanceof Error && failure.name !== 'TimeoutError' ? failure.message : 'ยังยืนยันผลนำเข้าไม่ได้ ลองยืนยันชุดเดิมอีกครั้ง ระบบจะตรวจชุดข้อมูลซ้ำ');
@@ -228,32 +258,43 @@ export default function SearchConsolePage() {
             <div><p className={styles.eyebrow}>ข้อมูลจาก Google Search</p><h1>Search Console</h1><p>ดูคำค้น หน้าเว็บไซต์ และโอกาสปรับ SEO จากไฟล์ที่ส่งออกจริง</p></div>
             <div className={styles.headerActions}>
                 <Link href="/admin/page-traffic">ผู้เข้าชมรายวัน</Link>
-                {!denied && <button type="button" disabled={uploadBusy} className={styles.primary} aria-expanded={showImport} aria-controls="gsc-import" onClick={() => setShowImport(previous => !previous)}><Upload size={16} aria-hidden="true" />{showImport ? 'ซ่อนฟอร์มนำเข้า' : 'นำเข้า CSV'}</button>}
+                {!denied && <button type="button" disabled={uploadBusy} className={styles.primary} aria-expanded={showImport} aria-controls="gsc-import" onClick={() => setShowImport(previous => !previous)}><Upload size={16} aria-hidden="true" />{showImport ? 'ซ่อนฟอร์มนำเข้า' : 'นำเข้า XLSX / CSV'}</button>}
             </div>
         </header>
-        <div className={styles.notice}><p>วันที่ในรายงานนี้ใช้ Pacific Time (PT) ตาม Search Console ต่างจากรายงานผู้เข้าชมรายวันที่ใช้เวลาไทย ข้อมูลมาจากการนำเข้า CSV และไม่ได้ดึงจาก Google อัตโนมัติ</p></div>
+        <div className={styles.notice}><p>วันที่ในรายงานนี้ใช้ Pacific Time (PT) ตาม Search Console ต่างจากรายงานผู้เข้าชมรายวันที่ใช้เวลาไทย ข้อมูลมาจากการนำเข้า XLSX หรือ CSV และไม่ได้ดึงจาก Google อัตโนมัติ</p></div>
         {uploadMessage && <p className={styles.success} role="status">{uploadMessage}</p>}
         {(historyError || denied) && <div className={styles.alert} role="alert"><p>{historyError || reportError || 'กรุณาเข้าสู่ระบบผู้ดูแล'}</p>{denied ? <Link href="/login?redirect=%2Fadmin%2Fsearch-console">เข้าสู่ระบบผู้ดูแล</Link> : <button type="button" onClick={() => setHistoryVersion(previous => previous + 1)}>ลองใหม่</button>}</div>}
         {!denied && <section id="gsc-import" hidden={!showImport} className={styles.panel} aria-labelledby="gsc-import-title">
             <h2 id="gsc-import-title">นำเข้าข้อมูลจาก Search Console</h2>
-            <p className={styles.notes}>ส่งออกจากรายงานผลการค้นหาแบบ Web แล้วเลือกชนิดให้ตรงกับไฟล์ Queries, Pages หรือ Chart รองรับมิติละหนึ่งไฟล์ รวมไม่เกิน 4 ไฟล์, 3 MiB และ 20,000 แถวต่อชุด</p>
+            <p className={styles.notes}>รองรับ XLSX หลายชีตจากรายงาน Web หรือ CSV แยก Queries, Pages และ Chart ขนาดไม่เกิน 3 MiB และ 20,000 แถวต่อชุด อ่านไฟล์และดูตัวอย่างก่อนยืนยันบันทึก</p>
             <form onSubmit={validateUpload}>
                 <fieldset disabled={uploadBusy} className={styles.uploadFields}>
                     <legend className={styles.srOnly}>ข้อมูลชุดนำเข้า</legend>
+                    <label className={styles.full}>รูปแบบไฟล์<select value={uploadFormat} onChange={event => { setUploadFormat(event.target.value as 'csv' | 'xlsx'); setValidated(null); setScopeConfirmed(false); setUploadError(''); }}><option value="csv">CSV แยกตามมิติ</option><option value="xlsx">XLSX หลายชีตจาก Google Search Console</option></select></label>
+                    {uploadFormat === 'xlsx' && <div className={styles.full}>
+                        <label>ไฟล์ XLSX<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={event => { void chooseWorkbook(event.target.files?.[0] ?? null); }} /></label>
+                        {readingWorkbook && <p role="status">กำลังอ่านและแยกชีต ยังไม่บันทึกข้อมูล…</p>}
+                        {workbook && <div className={styles.notice} role="note">
+                            <p><strong>Web · {workbook.from} ถึง {workbook.to} (PT)</strong> · ช่วงวันที่จากชีต Chart</p>
+                            <ul>{workbook.sheets.map(sheet => <li key={sheet.name}>{sheet.name}: {sheet.rows.toLocaleString('th-TH')} แถว · {sheet.kind ? `นำเข้าเป็น${kindLabels[sheet.kind]}` : 'ข้อมูลประกอบ ไม่นำเข้ายอด'}</li>)}</ul>
+                            <p>ตัวกรองในไฟล์: {workbook.filters.map(filter => `${filter.label}: ${filter.value}`).join(' · ')}</p>
+                            {workbook.warnings.map(warning => <p key={warning}>{warning}</p>)}
+                        </div>}
+                    </div>}
                     <label className={styles.wide}>พร็อพเพอร์ตี<select value={scope.property} onChange={event => updateScope('property', event.target.value as GscScope['property'])}><option value="https://www.namemongkol.com/">https://www.namemongkol.com/</option><option value="sc-domain:namemongkol.com">Domain: namemongkol.com</option></select></label>
                     <label>ตั้งแต่วันที่ (PT)<input type="date" required value={scope.from} onChange={event => updateScope('from', event.target.value)} /></label>
                     <label>ถึงวันที่ (PT)<input type="date" required min={scope.from || undefined} value={scope.to} onChange={event => updateScope('to', event.target.value)} /></label>
                     <label>ประเทศ<input type="text" maxLength={3} list="gsc-countries" required value={scope.country} onChange={event => updateScope('country', event.target.value)} /><datalist id="gsc-countries"><option value="all">ทุกประเทศ</option><option value="TH">ประเทศไทย</option></datalist><small>ใช้ all หรือรหัส 2 ตัว เช่น TH</small></label>
                     <label>อุปกรณ์<select value={scope.device} onChange={event => updateScope('device', event.target.value as GscScope['device'])}><option value="all">ทุกอุปกรณ์</option><option value="mobile">มือถือ</option><option value="desktop">เดสก์ท็อป</option><option value="tablet">แท็บเล็ต</option></select></label>
                     <label className={styles.full}>ตัวกรองอื่นใน Search Console<textarea rows={2} maxLength={500} value={scope.filters} placeholder="เช่น กรองคำค้นที่มี ชื่อเล่น · เว้นว่างเมื่อไม่มีตัวกรองอื่น" onChange={event => updateScope('filters', event.target.value)} /></label>
-                    <div className={`${styles.fileList} ${styles.full}`}>
+                    {uploadFormat === 'csv' && <div className={`${styles.fileList} ${styles.full}`}>
                         {files.map((item, index) => <div className={styles.fileRow} key={item.id}>
                             <label>ชนิดไฟล์ {index + 1}<select value={item.kind} onChange={event => { setFiles(previous => previous.map(row => row.id === item.id ? { ...row, kind: event.target.value as GscFileKind } : row)); setScopeConfirmed(false); setValidated(null); }}>{GSC_FILE_KINDS.map(kind => <option value={kind} key={kind}>{kindLabels[kind]}</option>)}</select></label>
                             <label>ไฟล์ CSV<input type="file" accept=".csv,text/csv,text/plain" required onChange={event => changeFile(item.id, event.target.files?.[0] ?? null)} /></label>
                             {files.length > 1 && <button type="button" aria-label={`เอาไฟล์ ${index + 1} ออก`} onClick={() => { setFiles(previous => previous.filter(row => row.id !== item.id)); setScopeConfirmed(false); setValidated(null); }}><X size={16} aria-hidden="true" /></button>}
                         </div>)}
                         {files.length < 4 && <button type="button" className={styles.addFile} onClick={addFile}><FilePlus2 size={16} aria-hidden="true" />เพิ่มไฟล์อีกมิติ</button>}
-                    </div>
+                    </div>}
                     <p className={`${styles.notes} ${styles.full}`}>Queries และ Pages เป็นคนละตาราง ระบบจะไม่จับคู่คำค้นกับหน้าขึ้นเอง หากมีไฟล์แบบ query + page จริง ให้เลือก “คำค้นหาและหน้า” วันของไฟล์รายวันต้องอยู่ในช่วงที่ระบุ และควรใช้ข้อมูลวันที่สมบูรณ์</p>
                     <label className={`${styles.confirm} ${styles.full}`}><input type="checkbox" checked={scopeConfirmed} onChange={event => { setScopeConfirmed(event.target.checked); if (!event.target.checked) setValidated(null); }} required /><span>ยืนยันว่าช่วงวันที่ พร็อพเพอร์ตี และตัวกรองข้างต้นตรงกับไฟล์ที่ส่งออกจาก Search Console</span></label>
                     <div className={`${styles.submitRow} ${styles.full}`}><button type="submit" className={styles.primary}><Upload size={16} aria-hidden="true" />{validating ? 'กำลังตรวจสอบไฟล์…' : 'ตรวจสอบและดูตัวอย่าง'}</button><span>ขั้นตอนนี้ยังไม่บันทึกข้อมูล และไม่ต้องส่งรหัสผ่าน Google</span></div>
@@ -284,7 +325,7 @@ export default function SearchConsolePage() {
             </div>}
             {reportError && !denied && <div className={styles.alert} role="alert"><p>{reportError}</p><button type="button" onClick={() => setReportVersion(previous => previous + 1)}>ลองใหม่</button></div>}
             <section aria-busy={historyLoading || (Boolean(selection.id) && reportLoading)} aria-label="ผลรายงาน Search Console">
-                {historyLoading || (selection.id && reportLoading) ? <p className={styles.empty} role="status">กำลังโหลดรายงาน…</p> : report ? <SearchConsoleReport report={report} previous={imports.find(item => item.id === selection.compare)} onPage={page => setSelection(previous => ({ ...previous, page }))} /> : !imports.length && !historyError ? <div className={styles.empty}><h2>เริ่มจากไฟล์ Search Console ชุดแรก</h2><p>นำเข้า CSV เพื่อดูคำค้นและหน้าที่มีโอกาสปรับ SEO ข้อมูลนี้แยกจากยอดเข้าชมในระบบของเว็บไซต์</p></div> : null}
+                {historyLoading || (selection.id && reportLoading) ? <p className={styles.empty} role="status">กำลังโหลดรายงาน…</p> : report ? <SearchConsoleReport report={report} previous={imports.find(item => item.id === selection.compare)} onPage={page => setSelection(previous => ({ ...previous, page }))} /> : !imports.length && !historyError ? <div className={styles.empty}><h2>เริ่มจากไฟล์ Search Console ชุดแรก</h2><p>นำเข้า XLSX หรือ CSV เพื่อดูคำค้นและหน้าที่มีโอกาสปรับ SEO ข้อมูลนี้แยกจากยอดเข้าชมในระบบของเว็บไซต์</p></div> : null}
             </section>
         </>}
     </div>;

@@ -1,5 +1,6 @@
 import { GSC_MAX_BYTES, gscCoverageWarnings, normalizeGscUpload, summarizeGscRows } from '@/lib/searchConsole';
 import { gscAdmin,gscImportMetadata,gscResponse } from '@/lib/searchConsoleServer';
+import { gscEditorialReview } from '@/lib/gscEditorialReview';
 
 export async function GET(request: Request) {
     try {
@@ -29,6 +30,7 @@ export async function POST(request:Request) {
             const source = JSON.parse(text) as { files: { name: string; kind: typeof parsed.kinds[number] }[] };
             return gscResponse({ success: true, preview: {
                 scope: parsed.scope, kinds: parsed.kinds, rowCount: parsed.rows.length, contentHash: parsed.contentHash,
+                review: gscEditorialReview(parsed.rows),
                 files: source.files.map(file => { const rows = parsed.rows.filter(row => row.kind === file.kind); return { name: file.name, kind: file.kind, rows: rows.length, summary: summarizeGscRows(rows) }; }),
                 warnings: [...new Set(parsed.kinds.flatMap(kind => gscCoverageWarnings(kind, parsed.rows.filter(row => row.kind === kind).length)))],
             } });

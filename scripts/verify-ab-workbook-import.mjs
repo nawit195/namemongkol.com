@@ -4,10 +4,12 @@ import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import { nameKey, planImport } from './import-filtered-names.mjs';
 dotenv.config({ path: '.env.local', quiet: true });
-const directory = path.resolve('scratch/filtered-names-import/2026-11-17');
+const [sourcePath = 'scripts/data/filtered-names-ab-2026-11-17.json', directoryPath = 'scratch/filtered-names-import/2026-11-17'] = process.argv.slice(2);
+const directory = path.resolve(directoryPath);
 const before = JSON.parse(fs.readFileSync(path.join(directory, 'before.json'), 'utf8'));
 const plan = JSON.parse(fs.readFileSync(path.join(directory, 'plan.json'), 'utf8'));
-const source = JSON.parse(fs.readFileSync('scripts/data/filtered-names-ab-2026-11-17.json', 'utf8'));
+const source = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+if (source.sheet !== 'A-B' || source.sha256 !== plan.source.sha256) throw new Error('Source mismatch');
 const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } });
 const after = [];
 for (let from = 0;; from += 1000) {
