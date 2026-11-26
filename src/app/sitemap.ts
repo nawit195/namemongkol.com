@@ -32,6 +32,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         '/compare-names',
         '/about',
         '/methodology',
+        '/celebrity-names',
+        '/celebrity-names/editorial-policy',
         '/articles',
         '/name-analysis',
         '/name-generator',

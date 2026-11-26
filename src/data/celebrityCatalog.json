@@ -1,0 +1,5043 @@
+{
+  "updatedAt": "2026-11-26",
+  "sourceSha256": "30fe69dc222adc2e09ea65a11d41de88aecae8fd08110f316ad86ddb55c9b42f",
+  "inputSummary": {
+    "nameCount": 156,
+    "personOptions": 185,
+    "withheldIdentityOptions": 1,
+    "withheldAgeReviewOptions": 3
+  },
+  "groups": [
+    {
+      "sourceRow": 2,
+      "name": "โอริเวอร์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-2-1",
+          "surname": "บีเวอร์",
+          "nickname": "เวอร์",
+          "referenceName": "โอริเวอร์ บีเวอร์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ โอริเวอร์ บีเวอร์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=331875&oldid=13428462"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 4,
+      "name": "อัมรินทร์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-4-1",
+          "surname": "นิติพน",
+          "nickname": "อ่ำ",
+          "referenceName": "อัมรินทร์ นิติพน",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัมรินทร์ นิติพน — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=133585&oldid=13398817"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-4-2",
+          "surname": "สิมะโรจน์",
+          "nickname": "หลุยส์",
+          "referenceName": "อัมรินทร์ สิมะโรจน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัมรินทร์ สิมะโรจน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=346970&oldid=13349249"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-4-3",
+          "surname": "เหลืองบริบูรณ์",
+          "nickname": "โจ้",
+          "referenceName": "อัมรินทร์ เหลืองบริบูรณ์",
+          "occupations": [
+            "นักร้อง",
+            "นักดนตรี"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัมรินทร์ เหลืองบริบูรณ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=37453&oldid=13393497"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 5,
+      "name": "อัครินทร์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-5-1",
+          "surname": "อัครนิธิเมธรัฐ",
+          "nickname": "โจ๊ก",
+          "referenceName": "อัครินทร์ อัครนิธิเมธรัฐ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัครินทร์ อัครนิธิเมธรัฐ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=263105&oldid=13337433"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 6,
+      "name": "อัญรินทร์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-6-1",
+          "surname": "ธีราธนันพัฒน์",
+          "nickname": "ทับทิม",
+          "referenceName": "อัญรินทร์ ธีราธนันพัฒน์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13023843.jpg",
+            "alt": "ภาพประกอบประวัติ อัญรินทร์ ธีราธนันพัฒน์",
+            "width": 208,
+            "height": 279,
+            "credit": "Kritsang",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anyarin_Terathananpat_-_%E0%B8%AD%E0%B8%B1%E0%B8%8D%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B9%8C_%E0%B8%98%E0%B8%B5%E0%B8%A3%E0%B8%B2%E0%B8%98%E0%B8%99%E0%B8%B1%E0%B8%99%E0%B8%9E%E0%B8%B1%E0%B8%92%E0%B8%99%E0%B9%8C_(cropped).jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 799648452,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=799648452",
+            "title": "Anyarin Terathananpat - อัญรินทร์ ธีราธนันพัฒน์ (cropped).jpg"
+          },
+          "source": {
+            "title": "ประวัติ อัญรินทร์ ธีราธนันพัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=291653&oldid=13413874"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 7,
+      "name": "อภิวัชร์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-7-1",
+          "surname": "เอื้อถาวรสุข",
+          "nickname": "แสตมป์",
+          "referenceName": "อภิวัชร์ เอื้อถาวรสุข",
+          "occupations": [
+            "นักร้อง",
+            "นักแต่งเพลง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13023667.jpg",
+            "alt": "ภาพประกอบประวัติ อภิวัชร์ เอื้อถาวรสุข",
+            "width": 960,
+            "height": 540,
+            "credit": "fūmus terrae",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apiwat_Eurthavornsuk_from_BBA_Charity_Concert,_2016.jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "external-review-recorded",
+            "checkedAt": "2026-11-26",
+            "revisionId": 999855271,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=999855271",
+            "title": "Apiwat Eurthavornsuk from BBA Charity Concert, 2016.jpg"
+          },
+          "source": {
+            "title": "ประวัติ อภิวัชร์ เอื้อถาวรสุข — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=373633&oldid=13257470"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 8,
+      "name": "อภิวิชญ์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-8-1",
+          "surname": "จักษ์ตรีมงคล",
+          "nickname": "มาร์ค",
+          "referenceName": "อภิวิชญ์ จักษ์ตรีมงคล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อภิวิชญ์ จักษ์ตรีมงคล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=867852&oldid=13183423"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 9,
+      "name": "อัครัช",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-9-1",
+          "surname": "จิตตะศิริ",
+          "nickname": "โต๊ส",
+          "referenceName": "อัครัช จิตตะศิริ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัครัช จิตตะศิริ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1122586&oldid=12915687"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 10,
+      "name": "อัญษนา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-10-1",
+          "surname": "บุรานันท์",
+          "nickname": "หมวย",
+          "referenceName": "อัญษนา บุรานันท์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อัญษนา บุรานันท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1064923&oldid=13189182"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 11,
+      "name": "อาคิโกะ",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-11-1",
+          "surname": "โอเซกิ",
+          "nickname": "อาคิโกะ",
+          "referenceName": "อาคิโกะ โอเซกิ",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อาคิโกะ โอเซกิ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=410743&oldid=12540311"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 12,
+      "name": "อิทธิกร",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-12-1",
+          "surname": "สาธุธรรม",
+          "nickname": "จุ๊บ",
+          "referenceName": "อิทธิกร สาธุธรรม",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อิทธิกร สาธุธรรม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1129584&oldid=13370600"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 13,
+      "name": "อำนาจ",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-13-1",
+          "surname": "สอนอิ่มสาตร์",
+          "nickname": "ดุ่ย ณ บางน้อย",
+          "referenceName": "อำนาจ สอนอิ่มสาตร์",
+          "occupations": [
+            "นักพากย์",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อำนาจ สอนอิ่มสาตร์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1317105&oldid=13369756"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 14,
+      "name": "อิทธิ",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-14-1",
+          "surname": "พลางกูร",
+          "nickname": "อิทธิ",
+          "referenceName": "อิทธิ พลางกูร",
+          "occupations": [
+            "นักร้อง",
+            "นักดนตรี",
+            "นักแต่งเพลง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อิทธิ พลางกูร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=141432&oldid=13377945"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 15,
+      "name": "แอนนา",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-15-1",
+          "surname": "รีส",
+          "nickname": "แอนนา",
+          "referenceName": "แอนนา รีส",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13026509.jpg",
+            "alt": "ภาพประกอบประวัติ แอนนา รีส",
+            "width": 896,
+            "height": 1630,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Reese_at_8th_Anniversary_MTV_Thailand.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1001753845,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1001753845",
+            "title": "Anna Reese at 8th Anniversary MTV Thailand.jpg"
+          },
+          "source": {
+            "title": "ประวัติ แอนนา รีส — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=217570&oldid=13210702"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-15-2",
+          "surname": "โรจน์รุ่งฤกษ์",
+          "nickname": "แอนนา",
+          "referenceName": "แอนนา โรจน์รุ่งฤกษ์",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ แอนนา โรจน์รุ่งฤกษ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=558799&oldid=13378839"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-15-3",
+          "surname": "เสืองามเอี่ยม",
+          "nickname": "แอน",
+          "referenceName": "แอนนา เสืองามเอี่ยม",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ แอนนา เสืองามเอี่ยม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1259723&oldid=13404605"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 16,
+      "name": "เอก",
+      "workbookSum": 9,
+      "people": [
+        {
+          "id": "person-16-1",
+          "surname": "ฮิมสกุล",
+          "nickname": "เอก",
+          "referenceName": "เอก ฮิมสกุล",
+          "occupations": [
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เอก ฮิมสกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=84797&oldid=13085402"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 17,
+      "name": "รัชย์ณมนทร์",
+      "workbookSum": 56,
+      "people": [
+        {
+          "id": "person-17-1",
+          "surname": "รัชย์จิราธรรม",
+          "nickname": "เกรซ",
+          "referenceName": "รัชย์ณมนทร์ รัชย์จิราธรรม",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ รัชย์ณมนทร์ รัชย์จิราธรรม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=314016&oldid=12953212"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 18,
+      "name": "ลัลณ์ลลิน",
+      "workbookSum": 51,
+      "people": [
+        {
+          "id": "person-18-1",
+          "surname": "เตจะสา เวศซ์",
+          "nickname": "เฌอเบลล์",
+          "referenceName": "ลัลณ์ลลิน เตจะสา เวศซ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ลัลณ์ลลิน เตจะสา เวศซ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=432439&oldid=13419094"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 20,
+      "name": "วลันลักษณ์",
+      "workbookSum": 50,
+      "people": [
+        {
+          "id": "person-20-1",
+          "surname": "คุ้มสุวรรณ",
+          "nickname": "วลันลักษณ์",
+          "referenceName": "วลันลักษณ์ คุ้มสุวรรณ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วลันลักษณ์ คุ้มสุวรรณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=726311&oldid=12739951"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 21,
+      "name": "ณัฏฐกรณ์",
+      "workbookSum": 46,
+      "people": [
+        {
+          "id": "person-21-1",
+          "surname": "เทวกุล",
+          "nickname": "คุณปลื้ม",
+          "referenceName": "หม่อมหลวงณัฏฐกรณ์ เทวกุล",
+          "occupations": [
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16138766.jpg",
+            "alt": "ภาพประกอบประวัติ หม่อมหลวงณัฏฐกรณ์ เทวกุล",
+            "width": 200,
+            "height": 269,
+            "credit": "Markpeak",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pluem_(cropped).jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1150987589,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1150987589",
+            "title": "Pluem (cropped).jpg"
+          },
+          "source": {
+            "title": "ประวัติ หม่อมหลวงณัฏฐกรณ์ เทวกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=130458&oldid=13411949"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 22,
+      "name": "เรวิญานันท์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-22-1",
+          "surname": "ทาเกิด",
+          "nickname": "เบญ",
+          "referenceName": "เรวิญานันท์ ทาเกิด",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เรวิญานันท์ ทาเกิด — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1030933&oldid=13404523"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 23,
+      "name": "อชิรวิชย์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-23-1",
+          "surname": "สาลิวรรธนะ",
+          "nickname": "กัน",
+          "referenceName": "อชิรวิชย์ สาลิวรรธนะ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ อชิรวิชย์ สาลิวรรธนะ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=747404&oldid=13215229"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 24,
+      "name": "วิไลวรรณ",
+      "workbookSum": 44,
+      "people": [
+        {
+          "id": "person-24-1",
+          "surname": "วัฒนพานิช",
+          "nickname": "แดง",
+          "referenceName": "วิไลวรรณ วัฒนพานิช",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16139848.jpg",
+            "alt": "ภาพประกอบประวัติ วิไลวรรณ วัฒนพานิช",
+            "width": 314,
+            "height": 720,
+            "credit": "Thanasuthi",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:%E0%B8%A7%E0%B8%B4%E0%B9%84%E0%B8%A5%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1269726483,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1269726483",
+            "title": "วิไลวรรณ.jpg"
+          },
+          "source": {
+            "title": "ประวัติ วิไลวรรณ วัฒนพานิช — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=138283&oldid=13384309"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 25,
+      "name": "ลิณธิภรณ์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-25-1",
+          "surname": "วริณวัชรโรจน์",
+          "nickname": "หญิง",
+          "referenceName": "ลิณธิภรณ์ วริณวัชรโรจน์",
+          "occupations": [
+            "นักการเมือง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ลิณธิภรณ์ วริณวัชรโรจน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1333744&oldid=13308363"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 26,
+      "name": "วรานิษฐ์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-26-1",
+          "surname": "จิราโรจน์เจริญ",
+          "nickname": "บีม",
+          "referenceName": "วรานิษฐ์ จิราโรจน์เจริญ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรานิษฐ์ จิราโรจน์เจริญ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=548875&oldid=12612672"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 27,
+      "name": "รัฐนันท์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-27-1",
+          "surname": "จรรยาจิรวงศ์",
+          "nickname": "รัฐนันท์",
+          "referenceName": "รัฐนันท์ จรรยาจิรวงศ์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร",
+            "ดีเจ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ รัฐนันท์ จรรยาจิรวงศ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1331036&oldid=13233204"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 28,
+      "name": "วชิรวิชญ์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-28-1",
+          "surname": "ชีวอารี",
+          "nickname": "ไบรท์",
+          "referenceName": "วชิรวิชญ์ ชีวอารี",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ วชิรวิชญ์ ชีวอารี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1083373&oldid=13405865"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-28-2",
+          "surname": "ไพศาลกุลวงศ์",
+          "nickname": "ออกัส",
+          "referenceName": "วชิรวิชญ์ ไพศาลกุลวงศ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ วชิรวิชญ์ ไพศาลกุลวงศ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=713658&oldid=13405868"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-28-3",
+          "surname": "เรืองวิวรรธน์",
+          "nickname": "ชิม่อน",
+          "referenceName": "วชิรวิชญ์ เรืองวิวรรธน์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q51165775.jpg",
+            "alt": "ภาพประกอบประวัติ วชิรวิชญ์ เรืองวิวรรธน์",
+            "width": 736,
+            "height": 1105,
+            "credit": "Superlovegmm",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chimon_Wachirawit_Ruangwiwat.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1123380124,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1123380124",
+            "title": "Chimon Wachirawit Ruangwiwat.jpg"
+          },
+          "source": {
+            "title": "ประวัติ วชิรวิชญ์ เรืองวิวรรธน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1126658&oldid=13422447"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-28-4",
+          "surname": "วัฒนภักดีไพศาล",
+          "nickname": "ริว",
+          "referenceName": "วชิรวิชญ์ วัฒนภักดีไพศาล",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ วชิรวิชญ์ วัฒนภักดีไพศาล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1337438&oldid=13386920"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 29,
+      "name": "วรนิษฐ์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-29-1",
+          "surname": "ถาวรวงศ์",
+          "nickname": "มุก",
+          "referenceName": "วรนิษฐ์ ถาวรวงศ์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ วรนิษฐ์ ถาวรวงศ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1035027&oldid=13405149"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 30,
+      "name": "วิทวัจน์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-30-1",
+          "surname": "สุนทรวิเนตร์",
+          "nickname": "วีที",
+          "referenceName": "วิทวัจน์ สุนทรวิเนตร์",
+          "occupations": [
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13021182.jpg",
+            "alt": "ภาพประกอบประวัติ วิทวัจน์ สุนทรวิเนตร์",
+            "width": 576,
+            "height": 883,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wittawut_Sunthornvinate.jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1250040296,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1250040296",
+            "title": "Wittawut Sunthornvinate.jpg"
+          },
+          "source": {
+            "title": "ประวัติ วิทวัจน์ สุนทรวิเนตร์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=344812&oldid=13250571"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 31,
+      "name": "วรรณวิมล",
+      "workbookSum": 40,
+      "people": [
+        {
+          "id": "person-31-1",
+          "surname": "เจนอัศวเมธี",
+          "nickname": "จูน",
+          "referenceName": "วรรณวิมล เจนอัศวเมธี",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ วรรณวิมล เจนอัศวเมธี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1341513&oldid=13406445"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 32,
+      "name": "ลัทธ์กมล",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-32-1",
+          "surname": "ปิ่นโรจน์กีรติ",
+          "nickname": "พิม",
+          "referenceName": "ลัทธ์กมล ปิ่นโรจน์กีรติ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ลัทธ์กมล ปิ่นโรจน์กีรติ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=683220&oldid=13372900"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 33,
+      "name": "วรเชษฐ์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-33-1",
+          "surname": "นิ่มสุวรรณ",
+          "nickname": "หนึ่ง",
+          "referenceName": "วรเชษฐ์ นิ่มสุวรรณ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรเชษฐ์ นิ่มสุวรรณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=570636&oldid=13364115"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 34,
+      "name": "วริษฐ์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-34-1",
+          "surname": "ทิพโกมุท",
+          "nickname": "ต๊ะ",
+          "referenceName": "วริษฐ์ ทิพโกมุท",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วริษฐ์ ทิพโกมุท — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=348980&oldid=13411570"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 35,
+      "name": "ลำไย",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-35-1",
+          "surname": "ไหทองคำ",
+          "nickname": "ลำไย",
+          "referenceName": "ลำไย ไหทองคำ",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ลำไย ไหทองคำ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=867230&oldid=13233780"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 36,
+      "name": "วรรณรท",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-36-1",
+          "surname": "สนธิไชย",
+          "nickname": "วิว",
+          "referenceName": "วรรณรท สนธิไชย",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรรณรท สนธิไชย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=207207&oldid=13287976"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 37,
+      "name": "วรรณษา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-37-1",
+          "surname": "ทองวิเศษ",
+          "nickname": "ษา",
+          "referenceName": "วรรณษา ทองวิเศษ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรรณษา ทองวิเศษ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=388493&oldid=13045999"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 38,
+      "name": "วรรธนา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-38-1",
+          "surname": "วีรยวรรธน",
+          "nickname": "เจี๊ยบ",
+          "referenceName": "วรรธนา วีรยวรรธน",
+          "occupations": [
+            "นักร้อง",
+            "นักแต่งเพลง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรรธนา วีรยวรรธน — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=339401&oldid=13317547"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 39,
+      "name": "วรินทร",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-39-1",
+          "surname": "จตุรภุช",
+          "nickname": "สต๊อป",
+          "referenceName": "วรินทร จตุรภุช",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติสต๊อป วรินทร — Sanook",
+            "url": "https://www.sanook.com/campus/1370662/"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-39-2",
+          "surname": "ปัญหกาญจน์",
+          "nickname": "เกรท",
+          "referenceName": "วรินทร ปัญหกาญจน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13020569.jpg",
+            "alt": "ภาพประกอบประวัติ วรินทร ปัญหกาญจน์",
+            "width": 960,
+            "height": 1478,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Warintorn_at_Paragon.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1223568227,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1223568227",
+            "title": "Great Warintorn at Paragon.jpg"
+          },
+          "source": {
+            "title": "ประวัติ วรินทร ปัญหกาญจน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=263109&oldid=13418936"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-39-3",
+          "surname": "ผดุงวิถี",
+          "nickname": "อ้วนตาน",
+          "referenceName": "วรินทร ผดุงวิถี",
+          "occupations": [
+            "นางงาม"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรินทร ผดุงวิถี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=368960&oldid=11790417"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 40,
+      "name": "วัทธิกร",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-40-1",
+          "surname": "เพิ่มทรัพย์หิรัญ",
+          "nickname": "เกี๊ยก",
+          "referenceName": "วัทธิกร เพิ่มทรัพย์หิรัญ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วัทธิกร เพิ่มทรัพย์หิรัญ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1361336&oldid=13387605"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 41,
+      "name": "หฤษฎ์",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-41-1",
+          "surname": "ชีวการุณ",
+          "nickname": "ซิง",
+          "referenceName": "หฤษฎ์ ชีวการุณ",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ หฤษฎ์ ชีวการุณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=844140&oldid=13422443"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-41-2",
+          "surname": "บัวย้อย",
+          "nickname": "เก่ง",
+          "referenceName": "หฤษฎ์ บัวย้อย",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q127514835.png",
+            "alt": "ภาพประกอบประวัติ หฤษฎ์ บัวย้อย",
+            "width": 904,
+            "height": 1224,
+            "credit": "THHeadline",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harit_Buayoi_at_iQIYI_iJOY_TH_2025_event,_1_November_2024_01.png",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "external-review-recorded",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1128620123,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1128620123",
+            "title": "Harit Buayoi at iQIYI iJOY TH 2025 event, 1 November 2024 01.png"
+          },
+          "source": {
+            "title": "ประวัติ หฤษฎ์ บัวย้อย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1503805&oldid=13421922"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 42,
+      "name": "มณฑล",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-42-1",
+          "surname": "จิรา",
+          "nickname": "เจ",
+          "referenceName": "มณฑล จิรา",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักดนตรี"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ มณฑล จิรา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=332537&oldid=13400717"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 43,
+      "name": "มาริษา",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-43-1",
+          "surname": "อมาตยกุล",
+          "nickname": "มาริษา",
+          "referenceName": "มาริษา อมาตยกุล",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ มาริษา อมาตยกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=97309&oldid=13374117"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 44,
+      "name": "มิเชล",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-44-1",
+          "surname": "เบอร์แมน",
+          "nickname": "มิเชล",
+          "referenceName": "มิเชล เบอร์แมน",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ มิเชล เบอร์แมน — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=525192&oldid=13389617"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 45,
+      "name": "มทิรา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-45-1",
+          "surname": "ตันติประสุต",
+          "nickname": "แยม",
+          "referenceName": "มทิรา ตันติประสุต",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ มทิรา ตันติประสุต — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=538267&oldid=13365097"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 46,
+      "name": "รอน",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-46-1",
+          "surname": "บรรจงสร้าง",
+          "nickname": "อี๊ด",
+          "referenceName": "รอน บรรจงสร้าง",
+          "occupations": [
+            "นักแสดง",
+            "ผู้กำกับ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13019298.jpg",
+            "alt": "ภาพประกอบประวัติ รอน บรรจงสร้าง",
+            "width": 527,
+            "height": 973,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ron_Bunjongsrang.jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1251799412,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1251799412",
+            "title": "Ron Bunjongsrang.jpg"
+          },
+          "source": {
+            "title": "ประวัติ รอน บรรจงสร้าง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=197976&oldid=13388189"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 47,
+      "name": "วรภร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-47-1",
+          "surname": "เลิศเกียรติไพบูลย์",
+          "nickname": "แพร",
+          "referenceName": "วรภร เลิศเกียรติไพบูลย์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ วรภร เลิศเกียรติไพบูลย์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=524822&oldid=13272463"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 48,
+      "name": "อครา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-48-1",
+          "surname": "อมาตยกุล",
+          "nickname": "กอล์ฟ",
+          "referenceName": "อครา อมาตยกุล",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q4700287.jpg",
+            "alt": "ภาพประกอบประวัติ อครา อมาตยกุล",
+            "width": 832,
+            "height": 1016,
+            "credit": "Wisekwai",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akara_29072007_BKKIFF.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1232220878,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1232220878",
+            "title": "Akara 29072007 BKKIFF.jpg"
+          },
+          "source": {
+            "title": "ประวัติ อครา อมาตยกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=112239&oldid=13375599"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 49,
+      "name": "มิรา",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-49-1",
+          "surname": "โกมลวณิช",
+          "nickname": "ออย",
+          "referenceName": "มิรา โกมลวณิช",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ มิรา โกมลวณิช — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=534564&oldid=13188635"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 50,
+      "name": "รฐา",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-50-1",
+          "surname": "โพธิ์งาม",
+          "nickname": "หญิง",
+          "referenceName": "รฐา โพธิ์งาม",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13019248.jpg",
+            "alt": "ภาพประกอบประวัติ รฐา โพธิ์งาม",
+            "width": 564,
+            "height": 800,
+            "credit": "Georges Biard",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yayaying_Rhatha_Phongam_Cannes_2013.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1251069455,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1251069455",
+            "title": "Yayaying Rhatha Phongam Cannes 2013.jpg"
+          },
+          "source": {
+            "title": "ประวัติ รฐา โพธิ์งาม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=322924&oldid=13424620"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 51,
+      "name": "รภัทร",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-51-1",
+          "surname": "แก้วมีชัย",
+          "nickname": "มิ้น",
+          "referenceName": "รภัทร แก้วมีชัย",
+          "occupations": [
+            "นักร้อง",
+            "พิธีกร",
+            "นักแต่งเพลง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q25539124.jpg",
+            "alt": "ภาพประกอบประวัติ รภัทร แก้วมีชัย",
+            "width": 960,
+            "height": 1406,
+            "credit": "Jungka",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mint_sawanya_at_pataya.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1017290646,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1017290646",
+            "title": "Mint sawanya at pataya.jpg"
+          },
+          "source": {
+            "title": "ประวัติ รภัทร แก้วมีชัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=736250&oldid=12010038"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 52,
+      "name": "ลุลา",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-52-1",
+          "surname": "",
+          "nickname": "ลุลา",
+          "referenceName": "ลุลา",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13020440.jpg",
+            "alt": "ภาพประกอบประวัติ ลุลา",
+            "width": 960,
+            "height": 1285,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lula_(Thai_singer).jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1249934064,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1249934064",
+            "title": "Lula (Thai singer).jpg"
+          },
+          "source": {
+            "title": "ประวัติ ลุลา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=156933&oldid=13350385"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 53,
+      "name": "ธนันต์ธรญ์",
+      "workbookSum": 51,
+      "people": [
+        {
+          "id": "person-53-1",
+          "surname": "นีระสิงห์",
+          "nickname": "ฟาง",
+          "referenceName": "ธนันต์ธรญ์ นีระสิงห์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ธนันต์ธรญ์ นีระสิงห์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1081190&oldid=13358314"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 54,
+      "name": "ธัญญ์วาริน",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-54-1",
+          "surname": "สุขะพิสิษฐ์",
+          "nickname": "กอล์ฟ",
+          "referenceName": "ธัญญ์วาริน สุขะพิสิษฐ์",
+          "occupations": [
+            "นักแสดง",
+            "ผู้กำกับ",
+            "นักเขียนบท"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ธัญญ์วาริน สุขะพิสิษฐ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=332038&oldid=13237656"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 55,
+      "name": "เปรมอนันต์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-55-1",
+          "surname": "ศรีพานิช",
+          "nickname": "ฟีฟ่า",
+          "referenceName": "เปรมอนันต์ ศรีพานิช",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ เปรมอนันต์ ศรีพานิช — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=944150&oldid=13400522"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 56,
+      "name": "เบญจมินทร์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-56-1",
+          "surname": "",
+          "nickname": "เบญจมินทร์",
+          "referenceName": "เบญจมินทร์",
+          "occupations": [
+            "นักร้อง",
+            "นักแต่งเพลง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เบญจมินทร์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=76525&oldid=13373659"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 57,
+      "name": "ภัทรานิษฐ์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-57-1",
+          "surname": "ลิ้มปติยากร",
+          "nickname": "เลิฟ",
+          "referenceName": "ภัทรานิษฐ์ ลิ้มปติยากร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ภัทรานิษฐ์ ลิ้มปติยากร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1218316&oldid=13400201"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 58,
+      "name": "ธนวรรธน์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-58-1",
+          "surname": "วรรธนะภูติ",
+          "nickname": "โป๊ป",
+          "referenceName": "ธนวรรธน์ วรรธนะภูติ",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ธนวรรธน์ วรรธนะภูติ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=366909&oldid=13406323"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 59,
+      "name": "นิธินันท์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-59-1",
+          "surname": "ฉายัษเฐียร",
+          "nickname": "นิวตี้",
+          "referenceName": "นิธินันท์ ฉายัษเฐียร",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "นิวตี้ นิธินันท์ — MONOMAX",
+            "url": "https://monomaxsports.tv/star/2084.html"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 60,
+      "name": "ภัทรนิษฐ์",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-60-1",
+          "surname": "แก้วมณี",
+          "nickname": "ติ๊กตั๊ก",
+          "referenceName": "ภัทรนิษฐ์ แก้วมณี",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภัทรนิษฐ์ แก้วมณี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=533665&oldid=12011303"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 61,
+      "name": "ธรรม์ธัช",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-61-1",
+          "surname": "ธารินทร์ภิรมย์",
+          "nickname": "ยูโด",
+          "referenceName": "ธรรม์ธัช ธารินทร์ภิรมย์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ธรรม์ธัช ธารินทร์ภิรมย์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1397591&oldid=13404885"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 62,
+      "name": "ธัญนันท์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-62-1",
+          "surname": "มหาพิรุณ",
+          "nickname": "ธัญนันท์",
+          "referenceName": "ธัญนันท์ มหาพิรุณ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13015830.jpg",
+            "alt": "ภาพประกอบประวัติ ธัญนันท์ มหาพิรุณ",
+            "width": 593,
+            "height": 1015,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean_AF1.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1269417531,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1269417531",
+            "title": "Jean AF1.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ธัญนันท์ มหาพิรุณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=82997&oldid=13426162"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 63,
+      "name": "นครินทร์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-63-1",
+          "surname": "กิ่งศักดิ์",
+          "nickname": "ป้าง",
+          "referenceName": "นครินทร์ กิ่งศักดิ์",
+          "occupations": [
+            "นักร้อง",
+            "นักดนตรี"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16139056.jpg",
+            "alt": "ภาพประกอบประวัติ นครินทร์ กิ่งศักดิ์",
+            "width": 333,
+            "height": 500,
+            "credit": "Looknarm",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nakarin_Kingsuk.JPG",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1241864324,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1241864324",
+            "title": "Nakarin Kingsuk.JPG"
+          },
+          "source": {
+            "title": "ประวัติ นครินทร์ กิ่งศักดิ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=18875&oldid=13078509"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 64,
+      "name": "นิรันดร์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-64-1",
+          "surname": "บุณยรัตพันธุ์",
+          "nickname": "นิรันดร์",
+          "referenceName": "นิรันดร์ บุณยรัตพันธุ์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร",
+            "นักพากย์"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ นิรันดร์ บุณยรัตพันธุ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=44273&oldid=13360575"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 65,
+      "name": "เปรมวิชช์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-65-1",
+          "surname": "ธาดาไชโยสิทธิ์",
+          "nickname": "ภูว์มินท์/มิณ",
+          "referenceName": "เปรมวิชช์ ธาดาไชโยสิทธิ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เปรมวิชช์ ธาดาไชโยสิทธิ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1052081&oldid=11731312"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 66,
+      "name": "เปรมินทร์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-66-1",
+          "surname": "ทับแก้ว",
+          "nickname": "แบม",
+          "referenceName": "เปรมินทร์ ทับแก้ว",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เปรมินทร์ ทับแก้ว — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=677091&oldid=12319581"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 67,
+      "name": "ทัฬห์",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-67-1",
+          "surname": "อมรบุณยกร",
+          "nickname": "เก่ง",
+          "referenceName": "ทัฬห์ อมรบุณยกร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ทัฬห์ อมรบุณยกร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=267795&oldid=13266161"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 68,
+      "name": "ธณวิน",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-68-1",
+          "surname": "ธีรโพสุการ",
+          "nickname": "หลุยส์",
+          "referenceName": "ธณวิน ธีรโพสุการ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "LOUIS: Thanawin Teeraphosukarn — GMMTV",
+            "url": "https://www.gmm-tv.com/artists/view/75/"
+          },
+          "roleSource": {
+            "title": "Check Me — เพลงประกอบ Only Boo โดยหลุยส์ ธณวิน (GMMTV)",
+            "url": "https://www.gmm-tv.com/contents/Vkj1j/"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 69,
+      "name": "ธนนท์",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-69-1",
+          "surname": "จำเริญ",
+          "nickname": "นนท์",
+          "referenceName": "ธนนท์ จำเริญ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16138376.jpg",
+            "alt": "ภาพประกอบประวัติ ธนนท์ จำเริญ",
+            "width": 960,
+            "height": 1440,
+            "credit": "Welovetanont",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nont_at_Tops_Westgate_.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1254726926,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1254726926",
+            "title": "Nont at Tops Westgate .jpg"
+          },
+          "source": {
+            "title": "ประวัติ ธนนท์ จำเริญ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=548959&oldid=13418300"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 70,
+      "name": "ธัญญชล",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-70-1",
+          "surname": "สถิรบุตร",
+          "nickname": "กี้",
+          "referenceName": "ธัญญชล สถิรบุตร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ธัญญชล สถิรบุตร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=367406&oldid=13170264"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 71,
+      "name": "นรอรรถ",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-71-1",
+          "surname": "จันทร์กล่ำ",
+          "nickname": "นรอรรถ",
+          "referenceName": "นรอรรถ จันทร์กล่ำ",
+          "occupations": [
+            "นักดนตรี",
+            "วาทยกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16139300.jpg",
+            "alt": "ภาพประกอบประวัติ นรอรรถ จันทร์กล่ำ",
+            "width": 360,
+            "height": 640,
+            "credit": "Ditnadda s",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Noraath_Chanklum.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 977497513,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=977497513",
+            "title": "Noraath Chanklum.jpg"
+          },
+          "source": {
+            "title": "ประวัติ นรอรรถ จันทร์กล่ำ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=51537&oldid=12556963"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 72,
+      "name": "นริลญา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-72-1",
+          "surname": "กุลมงคลเพชร",
+          "nickname": "ญดา",
+          "referenceName": "นริลญา กุลมงคลเพชร",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ นริลญา กุลมงคลเพชร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=828978&oldid=13410811"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 73,
+      "name": "นิธิดล",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-73-1",
+          "surname": "ป้อมสุวรรณ",
+          "nickname": "ไนซ์",
+          "referenceName": "นิธิดล ป้อมสุวรรณ",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ นิธิดล ป้อมสุวรรณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=624875&oldid=13408636"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 74,
+      "name": "นิรมล",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-74-1",
+          "surname": "เมธีสุวกุล",
+          "nickname": "นก",
+          "referenceName": "นิรมล เมธีสุวกุล",
+          "occupations": [
+            "พิธีกร",
+            "ผู้ผลิตรายการ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ นิรมล เมธีสุวกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=175090&oldid=12183300"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 75,
+      "name": "ประจวบ",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-75-1",
+          "surname": "ฤกษ์ยามดี",
+          "nickname": "น้อย",
+          "referenceName": "ประจวบ ฤกษ์ยามดี",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ประจวบ ฤกษ์ยามดี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=360157&oldid=13374940"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 76,
+      "name": "เปรมณัช",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-76-1",
+          "surname": "สุวรรณานนท์",
+          "nickname": "เป๊ก",
+          "referenceName": "เปรมณัช สุวรรณานนท์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13025521.jpg",
+            "alt": "ภาพประกอบประวัติ เปรมณัช สุวรรณานนท์",
+            "width": 960,
+            "height": 1280,
+            "credit": "Cancanisstory",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peck_Prem1.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1194923967,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1194923967",
+            "title": "Peck Prem1.jpg"
+          },
+          "source": {
+            "title": "ประวัติ เปรมณัช สุวรรณานนท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=279524&oldid=13350932"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 77,
+      "name": "ภัคจิรา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-77-1",
+          "surname": "กรรรัตนสูตร",
+          "nickname": "นาแนน",
+          "referenceName": "ภัคจิรา กรรรัตนสูตร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภัคจิรา กรรรัตนสูตร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=764895&oldid=12865339"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 78,
+      "name": "ภัทราริน",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-78-1",
+          "surname": "ปัญญานุตธรรม",
+          "nickname": "แอ",
+          "referenceName": "ภัทราริน ปัญญานุตธรรม",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ภัทราริน ปัญญานุตธรรม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=169648&oldid=13391000"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 79,
+      "name": "ธนภัทร",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-79-1",
+          "surname": "กาวิละ",
+          "nickname": "ฟิล์ม",
+          "referenceName": "ธนภัทร กาวิละ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q53004532.png",
+            "alt": "ภาพประกอบประวัติ ธนภัทร กาวิละ",
+            "width": 642,
+            "height": 856,
+            "credit": "THHeadline",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Film_Thanapat_THHeadline_Exclusive_Interview.png",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "external-review-recorded",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1135994880,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1135994880",
+            "title": "Film Thanapat THHeadline Exclusive Interview.png"
+          },
+          "source": {
+            "title": "ประวัติ ธนภัทร กาวิละ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=919465&oldid=13418887"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 80,
+      "name": "นรภัทร",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-80-1",
+          "surname": "วิไลพันธุ์",
+          "nickname": "ไบร์ท",
+          "referenceName": "นรภัทร วิไลพันธุ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ นรภัทร วิไลพันธุ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=929861&oldid=13351990"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 81,
+      "name": "ปริญญา",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-81-1",
+          "surname": "เจริญผล",
+          "nickname": "ปริญญา",
+          "referenceName": "ปริญญา เจริญผล",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ปริญญา เจริญผล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=317110&oldid=13237686"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-81-2",
+          "surname": "ปุ่นสกุล",
+          "nickname": "บอย",
+          "referenceName": "ปริญญา ปุ่นสกุล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ปริญญา ปุ่นสกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1011619&oldid=13404466"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-81-3",
+          "surname": "อินทชัย",
+          "nickname": "กล้า",
+          "referenceName": "ปริญญา อินทชัย",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักแต่งเพลง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q29508390.jpg",
+            "alt": "ภาพประกอบประวัติ ปริญญา อินทชัย",
+            "width": 502,
+            "height": 475,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prinya_Intichai_at_It%27s_my_MTV_Party.jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1250566063,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1250566063",
+            "title": "Prinya Intichai at It's my MTV Party.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ปริญญา อินทชัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=166386&oldid=13396804"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 82,
+      "name": "ปวิชญา",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-82-1",
+          "surname": "วลีสุขสันต์",
+          "nickname": "อะตอม",
+          "referenceName": "ปวิชญา วลีสุขสันต์",
+          "occupations": [
+            "นายทหารล่าม"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ปวิชญา วลีสุขสันต์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1493266&oldid=13397157"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 83,
+      "name": "ภคกัญญา",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-83-1",
+          "surname": "เจริญยศ",
+          "nickname": "แบม",
+          "referenceName": "ภคกัญญา เจริญยศ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภคกัญญา เจริญยศ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=365992&oldid=12491547"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 84,
+      "name": "ภัทร์",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-84-1",
+          "surname": "ฉัตรบริรักษ์",
+          "nickname": "ภัทร์",
+          "referenceName": "ภัทร์ ฉัตรบริรักษ์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภัทร์ ฉัตรบริรักษ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=669601&oldid=12838938"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 85,
+      "name": "ภัทริน",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-85-1",
+          "surname": "ลาภกิตติกุล",
+          "nickname": "เบลล์",
+          "referenceName": "ภัทริน ลาภกิตติกุล",
+          "occupations": [
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภัทริน ลาภกิตติกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=827921&oldid=12322673"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 87,
+      "name": "ธฤษณุ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-87-1",
+          "surname": "สรนันท์",
+          "nickname": "แมน",
+          "referenceName": "ธฤษณุ สรนันท์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q61117596.jpg",
+            "alt": "ภาพประกอบประวัติ ธฤษณุ สรนันท์",
+            "width": 960,
+            "height": 1280,
+            "credit": "Soluckypictures",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trisanu_Soranun.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1234306079,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1234306079",
+            "title": "Trisanu Soranun.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ธฤษณุ สรนันท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=922032&oldid=13404909"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 88,
+      "name": "นภัทร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-88-1",
+          "surname": "อินทร์ใจเอื้อ",
+          "nickname": "กัน",
+          "referenceName": "นภัทร อินทร์ใจเอื้อ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16139221.jpg",
+            "alt": "ภาพประกอบประวัติ นภัทร อินทร์ใจเอื้อ",
+            "width": 599,
+            "height": 930,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gun_The_Star_at_Launching_of_VERY_tv.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1164934429,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1164934429",
+            "title": "Gun The Star at Launching of VERY tv.jpg"
+          },
+          "source": {
+            "title": "ประวัติ นภัทร อินทร์ใจเอื้อ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=306210&oldid=13424481"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 89,
+      "name": "นิ่ม",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-89-1",
+          "surname": "สีฟ้า",
+          "nickname": "นิ่ม สีฟ้า",
+          "referenceName": "นิ่ม สีฟ้า",
+          "occupations": [
+            "นักแต่งเพลง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ นิ่ม สีฟ้า — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=369484&oldid=13383091"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 90,
+      "name": "เบญจา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-90-1",
+          "surname": "บารมีย์",
+          "nickname": "แก้ว",
+          "referenceName": "เบญจา บารมีย์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เบญจา บารมีย์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1500289&oldid=12607263"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 91,
+      "name": "ปรมะ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-91-1",
+          "surname": "อิ่มอโนทัย",
+          "nickname": "ปั้นจั่น",
+          "referenceName": "ปรมะ อิ่มอโนทัย",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ปรมะ อิ่มอโนทัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=481553&oldid=13245075"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 92,
+      "name": "ปริษา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-92-1",
+          "surname": "ทนาวิวัฒน์",
+          "nickname": "เดียร์",
+          "referenceName": "ปริษา ทนาวิวัฒน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ปริษา ทนาวิวัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=550169&oldid=13208160"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 93,
+      "name": "ปัญญา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-93-1",
+          "surname": "นิรันดร์กุล",
+          "nickname": "ตา",
+          "referenceName": "ปัญญา นิรันดร์กุล",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13016869.jpg",
+            "alt": "ภาพประกอบประวัติ ปัญญา นิรันดร์กุล",
+            "width": 960,
+            "height": 1450,
+            "credit": "Noi Anya for Workpoint Entertainment",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phanya_Nirunkul.JPG",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 950290823,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=950290823",
+            "title": "Phanya Nirunkul.JPG"
+          },
+          "source": {
+            "title": "ประวัติ ปัญญา นิรันดร์กุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=43301&oldid=13409519"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 94,
+      "name": "ภคมน",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-94-1",
+          "surname": "บุณยะภูติ",
+          "nickname": "ลูกโป่ง",
+          "referenceName": "ภคมน บุณยะภูติ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภคมน บุณยะภูติ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=116443&oldid=13426165"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 95,
+      "name": "ภรภัทร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-95-1",
+          "surname": "วทัญญุตาพงศ์",
+          "nickname": "ปอย",
+          "referenceName": "ภรภัทร วทัญญุตาพงศ์",
+          "occupations": [
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภรภัทร วทัญญุตาพงศ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=607597&oldid=12460521"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-95-2",
+          "surname": "ศรีขจรเดชา",
+          "nickname": "ตรี",
+          "referenceName": "ภรภัทร ศรีขจรเดชา",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ภรภัทร ศรีขจรเดชา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1056512&oldid=13426401"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 96,
+      "name": "ภัชธร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-96-1",
+          "surname": "ธนวัฒน์",
+          "nickname": "พลอย",
+          "referenceName": "ภัชธร ธนวัฒน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ภัชธร ธนวัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=333866&oldid=13410064"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 97,
+      "name": "ภิษณุ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-97-1",
+          "surname": "จุฑานิ่มสกุล",
+          "nickname": "บอย",
+          "referenceName": "ภิษณุ จุฑานิ่มสกุล",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ภิษณุ จุฑานิ่มสกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=70425&oldid=13426174"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 98,
+      "name": "ธชย",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-98-1",
+          "surname": "ประทุมวรรณ",
+          "nickname": "เก่ง",
+          "referenceName": "ธชย ประทุมวรรณ",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q20559235.jpg",
+            "alt": "ภาพประกอบประวัติ ธชย ประทุมวรรณ",
+            "width": 960,
+            "height": 1222,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Keng_at_Joox_Music_Awards_2017.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1180849902,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1180849902",
+            "title": "Keng at Joox Music Awards 2017.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ธชย ประทุมวรรณ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=622018&oldid=13049259"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 99,
+      "name": "ธนัท",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-99-1",
+          "surname": "ฉิมท้วม",
+          "nickname": "โจ",
+          "referenceName": "ธนัท ฉิมท้วม",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ธนัท ฉิมท้วม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=780383&oldid=13393551"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-99-2",
+          "surname": "ด่านเจษฎา",
+          "nickname": "นัท",
+          "referenceName": "ธนัท ด่านเจษฎา",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q124255240.jpg",
+            "alt": "ภาพประกอบประวัติ Thanat Danjesda",
+            "width": 644,
+            "height": 788,
+            "credit": "Yyt15",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thanat_Danjesda.jpg",
+            "license": "CC BY 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1004279492,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1004279492",
+            "title": "Thanat Danjesda.jpg"
+          },
+          "source": {
+            "title": "NUT: Thanat Danjesda — GMMTV",
+            "url": "https://www.gmm-tv.com/artists/view/100/"
+          },
+          "roleSource": {
+            "title": "ประวัติ Thanat Danjesda — Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Thanat_Danjesda"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 100,
+      "name": "ธนิก",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-100-1",
+          "surname": "กมลธรานนท์",
+          "nickname": "ภวิน",
+          "referenceName": "ธนิก กมลธรานนท์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q109568912.jpg",
+            "alt": "ภาพประกอบประวัติ ธนิก กมลธรานนท์",
+            "width": 960,
+            "height": 1286,
+            "credit": "ชิบะของมาร์ค",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pawin.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1028171038,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1028171038",
+            "title": "Pawin.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ธนิก กมลธรานนท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1174962&oldid=13406218"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 101,
+      "name": "นาคร",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-101-1",
+          "surname": "ศิลาชัย",
+          "nickname": "เปิ้ล",
+          "referenceName": "นาคร ศิลาชัย",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13015994.jpg",
+            "alt": "ภาพประกอบประวัติ นาคร ศิลาชัย",
+            "width": 521,
+            "height": 675,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nakhorn_Silachai_at_CTW.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1133891891,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1133891891",
+            "title": "Nakhorn Silachai at CTW.jpg"
+          },
+          "source": {
+            "title": "ประวัติ นาคร ศิลาชัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=228054&oldid=13303813"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 102,
+      "name": "นาระ",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-102-1",
+          "surname": "เอื้อทวีกุล",
+          "nickname": "เพชร",
+          "referenceName": "นาระ เอื้อทวีกุล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ นาระ เอื้อทวีกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=318440&oldid=12287801"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 103,
+      "name": "ปริญ",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-103-1",
+          "surname": "สุภารัตน์",
+          "nickname": "หมาก",
+          "referenceName": "ปริญ สุภารัตน์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ปริญ สุภารัตน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=291597&oldid=13408355"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 104,
+      "name": "ปวิช",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-104-1",
+          "surname": "เวียงนนท์",
+          "nickname": "แม็ค",
+          "referenceName": "ปวิช เวียงนนท์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ปวิช เวียงนนท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=613199&oldid=13372503"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 105,
+      "name": "พชร",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-105-1",
+          "surname": "แก้วเพชร",
+          "nickname": "พชร",
+          "referenceName": "พชร แก้วเพชร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13017172.jpg",
+            "alt": "ภาพประกอบประวัติ พชร แก้วเพชร",
+            "width": 960,
+            "height": 1280,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pachara_Kaewpetch.JPG",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1250040094,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1250040094",
+            "title": "Pachara Kaewpetch.JPG"
+          },
+          "source": {
+            "title": "ประวัติ พชร แก้วเพชร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=182677&oldid=13218444"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-105-2",
+          "surname": "จิราธิวัฒน์",
+          "nickname": "พีช",
+          "referenceName": "พชร จิราธิวัฒน์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักดนตรี"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q6581375.jpg",
+            "alt": "ภาพประกอบประวัติ พชร จิราธิวัฒน์",
+            "width": 960,
+            "height": 1434,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pachara_Chirathivat_at_VERY_TV.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1258742440,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1258742440",
+            "title": "Pachara Chirathivat at VERY TV.jpg"
+          },
+          "source": {
+            "title": "ประวัติ พชร จิราธิวัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=364697&oldid=13386850"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-105-3",
+          "surname": "ธรรมมล",
+          "nickname": "ฟลุค",
+          "referenceName": "พชร ธรรมมล",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ พชร ธรรมมล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=219904&oldid=13237707"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-105-4",
+          "surname": "ปัญญายงค์",
+          "nickname": "แบงค์",
+          "referenceName": "พชร ปัญญายงค์",
+          "occupations": [
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q16140331.jpg",
+            "alt": "ภาพประกอบประวัติ พชร ปัญญายงค์",
+            "width": 960,
+            "height": 815,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pachara_Panyayong_at_Parc_Paragon.jpg",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1242714630,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1242714630",
+            "title": "Pachara Panyayong at Parc Paragon.jpg"
+          },
+          "source": {
+            "title": "ประวัติ พชร ปัญญายงค์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=322935&oldid=13266799"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-105-5",
+          "surname": "ศิลปสุนทร",
+          "nickname": "เซิร์ฟ",
+          "referenceName": "พชร ศิลปสุนทร",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "SURF: Patchara Silapasoonthorn — GMMTV",
+            "url": "https://www.gmm-tv.com/artists/view/140/"
+          },
+          "roleSource": {
+            "title": "เพื่อนข้างๆ (Friend Next Door) โดย SURF, JAVA — GMMTV",
+            "url": "https://www.gmm-tv.com/contents/playlist/g9ngJ/?v=8DOJk"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 106,
+      "name": "กวินรัฏฐ์",
+      "workbookSum": 51,
+      "people": [
+        {
+          "id": "person-106-1",
+          "surname": "ยศอมรสุนทร",
+          "nickname": "หยวน",
+          "referenceName": "กวินรัฏฐ์ ยศอมรสุนทร",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กวินรัฏฐ์ ยศอมรสุนทร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=307095&oldid=13303381"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 107,
+      "name": "กัษมนณัฎฐ์",
+      "workbookSum": 51,
+      "people": [
+        {
+          "id": "person-107-1",
+          "surname": "นามวิโรจน์",
+          "nickname": "เอิร์ธ",
+          "referenceName": "กัษมนณัฎฐ์ นามวิโรจน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q130630161.jpg",
+            "alt": "ภาพประกอบประวัติ กัษมนณัฎฐ์ นามวิโรจน์",
+            "width": 960,
+            "height": 1439,
+            "credit": "กัษมนณัฎฐ์ นามวิโรจน์",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:S_23011345.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1251600957,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1251600957",
+            "title": "S 23011345.jpg"
+          },
+          "source": {
+            "title": "ประวัติ กัษมนณัฎฐ์ นามวิโรจน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1230207&oldid=13237764"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 108,
+      "name": "ณัฏฐพงษ์",
+      "workbookSum": 50,
+      "people": [
+        {
+          "id": "person-108-1",
+          "surname": "ชาติพงศ์",
+          "nickname": "ณัฏฐพงษ์",
+          "referenceName": "ณัฏฐพงษ์ ชาติพงศ์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณัฏฐพงษ์ ชาติพงศ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=341047&oldid=12576744"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 109,
+      "name": "ณัฐวรรธน์",
+      "workbookSum": 50,
+      "people": [
+        {
+          "id": "person-109-1",
+          "surname": "จิโรชน์ธิกุล",
+          "nickname": "โฟร์ท",
+          "referenceName": "ณัฐวรรธน์ จิโรชน์ธิกุล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q115468451.png",
+            "alt": "ภาพประกอบประวัติ ณัฐวรรธน์ จิโรชน์ธิกุล",
+            "width": 488,
+            "height": 549,
+            "credit": "THHeadline",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fourth@_GMMTV_2024.png",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "external-review-recorded",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1088815329,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1088815329",
+            "title": "Fourth@ GMMTV 2024.png"
+          },
+          "source": {
+            "title": "ประวัติ ณัฐวรรธน์ จิโรชน์ธิกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1304770&oldid=13424737"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 110,
+      "name": "ชวินโรจน์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-110-1",
+          "surname": "ลิขิตเจริญสกุล",
+          "nickname": "เฟม",
+          "referenceName": "ชวินโรจน์ ลิขิตเจริญสกุล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13014368.jpg",
+            "alt": "ภาพประกอบประวัติ ชวินโรจน์ ลิขิตเจริญสกุล",
+            "width": 960,
+            "height": 1439,
+            "credit": "Cancanisstory",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fame_Chawinroj_Likitcharoensakul_2018-05-05.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1272368611,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1272368611",
+            "title": "Fame Chawinroj Likitcharoensakul 2018-05-05.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ชวินโรจน์ ลิขิตเจริญสกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=334697&oldid=13388740"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 111,
+      "name": "ฐานัฐพ์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-111-1",
+          "surname": "โล่ห์คุณสมบัติ",
+          "nickname": "ลี",
+          "referenceName": "ฐานัฐพ์ โล่ห์คุณสมบัติ",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ฐานัฐพ์ โล่ห์คุณสมบัติ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=885716&oldid=13409147"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 112,
+      "name": "ณัฐรินทร์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-112-1",
+          "surname": "สุวรรณเลิศ",
+          "nickname": "ลิเบีย",
+          "referenceName": "ณัฐรินทร์ สุวรรณเลิศ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณัฐรินทร์ สุวรรณเลิศ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1036118&oldid=12747984"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 113,
+      "name": "ณัฐวิญญ์",
+      "workbookSum": 45,
+      "people": [
+        {
+          "id": "person-113-1",
+          "surname": "วัฒนกิติพัฒน์",
+          "nickname": "อาโป",
+          "referenceName": "ณัฐวิญญ์ วัฒนกิติพัฒน์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q20558197.jpg",
+            "alt": "ภาพประกอบประวัติ ณัฐวิญญ์ วัฒนกิติพัฒน์",
+            "width": 960,
+            "height": 1592,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nattawin_W._at_CTW.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 897610801,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=897610801",
+            "title": "Nattawin W. at CTW.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ณัฐวิญญ์ วัฒนกิติพัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=711391&oldid=13424452"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 114,
+      "name": "จันทร์จิรา",
+      "workbookSum": 44,
+      "people": [
+        {
+          "id": "person-114-1",
+          "surname": "จูแจ้ง",
+          "nickname": "ตุ๊ก",
+          "referenceName": "จันทร์จิรา จูแจ้ง",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จันทร์จิรา จูแจ้ง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=303300&oldid=13373614"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 115,
+      "name": "เจนนิษฐ์",
+      "workbookSum": 44,
+      "people": [
+        {
+          "id": "person-115-1",
+          "surname": "โอ่ประเสริฐ",
+          "nickname": "เจนนิษฐ์",
+          "referenceName": "เจนนิษฐ์ โอ่ประเสริฐ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q48484821.jpg",
+            "alt": "ภาพประกอบประวัติ เจนนิษฐ์ โอ่ประเสริฐ",
+            "width": 960,
+            "height": 640,
+            "credit": "J Toppo",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jennis_Jabaja.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 646063948,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=646063948",
+            "title": "Jennis Jabaja.jpg"
+          },
+          "source": {
+            "title": "ประวัติ เจนนิษฐ์ โอ่ประเสริฐ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1016461&oldid=13262212"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 116,
+      "name": "กรณ์พงษ์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-116-1",
+          "surname": "ชูลาภ",
+          "nickname": "หนึ่ง",
+          "referenceName": "กรณ์พงษ์ ชูลาภ",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กรณ์พงษ์ ชูลาภ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=111311&oldid=13214554"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 117,
+      "name": "ขวัญกวินท์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-117-1",
+          "surname": "เกิดลาภผล",
+          "nickname": "เกี่ยวก้อย",
+          "referenceName": "ขวัญกวินท์ เกิดลาภผล",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ขวัญกวินท์ เกิดลาภผล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1244274&oldid=13356939"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 118,
+      "name": "ณัฐนันท์",
+      "workbookSum": 42,
+      "people": [
+        {
+          "id": "person-118-1",
+          "surname": "คุณวัฒน์",
+          "nickname": "เอิร์ท",
+          "referenceName": "ณัฐนันท์ คุณวัฒน์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณัฐนันท์ คุณวัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1303133&oldid=13426356"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 119,
+      "name": "จิรันธนิน",
+      "workbookSum": 41,
+      "people": [
+        {
+          "id": "person-119-1",
+          "surname": "ตรัยรัตนยนต์",
+          "nickname": "จิรันธนิน",
+          "referenceName": "จิรันธนิน ตรัยรัตนยนต์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ จิรันธนิน ตรัยรัตนยนต์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1458223&oldid=13399527"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 120,
+      "name": "กัญญ์ณรัณ",
+      "workbookSum": 40,
+      "people": [
+        {
+          "id": "person-120-1",
+          "surname": "วงศ์ขจรไกล",
+          "nickname": "ปราง",
+          "referenceName": "กัญญ์ณรัณ วงศ์ขจรไกล",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ กัญญ์ณรัณ วงศ์ขจรไกล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1242905&oldid=13295244"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 121,
+      "name": "ฌอร์ลชัญ",
+      "workbookSum": 40,
+      "people": [
+        {
+          "id": "person-121-1",
+          "surname": "วรรณปกาสิต",
+          "nickname": "ปุ๊กปิ๊ก",
+          "referenceName": "ฌอร์ลชัญ วรรณปกาสิต",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ฌอร์ลชัญ วรรณปกาสิต — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=884226&oldid=12721284"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 122,
+      "name": "กมลรจน์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-122-1",
+          "surname": "เอกวัฒนกิจ",
+          "nickname": "จิ้ง",
+          "referenceName": "กมลรจน์ เอกวัฒนกิจ",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กมลรจน์ เอกวัฒนกิจ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=490442&oldid=12887479"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 123,
+      "name": "กัมมัญญ์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-123-1",
+          "surname": "กลมแก้ว",
+          "nickname": "บอล",
+          "referenceName": "กัมมัญญ์ กลมแก้ว",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q20557122.jpg",
+            "alt": "ภาพประกอบประวัติ กัมมัญญ์ กลมแก้ว",
+            "width": 960,
+            "height": 1477,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ball_Jitpanu_at_CTW.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 936394995,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=936394995",
+            "title": "Ball Jitpanu at CTW.jpg"
+          },
+          "source": {
+            "title": "ประวัติ กัมมัญญ์ กลมแก้ว — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=684757&oldid=13400361"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 124,
+      "name": "ชิดจันทร์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-124-1",
+          "surname": "ห่ง",
+          "nickname": "พลอย",
+          "referenceName": "ชิดจันทร์ ห่ง",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ชิดจันทร์ ห่ง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=327007&oldid=13286398"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 125,
+      "name": "ณัฏฐ์",
+      "workbookSum": 36,
+      "people": [
+        {
+          "id": "person-125-1",
+          "surname": "กิจจริต",
+          "nickname": "นัท",
+          "referenceName": "ณัฏฐ์ กิจจริต",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณัฏฐ์ กิจจริต — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1134711&oldid=13065360"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-125-2",
+          "surname": "เดชะปัญญา",
+          "nickname": "ณัฏฐ์",
+          "referenceName": "ณัฏฐ์ เดชะปัญญา",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13014730.jpg",
+            "alt": "ภาพประกอบประวัติ ณัฏฐ์ เดชะปัญญา",
+            "width": 471,
+            "height": 768,
+            "credit": "Nuttnexus",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nuttt.JPG",
+            "license": "CC BY-SA 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 898364144,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=898364144",
+            "title": "Nuttt.JPG"
+          },
+          "source": {
+            "title": "ประวัติ ณัฏฐ์ เดชะปัญญา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=409114&oldid=13126064"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-125-3",
+          "surname": "ทิวไผ่งาม",
+          "nickname": "นัท",
+          "referenceName": "ณัฏฐ์ ทิวไผ่งาม",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q618084.jpg",
+            "alt": "ภาพประกอบประวัติ ณัฏฐ์ ทิวไผ่งาม",
+            "width": 854,
+            "height": 1280,
+            "credit": "Krity talad",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:NATTHEW_by_Fanclub.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1243626865,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1243626865",
+            "title": "NATTHEW by Fanclub.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ณัฏฐ์ ทิวไผ่งาม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=157632&oldid=13426156"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-125-4",
+          "surname": "เทพหัสดิน ณ อยุธยา",
+          "nickname": "ภูมิ",
+          "referenceName": "ณัฏฐ์ เทพหัสดิน ณ อยุธยา",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ณัฏฐ์ เทพหัสดิน ณ อยุธยา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=284484&oldid=13357784"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 126,
+      "name": "กรภัทร์",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-126-1",
+          "surname": "เกิดพันธุ์",
+          "nickname": "นนน",
+          "referenceName": "กรภัทร์ เกิดพันธุ์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q25542310.png",
+            "alt": "ภาพประกอบประวัติ กรภัทร์ เกิดพันธุ์",
+            "width": 574,
+            "height": 838,
+            "credit": "THHeadline",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nanon_Korapat_Kirdpan_at_GMMTV%27s_2024_Up%26Above_Part_2_event,_23_April_2024.png",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "external-review-recorded",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1088805656,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1088805656",
+            "title": "Nanon Korapat Kirdpan at GMMTV's 2024 Up&Above Part 2 event, 23 April 2024.png"
+          },
+          "source": {
+            "title": "ประวัติ กรภัทร์ เกิดพันธุ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=769116&oldid=13385337"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 127,
+      "name": "จักริน",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-127-1",
+          "surname": "กังวานเกียรติชัย",
+          "nickname": "แจ๊คกี้",
+          "referenceName": "จักริน กังวานเกียรติชัย",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จักริน กังวานเกียรติชัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1242712&oldid=13420128"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-127-2",
+          "surname": "ภูริพัฒน์",
+          "nickname": "แก็ป",
+          "referenceName": "จักริน ภูริพัฒน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q20557055.jpg",
+            "alt": "ภาพประกอบประวัติ จักริน ภูริพัฒน์",
+            "width": 960,
+            "height": 1766,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gap_Jakkarin_At_CTW_10-5-2015.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 972179864,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=972179864",
+            "title": "Gap Jakkarin At CTW 10-5-2015.jpg"
+          },
+          "source": {
+            "title": "ประวัติ จักริน ภูริพัฒน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=709742&oldid=13395625"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 128,
+      "name": "จันษกร",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-128-1",
+          "surname": "กิตติวัฒนากร",
+          "nickname": "หงหยก",
+          "referenceName": "จันษกร กิตติวัฒนากร",
+          "occupations": [
+            "นักร้อง",
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "หงหยก AF10 จัดงานแฟนมีต — ดาราเดลี่",
+            "url": "https://www.daradaily.com/news/125158/read"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 129,
+      "name": "จิณณะ",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-129-1",
+          "surname": "นวรัตน์",
+          "nickname": "จิณ",
+          "referenceName": "จิณณะ นวรัตน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จิณณะ นวรัตน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=682403&oldid=13415537"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 130,
+      "name": "จิณภัค",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-130-1",
+          "surname": "เปียกลิ่น",
+          "nickname": "เกศ",
+          "referenceName": "จิณภัค เปียกลิ่น",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จิณภัค เปียกลิ่น — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=311423&oldid=12939624"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 131,
+      "name": "จินตนา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-131-1",
+          "surname": "สุขสถิตย์",
+          "nickname": "จินตนา",
+          "referenceName": "จินตนา สุขสถิตย์",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จินตนา สุขสถิตย์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=152657&oldid=12422563"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 132,
+      "name": "ใจบัว",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-132-1",
+          "surname": "ฮิดดิง",
+          "nickname": "ใจบัว",
+          "referenceName": "ใจบัว ฮิดดิง",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ใจบัว ฮิดดิง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1029465&oldid=13424348"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 133,
+      "name": "เชตชวิน",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-133-1",
+          "surname": "ชูประทุม",
+          "nickname": "ขวัญ",
+          "referenceName": "เชตชวิน ชูประทุม",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เชตชวิน ชูประทุม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=886863&oldid=13417522"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 134,
+      "name": "ณฐมน",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-134-1",
+          "surname": "ภูวะปัจฉิม",
+          "nickname": "ปอ",
+          "referenceName": "ณฐมน ภูวะปัจฉิม",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณฐมน ภูวะปัจฉิม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=349421&oldid=13390131"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 135,
+      "name": "ณัฐฌา",
+      "workbookSum": 24,
+      "people": [
+        {
+          "id": "person-135-1",
+          "surname": "บุญปอง",
+          "nickname": "การ์ตูน",
+          "referenceName": "ณัฐฌา บุญปอง",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณัฐฌา บุญปอง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1297986&oldid=13390182"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 136,
+      "name": "กรณ์",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-136-1",
+          "surname": "ศิริสรณ์",
+          "nickname": "กั้ง",
+          "referenceName": "กรณ์ ศิริสรณ์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กรณ์ ศิริสรณ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=366065&oldid=13344503"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 137,
+      "name": "จงเจต",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-137-1",
+          "surname": "วัชรานันท์",
+          "nickname": "โน้ต",
+          "referenceName": "จงเจต วัชรานันท์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ จงเจต วัชรานันท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=322096&oldid=13283813"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 138,
+      "name": "ฉลอง",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-138-1",
+          "surname": "สิมะเสถียร",
+          "nickname": "ฉลอง",
+          "referenceName": "ฉลอง สิมะเสถียร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ฉลอง สิมะเสถียร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=551450&oldid=13281809"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 139,
+      "name": "ไชย",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-139-1",
+          "surname": "ขุนศรีรักษา",
+          "nickname": "ทองขาว",
+          "referenceName": "ไชย ขุนศรีรักษา",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ไชย ขุนศรีรักษา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=536824&oldid=13283729"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 140,
+      "name": "ญาณิน",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-140-1",
+          "surname": "วิสมิตะนันทน์",
+          "nickname": "จีจ้า",
+          "referenceName": "ญาณิน วิสมิตะนันทน์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ญาณิน วิสมิตะนันทน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=142388&oldid=13330164"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 141,
+      "name": "ทักษิณ",
+      "workbookSum": 19,
+      "people": [
+        {
+          "id": "person-141-1",
+          "surname": "แจ่มผล",
+          "nickname": "ทักษิณ",
+          "referenceName": "ทักษิณ แจ่มผล",
+          "occupations": [
+            "นักแสดง",
+            "ผู้กำกับ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ทักษิณ แจ่มผล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1520794&oldid=13223308"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 142,
+      "name": "กณิณ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-142-1",
+          "surname": "ปัทมนันถ์",
+          "nickname": "ณดล",
+          "referenceName": "กณิณ ปัทมนันถ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q65280673.jpg",
+            "alt": "ภาพประกอบประวัติ กณิณ ปัทมนันถ์",
+            "width": 467,
+            "height": 555,
+            "credit": "User:Donat Sweet",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Donknin.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1218252904,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1218252904",
+            "title": "Donknin.jpg"
+          },
+          "source": {
+            "title": "ประวัติ กณิณ ปัทมนันถ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1029917&oldid=13325513"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 143,
+      "name": "กรกฏ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-143-1",
+          "surname": "ธนภัทร",
+          "nickname": "ปลา",
+          "referenceName": "กรกฏ ธนภัทร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กรกฏ ธนภัทร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=788730&oldid=12536129"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 144,
+      "name": "กรธัช",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-144-1",
+          "surname": "สมบุญธรรม",
+          "nickname": "บีม",
+          "referenceName": "กรธัช สมบุญธรรม",
+          "occupations": [
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "สัมภาษณ์บีม กรธัช AF10 — ผู้จัดการออนไลน์",
+            "url": "https://mgronline.com/motoring/detail/9560000130407"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 145,
+      "name": "กิรณา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-145-1",
+          "surname": "พิพิธยากร",
+          "nickname": "แฟร์รี่",
+          "referenceName": "กิรณา พิพิธยากร",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กิรณา พิพิธยากร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1460792&oldid=13307343"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 146,
+      "name": "คณาคำ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-146-1",
+          "surname": "อภิรดี",
+          "nickname": "บี๋",
+          "referenceName": "คณาคำ อภิรดี",
+          "occupations": [
+            "นักร้อง",
+            "นักแต่งเพลง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ คณาคำ อภิรดี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=196113&oldid=13282115"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 147,
+      "name": "จรณ",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-147-1",
+          "surname": "โสรัตน์",
+          "nickname": "ท็อป",
+          "referenceName": "จรณ โสรัตน์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ จรณ โสรัตน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1239284&oldid=13283841"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 148,
+      "name": "ชัชชญา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-148-1",
+          "surname": "ทวินันท์",
+          "nickname": "ธัญญ่า",
+          "referenceName": "ธัญญ่า อาร์สยาม",
+          "occupations": [
+            "นักร้อง",
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ธัญญ่า อาร์สยาม — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1326442&oldid=13283050"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 149,
+      "name": "ชัญญา",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-149-1",
+          "surname": "ศรีเฟื่องฟุ้ง",
+          "nickname": "เชอร์รี่",
+          "referenceName": "ชัญญา ศรีเฟื่องฟุ้ง",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ชัญญา ศรีเฟื่องฟุ้ง — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=571710&oldid=13388837"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 150,
+      "name": "ณธัช",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-150-1",
+          "surname": "ศิริพงษ์ธร",
+          "nickname": "ฟลุ้ค",
+          "referenceName": "ณธัช ศิริพงษ์ธร",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณธัช ศิริพงษ์ธร — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1242148&oldid=13390132"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 151,
+      "name": "ณภัทร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-151-1",
+          "surname": "โชคจินดาชัย",
+          "nickname": "ท็อป",
+          "referenceName": "ณภัทร โชคจินดาชัย",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q13014711.jpg",
+            "alt": "ภาพประกอบประวัติ ณภัทร โชคจินดาชัย",
+            "width": 960,
+            "height": 1280,
+            "credit": "Cancanisstory",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Top_Napat_Chokejindachai_2014-10-17.jpg",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1272421448,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1272421448",
+            "title": "Top Napat Chokejindachai 2014-10-17.jpg"
+          },
+          "source": {
+            "title": "ประวัติ ณภัทร โชคจินดาชัย — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=384856&oldid=13033867"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-151-2",
+          "surname": "พัชรชวลิต",
+          "nickname": "อั๋น",
+          "referenceName": "ณภัทร พัชรชวลิต",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "AUN: Napat Patcharachavalit — GMMTV",
+            "url": "https://www.gmm-tv.com/artists/view/9/"
+          },
+          "roleSource": {
+            "title": "ประวัติ Napat Patcharachavalit — Wikipedia",
+            "url": "https://en.wikipedia.org/wiki/Napat_Patcharachavalit"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-151-3",
+          "surname": "วิกัยรุ่งโรจน์",
+          "nickname": "ณ",
+          "referenceName": "ณภัทร วิกัยรุ่งโรจน์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ",
+            "ดีเจ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณภัทร วิกัยรุ่งโรจน์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1457289&oldid=13346403"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-151-4",
+          "surname": "เสียงสมบุญ",
+          "nickname": "นาย",
+          "referenceName": "ณภัทร เสียงสมบุญ",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ ณภัทร เสียงสมบุญ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=742390&oldid=13425270"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 152,
+      "name": "เตชธร",
+      "workbookSum": 15,
+      "people": [
+        {
+          "id": "person-152-1",
+          "surname": "จามิกรณ์",
+          "nickname": "พัตเตอร์",
+          "referenceName": "เตชธร จามิกรณ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ เตชธร จามิกรณ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=286995&oldid=13411566"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 153,
+      "name": "กรรณ",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-153-1",
+          "surname": "สวัสดิวัตน์ ณ อยุธยา",
+          "nickname": "กรรณ",
+          "referenceName": "กรรณ สวัสดิวัตน์ ณ อยุธยา",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กรรณ สวัสดิวัตน์ ณ อยุธยา — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=1274021&oldid=12802700"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 154,
+      "name": "กัญญา",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-154-1",
+          "surname": "รัตนเพชร์",
+          "nickname": "ตาล",
+          "referenceName": "กัญญา รัตนเพชร์",
+          "occupations": [
+            "นักแสดง",
+            "นักเดินแบบ"
+          ],
+          "portrait": {
+            "src": "/images/celebrity-names/catalog/q6365777.jpg",
+            "alt": "ภาพประกอบประวัติ กัญญา รัตนเพชร์",
+            "width": 211,
+            "height": 440,
+            "credit": "Sry85",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kanya_Rattanapetch.jpg",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "objectPosition": "50% 20%"
+          },
+          "portraitStatus": "available",
+          "portraitEvidence": {
+            "status": "own-work-declaration",
+            "checkedAt": "2026-11-26",
+            "revisionId": 1249189937,
+            "evidenceUrl": "https://commons.wikimedia.org/w/index.php?oldid=1249189937",
+            "title": "Kanya Rattanapetch.jpg"
+          },
+          "source": {
+            "title": "ประวัติ กัญญา รัตนเพชร์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=136092&oldid=13342536"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-154-2",
+          "surname": "ไรวินท์",
+          "nickname": "หญิง",
+          "referenceName": "กัญญา ไรวินท์",
+          "occupations": [
+            "นักแสดง",
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กัญญา ไรวินท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=554956&oldid=13347992"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-154-3",
+          "surname": "ลีนุตพงษ์",
+          "nickname": "ผึ้ง",
+          "referenceName": "กัญญา ลีนุตพงษ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ กัญญา ลีนุตพงษ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=769454&oldid=12949734"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 155,
+      "name": "คำรณ",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-155-1",
+          "surname": "สัมบุญณานนท์",
+          "nickname": "คำรณ",
+          "referenceName": "คำรณ สัมบุญณานนท์",
+          "occupations": [
+            "นักแสดง",
+            "นักร้อง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ คำรณ สัมบุญณานนท์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=40931&oldid=12647008"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        },
+        {
+          "id": "person-155-2",
+          "surname": "หว่างหวังศรี",
+          "nickname": "คำรณ",
+          "referenceName": "คำรณ หว่างหวังศรี",
+          "occupations": [
+            "พิธีกร"
+          ],
+          "portrait": null,
+          "portraitStatus": "awaiting-evidence",
+          "source": {
+            "title": "ประวัติ คำรณ หว่างหวังศรี — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=303352&oldid=12540492"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 156,
+      "name": "ณธษา",
+      "workbookSum": 14,
+      "people": [
+        {
+          "id": "person-156-1",
+          "surname": "เวชประสิทธิ์",
+          "nickname": "ไอซ์",
+          "referenceName": "ณธษา เวชประสิทธิ์",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ณธษา เวชประสิทธิ์ — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=936195&oldid=12255821"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    },
+    {
+      "sourceRow": 157,
+      "name": "ถิร",
+      "workbookSum": 9,
+      "people": [
+        {
+          "id": "person-157-1",
+          "surname": "ชุติกุล",
+          "nickname": "อั้ม",
+          "referenceName": "ถิร ชุติกุล",
+          "occupations": [
+            "นักแสดง"
+          ],
+          "portrait": null,
+          "portraitStatus": "not-available",
+          "source": {
+            "title": "ประวัติ ถิร ชุติกุล — วิกิพีเดีย",
+            "url": "https://th.wikipedia.org/w/index.php?curid=744023&oldid=13338204"
+          },
+          "referenceStatus": "matched",
+          "checkedAt": "2026-11-26"
+        }
+      ]
+    }
+  ]
+}

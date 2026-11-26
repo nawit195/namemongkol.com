@@ -1428,3 +1428,21 @@ body {
     animation: none;
   }
 }
+
+.celebrity-character-flow { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.celebrity-character { display: flex; flex-direction: column; align-items: center; min-width: 48px; padding: 10px 12px; border: 1px solid #dfd5c3; border-radius: 10px; background: #faf7f0; }
+.celebrity-character strong { font-size: 24px; line-height: 1.6; }
+.celebrity-character span { font-size: 14px; font-variant-numeric: tabular-nums; }
+.celebrity-study table { width: 100%; table-layout: fixed; font-size: 15px; overflow-wrap: anywhere; }
+.celebrity-study th, .celebrity-study td { padding: 10px 8px; }
+.celebrity-study th:first-child { width: 24%; }
+.celebrity-study-note, .celebrity-study-next { padding: 20px; border: 1px solid #dfd5c3; border-radius: 16px; background: #faf7f0; }
+.celebrity-study details { border-block: 1px solid #dfd5c3; padding-block: 12px; }
+.celebrity-study summary { cursor: pointer; min-height: 44px; padding-block: 8px; }
+.celebrity-study section { scroll-margin-top: 110px; }
+.celebrity-study .celebrity-study-next a[href="/name-check"] { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin: 8px 8px 8px 0; padding: 10px 18px; border-radius: 12px; background: #24223e; color: #f8f8fc; text-decoration: none; font-size: 15px; font-weight: 600; }
+.celebrity-study a:focus-visible, .celebrity-study summary:focus-visible { outline: 2px solid #926723; outline-offset: 4px; }
+.celebrity-study-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.celebrity-study-actions a { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 10px 18px; border: 1px solid #dfd5c3; border-radius: 12px; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.celebrity-study .celebrity-study-actions a[href="/name-check"] { margin: 0; }
+@media (min-width: 640px) { .celebrity-study-actions { flex-direction: row; flex-wrap: wrap; } }

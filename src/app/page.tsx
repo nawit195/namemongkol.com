@@ -5,6 +5,7 @@ import ClientHome from './ClientHome';
 import { ogImageUrl, siteUrl } from '@/lib/seo';
 import { namingBrandDescription, namingScienceNames, namingContentUpdatedAt } from '@/data/namingApproach';
 import { NamingApproachSummary } from '@/components/NamingApproachSummary';
+import { CelebrityNamePreview } from '@/components/celebrity-names/CelebrityNamePreview';
 
 const baseUrl = siteUrl.replace(/\/$/, '');
 const pageTitle = 'NameMongkol | ค้นหาและวิเคราะห์ชื่อมงคลตามวันเกิด';
@@ -173,7 +174,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ClientHome heroHeadingLevel="h1" />
+      <ClientHome heroHeadingLevel="h1" celebrityPreview={<CelebrityNamePreview />} />
       <NamingApproachSummary />
       <section className="bg-[#f8f8fc] px-4 py-10 text-[#1a1a3e]">
         <div className="mx-auto max-w-5xl">

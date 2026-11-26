@@ -5,6 +5,7 @@ import { unstable_cache } from 'next/cache';
 import { supabase } from '@/utils/supabase';
 import { Calendar, ArrowLeft, Search, BookOpen } from 'lucide-react';
 import { articles as localArticles } from '@/data/articles';
+import { celebrityEditorialSlugs } from '@/lib/celebrityNames';
 import { ArticleImage } from '@/components/ArticleImage';
 import { ArticleViewCounter, ArticleViewStatsProvider } from '@/components/ArticleViewStats';
 import { SoftYellowGlowBackground } from '@/components/ui/background-components';
@@ -100,7 +101,7 @@ const getCachedDbArticles = unstable_cache(
     { revalidate: 86400, tags: ['articles'] }
 );
 
-const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set(['boy-names-wednesday-night-2569', 'monday-girl-names-2569-no-sara', '100-auspicious-women-names-2026']);
+const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set([...celebrityEditorialSlugs, 'boy-names-wednesday-night-2569', 'monday-girl-names-2569-no-sara', '100-auspicious-women-names-2026']);
 
 async function getArticles() {
     const dbArticles = await getCachedDbArticles();
