@@ -28,6 +28,7 @@ const AuraVibeWidget = dynamic(() => import('@/components/AuraVibeWidget'), {
     loading: () => <div className="h-48 bg-slate-200/50 rounded-2xl animate-pulse my-10 max-w-xl mx-auto" />
 });
 import { articles as localArticles, Article } from '@/data/articles';
+import { celebrityEditorialSlugs } from '@/lib/celebrityNames';
 import { ARTICLE_REDIRECT_MAP, isRedirectedArticleSlug } from '@/lib/articleRedirects';
 import {
     PALMISTRY_SLUG,
@@ -39,6 +40,7 @@ import {
 
 const LOCAL_PRIORITY_ARTICLE_SLUGS = new Set([
     ...NAME_TABLE_ARTICLES,
+    ...celebrityEditorialSlugs,
     'boy-names-wednesday-night-2569',
     'lucky-names-for-2026-grade-a-plus',
 ]);
@@ -1075,7 +1077,7 @@ export default async function ArticlePage({ params }: Props) {
                         </nav>
                     )}
 
-                    {nameTables.total === 0 && <ArticleEnhancementBlock article={articleWithEffectiveEnhancements} />}
+                    {nameTables.total === 0 && !celebrityEditorialSlugs.includes(slug) && <ArticleEnhancementBlock article={articleWithEffectiveEnhancements} />}
 
                     {/* Content */}
                     {/* Content */}
@@ -1088,7 +1090,7 @@ export default async function ArticlePage({ params }: Props) {
                     {nameTables.total > 0 && <NamingArticleJourney slug={article.slug} />}
 
                     {/* Aura Vibe Widget — Mid-Article (คั่นระหว่างเนื้อหากับ FAQ) */}
-                    <AuraVibeWidget />
+                    {!celebrityEditorialSlugs.includes(slug) && <AuraVibeWidget />}
 
                     {/* FAQ Section — renders when article has faqItems */}
                     {effectiveFaqItems.length > 0 && (

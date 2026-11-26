@@ -12,6 +12,7 @@ export function NamingApproachSummary({ premium = false }: { premium?: boolean }
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
                 <Link href="/methodology#premium-curation" className="inline-flex min-h-11 items-center text-amber-800 underline underline-offset-4">วิธีคำนวณและการคัดรายชื่อ</Link>
                 <Link href="/name-check" className="inline-flex min-h-11 items-center underline underline-offset-4">วิเคราะห์ชื่อกับนามสกุลฟรี</Link>
+                {premium && <Link href="/celebrity-names" className="inline-flex min-h-11 items-center underline underline-offset-4">ดูกรณีศึกษาวิธีคำนวณชื่อพร้อมแหล่งอ้างอิง →</Link>}
             </div>
         </div>
     </section>;

@@ -4,9 +4,16 @@ export const runtime = 'edge';
 
 const size = { width: 1200, height: 630 };
 
-type OgVariant = 'default' | 'article' | 'about' | 'phone' | 'analysis';
+type OgVariant = 'default' | 'article' | 'about' | 'phone' | 'analysis' | 'celebrity';
 
 const variantConfig: Record<OgVariant, { eyebrow: string; title: string; subtitle: string; accent: string; tag: string }> = {
+  celebrity: {
+    eyebrow: 'ถอดรหัสชื่อคนดัง · กรณีศึกษา',
+    title: 'เข้าใจที่มาของเกรด A+ เฉพาะชื่อ',
+    subtitle: 'แสดงผลรวมและคู่เลขตามเกณฑ์ NameMongkol ไม่ใช่การรับรองบริการโดยบุคคลที่กล่าวถึง',
+    accent: '#d9b36e',
+    tag: 'ผลคำนวณตามเกณฑ์ NameMongkol',
+  },
   default: {
     eyebrow: 'AI-Powered Name Analysis',
     title: 'วิเคราะห์ชื่อมงคล',
@@ -141,7 +148,7 @@ export async function GET(req: Request) {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 <div style={{ fontSize: 28, fontWeight: 700 }}>NameMongkol</div>
-                <div style={{ fontSize: 18, color: '#cbd5e1' }}>วิเคราะห์ชื่อมงคลอันดับต้นของไทย</div>
+                <div style={{ fontSize: 18, color: '#cbd5e1' }}>{variant === 'celebrity' ? 'แสดงวิธีคำนวณ พร้อมแหล่งข้อมูลชื่อ' : 'วิเคราะห์ชื่อมงคลอันดับต้นของไทย'}</div>
               </div>
             </div>
             <div
@@ -189,7 +196,7 @@ export async function GET(req: Request) {
               <div style={{ width: 10, height: 10, borderRadius: 10, background: config.accent }} />
               <div>namemongkol.com</div>
             </div>
-            <div>ศาสตร์ไทยและ AI เพื่อการตัดสินใจที่มั่นใจขึ้น</div>
+            <div>{variant === 'celebrity' ? 'เพื่อการเรียนรู้ ไม่รับประกันผลลัพธ์ชีวิต' : 'ศาสตร์ไทยและ AI เพื่อการตัดสินใจที่มั่นใจขึ้น'}</div>
           </div>
         </div>
       </div>

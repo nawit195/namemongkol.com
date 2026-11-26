@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import { siteUrl } from '@/lib/seo';
 
 const privacyUrl = `${siteUrl}/privacy`;
-const lastUpdated = '24 พฤศจิกายน 2569';
-const dateModified = '2026-11-24';
+const lastUpdated = '26 พฤศจิกายน 2569';
+const dateModified = '2026-11-26';
 
 export const metadata: Metadata = {
     title: {
@@ -155,6 +155,14 @@ export default function PrivacyPage() {
                                 แบ่งปัน และลบข้อมูลอย่างไรเมื่อคุณใช้งานบริการวิเคราะห์ชื่อ เบอร์ ลายมือ ออร่า วอลเปเปอร์
                                 บทความ รีวิว บัญชีผู้ใช้ เครดิต และการชำระเงินบนเว็บไซต์
                             </p>
+                        </section>
+
+                        <section id="editorial-data" className="scroll-mt-32 rounded-2xl border border-white/10 bg-slate-900/70 p-6 md:p-8">
+                            <h2 className="text-2xl font-bold text-white">ข้อมูลอ้างอิงในบทความและกรณีศึกษา</h2>
+                            <p className="mt-3 leading-relaxed text-slate-300">เนื้อหาบางส่วนใช้ชื่อ ชื่อเล่น บทบาท และภาพประกอบจากแหล่งประวัติที่เผยแพร่ต่อสาธารณะ เพื่ออธิบายวิธีคำนวณหรืออ้างอิงเนื้อหา โดยแยกข้อมูลบุคคลออกจากผลคำนวณของเว็บไซต์ พร้อมลิงก์แหล่งประวัติและข้อมูลใบอนุญาตภาพที่แสดง</p>
+                            <p className="mt-3 leading-relaxed text-slate-300">ข้อมูลที่ใช้ในกรณีศึกษายังคงอยู่ระหว่างที่เผยแพร่เนื้อหาและจำเป็นต่อการอ้างอิง สามารถทบทวน แก้ไข พัก หรือถอดออกเมื่อพบข้อผิดพลาด มีข้อกังวลเรื่องสิทธิ หรือมีคำขอที่ต้องพิจารณาตามกฎหมาย แหล่งข้อมูลสาธารณะไม่ได้หมายถึงการรับรองบริการโดยเจ้าของข้อมูล</p>
+                            <p className="mt-3 leading-relaxed text-slate-300">เจ้าของข้อมูล เจ้าของสิทธิ หรือผู้มีอำนาจแทน สามารถแจ้งคัดค้าน ขอแก้ไข ระงับ หรือถอดข้อมูล ผ่าน <Link href="https://lin.ee/8N4ab3b" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">LINE Official Account</Link> โดยแจ้ง URL และรายการที่เกี่ยวข้องก่อน ไม่ต้องส่งบัตรประชาชนหรือข้อมูลส่วนตัวที่ไม่เกี่ยวข้องในการแจ้งครั้งแรก</p>
+                            <Link href="/celebrity-names/editorial-policy" className="mt-3 inline-flex min-h-11 items-center text-amber-300 underline underline-offset-4">อ่านแนวทางข้อมูล ภาพประกอบ และวิธีแจ้งคำขอ</Link>
                         </section>
 
                         <section className="rounded-2xl border border-white/10 bg-slate-900/70 p-6 md:p-8">

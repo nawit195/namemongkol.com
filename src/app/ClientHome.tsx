@@ -56,6 +56,7 @@ const BulkAnalysisBanner = dynamic(() => import('@/components/BulkAnalysisBanner
 type ClientHomeProps = {
     heroHeadingLevel?: 'h1' | 'h2';
     surface?: 'home' | 'name-check';
+    celebrityPreview?: React.ReactNode;
 };
 
 type HomeSectionsData = {
@@ -198,7 +199,7 @@ function HomeResultPreview() {
     );
 }
 
-export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }: ClientHomeProps) {
+export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home', celebrityPreview }: ClientHomeProps) {
     const isHomeSurface = surface === 'home';
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -322,10 +323,12 @@ export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }
         const urlName = params.get('name') ?? '';
         const urlSurname = params.get('surname') ?? '';
         const urlDay = params.get('day') ?? 'sunday';
+        const prefillOnly = params.get('mode') === 'prefill';
 
         if (urlName) {
             setName(urlName);
             setSurname(urlSurname);
+            if (prefillOnly) return;
             setDay(urlDay);
             // Defer execution to avoid synchronous state update warning
             setTimeout(() => {
@@ -520,6 +523,7 @@ export default function ClientHome({ heroHeadingLevel = 'h1', surface = 'home' }
                     <DeferredSection minHeightClassName="min-h-[360px]" intrinsicSize="360px">
                         <HowItWorksSection />
                     </DeferredSection>
+                    {celebrityPreview}
                     <DeferredSection minHeightClassName="min-h-[420px]" intrinsicSize="420px">
                         <ComparisonSection />
                     </DeferredSection>
