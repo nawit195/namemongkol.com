@@ -4,6 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, BadgeCheck, CalendarDays, LockKeyhole, UsersRound } from 'lucide-react';
 import type { PremiumNameData } from '@/utils/premiumDataParser';
+import { analyzePairs } from '@/utils/analyzePairs';
+import { calculateGrade } from '@/utils/gradeResult';
 import { useLanguage } from '@/components/LanguageProvider';
 import { FavoriteButton } from '@/components/names/NamingProvider';
 import styles from './PremiumNameCard.module.css';
@@ -30,6 +32,7 @@ const GENDERS = { male: 'ชาย', female: 'หญิง', neutral: 'ไม่
 
 export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlocking = false, unlockGroup }: NameCardProps) {
     const { t } = useLanguage();
+    const grade = calculateGrade(item.totalScore, analyzePairs(item.name));
     const hasPronunciation = Boolean(item.pronunciation?.trim());
     const hasMeaning = Boolean(item.meaning?.trim());
     const hasDetails = hasPronunciation || hasMeaning;
@@ -45,7 +48,10 @@ export default function PremiumNameCard({ item, isUnlocked, onUnlock, isUnlockin
             <div className={styles.content} aria-hidden={!isUnlocked} inert={!isUnlocked || undefined}>
                 <header className={styles.identity}>
                     <div className={styles.titleRow}>
-                        <h3 className={styles.name}>{item.name}</h3>
+                        <div className={styles.nameGroup}>
+                            <h3 className={styles.name}>{item.name}</h3>
+                            <span className={styles.grade} data-grade={grade} aria-label={`เกรดชื่อ ${grade}`} title="เกรดจากผลรวมชื่อและคู่เลข">เกรด <strong>{grade}</strong></span>
+                        </div>
                         <span className={styles.score} aria-label={`ผลรวมชื่อ ${item.totalScore}`}>เลข <strong>{item.totalScore}</strong></span>
                     </div>
                     <p className={styles.reading}>

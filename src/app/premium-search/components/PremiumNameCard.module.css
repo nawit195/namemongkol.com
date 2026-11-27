@@ -16,7 +16,13 @@
 }
 .card:hover { border-color: oklch(0.77 0.05 80); box-shadow: 0 5px 15px oklch(0.3 0.02 80 / 0.065); }
 .titleRow { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.nameGroup { display: flex; min-width: 0; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
 .name { min-width: 0; margin: 0; overflow-wrap: anywhere; color: oklch(0.47 0.11 48); font-size: 23px; font-weight: 750; line-height: 1.45; }
+.grade { display: inline-flex; flex-shrink: 0; align-items: center; gap: 4px; border: 1px solid oklch(0.86 0.02 265); border-radius: 8px; padding: 2px 7px; background: oklch(0.95 0.012 265); color: oklch(0.4 0.04 265); font-size: 11px; line-height: 20px; white-space: nowrap; }
+.grade strong { font-size: 13px; font-weight: 750; }
+.grade[data-grade='A+'] { border-color: oklch(0.43 0.12 155); background: oklch(0.47 0.13 155); color: oklch(0.985 0.006 155); }
+.grade[data-grade='A'] { border-color: oklch(0.85 0.035 155); background: oklch(0.95 0.025 155); color: oklch(0.38 0.07 155); }
+.grade[data-grade='C'] { border-color: oklch(0.86 0.04 25); background: oklch(0.96 0.02 25); color: oklch(0.43 0.12 25); }
 .score { display: inline-flex; flex-shrink: 0; align-items: center; gap: 4px; border-radius: 11px; padding: 7px 10px; background: oklch(0.32 0.04 165); color: oklch(0.98 0.006 165); font-size: 12px; line-height: 20px; }
 .score strong { font-size: 14px; font-variant-numeric: tabular-nums; }
 .reading { min-height: 20px; margin: 4px 0 0; overflow-wrap: anywhere; color: var(--muted); font-size: 13px; line-height: 20px; }
